@@ -17,7 +17,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @67486 @67485 @totalObligation @jitendra @TBE
+  @67486 @67485 @totalObligation @jitendra
   Scenario: To validate that total obligation in the Financial table of funding account page navigated through the Funding account hyperlink present on the Subaward page of Grantor (Internal PM ) is the Sum of Pre-encumbrance, Encumbrance and the Spent value
     And I navigate to "Budget" sub tab
     And I click on hyperlink containing value "{SavedValue:fundingAccount}"
@@ -72,7 +72,7 @@ Feature: Validate all scenarios in the award created from FDM
       | {SavedValue:FO Username} | Step 3 |
     Then I see that "{SavedValue:EXE Username}" has been added in flextable with Id "---subAwardFromFDM:-:awardApproverTableId---"
 
-  @50990 @riskAssessmentActivationAndAwardAcceptanceBySPI @bug-94597 @TBE
+  @50990 @riskAssessmentActivationAndAwardAcceptanceBySPI @bug-94597
   Scenario Outline: Send an award to sub-recipient before approval
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -162,7 +162,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @67662 @deleteFSmultiple @jitendra @TBE
+  @67662 @deleteFSmultiple @jitendra
   Scenario: Validate review initiation and completion for the award | verify award acceptance
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -177,7 +177,7 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see the following messages in the page details contains:
       | Record deleted successfully. |
 
-  @38219 @65402 @awardReviewInitiationAndCompletion @smoke @TBE
+  @38219 @65402 @awardReviewInitiationAndCompletion @smoke
   Scenario Outline: Validate review initiation and completion for the award | verify award acceptance
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -305,7 +305,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @67671 @validateUsershouldAllowedToUseMoneyMoreThanPreEncumbranceAmount @jitendra @TBE
+  @67671 @validateUsershouldAllowedToUseMoneyMoreThanPreEncumbranceAmount @jitendra
   Scenario Outline: Validate User is allowed to utilize money greater than Pre En-cumbrance Balance but less than available Balance
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -434,7 +434,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @67665 @67564 @validateEncumberanceGreaterAndLessValue @jitendra @TBE
+  @67665 @67564 @validateEncumberanceGreaterAndLessValue @jitendra
   Scenario: Validate that the encumbrance value should not be less than budget value before Submitting for approval
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -620,7 +620,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @67698 @validateEmailNotificationToAwardOwnerAfterAwardSubmission @monu @smoke @TBE
+  @67698 @validateEmailNotificationToAwardOwnerAfterAwardSubmission @monu @smoke
   Scenario Outline: To Validate that email is getting generated for award owner once user submit subaward for approval
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -756,7 +756,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @38222 @50994 @65418 @65420 @awardApprovalAndSendToRecipientAfterApproval @ErrorMessageForTargetFields @TBE
+  @38222 @50994 @65418 @65420 @awardApprovalAndSendToRecipientAfterApproval @ErrorMessageForTargetFields
   Scenario Outline: Validate award approval and send to subrecipient after approval | validate submit for approval button displayed
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -914,7 +914,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @50997 @awardAcceptanceByRecipientAfterApproval @smoke @TBE
+  @50997 @awardAcceptanceByRecipientAfterApproval @smoke
   Scenario Outline: Validate award acceptance by sub-recipient after approval
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1230,7 +1230,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                                       | Award Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @45745 @VerifyAwardRejectionByS/R @keerti @bug-94597 @TBE
+  @45745 @VerifyAwardRejectionByS/R @keerti @bug-94597
   Scenario Outline: Validate the rejection of award by recipient after approval
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -1324,7 +1324,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @45765 @validateNoDeleteActionDisplayedforGrant @TBE
+  @45765 @validateNoDeleteActionDisplayedforGrant
   Scenario Outline:  Validate award is not deleted for application initiated grant
     Then I softly see status in Progress-bar is "Created" and is "Green"
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -1371,7 +1371,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @64570 @64566 @64720 @64721 @64569 @64719 @64723 @64568 @64564 @64718 @64562 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate @keerti @TBE
+  @64570 @64566 @64720 @64721 @64569 @64719 @64723 @64568 @64564 @64718 @64562 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate @keerti
   Scenario Outline: Verify Work Plan Required? field setting entered at announcement is same on grant which is created with application.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -1467,7 +1467,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                                       | Award Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @64790 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti @buglogged127817 @TBE
+  @64790 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti @buglogged127817
   Scenario Outline: Verify Objectives field value Performance tab Subaward overview is same as announcement Objectives table setup Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -1490,7 +1490,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                                       | Award Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @64722 @VerifyRelatedFocusAreasField @keerti @TBE
+  @64722 @VerifyRelatedFocusAreasField @keerti
   Scenario Outline: Verify Related Focus Areas field value setup tab overview at announcement is same on grant which is created with application Overview Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -1511,7 +1511,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @65409  @verifyErrorMessageForFocusArea @TBE
+  @65409  @verifyErrorMessageForFocusArea
   Scenario Outline: To verify the action on adding a focus area start and end end date in between the budget period date in the budget tab of subaward phase in the award owner profile PM User category
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1586,7 +1586,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                                       | Award Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @65412 @addFederalProgram @bug-94597 @TBE
+  @65412 @addFederalProgram @bug-94597
   Scenario Outline: To verify that federal program can be added from the award owner profile in overview tab after the sub award is accepted by the sub recipient
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -1709,7 +1709,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on hyperlink containing value "{SavedValue:APPID}"
     Then I see status in Progress-bar is "Converted to Award" and is "green"
 
-  @67447 @validateFundingAccountLinkOnAward @TBE
+  @67447 @validateFundingAccountLinkOnAward
   Scenario: To validate that after clicking on the Funding account hyperlink present Funding account column of Funding Account information table Directs to the Funding account page
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -1717,7 +1717,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on hyperlink containing value "{SavedValue:fundingAccount}"
     Then I see field "Title" as "Automation Permanent Funding Account"
 
-  @67673 @validateFundingAccountEditActionNotDisplayed @TBE
+  @67673 @validateFundingAccountEditActionNotDisplayed
   Scenario Outline: Validate that Funding account table is not editable after submitted for approval
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1822,7 +1822,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @67661 @71124 @71125 @71123 @addAnotherFundingAccountAfterSubawardAccepted @jitendra @TBE
+  @67661 @71124 @71125 @71123 @addAnotherFundingAccountAfterSubawardAccepted @jitendra
   Scenario Outline: Validate that the new Funding account can be added before Approval by award-owner.
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details

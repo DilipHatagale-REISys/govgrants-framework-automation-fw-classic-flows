@@ -791,11 +791,28 @@ public class GrantorPayloads {
                 return advancePermissibleYesnofocusarea(json);
             case "ADVANCE_YES_FOCUS_NO_PROGRAM_ANTICIPATED_NO":
                 return advancePermissibleYesnofocusareaProgramAnticipatedNo(json);
+            case "AMENDMENT_REQUEST_ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO":
+                return createAwarForAmendmentRequestAdvanceYesFocusNo(json);
             case "USER":
                 return createStandaloneAwardUsingUser(json, user);
             default:
                 return json;
         }
+    }
+
+    private JsonObject createAwarForAmendmentRequestAdvanceYesFocusNo(JsonObject json) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+
+        grant.addProperty("RiskAssessment_Required", "No");
+        grant.addProperty("IsMatchRequired", "No");
+        grant.addProperty("IsBuildUpFunctionality", "Yes");
+        grant.addProperty("WBSRequired", "No");
+        grant.addProperty("FocusAreaRequired", "No");
+        grant.addProperty("IsAdvancePermitted", "Yes");
+        newA.add(grant);
+        json.add("Grant", newA);
+        return json;
     }
 
     private void updateAwardOwner(JsonObject json, String user) {
@@ -1056,7 +1073,7 @@ public class GrantorPayloads {
         award.addProperty("EXE", ProjectWebServices.getIdOf("User", "Automation EXE"));
         awardArray.add(award);
         award.addProperty("NewObligation", "1000");
-        award.addProperty("TotalCommitment", "2000");
+        award.addProperty("TotalCommitment", "1000");
         parent.add("Award", awardArray);
 
         JsonObject awardFundingAccount = new JsonObject();

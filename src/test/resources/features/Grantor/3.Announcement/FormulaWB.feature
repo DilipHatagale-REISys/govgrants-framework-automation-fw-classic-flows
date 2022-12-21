@@ -3732,7 +3732,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       """
 
   @229102 @VerifywhenAnnouncementispublishedbyuserthenemailshouldbetriggered(Forformulaannouncementswithallocation-level=ByApplicant&FocusArea=yes) @sprint-12-US-221459 @komal @Allocation
-  @204414 @ValidatewhenAnnouncementispublishedthenemailshouldgettriggered @sprint-11-US-201040 @TBEAfterEmailTemplateConfirmation @komal @Allocation
+  @204414 @ValidatewhenAnnouncementispublishedthenemailshouldgettriggered @sprint-11-US-201040  @komal @Allocation
   Scenario: Verify when Announcement is published by  user then email should be triggered(For formula announcements with allocation-level = By Applicant & Focus Area=yes)
   | Validate when Announcement is published then email should get triggered |
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
