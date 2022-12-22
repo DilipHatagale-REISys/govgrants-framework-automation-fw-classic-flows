@@ -3,7 +3,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
   @69178 @auditorPaymentRequest
   Scenario: Validate Auditor should have view / read  only access to advances Paid Payment Request under Monitoring Tab
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -58,7 +58,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
   @69180 @auditorMonitoringSchedule
   Scenario Outline: Validate Auditor should have view Monitoring Scheduled Activities of award
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -110,7 +110,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
   @69869 @auditorCannotCreateAwardLevelSiteVisit
   Scenario: Validate Auditor should not be able to Create, Edit, Delete and Accept and Close the Award Level Site Visit
-    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -137,7 +137,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
   @70076 @69870 @auditorCannotCreateDeleteAwardLevelDeskReview
   Scenario Outline: Validate Auditor should not be able to delete the  created state Award Level Desk Review | Validate Auditor should not be able to Create, Accept and Close the Award Level Desk Review
-    Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Competitive"
     Given I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -178,7 +178,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
   @69872 @69979 @auditorCannotCreateAwardLevelRiskAssessment
   Scenario Outline: Validate Auditor should not be able to Create Award Level Risk Assessment/ Validate whether Auditor can View the active Risk assessment from Monitoring Tab
-    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -241,7 +241,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
   @69986 @69985 @auditorCannotSendBackProgressReportToSubrecipient
   Scenario: Validate Auditor should not be  able to Send back progress report to S/R | Validate Auditor should have view / read  only access to the progress report record
-    Given I activated standalone subaward "Automation Runtime award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     Given I am on "SUBPORTAL" portal
@@ -256,8 +256,8 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Actual | Reported Date |
-      | Automation Permanent KPI  | 7      | 7             |
+      | Title                    | Actual | Reported Date |
+      | Automation Permanent KPI | 7      | 7             |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -284,8 +284,8 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
   @70075 @auditorCannotBeAnApprover
   Scenario: Validate approver user is not allowed to reassign tasks their tasks to Auditor.
-    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
-    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -358,12 +358,12 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
-      | Construction    | 1000           | 100        | 100            |
+      | Budget Category | Award Amount | Cash Match | Non-Cash Match |
+      | Construction    | 1000         | 100        | 100            |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI  | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"

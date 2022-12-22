@@ -3,7 +3,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
 
   @69168 @auditorCannotCreateGrantandSubaward @smoke @buglogged100983
   Scenario: Validate Auditor should not be able to  Create/Edit Grant/subaward
-    Given I activated standalone subaward "Automation Runtime award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -15,7 +15,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
 
   @69169 @auditorCannotEDitActiveGrantAward
   Scenario: Validate Auditor do not have Edit permission for Grant/Subaward
-    Given I activated standalone subaward "Automation Runtime award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -28,7 +28,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
 
   @69170 @auditorCanViewActiveGrantAward
   Scenario: Validate Auditor should have view / read  only access to Active Grant/Award
-    Given I activated standalone subaward "Automation Runtime award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -42,7 +42,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
 
   @69304 @auditorCandownloadasPDF @skipOnJenkins
   Scenario: Validate Verify User with Auditor profile has ability to download PDF files of record.
-    Given I activated standalone subaward "Automation Runtime award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -80,7 +80,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
+      | EGMS ID                  | Target |
       | Automation Permanent KPI | 10     |
     And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
@@ -259,8 +259,8 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended | 500                     |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
       | Name                      | FDM    |
