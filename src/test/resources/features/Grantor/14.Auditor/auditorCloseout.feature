@@ -30,6 +30,7 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "closeoutID"
     When I click on "Save" in the page details
+    And I wait for "5" seconds
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -116,7 +117,7 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
     And I click toggle button to select "Project Period Closeouts - All"
-    And I perform quick search for "Submitted for Approval" in "ProjectPeriodCloseoutGrantor" panel
+    And I perform quick search for "{SavedValue:closeoutID}" in "ProjectPeriodCloseoutGrantor" panel
     Then I see values "Early Completion" and "Submitted for Approval" inside table
 
   @69177 @auditorCannotEditCreatedCloseoutRecordbyPM
