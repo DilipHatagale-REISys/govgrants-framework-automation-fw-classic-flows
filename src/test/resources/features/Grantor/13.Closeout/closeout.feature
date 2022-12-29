@@ -390,9 +390,9 @@ Feature: Validate all scenarios in Closeout
     Then I softly see that "Automation Test Description" has been added in flextable with Id "---closeout:-:closeoutPeerReviewTableId---"
     #89223
     When I navigate to "Files" sub tab
-#    When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
-#      | Description                 | Required  | Status |
-#      | Automation test description | Mandatory | Active |
+    When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
+      | Description                 | Required  | Status |
+      | Automation test description | Mandatory | Active |
     Then I softly see value "Automation" for title "Description" inside table "CloseoutChecklistsFlexToggle"
     #89224
     And I click on "Upload Template" icon for "Automation" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" with wait for record
@@ -486,6 +486,9 @@ Feature: Validate all scenarios in Closeout
       | Reviewer Name | Responsibility   | Description                 | Due Date |
       | Automation PM | Program Reviewer | Automation Test Description | 10       |
     When I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
+      | Description                 | Required  | Status |
+      | Automation test description | Mandatory | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
     Then I softly see "Upload Template" opens in overLay window
     When I upload file "AttachmentTesting.pdf" into library
@@ -1254,6 +1257,9 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "CloseoutID"
     When I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
+      | Description                 | Required  | Status |
+      | Automation test description | Mandatory | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
     Then I softly see "Upload Template" opens in overLay window
     When I upload file "AttachmentTesting.pdf" into library

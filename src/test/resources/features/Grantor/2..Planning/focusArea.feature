@@ -147,7 +147,7 @@ Feature: Validate all scenarios in Focus Area
 
   @106643 @109276 @VerifyAssociatedFocusAreaAtRlatedGrantRecord @monu
   Scenario: Validate user should be able to see associated focus area at grant record for program
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
