@@ -299,6 +299,7 @@ Feature: Validate all scenarios for program
     And I click on "Edit" in the page details
     And I enter "NGOEdit" values from "Program_Field_Values.xlsx"
     When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                     | Program |
       | {SavedValue:PM Username} | Step 1  |
@@ -308,7 +309,6 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
     When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
-    When I navigate to "Responsibilities" sub tab
     And I click on "Submit For Approval" in the page details
     When I "Send to Owner" in the approval decision
     Then I softly see field "Status" as "Created"
@@ -452,7 +452,7 @@ Feature: Validate all scenarios for program
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
     When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
-    When I perform quick search for "Pre-Application" in "---program:-:packagesTableId---" panel
+    When I perform quick search for "Grantor Pre-application Form" in "---program:-:packagesTableId---" panel
     Then I softly see value "Grantor Pre-application Form" for title "Package Name" inside table "---program:-:packagesTableId---"
     And I expand nested table containing column value "Grantor Pre-application Form"
     Then I softly see value "Standard Pre-Application form" for title "Display Name" inside table "---program:-:packagesTableId---"
