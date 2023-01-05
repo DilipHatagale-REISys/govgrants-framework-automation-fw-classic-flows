@@ -3055,68 +3055,9 @@ Feature: Pre-Application scenarios without background
 
   @197939 @ValidatePreApplicationReviewtaskshouldnotgenerateforEXEuseronreassignmytaskpage @sprint-7-US-197384 @vaibhav @reassignment @taskreassign
   Scenario: Validate Pre-Application Review Negotiation task should not generate for admin user on reassign my task page
-    When I login to "As a Grantor" app as "EXE" user
-    And I navigate to "Announcements" tab
-    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Competitive Announcements"
-    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
-    And I click modal button "Continue"
-    When I enter "Creation Second Modal1" values from "Announcement_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I get the "EGMS ID"
-    And I save the field labeled "EGMS ID" as "AnnEGMSID"
-    And I save the field labeled "Announcement Name" as "Automation Runtime Announcement for Pre-App"
-    When I click on "Edit" in the page details
-    And I enter "Edition1" values from "Announcement_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I navigate to "Financials" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
-    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
-    When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
-    When I refresh the page
-    When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
-    When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name          | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
-      | Automation PM | Step 1       | Step 1 | Step 1 | Step 1            | Step 1               | Step 1          | Step 1     | Step 1   |
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c"
-    When I get the "EGMS ID"
-    When I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
-      | Budget Period Name | Start Date | End Date |
-      | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
-    And I click on "Submit For Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Announcements" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
-    And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Announcements" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
-    Then I softly can see top right button "Publish" in page detail
-    And I click on "Publish" in the page details
-    Then I see status in Progress-bar is "Published" and is "green"
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_YES-Automation EXE user"
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"

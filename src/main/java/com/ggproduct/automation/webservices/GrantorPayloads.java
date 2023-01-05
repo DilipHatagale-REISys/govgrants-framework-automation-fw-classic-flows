@@ -160,7 +160,7 @@ public class GrantorPayloads {
         FDM.addProperty("SubawardAbbreviation", "AWD");
         FDM.addProperty("RecommendedForAward", "Yes");
         FDM.addProperty("RecommendedAmount", 1000);
-//        FDM.addProperty("TotalCommitmentAmount",1000);
+        FDM.addProperty("TotalCommitmentAmount",1000);
         FDMArray.add(FDM);
 
         parent.add("FDM", FDMArray);
@@ -375,10 +375,35 @@ public class GrantorPayloads {
                 return byApplicantNegotiationNo(json);
             case "BY_APPLICANT_FOCUS_AREA_NEGOTIATION_NO":
                 return byApplicantFocusAreaNegotiationsNo(json);
+            case "BY_APPLICANT_FOCUS_AREA_NEGOTIATION_YES":
+                return byApplicantFocusAreaNegotiationsYes(json);
+            case "BY_APPLICANT_FOCUS_AREA_RISK_ASSESSMENT_NO":
+                return byApplicantFocusAreaRiskAssessmentNo(json);
 
             default:
                 return json;
         }
+    }
+
+    private JsonObject byApplicantFocusAreaRiskAssessmentNo(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
+        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        jsonObject.addProperty("RiskAssessment_Required", "No");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
+    }
+
+    private JsonObject byApplicantFocusAreaNegotiationsYes(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
+        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
     }
 
     private void updateAnnouncementOwner(JsonObject json, String user) {
