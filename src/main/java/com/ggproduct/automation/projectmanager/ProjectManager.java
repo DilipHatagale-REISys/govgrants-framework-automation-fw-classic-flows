@@ -111,4 +111,24 @@ public class ProjectManager extends ProjectWebServices {
             Assert.assertEquals(I.amPerforming().actionToGet().attribute(confirmationBoxMessage, "innerText").replaceAll("\\u00a0", " "), message);
         }
     }
+
+    public void assertFieldIsNotInEditMode(String fieldAPIName, boolean isSoftly) {
+        if (isSoftly) {
+            I.amPerforming().assertionsTo().assertThat(isFieldNotInEditMode(fieldAPIName)).isFalse();
+        } else {
+            Assert.assertFalse(isFieldNotInEditMode(fieldAPIName));
+        }
+    }
+
+    private boolean isFieldNotInEditMode(String fieldAPIName) {
+        boolean flag = true;
+        try {
+            if (I.amPerforming().checkToSee().isDisplayed(By.xpath("//field[@field-name='" + fieldAPIName + "']/input")))
+                flag = true;
+        } catch (Exception e) {
+            flag = false;
+        }
+        return flag;
+    }
+
 }

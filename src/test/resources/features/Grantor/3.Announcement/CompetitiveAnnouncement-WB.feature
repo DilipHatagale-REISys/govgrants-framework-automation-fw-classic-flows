@@ -1,4 +1,4 @@
-@competitiveAnnouncementsWB @grantor-regression @grantor-parallel-regression @announcement @regression @vanch
+@competitiveAnnouncementsWB @grantor-regression @grantor-parallel-regression @announcement @regression
 Feature: Validate all scenarios in the Competitive Announcement tab
 
   @237875 @238363 @VerifyvalidationmessageisnotdisplayedtoexeuserwhenenteredrecommendedbudgetisequaltotheBudgetedAmountonFDMrecordwhichiscreatedfromCompetitiveannouncement @sprint-14-US-224179 @komal @Allocation
