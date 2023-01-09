@@ -150,7 +150,7 @@ Feature: Validate all scenarios in Closeout
     And I get the "EGMS ID"
     #93795
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
-   And I pause execution for "10" seconds
+    And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -5286,3 +5286,61 @@ Feature: Validate all scenarios in Closeout
       Thank you.
       The EGMS Team
       """
+
+  @199846 @Validatefieldhistorytableshouldbeupdateoncownershiprelatedtaskreassignfromoneusertootheruser @sprint-5-US-192940 @vaibhav @reassignment
+  Scenario: Validate field history table should be update once ownership related task reassign from one user to other user
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user" of type "Competitive"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "closeoutID"
+    When I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    And I enter value "Automation Test justification" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name                     | Closeout |
+      | {SavedValue:FO Username} | Step 1   |
+    And I click on "Send To Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I click on "Edit" in the page details
+    And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:closeoutID}" for title "EGMS ID" inside table "---closeout:-:pendingTaskTableId---"
+    And I navigate to "Home" tab
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
+    When I reassign task to "Automation EXE1"
+    When I perform quick search for "{SavedValue:closeoutID}" in "---program:-:grantorTaskReassignTableId---" panel
+    When I check "{SavedValue:closeoutID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:closeoutID}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly do not see value "{SavedValue:closeoutID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    Then I softly see field "Status" as "Acknowledged by Subrecipient"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation EXE1" for title "New Value" inside table "---closeout:-:closeoutHistoryTableId---"
+    Then I softly see value "Automation EXE" for title "Old Value" inside table "---closeout:-:closeoutHistoryTableId---"

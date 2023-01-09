@@ -17378,7 +17378,7 @@ Feature: Amendment Request scenarios without background
 
       """
       Hello,
-      This email is to inform you that the amendment request #{SavedValue:kpcId} for the award # {SavedValue:AwardEGMSID}  has been approved and a new award can be created.
+      This email is to inform you that the amendment request #{SavedValue:kpcId} for the award # {SavedValue:AwardEGMSID} has been approved and a new award can be created.
       Amendment Request Summary:
       Amendment Request Type: Key Personnel Change
       Amendment ID: {SavedValue:kpcId}

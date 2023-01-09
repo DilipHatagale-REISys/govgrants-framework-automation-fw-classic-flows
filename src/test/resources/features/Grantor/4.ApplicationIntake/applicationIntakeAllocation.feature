@@ -516,7 +516,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly can see page block "Budget Summary by Focus Area"
     #219973
     Then I see the following headers in table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---" :
-      | Focus Area  | Budgeted Amount |
+      | Focus Area | Budgeted Amount |
 
   @219974 @219982 @ValidateSPIUseronopportunityoverviewsectionSubawardfloor&SubawardCellingfieldshouldbehideforformulaannouncement @sprint-11-US-203038 @vaibhav @Allocation
   Scenario: Validate SPI User on opportunity overview section Subaward floor & Subaward Celling field should be hide for formula announcement

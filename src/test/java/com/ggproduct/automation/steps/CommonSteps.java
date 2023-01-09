@@ -66,4 +66,9 @@ public class CommonSteps {
         projectManager.assertMessageOfConfirmationBoxPopUp(message, usage.contains("softly"));
     }
 
+    @Description("Validate field is not editable")
+    @Then("I (softly see|see) field \"([^\"]*)\" not in edit mode$")
+    public void iSoftlySeeFieldNotInEditMode(String usage,String fieldAPIName) {
+        projectManager.assertFieldIsNotInEditMode(fieldAPIName, usage.contains("softly"));
+    }
 }

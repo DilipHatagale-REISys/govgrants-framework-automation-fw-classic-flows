@@ -393,13 +393,13 @@ Feature: Validate all scenarios for program
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "ProgramEGMSID"
     And I click on "Save" in the page details
-   When I navigate to "Responsibilities" sub tab
-   When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
-     | Name                     | Program |
-     | {SavedValue:PM Username} | Step 1  |
-   When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
-     | Name                      | Program |
-     | {SavedValue:EXE Username} | Step 4  |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 4  |
     And I click on "Edit" in the page details
     And I enter "NGOEdit" values from "Program_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -3402,16 +3402,16 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-   When I navigate to "Responsibilities" sub tab
-   When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-     | Name                      | Program | Announcement | FDM    | Award  | Post Award / Monitoring | Closeout |
-     | {SavedValue:EXE Username} | Step 1  | Step 2       | Step 2 | Step 2 | Step 2                  | Step 2   |
-   When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-     | Name            | Program | Announcement | FDM    | Award  | Post Award / Monitoring | Closeout |
-     | Automation EXE1 | Step 2  | Step 1       | Step 1 | Step 1 | Step 1                  | Step 1   |
-   When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-     | Name          | Program | Announcement | FDM    |
-     | Automation FO | Step 3  | Step 3       | Step 3 |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program | Announcement | FDM    | Award  | Post Award / Monitoring | Closeout |
+      | {SavedValue:EXE Username} | Step 1  | Step 2       | Step 2 | Step 2 | Step 2                  | Step 2   |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name            | Program | Announcement | FDM    | Award  | Post Award / Monitoring | Closeout |
+      | Automation EXE1 | Step 2  | Step 1       | Step 1 | Step 1 | Step 1                  | Step 1   |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name          | Program | Announcement | FDM    |
+      | Automation FO | Step 3  | Step 3       | Step 3 |
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -5647,3 +5647,91 @@ Feature: Validate all scenarios for program
       Thank you,
       The EGMS Team
       """
+
+  @224336 @ValidateInternalProgapprovershouldabletoapproveprogramafterreassigntheforwardedapprovaltasktootherapprover @sprint-11-US-218319 @vaibhav @reassignment
+  Scenario: Validate Internal Prog approver should able to approve program after reassign the forwarded approval task to other approver
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name           | Program |
+      | Automation PM1 | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name           | Program | Award  |
+      | Automation EXE | Step 2  | Step 1 |
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
+    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    And I click on "Submit For Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I select radio button "Forward" in the approval decision
+    And I select user "{SavedValue:FO Username}" in the approval decision
+    When I enter comment "Automation testing" in the approval decision
+    And I submit the approval in the approval decision without processing
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
+    When I reassign task to "Automation FO1"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
+    When I check "{SavedValue:ProgramEGMSID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly do not see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    When I re-login to "As a Grantor" app as "FO1" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    Then I softly see value "Step 2" for title "Program" against the value "Automation EXE" inside table "---program:-:approverTableId---"
+    Then I softly see value "Step 1" for title "Program" against the value "Automation PM1" inside table "---program:-:approverTableId---"
+    Then I softly see value "Step 1" for title "Award" against the value "Automation EXE" inside table "---program:-:approverTableId---"
+    And I navigate to "Home" tab
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
+    When I reassign task to "Automation FO"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
+    When I check "{SavedValue:ProgramEGMSID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly do not see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
