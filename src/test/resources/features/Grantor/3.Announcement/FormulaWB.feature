@@ -82,7 +82,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter "Creation_Formula_ByApp_FocusYes" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I navigate to "Overview" sub tab
-    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     When I enter value "State governments" into field "fieldEligibleApplicantTypes__c"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -108,7 +108,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter "Creation_Formula_ByApp_FocusYes" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I navigate to "Overview" sub tab
-    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     When I navigate to "Overview" sub tab
@@ -139,7 +139,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter "Creation_Formula_ByApp_FocusYes" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I navigate to "Overview" sub tab
-    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     When I navigate to "Overview" sub tab
@@ -173,7 +173,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter "Creation_Formula_ByApplicant" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I navigate to "Overview" sub tab
-    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     When I navigate to "Overview" sub tab
@@ -1679,7 +1679,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 #    When I navigate to "Overview" sub tab
 #    When I click on "Edit" in the page details
 #    When I navigate to "Overview" sub tab
-#    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+#    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
 #    And I enter value "Test" into field "fieldAnnouncementDescription__c"
 #    When I navigate to "Financials" sub tab
 #    And I enter value "Justified" into field "fieldJustification__c"
@@ -1730,7 +1730,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     When I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
-    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I enter value "Test" into field "fieldAnnouncementDescription__c"
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "fieldJustification__c"
@@ -1924,7 +1924,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     When I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
-    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I enter value "Test" into field "fieldAnnouncementDescription__c"
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "fieldJustification__c"
@@ -2191,7 +2191,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     When I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
-    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I enter value "Test" into field "fieldAnnouncementDescription__c"
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "fieldJustification__c"
@@ -2734,7 +2734,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
     When I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
-    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I enter value "Test" into field "fieldAnnouncementDescription__c"
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "fieldJustification__c"
@@ -2912,7 +2912,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Automation Permanent Focus Area | 2000              |
     When I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
-    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I enter value "Test" into field "fieldAnnouncementDescription__c"
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "fieldJustification__c"
@@ -3179,7 +3179,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
     When I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
-    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I enter value "Test" into field "fieldAnnouncementDescription__c"
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "fieldJustification__c"

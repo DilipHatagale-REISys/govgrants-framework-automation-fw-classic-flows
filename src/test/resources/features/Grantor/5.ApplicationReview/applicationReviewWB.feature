@@ -3384,7 +3384,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I enter values into fields
       | Value | Field                             |
       | GA    | fieldAddressline2__c              |
-      | TA    | fieldCongressionalDistrictName__c |
+      | 123   | fieldCongressionalDistrictName__c |
       | 1234  | fieldZipCode4Extension__c         |
     And I pause execution for "5" seconds
     When I click on "Save" in the page details
@@ -18225,7 +18225,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name          | Announcement |
+      | Name           | Announcement |
       | Automation EXE | Step 1       |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
