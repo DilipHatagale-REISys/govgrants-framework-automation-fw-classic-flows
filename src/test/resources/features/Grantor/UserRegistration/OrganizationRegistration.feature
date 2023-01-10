@@ -216,7 +216,7 @@ Feature: Validate all registration related scenarios
     Then I see the sub-header is "Step 3 of 3" in the page details
     When I click on "Back" in the page details
     Then I see "No" text enter in field "fieldSameAsOrganizationAddress__c"
-    Then I see "For Profit Organizations" text enter in field "fieldOrganizationTypeSInglePicklist__c"
+    Then I see "For-profit organizations" text enter in field "fieldOrganizationTypeSInglePicklist__c"
     Then I see "(918) 908-9089" text enter in field "fieldOrgnizationPhoneNumber__c"
     Then I see "www.google.com" text enter in field "fieldWebsite__c"
     Then I see "Vintage Plaza" text enter in field "fieldOrganizationStreetAddress__c"

@@ -2344,7 +2344,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
     When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
     When I click on "Edit" in the page details
-    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I enter value "Test" into field "fieldAnnouncementDescription__c"
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "fieldJustification__c"
@@ -2619,7 +2619,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
     When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
     When I click on "Edit" in the page details
-    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I enter value "Test" into field "fieldAnnouncementDescription__c"
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "fieldJustification__c"
@@ -2843,7 +2843,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
     When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
     When I click on "Edit" in the page details
-    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I enter value "Test" into field "fieldAnnouncementDescription__c"
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "fieldJustification__c"
