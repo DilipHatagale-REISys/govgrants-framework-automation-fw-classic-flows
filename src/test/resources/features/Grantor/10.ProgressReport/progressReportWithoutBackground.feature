@@ -8726,25 +8726,25 @@ Feature: Validate scenarios in Progress Report without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Progress Report {SavedValue:progID} has beensubmitted.
+      Notification: {SavedValue:progID} has been Sent Back
       """
-
     Then I see the mail text is as follows :
       """
-     Hello Automation PM1,
-     This email is to notify you that the Progress Report #{SavedValue:progID} of Grant #{SavedValue:GrantEGMSID} has been submitted by Automation and it is waiting for you to be reviewed.
+      Hello,
 
-      Report Details:
-      Award ID: {SavedValue:AwardEGMSID}
-      Subrecipient Organization: SAN DIEGO ELECTRICAL TRAINING TRUST
-      Report Type: Program
+      This email is to notify you that the Progress Report {SavedValue:progID} has been sent back by the Approver.
+
+      Progress Report Details:
+      Grant Number: {SavedValue:GrantEGMSID}
       Reporting Period Start Date: {Date:M/d/yyyy}
       Reporting Period End Date: {Date:MM/d/yyyy::d+158}
-      Frequency: Annually
 
-      Log in to EGMS and click here to review the progress report.
-      Please do not reply to this system-generated email. You may contact GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
-      Thank you,
+      Log in to EGMS and click here for further details and resubmit for approval.
+
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+
+      Thank you.
       The EGMS Team
       """
 
@@ -9044,26 +9044,26 @@ Feature: Validate scenarios in Progress Report without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Notification: Owner Reassignment Report
-      """
+  Notification: Owner Reassignment Report
+  """
     Then I see the mail text is as follows :
       """
-      Hello,
+  Hello,
 
-     The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+  The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
 
-      EGMS ID Assigned By Module Name
-      {SavedValue:progID} Automation PM Progress Report
+  EGMS ID Assigned By Module Name
+  {SavedValue:progID} Automation PM Progress Report
 
-      Because these records have been reassigned, the original reviewer may have only view access to the record.
+  Because these records have been reassigned, the original reviewer may have only view access to the record.
 
-      Log in to EGMS and click on EGMS IDs to access the assigned record.
+  Log in to EGMS and click on EGMS IDs to access the assigned record.
 
-      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+  Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
 
-      Thank you,
-      The EGMS Team
-      """
+  Thank you,
+  The EGMS Team
+  """
 
   @195682 @ValidateProgressReporthatnewapproversnameshouldbeupdateintheresponsibilitytabwhenapprovaltaskisreassigned @sprint-7-US-191250 @vaibhav @reassignment
   Scenario: Validate Progress Report that new approver's name should be update in the responsibility tab when approval task is reassigned
@@ -9217,78 +9217,78 @@ Feature: Validate scenarios in Progress Report without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Notification: Owner Reassignment Report
-      """
+  Notification: Owner Reassignment Report
+  """
     Then I see the mail text is as follows :
       """
-      Hello,
+  Hello,
 
-     The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+  The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
 
-      EGMS ID Assigned By Module Name
-      {SavedValue:progID} Automation ADMIN Progress Report
+  EGMS ID Assigned By Module Name
+  {SavedValue:progID} Automation ADMIN Progress Report
 
-      Because these records have been reassigned, the original reviewer may have only view access to the record.
+  Because these records have been reassigned, the original reviewer may have only view access to the record.
 
-      Log in to EGMS and click on EGMS IDs to access the assigned record.
+  Log in to EGMS and click on EGMS IDs to access the assigned record.
 
-      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+  Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
 
-      Thank you,
-      The EGMS Team
-      """
+  Thank you,
+  The EGMS Team
+  """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Notification: Owner Reassignment Report
-      """
+  Notification: Owner Reassignment Report
+  """
     Then I see the mail text is as follows :
       """
-      Hello,
+  Hello,
 
-     The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+  The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
 
-      EGMS ID Assigned By Module Name
-      {SavedValue:progID} Automation ADMIN Progress Report
+  EGMS ID Assigned By Module Name
+  {SavedValue:progID} Automation ADMIN Progress Report
 
-      Because these records have been reassigned, the original reviewer may have only view access to the record.
+  Because these records have been reassigned, the original reviewer may have only view access to the record.
 
-      Log in to EGMS and click on EGMS IDs to access the assigned record.
+  Log in to EGMS and click on EGMS IDs to access the assigned record.
 
-      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+  Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
 
-      Thank you,
-      The EGMS Team
-      """
+  Thank you,
+  The EGMS Team
+  """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "govgrantsautomation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Notification: Owner Reassignment Report
-      """
+  Notification: Owner Reassignment Report
+  """
     Then I see the mail text is as follows :
       """
-      Hello,
+  Hello,
 
-     The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+  The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
 
-      EGMS ID Assigned By Module Name
-      {SavedValue:progID} Automation ADMIN Progress Report
+  EGMS ID Assigned By Module Name
+  {SavedValue:progID} Automation ADMIN Progress Report
 
-      Because these records have been reassigned, the original reviewer may have only view access to the record.
+  Because these records have been reassigned, the original reviewer may have only view access to the record.
 
-      Log in to EGMS and click on EGMS IDs to access the assigned record.
+  Log in to EGMS and click on EGMS IDs to access the assigned record.
 
-      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+  Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
 
-      Thank you,
-      The EGMS Team
-      """
+  Thank you,
+  The EGMS Team
+  """
 
   @229668 @Validateprogressreportissendtos/rstate&userchangedOwnershiptasktonewownerofPRreport @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate progress report is send to s/r state & user changed Ownership task to new owner of PR report
@@ -9349,26 +9349,26 @@ Feature: Validate scenarios in Progress Report without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Notification: Owner Reassignment Report
-      """
+  Notification: Owner Reassignment Report
+  """
     Then I see the mail text is as follows :
       """
-      Hello,
+  Hello,
 
-     The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+  The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
 
-      EGMS ID Assigned By Module Name
-      {SavedValue:progID} Automation PM Progress Report
+  EGMS ID Assigned By Module Name
+  {SavedValue:progID} Automation PM Progress Report
 
-      Because these records have been reassigned, the original reviewer may have only view access to the record.
+  Because these records have been reassigned, the original reviewer may have only view access to the record.
 
-      Log in to EGMS and click on EGMS IDs to access the assigned record.
+  Log in to EGMS and click on EGMS IDs to access the assigned record.
 
-      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+  Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
 
-      Thank you,
-      The EGMS Team
-      """
+  Thank you,
+  The EGMS Team
+  """
     Given I am on "SUBPORTAL" portal
     When I login as "SPI3" user
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -9537,26 +9537,26 @@ Feature: Validate scenarios in Progress Report without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Notification: Owner Reassignment Report
-      """
+  Notification: Owner Reassignment Report
+  """
     Then I see the mail text is as follows :
       """
-      Hello,
+  Hello,
 
-     The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+  The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
 
-      EGMS ID Assigned By Module Name
-      {SavedValue:progID} Automation ADMIN Progress Report
+  EGMS ID Assigned By Module Name
+  {SavedValue:progID} Automation ADMIN Progress Report
 
-      Because these records have been reassigned, the original reviewer may have only view access to the record.
+  Because these records have been reassigned, the original reviewer may have only view access to the record.
 
-      Log in to EGMS and click on EGMS IDs to access the assigned record.
+  Log in to EGMS and click on EGMS IDs to access the assigned record.
 
-      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+  Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
 
-      Thank you,
-      The EGMS Team
-      """
+  Thank you,
+  The EGMS Team
+  """
 
   @234012 @ValidateProgReportReviewProgressReporttaskshouldbecloseafterclickonsubmitforapprovalbuttonbynewownerReassignedownerofprogressreport @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate Prog Report "Review Progress Report" task should be close after click on submit for approval button by new owner (Reassigned owner) of progress report
