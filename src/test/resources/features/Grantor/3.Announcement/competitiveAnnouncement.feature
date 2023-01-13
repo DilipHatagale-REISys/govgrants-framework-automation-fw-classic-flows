@@ -623,7 +623,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Enter Review" modal by clicking the top right x button
+#    When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel

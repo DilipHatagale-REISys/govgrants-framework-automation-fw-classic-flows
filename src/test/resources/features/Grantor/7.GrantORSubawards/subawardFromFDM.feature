@@ -83,11 +83,6 @@ Feature: Validate all scenarios in the award created from FDM
       | Title                      | Project Role   | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Fiscal Contact | Checked          |
     When I navigate to "Budget" sub tab
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
@@ -170,11 +165,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
     And I click on "Remove" icon for "{SavedValue:fundingAccount}" inside flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" without waiting for record
     Then I softly see "No Records Found" inside flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I softly see the following messages in the page details contains:
@@ -188,11 +178,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Budget" sub tab
     And I save the field labeled "Project Period Start Date" as "ProjectPeriodStartDate"
     And I save the field labeled "Budget Period End Date" as "BudgetPeriodDate"
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date                          | End Date                      |
       | Automation Permanent Focus Area | {SavedValue:ProjectPeriodStartDate} | {SavedValue:BudgetPeriodDate} |
@@ -317,11 +302,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Budget" sub tab
     And I save the field labeled "Project Period Start Date" as "ProjectPeriodStartDate"
     And I save the field labeled "Budget Period End Date" as "BudgetPeriodDate"
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date                          | End Date                      |
       | Automation Permanent Focus Area | {SavedValue:ProjectPeriodStartDate} | {SavedValue:BudgetPeriodDate} |
@@ -465,11 +445,6 @@ Feature: Validate all scenarios in the award created from FDM
       | Name                     | Award  |
       | {SavedValue:FO Username} | Step 3 |
     And I navigate to "Budget" sub tab
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 500         |
@@ -492,11 +467,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Budget" sub tab
     And I save the field labeled "Project Period Start Date" as "ProjectPeriodStartDate"
     And I save the field labeled "Budget Period End Date" as "BudgetPeriodDate"
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date                          | End Date                      |
       | Automation Permanent Focus Area | {SavedValue:ProjectPeriodStartDate} | {SavedValue:BudgetPeriodDate} |
@@ -635,11 +605,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Budget" sub tab
     And I save the field labeled "Project Period Start Date" as "ProjectPeriodStartDate"
     And I save the field labeled "Budget Period End Date" as "BudgetPeriodDate"
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date                          | End Date                      |
       | Automation Permanent Focus Area | {SavedValue:ProjectPeriodStartDate} | {SavedValue:BudgetPeriodDate} |
@@ -770,11 +735,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
@@ -931,11 +891,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Budget" sub tab
     And I save the field labeled "Project Period Start Date" as "ProjectPeriodStartDate"
     And I save the field labeled "Budget Period End Date" as "BudgetPeriodDate"
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date                          | End Date                      |
       | Automation Permanent Focus Area | {SavedValue:ProjectPeriodStartDate} | {SavedValue:BudgetPeriodDate} |
@@ -1065,11 +1020,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Budget" sub tab
     And I save the field labeled "Project Period Start Date" as "ProjectPeriodStartDate"
     And I save the field labeled "Budget Period End Date" as "BudgetPeriodDate"
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date                          | End Date                      |
       | Automation Permanent Focus Area | {SavedValue:ProjectPeriodStartDate} | {SavedValue:BudgetPeriodDate} |
@@ -1257,11 +1207,6 @@ Feature: Validate all scenarios in the award created from FDM
       | Title          | Project Role   | Is Key Personnel |
       | Automation SPA | Fiscal Contact | Checked          |
     When I navigate to "Budget" sub tab
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
@@ -1487,8 +1432,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Setup" sub tab
     When I perform quick search for "Automation Permanent Objective" in "---announcement:-:objectivesTableId---" panel
-    And I click on "View" icon for "Automation Permanent Objective" inside table
-    And I save the field labeled "EGMS ID" as "EGMSID"
+    When I save the value from row "1" for column name "EGMS ID" as "EGMSID" from flex table "---announcement:-:objectivesTableId---"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1530,11 +1474,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the pag
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
@@ -1742,11 +1681,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Budget" sub tab
     And I save the field labeled "Project Period Start Date" as "ProjectPeriodStartDate"
     And I save the field labeled "Budget Period End Date" as "BudgetPeriodDate"
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date                          | End Date                      |
       | Automation Permanent Focus Area | {SavedValue:ProjectPeriodStartDate} | {SavedValue:BudgetPeriodDate} |
@@ -1848,11 +1782,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Budget" sub tab
     And I save the field labeled "Project Period Start Date" as "ProjectPeriodStartDate"
     And I save the field labeled "Budget Period End Date" as "BudgetPeriodDate"
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date                          | End Date                      |
       | Automation Permanent Focus Area | {SavedValue:ProjectPeriodStartDate} | {SavedValue:BudgetPeriodDate} |

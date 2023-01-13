@@ -379,10 +379,36 @@ public class GrantorPayloads {
                 return byApplicantFocusAreaNegotiationsYes(json);
             case "BY_APPLICANT_FOCUS_AREA_RISK_ASSESSMENT_NO":
                 return byApplicantFocusAreaRiskAssessmentNo(json);
+            case "BY_APPLICANT_RISK_ASSESSMENT_NO":
+                return byApplicantRiskAssessmentNo(json);
+            case "BY_APPLICANT_FOCUS_AREA_NO_RISKASSESSMENT_NO":
+                return byApplicantFocusAreaNoRiskAssessmentNo(json);
 
             default:
                 return json;
         }
+    }
+
+    private JsonObject byApplicantFocusAreaNoRiskAssessmentNo(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("Allocationlevel", "By Applicant");
+        jsonObject.addProperty("FocusAreaRequired", "No");
+        jsonObject.addProperty("RiskAssessment_Required", "No");
+        pre.add(jsonObject);
+        json.add("Announcement", pre);
+        return json;
+    }
+
+    private JsonObject byApplicantRiskAssessmentNo(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("Allocationlevel","By Applicant");
+        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        jsonObject.addProperty("RiskAssessment_Required", "No");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
     }
 
     private JsonObject byApplicantFocusAreaRiskAssessmentNo(JsonObject json) {
