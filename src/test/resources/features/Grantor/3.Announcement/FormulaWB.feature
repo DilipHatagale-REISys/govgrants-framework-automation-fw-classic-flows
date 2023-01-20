@@ -889,13 +889,16 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on "Edit" in the page details
     #226431
-    And I click table top right button "Add Organization" in flex table with id "---announcement:-:addOrganizationByAppFocusAreaTableId---"
+    And I click table top right button "Add Organizations" in flex table with id "---announcement:-:addOrganizationByAppFocusAreaTableId---"
     Then I see confirmation box with quotes in body "Unsaved data will be lost due to page refresh on "Add Organization" button . Please save the record to continue." is displayed
     And I click "Yes" on modal confirmation box
+    And I refresh the page
     #226440
+    And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
     When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
     And I pause execution for "3" seconds
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:addOrganizationByAppFocusAreaTableId---"
+    And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---announcement:-:formulaAddInviteApplicantTableId---" panel
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:formulaAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     When I click on "Removes" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table with table id "---announcement:-:addOrganizationByAppFocusAreaTableId---" without processing
@@ -3900,8 +3903,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Funding Decision Memo" in the page details
     Then I softly see field "Status" as "Created"
-    When I login to "As a Grantor" app as "PM" user
-    And I navigate to url "https://test8-internal--automation--c.sandbox.vf.force.com/apex/ReviewStepView?id=a3SS0000000cMkSMAU&RefreshBehaviour=null&TableName=FDMList1&TableType=flextable&retURL=%2Fapex%2Fc__FlexTableView%3FflexTableHeader%3DFunding%2BDecision%2BMemos%26flexTableName%3DFDMList1%26pageTitle%3DApproved%2BFunding%2BDecision%2BMemos%2B(FDM)%26RecordType%3DFlex%2BTable"
     #227720
     Then I softly do not see "State Allocation" in flex table header "flexGridFundingDecisionMemoApplications"
     #227708
@@ -3924,7 +3925,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                           | Allocation Amount |
       | Automation Permanent Focus Area | 2000              |
-
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "All Funding Decision Memos (FDM)"
@@ -3934,11 +3934,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Allocation Amount | Budgeted Amount |
       | $2,000            | $1,000.00       |
 
-
     Examples:
-      | Announcement Name                            |
-#      | {SavedValue:Automation Runtime Formula Announcement} |
-      | Automation Runtime Formula Announcement69847 |
+      | Announcement Name                                    |
+      | {SavedValue:Automation Runtime Formula Announcement} |
 
   @227829 @227837 @227839 @VerifyAdminuserseevalidationwhenbudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatfocusarea&whenItrytocreateawardfromFDM @sprint-13-US-204132 @komal @Allocation
   Scenario Outline: Verify Admin user see validation when budgeted amount in any focus area is not equal to the Allocation amount of that focus area & when I try to create award from FDM
@@ -4597,8 +4595,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     #227788
-    And I softly see the following messages in the page details contains:
-      | Negotiations Tab: The Budgeted Amount must be equal to the Allocation Amount in the application. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field before sending the application back for revision. |
+    Then I softly see the following messages in the page details contains:
+      | Negotiations Tab - The Budgeted Amount must be equal to the Allocation Amount in the application. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field before sending the application back for revision. |
 
     Examples:
       | Announcement Name                                    | User |
@@ -5465,7 +5463,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Applicants                          | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000              |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
     Given I am on "SUBPORTAL" portal
     When I login as "<User>" user
     And I navigate to "Home" tab

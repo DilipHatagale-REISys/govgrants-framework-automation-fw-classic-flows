@@ -420,25 +420,19 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I see the sub-header is "Automation Permanent KPI" in the page details
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click toggle button to select "All Competitive Announcements"
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
     When I click on "Remove" icon for "Automation Permanent KPI" inside flex table with id "---announcement:-:kpiflextableid---" without waiting for record
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
     And I perform quick search for "Automation Permanent Objective" in "---announcement:-:objectivesTableId---" panel
     Then I softly see value "Automation Permanent Objective" for title "Title" inside table "---announcement:-:objectivesTableId---"
-    #buglogged126440 #73547 #functionality discarded
-#    When I click on advance filter "#advfAnnouncementGranteeStrategicGoalsObjectives" of table id "---announcement:-:objectivesTableId---"
-#    When I enter advance filter values inside id "advfAnnouncementGranteeStrategicGoalsObjectives"
-#      | Title | Contains | Automation Permanent Objective |
-#    Then I softly see value "SPO-0002" for title "EGMS ID" inside table "---announcement:-:objectivesTableId---"
-#    Then I softly see value "Automation Permanent Objective" for title "Title" inside table "---announcement:-:objectivesTableId---"
-    When I click on "View" icon for "Automation Permanent Objective" inside flex table with id "---announcement:-:objectivesTableId---" without waiting for record
-    Then I softly see field "Objective" as "Automation Permanent Objective"
 
   @70163 @70166 @70197 @userAllowToSelectEligibilityDetails @aashish
   Scenario: To Verify that user is  allowed  to select the Eligibility Details while creating Announcement
@@ -645,13 +639,13 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
     When I navigate to "Overview" sub tab
-    And I enter value "-1" into field "ApplicationDueDate__c"
+    And I enter value "-1" into field "fieldApplicationDueDate__c"
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Then I softly see the following messages in the page details :
       | Overview Tab - Application Due Date cannot be in the past. |
     And I click on "Edit" in the page details
-    And I enter value "0" into field "ApplicationDueDate__c"
+    And I enter value "0" into field "fieldApplicationDueDate__c"
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     And I navigate to "Announcements" tab

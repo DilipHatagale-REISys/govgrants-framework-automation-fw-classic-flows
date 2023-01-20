@@ -663,8 +663,8 @@ Feature: Validate all scenarios in the directed Announcement tab
       | {SavedValue:Automation Runtime Announcement} | PM   |
 
   @234354 @234372 @DirectAnnVerifyPMusercanseetheRecommendedAmountBudgetedAmount&StateAllocationcolumnonRecommendedapplicationsectiononFDMlayout @sprint-13-US-224612 @komal @Allocation
-  Scenario Outline: Direct Ann>>Verify PM user can see the 'Recommended Amount'  'Budgeted Amount' & 'State Allocation' column on Recommended application section on FDM layout
-    | Direct Ann>>Verify PM user can see the Show Subaward floor and Subaward Ceiling under overview section on FDM layout |
+  Scenario Outline: Direct Ann PM user can see the 'Recommended Amount'  'Budgeted Amount' & 'State Allocation' column on Recommended application section on FDM layout
+    | Direct Ann PM user can see the Show Subaward floor and Subaward Ceiling under overview section on FDM layout |
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
