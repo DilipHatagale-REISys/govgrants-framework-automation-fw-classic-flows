@@ -7397,7 +7397,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see "Budget Summary" page block displayed
     Then I softly do not see "Budget Period Details" page block displayed
 
-  @243655 @243658 @244181 @244183 @ValidateEXEuserseeBudgetedAmountfieldinsteadofTotalSubawardAmountthisBudgetPeriodfieldonbudgetsummarysection @sprint-16-US-237985 @vaibhav @Allocation @TBE
+  @243655 @243658 @244181 @244183 @ValidateEXEuserseeBudgetedAmountfieldinsteadofTotalSubawardAmountthisBudgetPeriodfieldonbudgetsummarysection @sprint-16-US-237985 @vaibhav @Allocation
   Scenario Outline: Validate EXE user see 'Budgeted Amount' field instead of 'Total Subaward Amount this Budget Period' field on budget summary section
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -7530,7 +7530,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | SPI3 |
       | IND  |
 
-  @243662 @244182 @244185 @ValidateEXEusershouldseeBudgetedAmountfieldonawardincreatedSenttoSrbeforeapprovalinreviewandpeerreviewedstatesFANo @sprint-16-US-237985 @vaibhav @Allocation @TBE
+  @243662 @244182 @244185 @ValidateEXEusershouldseeBudgetedAmountfieldonawardincreatedSenttoSrbeforeapprovalinreviewandpeerreviewedstatesFANo @sprint-16-US-237985 @vaibhav @Allocation
   Scenario Outline: Validate EXE user should see 'Budgeted Amount' field on award in created, Sent to S/r before approval, in review and peer-reviewed states FA=No
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -8175,7 +8175,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly see field "New Obligation" as "$3,000.00"
 
-  @243693 @ValidateUsershouldnoteditthenewobligationvalueinSentSRsubmitforapprovalApprovedSenttoSrAfterapprovalAmendedorPendingActivationorActivatedstateFAYes @sprint-16-US-237985 @vaibhav @Allocation @TBE
+  @243693 @ValidateUsershouldnoteditthenewobligationvalueinSentSRsubmitforapprovalApprovedSenttoSrAfterapprovalAmendedorPendingActivationorActivatedstateFAYes @sprint-16-US-237985 @vaibhav @Allocation
   Scenario: Validate User should not edit the new obligation value in Sent to S/R, submit for approval, Approved, Sent to S/r After approval, Amended, or Pending Activation or Activated states (FA=Yes)
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -8351,7 +8351,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly see that "New Obligation" rendered in view mode only
 
-  @243696 @ValidateUsershouldnoteditthenewobligationvalueinsubmitforapprovalApprovedSenttosrAfterapprovalAmendedorPendingActivationorActivatedstatesFANo @sprint-16-US-237985 @vaibhav @Allocation @TBE
+  @243696 @ValidateUsershouldnoteditthenewobligationvalueinsubmitforapprovalApprovedSenttosrAfterapprovalAmendedorPendingActivationorActivatedstatesFANo @sprint-16-US-237985 @vaibhav @Allocation
   Scenario: Validate User should not edit the new obligation value in submit for approval, Approved, Sent to S/r After approval, Amended, or Pending Activation or Activated states (FA=No)
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -8520,7 +8520,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly see that "New Obligation" rendered in view mode only
 
-  @244189 @243705 @ValidateSPIusershouldnotseeBudgetedAmountfieldonawardinrejectedstate @sprint-16-US-238299-237985 @vaibhav @Allocation @TBE
+  @244189 @243705 @ValidateSPIusershouldnotseeBudgetedAmountfieldonawardinrejectedstate @sprint-16-US-238299-237985 @vaibhav @Allocation
   Scenario: Validate SPI user should not see 'Budgeted Amount' field on award in rejected state
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -8650,7 +8650,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I refresh the page
     #243704
     And I navigate to "Budget" sub tab
-    Then I softly see value "$1,000.00" for title "Award Amount" against the value "Grand Total" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    Then I softly see value "$1,000.00" for title "Award Amount" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     When I navigate to "Performance" sub tab
@@ -8712,7 +8712,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly see that "New Obligation" rendered in view mode only
 
-  @243708 @ValidatePMusershouldseevalidationmessagewhileapprovalofawardifbudgetedamountnotequaltoencumbranceamount @sprint-16-US-237985 @vaibhav @Allocation @TBE
+  @243708 @243739 @ValidatePMusershouldseevalidationmessagewhileapprovalofawardifbudgetedamountnotequaltoencumbranceamount @sprint-16-US-237985 @vaibhav @Allocation @TBE
   Scenario: Validate PM user should see validation message while approval of award if budgeted amount not equal to encumbrance amount
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -8788,3 +8788,115 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details contains:
       | Budget Tab - Total Encumbrance must be equal to the total Award Amount in the Subaward budget section |
+    #243739
+    And I navigate to "Budget" sub tab
+    And I click on "Edit" in the page details
+    And I enter values into fields
+      | Value | Field                   |
+      | 700   | fieldTotalCommitment__c |
+    And I click on "Save" in the page details
+    And I click on "Submit for Approval" in the page details
+    Then I see the following messages in the page details contains:
+      | Budget Tab - Total Commitment amount must be equal to or greater than the Cumulative Obligation in Budget Summary section. |
+
+  @243735 @ValidateAdminuserIshouldabletoedittheTotalCommitmentfieldinCreatedinreviewpeerreviewedstateofawardFAYes @TBE
+  Scenario: Validate Admin user I should able to edit the "Total Commitment" field in Created, in review, peer-reviewed states of award(FA=Yes)
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition_By_Applicant" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I navigate to "Budget" sub tab
+    Then I see status in Progress-bar is "Created" and is "green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I navigate to "Budget" sub tab
+    Then I softly see fields "fieldTotalCommitment__c" is in edit mode
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Total Commitment" as "$2,000.00"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
+      | Reviewer Name | Role            | Description            | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Automation Description | 5        | No                   |
+    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
+    Then I softly see that "Sent for Review" has been added in flextable with Id "---subAwardFromFDM:-:peerReviewersTableId---"
+    And I navigate to "Budget" sub tab
+    And I click on "Edit" in the page details
+    Then I softly see fields "fieldTotalCommitment__c" is in edit mode
+    And I enter value "3000" into field "fieldTotalCommitment__c"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Total Commitment" as "$3,000.00"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Responsibilities" sub tab
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
+    And I enter a review as "Passed"
+    When I click modal button "Save"
+    And I click on submit review
+    Then I softly see that "Submitted" has been added in flextable with Id "---subAwardFromFDM:-:peerReviewersTableId---"
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardFromFDM:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
+    When I navigate to "Subawards" sub tab
+    When I click on "View" icon for "{SavedValue:AwardEGMSID}" inside table with wait for record
+    When I click on "Complete Review" in the page details
+    Then I softly see field "Status" as "Reviewed"
+    And I navigate to "Budget" sub tab
+    And I click on "Edit" in the page details
+    Then I softly see fields "fieldTotalCommitment__c" is in edit mode
+    And I enter value "4000" into field "fieldTotalCommitment__c"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Total Commitment" as "$4,000.00"
+
+  @243736 @ValidatePOasreviewershouldabletoedittheTotalCommitmentfieldinsentforreviewstatesofawardifalloweditaccessisYesforreviewer @sprint-16-US-237985 @vaibhav @Allocation @TBE
+  Scenario: Validate PO as reviewer I should able to edit the "Total Commitment" field in sent for review states of award if allow edit access is 'Yes' for reviewer
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition_By_Applicant" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I navigate to "Budget" sub tab
+    Then I see status in Progress-bar is "Created" and is "green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I navigate to "Budget" sub tab
+    And I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
+      | Reviewer Name | Role            | Description            | Due Date | Allow Record Editing |
+      | Automation PO | Fiscal Reviewer | Automation Description | 5        | Yes                  |
+    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
+    Then I softly see that "Sent for Review" has been added in flextable with Id "---subAwardFromFDM:-:peerReviewersTableId---"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---" without waiting for record
+    And I click on "Edit" in the page details
+    And I navigate to "Budget" sub tab
+    Then I softly see fields "fieldTotalCommitment__c" is in edit mode
