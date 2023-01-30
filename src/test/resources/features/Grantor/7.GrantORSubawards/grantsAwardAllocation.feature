@@ -11848,7 +11848,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
 
   @244366 @244367 @ValidateSPIuserseeincaseofdetailbudgetusershouldnotabletoeditdeletesubawardsectiononawardinRejectedandclosestate @sprint-16-US-238299 @vaibhav @Allocation
-  Scenario: Validate SPI user see incase of detail budget user should not able to edit/delete sub-award section on award in Rejected and close state
+  Scenario Outline: Validate SPI user see incase of detail budget user should not able to edit/delete sub-award section on award in Rejected and close state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
