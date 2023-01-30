@@ -102,10 +102,10 @@ public class UsersAndURL implements UsersController {
         String password;
         switch (userLevel.toUpperCase()) {
             case "SME":
-                password = "Salesforce2026";
+                password = "Salesforce2027";
                 break;
             default:
-                password = "Salesforce2025";
+                password = "Salesforce2026";
         }
         return password;
     }

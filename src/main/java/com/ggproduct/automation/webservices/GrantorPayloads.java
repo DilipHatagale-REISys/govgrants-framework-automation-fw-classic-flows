@@ -1099,7 +1099,7 @@ public class GrantorPayloads {
                 grant.addProperty("AllocationLevel", "By Applicant and Focus Area");
             } else if (Type[0].equals("Formula_By_Applicant_Focus_Area_No")) {
                 grant.addProperty("GrantType", "Formula");
-                grant.addProperty("AllocationLevel", "By Applicant and Focus Area");
+                grant.addProperty("AllocationLevel", "By Applicant");
                 grant.addProperty("FocusAreaRequired", "No");
             }
         } else if (Type[0].contains("Directed")) {

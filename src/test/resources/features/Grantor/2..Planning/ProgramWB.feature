@@ -2612,7 +2612,7 @@ Feature: Validate all scenarios for program
     And I select value "Automation ADMIN" into field "s2id_autogen1"
     And I select value "Automation ADMIN1" into field "s2id_autogen3"
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:adminTaskReassignmentTableId---" panel
-    Then I softly see value "GrantorPlanning" for title "Phase" inside table "---program:-:adminTaskReassignmentTableId---"
+    Then I softly see value "Planning" for title "Phase" inside table "---program:-:adminTaskReassignmentTableId---"
     Then I softly see value "Activate Internal Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:adminTaskReassignmentTableId---"
     Then I softly see value "Not Started" for title "Status" inside table "---program:-:adminTaskReassignmentTableId---"
     When I check "{SavedValue:ProgramEGMSID}" boxes in flex table with id "---program:-:adminTaskReassignmentTableId---"

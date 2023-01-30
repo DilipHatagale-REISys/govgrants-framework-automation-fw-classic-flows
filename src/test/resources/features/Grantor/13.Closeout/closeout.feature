@@ -1359,7 +1359,7 @@ Feature: Validate all scenarios in Closeout
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
-    Then I softly see value "{SavedValue:Balance}" for title "Balance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
+    Then I softly see value "{SavedValue:Balance}" for title "Encumbrance Balance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
 
   @96485 @93576 @93582 @VerifyOverriddenPermissionWithSubRecipientUser  @monu
   Scenario: Validate sub recipient user is not allowed to override pending item
