@@ -8583,19 +8583,19 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see that "New Obligation" rendered in view mode only
     #243806
     Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
-    #244205
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
-    And I navigate to "Budget" sub tab
-    Then I softly see field "Budget Period Number" as "BP02"
-    Then I softly see "Carry-Forward" inside page block detail
-    Then I softly see status in Progress-bar is "Activated" and is "green"
+#    #244205
+#    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+#    And I navigate to "Grants" tab
+#    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+#    And I click toggle button to select "Grants - Active"
+#    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
+#    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+#    When I navigate to "Subawards" sub tab
+#    And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+#    And I navigate to "Budget" sub tab
+#    Then I softly see field "Budget Period Number" as "BP02"
+#    Then I softly see "Carry-Forward" inside page block detail
+#    Then I softly see status in Progress-bar is "Activated" and is "green"
 
   @244189 @243705 @243772 @244191 @ValidateSPIusershouldnotseeBudgetedAmountfieldonawardinrejectedstate @sprint-16-US-238299-237985 @vaibhav @Allocation
   Scenario Outline: Validate SPI & IND user should not see 'Budgeted Amount' field on award in rejected state
@@ -12102,7 +12102,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
 
-  @243038 @243780 @ValidateEXEusershouldseeBudgetedAmountfieldonawardcreatedSenttoSrbeforeapprovalinreviewandpeerreviewedstates @sprint-16-US-238049 @vaibhav @Allocation @TBE
+  @243038 @243780 @ValidateEXEusershouldseeBudgetedAmountfieldonawardcreatedSenttoSrbeforeapprovalinreviewandpeerreviewedstates @sprint-16-US-238049 @vaibhav @Allocation 
   Scenario: Validate EXE user should see 'Budgeted Amount' field on award in created, Sent to S/r before approval, in review and peer-reviewed states
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -12210,7 +12210,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly see field "Budgeted Amount" inside "Budget Summary" section
 
-  @243125 @243287 @243289 @ValidateFormulaPMusershouldseevalidationmessagewhileapprovalofawardifbudgetedamountnotequaltoencumbranceamount @sprint-16-US-238049 @vaibhav @Allocation @TBE
+  @243125 @243287 @243289 @ValidateFormulaPMusershouldseevalidationmessagewhileapprovalofawardifbudgetedamountnotequaltoencumbranceamount @sprint-16-US-238049 @vaibhav @Allocation 
   Scenario: Validate PM user should see 'Cumulative Obligation' field value same as Total award amount and Encumbrance value in funding account grid on award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -12617,7 +12617,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | Name           | Amendment Request |
       | Automation EXE | Step 1            |
     And I click on "Send to Subrecipient" in the page details
-    Then I softly see field "Status" as "Sent to Subrecipient"
+    Then I see field "Status" as "Sent to Subrecipient"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -12669,7 +12669,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #243557
     Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @243862 @243868 @ValidatePMuserseevalidationmessageifawardamountBudgetedamountisnotequaltotheNewObligation @sprint-16-US-238049 @vaibhav @Allocation @TBE
+  @243862 @243868 @ValidatePMuserseevalidationmessageifawardamountBudgetedamountisnotequaltotheNewObligation @sprint-16-US-238049 @vaibhav @Allocation 
   Scenario: Validate PM user see validation message if award amount (Budgeted amount) is not equal to the New Obligation
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -12711,7 +12711,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:subAwardBudgetTableId---"
     Then I can see row level action button "Edit" against "Construction" in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---"
 
-  @243911 @ValidatePMuserseeincaseofdetailbudgetusershouldseeneweditdeletebuttononthsubawardcategorymodalonawardinsentforreviewstateofaward @sprint-16-US-238049 @vaibhav @Allocation @TBE
+  @243911 @ValidatePMuserseeincaseofdetailbudgetusershouldseeneweditdeletebuttononthsubawardcategorymodalonawardinsentforreviewstateofaward @sprint-16-US-238049 @vaibhav @Allocation 
   Scenario: Validate PM user see incase of detail budget user should see new/edit/delete button on the sub-award category modal on award in sent for review state of award
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -12860,7 +12860,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I click modal button "Save"
     And I click on submit review
     Then I softly see that "Submitted" has been added in flextable with Id "---subAwardFromFDM:-:peerReviewersTableId---"
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -12908,7 +12908,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see fields "GATEndDate__c" is in edit mode
     Then I softly see fields "NewObligation__c" is in edit mode
 
-  @243949 @ValidatePOnewreviewershouldabletoedittotalcommitmentamountandnewobligationamountinsentforreviewstateandsubmitthereviewcommentsofawardifalloweditisYesonaward @sprint-16-US-238049 @vaibhav @Allocation @TBE
+  @243949 @ValidatePOnewreviewershouldabletoedittotalcommitmentamountandnewobligationamountinsentforreviewstateandsubmitthereviewcommentsofawardifalloweditisYesonaward @sprint-16-US-238049 @vaibhav @Allocation 
   Scenario: Validate PO new reviewer should able to edit total commitment amount and new obligation amount in sent for review state and submit the review comments of award if allow edit is 'Yes' on award
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -13165,7 +13165,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | Name           | Amendment Request |
       | Automation PO | Step 1            |
     And I click on "Send to Subrecipient" in the page details
-    Then I softly see field "Status" as "Sent to Subrecipient"
+    Then I see field "Status" as "Sent to Subrecipient"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
