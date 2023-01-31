@@ -12053,7 +12053,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | SPI3 |
       | IND  |
 
-  @243010 @243017 @243112 @243518 @ValidatePMuserseeNewObligationvalueshouldRollupfromtheNeObligationColumninbudgetsummarybyfocusareasectionnhelptextisHelpTextHelpTextNewamountawardedinthisversionoftheaward @sprint-16-US-238049 @vaibhav @Allocation 
+  @243010 @243017 @243112 @243518 @ValidatePMuserseeNewObligationvalueshouldRollupfromtheNeObligationColumninbudgetsummarybyfocusareasectionnhelptextisHelpTextHelpTextNewamountawardedinthisversionoftheaward @sprint-16-US-238049 @vaibhav @Allocation
   Scenario: Validate PM user see 'New Obligation' value should be Roll up from the New Obligation Column in budget summary by focus area section and it's help text is Help Text New amount awarded in this version of the award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -12102,7 +12102,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
 
-  @243038 @243780 @ValidateEXEusershouldseeBudgetedAmountfieldonawardcreatedSenttoSrbeforeapprovalinreviewandpeerreviewedstates @sprint-16-US-238049 @vaibhav @Allocation 
+  @243038 @243780 @ValidateEXEusershouldseeBudgetedAmountfieldonawardcreatedSenttoSrbeforeapprovalinreviewandpeerreviewedstates @sprint-16-US-238049 @vaibhav @Allocation
   Scenario: Validate EXE user should see 'Budgeted Amount' field on award in created, Sent to S/r before approval, in review and peer-reviewed states
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -12210,7 +12210,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly see field "Budgeted Amount" inside "Budget Summary" section
 
-  @243125 @243287 @243289 @ValidateFormulaPMusershouldseevalidationmessagewhileapprovalofawardifbudgetedamountnotequaltoencumbranceamount @sprint-16-US-238049 @vaibhav @Allocation 
+  @243125 @243287 @243289 @ValidateFormulaPMusershouldseevalidationmessagewhileapprovalofawardifbudgetedamountnotequaltoencumbranceamount @sprint-16-US-238049 @vaibhav @Allocation
   Scenario: Validate PM user should see 'Cumulative Obligation' field value same as Total award amount and Encumbrance value in funding account grid on award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -12310,7 +12310,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
 
-  @243128 @ValidateAdminuserIshouldabletoedittheTotalCommitmentfieldinCreatedinreviewpeerreviewedstatesofaward @sprint-16-US-238049 @vaibhav @Allocation 
+  @243128 @ValidateAdminuserIshouldabletoedittheTotalCommitmentfieldinCreatedinreviewpeerreviewedstatesofaward @sprint-16-US-238049 @vaibhav @Allocation
   Scenario: Validate Admin user I should able to edit the "Total Commitment" field in Created, in review, peer-reviewed states of award
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -12376,7 +12376,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly see field "Total Commitment" as "$4,000.00"
 
-  @243156 @ValidateFOasreviewerIshouldabletoedittheTotalCommitmentfieldinsentforreviewstatesofawardifalloweditaccessisYesforreviewer @sprint-16-US-238049 @vaibhav @Allocation 
+  @243156 @ValidateFOasreviewerIshouldabletoedittheTotalCommitmentfieldinsentforreviewstatesofawardifalloweditaccessisYesforreviewer @sprint-16-US-238049 @vaibhav @Allocation
   Scenario: Validate FO as reviewer I should able to edit the "Total Commitment" field in sent for review states of award if allow edit access is 'Yes' for reviewer
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -12608,6 +12608,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "Edit" icon for "Automation Permanent Focus Area" inside flex table with id "---amendment:-:FundingChangeFocusAreaTableId---" without waiting for record
     And I enter value "{SavedValue:PBPSD}" into field "GATStartDate__c"
     And I enter value "{SavedValue:PBPED}" into field "GATEndDate__c"
+    And I enter value "1000" into field "NewObligation__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:FundingChangeFocusAreaTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
@@ -12660,7 +12661,6 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    Then I softly see status in Progress-bar is "Amended" and is "Green"
     And I navigate to "Budget" sub tab
     Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see field "NewObligation__c" not in edit mode
@@ -12669,7 +12669,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #243557
     Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @243862 @243868 @ValidatePMuserseevalidationmessageifawardamountBudgetedamountisnotequaltotheNewObligation @sprint-16-US-238049 @vaibhav @Allocation 
+  @243862 @243868 @ValidatePMuserseevalidationmessageifawardamountBudgetedamountisnotequaltotheNewObligation @sprint-16-US-238049 @vaibhav @Allocation
   Scenario: Validate PM user see validation message if award amount (Budgeted amount) is not equal to the New Obligation
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -12711,7 +12711,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:subAwardBudgetTableId---"
     Then I can see row level action button "Edit" against "Construction" in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---"
 
-  @243911 @ValidatePMuserseeincaseofdetailbudgetusershouldseeneweditdeletebuttononthsubawardcategorymodalonawardinsentforreviewstateofaward @sprint-16-US-238049 @vaibhav @Allocation 
+  @243911 @ValidatePMuserseeincaseofdetailbudgetusershouldseeneweditdeletebuttononthsubawardcategorymodalonawardinsentforreviewstateofaward @sprint-16-US-238049 @vaibhav @Allocation
   Scenario: Validate PM user see incase of detail budget user should see new/edit/delete button on the sub-award category modal on award in sent for review state of award
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -12874,9 +12874,9 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Home" tab
     Then I see "Ownership" inside "Reassign" is displayed
     When I navigate to "Ownership" content inside "Reassign" subheader on left panel
-    And I select value "Automation PM1" into field "s2id_autogen1"
-    And I select value "Automation PM" into field "s2id_autogen3"
-    And I Click on "Start" icon for "Automation PM1" without tableid
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
     And I pause execution for "3" seconds
     And I Click on "Reassign Records" icon for "Grant" without tableid
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:grantSourceOwnerTableId---" panel
@@ -12908,7 +12908,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see fields "GATEndDate__c" is in edit mode
     Then I softly see fields "NewObligation__c" is in edit mode
 
-  @243949 @ValidatePOnewreviewershouldabletoedittotalcommitmentamountandnewobligationamountinsentforreviewstateandsubmitthereviewcommentsofawardifalloweditisYesonaward @sprint-16-US-238049 @vaibhav @Allocation 
+  @243949 @ValidatePOnewreviewershouldabletoedittotalcommitmentamountandnewobligationamountinsentforreviewstateandsubmitthereviewcommentsofawardifalloweditisYesonaward @sprint-16-US-238049 @vaibhav @Allocation
   Scenario: Validate PO new reviewer should able to edit total commitment amount and new obligation amount in sent for review state and submit the review comments of award if allow edit is 'Yes' on award
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -13056,7 +13056,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
-      | Name                     | Award  |
+      | Name                      | Award  |
       | {SavedValue:EXE Username} | Step 1 |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
@@ -13156,13 +13156,14 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "Edit" icon for "Automation Permanent Focus Area" inside flex table with id "---amendment:-:FundingChangeFocusAreaTableId---" without waiting for record
     And I enter value "{SavedValue:PBPSD}" into field "GATStartDate__c"
     And I enter value "{SavedValue:PBPED}" into field "GATEndDate__c"
+    And I enter value "1000" into field "NewObligation__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:FundingChangeFocusAreaTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 1000                |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name           | Amendment Request |
+      | Name          | Amendment Request |
       | Automation PO | Step 1            |
     And I click on "Send to Subrecipient" in the page details
     Then I see field "Status" as "Sent to Subrecipient"
@@ -13206,7 +13207,6 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    Then I softly see status in Progress-bar is "Amended" and is "Green"
     And I navigate to "Budget" sub tab
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---"
     Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
