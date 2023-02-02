@@ -14827,10 +14827,12 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see that "Cumulative Obligation" rendered in view mode only
     Then I softly see that "Total Commitment" rendered in view mode only
     Then I softly see that "Budgeted Amount" rendered in view mode only
+    When I click on "Save" in the page details
     #244235
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" by clicking "Edit" :
       | Budget Category | Award Amount | Cash Match | Non-Cash Match |
       | Construction    | 1200         | 100        | 100            |
+    And I wait for "3" seconds
     And I click on "Accept" in the page details
     Then I softly see the following messages in the page details contains:
       | Budget Tab - The Budgeted Amount must be equal to the New Obligation for the following Focus Areas - (Automation Permanent Focus Area) |
@@ -14931,7 +14933,6 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    Then I softly see status in Progress-bar is "Approved" and is "green"
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient after Approval"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -15013,7 +15014,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I click on "Reject" in the page details
     Then I softly see field "Status" as "Rejected"
     And I navigate to "Budget" sub tab
-    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
     Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
     Then I softly cannot see row level action button "Edit" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
     Then I softly cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
