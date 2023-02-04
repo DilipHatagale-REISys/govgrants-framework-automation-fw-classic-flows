@@ -10595,7 +10595,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #244297
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
 
-  @244290 @244292 @244196 @ValidateSPISPAusershouldnotseebudgetedamountcolumninsubmitforclosestateofaward @sprint-16-US-238299 @vaibhav @Allocation 
+  @244290 @244292 @244196 @ValidateSPISPAusershouldnotseebudgetedamountcolumninsubmitforclosestateofaward @sprint-16-US-238299 @vaibhav @Allocation
   Scenario Outline: Validate SPI/SPA user should not see 'budgeted amount' column in submit for close state of award
     Given I am on "SUBPORTAL" portal
     When I login as "<User>" user
@@ -14272,7 +14272,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #244165
     Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
 
-  @244135 @244152 @244154 @244162 @244198 @ValidateSPIusershouldnotseeBudgetedAmountfieldonawardinrejectedstate @sprint-16-US-239751 @vaibhav @Allocation 
+  @244135 @244152 @244154 @244162 @244198 @ValidateSPIusershouldnotseeBudgetedAmountfieldonawardinrejectedstate @sprint-16-US-239751 @vaibhav @Allocation
   Scenario: Validate SPI user should not see 'Budgeted Amount' field on award in rejected state
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -14433,7 +14433,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Budget Period Number" as "BP02"
     Then I softly do not see "Carry-Forward" inside page block detail
 
-  @244175 @244186 @244202 @ValidateSPIuserseshouldseeNewobligationcolumninallstatesofawardsenttosrbeforeandafterapprovalinpeerreviewreviewcompletedsubmittedtograntorSubmittedforapprovalapprovedRejectedAmendedPendingActivation @sprint-16-US-239751 @vaibhav @Allocation 
+  @244175 @244186 @244202 @ValidateSPIuserseshouldseeNewobligationcolumninallstatesofawardsenttosrbeforeandafterapprovalinpeerreviewreviewcompletedsubmittedtograntorSubmittedforapprovalapprovedRejectedAmendedPendingActivation @sprint-16-US-239751 @vaibhav @Allocation
   Scenario: Validate SPI user se should see "New obligation" column in all states of award sent to s/r before and after approval, in peer review, review completed , submitted to grantor, Submitted for approval, approved, Rejected, Amended, Pending Activation
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -14757,7 +14757,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #244186
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
 
-  @244235 @244246 @244875 @244107 @ValidateSPISPAuserseevalidationmessageifawardamountisnotequaltotheNewObligation @sprint-16-US-239751 @vaibhav @Allocation 
+  @244235 @244246 @244875 @244107 @ValidateSPISPAuserseevalidationmessageifawardamountisnotequaltotheNewObligation @sprint-16-US-239751 @vaibhav @Allocation
   Scenario: Validation SPI/SPA user see validation message if award amount is not equal to the New Obligation
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -14844,7 +14844,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "Reject" in the page details
     Then I see status in Progress-bar is "Rejected" and is "Red"
 
-  @244268 @ValidateSPIusershouldabletoacceptawardafterapprovalwithsettingofsubrecipientmatchisYesongrantandinternalusercanactivateit @sprint-16-US-239751 @vaibhav @Allocation 
+  @244268 @ValidateSPIusershouldabletoacceptawardafterapprovalwithsettingofsubrecipientmatchisYesongrantandinternalusercanactivateit @sprint-16-US-239751 @vaibhav @Allocation
   Scenario: Validate SPI user should able to accept award after approval with setting of subrecipient match % is 'Yes' on grant and internal user can activate it
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -14945,7 +14945,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly see field "Match this Budget Period" inside page block
 
-  @244265 @ValidateSPIuserseeincaseofdetailbudgetusershouldnotabletoeditdeletesubawardsectiononawardinRejectedstate @sprint-16-US-239751 @vaibhav @Allocation 
+  @244265 @ValidateSPIuserseeincaseofdetailbudgetusershouldnotabletoeditdeletesubawardsectiononawardinRejectedstate @sprint-16-US-239751 @vaibhav @Allocation
   Scenario: Validate SPI user see incase of detail budget user should not able to edit/delete  sub-award section on award in Rejected state
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -15030,6 +15030,9 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I enter "Grant_Edition_By_App_Focus_Yes" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Overview" sub tab
+    And I enter value "abc" into field "fieldGrantDescription__c"
+    And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Then I softly see field "Estimated Funding" inside "Budget Summary" section
     Then I softly see field "Cumulative Obligation" inside "Budget Summary" section
@@ -15052,7 +15055,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I click modal button "Save and Continue"
     And I save the field labeled "EGMS ID" as "GrantEGMSID"
     And I navigate to "Budget" sub tab
-    And I click on "Edit" in the page details
+#    And I click on "Edit" in the page details
     Then I softly see fields "fieldEstimatedFunding__c" is in edit mode
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
@@ -15177,7 +15180,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly see field "Total Commitment" as "$1,000.00"
     When I hovering mouse on help text icon inside page block detail "Total Commitment"
-    Then I softly see "Total amount committed across Budget periods" shown as help text
+    Then I softly see "Total amount committed through this and prior awards in this Budget period" shown as help text
 
   @247839 @247844 @248977 @ValidatePMuserseenewcolumnofBudgetperiodNumberinsteadofBudgetperiodtitleBP01populatesonlyafterawardactivationinsteadofthefiscalyear @sprint-17-US-237045 @vaibhav @Allocation @TBE
   Scenario: Validate PM user see new column of "Budget period Number" instead of "Budget period title" (BP01 populates only after award activation instead of the fiscal year)
@@ -15199,6 +15202,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I navigate to "Budget" sub tab
+    And I wait for "3" seconds
     Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     #248977
     And I save the field labeled "Cumulative Obligation" as "CumuObligation"
@@ -15229,7 +15233,6 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I click modal button "Save and Continue"
     And I save the field labeled "EGMS ID" as "GrantEGMSID"
     And I navigate to "Budget" sub tab
-    And I click on "Edit" in the page details
     Then I softly see fields "fieldEstimatedFunding__c" is in edit mode
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
@@ -15280,7 +15283,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
-      | Name                     | Award  |
+      | Name                      | Award  |
       | {SavedValue:EXE Username} | Step 1 |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
