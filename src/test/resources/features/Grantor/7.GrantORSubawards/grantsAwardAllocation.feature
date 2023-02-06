@@ -15019,7 +15019,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly cannot see row level action button "Edit" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
     Then I softly cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
 
-  @247585 @247901 @ValidatePMuserseefollowingfieldsongrantEstimatedFundingCumulativeObligationTotalCommitmentEstimatedprogramincomefortheProjectPeriod @sprint-17-US-237045 @vaibhav @Allocation @TBE
+  @247585 @247901 @ValidatePMuserseefollowingfieldsongrantEstimatedFundingCumulativeObligationTotalCommitmentEstimatedprogramincomefortheProjectPeriod @sprint-17-US-237045 @vaibhav @Allocation 
   Scenario: Validate PM user see following fields on grant  Estimated Funding, Cumulative Obligation, Total Commitment, Estimated program income for the Project Period
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -15043,7 +15043,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Overview" sub tab
     Then I softly do not see "Focus Area" page block displayed
 
-  @247593 @ValidateEXEuserseeEstimatedFundingfieldiseditableindraftstateandusercanactivateawardwithoutenteringEstimatedFundingkeepingasfieldasblankongrant @sprint-17-US-237045 @vaibhav @Allocation @TBE
+  @247593 @ValidateEXEuserseeEstimatedFundingfieldiseditableindraftstateandusercanactivateawardwithoutenteringEstimatedFundingkeepingasfieldasblankongrant @sprint-17-US-237045 @vaibhav @Allocation 
   Scenario: Validate EXE user see 'Estimated Funding' field is editable in draft state and user can activate award without entering 'Estimated Funding' keeping as field as blank on grant
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -15155,7 +15155,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "Activate" in the page details
     Then I softly see that "Subaward" is in "Activated" status
 
-  @247603 @ValidatePMuserseecumulativeobligationwhichiscomingfromthecumulativeObligationfieldinthelatestactiveaward @sprint-17-US-237045 @vaibhav @Allocation @TBE
+  @247603 @ValidatePMuserseecumulativeobligationwhichiscomingfromthecumulativeObligationfieldinthelatestactiveaward @sprint-17-US-237045 @vaibhav @Allocation 
   Scenario: Validate PM user see cumulative Obligation which is coming from the cumulative Obligation field in the latest active award
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     And I login to "As a Grantor" app as "PM" user
@@ -15168,7 +15168,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
 
 
-  @247764 @ValidatePOuserseereadonlyTotalcommitmentamounwhichiscomingfromtheTotalcommitmentfieldinthelatestactiveawardwithhelptextTotalamountcommittedthroughthisandpriorawardsinthisBudgetperiod @sprint-17-US-237045 @vaibhav @Allocation @TBE
+  @247764 @ValidatePOuserseereadonlyTotalcommitmentamounwhichiscomingfromtheTotalcommitmentfieldinthelatestactiveawardwithhelptextTotalamountcommittedthroughthisandpriorawardsinthisBudgetperiod @sprint-17-US-237045 @vaibhav @Allocation 
   Scenario: Validate PO user see read only Total commitment amount which is coming from the Total commitment field in the latest active award with help text: Total amount committed through this and prior awards in this Budget period)
     Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Formula_By_Applicant_Focus_Area"
     And I login to "As a Grantor" app as "PO" user
@@ -15182,7 +15182,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I hovering mouse on help text icon inside page block detail "Total Commitment"
     Then I softly see "Total amount committed through this and prior awards in this Budget period" shown as help text
 
-  @247839 @247844 @248977 @ValidatePMuserseenewcolumnofBudgetperiodNumberinsteadofBudgetperiodtitleBP01populatesonlyafterawardactivationinsteadofthefiscalyear @sprint-17-US-237045 @vaibhav @Allocation @TBE
+  @247839 @247844 @248977 @ValidatePMuserseenewcolumnofBudgetperiodNumberinsteadofBudgetperiodtitleBP01populatesonlyafterawardactivationinsteadofthefiscalyear @sprint-17-US-237045 @vaibhav @Allocation 
   Scenario: Validate PM user see new column of "Budget period Number" instead of "Budget period title" (BP01 populates only after award activation instead of the fiscal year)
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     And I login to "As a Grantor" app as "PM" user
@@ -15221,7 +15221,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
 
-  @250440 @247898 @ValidatePMusershouldnotseeFocusAreawithZeroObligationunderbudgetsummarybyfocusaresectiononGrantunderbudgettabisinActiveStatewhenselectAllocationTypeisbyapplicantfocuswhilecreatingDirectGrant @sprint-17-US-237045 @vaibhav @Allocation @TBE
+  @250440 @247898 @ValidatePMusershouldnotseeFocusAreawithZeroObligationunderbudgetsummarybyfocusaresectiononGrantunderbudgettabisinActiveStatewhenselectAllocationTypeisbyapplicantfocuswhilecreatingDirectGrant @sprint-17-US-237045 @vaibhav @Allocation 
   Scenario: Validate PM user should not see Focus Area with Zero Obligation under 'budget summary by focus area' section on Grant under budget tab is in Active State when select Allocation Type is by applicant focus area while creating Direct Grant
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -15347,7 +15347,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Status" as "Active"
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
 
-  @248520 @248521 @248522 @248529 @248530 @248764 @248765 @ValidateINDuserseesectionnameBudgetSummaryinsteadoffundinginformationongrant @sprint-17-US-238309 @vaibhav @Allocation @TBE
+  @248520 @248521 @248522 @248529 @248530 @248764 @248765 @ValidateINDuserseesectionnameBudgetSummaryinsteadoffundinginformationongrant @sprint-17-US-238309 @vaibhav @Allocation 
   Scenario Outline: Validate IND user see section name "Budget Summary" instead of 'funding information' on grant
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -15441,7 +15441,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | IND  |
       | SPI3 |
 
-  @248541 @248546 @248559 @248614 @248616 @248621 @248624 @ValidateSPISPAuserseecumulativeObligationwhichiscomingfromthecumulativeObligationfieldinthelatestactiveaward @sprint-17-US-238309 @vaibhav @Allocation @TBE
+  @248541 @248546 @248559 @248614 @248616 @248621 @248624 @ValidateSPISPAuserseecumulativeObligationwhichiscomingfromthecumulativeObligationfieldinthelatestactiveaward @sprint-17-US-238309 @vaibhav @Allocation 
   Scenario Outline: Validate SPI/SPA user see cumulative Obligation which is coming from the cumulative Obligation field in the latest active award
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     When I am on "SUBPORTAL" portal
@@ -15473,7 +15473,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #248616
     And I expand nested table containing column value "BP01"
     Then I softly see "Award Amount" in flex table header "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
-    Then I softly see "Awarded Budget" in flex table header "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
+    Then I softly do not see "Awarded Budget" in flex table header "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
     When I navigate to "Actuals" sub tab
     #248621,248624
     Then I softly see "Budget period Number" in flex table header "---subAwardStandAlone:-:subrecipientGrantActualSummaryBudgetTableId---"
@@ -15482,14 +15482,14 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I expand nested table containing column value "BP01"
     #248614
     Then I softly see "Award Amount" in flex table header "---subAwardStandAlone:-:subrecipientGrantActualSummaryBudgetTableId---"
-    Then I softly see "Awarded Budget" in flex table header "---subAwardStandAlone:-:subrecipientGrantActualSummaryBudgetTableId---"
+    Then I softly do not see "Awarded Budget" in flex table header "---subAwardStandAlone:-:subrecipientGrantActualSummaryBudgetTableId---"
 
     Examples:
       | User |
       | SPI3 |
       | IND  |
 
-  @248574 @248757 @ValidateSPISPAusershouldnotabletoseeRemainingBudgetfieldongrant @sprint-17-US-238309 @vaibhav @Allocation @TBE
+  @248574 @248757 @ValidateSPISPAusershouldnotabletoseeRemainingBudgetfieldongrant @sprint-17-US-238309 @vaibhav @Allocation 
   Scenario: Validate SPI/SPA user should not able to see "Remaining Budget" field on grant
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -15554,6 +15554,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click toggle button to select "Grants - All"
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    Then I softly see field "Status" as "Draft"
     And I navigate to "Budget" sub tab
     Then I softly do not see field "Remaining Budget" inside "Budget Summary" section
     #248757
