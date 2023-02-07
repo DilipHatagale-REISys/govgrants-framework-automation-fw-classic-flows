@@ -15760,7 +15760,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see that "Cumulative Obligation" rendered in view mode only
     Then I softly see that "Total Commitment" rendered in view mode only
 
-  @247417 @247514 @248479 @ValidateCompAdminusershouldnotseebudgetsummarybyfocusareasectiononGrantunderbudgettabisinDraftStatewhenselectAllocationTypeisNAFocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation @TBE
+  @247417 @247514 @248479 @ValidateCompAdminusershouldnotseebudgetsummarybyfocusareasectiononGrantunderbudgettabisinDraftStatewhenselectAllocationTypeisNAFocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation 
   Scenario Outline: Validate Comp Admin user should not see 'budget summary by focus area' section on Grant under budget tab is in Draft State when select Allocation Type is NA & Focus Area is 'YES' while creating Direct Grant
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -15911,7 +15911,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Status" as "Active"
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
 
-  @248477 @ValidateDirectAnnPMusershouldnotseebudgetsummarybyfocusareasectiononGrantunderbudgettabwhenselectAllocationTypeisNAFocusAreaisNOwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation @TBE
+  @248477 @ValidateDirectAnnPMusershouldnotseebudgetsummarybyfocusareasectiononGrantunderbudgettabwhenselectAllocationTypeisNAFocusAreaisNOwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation 
   Scenario: Validate Direct Ann PM user should not see 'budget summary by focus area' section on Grant under budget tab when select Allocation Type is NA & Focus Area is 'NO' while creating Direct Grant
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
