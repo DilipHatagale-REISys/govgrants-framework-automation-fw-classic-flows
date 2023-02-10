@@ -15683,7 +15683,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | PM   | {SavedValue:PM Username} | default |
 #    |ADMIN| {SavedValue:ADMIN Username} | Automation ADMIN user |
 
-  @247401 @248370 @248465 @248503 @ValidateCompPMusershouldseefollowingfieldsunderBudgetSummarysectionBudgettabisinDraftstateonGrantlayout @sprint-17-US-246018 @vaibhav @Allocation 
+  @247401 @248370 @248465 @248503 @ValidateCompPMusershouldseefollowingfieldsunderBudgetSummarysectionBudgettabisinDraftstateonGrantlayout @sprint-17-US-246018 @vaibhav @Allocation
   Scenario Outline: Validate Comp PM user should see following fields under Budget Summary section of Budget tab is in Draft state on Grant layout
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -15721,7 +15721,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | Grant_Edition1         |
       | Grant_Edition_Directed |
 
-  @247412 @ValidateCompEXEusershouldseebudgetsummarybyfocusareasectiononGrantunderbudgettabisinActiveStatewhenselectAllocationTypeisNA&FocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation 
+  @247412 @248569 @ValidateCompEXEusershouldseebudgetsummarybyfocusareasectiononGrantunderbudgettabisinActiveStatewhenselectAllocationTypeisNA&FocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation @TBE
   Scenario: Validate Comp EXE user should see 'budget summary by focus area' section on Grant under budget tab is in Active State when select Allocation Type is NA & Focus Area is 'YES' while creating Direct Grant
     Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     And I login to "As a Grantor" app as "EXE" user
@@ -15733,8 +15733,17 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see status in Progress-bar is "Active" and is "Green"
     And I navigate to "Budget" sub tab
     Then I softly can see page block "Budget Summary By Focus Area"
+    #248569
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    Then I softly can see page block "Budget Summary By Focus Area"
 
-  @247413 @248371 @ValidateCompPMusershouldnotseebudgetsummarybyfocusareasectiononGrantunderbudgettabwhenselectAllocationTypeisNAFocusAreaisNOwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation 
+  @247413 @248371 @248573 @ValidateCompPMusershouldnotseebudgetsummarybyfocusareasectiononGrantunderbudgettabwhenselectAllocationTypeisNAFocusAreaisNOwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation @TBE
   Scenario: Validate Comp PM user should not see 'budget summary by focus area' section on Grant under budget tab when select Allocation Type is NA & Focus Area is 'NO' while creating Direct Grant
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I login to "As a Grantor" app as "PM" user
@@ -15759,8 +15768,17 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see that "Estimated Funding" rendered in view mode only
     Then I softly see that "Cumulative Obligation" rendered in view mode only
     Then I softly see that "Total Commitment" rendered in view mode only
+    #248573
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    Then I softly cannot see page block "Budget Summary By Focus Area"
 
-  @247417 @247514 @248479 @248490 @ValidateCompAdminusershouldnotseebudgetsummarybyfocusareasectiononGrantunderbudgettabisinDraftStatewhenselectAllocationTypeisNAFocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation @TBE
+  @247417 @247514 @248479 @248490 @ValidateCompAdminusershouldnotseebudgetsummarybyfocusareasectiononGrantunderbudgettabisinDraftStatewhenselectAllocationTypeisNAFocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation
   Scenario Outline: Validate Comp Admin user should not see 'budget summary by focus area' section on Grant under budget tab is in Draft State when select Allocation Type is NA & Focus Area is 'YES' while creating Direct Grant
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -15787,7 +15805,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | Grant_Edition1         |
       | Grant_Edition_Directed |
 
-  @247421 @ValidateCompAnnPOusershouldnotseeFocusAreawithZeroObligationunderbudgetsummarybyfocusareasectiononGrantunderbudgettabisinActiveStatewhenselectAllocationTypeisNA&FocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation 
+  @247421 @250416 @ValidateCompAnnPOusershouldnotseeFocusAreawithZeroObligationunderbudgetsummarybyfocusareasectiononGrantunderbudgettabisinActiveStatewhenselectAllocationTypeisNA&FocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation @TBE
   Scenario: Validate Comp Ann PO user should not see Focus Area with Zero Obligation under 'budget summary by focus area' section on Grant under budget tab is in Active State when select Allocation Type is NA & Focus Area is 'YES' while creating Direct Grant
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -15909,6 +15927,17 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     Then I softly see field "Status" as "Active"
+    Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
+    #250416
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    Then I softly see field "Status" as "Active"
+    When I navigate to "Budget" sub tab
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
 
   @248477 @ValidateDirectAnnPMusershouldnotseebudgetsummarybyfocusareasectiononGrantunderbudgettabwhenselectAllocationTypeisNAFocusAreaisNOwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation
@@ -16051,7 +16080,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | Grant_Edition1         |
       | Grant_Edition_Directed |
 
-  @248481 @ValidateDirectAnnPOusershouldnotseeFocAreawithZeroObligationunderbudgetsummarybyfocusareasectiononGrantunderbudgettabisinActiveStatewhenselectAllocationTypeisNA&FocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation @TBE
+  @248481 @250449 @ValidateDirectAnnPOusershouldnotseeFocAreawithZeroObligationunderbudgetsummarybyfocusareasectiononGrantunderbudgettabisinActiveStatewhenselectAllocationTypeisNA&FocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation @TBE
   Scenario: Validate Direct Ann PO user should not see Focus Area with Zero Obligation under 'budget summary by focus area' section on Grant under budget tab is in Active State when select Allocation Type is NA & Focus Area is 'YES' while creating Direct Grant
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -16175,8 +16204,19 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Status" as "Active"
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
+    #250449
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    Then I softly see field "Status" as "Active"
+    When I navigate to "Budget" sub tab
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
+    Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
 
-  @248499 @ValidateDirectAnnPOusershouldseeAwardedAmountfieldrenamedasCumulativeObligationfieldwithvaluepopulatedunderActualsummarysectionofActualtabonGrantlayoutwhenGrantisinActivestate @sprint-17-US-246018 @vaibhav @Allocation @TBE
+  @248499 @ValidateDirectAnnPOusershouldseeAwardedAmountfieldrenamedasCumulativeObligationfieldwithvaluepopulatedunderActualsummarysectionofActualtabonGrantlayoutwhenGrantisinActivestate @sprint-17-US-246018 @vaibhav @Allocation
   Scenario: Validate Direct Ann PO user should see Awarded Amount field renamed as Cumulative Obligation field with value populated under Actual summary section of Actual tab on Grant layout when Grant is in Active state
     Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Directed"
     And I login to "As a Grantor" app as "PO" user
@@ -16202,7 +16242,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     Then I softly see value "{SavedValue:CumuObligation}" is "Equals to" the value "{SavedValue:CumuObligation1}"
 
-  @248506 @ValidateDirectAnnAuditorusershouldhasviewaccessoftheCumulativeObligationfieldTotalCommitmentfield&EstimatedFundingfieldunderbudgetsummarysectiononGrantlayoutisinActivestate @sprint-17-US-246018 @vaibhav @Allocation @TBE
+  @248506 @ValidateDirectAnnAuditorusershouldhasviewaccessoftheCumulativeObligationfieldTotalCommitmentfield&EstimatedFundingfieldunderbudgetsummarysectiononGrantlayoutisinActivestate @sprint-17-US-246018 @vaibhav @Allocation
   Scenario: Validate Direct Ann Auditor user should has view access of the Cumulative Obligation field & Total Commitment field & Estimated Funding field under budget summary section on Grant layout is in Active state
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Directed"
     And I login to "As a Grantor" app as "PM" user
@@ -16227,7 +16267,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see that "Cumulative Obligation" rendered in view mode only
     Then I softly see that "Total Commitment" rendered in view mode only
 
-  @249513 @ValidateCompAnnPMusershouldseeCumulativeObligationTotalCommitmentfieldsareblankunderBudgetSummarysectionofBudgettabisinTerminatestateonGrantlayout @sprint-17-US-246018 @vaibhav @Allocation @TBE
+  @249513 @249550 @ValidateCompAnnPMusershouldseeCumulativeObligationTotalCommitmentfieldsareblankunderBudgetSummarysectionofBudgettabisinTerminatestateonGrantlayout @sprint-17-US-246018 @vaibhav @Allocation @TBE
   Scenario: Validate Comp Ann PM user should see Cumulative Obligation & Total Commitment fields are blank under Budget Summary section of Budget tab is in Terminate state on Grant layout
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -16325,9 +16365,20 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Status" as "Terminated"
     When I navigate to "Budget" sub tab
     Then I softly see field "Cumulative Obligation" as "$0.00"
-    Then I softly see field "Total Commitment" as " "
+    Then I softly see field "Total Commitment" as ""
+    #249550
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    Then I softly see field "Status" as "Terminated"
+    When I navigate to "Budget" sub tab
+    Then I softly see field "Cumulative Obligation" as "$0.00"
+    Then I softly see field "Total Commitment" as ""
 
-  @249543 @ValidateDirectPOusershouldseeCumulativeObligationTotalCommitmentfieldsareblankunderBudgetSummarysectionofBudgettabisinTerminatestateonGrantlayout @sprint-17-US-246018 @vaibhav @Allocation @TBE
+  @249543 @249555 @ValidateDirectPOusershouldseeCumulativeObligationTotalCommitmentfieldsareblankunderBudgetSummarysectionofBudgettabisinTerminatestateonGrantlayout @sprint-17-US-246018 @vaibhav @Allocation @TBE
   Scenario: Validate Direct PO user should see Cumulative Obligation & Total Commitment fields are blank under Budget Summary section of Budget tab is in Terminate state on Grant layout
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -16425,7 +16476,18 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Status" as "Terminated"
     When I navigate to "Budget" sub tab
     Then I softly see field "Cumulative Obligation" as "$0.00"
-    Then I softly see field "Total Commitment" as " "
+    Then I softly see field "Total Commitment" as ""
+    #249555
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    Then I softly see field "Status" as "Terminated"
+    When I navigate to "Budget" sub tab
+    Then I softly see field "Cumulative Obligation" as "$0.00"
+    Then I softly see field "Total Commitment" as ""
 
   @249968 @ValidateCompAnnPOusershouldseeBudgetPeriodTittlecolumnrenamedasBudgetPeriodNumberunderGrantBudgetsectionofBudgettabonGrantlayout @sprint-17-US-246018 @vaibhav @Allocation
   Scenario: Validate Comp Ann PO user should see Budget Period Tittle column renamed as Budget Period Number under Grant Budget section of Budget tab on Grant layout
@@ -16441,3 +16503,305 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I navigate to "Budget" sub tab
     Then I softly see "Budget period Number" in flex table header "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
     Then I softly do not see "Budget period title" in flex table header "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
+
+  @248526 @248775 @ValidateCompAnnINDusershouldseefollowingfieldsunderBudgetSummarysectionofBudgettabisinDraftstateonGrantlayout @sprint-17-US-246037 @vaibhav @Allocation @TBE
+  Scenario Outline: Validate Comp Ann IND user should see following fields under Budget Summary section of Budget tab is in Draft state on Grant layout
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "<AllocationType>" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Budget" sub tab
+    Then I softly see fields "fieldEstimatedFunding__c" is in edit mode
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I navigate to "Budget" sub tab
+    Then I see status in Progress-bar is "Created" and is "green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
+    When I check "Automation Permanent Focus Area2" boxes in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
+#    And I close modal by clicking the top right x button
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                            | Start Date | End Date |
+      | Automation Permanent Focus Area2 | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Award Amount | Cash Match | Non-Cash Match |
+      | Construction    | 1000         | 100        | 100            |
+    And I refresh the page
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 1 |
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent to Subrecipient"
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    Then I softly see field "Status" as "Draft"
+    And I navigate to "Budget" sub tab
+    Then I cannot see top right button "Edit" in page detail
+    Then I softly see "Budget Summary" page block displayed
+    Then I softly see that "Cumulative Obligation" rendered in view mode only
+    Then I softly see field "Cumulative Obligation" as " "
+    Then I softly see that "Total Commitment" rendered in view mode only
+    Then I softly see field "Total Commitment" as " "
+    Then I softly see that "Estimated Program Income For Project Period" rendered in view mode only
+
+    Examples:
+      | AllocationType         |
+      | Grant_Edition1         |
+      | Grant_Edition_Directed |
+
+  @248577 @ValidateCompAnnINDusershouldnotseebudgetsummabyfocusareasectiononGrantunderbudgettabisinDraftStatewhenselectAllocationTypeisNA&FocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246037 @vaibhav @Allocation @TBE
+  Scenario: Validate Comp Ann IND user should not see 'budget summary by focus area' section on Grant under budget tab is in Draft State when select Allocation Type is NA & Focus Area is 'YES' while creating Direct Grant
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields3" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Budget" sub tab
+    Then I softly see fields "fieldEstimatedFunding__c" is in edit mode
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I navigate to "Budget" sub tab
+    Then I see status in Progress-bar is "Created" and is "green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Award Amount | Cash Match | Non-Cash Match |
+      | Construction    | 1000         | 100        | 100            |
+    And I refresh the page
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                        | Award  |
+      | {SavedValue:ADMIN Username} | Step 1 |
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent to Subrecipient"
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    Then I softly see field "Status" as "Draft"
+    And I navigate to "Budget" sub tab
+    Then I softly cannot see page block "Budget Summary By Focus Area"
+
+  @248776 @ValidateDirectINDusershouldnotseeEstimatedFundingfieldunderBudgetSummarysectionofBudgettabisinanystateonGrantlayout @sprint-17-US-246037 @vaibhav @Allocation @TBE
+  Scenario: Validate Direct IND user should not see Estimated Funding field under Budget Summary section of Budget tab is in any state on Grant layout
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition_Directed" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Budget" sub tab
+    Then I softly see fields "fieldEstimatedFunding__c" is in edit mode
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I navigate to "Budget" sub tab
+    Then I see status in Progress-bar is "Created" and is "green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Award Amount | Cash Match | Non-Cash Match |
+      | Construction    | 1000         | 100        | 100            |
+    And I refresh the page
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 1 |
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent to Subrecipient"
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    Then I softly see field "Status" as "Draft"
+    And I navigate to "Budget" sub tab
+    Then I softly do not see field "Estimated Funding" inside "Budget Summary" section
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Directed"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Active" and is "Green"
+    And I navigate to "Budget" sub tab
+    Then I softly do not see field "Estimated Funding" inside "Budget Summary" section
+
+  @248795 @248799 @ValidateDirectINDusershouldseeupdatevaluesinCumulativeObligationTotalCommitmentfieldsunderBudgetSummarysectionofBudgettabisinActivestateonGrantlayout @sprint-17-US-246037 @vaibhav @Allocation @TBE
+  Scenario: Validate Direct IND user should see update values in Cumulative Obligation & Total Commitment fields under Budget Summary section of Budget tab is in Active state on Grant layout
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Directed"
+    When I am on "SUBPORTAL" portal
+    And I login as "IND" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    Then I softly see field "Status" as "Activated"
+    And I navigate to "Budget" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumuObligation"
+    And I save the field labeled "Total Commitment" as "TotalCommitment"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    Then I softly see field "Status" as "Active"
+    And I navigate to "Budget" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumuObligation1"
+    Then I softly see value "{SavedValue:CumuObligation}" is "Equals to" the value "{SavedValue:CumuObligation1}"
+    And I save the field labeled "Total Commitment" as "TotalCommitment1"
+    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment1}"
+    #248799
+    When I navigate to "Actuals" sub tab
+    Then I softly see "Cumulative Obligation" inside page block detail
+    Then I softly do not see "Awarded Amount" inside page block detail
+    And I save the field labeled "Cumulative Obligation" as "CumuObligation2"
+    Then I softly see value "{SavedValue:CumuObligation1}" is "Equals to" the value "{SavedValue:CumuObligation2}"
+
+  @248582 @248585 @ValidateCompAnnINDusershouldseeupdatevaluesinCumulativeObligationTotalCommitmentfieldsunderBudgetSummarysectionofBudgettabisinActivestateonGrantlayout @sprint-17-US-246037 @vaibhav @Allocation @TBE
+  Scenario: Validate Comp Ann IND user should see update values in Cumulative Obligation & Total Commitment fields under Budget Summary section of Budget tab is in Active state on Grant layout
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
+    When I am on "SUBPORTAL" portal
+    And I login as "IND" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    Then I softly see field "Status" as "Activated"
+    And I navigate to "Budget" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumuObligation"
+    And I save the field labeled "Total Commitment" as "TotalCommitment"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    Then I softly see field "Status" as "Active"
+    And I navigate to "Budget" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumuObligation1"
+    Then I softly see value "{SavedValue:CumuObligation}" is "Equals to" the value "{SavedValue:CumuObligation1}"
+    And I save the field labeled "Total Commitment" as "TotalCommitment1"
+    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment1}"
+    #248585
+    When I navigate to "Actuals" sub tab
+    Then I softly see "Cumulative Obligation" inside page block detail
+    Then I softly do not see "Awarded Amount" inside page block detail
+    And I save the field labeled "Cumulative Obligation" as "CumuObligation2"
+    Then I softly see value "{SavedValue:CumuObligation1}" is "Equals to" the value "{SavedValue:CumuObligation2}"
