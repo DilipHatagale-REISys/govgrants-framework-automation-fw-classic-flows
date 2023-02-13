@@ -15927,6 +15927,8 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     Then I softly see field "Status" as "Active"
+    And I navigate to "Budget" sub tab
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
     #250416
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
@@ -15937,8 +15939,8 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     Then I softly see field "Status" as "Active"
     When I navigate to "Budget" sub tab
-    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
-    Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:grantSubrecipientFocusAreaTableId---"
+    Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:grantSubrecipientFocusAreaTableId---"
 
   @248477 @ValidateDirectAnnPMusershouldnotseebudgetsummarybyfocusareasectiononGrantunderbudgettabwhenselectAllocationTypeisNAFocusAreaisNOwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation
   Scenario: Validate Direct Ann PM user should not see 'budget summary by focus area' section on Grant under budget tab when select Allocation Type is NA & Focus Area is 'NO' while creating Direct Grant
@@ -16073,7 +16075,8 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click toggle button to select "Grants - All"
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
-    Then I softly see field "Estimated Funding" as " "
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Estimated Funding" as ""
 
     Examples:
       | AllocationType         |
@@ -16202,6 +16205,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     Then I softly see field "Status" as "Active"
+    When I navigate to "Budget" sub tab
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
     #250449
@@ -16213,8 +16217,8 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     Then I softly see field "Status" as "Active"
     When I navigate to "Budget" sub tab
-    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
-    Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:grantSubrecipientFocusAreaTableId---"
+    Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:grantSubrecipientFocusAreaTableId---"
 
   @248499 @ValidateDirectAnnPOusershouldseeAwardedAmountfieldrenamedasCumulativeObligationfieldwithvaluepopulatedunderActualsummarysectionofActualtabonGrantlayoutwhenGrantisinActivestate @sprint-17-US-246018 @vaibhav @Allocation
   Scenario: Validate Direct Ann PO user should see Awarded Amount field renamed as Cumulative Obligation field with value populated under Actual summary section of Actual tab on Grant layout when Grant is in Active state
@@ -16253,7 +16257,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
     Then I softly see status in Progress-bar is "Active" and is "Green"
     And I navigate to "Budget" sub tab
-    Then I softly cannot see page block "Budget Summary by Focus Area"
+    Then I softly can see page block "Budget Summary By Focus Area"
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -16581,9 +16585,9 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I cannot see top right button "Edit" in page detail
     Then I softly see "Budget Summary" page block displayed
     Then I softly see that "Cumulative Obligation" rendered in view mode only
-    Then I softly see field "Cumulative Obligation" as " "
+    Then I softly see field "Cumulative Obligation" as "$0.00"
     Then I softly see that "Total Commitment" rendered in view mode only
-    Then I softly see field "Total Commitment" as " "
+    Then I softly see field "Total Commitment" as ""
     Then I softly see that "Estimated Program Income For Project Period" rendered in view mode only
 
     Examples:
@@ -16732,13 +16736,13 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Active" and is "Green"
     And I navigate to "Budget" sub tab
     Then I softly do not see field "Estimated Funding" inside "Budget Summary" section
 
-  @248795 @248799 @ValidateDirectINDusershouldseeupdatevaluesinCumulativeObligationTotalCommitmentfieldsunderBudgetSummarysectionofBudgettabisinActivestateonGrantlayout @sprint-17-US-246037 @vaibhav @Allocation @TBE
+ @vai @248795 @248799 @248492 @ValidateDirectINDusershouldseeupdatevaluesinCumulativeObligationTotalCommitmentfieldsunderBudgetSummarysectionofBudgettabisinActivestateonGrantlayout @sprint-17-US-246037 @vaibhav @Allocation @TBE
   Scenario: Validate Direct IND user should see update values in Cumulative Obligation & Total Commitment fields under Budget Summary section of Budget tab is in Active state on Grant layout
     Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Directed"
     When I am on "SUBPORTAL" portal
@@ -16771,8 +16775,21 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly do not see "Awarded Amount" inside page block detail
     And I save the field labeled "Cumulative Obligation" as "CumuObligation2"
     Then I softly see value "{SavedValue:CumuObligation1}" is "Equals to" the value "{SavedValue:CumuObligation2}"
+    #248492
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
+    Then I softly see field "Status" as "Active"
+    And I navigate to "Budget" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumuObligation2"
+    Then I softly see value "{SavedValue:CumuObligation}" is "Equals to" the value "{SavedValue:CumuObligation2}"
+    And I save the field labeled "Total Commitment" as "TotalCommitment2"
+    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
 
-  @248582 @248585 @ValidateCompAnnINDusershouldseeupdatevaluesinCumulativeObligationTotalCommitmentfieldsunderBudgetSummarysectionofBudgettabisinActivestateonGrantlayout @sprint-17-US-246037 @vaibhav @Allocation @TBE
+  @248582 @248585 @247534 @ValidateCompAnnINDusershouldseeupdatevaluesinCumulativeObligationTotalCommitmentfieldsunderBudgetSummarysectionofBudgettabisinActivestateonGrantlayout @sprint-17-US-246037 @vaibhav @Allocation @TBE
   Scenario: Validate Comp Ann IND user should see update values in Cumulative Obligation & Total Commitment fields under Budget Summary section of Budget tab is in Active state on Grant layout
     Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I am on "SUBPORTAL" portal
@@ -16805,3 +16822,29 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly do not see "Awarded Amount" inside page block detail
     And I save the field labeled "Cumulative Obligation" as "CumuObligation2"
     Then I softly see value "{SavedValue:CumuObligation1}" is "Equals to" the value "{SavedValue:CumuObligation2}"
+    #247534
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
+    Then I softly see field "Status" as "Active"
+    And I navigate to "Budget" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumuObligation2"
+    Then I softly see value "{SavedValue:CumuObligation}" is "Equals to" the value "{SavedValue:CumuObligation2}"
+    And I save the field labeled "Total Commitment" as "TotalCommitment2"
+    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
+
+  @248476 @ValidateDirectAnnEXEusershouldseebudgetsummarybyfocusareasectiononGrantunderbudgettabisinActiveStatewhenselectAllocationTypeisNAFocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246018 @vaibhav @Allocation
+  Scenario: Validate Direct Ann>>Verify EXE user should see 'budget summary by focus area' section on Grant under budget tab is in Active State when select Allocation Type is NA & Focus Area is 'YES' while creating Direct Grant
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Directed"
+    And I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
+    Then I softly see status in Progress-bar is "Active" and is "Green"
+    And I navigate to "Budget" sub tab
+    Then I softly can see page block "Budget Summary By Focus Area"

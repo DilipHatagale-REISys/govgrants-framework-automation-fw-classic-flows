@@ -17781,7 +17781,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                        | Application Name                                         |
       | {SavedValue:Automation Runtime Competitive Announcement} | {SavedValue:Automation Runtime Competitive Announcement} |
 
-  @225577 @225573 @225591 @PMUser>>VerifyuserseethevalidationwhenbudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatfocusarea&usertriedtopromoteittoFDM @sprint-11-US-203558 @komal @Allocation
+  @225577 @225573 @225591 @PMUserVerifyuserseethevalidationwhenbudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatfocusarea&usertriedtopromoteittoFDM @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: PM User>> Verify user see the validation when budgeted amount in any focus area is not equal to the Allocation amount of that focus area & user tried to promote it to FDM
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -17988,7 +17988,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @225595 @PMUser>>VerifywhennegotiationisinitiatedfromtheFDM,itmustbemandatoryfortheusertoselectthe"Budget:BudgetDetails"picklistvalueinfieldwhenthebudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatFA @sprint-11-US-203558 @komal @Allocation
+  @225595 @PMUserVerifywhennegotiationisinitiatedfromtheFDMitmustbemandatoryfortheusertoselecttheBudgetBudgetDetailspicklistvalueinfieldwhenthebudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatFA @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: PM User>>Verify when negotiation is initiated from the FDM, it must be mandatory for the user to select the "Budget: Budget Details " picklist value in field when the budgeted amount in any focus area is not equal to the Allocation amount of that FA
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -18152,7 +18152,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @225607 @EXEUser>>Verifywhennegotiationisinitiatedfromthereviewsteps,itmustbemandatoryfortheusertoselectthe"Budget:BudgetDetails"picklistvaluewhenthebudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatFA @sprint-11-US-203558 @komal @Allocation
+  @225607 @EXEUserVerifywhennegotiationisinitiatedfromthereviewstepsitmustbemandatoryfortheusertoselecttheBudgetBudgetDetailspicklistvaluewhenthebudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatFA @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: EXE User>>Verify when negotiation is initiated from the review steps, it must be mandatory for the user to select the "Budget: Budget Details " picklist value when the budgeted amount in any focus area is not equal to the Allocation amount of that FA
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -18189,7 +18189,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @225602 @EXEUser>>VerifyuserseethevalidationwhenthebudgetedAmountisnotequaltotheAllocationamountwhenusertriedtopromotetheapplicationtothenextstepforcustomizedreviewstep. @sprint-11-US-203558 @komal @Allocation
+  @225602 @EXEUserVerifyuserseethevalidationwhenthebudgetedAmountisnotequaltotheAllocationamountwhenusertriedtopromotetheapplicationtothenextstepforcustomizedreviewstep @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: EXE User>>Verify user see the validation when the budgeted Amount is not equal to the Allocation amount when user tried to promote the application to the next step for customized review step.
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -18288,7 +18288,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @225604 @PMUser>>Verifywhennegotiationisinitiatedfromthereviewsteps,itmustbemandatoryfortheusertoselectthe"Budget:BudgetDetails"picklistvaluewhenthebudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatFA @sprint-11-US-203558 @komal @Allocation
+  @225604 @PMUserVerifywhennegotiationisinitiatedfromthereviewstepsitmustbemandatoryfortheusertoselecttheBudgetBudgetDetailspicklistvaluewhenthebudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatFA @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: PM User>> Verify when negotiation is initiated from the review steps, it must be mandatory for the user to select the "Budget: Budget Details " picklist value when the budgeted amount in any focus area is not equal to the Allocation amount of that FA (for Customized review Step)
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab

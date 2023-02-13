@@ -2420,7 +2420,7 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     Then I softly can see row level action button "Initiate Negotiation" against "{SavedValue:Automation Runtime FDM Announcement}" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
 
-  @219357 @CompetativeAnn_VerifyasEXEuserIcanseeRecommendedforawardcolumnisvisiblewhenAppstatusisnegotiationinitiated @sprint-10-US-203669 @komal @Allocation
+  @219357 @CompetativeAnnVerifyasEXEuserIcanseeRecommendedforawardcolumnisvisiblewhenAppstatusisnegotiationinitiated @sprint-10-US-203669 @komal @Allocation
   Scenario: Competative Ann_ Verify as EXE user I can see Recommended for award column is visible when App status is negotiation initiated
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Applications" tab
