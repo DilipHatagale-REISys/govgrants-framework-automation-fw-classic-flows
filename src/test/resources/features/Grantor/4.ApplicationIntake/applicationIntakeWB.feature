@@ -2259,7 +2259,7 @@ Feature: Application Intake scenarios without background
       The EGMS Team
       """
 
-  @235107 @234957 @DirectedAnn_VerifyasSPIusercannotseeRecommendedbudgetfieldisvisibleunderbudgetsummarywhenAppstatusisCreated,SubmittoGrantor&ReviewinitiatedbeforeFDMstate @sprint-13-US-224176 @komal @Allocation
+  @235107 @234957 @DirectedAnnVerifyasSPIusercannotseeRecommendedbudgetfieldisvisibleunderbudgetsummarywhenAppstatusisCreatedSubmittoGrantor&ReviewinitiatedbeforeFDMstate @sprint-13-US-224176 @komal @Allocation
   Scenario Outline: Directed Ann_ Verify as SPI user can not see Recommended budget field is visible under budget summary when App status is Created, Submit to Grantor & Review initiated before FDM state
   | Competitive Ann_ Verify as SPI user can not see Recommended budget field is visible under budget summary when App status is Created, Submit to Grantor & Review initiated before FDM state |
     Given I published "<Announcement Type>" type announcement having name "Automation Runtime Announcement" and properties "default"
@@ -2331,7 +2331,7 @@ Feature: Application Intake scenarios without background
       | {SavedValue:Automation Runtime Announcement} | Directed          |
       | {SavedValue:Automation Runtime Announcement} | Competitive       |
 
-  @219498 @219488 @219634 @219640 @DirectedAnn_VerifyasSPIuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarysectionwhenAppstatusisnegotiationcompleted @sprint-13-US-224176 @komal @Allocation
+  @219498 @219488 @219634 @219640 @DirectedAnnVerifyasSPIuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarysectionwhenAppstatusisnegotiationcompleted @sprint-13-US-224176 @komal @Allocation
   Scenario Outline: Directed Ann_ Verify as SPI user I can see Recommended budget field is visible under budget summary section when App status is negotiation completed
   | Directed Ann_ Verify as SPI user I can see Recommended budget field is visible under budget summary when App status is negotiation initiated state |
   | Competitive Ann_ Verify as SPI user I can see Recommended budget field is visible under budget summary when App status is negotiation initiated state|
@@ -2395,7 +2395,7 @@ Feature: Application Intake scenarios without background
       | {SavedValue:Automation Runtime Announcement} | Directed          |
       | {SavedValue:Automation Runtime Announcement} | Competitive       |
 
-  @219489 @219636 @DirectedAnn_VerifyasSPAuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarywhenAppstatusisnegotiationSenttoS\R @sprint-13-US-224176 @komal @Allocation
+  @219489 @219636 @DirectedAnnVerifyasSPAuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarywhenAppstatusisnegotiationSenttoSR @sprint-13-US-224176 @komal @Allocation
   Scenario Outline: Directed Ann_ Verify as SPA user I can see Recommended budget field is visible under budget summary when App status is negotiation Sent to S\R
     | Competitive Ann_ Verify as SPA user I can see Recommended budget field is visible under budget summary when App status is negotiation Sent to S\R |
     Given I published "<Announcement Name>" type announcement having name "Automation Runtime Announcement" and properties "default"
@@ -2434,7 +2434,7 @@ Feature: Application Intake scenarios without background
       | {SavedValue:Automation Runtime Announcement} | Directed          |
       | {SavedValue:Automation Runtime Announcement} | Competitive       |
 
-  @219494 @219638 @DirectedAnn_VerifyasINDuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarysectionwhenAppstatusisnegotiationinitiated @sprint-13-US-224176 @komal @Allocation
+  @219494 @219638 @DirectedAnnVerifyasINDuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarysectionwhenAppstatusisnegotiationinitiated @sprint-13-US-224176 @komal @Allocation
   Scenario Outline: Directed Ann_ Verify as IND user I can see Recommended budget field is visible under budget summary section when App status is negotiation initiated
     Given I published "<Announcement Type>" type announcement having name "Automation Runtime Announcement" and properties "default"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
@@ -2471,7 +2471,7 @@ Feature: Application Intake scenarios without background
       | {SavedValue:Automation Runtime Announcement} | Directed          |
       | {SavedValue:Automation Runtime Announcement} | Competitive       |
 
-  @219507 @219641 @DirectedAnn_VerifyasINDuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarysummarywhenAppstatusisconverttoaward @sprint-13-US-224176 @komal @Allocation
+  @219507 @219641 @DirectedAnnVerifyasINDuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarysummarywhenAppstatusisconverttoaward @sprint-13-US-224176 @komal @Allocation
   Scenario Outline: Directed Ann_ Verify as IND user I can see Recommended budget field is visible under budget summary summary when App status is convert to award
     Given I published "<Announcement Type>" type announcement having name "Automation Runtime Announcement" and properties "default"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
@@ -2501,7 +2501,7 @@ Feature: Application Intake scenarios without background
       | {SavedValue:Automation Runtime Announcement} | Directed          |
       | {SavedValue:Automation Runtime Announcement} | Competitive       |
 
-  @219584 @219679 @DirectedAnn_Verify'Recommendedbudget'fieldshouldnotdisplayforSPIonapplicationifit'srelatedFDMwillrejectduringapproval @sprint-13-US-204132 @komal @Allocation
+  @219584 @219679 @DirectedAnnVerifyRecommendedbudgetfieldshouldnotdisplayforSPIonapplicationifit'srelatedFDMwillrejectduringapproval @sprint-13-US-204132 @komal @Allocation
   Scenario Outline: Directed Ann_ Verify 'Recommended budget' field should not display for SPI on application if it's related FDM will reject during approval
   | Competitive Ann_ Verify 'Recommended budget' field should not display for SPI on application if it's related FDM will reject during approval |
     Given I published "<Announcement Type>" type announcement having name "Automation Runtime Announcement" and properties "default-Automation EXE user"
