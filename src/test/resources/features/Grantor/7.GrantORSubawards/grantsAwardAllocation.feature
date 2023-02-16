@@ -19738,7 +19738,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see the following messages in the page details contains:
       | The proposed amount cannot be less than zero. |
 
-  @vai @245956 @245967 @245969 @ValidateDirectedThatAdminuserwillseeNewObligationinBudgetSummarybyfocusAreasectiowhenawardisinpendingActivationAmendedstate @sprint-16-US-238128 @vaibhav @Allocation @TBE
+  @245956 @245967 @245969 @ValidateDirectedThatAdminuserwillseeNewObligationinBudgetSummarybyfocusAreasectiowhenawardisinpendingActivationAmendedstate @sprint-16-US-238128 @vaibhav @Allocation @TBE
   Scenario: Validate Directed That <Admin> user will see New Obligation in Budget Summary by focus Area section when award is in pending Activation/Amended state
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -19899,8 +19899,8 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Activate" in the page details
@@ -19917,8 +19917,8 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Amended" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     Then I see status in Progress-bar is "Amended" and is "Green"
