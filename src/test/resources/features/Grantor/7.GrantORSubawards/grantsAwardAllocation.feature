@@ -18855,7 +18855,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #243981
     Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @243960 @243969 @ValidateCompetativeThatPMusercanaddvalueinnewobligationfieldwhenrecordincreatedinpeerreviewreviewedstate @sprint-16-US-238128 @vaibhav @Allocation @TBE
+  @243960 @243969 @ValidateCompetativeThatPMusercanaddvalueinnewobligationfieldwhenrecordincreatedinpeerreviewreviewedstate @sprint-16-US-238128 @vaibhav @Allocation 
   Scenario: Validate Competative That <PM> user can add value in new obligation field when record iis in created,in peer review,reviewed state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -19011,7 +19011,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see value "$2,000.00" for title "Encumbrance" against the value "Total" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I softly see field "Cumulative Obligation" as "$2,000.00"
 
-  @243965 @243966 @243967 @ValidateCompetativethatvalidationwillthroughwhentheTotalEncumbranceisnotequaltoTotalawardamountintheawardgrid @sprint-16-US-238128 @vaibhav @Allocation @TBE
+  @243965 @243966 @243967 @ValidateCompetativethatvalidationwillthroughwhentheTotalEncumbranceisnotequaltoTotalawardamountintheawardgrid @sprint-16-US-238128 @vaibhav @Allocation 
   Scenario Outline: Validate Competative that validation will through when the Total Encumbrance is not equal to Total award amount in the award grid
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
@@ -19064,9 +19064,9 @@ Feature: Validate all scenarios of grants and award for Allocation
       | ADMIN | GrantFields3 |
       | PM    | GrantFields1 |
 
-  @243971 @ValidateCompetativeThatPOuserwillseeCFfieldonlyforawardsrelatedtoBP2andbeyondinBudgetSummarySection @TBE
-  Scenario: Validate Competative That <PO> user will see CF field only for awards related to BP2 and beyond in Budget Summary Section
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation ADMIN" of type "Competitive"
+  @243971 @ValidateCompetativeThatADMINuserwillseeCFfieldonlyforawardsrelatedtoBP2andbeyondinBudgetSummarySection @TBE
+  Scenario: Validate Competative That <ADMIN> user will see CF field only for awards related to BP2 and beyond in Budget Summary Section
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation ADMIN user" of type "Competitive"
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -19579,7 +19579,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Budgeted Amount must be equal to the New Obligation in the budget summary section. |
 
-  @243998 @ValidateCompetetiveonceownershipistransferredalltheeditaccessofallocationfieldsshouldalsomovetonewowner @sprint-16-US-238128 @vaibhav @Allocation @TBE
+  @243998 @ValidateCompetetiveonceownershipistransferredalltheeditaccessofallocationfieldsshouldalsomovetonewowner @sprint-16-US-238128 @vaibhav @Allocation 
   Scenario: Validate Competetive once ownership is transferred, all the edit access of allocation fields should also move to new owner
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -19698,7 +19698,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I can see top right button "Add Files" in flex table with id "---subAwardStandAlone:-:addFilesTableId---"
     Then I can see top right button "Add" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @245585 @ValidateDirectedthatPMUsercannotaddnegativevalueinSubawardbudgetDetailssectionwhenrecordisincreatedstate @sprint-16-US-238128 @vaibhav @Allocation @TBE
+  @245585 @ValidateDirectedthatPMUsercannotaddnegativevalueinSubawardbudgetDetailssectionwhenrecordisincreatedstate @sprint-16-US-238128 @vaibhav @Allocation 
   Scenario: Validate Directed that <PM > User can not add negative value in Subaward budget Details section when record is in created state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -19736,19 +19736,120 @@ Feature: Validate all scenarios of grants and award for Allocation
       | Title        | Narrative     | Award Amount | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | -900         | -100       | -100           |
     Then I softly see the following messages in the page details contains:
-      | The praposed amount cannot be less than zero. |
+      | The proposed amount cannot be less than zero. |
 
   @245956 @245967 @245969 @ValidateDirectedThatAdminuserwillseeNewObligationinBudgetSummarybyfocusAreasectiowhenawardisinpendingActivationAmendedstate @sprint-16-US-238128 @vaibhav @Allocation @TBE
-  Scenario: Validate Directed That <Admin> user will  see  New Obligation in Budget Summary by focus Area section when award is in pending Activation/Amended state
-    And I activated standalone subaward "Automation Runtime Award" with properties "IS_BUILDUP_FUNCTIONALITY_YES-Automation ADMIN" of type "Directed"
+  Scenario: Validate Directed That <Admin> user will see New Obligation in Budget Summary by focus Area section when award is in pending Activation/Amended state
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields3" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition_Directed" values from "Award_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldIsBuildUpFunctionality__c"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I navigate to "Budget" sub tab
+    Then I see status in Progress-bar is "Created" and is "green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    Then I can see top right button "New" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---" by clicking "New" :
+      | Title        | Narrative     | Award Amount | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 1000         | 100        | 100            |
+    When I close "Subaward Budget Category" modal by clicking the top right x button
+    And I refresh the page
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:ADMIN1 Username} | Step 1 |
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent to Subrecipient"
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    When I click on "Accept" in the page details
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I navigate to "Terms" sub tab
+    When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I click on "Submit for Approval" in the page details
+    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
+    When I re-login to "As a Grantor" app as "ADMIN1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Approved" and is "green"
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent to Subrecipient after Approval"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I click on "Accept after Approval" in the page details
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I click on "Activate" in the page details
+    Then I softly see that "Subaward" is in "Activated" status
     And I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -19831,10 +19932,118 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly cannot see row level action button "Edit" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
     Then I softly cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
 
-  @246020 @246022 @246025 @ValidateDirectedThatPOuserwillseeNewObligationinBudgetSummarybyfocusAreasectionwhenawardisinclosedstate @sprint-16-US-238128 @vaibhav @Allocation @TBE
+  @246020 @246022 @246025 @ValidateDirectedThatPOuserwillseeNewObligationinBudgetSummarybyfocusAreasectionwhenawardisinclosedstate @sprint-16-US-238128 @vaibhav @Allocation 
   Scenario: Validate Directed - Verify That <RObert PO> user will see New Obligation in Budget Summary by focus Area section when award is in closed state
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Directed"
-    Given I login to "As a Grantor" app as "PO" user
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition_Directed" values from "Award_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldIsBuildUpFunctionality__c"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I navigate to "Budget" sub tab
+    Then I see status in Progress-bar is "Created" and is "green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    Then I can see top right button "New" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---" by clicking "New" :
+      | Title        | Narrative     | Award Amount | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 1000         | 100        | 100            |
+    When I close "Subaward Budget Category" modal by clicking the top right x button
+    And I refresh the page
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 1 |
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent to Subrecipient"
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    When I click on "Accept" in the page details
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I navigate to "Terms" sub tab
+    When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I click on "Submit for Approval" in the page details
+    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Approved" and is "green"
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent to Subrecipient after Approval"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I click on "Accept after Approval" in the page details
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I click on "Activate" in the page details
+    Then I softly see that "Subaward" is in "Activated" status
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -19953,7 +20162,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
       | Reviewer Name  | Role            | Description            | Due Date | Allow Record Editing |
       | Automation EXE | Program Reviewer | Automation Description | 5        | Yes                   |
-    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
+    And I click on "Send for Review" icon for "Program Reviewer" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
     Then I softly see that "Sent for Review" has been added in flextable with Id "---subAwardFromFDM:-:peerReviewersTableId---"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
