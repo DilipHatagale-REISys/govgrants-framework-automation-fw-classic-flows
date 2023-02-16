@@ -18726,7 +18726,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly see field "Budgeted Amount" inside page block
 
-  @243958 @243981 @ValidateCompetativethatPMUserwillnotseeBudgetedAmountfieldinbudgetsummarySectionInsubmittedtoapprovalApprovedSenttoSrafterapprovalactivatedstate 
+  @243958 @243981 @ValidateCompetativethatPMUserwillnotseeBudgetedAmountfieldinbudgetsummarySectionInsubmittedtoapprovalApprovedSenttoSrafterapprovalactivatedstate
   Scenario: Validate Competative that <PM> User will not see Budgeted Amount field in budget summary Section In submitted to approval, Approved, Sent to S/r after approval, activated state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -18855,7 +18855,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #243981
     Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @243960 @243969 @ValidateCompetativeThatPMusercanaddvalueinnewobligationfieldwhenrecordincreatedinpeerreviewreviewedstate @sprint-16-US-238128 @vaibhav @Allocation 
+  @243960 @243969 @ValidateCompetativeThatPMusercanaddvalueinnewobligationfieldwhenrecordincreatedinpeerreviewreviewedstate @sprint-16-US-238128 @vaibhav @Allocation
   Scenario: Validate Competative That <PM> user can add value in new obligation field when record iis in created,in peer review,reviewed state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -18970,7 +18970,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #243969
     Then I softly see field "Total Commitment" as "$4,000.00"
 
-  @243964 @ValidateCompetativethatCumulativeObligationisthetotaloftheEncumbrancecolumnfromtheAwardFundingAccountinformation @sprint-16-US-238128 @vaibhav @Allocation 
+  @243964 @ValidateCompetativethatCumulativeObligationisthetotaloftheEncumbrancecolumnfromtheAwardFundingAccountinformation @sprint-16-US-238128 @vaibhav @Allocation
   Scenario: Validate Competative that Cumulative Obligation is the total of the 'Encumbrance' column from the Award Funding Account information
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -19011,7 +19011,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see value "$2,000.00" for title "Encumbrance" against the value "Total" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I softly see field "Cumulative Obligation" as "$2,000.00"
 
-  @243965 @243966 @243967 @ValidateCompetativethatvalidationwillthroughwhentheTotalEncumbranceisnotequaltoTotalawardamountintheawardgrid @sprint-16-US-238128 @vaibhav @Allocation 
+  @243965 @243966 @243967 @ValidateCompetativethatvalidationwillthroughwhentheTotalEncumbranceisnotequaltoTotalawardamountintheawardgrid @sprint-16-US-238128 @vaibhav @Allocation
   Scenario Outline: Validate Competative that validation will through when the Total Encumbrance is not equal to Total award amount in the award grid
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
@@ -19124,7 +19124,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Budget Period Number" as "BP02"
     Then I softly see "Carry-Forward" inside page block detail
 
-  @243972 @243973 @243974 @ValidateCompetetiveThatBudgetSummarybyfocusareawillbevisibletoEXEuserIfFocusAreaisyes @sprint-16-US-238128 @vaibhav @Allocation 
+  @243972 @243973 @243974 @ValidateCompetetiveThatBudgetSummarybyfocusareawillbevisibletoEXEuserIfFocusAreaisyes @sprint-16-US-238128 @vaibhav @Allocation
   Scenario: Validate Competetive That Budget Summary by focus area will be visible to <ExE> user If Focus Area is yes
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -19160,7 +19160,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "Remove" icon for "Automation Permanent Focus Area2" inside flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @243976 @243990 @ValidateCompetetiveThatPOuserwillseebudgetedamountcolumninBudgetSummarybyfocusAreasectionwhentheawardiscreatedSenttoSrbeforeapprovalinreviewandpeerreviewedstates @sprint-16-US-238128 @vaibhav @Allocation 
+  @243976 @243990 @ValidateCompetetiveThatPOuserwillseebudgetedamountcolumninBudgetSummarybyfocusAreasectionwhentheawardiscreatedSenttoSrbeforeapprovalinreviewandpeerreviewedstates @sprint-16-US-238128 @vaibhav @Allocation
   Scenario: Validate Competetive That <PO> user will see  budgeted amount column in Budget Summary by focus Area section when the award is created, Sent to S/r before approval, in review and peer reviewed states
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -19269,7 +19269,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:subAwardBudgetTableId---"
     Then I can see row level action button "Edit" against "Construction" in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---"
 
-  @243983 @243987 @ValidateCompetetiveThatPOuserwillseeNewObligationinBudgetSummarybyfocusAreasectionwhenawardisinrejectedstate @sprint-16-US-238128 @vaibhav @Allocation 
+  @243983 @243987 @ValidateCompetetiveThatPOuserwillseeNewObligationinBudgetSummarybyfocusAreasectionwhenawardisinrejectedstate @sprint-16-US-238128 @vaibhav @Allocation
   Scenario: Validate Competetive That <PO> user will see New Obligation in Budget Summary by focus Area section when award is in rejected state
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -19345,7 +19345,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #243987
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @243991 @ValidateCompetetiveThatIncaseofdetailbudgetActioncolumnwiththeAddlineitemoptionwillbevisibleinSubawardbudgetsection @sprint-16-US-238128 @vaibhav @Allocation 
+  @243991 @ValidateCompetetiveThatIncaseofdetailbudgetActioncolumnwiththeAddlineitemoptionwillbevisibleinSubawardbudgetsection @sprint-16-US-238128 @vaibhav @Allocation
   Scenario: Validate Competetive That In case of detail budget, Action column with the Add line item option will be visible in Subaward budget section
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -19386,7 +19386,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly can see row level action button "Edit" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
     Then I softly can see row level action button "Delete" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
 
-  @243992 @243993 @ValidateDirectedthatPMuserwillseeHighlightedneweditdeletebuttononthesubawardcategorymodaltoeditthebudgetincaseofdetailbudget @sprint-16-US-238128 @vaibhav @Allocation 
+  @243992 @243993 @ValidateDirectedthatPMuserwillseeHighlightedneweditdeletebuttononthesubawardcategorymodaltoeditthebudgetincaseofdetailbudget @sprint-16-US-238128 @vaibhav @Allocation
   Scenario: Validate Competitive that <PM> user will see Highlighted new/edit/delete button on the subaward category modal to edit the budget in case of detail budget
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -19509,7 +19509,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly can see row level action button "Edit" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
     Then I softly can see row level action button "Delete" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
 
-  @243996 @ValidateCompetetivePmseevalidationontheSubmittoGrantorButtonwhentheBudgetedAmountisnotequaltotheNewObligation @sprint-16-US-238128 @vaibhav @Allocation 
+  @243996 @ValidateCompetetivePmseevalidationontheSubmittoGrantorButtonwhentheBudgetedAmountisnotequaltotheNewObligation @sprint-16-US-238128 @vaibhav @Allocation
   Scenario: Validate Competetive <Pm> see validation on the Submit to Grantor Button when the Budgeted Amount is not equal to the New Obligation
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -19579,7 +19579,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Budgeted Amount must be equal to the New Obligation in the budget summary section. |
 
-  @243998 @ValidateCompetetiveonceownershipistransferredalltheeditaccessofallocationfieldsshouldalsomovetonewowner @sprint-16-US-238128 @vaibhav @Allocation 
+  @243998 @ValidateCompetetiveonceownershipistransferredalltheeditaccessofallocationfieldsshouldalsomovetonewowner @sprint-16-US-238128 @vaibhav @Allocation
   Scenario: Validate Competetive once ownership is transferred, all the edit access of allocation fields should also move to new owner
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -19698,7 +19698,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I can see top right button "Add Files" in flex table with id "---subAwardStandAlone:-:addFilesTableId---"
     Then I can see top right button "Add" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @245585 @ValidateDirectedthatPMUsercannotaddnegativevalueinSubawardbudgetDetailssectionwhenrecordisincreatedstate @sprint-16-US-238128 @vaibhav @Allocation 
+  @245585 @ValidateDirectedthatPMUsercannotaddnegativevalueinSubawardbudgetDetailssectionwhenrecordisincreatedstate @sprint-16-US-238128 @vaibhav @Allocation
   Scenario: Validate Directed that <PM > User can not add negative value in Subaward budget Details section when record is in created state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -19738,7 +19738,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see the following messages in the page details contains:
       | The proposed amount cannot be less than zero. |
 
-  @245956 @245967 @245969 @ValidateDirectedThatAdminuserwillseeNewObligationinBudgetSummarybyfocusAreasectiowhenawardisinpendingActivationAmendedstate @sprint-16-US-238128 @vaibhav @Allocation @TBE
+  @vai @245956 @245967 @245969 @ValidateDirectedThatAdminuserwillseeNewObligationinBudgetSummarybyfocusAreasectiowhenawardisinpendingActivationAmendedstate @sprint-16-US-238128 @vaibhav @Allocation @TBE
   Scenario: Validate Directed That <Admin> user will see New Obligation in Budget Summary by focus Area section when award is in pending Activation/Amended state
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -19795,7 +19795,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
-      | Name                      | Award  |
+      | Name                         | Award  |
       | {SavedValue:ADMIN1 Username} | Step 1 |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
@@ -19892,9 +19892,9 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
     #245969
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---"
-    Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
-    Then I softly cannot see row level action button "Edit" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
-    Then I softly cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
+    Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:budgetLineItems---"
+    Then I softly cannot see row level action button "Edit" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:budgetLineItems---"
+    Then I softly cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:budgetLineItems---"
     When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -19911,9 +19911,9 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
     #245969
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---"
-    Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
-    Then I softly cannot see row level action button "Edit" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
-    Then I softly cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
+    Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:budgetLineItems---"
+    Then I softly cannot see row level action button "Edit" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:budgetLineItems---"
+    Then I softly cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:budgetLineItems---"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -19928,11 +19928,11 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
     #245969
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---"
-    Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
-    Then I softly cannot see row level action button "Edit" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
-    Then I softly cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
+    Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:budgetLineItems---"
+    Then I softly cannot see row level action button "Edit" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:budgetLineItems---"
+    Then I softly cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:budgetLineItems---"
 
-  @246020 @246022 @246025 @ValidateDirectedThatPOuserwillseeNewObligationinBudgetSummarybyfocusAreasectionwhenawardisinclosedstate @sprint-16-US-238128 @vaibhav @Allocation 
+  @246020 @246022 @246025 @ValidateDirectedThatPOuserwillseeNewObligationinBudgetSummarybyfocusAreasectionwhenawardisinclosedstate @sprint-16-US-238128 @vaibhav @Allocation
   Scenario: Validate Directed - Verify That <RObert PO> user will see New Obligation in Budget Summary by focus Area section when award is in closed state
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -20160,8 +20160,8 @@ Feature: Validate all scenarios of grants and award for Allocation
       | {SavedValue:PO Username} | Step 1 |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name  | Role            | Description            | Due Date | Allow Record Editing |
-      | Automation EXE | Program Reviewer | Automation Description | 5        | Yes                   |
+      | Reviewer Name  | Role             | Description            | Due Date | Allow Record Editing |
+      | Automation EXE | Program Reviewer | Automation Description | 5        | Yes                  |
     And I click on "Send for Review" icon for "Program Reviewer" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
     Then I softly see that "Sent for Review" has been added in flextable with Id "---subAwardFromFDM:-:peerReviewersTableId---"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
