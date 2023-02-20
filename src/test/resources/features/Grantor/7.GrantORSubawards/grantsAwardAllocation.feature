@@ -21095,7 +21095,6 @@ Feature: Validate all scenarios of grants and award for Allocation
     #246431
     Then I softly see "Budget Summary by Focus Area" page block displayed
     #246433
-    And I click on "Edit" icon for "Automation Permanent Focus Area" inside flex table with id "---subAwardStandAlone:-:subrecipientFocusAreaTableId---" without waiting for record
     Then I softly see field "BudgetedAmount__c" not in edit mode
     #246449
     Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
