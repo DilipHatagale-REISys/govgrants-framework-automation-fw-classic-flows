@@ -112,7 +112,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I hovering mouse on help text icon inside page block detail "Total Commitment"
     Then I softly see "Total amount committed across Budget periods" shown as help text
 
-  @239560 @ValidatePMuserseeCarryforwardfiledshouldbeonlydisplayonawardwhenbudgetperiodchangetoBP02andbeyond @sprint-15-US-237846 @vaibhav @Allocation
+  @239560 @ValidatePMuserseeCarryforwardfiledshouldbeonlydisplayonawardwhenbudgetperiodchangetoBP02andbeyond @sprint-15-US-237846 @vaibhav @Allocation @TBE
   Scenario: Validate PM user see 'Carry forward' filed should be only display on award when budget period change to BP02 and beyond
     And I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -123,42 +123,43 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I navigate to "Budget" sub tab
-    And I save the field labeled "Project Period Start Date" as "Project Period Start Date"
-    And I save the field labeled "Project Period End Date" as "Project Period End Date"
     And I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I wait for "4" seconds
     When I click on "Save" in the page details
     And I refresh the page
-    And I save the field labeled "Proposed Budget Period End Date" as "updatedBudgetPeriod"
+    And I save the field labeled "Proposed Budget Period Start Date" as "updatedBudgetPeriodStartDate"
+    And I save the field labeled "Proposed Budget Period End Date" as "updatedBudgetPeriodEndDate"
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
-      | Title                           | Start Date                             | End Date                         |
-      | Automation Permanent Focus Area | {SavedValue:Project Period Start Date} | {SavedValue:updatedBudgetPeriod} |
+      | Title                           | Start Date                                | End Date                                | New Obligation |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodStartDate} | {SavedValue:updatedBudgetPeriodEndDate} | 1000           |
     And I refresh the page
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 1000                |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Award  |
-      | {SavedValue:PM Username} | Step 1 |
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
     And I click on "Send to Subrecipient" in the page details
+    Then I see field "Status" as "Sent to Subrecipient"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
-      | Budget Category | Revised Subaward Budget | Cash Match | Non Cash Match |
-      | Construction    | 1000                    | 100        | 0              |
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 1000                 | 100        | 0              |
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -20749,7 +20750,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | SPI3 |
       | IND  |
 
-  @245237 @245241 @ValidateDirectedThatSPAuserwillseeNewObligationinBudgetSummarybyfocusAreasectionwhenawardisinrejectedstate @sprint-16-US-242771 @vaibhav @Allocation 
+  @245237 @245241 @ValidateDirectedThatSPAuserwillseeNewObligationinBudgetSummarybyfocusAreasectionwhenawardisinrejectedstate @sprint-16-US-242771 @vaibhav @Allocation
   Scenario: Validate Directed - Verify That <SPA> user will seeNew Obligation in Budget Summary by focus Area section when award is in rejected state
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -20939,7 +20940,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I click on "Delete" icon for "Test" inside flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
     Then I softly do not see value "Test" for title "Narrative" inside table "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
 
-  @245249 @245250 @ValidateDirectedINdseevalidationonAcceptButtonwhentheBudgetedAmountisnotequaltotheNewObligation @sprint-16-US-242771 @vaibhav @Allocation 
+  @245249 @245250 @ValidateDirectedINdseevalidationonAcceptButtonwhentheBudgetedAmountisnotequaltotheNewObligation @sprint-16-US-242771 @vaibhav @Allocation
   Scenario: Validate Directed <INd> see validation on Accept Button when the Budgeted Amount is not equal to the New Obligation
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -21018,7 +21019,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "Accept" in the page details
     Then I softly see field "Status" as "Accepted"
 
-  @246424 @246425 @246431 @246433 @246449 @ValidatecompetativethatSPIUserwillseeBudgetperiodDetailssectionrenamedtoBudgetSummarysectioninsendtosrstate @sprint-16-US-242771 @vaibhav @Allocation @TBE
+  @246424 @246425 @246431 @246433 @246449 @ValidatecompetativethatSPIUserwillseeBudgetperiodDetailssectionrenamedtoBudgetSummarysectioninsendtosrstate @sprint-16-US-242771 @vaibhav @Allocation 
   Scenario: Validate competative that <SPI> User will see Budget period Details section renamed to Budget Summary section in send to s/r state
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -21100,7 +21101,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
     Then I can see row level action button "Edit" against "Construction" in flex table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
 
-  @246426 @ValidatecompetativethatSPIUserwillseeBudgetedAmountfieldinbudgetsummarySectionInSenttoSrbeforeapprovalsentforpeerreviewreviewedstateonly @sprint-16-US-242771 @vaibhav @Allocation 
+  @246426 @ValidatecompetativethatSPIUserwillseeBudgetedAmountfieldinbudgetsummarySectionInSenttoSrbeforeapprovalsentforpeerreviewreviewedstateonly @sprint-16-US-242771 @vaibhav @Allocation
   Scenario: Validate competative that <SPI> User will see Budgeted Amount field in budget summary Section In Sent to S/r before approval ,sent for peer review, reviewed state only
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -21229,7 +21230,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I navigate to "Budget" sub tab
     Then I softly see field "Budgeted Amount" inside "Budget Summary" section
 
-  @246432 @ValidatecompetativeThatBudgetSummarybyfocusareawillnotbevisibletoSPAuserIfFocusAreaisno @sprint-16-US-242771 @vaibhav @Allocation 
+  @246432 @ValidatecompetativeThatBudgetSummarybyfocusareawillnotbevisibletoSPAuserIfFocusAreaisno @sprint-16-US-242771 @vaibhav @Allocation
   Scenario: Validate competative That Budget Summary by focus area will not be visible to <SPA> user If Focus Area is no
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -21295,7 +21296,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly do not see "Budget Summary by Focus Area" page block displayed
 
-  @246434 @246441 @246443 @246445 @246447 @ValidatecompetativeThatSPAuserwillseebudgetedamountcolumninBudgetSummarybyfocusAreasectionwhentheawardisSenttoSrbeforeapprovalinreviewandpeerreviewedstates @sprint-16-US-242771 @vaibhav @Allocation 
+  @246434 @246441 @246443 @246445 @246447 @ValidatecompetativeThatSPAuserwillseebudgetedamountcolumninBudgetSummarybyfocusAreasectionwhentheawardisSenttoSrbeforeapprovalinreviewandpeerreviewedstates @sprint-16-US-242771 @vaibhav @Allocation
   Scenario: Validate competative That <SPA> user will see budgeted amount column in Budget Summary by focus Area section when the award is  Sent to S/r before approval, in review and peer reviewed states.
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -21584,7 +21585,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #246447
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
 
-  @246442 @246448 @ValidatecompetativeThatSPAuserwillseeNewObligationinBudgetSummarybyfocusAreasectionwhenawardisinrejectedstate @sprint-16-US-242771 @vaibhav @Allocation 
+  @246442 @246448 @ValidatecompetativeThatSPAuserwillseeNewObligationinBudgetSummarybyfocusAreasectionwhenawardisinrejectedstate @sprint-16-US-242771 @vaibhav @Allocation
   Scenario: Validate competative That <SPA> user will seeNew Obligation in Budget Summary by focus Area section when award is in rejected state
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -21685,7 +21686,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #246448
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
 
-  @246444 @246447 @ValidatecompetativeThatSPAuserwillseeNewobligationinBudgetSummarybyfocusAreasectionwhenawardisinPendingActivationandamendedstate @sprint-16-US-242771 @vaibhav @Allocation 
+  @246444 @246447 @ValidatecompetativeThatSPAuserwillseeNewobligationinBudgetSummarybyfocusAreasectionwhenawardisinPendingActivationandamendedstate @sprint-16-US-242771 @vaibhav @Allocation
   Scenario: Validate competative That <SPA> user will see New obligation in Budget Summary by focus Area section  when award is in Pending Activation and amended state
     Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I login to "As a Grantor" app as "EXE" user
@@ -21778,7 +21779,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #246447
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
 
- @vai @246450 @246451 @246452 @246455 @246456 @ValidatecompetativeThatIncaseofdetailbudgetActioncolumnwiththeAddlineitemoptionwillbevisibleINDuserinSubawardbudgetsection @sprint-16-US-242771 @vaibhav @Allocation @TBE
+  @246450 @246451 @246452 @246455 @246456 @ValidatecompetativeThatIncaseofdetailbudgetActioncolumnwiththeAddlineitemoptionwillbevisibleINDuserinSubawardbudgetsection @sprint-16-US-242771 @vaibhav @Allocation 
   Scenario: Validate competative That In case of detail budget, Action column with the Add line item option will be visible IND user in Subaward budget section
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -21813,7 +21814,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I can see top right button "New" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
     When I enter the following values into flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---" by clicking "New" :
       | Title        | Narrative     | Award Amount | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 800         | 100        | 100            |
+      | Extra Salary | The narrative | 800          | 100        | 100            |
     When I close "Subaward Budget Category" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Performance" sub tab
@@ -21872,3 +21873,410 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I close "Subaward Budget Category" modal by clicking the top right x button
     And I click on "Accept" in the page details
     Then I softly see field "Status" as "Accepted"
+
+  @239772 @239775 @ValidateEXEusershouldnotseebudgetedamountcolumninamendedandpendingactivationstateofaward @sprint-15-US-237846 @vaibhav @Allocation @TBE
+  Scenario: Validate EXE user should not see 'budgeted amount' column in amended and pending activation state of award
+    And I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA-Automation EXE user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I wait for "5" seconds
+    And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "scopeWorkId"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
+    And I click on "Start" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit for Approval" in the page details
+    And I wait for "3" seconds
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    And I pause execution for "3" seconds
+    And I click on "Amend Subaward" in the page details
+    And I pause execution for "10" seconds
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID1"
+    And I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    #239775
+    Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I click on "Activate" in the page details
+    Then I softly see field "Status" as "Activated"
+    And I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    #239775
+    Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Amended" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    Then I see status in Progress-bar is "Amended" and is "Green"
+    And I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    #239775
+    Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+
+  @240305 @ValidateCarryforwardfiledshouldbeonlydisplayonawardwhenbudgetperiodchangetoBP02andbeyondFAYes @sprint-16-US-220612 @vaibhav @Allocation @TBE
+  Scenario: Validate Carry forward' filed should be only display on award when budget period change to BP02 and beyond(FA=Yes)
+    And I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT-Automation ADMIN user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I refresh the page
+    And I save the field labeled "Proposed Budget Period Start Date" as "updatedBudgetPeriodStartDate"
+    And I save the field labeled "Proposed Budget Period End Date" as "updatedBudgetPeriodEndDate"
+    And I get the "EGMS ID"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | Start Date                                | End Date                                | New Obligation |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodStartDate} | {SavedValue:updatedBudgetPeriodEndDate} | 1000           |
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Title                       | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 1000                |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                        | Amendment Request |
+      | {SavedValue:ADMIN Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 1000                    | 100        | 0              |
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Submit for Approval" in the page details
+    And I wait for "5" seconds
+    And I "Approve" in the approval decision
+    And I wait for "4" seconds
+    And I click on "Amend Subaward" in the page details
+    And I pause execution for "10" seconds
+    When I click on "Activate" in the page details
+    And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Budget Period Number" as "BP02"
+    Then I softly see "Carry-Forward" inside page block detail
+
+  @240306 @ValidateCarryforwardfiledshouldbeonlydisplayonawardwhenbudgetperiodchangetoBP02andbeyondFANO @sprint-16-US-220612 @vaibhav @Allocation @TBE
+  Scenario: Validate Carry forward' filed should be only display on award when budget period change to BP02 and beyond(FA=No)
+    And I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO-Automation EXE user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I refresh the page
+    And I save the field labeled "Proposed Budget Period Start Date" as "updatedBudgetPeriodStartDate"
+    And I save the field labeled "Proposed Budget Period End Date" as "updatedBudgetPeriodEndDate"
+    And I get the "EGMS ID"
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Title                       | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 1000                |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 1000                    | 100        | 0              |
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Submit for Approval" in the page details
+    And I wait for "5" seconds
+    And I "Approve" in the approval decision
+    And I wait for "4" seconds
+    And I click on "Amend Subaward" in the page details
+    And I pause execution for "10" seconds
+    When I click on "Activate" in the page details
+    And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Budget Period Number" as "BP02"
+    Then I softly see "Carry-Forward" inside page block detail
+
+  @240517 @240525 @243120 @ValidateEXEusershouldnotseebudgetedamountcolumninamendedandpendingactivationstateofawardFAYes @sprint-16-US-220612 @vaibhav @Allocation @TBE
+  Scenario: Validate EXE user should not see 'budgeted amount' column in amended and pending activation state of award (FA=Yes)
+    And I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT-Automation EXE user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I wait for "5" seconds
+    And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "scopeWorkId"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
+    And I click on "Start" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit for Approval" in the page details
+    And I wait for "3" seconds
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    And I pause execution for "3" seconds
+    And I click on "Amend Subaward" in the page details
+    And I pause execution for "10" seconds
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID1"
+    And I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    #240525
+    Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    #243120
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    When I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I click on "Activate" in the page details
+    Then I softly see field "Status" as "Activated"
+    And I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    #240525
+    Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    #243120
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Activated" and is "Green"
+    When I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Amended" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    Then I see that "Subaward" is in "Amended" status
+    When I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Amended" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    Then I see status in Progress-bar is "Amended" and is "Green"
+    And I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    #240525
+    Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+
+  @240529 @ValidatePMusershouldseeNewobligation&CumulativeObligationreadonlycolumninAmendedPendingactivationstateofawardFANo @sprint-16-US-220612 @vaibhav @Allocation @TBE
+  Scenario: Validate PM user should see 'New obligation' & 'Cumulative Obligation' read only column in Amended, Pending activation state of award (FA=No)
+    And I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I wait for "5" seconds
+    And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "scopeWorkId"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
+    And I click on "Start" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit for Approval" in the page details
+    And I wait for "3" seconds
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    And I pause execution for "3" seconds
+    And I click on "Amend Subaward" in the page details
+    And I pause execution for "10" seconds
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID1"
+    And I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see field "Status" as "Activated"
+    And I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Amended" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    Then I see status in Progress-bar is "Amended" and is "Green"
+    And I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"

@@ -591,3 +591,97 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Examples:
       | Grant Name                            |
       | {SavedValue:Automation Runtime Award} |
+
+  @248750 @ValidatepmusercanseeNewObligationfieldasreadonlyfieldinsteadofRequestedChangeinBudgetfieldonfundingchangeamendmentincreatedstate @sprint-18-US-225787 @vaibhav @Allocation
+  Scenario: Validate pm user can see New Obligation field as read only field instead of Requested Change in Budget field on funding change amendment in created state
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 2000                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "FundingID"
+    Then I softly see field "New Obligation" inside page block
+    Then I softly cannot see field "Requested Change in Budget" inside page block
+    When I click on "Edit" in the page details
+    Then I softly see that "New Obligation" rendered in view mode only
+
+  @248752 @ValidateFOusecaseeNewobligationfieldvaluasTotalrolledupfromthenewobligationsclminBudgetsummarybyFocusareaSection @sprint-18-US-225787 @vaibhav @Allocation
+  Scenario: Validate FO user can see New obligation field value asTotal rolled up from the new obligations clm, in Budget summary by Focus area Section
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation FO user" of type "Formula_By_Applicant_Focus_Area"
+    When I login to "As a Grantor" app as "FO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 2000                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "FundingID"
+    Then I softly see field "New Obligation" inside page block
+    Then I softly cannot see field "Requested Change in Budget" inside page block
+    When I click on "Edit" in the page details
+    Then I softly see that "New Obligation" rendered in view mode only
+    And I click on "Save" in the page details
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | New Obligation |
+      | Automation Permanent Focus Area | 1000           |
+    And I refresh the page
+    When I save the value from row "1" for column name "New Obligation" as "newObligation" from flex table "---amendment:-:projectAreasTableId---"
+    And I save the field labeled "New Obligation" as "newObligation1"
+    Then I softly see field "New Obligation" as "$1,000.00"
+    Then I softly see value "{SavedValue:newObligation}" is "Equals to" the value "{SavedValue:newObligation1}"
+
+  @248754 @ValidatePOusercanseeRevisedObligationasReadonlyfieldwhichshowstheadditionofCurrentObligationandNewObligation @sprint-18-US-225787 @vaibhav @Allocation
+  Scenario: Validate PO user can see Revised Obligation as Read-only field which shows the addition of Current Obligation and New Obligation
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user" of type "Formula_By_Applicant_Focus_Area"
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 2000                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "FundingID"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | New Obligation |
+      | Automation Permanent Focus Area | 1000           |
+    And I refresh the page
+    Then I softly see field "Revised Obligation" inside page block
+    And I click on "Edit" in the page details
+    Then I softly see that "Revised Obligation" rendered in view mode only
+    And I click on "Save" in the page details
+    Then I softly see field "New Obligation" as "$1,000.00"
+    Then I softly see field "Current Obligation" as "$1,000.00"
+    Then I softly see field "Revised Obligation" as "$2,000.00"
