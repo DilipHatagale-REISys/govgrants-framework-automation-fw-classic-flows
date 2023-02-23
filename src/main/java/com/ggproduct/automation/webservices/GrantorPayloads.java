@@ -781,6 +781,22 @@ public class GrantorPayloads {
         return parent;
     }
 
+    public JsonObject PayloadCreateAwardFromFDM(String announcementName, String... Type) {
+        String user = "";
+        JsonObject json;
+
+        json = defaultPayloadCreateAwardFromFDM(announcementName);
+
+        if (Type.length > 0) {
+            if (Type[0].toLowerCase().contains("user") && (Type[0].contains("Automation"))) {
+                user = Type[0].split("-")[1].split("user")[0].trim();
+                updateAwardOwner(json, user);
+                Type[0] = Type[0].split("-")[0];
+            }
+        }
+                return json;
+        }
+
     /**
      * @param grantName
      * @param filter
