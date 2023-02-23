@@ -789,9 +789,8 @@ public class GrantorPayloads {
 
         if (Type.length > 0) {
             if (Type[0].toLowerCase().contains("user") && (Type[0].contains("Automation"))) {
-                user = Type[0].split("-")[1].split("user")[0].trim();
+                user = Type[0].split("user")[0].trim();
                 updateAwardOwner(json, user);
-                Type[0] = Type[0].split("-")[0];
             }
         }
                 return json;
