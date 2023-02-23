@@ -22357,7 +22357,6 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     And I save the field labeled "EGMS ID" as "AwardEGMSID1"
     And I navigate to "Budget" sub tab
-    Then I softly see field "Budget Period Number" inside page block
     Then I softly cannot see field "Budgeted Amount" inside page block
     Then I softly see field "New Obligation" inside page block
     Then I softly see field "Cumulative Obligation" inside page block
@@ -22498,7 +22497,6 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     And I save the field labeled "EGMS ID" as "AwardEGMSID2"
     And I navigate to "Budget" sub tab
-    Then I softly see field "Budget Period Number" inside page block
     Then I softly cannot see field "Budgeted Amount" inside page block
     Then I softly see field "New Obligation" inside page block
     Then I softly see field "Cumulative Obligation" inside page block
