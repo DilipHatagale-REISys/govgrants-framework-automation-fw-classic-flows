@@ -8100,9 +8100,9 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly see field "New Obligation" as "$1,000.00"
 
-  @243687 @ValidateusershouldentertheNewObligationvaluewhentherecordisCreatedinreviewpeerreviewedstatesFAYes @sprint-16-US-237985 @vaibhav @Allocation
-  Scenario: Validate user should enter the New Obligation value when the record is Created, in review, peer-reviewed states FA=Yes
-    When I login to "As a Grantor" app as "EXE" user
+  @243687 @243808 @ValidateusershouldentertheNewObligationvaluewhentherecordisCreatedinreviewpeerreviewedstatesFAYes @sprint-16-US-237985 @vaibhav @Allocation
+  Scenario Outline: Validate user should enter the New Obligation value when the record is Created, in review, peer-reviewed states FA=Yes
+    When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -8148,7 +8148,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I click modal button "Save"
     And I click on submit review
     Then I softly see that "Submitted" has been added in flextable with Id "---subAwardFromFDM:-:peerReviewersTableId---"
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -8165,6 +8165,11 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Then I softly see field "New Obligation" as "$3,000.00"
+
+    Examples:
+      | User |
+      | EXE  |
+      | PM   |
 
 
   @243690 @ValidateusershouldentertheNewObligationvaluewhentherecordisCreatedinreviewpeerreviewedstatesFANo @sprint-16-US-237985 @vaibhav @Allocation
@@ -8602,19 +8607,19 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see that "New Obligation" rendered in view mode only
     #243806
     Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
-#    #244205
-#    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-#    And I navigate to "Grants" tab
-#    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-#    And I click toggle button to select "Grants - Active"
-#    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
-#    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
-#    When I navigate to "Subawards" sub tab
-#    And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
-#    And I navigate to "Budget" sub tab
-#    Then I softly see field "Budget Period Number" as "BP02"
-#    Then I softly see "Carry-Forward" inside page block detail
-#    Then I softly see status in Progress-bar is "Activated" and is "green"
+    #244205
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Budget Period Number" as "BP02"
+    Then I softly do not see "Carry-Forward" inside page block detail
+    Then I softly see status in Progress-bar is "Activated" and is "green"
 
   @244189 @243705 @243772 @244191 @ValidateSPIusershouldnotseeBudgetedAmountfieldonawardinrejectedstate @sprint-16-US-238299-237985 @vaibhav @Allocation
   Scenario Outline: Validate SPI & IND user should not see 'Budgeted Amount' field on award in rejected state
