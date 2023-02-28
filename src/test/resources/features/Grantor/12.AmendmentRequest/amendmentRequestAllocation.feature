@@ -1197,7 +1197,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount for the following focus areas - (Automation Permanent Focus Area) |
 
-  @249158 @ValidateFormulavalidationisdisplayedtoPMuseronclickofSubmitforapprovalwhentherevisedObligationamountislessthnthespentamountthatparticularfocusarea @sprint-18-US-225787 @vaibhav @Allocation
+  @249158 @ValidateFormulavalidationisdisplayedtoPMuseronclickofSubmitforapprovalwhentherevisedObligationamountislessthnthespentamountthatparticularfocusarea @sprint-18-US-225787 @vaibhav @Allocation @TBE
   Scenario: Validate Formula validation is displayed to PM user on click of Submit for approval when the revised Obligation amount is less than the spent amount of that particular focus area
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     And I am on "SUBPORTAL" portal
