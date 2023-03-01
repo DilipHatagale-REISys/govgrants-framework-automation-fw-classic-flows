@@ -482,6 +482,11 @@ public class GenericSteps {
         grantorWebServices.createAwardFromFDM(announcementName);
     }
 
+    @Given("I created award from approved FDM with announcement {string} and properties {string}")
+    public void iCreatedAwardFromApprovedFDMWithAnnouncement(String announcementName, String Type) {
+        grantorWebServices.createAwardFromFDM(announcementName, Type);
+    }
+
     @And("I published {string} type announcement having name {string} and properties {string}")
     public void iPublishedTypeAnnouncementHavingNameAndProperties(String annType, String annName, String filter) {
         String newAnnName = annName + I.amPerforming().addOnsTo().getRandomNumber();

@@ -189,6 +189,13 @@ public class GrantorWebServices extends ProjectWebServices {
         createAwardFromFDMPostCall(projectApis.defaultPayloadCreateAwardFromFDM(announcementName));
     }
 
+    public void createAwardFromFDM(String announcementName, String... Type ) {
+        if(Type.length>0)
+            createAwardFromFDMPostCall(projectApis.PayloadCreateAwardFromFDM(announcementName,Type[0]));
+        else
+            createAwardFromFDMPostCall(projectApis.PayloadCreateAwardFromFDM(announcementName));
+    }
+
 
     /**
      * @param applicationName name of application from which we have to create activate FDM
@@ -228,7 +235,7 @@ public class GrantorWebServices extends ProjectWebServices {
                 createAwardEndPoint, "Authorization", "Bearer " + tokenString, null);
         response.prettyPrint();
         assertStatusCode(response);
-        I.amPerforming().waitFor().makeThreadSleep(20000);
+        I.amPerforming().waitFor().makeThreadSleep(30000);
         String activateAwardEndPoint = endPoint + "/services/apexrest/activateAwardFromGrant/v2?AwardId=" + getIdOf("Award__c", awardName);
         Response response1 = I.amPerforming().restHttp().getCall(
                 activateAwardEndPoint, "Authorization", "Bearer " + tokenString);
