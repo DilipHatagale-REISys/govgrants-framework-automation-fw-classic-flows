@@ -3425,8 +3425,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Total Commitment" as "$3,000.00"
     Then I softly see value "{SavedValue:TotalCommitment1}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
 
-  @253745 @254001 @ValidateFormulaPMusercanseecorrectamountdisplayinPreEncumbranceAppropriationAmountEncumbranceSpentTotalObligationandAvailableBalanceunderfundingaccount @sprint-18-US-242373 @vaibhav @Allocation @TBE
-  Scenario: Validate Formula PM user can see correct $ amount display in Pre-Encumbrance, Appropriation Amount, Encumbrance, Spent,Total Obligation and Available Balance under funding account
+  @253990 @254001 @ValidateusecanseeCurrentobligationasReadOnlyfieldcopiedfromthecumulativeObligationoftheawardfromwhichtherequestiscreatedFAYes @sprint-18-US-242373 @vaibhav @Allocation @TBE
+  Scenario: Validate user can see Current obligation as Read Only field copied from the cumulative Obligation of the award from which the request is created(FA Yes)
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
