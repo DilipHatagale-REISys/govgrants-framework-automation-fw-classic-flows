@@ -5663,5 +5663,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
+    When I navigate to "Actuals" sub tab
+    Then I softly see field "Spent" as "$0.00"
     When I navigate to "Budget" sub tab
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
