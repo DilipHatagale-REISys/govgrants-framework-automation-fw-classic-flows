@@ -8905,7 +8905,7 @@ Feature: Validate all scenarios of grants and award without background
       The task(s) below were failed to reassigned as user was already assigned as a reviewer on this record.
 
       EGMS ID Type Status Subject Assigned By Reason of Failure
-      {SavedValue:AwardEGMSID} Approve Subaward Not Started Approve Subaward #AD-GA-1142 for SAN DIEGO ELECTRICAL TRAINING TRUST Automation EXE You cannot specify the same user for multiple steps for Award
+      {SavedValue:AwardEGMSID} Approve Subaward Not Started Approve Subaward #{SavedValue:AwardEGMSID} for SAN DIEGO ELECTRICAL TRAINING TRUST Automation EXE You cannot specify the same user for multiple steps for Award
 
 
       Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.

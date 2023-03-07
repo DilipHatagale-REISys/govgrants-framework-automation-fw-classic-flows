@@ -2501,9 +2501,9 @@ Feature: Application Intake scenarios without background
       | {SavedValue:Automation Runtime Announcement} | Directed          |
       | {SavedValue:Automation Runtime Announcement} | Competitive       |
 
-  @219584 @219679 @DirectedAnnVerifyRecommendedbudgetfieldshouldnotdisplayforSPIonapplicationifit'srelatedFDMwillrejectduringapproval @sprint-13-US-204132 @komal @Allocation
+  @219584 @219679 @DirectedAnnVerifyRecommendedbudgetfieldshouldnotdisplayforSPIonapplicationifitsrelatedFDMwillrejectduringapproval @sprint-13-US-204132 @komal @Allocation
   Scenario Outline: Directed Ann_ Verify 'Recommended budget' field should not display for SPI on application if it's related FDM will reject during approval
-  | Competitive Ann_ Verify 'Recommended budget' field should not display for SPI on application if it's related FDM will reject during approval |
+  | Competitive Ann 'Recommended budget' field should not display for SPI on application if it's related FDM will reject during approval |
     Given I published "<Announcement Type>" type announcement having name "Automation Runtime Announcement" and properties "default-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
