@@ -5802,7 +5802,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitment"
     Then I softly see field "Total Commitment" as "$3,000.00"
     #253553
-    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5814,7 +5814,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
     Then I softly see "Total Awarded amount across budget periods" shown as help text
     And I expand nested table containing column value "BP01"
-    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Grand Total" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
+    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     #253495
     And I refresh the page
@@ -5835,7 +5835,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
     Then I softly see "Total Awarded amount across budget periods" shown as help text
     And I expand nested table containing column value "BP01"
-    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
+    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     #253548
     And I refresh the page
@@ -5848,7 +5848,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     And I navigate to "Budget" sub tab
     #253554
-    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -5901,7 +5901,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Closed" and is "Green"
     When I navigate to "Budget" sub tab
     #253553
-    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5913,7 +5913,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
     Then I softly see "Total Awarded amount across budget periods" shown as help text
     And I expand nested table containing column value "BP01"
-    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Grand Total" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
+    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     #253495
     And I refresh the page
@@ -5934,7 +5934,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
     Then I softly see "Total Awarded amount across budget periods" shown as help text
     And I expand nested table containing column value "BP01"
-    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Grand Total" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
+    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     #253548
     And I refresh the page
@@ -5947,7 +5947,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     And I navigate to "Budget" sub tab
     #253554
-    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
 
   @253469 @253497 @253478 @253549 @ValidateCumulativeObligationissameasAmountAwarded&helptextshouldbedisplayFANo @sprint-18-US-250639 @vaibhav @Allocation @TBE
@@ -6038,7 +6038,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
     Then I softly see "Total Awarded amount across budget periods" shown as help text
     And I expand nested table containing column value "BP01"
-    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Grand Total" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
+    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     And I refresh the page
     #253497
@@ -6059,7 +6059,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
     Then I softly see "Total Awarded amount across budget periods" shown as help text
     And I expand nested table containing column value "BP01"
-    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
+    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     #253549
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
@@ -6137,7 +6137,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
     Then I softly see "Total Awarded amount across budget periods" shown as help text
     And I expand nested table containing column value "BP01"
-    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Grand Total" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
+    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     And I refresh the page
     #253497
@@ -6158,7 +6158,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
     Then I softly see "Total Awarded amount across budget periods" shown as help text
     And I expand nested table containing column value "BP01"
-    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
+    Then I softly see value "$3,000.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     #253549
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
