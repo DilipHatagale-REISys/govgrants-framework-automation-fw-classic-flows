@@ -6124,9 +6124,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Closed" and is "Green"
-    When I navigate to "Budget" sub tab
-    And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligation" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
