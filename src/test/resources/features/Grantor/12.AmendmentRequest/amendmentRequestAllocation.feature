@@ -5848,7 +5848,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     And I navigate to "Budget" sub tab
     #253554
-    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -5947,7 +5947,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     And I navigate to "Budget" sub tab
     #253554
-    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
 
   @253469 @253497 @253478 @253549 @ValidateCumulativeObligationissameasAmountAwarded&helptextshouldbedisplayFANo @sprint-18-US-250639 @vaibhav @Allocation @TBE
@@ -6026,7 +6026,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Status" as "Activated"
     #253497
     And I navigate to "Budget" sub tab
-    And I save the field labeled "Total Commitment" as "TotalCommitment1"
+    And I save the field labeled "Total Commitment" as "TotalCommitment"
     Then I softly see field "Total Commitment" as "$3,000.00"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -6068,7 +6068,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click toggle button to select "Grants - All"
     When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
-    Then I softly see field "Status" as "Closed/Completed"
+    Then I softly see field "Status" as "Active"
     And I navigate to "Budget" sub tab
     When I hovering mouse on help text icon inside page block detail "Total Commitment"
     Then I softly see "Total amount committed through this and prior awards in this Budget period" shown as help text
