@@ -6508,11 +6508,13 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount. |
     #253474
+    And I navigate to "Overview" sub tab
     And I click on "Edit" in the page details
     When I enter values into fields
       | Value | Field                           |
       | 2000  | fieldRequestedChangeInBudget__c |
     And I click on "Save" in the page details
+    And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
