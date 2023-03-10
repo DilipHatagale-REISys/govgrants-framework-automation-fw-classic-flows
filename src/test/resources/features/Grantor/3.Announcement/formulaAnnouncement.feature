@@ -74,12 +74,13 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
     And I click on "Submit For Approval" in the page details
-    Then I see the following messages in the page details :
+    Then I softly see the following messages in the page details :
       | Overview Tab - The question submission deadline must be before the Application due date. |
       | Overview Tab - The answer submission deadline must be before the Application due date.   |
     And I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
     And I enter value "10" into field "fieldApplicationDueDate__c"
+    And I enter value "No" into field "fieldQAAvailability__c"
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     And I get the "EGMS ID"

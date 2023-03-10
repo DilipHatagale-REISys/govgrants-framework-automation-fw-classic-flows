@@ -2080,6 +2080,9 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     When  I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
+      | Name                       | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :

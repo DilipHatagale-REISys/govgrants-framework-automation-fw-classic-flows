@@ -309,8 +309,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly cannot see top right button "Add Focus Area" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly cannot see row level action button "Remove Focus Area" against "Automation Permanent Focus Area" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
     #239596
-    Then I see "1" records inside flex table id "subAwardStandAlone:-:focusAreaTableId"
-
+    Then I see total records count "Total Records:1" in flex table "---subAwardStandAlone:-:focusAreaTableId---"
 
   @239590 @ValidateAdminuserseeeditaccessonforstartdateandenddateoffocusareabudgetsummarybyfocusareatableincreatedbeforeapprovalsenttoS\Rsentforreviewandreviewedstateofaward @sprint-15-US-237846 @vaibhav @Allocation
   Scenario Outline: Validate Admin user see edit access on for start date and end date of focus area budget summary by focus area table in created,(before approval) sent to S\R, sent for review and reviewed state of award

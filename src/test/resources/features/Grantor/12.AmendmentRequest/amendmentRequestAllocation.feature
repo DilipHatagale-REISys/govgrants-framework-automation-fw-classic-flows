@@ -6646,7 +6646,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 3000                |
-    Then I softly see field "Revised Obligation" as "$4,000.00"
+    Then I softly see field "Revised Obligation" as "$5,000.00"
     And I click on "Submit for Approval" in the page details
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
