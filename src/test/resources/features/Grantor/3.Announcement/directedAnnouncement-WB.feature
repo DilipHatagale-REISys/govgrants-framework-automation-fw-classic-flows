@@ -10,7 +10,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "New" in flex table with id "---announcement:-:annoucementTableId---"
     And I enter "DirectedAnnouncementForAdmin" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
-    When I enter "Creation Second Modal_Directed" values from "Announcement_Field_Values.xlsx"
+    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
@@ -172,7 +172,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---announcement:-:directedAddInviteApplicantTableId---" panel
     Then I see the following rows under the following headers in table with id "---announcement:-:directedAddInviteApplicantTableId---" :
       | Organization                        | Applicant Type           |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | For Profit Organizations |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | For-profit organizations |
     #219104
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     Then I see the following messages in the page details contains:

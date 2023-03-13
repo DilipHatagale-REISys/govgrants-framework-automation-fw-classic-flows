@@ -357,7 +357,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     #When I click on "Download" icon for "Funding Opportunity Announcement" inside flex table with id "---announcement:-:AnnouncementAttachmentTableId---"
     #Then I softly verify that the file "Funding Opportunity Announcement" is downloaded
     When I click on "Delete" icon for "Funding Opportunity Announcement" inside flex table with id "---announcement:-:AnnouncementAttachmentTableId---"
-    Then I softly do not see "Funding Opportunity Announcement" has been added in "Announcement Files" flex table
+    Then I softly do not see "Funding Opportunity Announcement" has been added in "---announcement:-:AnnouncementAttachmentTableId---" flex table
 
   @70483 @userDeleteSupportingDocumentViewHyperlink @aashish @wip
   Scenario: To Verify that user can view Template Link in supporting document checklist While creating the Announcement
@@ -632,7 +632,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Then I softly see the following messages in the page details :
-      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates |
+      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -641,11 +641,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Overview" sub tab
     And I enter value "-1" into field "fieldApplicationDueDate__c"
     And I click on "Save" in the page details
-    And I click on "Submit For Approval" in the page details
     Then I softly see the following messages in the page details :
       | Overview Tab - Application Due Date cannot be in the past. |
-    And I click on "Edit" in the page details
     And I enter value "0" into field "fieldApplicationDueDate__c"
+    And I enter value "No" into field "fieldQAAvailability__c"
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     And I navigate to "Announcements" tab
