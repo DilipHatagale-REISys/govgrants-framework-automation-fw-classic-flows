@@ -6592,7 +6592,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Remove" icon for "Automation Permanent Focus Area2" inside flex table with id "---amendment:-:projectAreasTableId---" without waiting for record
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:projectAreasTableId---"
 
-  @253522 @253524 @253533 @ValidationPMusercanseevalidationonsubmittoapprovalwhenRevisedObligationisgreaterthantheBudgetedamount @sprint-18-US-250620 @vaibhav @Allocation 
+  @253522 @253524 @253533 @ValidationPMusercanseevalidationonsubmittoapprovalwhenRevisedObligationisgreaterthantheBudgetedamount @sprint-18-US-250620 @vaibhav @Allocation
   Scenario: Validation PM user can see validation on submit to approval when Revised Obligation is greater than the Budgeted amount
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -6682,7 +6682,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @253536 @253540 @253539 @ValidateAdminusercannotseevalidationwhenTotalRevisedObligationisequaltotheRevisedEncumbrance @sprint-18-US-250620 @vaibhav @Allocation 
+  @253536 @253540 @253539 @ValidateAdminusercannotseevalidationwhenTotalRevisedObligationisequaltotheRevisedEncumbrance @sprint-18-US-250620 @vaibhav @Allocation
   Scenario: Validate Admin user cannot see validation when Total Revised Obligation is equal to the Revised Encumbrance
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation ADMIN user" of type "Competitive"
     When I login to "As a Grantor" app as "ADMIN" user
@@ -6783,7 +6783,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @253541 @ValidatePMusercanseevalidationonSenttosubrecipientwhenNewobligationiszeroinbudgetsummarysectionifFocusAreaisYES @sprint-18-US-250620 @vaibhav @Allocation 
+  @253541 @ValidatePMusercanseevalidationonSenttosubrecipientwhenNewobligationiszeroinbudgetsummarysectionifFocusAreaisYES @sprint-18-US-250620 @vaibhav @Allocation
   Scenario: Validate PM user can see validation on Sent to subrecipient when  New obligation is zero in budget summary section if Focus Area is 'YES'
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -6821,7 +6821,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Please specify the New Obligation planned through this amendment request. |
 
-  @253546 @ValidatePMusercanenterNegativevalueinNewObligationFieldofBudgetSummarysectionwhenamendmentrequestisincreatedstatebutcanseevalidationonSubmitforApprovalbutton @sprint-18-US-250620 @vaibhav @Allocation 
+  @253546 @ValidatePMusercanenterNegativevalueinNewObligationFieldofBudgetSummarysectionwhenamendmentrequestisincreatedstatebutcanseevalidationonSubmitforApprovalbutton @sprint-18-US-250620 @vaibhav @Allocation
   Scenario: Validate PM user can enter Negative value in New Obligation Field of Budget Summary section when amendment request is in created state but can see validation on Submit for Approval button
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -6847,7 +6847,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I refresh the page
     Then I softly see field "New Obligation" as "($2,000.00)"
 
-  @253766 @253774 @ValidateFOusercanseeNewObligationfieldasuserenterfield&enterPositiveValueinsteadofRequestedChangeinBudgetfieldonfundingchangeamendmentincreatedstateevenifFocusAreaisNO @sprint-18-US-250620 @vaibhav @Allocation 
+  @253766 @253774 @ValidateFOusercanseeNewObligationfieldasuserenterfield&enterPositiveValueinsteadofRequestedChangeinBudgetfieldonfundingchangeamendmentincreatedstateevenifFocusAreaisNO @sprint-18-US-250620 @vaibhav @Allocation
   Scenario: Validate FO user can see New Obligation field as user enter field & enter Positive Value instead of Requested Change in Budget field on funding change amendment in created state even if Focus Area is NO
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     When I login to "As a Grantor" app as "FO" user
@@ -6884,7 +6884,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #253774
     Then I softly see field "Revised Commitment" as "$3,000.00"
 
-  @254260 @254262 @254273 @254264 @254265 @254266 @254269 @254270 @254272 @254276 @254277 @ValidateSPAusercanseetheCurrentobligationSpentNewObligationRevisedObligationBudgetedAmountCurrentCommitmentRevisedCommitmentfieldsreadonlyfieldshebudgetsummarySectionhenAmendmentrequestissenttosubrecipient @sprint-18-US-250621 @vaibhav @Allocation @TBE
+  @vai @254260 @254262 @254273 @254264 @254265 @254266 @254269 @254270 @254272 @254276 @254277 @ValidateSPAusercanseetheCurrentobligationSpentNewObligationRevisedObligationBudgetedAmountCurrentCommitmentRevisedCommitmentfieldsreadonlyfieldshebudgetsummarySectionhenAmendmentrequestissenttosubrecipient @sprint-18-US-250621 @vaibhav @Allocation @TBE
   Scenario Outline: Validate SPA user can see the Current obligation,  Spent, New Obligation, Revised Obligation, Budgeted Amount, Current Commitment, Revised Commitment fields as read-only fields in the budget summary Section when Amendment request is sent to subrecipient
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -6955,7 +6955,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction  | 1500                 | 100        | 100            |
     And I refresh the page
-    Then I softly see value "$3,000.00" for title "Revised Award Amount" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I see the following rows under the following headers in table with id "---amendment:-:budgetChangeTableId---" :
+      | Revised Award Amount |
+      | $3,000.00            |
     Then I softly see field "Budgeted Amount" as "$3,000.00"
     #254269
     Then I softly see field "Current Commitment" as "$1,000.00"
@@ -6975,8 +6977,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "Budgeted Amount" in flex table header "---amendment:-:subrecipientProjectAreasTableId---"
     #254276
     And I refresh the page
-    Then I softly see value "$1,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
-    Then I softly see value "$1,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$500.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$1,500.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     Then I softly see value "$2,000.00" for title "New Obligation" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     #254277
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
@@ -6984,8 +6986,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction  | 100                  | 100        | 100            |
     And I refresh the page
-    Then I softly see value "$1,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
-    Then I softly see value "($400.00)" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$500.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$100.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     Then I softly see value "$600.00" for title "New Obligation" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
 
     Examples:
@@ -7076,11 +7078,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | 2000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
-    When I click on top right button "Associate" in flex table with id "---amendment:-:projectAreasTableId---"
-    And I perform quick search for "Automation Permanent Focus Area2" in "---amendment:-:focusAreaTableId---" panel
-    When I check "Automation Permanent Focus Area2" boxes in flex table with id "---amendment:-:focusAreaTableId---"
-    When I click on top right button "Associate" in flex table with id "---amendment:-:focusAreaTableId---"
-    And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
