@@ -7473,12 +7473,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Save" in the page details
     Then I softly see field "Revised Commitment" as "$4,000.00"
     #253510,253511
-    And I click on "Edit" icon for "Automation Permanent Focus Area" inside flex table with id "---amendment:-:subrecipientProjectAreasTableId---" without waiting for record
+    And I click on "Edit" icon for "Automation Permanent Focus Area" inside flex table with id "---amendment:-:projectAreasTableId---" without waiting for record
     Then I softly see field "CurrentObligation__c" not in edit mode
     Then I softly see field "NewObligationFormula__c" not in edit mode
     Then I softly see field "BudgetedAmount__c" not in edit mode
     Then I softly see field "RevisedObligation__c" not in edit mode
-    And I click on top right button "Save" in flex table with id "---amendment:-:subrecipientProjectAreasTableId---"
+    And I click on top right button "Save" in flex table with id "---amendment:-:projectAreasTableId---"
     Then I softly see value "$3,000.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
     Then I softly see value "$1,000.00" for title "Current Obligation" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
     Then I softly see value "$2,000.00" for title "New Obligation" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
@@ -7564,10 +7564,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I refresh the page
     Then I softly see field "Spent" as "$1,000.00"
     #253508
-    And I click on "Edit" icon for "Automation Permanent Focus Area" inside flex table with id "---amendment:-:subrecipientProjectAreasTableId---" without waiting for record
+    And I click on "Edit" icon for "Automation Permanent Focus Area" inside flex table with id "---amendment:-:projectAreasTableId---" without waiting for record
     Then I softly see field "Spent__c" not in edit mode
-    And I click on top right button "Save" in flex table with id "---amendment:-:subrecipientProjectAreasTableId---"
-    Then I softly see value "$1,000.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    And I click on top right button "Save" in flex table with id "---amendment:-:projectAreasTableId---"
+    Then I softly see value "$1,000.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---amendment:-:projectAreasTableId---"
     #253514
     And I click on "Edit" in the page details
     When I enter values into fields
@@ -7639,7 +7639,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - The Revised Obligation must be equal to the Budgeted Amount in the Budget Summary Section. |
 
-  @253531 @ValidatevalidationisdisplayedtoPMuseronsenttosubrecipientbuttonwhenNewobligationiszeroinbudgetsummarysection @sprint-18-US-229266 @vaibhav @Allocation @TBE
+  @253531 @ValidatevalidationisdisplayedtoPMuseronsenttosubrecipientbuttonwhenNewobligationiszeroinbudgetsummarysection @sprint-18-US-229266 @vaibhav @Allocation 
   Scenario: Validate validation is displayed to PM user on sent to subrecipient button when New obligation is zero in budget summary section
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Directed"
     When I login to "As a Grantor" app as "PM" user
@@ -7681,7 +7681,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Please specify the New Obligation planned through this amendment request. |
 
-  @254162 @ValidateusercanseeNewObligationfieldasuserenterfield&enterPositiveValueinsteadofRequestedChangeinBudgetfieldonfundingchangeamendmentincreatedstateevenifFocusAreaisNO @sprint-18-US-229266 @vaibhav @Allocation @TBE
+  @254162 @ValidateusercanseeNewObligationfieldasuserenterfield&enterPositiveValueinsteadofRequestedChangeinBudgetfieldonfundingchangeamendmentincreatedstateevenifFocusAreaisNO @sprint-18-US-229266 @vaibhav @Allocation 
   Scenario: Validate user can see New Obligation field as user enter field & enter Positive Value instead of Requested Change in Budget field on funding change amendment in created state even if Focus Area is NO
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Directed"
     When I login to "As a Grantor" app as "PM" user
