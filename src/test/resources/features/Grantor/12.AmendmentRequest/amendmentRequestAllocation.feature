@@ -8226,7 +8226,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
-      | {SavedValue:fundingAccount} | 3000                |
+      | {SavedValue:FundingAccount2} | 3000                |
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
