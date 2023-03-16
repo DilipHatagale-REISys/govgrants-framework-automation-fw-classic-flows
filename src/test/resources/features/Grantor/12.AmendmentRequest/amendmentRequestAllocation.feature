@@ -7772,7 +7772,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction  | 1500                 | 100        | 100            |
+      | Construction  | 3000                 | 150        | 150            |
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
@@ -8177,7 +8177,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Activate" in the page details
     Then I softly see that "Subaward" is in "Activated" status
     When I navigate to "Budget" sub tab
-    And I click "{SavedValue:FundingAccount2}" lookup link
+    And I click in table hyperlink containing value "{SavedValue:FundingAccount2}"
     Then I see the header is "Funding Account" in the page details
     And I save the field labeled "Appropriation Amount" as "AppropriationAmount"
     And I save the field labeled "Pre-Encumbrance" as "PreEncumbrance"
@@ -8241,7 +8241,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click toggle button to select "Amendment Requests - All"
     When I perform quick search for "{SavedValue:FundingID}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
     And I click on "View" icon for "{SavedValue:FundingID}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
-    And I click "{SavedValue:FundingAccount2}" lookup link
+    And I click in table hyperlink containing value "{SavedValue:FundingAccount2}"
     Then I see the header is "Funding Account" in the page details
     And I save the field labeled "Appropriation Amount" as "AppropriationAmount1"
     And I save the field labeled "Pre-Encumbrance" as "PreEncumbrance1"
