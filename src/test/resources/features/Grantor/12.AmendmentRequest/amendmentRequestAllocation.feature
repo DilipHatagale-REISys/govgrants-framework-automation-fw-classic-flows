@@ -8185,6 +8185,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Spent" as "Spent"
     And I save the field labeled "Total Obligation" as "TotalObligation"
     And I save the field labeled "Available Balance" as "AvailableBalance"
+    And I switch to parent tab
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
