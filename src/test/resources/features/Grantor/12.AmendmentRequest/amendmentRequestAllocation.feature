@@ -7504,7 +7504,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Revised Commitment should be equal to or greater than the total of Cummulative Obligation $3000.00 across all budget periods. |
 
-  @253315 @253508 @253514 @253363 @253736 @253527 @253528 @ValidatevaluedisplayedforSpentfieldinbudgetsummarySection @sprint-18-US-229266 @vaibhav @Allocation @TBE
+  @253315 @253508 @253514 @253363 @253736 @253527 @253528 @ValidatevaluedisplayedforSpentfieldinbudgetsummarySection @sprint-18-US-229266 @vaibhav @Allocation 
   Scenario: Validate value displayed for Spent field in budget summary Section
     And I activated standalone subaward "Automation Runtime FDM Announcement" with properties "default" of type "Directed"
     And I am on "SUBPORTAL" portal
@@ -8260,7 +8260,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "{SavedValue:TotalObligation}" is "Equals to" the value "{SavedValue:TotalObligation1}"
     Then I softly see value "{SavedValue:AvailableBalance}" is "Equals to" the value "{SavedValue:AvailableBalance1}"
 
-  @253748 @253734 @254032 @253749 @254035 @ValidateDirectedSPIusercanseevaluepopulatedforRevisedObligationfieldastheaadditionofincreaseddecreasedcurrentobligationandNewObligationamountswhenFocusareaisyes @sprint-18-US-247647 @vaibhav @Allocation @TBE
+  @253748 @253734 @254032 @253749 @254035 @ValidateDirectedSPIusercanseevaluepopulatedforRevisedObligationfieldastheaadditionofincreaseddecreasedcurrentobligationandNewObligationamountswhenFocusareaisyes @sprint-18-US-247647 @vaibhav @Allocation 
   Scenario Outline: Validate Directed SPI user can see value populated for Revised Obligation field as the aaddition of increased/decreased current obligation and New Obligation amounts when Focus area is yes
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Directed"
     When I login to "As a Grantor" app as "PM" user
@@ -8341,7 +8341,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | SPI3 |
       | SPA  |
 
-  @254047 @ValidateDirectedvalidationisdisplayedtoSPIuseronclickofSubmittograntorbuttonwhenthetotalbudgetisnotmatchingwiththeRevisedObligation @sprint-18-US-247647 @vaibhav @Allocation @TBE
+  @254047 @ValidateDirectedvalidationisdisplayedtoSPIuseronclickofSubmittograntorbuttonwhenthetotalbudgetisnotmatchingwiththeRevisedObligation @sprint-18-US-247647 @vaibhav @Allocation 
   Scenario: Validate Directed validation is displayed to SPI user on click of Submit to grantor button when the total budget is not matching with the Revised Obligation
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Directed"
     When I login to "As a Grantor" app as "PM" user
@@ -8424,11 +8424,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | 2000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
-    When I click on top right button "Associate" in flex table with id "---amendment:-:projectAreasTableId---"
-    And I perform quick search for "Automation Permanent Focus Area2" in "---amendment:-:focusAreaTableId---" panel
-    When I check "Automation Permanent Focus Area2" boxes in flex table with id "---amendment:-:focusAreaTableId---"
-    When I click on top right button "Associate" in flex table with id "---amendment:-:focusAreaTableId---"
-    And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
@@ -8486,11 +8481,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | 2000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
-    When I click on top right button "Associate" in flex table with id "---amendment:-:projectAreasTableId---"
-    And I perform quick search for "Automation Permanent Focus Area2" in "---amendment:-:focusAreaTableId---" panel
-    When I check "Automation Permanent Focus Area2" boxes in flex table with id "---amendment:-:focusAreaTableId---"
-    When I click on top right button "Associate" in flex table with id "---amendment:-:focusAreaTableId---"
-    And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
@@ -8504,23 +8494,18 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction  | 1500                 | 100        | 100            |
-    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
-    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction  | 1000                 | 100        | 100            |
+      | Construction  | 2000                 | 100        | 100            |
     And I refresh the page
-    Then I softly see field "Budgeted Amount" as "$2,500.00"
+    Then I softly see field "Budgeted Amount" as "$2,000.00"
     Then I softly see field "Revised Obligation" as "$3,000.00"
     And I wait for "3" seconds
     And I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details contains:
       | Overview Tab - The Budgeted Amount must be equal to the Revised Obligation in the Budget Summary Section |
     #255192
-    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction  | 1500                 | 100        | 100            |
+      | Construction  | 3000                 | 150        | 150            |
     And I refresh the page
     Then I softly see field "Budgeted Amount" as "$3,000.00"
     Then I softly see field "Revised Obligation" as "$3,000.00"
