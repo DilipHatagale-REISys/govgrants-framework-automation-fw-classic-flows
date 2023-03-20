@@ -8398,7 +8398,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I see the following messages in the page details contains:
       | Overview Tab - The Budgeted Amount must be equal to the Revised Obligation in the Budget Summary Section |
 
-  @254147 @254188 @254910 @ValidateSPIusercannotseeanewsectionofBudgetSummarybyFocusAreawhenFocusAreaisNo @sprint-18-US-247647 @vaibhav @Allocation @TBE
+  @254147 @254188 @254910 @ValidateSPIusercannotseeanewsectionofBudgetSummarybyFocusAreawhenFocusAreaisNo @sprint-18-US-247647 @vaibhav @Allocation
   Scenario Outline: Validate SPI user cannot see a new section of Budget Summary by Focus Area when Focus Area is No
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Directed"
     When I login to "As a Grantor" app as "PM" user
@@ -8455,7 +8455,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | SPI3 |
       | SPA  |
 
-  @255191 @255192 @ValidateDirectedvalidationisdisplayedtoSPIuseronclickofSubmittograntorbuttonwhenthetotalbudgetisnotmatchingwiththeRevisedObligationFocusNo @sprint-18-US-247647 @vaibhav @Allocation @TBE
+  @255191 @255192 @ValidateDirectedvalidationisdisplayedtoSPIuseronclickofSubmittograntorbuttonwhenthetotalbudgetisnotmatchingwiththeRevisedObligationFocusNo @sprint-18-US-247647 @vaibhav @Allocation
   Scenario: Validate Directed validation is displayed to SPI user on click of Submit to grantor button when the total budget is not matching with the Revised Obligation Focus No
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Directed"
     When I login to "As a Grantor" app as "PM" user
