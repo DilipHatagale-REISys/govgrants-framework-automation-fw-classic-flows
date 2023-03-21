@@ -235,7 +235,7 @@ Feature: Validate all scenarios in Closeout
     #265615
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:subrecipientBudgetSummaryFocusAreaTableId---"
 
-  @vai @265621 @ValidateSPIuserseeSpentvaluewillupdatedynamicallyoncloseoutrequestafterpaymentrequest @sprint-20-US-263394 @vaibhav @Allocation
+  @265621 @ValidateSPIuserseeSpentvaluewillupdatedynamicallyoncloseoutrequestafterpaymentrequest @sprint-20-US-263394 @vaibhav @Allocation
   Scenario: Validate SPI user see Spent value will update dynamically on closeout request after payment request
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
