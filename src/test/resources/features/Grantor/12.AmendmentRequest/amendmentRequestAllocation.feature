@@ -8697,7 +8697,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click "{SavedValue:GrantEGMSID}" lookup link
     Then I softly see field "Status" as "Active"
     And I navigate to "Budget" sub tab
-    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation1"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation2"
     Then I softly see value "{SavedValue:CumulativeObligation1}" is "Equals to" the value "{SavedValue:CumulativeObligation2}"
     #256876
     Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
@@ -8895,9 +8895,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "{SavedValue:RevisedCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment1}"
     #256869
     When I click "{SavedValue:GrantEGMSID}" lookup link
+    Then I softly see field "Status" as "Active"
     And I navigate to "Budget" sub tab
-    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation1"
-    Then I softly see value "{SavedValue:CumulativeObligation1}" is "Equals to" the value "{SavedValue:CumulativeObligation2}"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation2"
+    Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CumulativeObligation2}"
     #256708
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -8909,7 +8910,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Status" as "Active"
     And I navigate to "Budget" sub tab
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation3"
-    Then I softly see value "{SavedValue:CumulativeObligation1}" is "Equals to" the value "{SavedValue:CumulativeObligation3}"
+    Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CumulativeObligation3}"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     #256708
@@ -8926,7 +8927,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Total Commitment" as "$3,000.00"
     Then I softly see value "{SavedValue:RevisedCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment3}"
 
-  @256758 @ValidateCompPMusercannotseeFocusareaontheversion2Awardiftheversion1AwardisfromFDMandvalueforNewObligationandcumulativeobligationisZero&spentiszeroforparticularFocusArea @sprint-19-US-256008 @vaibhav @Allocation @TBE
+  @256758 @ValidateCompPMusercannotseeFocusareaontheversion2Awardiftheversion1AwardisfromFDMandvalueforNewObligationandcumulativeobligationisZero&spentiszeroforparticularFocusArea @sprint-19-US-256008 @vaibhav @Allocation
   Scenario: Validate Comp PM user cannot see a Focus area on the version 2 Award if the version 1 Award is from FDM and value for New Obligation and cumulative obligation is Zero & spent is zero for a particular Focus Area
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT"
     When I login to "As a Grantor" app as "PM" user
@@ -9302,6 +9303,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     #255735
+    And I navigate to "Budget" sub tab
     And I save the field labeled "Total Commitment" as "TotalCommitmentGrant"
     Then I softly see field "Total Commitment" as "$3,000.00"
     Then I softly see value "{SavedValue:TotalCommitment3}" is "Equals to" the value "{SavedValue:TotalCommitmentGrant}"
@@ -9315,7 +9317,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$2,000.00" for title "New Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
 
-  @255723 @ValidateDirectedPMusercanseevaluedisplayedforCumulativeObligationfieldonPendingactivationstateofawardisthetotaloftheEncumbrancecolumnfromtheAwardFundingAccountinformationFANo @sprint-19-US-256009 @vaibhav @Allocation @TBE
+  @255723 @ValidateDirectedPMusercanseevaluedisplayedforCumulativeObligationfieldonPendingactivationstateofawardisthetotaloftheEncumbrancecolumnfromtheAwardFundingAccountinformationFANo @sprint-19-US-256009 @vaibhav @Allocation
   Scenario: Validate Directed PM user can see value displayed for Cumulative Obligation field on Pending activation state of award is the total of the 'Encumbrance' column from the Award Funding Account information FA No
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Directed"
     When I login to "As a Grantor" app as "PM" user
@@ -9399,7 +9401,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
     Then I softly see value "{SavedValue:RevisedEncumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligation}"
 
-  @255729 @ValidatePMusercanseeFocusareawithzerovalueforNewObligationandCumulativeObligationcolumnonthenewawardIftheinitalAwardisnotfromFDM @sprint-19-US-256009 @vaibhav @Allocation @TBE
+  @255729 @ValidatePMusercanseeFocusareawithzerovalueforNewObligationandCumulativeObligationcolumnonthenewawardIftheinitalAwardisnotfromFDM @sprint-19-US-256009 @vaibhav @Allocation
   Scenario: Validate PM user can see a Focus area with zero value for New Obligation and Cumulative Obligation column on the new award If the inital Award is not from FDM
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
