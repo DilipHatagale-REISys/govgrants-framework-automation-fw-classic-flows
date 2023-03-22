@@ -321,8 +321,9 @@ Feature: Validate all scenarios in Closeout
 
   @265626 @ValidateSPAuserseespentvalueshouldbeupdatedoncloseoutinsenttoSRstateofcloseout @sprint-20-US-263394 @vaibhav @Allocation @TBE
   Scenario: Validate SPA user see 'spent' value should be updated on closeout in sent to S\R state of closeout
-    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation ADMIN user" of type "Competitive"
-    When I login to "As a Grantor" app as "ADMIN" user
+    #TO Do: due to this bug 282819 cannot use ADMIN user for closeout once resolved use admin user
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation PM user" of type "Competitive"
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -342,7 +343,7 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
       | Name              | Closeout |
-      | Automation ADMIN1 | Step 1   |
+      | Automation EXE | Step 1   |
     And I click on "Send To Subrecipient" in the page details
     And I navigate to "Overview" sub tab
     Then I softly see field "Spent" as "$0.00"
@@ -370,7 +371,7 @@ Feature: Validate all scenarios in Closeout
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
-    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -382,17 +383,17 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
       | Name                         | Reimbursement |
-      | {SavedValue:ADMIN1 Username} | Step 1        |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted For Approval" and is "green"
-    When I re-login to "As a Grantor" app as "ADMIN1" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Reimbursements" content inside "Payments" subheader on left panel
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
@@ -411,7 +412,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Spent" as "$500.00"
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:subrecipientBudgetSummaryFocusAreaTableId---"
 
-  @265630 @ValidateSPIuserseespentvalueshouldbeupdatedoncloseoutinReviewedstateofcloseout @sprint-20-US-263394 @vaibhav @Allocation @TBE
+  @265630 @ValidateSPIuserseespentvalueshouldbeupdatedoncloseoutinReviewedstateofcloseout @sprint-20-US-263394 @vaibhav @Allocation 
   Scenario: Validate SPI user see 'spent' value should be updated on closeout in Reviewed state of closeout
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
@@ -544,7 +545,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Spent" as "$500.00"
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:subrecipientBudgetSummaryFocusAreaTableId---"
 
-  @265639 @ValidateSPIuserseespentvalueshouldbeupdatedoncloseoutinSubmitforapprovalstateofcloseout @sprint-20-US-263394 @vaibhav @Allocation @TBE
+  @vai  @265639 @ValidateSPIuserseespentvalueshouldbeupdatedoncloseoutinSubmitforapprovalstateofcloseout @sprint-20-US-263394 @vaibhav @Allocation 
   Scenario: Validate SPI user see 'spent' value should be updated on closeout in Submit for approval state of closeout
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -655,7 +656,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Spent" as "$500.00"
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:subrecipientBudgetSummaryFocusAreaTableId---"
 
-  @265215 @ValidatePMusershouldnotseezerofocusareawhichiscopiedfromAnnwhenawardisfromFDM @sprint-20-US-246948 @vaibhav @Allocation @TBE
+  @265215 @ValidatePMusershouldnotseezerofocusareawhichiscopiedfromAnnwhenawardisfromFDM @sprint-20-US-246948 @vaibhav @Allocation 
   Scenario: Validate PM user should not see zero focus area which is copied from Ann when award is from FDM
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT"
     When I login to "As a Grantor" app as "PM" user
@@ -828,7 +829,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Overview" sub tab
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
 
-  @265223 @265225 @ValidateEXEusershouldnotseezerofocusareaoncloseoutwhichisnotcopiedfromawardtograntwhenawardisnotfromFDM @sprint-20-US-246948 @vaibhav @Allocation @TBE
+  @265223 @265225 @ValidateEXEusershouldnotseezerofocusareaoncloseoutwhichisnotcopiedfromawardtograntwhenawardisnotfromFDM @sprint-20-US-246948 @vaibhav @Allocation 
   Scenario: Validate EXE user should not see zero focus area on closeout which is not copied from award to grant when award is not from FDM
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -974,11 +975,12 @@ Feature: Validate all scenarios in Closeout
 
   @265233 @ValidateAdminuserseecumulativeobligationvaluewhichiscopiedfromthegrantwhenCLrequestiscreated @sprint-20-US-246948 @vaibhav @Allocation @TBE
   Scenario: Validate Admin user see 'cumulative obligation' value which is copied from the  grant when CL request is created
-    When I login to "As a Grantor" app as "ADMIN" user
+   #TO Do: due to this bug 282819 cannot use ADMIN user for closeout once resolved use admin user
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I enter "GrantFields3" values from "Award_Field_Values.xlsx"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
     And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
@@ -1034,7 +1036,7 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
       | Name                         | Award  |
-      | {SavedValue:ADMIN1 Username} | Step 1 |
+      | {SavedValue:EXE Username} | Step 1 |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -1043,7 +1045,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---" without waiting for record
     And I click on "Accept" in the page details
-    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1055,13 +1057,13 @@ Feature: Validate all scenarios in Closeout
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     Then I see field "Status" as "Submitted for Approval"
-    When I re-login to "As a Grantor" app as "ADMIN1" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1078,7 +1080,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I click on "Accept after Approval" in the page details
-    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1113,7 +1115,7 @@ Feature: Validate all scenarios in Closeout
     When I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligationCloseout" from flex table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "{SavedValue:CumulativeObligationGrant}" is "Equals to" the value "{SavedValue:CumulativeObligationCloseout}"
 
-  @265236 @265242 @ValidateEXEuserseeBalancevalueforbalancecolumnwhichisSubtractionofCumulativeObligationandSpent @sprint-20-US-246948 @vaibhav @Allocation @TBE
+  @265236 @265242 @ValidateEXEuserseeBalancevalueforbalancecolumnwhichisSubtractionofCumulativeObligationandSpent @sprint-20-US-246948 @vaibhav @Allocation 
   Scenario Outline: Validate  EXE user see 'Balance' value for balance column which is Subtraction of Cumulative Obligation and Spent
     And I activated standalone subaward "Automation Runtime Award for Closeout" with properties "<User>" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -1199,8 +1201,9 @@ Feature: Validate all scenarios in Closeout
 
   @265244 @ValidateAdminusershouldnotseeBudgetsummarybyfocusareasectiononcloseoutiffocusareaisNoongrant @sprint-20-US-246948 @vaibhav @Allocation @TBE
   Scenario: Validate Admin user should not see 'Budget summary by focus area' section on closeout if focus area is No on grant
-    And I activated standalone subaward "Automation Runtime Award for Closeout" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation ADMIN user" of type "Competitive"
-    When I login to "As a Grantor" app as "ADMIN" user
+    #TO Do: due to this bug 282819 cannot use ADMIN user for closeout once resolved use admin user
+    And I activated standalone subaward "Automation Runtime Award for Closeout" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PM user" of type "Competitive"
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1219,7 +1222,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     Then I softly do not see "Budget Summary by Focus Area" page block displayed
 
-   @265367 @ValidateEXEuserseeSpentvaluewillupdatedynamicallyoncloseoutrequestafteradvancepaymentrequest @sprint-20-US-246948 @vaibhav @Allocation @TBE
+   @265367 @ValidateEXEuserseeSpentvaluewillupdatedynamicallyoncloseoutrequestafteradvancepaymentrequest @sprint-20-US-246948 @vaibhav @Allocation 
    Scenario: Validate EXE user see Spent value will update dynamically on closeout request after advance payment request
      Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user" of type "Competitive"
      Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
