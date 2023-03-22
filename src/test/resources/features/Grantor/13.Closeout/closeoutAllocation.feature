@@ -650,6 +650,7 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Project Period Closeouts" content inside "Recipient Closeouts" subheader on left panel
     And I click toggle button to select "Project Period Closeouts - All"
     When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:ProjectPeriodCloseoutTableId---" panel
+    And I halt execution
     When I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:ProjectPeriodCloseoutTableId---"
     Then I softly see field "Status" as "Submitted for Approval"
     And I navigate to "Overview" sub tab
@@ -1111,7 +1112,7 @@ Feature: Validate all scenarios in Closeout
     And I save the field labeled "Cumulative Obligation" as "CumuObligation1"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     Then I softly see value "{SavedValue:CumuObligation}" is "Equals to" the value "{SavedValue:CumuObligation1}"
-    Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     When I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligationCloseout" from flex table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "{SavedValue:CumulativeObligationGrant}" is "Equals to" the value "{SavedValue:CumulativeObligationCloseout}"
 
