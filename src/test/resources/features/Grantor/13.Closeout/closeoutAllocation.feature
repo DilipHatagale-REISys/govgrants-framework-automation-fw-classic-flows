@@ -545,7 +545,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Spent" as "$500.00"
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:subrecipientBudgetSummaryFocusAreaTableId---"
 
-  @265593 @265639 @ValidateSPIuserseespentvalueshouldbeupdatedoncloseoutinSubmitforapprovalstateofcloseout @sprint-20-US-263394 @vaibhav @Allocation 
+  @265593 @265639 @ValidateSPIuserseespentvalueshouldbeupdatedoncloseoutinSubmitforapprovalstateofcloseout @sprint-20-US-263394 @vaibhav @Allocation
   Scenario: Validate SPI user see 'spent' value should be updated on closeout in Submit for approval state of closeout
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -649,6 +649,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
     And I click toggle button to select "Project Period Closeouts - All"
+    And I wait for "3" seconds 
     When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:ProjectPeriodCloseoutTableId---" panel
     When I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:ProjectPeriodCloseoutTableId---"
     Then I softly see field "Status" as "Submitted for Approval"
@@ -1313,7 +1314,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Spent" as "$500.00"
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
 
-  @265540 @ValidatePOuserseeSpentvalueofpaymentrequest1oncloseoutnotpaymentrequest2ifpayment2willgetrejected @sprint-20-US-246948 @vaibhav @Allocation 
+  @265540 @ValidatePOuserseeSpentvalueofpaymentrequest1oncloseoutnotpaymentrequest2ifpayment2willgetrejected @sprint-20-US-246948 @vaibhav @Allocation
   Scenario: Validate PO user see 'Spent' value of payment request1 on closeout not payment request 2 if payment 2 will get rejected
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -1443,7 +1444,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Overview" sub tab
     Then I softly see field "Spent" as "$500.00"
 
-  @265548 @ValidatePMuserseespentvalueshouldbeupdatedoncloseoutinsenttoSRstateofcloseout @sprint-20-US-246948 @vaibhav @Allocation 
+  @265548 @ValidatePMuserseespentvalueshouldbeupdatedoncloseoutinsenttoSRstateofcloseout @sprint-20-US-246948 @vaibhav @Allocation
   Scenario: Validate PM user see 'spent' value should be updated on closeout in sent to S\R state of closeout
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation PM user" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -1534,7 +1535,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Overview" sub tab
     Then I softly see field "Spent" as "$500.00"
 
-  @265592 @ValidateEXEuserseespentvalueshouldbeupdatedoncloseoutinReviewedstateofcloseout @sprint-20-US-246948 @vaibhav @Allocation 
+  @265592 @ValidateEXEuserseespentvalueshouldbeupdatedoncloseoutinReviewedstateofcloseout @sprint-20-US-246948 @vaibhav @Allocation
   Scenario: Validate EXE user see 'spent' value should be updated on closeout in Reviewed state of closeout
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
@@ -1665,7 +1666,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Overview" sub tab
     Then I softly see field "Spent" as "$500.00"
 
-  @266774 @ValidatetheBehaviorofSpentvalueoncloseout2afterrejectingcloseout1 @sprint-20-US-246948 @vaibhav @Allocation 
+  @266774 @ValidatetheBehaviorofSpentvalueoncloseout2afterrejectingcloseout1 @sprint-20-US-246948 @vaibhav @Allocation
   Scenario: Validate the Behavior of Spent value on closeout2 after rejecting closeout1
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -1859,7 +1860,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Spent" as "$400.00"
     Then I softly see value "$400.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
 
-  @266847 @ValidatethatFocusAreaaddedandupdatedSpentvalueinnewBPaftercreatingcloseoutshouldreflectsonCloseout @sprint-20-US-246948 @vaibhav @Allocation 
+  @266847 @ValidatethatFocusAreaaddedandupdatedSpentvalueinnewBPaftercreatingcloseoutshouldreflectsonCloseout @sprint-20-US-246948 @vaibhav @Allocation
   Scenario: Validate that Focus Area added and updated Spent value in new BP after creating closeout should reflects on Closeout
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
@@ -2053,7 +2054,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Spent" as "$400.00"
     Then I softly see value "$400.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
 
-  @265532 @ValidatePOuserseeSpentvalueisaddedoncloseoutinspentcolumnforfocusareaifusercreatelatestpaymentrequestaftercloseout @sprint-20-US-246948 @vaibhav @Allocation 
+  @265532 @ValidatePOuserseeSpentvalueisaddedoncloseoutinspentcolumnforfocusareaifusercreatelatestpaymentrequestaftercloseout @sprint-20-US-246948 @vaibhav @Allocation
   Scenario: Validate PO user see 'Spent' value is added on closeout in spent column for focus area if user create latest payment request after closeout
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -2194,7 +2195,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Spent" as "$500.00"
     Then I softly see value "$500.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
 
-  @267259 @ValidateTheBehaviourOFSpentValueonCloseoutFor2awards @sprint-20-US-246948 @vaibhav @Allocation 
+  @267259 @ValidateTheBehaviourOFSpentValueonCloseoutFor2awards @sprint-20-US-246948 @vaibhav @Allocation
   Scenario: Validate The Behaviour OF Spent Value on Closeout For 2 awards
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM user" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -2381,5 +2382,5 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Spent" as "$400.00"
     Then I softly see value "$400.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$400.00" for title "Spent" inside table "---closeout:-:closeoutFundingAccountsTableId---"
-    Then I see value "$2,000.00" for title "Encumbrance" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
-    Then I see value "$1,600.00" for title "Encumbrance Balance" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$2,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$1,600.00" for title "Encumbrance Balance" against the value "{SavedValue:fundingAccount}" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
