@@ -754,7 +754,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | {SavedValue:fundingAccount} | 1000                |
     And I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details contains:
-      | Overview Tab - The Revised Obligation ($2000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($1000.0) |
+      | Overview Tab - The Revised Obligation ($2000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($1000.00) |
 
   @248791 @248858 @248861 @248979 @ValidateRevisedobligationcannotbelessthanspent @sprint-18-US-225787 @vaibhav @Allocation
   Scenario: Validate Revised obligation cannot be less than spent
@@ -3501,7 +3501,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     And I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details contains:
-      | Overview Tab - The Revised Obligation ($2000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($1000.0) |
+      | Overview Tab - The Revised Obligation ($2000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($1000.00) |
     #254205,254206
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -3596,7 +3596,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     And I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details contains:
-      | Overview Tab - The Revised Obligation ($2000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($1000.0) |
+      | Overview Tab - The Revised Obligation ($2000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($1000.00) |
     #254194
     Then I softly see value "$2,000.00" for title "Revised Award Amount" against the value "Total" inside table "---amendment:-:grantorBudgetChangeTableId---"
     Then I softly see field "Budgeted Amount" as "$2,000.00"
@@ -6256,7 +6256,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
      # To DO:- remove below extra step whenever bug resolved
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($1000.0) |
+      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($1000.00) |
     #253445
     And I click on "Edit" in the page details
     When I enter values into fields
@@ -6751,7 +6751,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     # To do remove below step whenever bug will be resolved
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2000.0) |
+      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2000.00) |
     #253540
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -6762,7 +6762,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     # To do remove below step whenever bug will be resolved
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($4000.0) |
+      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($4000.00) |
     #253539
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -6773,7 +6773,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     # To do remove below step whenever bug will be resolved
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2000.0) |
+      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2000.00) |
     #253536
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -7448,7 +7448,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
      # To DO:- remove below extra step whenever bug resolved
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($5000.0) |
+      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($5000.00) |
    #253360
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -7457,7 +7457,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
      # To DO:- remove below extra step whenever bug resolved
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($1000.0) |
+      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($1000.00) |
     #253367,253521
     Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
       | Revised Award Amount |
@@ -7791,7 +7791,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "5" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($1000.0) |
+      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($1000.00) |
     #254838
     And I click on "Edit" in the page details
     Then I softly see fields "fieldRequestedChangeInBudget__c" is in edit mode
@@ -7815,7 +7815,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "5" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($5000.0) |
+      | Overview Tab - The Revised Obligation ($3000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($5000.00) |
     #254848
     Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
       | Revised Award Amount |
@@ -8060,7 +8060,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "5" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The Revised Obligation ($1000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($3000.0) |
+      | Overview Tab - The Revised Obligation ($1000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($3000.00) |
       | Overview Tab - The Revised Obligation must be equal to the Budgeted Amount in the Budget Summary Section.                           |
       | Please specify the New Obligation planned through this amendment request.                                                           |
 
@@ -9894,7 +9894,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the value from row "1" for column name "Funding Account" as "FundingAccount2" from flex table "---announcement:-:fundingAccountsTableId---"
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account              | Pre-Encumbrance |
-      | {SavedValue:FundingAccount2} | 1000            |
+      | {SavedValue:FundingAccount2} | 5000            |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     When I refresh the page
@@ -10002,9 +10002,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     And I click in table hyperlink containing value "{SavedValue:FundingAccount2}"
     Then I see the header is "Funding Account" in the page details
-    Then I softly see field "Pre-Encumbrance" as "$1,100.00"
-    Then I softly see field "Encumbrance" as "$5,000.00"
+    Then I softly see field "Pre-Encumbrance" as "$2,000.00"
+    Then I softly see field "Encumbrance" as "$6,000.00"
     Then I softly see field "Spent" as "$0.00"
-    Then I softly see field "Total Obligation" as "$0.00"
-    Then I softly see field "Available Balance" as "$0.00"
-    Then I softly see field "Appropriation Amount" as "$0.00"
+    Then I softly see field "Total Obligation" as "$8,000.00"
+    Then I softly see field "Available Balance" as "$992,000.00"
+    Then I softly see field "Appropriation Amount" as "$1,000,000.00"
