@@ -2382,5 +2382,5 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Spent" as "$400.00"
     Then I softly see value "$400.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$400.00" for title "Spent" inside table "---closeout:-:closeoutFundingAccountsTableId---"
-    Then I softly see value "$2,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
-    Then I softly see value "$1,600.00" for title "Encumbrance Balance" against the value "{SavedValue:fundingAccount}" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$600.00" for title "Encumbrance Balance" against the value "{SavedValue:fundingAccount}" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"

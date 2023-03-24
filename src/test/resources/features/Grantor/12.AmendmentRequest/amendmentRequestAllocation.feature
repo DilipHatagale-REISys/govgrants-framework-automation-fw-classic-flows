@@ -9891,6 +9891,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click "Associate" after selection of "Automation Permanent Funding Account2" in the table "---announcement:-:fundingAccTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
+    And I save the value from row "1" for column name "Funding Account" as "FundingAccount2" from flex table "---announcement:-:fundingAccountsTableId---"
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account              | Pre-Encumbrance |
       | {SavedValue:FundingAccount2} | 1000            |
