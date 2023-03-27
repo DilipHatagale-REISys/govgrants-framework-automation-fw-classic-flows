@@ -10009,7 +10009,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Available Balance" as "$992,000.00"
     Then I softly see field "Appropriation Amount" as "$1,000,000.00"
 
-  @257686 @257701 @257708 @257692 @257717 @257709 @257736 @257744 @257745 @257747 @257746 @257748 @257749 @ValidatePOusercanseeNewObligationfieldasuserenterdollarfieldenterPositivevalueinNewObligationfieldunderBudgetSummarysectionwhenPeriodicRenewalamendmentrequestincreatedstateFAYES @sprint-19-US-250552 @vaibhav @Allocation @TBE
+  @vai @257686 @257701 @257708 @257692 @257717 @257709 @257736 @257744 @257745 @257747 @257746 @257748 @257749 @ValidatePOusercanseeNewObligationfieldasuserenterdollarfieldenterPositivevalueinNewObligationfieldunderBudgetSummarysectionwhenPeriodicRenewalamendmentrequestincreatedstateFAYES @sprint-19-US-250552 @vaibhav @Allocation @TBE
   Scenario: Validate PO user can see New Obligation field as user enter dollar field & enter Positive Value in New Obligation field under Budget Summary section when Periodic Renewal amendment request in created state(FA=YES)
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -10031,8 +10031,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click modal button "Save and Continue"
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I enter values into fields
-      | Value               | Field                           |
-      | 2000000000000000.30 | fieldRequestedChangeInBudget__c |
+      | Value                | Field                           |
+      | 20000000000000000.30 | fieldRequestedChangeInBudget__c |
     And I click on "Save" in the page details
     #257701
     Then I softly see the following messages in the page details contains:
@@ -10076,7 +10076,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 2000                 | 100        | 0              |
+      | Construction    | 2000                 | 200        | 0              |
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -10087,9 +10087,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Status" as "Submitted to Grantor"
     When I click on "Edit" in the page details
     When I enter values into fields
-      | Value               | Field                           |
-      | -2000               | fieldRequestedChangeInBudget__c |
-      | 2000000000000000.30 | fieldRevisedCommitment__c       |
+      | Value                 | Field                           |
+      | -2000                 | fieldRequestedChangeInBudget__c |
+      | 200000000000000000.30 | fieldRevisedCommitment__c       |
+    When I click on "Save" in the page details
     #257717
     Then I softly see the following messages in the page details contains:
       | Revised Commitment : Number is too large. |
@@ -10116,10 +10117,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "3" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary Section. |
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
     #257747
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The New Obligation ($1000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2000.00) |
+      | Overview Tab - The New Obligation ($1000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2000.0) |
     #257745,257748
     When I click on "Edit" in the page details
     When I enter values into fields
@@ -10129,8 +10130,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "3" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary Section.                            |
-      | Overview Tab - The New Obligation ($5000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2000.00) |
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary section.                           |
+      | Overview Tab - The New Obligation ($5000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2000.0) |
     #257746,257749
     When I click on "Edit" in the page details
     When I enter values into fields
@@ -10143,7 +10144,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
   @257705 @ValidatePOusercanseeCurrentCommitmentasReadonlyfieldwhichisCopyoftotalcommitmentfromtheAwardonwhichPeriodicRenewalAmendmentrequestiscreated @sprint-19-US-250552 @vaibhav @Allocation @TBE
   Scenario: Validate PO user can see Current Commitment as Read-only field which is Copy of total commitment from the Award on which Periodic Renewal Amendment request is created
-    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_RISK_ASSESSMENT_NO-Automation PO user"
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}" and properties "Automation PO user"
@@ -10287,7 +10288,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Edit" in the page details
     When I enter values into fields
       | Value | Field                     |
-      | 0     | fieldRevisedCommitment__c |
+      | 100   | fieldRevisedCommitment__c |
     And I click on "Save" in the page details
     And I wait for "5" seconds
     And I click on "Submit for Approval" in the page details
@@ -10300,4 +10301,3 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Save" in the page details
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
-
