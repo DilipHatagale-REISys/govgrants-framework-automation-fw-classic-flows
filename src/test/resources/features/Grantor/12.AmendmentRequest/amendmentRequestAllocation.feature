@@ -10009,7 +10009,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Available Balance" as "$992,000.00"
     Then I softly see field "Appropriation Amount" as "$1,000,000.00"
 
-  @257686 @257701 @257708 @257692 @257717 @257709 @257736 @257744 @257745 @257747 @257746 @257748 @257749 @ValidatePOusercanseeNewObligationfieldasuserenterdollarfieldenterPositivevalueinNewObligationfieldunderBudgetSummarysectionwhenPeriodicRenewalamendmentrequestincreatedstateFAYES @sprint-19-US-250552 @vaibhav @Allocation 
+  @257686 @257701 @257708 @257692 @257717 @257709 @257736 @257744 @257745 @257747 @257746 @257748 @257749 @ValidatePOusercanseeNewObligationfieldasuserenterdollarfieldenterPositivevalueinNewObligationfieldunderBudgetSummarysectionwhenPeriodicRenewalamendmentrequestincreatedstateFAYES @sprint-19-US-250552 @vaibhav @Allocation
   Scenario: Validate PO user can see New Obligation field as user enter dollar field & enter Positive Value in New Obligation field under Budget Summary section when Periodic Renewal amendment request in created state(FA=YES)
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -10142,7 +10142,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
 
-  @257705 @ValidatePOusercanseeCurrentCommitmentasReadonlyfieldwhichisCopyoftotalcommitmentfromtheAwardonwhichPeriodicRenewalAmendmentrequestiscreated @sprint-19-US-250552 @vaibhav @Allocation 
+  @257705 @ValidatePOusercanseeCurrentCommitmentasReadonlyfieldwhichisCopyoftotalcommitmentfromtheAwardonwhichPeriodicRenewalAmendmentrequestiscreated @sprint-19-US-250552 @vaibhav @Allocation
   Scenario: Validate PO user can see Current Commitment as Read-only field which is Copy of total commitment from the Award on which Periodic Renewal Amendment request is created
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -10233,7 +10233,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Current Commitment" as "CurrentCommitment1"
     Then I softly see value "{SavedValue:TotalCommitment1}" is "Equals to" the value "{SavedValue:CurrentCommitment1}"
 
-  @257882 @257883 @ValidatePOusercannotseevalidationonSubmitforApprovalbuttonwhenRevisedCommitmentisgreaterthantotalofCumulativeObligationfromActiveAward&newObligationonPeriodicRenewalamendmentrequestFAYES @sprint-19-US-250552 @vaibhav @Allocation 
+  @257882 @257883 @ValidatePOusercannotseevalidationonSubmitforApprovalbuttonwhenRevisedCommitmentisgreaterthantotalofCumulativeObligationfromActiveAward&newObligationonPeriodicRenewalamendmentrequestFAYES @sprint-19-US-250552 @vaibhav @Allocation
   Scenario: Validate PO user cannot see validation on Submit for Approval button when Revised Commitment is greater than total of Cumulative Obligation from Active Award & new Obligation on Periodic Renewal amendment request (FA=YES)
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -10303,7 +10303,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
 
-  @257886 @257889 @257887 @261579 @261581 @ValidatePOusercanseevalidationonsenttosubrecipientbuttonwhenNewobligationfieldiszeroinbudgetsummarysection @sprint-19-US-250552 @vaibhav @Allocation @TBE
+  @257886 @257889 @257887 @261579 @261581 @ValidatePOusercanseevalidationonsenttosubrecipientbuttonwhenNewobligationfieldiszeroinbudgetsummarysection @sprint-19-US-250552 @vaibhav @Allocation
   Scenario: Validate PO user can see validation on sent to subrecipient button when New obligation field is zero in budget summary section
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -10467,6 +10467,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - New Obligation must be greater than $0 |
     #258349
+    And I navigate to "Overview" sub tab
     Then I softly see field "Revised Commitment" as "$2,000.00"
     And I click on "Edit" in the page details
     When I enter values into fields
@@ -10497,14 +10498,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "5" seconds
     And I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab: The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
     #258537
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction    | 5000                 | 500        | 0              |
     And I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab: The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
     #258538
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
@@ -10563,7 +10564,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I check "Automation Permanent Focus Area2" boxes in flex table with id "---amendment:-:focusAreaTableId---"
     When I click on top right button "Associate" in flex table with id "---amendment:-:focusAreaTableId---"
     Then I softly see that "Automation Permanent Focus Area2" has been added in flextable with Id "---amendment:-:projectAreasTableId---"
-    Then I softly cannot see row level action button "Remove" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
+    Then I softly can see row level action button "Remove" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
     Then I softly can see row level action button "Remove" against "Automation Permanent Focus Area2" in flex table with id "---amendment:-:projectAreasTableId---"
     When I click on "Remove" icon for "Automation Permanent Focus Area2" inside flex table with id "---amendment:-:projectAreasTableId---" without waiting for record
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:projectAreasTableId---"
@@ -10571,7 +10572,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | You cannot delete this Focus Area as the Budgeted Amount is not zero. |
 
-  @258487 @258508 @258515 @258516 @258539 @ValidateINDusercanseeNewObligationfieldasreadyonlyfieldwhenPeriodicRenewalamendmentrequestinSendtoSubrecipientstateFAYES @sprint-19-US-250556 @vaibhav @Allocation @TBE
+  @vai @258487 @258508 @258515 @258516 @258539 @ValidateINDusercanseeNewObligationfieldasreadyonlyfieldwhenPeriodicRenewalamendmentrequestinSendtoSubrecipientstateFAYES @sprint-19-US-250556 @vaibhav @Allocation @TBE
   Scenario: Validate IND user can see New Obligation field as ready only field when Periodic Renewal amendment request in Send to Subrecipient state(FA=YES)
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default-Automation IND user"
@@ -10638,29 +10639,32 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction  | 500                  | 100        | 0              |
+    And I refresh the page
     #258508
     Then I cannot see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:subrecipientProjectAreasTableId---"
     Then I cannot see row level action button "Edit" against "Automation Permanent Focus Area2" in flex table with id "---amendment:-:subrecipientProjectAreasTableId---"
-    Then I softly see value "$500.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
-    Then I softly see value "$1,500.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
-    Then I softly see value "$2,000.00" for title "New Obligation" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$1,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$500.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$1,500.00" for title "New Obligation" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     And I wait for "3" seconds
     And I click on "Submit to Grantor" in the page details
     #258515
     Then I softly see the following messages in the page details contains:
-      | Overview Tab: The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
     #258516
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction  | 5000                 | 500        | 0              |
     And I wait for "3" seconds
+    And I refresh the page
     And I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab: The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
     #258539
-    And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
-      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 2000                 | 200        | 0              |
+    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction  | 1000                  | 100        | 0              |
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
