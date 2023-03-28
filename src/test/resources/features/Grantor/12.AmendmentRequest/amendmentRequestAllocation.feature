@@ -4874,7 +4874,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction  | 2000                 | 100        | 100            |
-    And I click on "Submit to Grantor" in the page details
+    And I wait for "5" seconds
     And I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details contains:
       | Overview Tab - The Budgeted Amount must be equal to the Revised Obligation in the Budget Summary Section |
@@ -8061,8 +8061,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Overview Tab - The Revised Obligation ($1000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($3000.00) |
-      | Overview Tab - The Revised Obligation must be equal to the Budgeted Amount in the Budget Summary Section.                           |
-      | Please specify the New Obligation planned through this amendment request.                                                           |
+      | Overview Tab - The Revised Obligation must be equal to the Budgeted Amount in the Budget Summary Section.                            |
+      | Please specify the New Obligation planned through this amendment request.                                                            |
 
   @253534 @ValidateValuesonFundingaccountarecorrectlyupdatedafterAmendmentrequestisapproved @sprint-18-US-229266 @vaibhav @Allocation
   Scenario: Validate Values on Funding account are correctly updated after Amendment request is approved
@@ -8513,7 +8513,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
 
-  @256630 @256676 @256664 @256678 @256690 @256692 @256698 @256699 @256700 @256702 @256865 @256876 @256887 @256705 @256707 @256871 @256879 @256926 @256735 @256738 @256740 @ValidateCompPMusershouldseeNewObligationreadonlyfieldinPendingActivationstateofversion2AwardonBudgetSummarysectionFAisYES&iscopiedfromthedifferencecolumninthefundingAccountsectionfromtheAmendmentrequest @sprint-19-US-256008 @vaibhav @Allocation 
+  @256630 @256676 @256664 @256678 @256690 @256692 @256698 @256699 @256700 @256702 @256865 @256876 @256887 @256705 @256707 @256871 @256879 @256926 @256735 @256738 @256740 @ValidateCompPMusershouldseeNewObligationreadonlyfieldinPendingActivationstateofversion2AwardonBudgetSummarysectionFAisYES&iscopiedfromthedifferencecolumninthefundingAccountsectionfromtheAmendmentrequest @sprint-19-US-256008 @vaibhav @Allocation
   Scenario: Validate Comp PM user should see 'New Obligation read only field in Pending Activation state of version 2 Award on Budget Summary section(FA is YES) & is copied from the difference column in the funding Account section from the Amendment request
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -8752,7 +8752,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Total Commitment" as "$3,000.00"
     Then I softly see value "{SavedValue:RevisedCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment3}"
 
-  @256683 @256685 @256696 @256703 @256704 @256708 @256869 @256873 @256736 @256739 @256741 @ValidateCompPMusershouldseeNewObligationreadonlyclminPendingActivationstateofversion2AwardonBudgetSummarybyFAsection(FAisNO&iscopiedfromthedifferencecolumninthefundingAccountsectionfromtheAmendmentrequest @sprint-19-US-256008 @vaibhav @Allocation 
+  @256683 @256685 @256696 @256703 @256704 @256708 @256869 @256873 @256736 @256739 @256741 @ValidateCompPMusershouldseeNewObligationreadonlyclminPendingActivationstateofversion2AwardonBudgetSummarybyFAsection(FAisNO&iscopiedfromthedifferencecolumninthefundingAccountsectionfromtheAmendmentrequest @sprint-19-US-256008 @vaibhav @Allocation
   Scenario: Validate Comp PM user should see 'New Obligation read only clm in Pending Activation state of version 2 Award on Budget Summary by FA section(FA is NO) & is copied from the difference column in the funding Account section from the Amendment request
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -9165,7 +9165,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @255649 @255653 @255734 @255725 @255727 @255735 @ValidateDirecctedPMusercanseevaluedisplayedforNewObligationfieldonactivationstateofawardiscopiedfromthedifferencecolumninthefundingAccountsectionfromtheAmendmentrequest @sprint-19-US-256009 @vaibhav @Allocation 
+  @255649 @255653 @255734 @255725 @255727 @255735 @ValidateDirecctedPMusercanseevaluedisplayedforNewObligationfieldonactivationstateofawardiscopiedfromthedifferencecolumninthefundingAccountsectionfromtheAmendmentrequest @sprint-19-US-256009 @vaibhav @Allocation
   Scenario: Validate Direccted PM user can see value displayed for New Obligation field on activation state of award is copied from the difference column in the funding Account section from the Amendment request
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Directed"
     When I login to "As a Grantor" app as "PM" user
@@ -9590,7 +9590,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$0.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @255732 @ValidateDirectedPMusercanseeCumulativeObligationfieldiscomingfromthecumulativeObligationinthelatestawardstatusinactiveclosedacrossallBPsFANO @sprint-19-US-256009 @vaibhav @Allocation 
+  @255732 @ValidateDirectedPMusercanseeCumulativeObligationfieldiscomingfromthecumulativeObligationinthelatestawardstatusinactiveclosedacrossallBPsFANO @sprint-19-US-256009 @vaibhav @Allocation
   Scenario: Validate Directed PM user can see Cumulative Obligation field is coming from the cumulative Obligation in the latest award (status in active, closed) across all BPs (FA=NO)
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Directed"
     When I login to "As a Grantor" app as "PM" user
@@ -9734,7 +9734,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation3"
     Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CumulativeObligation3}"
 
-  @255733 @ValidatePMusercanseeCumulativeObligationcolumninbudgesummarybyfocusareasectionandvalueswillrollupfromtheawardsCumulativeObligationforthatfocusareaacrossallBPsoflatestawardinclosedstate @sprint-19-US-256009 @vaibhav @Allocation 
+  @255733 @ValidatePMusercanseeCumulativeObligationcolumninbudgesummarybyfocusareasectionandvalueswillrollupfromtheawardsCumulativeObligationforthatfocusareaacrossallBPsoflatestawardinclosedstate @sprint-19-US-256009 @vaibhav @Allocation
   Scenario: Validate PM user can see Cumulative Obligation column in budget summary by focus area section, and  values will roll up from the award's Cumulative Obligation for that focus area across all BP's, of latest award in closed state
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Directed"
     When I login to "As a Grantor" app as "PM" user
@@ -9753,7 +9753,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value                       | Field                              |
       | Automation Test Description | fieldFundingChangeJustification__c |
-      | 2000                         | fieldRequestedChangeInBudget__c    |
+      | 2000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
     When I navigate to "Responsibilities" sub tab
@@ -10008,3 +10008,664 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Total Obligation" as "$8,000.00"
     Then I softly see field "Available Balance" as "$992,000.00"
     Then I softly see field "Appropriation Amount" as "$1,000,000.00"
+
+  @257686 @257701 @257708 @257692 @257717 @257709 @257736 @257744 @257745 @257747 @257746 @257748 @257749 @ValidatePOusercanseeNewObligationfieldasuserenterdollarfieldenterPositivevalueinNewObligationfieldunderBudgetSummarysectionwhenPeriodicRenewalamendmentrequestincreatedstateFAYES @sprint-19-US-250552 @vaibhav @Allocation
+  Scenario: Validate PO user can see New Obligation field as user enter dollar field & enter Positive Value in New Obligation field under Budget Summary section when Periodic Renewal amendment request in created state(FA=YES)
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}" and properties "Automation PO user"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter values into fields
+      | Value                | Field                           |
+      | 20000000000000000.30 | fieldRequestedChangeInBudget__c |
+    And I click on "Save" in the page details
+    #257701
+    Then I softly see the following messages in the page details contains:
+      | New Obligation : Number is too large. |
+    #257708
+    When I enter values into fields
+      | Value | Field                           |
+      | 2000  | fieldRequestedChangeInBudget__c |
+      | -2000 | fieldRevisedCommitment__c       |
+    And I click on "Save" in the page details
+    Then I softly see field "Revised Commitment" as "($2,000.00)"
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                     |
+      | 2000  | fieldRevisedCommitment__c |
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PeriodicID"
+    And I refresh the page
+    #257686
+    Then I softly see field "New Obligation" as "$2,000.00"
+    Then I softly do not see "Requested Change in Budget" inside page block detail
+    And I save the field labeled "Proposed Budget Period Start Date" as "updatedBudgetPeriodStartDate"
+    And I save the field labeled "Proposed Budget Period End Date" as "updatedBudgetPeriodEndDate"
+    And I get the "EGMS ID"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | Start Date                                | End Date                                |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodStartDate} | {SavedValue:updatedBudgetPeriodEndDate} |
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Title                       | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 2000                |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 2000                 | 200        | 0              |
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    #257692
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I click on "Edit" in the page details
+    When I enter values into fields
+      | Value                 | Field                           |
+      | -2000                 | fieldRequestedChangeInBudget__c |
+      | 200000000000000000.30 | fieldRevisedCommitment__c       |
+    When I click on "Save" in the page details
+    #257717
+    Then I softly see the following messages in the page details contains:
+      | Revised Commitment : Number is too large. |
+    When I enter values into fields
+      | Value | Field                     |
+      | 5000  | fieldRevisedCommitment__c |
+    And I click on "Save" in the page details
+    Then I softly see field "New Obligation" as "($2,000.00)"
+    #257709
+    Then I softly see field "Revised Commitment" as "$5,000.00"
+    #257736
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                           |
+      | 1000  | fieldRequestedChangeInBudget__c |
+    And I click on "Save" in the page details
+    And I click on "Edit" icon for "Automation Permanent Focus Area" inside flex table with id "---amendment:-:projectAreasTableId---" without waiting for record
+    Then I softly see field "NewObligationFormula__c" not in edit mode
+    Then I softly see field "BudgetedAmount__c" not in edit mode
+    And I click on top right button "Save" in flex table with id "---amendment:-:projectAreasTableId---"
+    Then I softly see value "$2,000.00" for title "New Obligation" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "$2,000.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
+    #257744
+    And I wait for "5" seconds
+    And I click on "Submit for Approval" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
+    #257747
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - The New Obligation ($1000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2000.0) |
+    #257745,257748
+    When I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                           |
+      | 5000  | fieldRequestedChangeInBudget__c |
+    When I click on "Save" in the page details
+    And I wait for "3" seconds
+    And I click on "Submit for Approval" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary section.                           |
+      | Overview Tab - The New Obligation ($5000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2000.0) |
+    #257746,257749
+    When I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                           |
+      | 2000  | fieldRequestedChangeInBudget__c |
+    When I click on "Save" in the page details
+    And I wait for "3" seconds
+    And I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+
+  @257705 @ValidatePOusercanseeCurrentCommitmentasReadonlyfieldwhichisCopyoftotalcommitmentfromtheAwardonwhichPeriodicRenewalAmendmentrequestiscreated @sprint-19-US-250552 @vaibhav @Allocation
+  Scenario: Validate PO user can see Current Commitment as Read-only field which is Copy of total commitment from the Award on which Periodic Renewal Amendment request is created
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}" and properties "Automation PO user"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    And I save the field labeled "Total Commitment" as "TotalCommitment"
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    Then I softly see that "Current Commitment" rendered in view mode only
+    When I click on "Save" in the page details
+    And I refresh the page
+    Then I softly see field "Current Commitment" as "$1,000.00"
+    And I save the field labeled "Current Commitment" as "CurrentCommitment"
+    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:CurrentCommitment}"
+    And I save the field labeled "Proposed Budget Period Start Date" as "updatedBudgetPeriodStartDate"
+    And I save the field labeled "Proposed Budget Period End Date" as "updatedBudgetPeriodEndDate"
+    And I get the "EGMS ID"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | Start Date                                | End Date                                |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodStartDate} | {SavedValue:updatedBudgetPeriodEndDate} |
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Title                       | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 1000                |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 1000                 | 100        | 0              |
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Submit for Approval" in the page details
+    And I wait for "5" seconds
+    And I "Approve" in the approval decision
+    And I wait for "4" seconds
+    And I click on "Amend Subaward" in the page details
+    And I pause execution for "10" seconds
+    When I click on "Activate" in the page details
+    And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
+    And I navigate to "Budget" sub tab
+    And I save the field labeled "Total Commitment" as "TotalCommitment1"
+    Then I softly see field "Total Commitment" as "$2,000.00"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Total Commitment" as "$2,000.00"
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    Then I softly see that "Current Commitment" rendered in view mode only
+    And I wait for "3" seconds
+    When I click on "Save" in the page details
+    And I refresh the page
+    Then I softly see field "Current Commitment" as "$2,000.00"
+    And I save the field labeled "Current Commitment" as "CurrentCommitment1"
+    Then I softly see value "{SavedValue:TotalCommitment1}" is "Equals to" the value "{SavedValue:CurrentCommitment1}"
+
+  @257882 @257883 @ValidatePOusercannotseevalidationonSubmitforApprovalbuttonwhenRevisedCommitmentisgreaterthantotalofCumulativeObligationfromActiveAward&newObligationonPeriodicRenewalamendmentrequestFAYES @sprint-19-US-250552 @vaibhav @Allocation
+  Scenario: Validate PO user cannot see validation on Submit for Approval button when Revised Commitment is greater than total of Cumulative Obligation from Active Award & new Obligation on Periodic Renewal amendment request (FA=YES)
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}" and properties "Automation PO user"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I refresh the page
+    And I save the field labeled "Proposed Budget Period Start Date" as "updatedBudgetPeriodStartDate"
+    And I save the field labeled "Proposed Budget Period End Date" as "updatedBudgetPeriodEndDate"
+    And I get the "EGMS ID"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | Start Date                                | End Date                                | New Obligation |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodStartDate} | {SavedValue:updatedBudgetPeriodEndDate} | 1000           |
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Title                       | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 1000                |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 1000                 | 100        | 0              |
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    #257883
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                     |
+      | 100   | fieldRevisedCommitment__c |
+    And I click on "Save" in the page details
+    And I wait for "5" seconds
+    And I click on "Submit for Approval" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - Revised Commitment should be equal to or greater than the total of Cummulative Obligation $2000.00 across all budget periods. |
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                     |
+      | 5000  | fieldRevisedCommitment__c |
+    And I click on "Save" in the page details
+    And I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+
+  @257886 @257889 @257887 @261579 @261581 @ValidatePOusercanseevalidationonsenttosubrecipientbuttonwhenNewobligationfieldiszeroinbudgetsummarysection @sprint-19-US-250552 @vaibhav @Allocation
+  Scenario: Validate PO user can see validation on sent to subrecipient button when New obligation field is zero in budget summary section
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}" and properties "Automation PO user"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter values into fields
+      | Value | Field                           |
+      | 0     | fieldRequestedChangeInBudget__c |
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PeriodicID"
+    And I refresh the page
+    And I save the field labeled "Proposed Budget Period Start Date" as "updatedBudgetPeriodStartDate"
+    And I save the field labeled "Proposed Budget Period End Date" as "updatedBudgetPeriodEndDate"
+    And I get the "EGMS ID"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | Start Date                                | End Date                                |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodStartDate} | {SavedValue:updatedBudgetPeriodEndDate} |
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Title                       | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 2000                |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    And I wait for "5" seconds
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - New Obligation must be greater than $0 |
+    #257889
+    And I click on "Edit" in the page details
+    And I navigate to "Overview" sub tab
+    And I clear the value from field "fieldRequestedChangeInBudget__c"
+    And I click on "Save" in the page details
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - New Obligation must be greater than $0 |
+    #257887
+    And I click on "Edit" in the page details
+    And I navigate to "Overview" sub tab
+    When I enter values into fields
+      | Value | Field                           |
+      | 1000  | fieldRequestedChangeInBudget__c |
+    And I click on "Save" in the page details
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent to Subrecipient"
+    #257886
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 1000                 | 100        | 0              |
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                           |
+      | 0     | fieldRequestedChangeInBudget__c |
+    And I click on "Save" in the page details
+    And I wait for "5" seconds
+    And I click on "Send Back to Subrecipient" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - New Obligation must be greater than $0 |
+    #257889
+    And I click on "Edit" in the page details
+    And I navigate to "Overview" sub tab
+    And I clear the value from field "fieldRequestedChangeInBudget__c"
+    And I click on "Save" in the page details
+    And I wait for "5" seconds
+    And I click on "Send Back to Subrecipient" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - New Obligation must be greater than $0 |
+    And I refresh the page
+    #261579
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                           |
+      | 0     | fieldRequestedChangeInBudget__c |
+    And I click on "Save" in the page details
+    And I wait for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - New Obligation must be greater than $0 |
+    #261581
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                           |
+      | -200  | fieldRequestedChangeInBudget__c |
+    And I click on "Save" in the page details
+    And I wait for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - New Obligation must be greater than $0 |
+
+  @258053 @258326 @258349 @258522 @258525 @258530 @258536 @258537 @258538 @258333 @258348 @ValidateCompetitiveFDusercanseeNewObligationfieldasuserenterdollarfield&enternegativeValueinNewObligationfieldunderBudgetSummarysectionwhenPeriodicRenewalamendmentrequestincreatedstateFANO @sprint-19-US-250552-250556 @vaibhav @Allocation @TBE
+  Scenario: Validate Competitive FD user can see New Obligation field as user enter dollar field & enter negative Value in New Obligation field under Budget Summary section when Periodic Renewal amendment request in created state(FA=NO)
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
+    When I login to "As a Grantor" app as "FD" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter values into fields
+      | Value | Field                           |
+      | 2000  | fieldRequestedChangeInBudget__c |
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PeriodicID"
+    #258333
+    Then I softly see field "New Obligation" as "$2,000.00"
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                           |
+      | -2000 | fieldRequestedChangeInBudget__c |
+    And I click on "Save" in the page details
+    #258053
+    Then I softly see field "New Obligation" as "($2,000.00)"
+    And I save the field labeled "Proposed Budget Period Start Date" as "updatedBudgetPeriodStartDate"
+    And I save the field labeled "Proposed Budget Period End Date" as "updatedBudgetPeriodEndDate"
+    And I get the "EGMS ID"
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Title                       | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 2000                |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    And I wait for "5" seconds
+    And I click on "Send to Subrecipient" in the page details
+    #258326
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - New Obligation must be greater than $0 |
+    #258349
+    And I navigate to "Overview" sub tab
+    Then I softly see field "Revised Commitment" as "$2,000.00"
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                           |
+      | 2000  | fieldRequestedChangeInBudget__c |
+    And I click on "Save" in the page details
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    #258522
+    Then I softly cannot see field "Current Obligation" inside page block
+    Then I softly cannot see field "Revised Obligation" inside page block
+    Then I softly cannot see field "Spent" inside page block
+    #258530,258525
+    And I click on "Edit" in the page details
+    Then I softly see that "Revised Commitment" rendered in view mode only
+    Then I softly see that "New Obligation" rendered in view mode only
+    And I click on "Save" in the page details
+    Then I softly cannot see field "Requested Change in Budget" inside page block
+    Then I softly see field "New Obligation" as "$2,000.00"
+    #258536
+    And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 500                  | 100        | 0              |
+    And I wait for "5" seconds
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
+    #258537
+    And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 5000                 | 500        | 0              |
+    And I wait for "5" seconds
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
+    #258538
+    And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 2000                 | 200        | 0              |
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                           |
+      | -2000 | fieldRequestedChangeInBudget__c |
+    And I click on "Save" in the page details
+    And I wait for "5" seconds
+    And I click on "Send Back to Subrecipient" in the page details
+    #258326
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - New Obligation must be greater than $0 |
+    #258348
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                           |
+      | 2000  | fieldRequestedChangeInBudget__c |
+    And I click on "Save" in the page details
+    And I wait for "5" seconds
+    And I click on "Send Back to Subrecipient" in the page details
+   Then I softly see field "Status" as "Sent to Subrecipient"
+
+  @257892 @ValidateCompetitivePOusercanseeerrormessageafterclickonremovebuttonwhileremovingthefocusareawithbudgetassociatedwithitFAYES @sprint-19-US-250552 @vaibhav @Allocation @TBE
+  Scenario: Validate Competitive PO user can see error message after click on remove button while removing the focus area, with budget associated with it (FA=YES)
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}" and properties "Automation PO user"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on top right button "Associate" in flex table with id "---amendment:-:projectAreasTableId---"
+    And I perform quick search for "Automation Permanent Focus Area2" in "---amendment:-:focusAreaTableId---" panel
+    When I check "Automation Permanent Focus Area2" boxes in flex table with id "---amendment:-:focusAreaTableId---"
+    When I click on top right button "Associate" in flex table with id "---amendment:-:focusAreaTableId---"
+    Then I softly see that "Automation Permanent Focus Area2" has been added in flextable with Id "---amendment:-:projectAreasTableId---"
+    Then I softly can see row level action button "Remove" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
+    Then I softly can see row level action button "Remove" against "Automation Permanent Focus Area2" in flex table with id "---amendment:-:projectAreasTableId---"
+    When I click on "Remove" icon for "Automation Permanent Focus Area2" inside flex table with id "---amendment:-:projectAreasTableId---" without waiting for record
+    Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:projectAreasTableId---"
+    When I click on "Remove" icon for "Automation Permanent Focus Area" inside flex table with id "---amendment:-:projectAreasTableId---" without waiting for record
+    Then I softly see the following messages in the page details contains:
+      | You cannot delete this Focus Area as the Budgeted Amount is not zero. |
+
+  @258487 @258508 @258515 @258516 @258539 @ValidateINDusercanseeNewObligationfieldasreadyonlyfieldwhenPeriodicRenewalamendmentrequestinSendtoSubrecipientstateFAYES @sprint-19-US-250556 @vaibhav @Allocation @TBE
+  Scenario: Validate IND user can see New Obligation field as ready only field when Periodic Renewal amendment request in Send to Subrecipient state(FA=YES)
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default-Automation IND user"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}" and properties "Automation PO user"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter values into fields
+      | Value | Field                           |
+      | 2000  | fieldRequestedChangeInBudget__c |
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PeriodicID"
+    And I refresh the page
+    And I save the field labeled "Proposed Budget Period Start Date" as "updatedBudgetPeriodStartDate"
+    And I save the field labeled "Proposed Budget Period End Date" as "updatedBudgetPeriodEndDate"
+    And I get the "EGMS ID"
+    When I click on top right button "Associate" in flex table with id "---amendment:-:projectAreasTableId---"
+    And I perform quick search for "Automation Permanent Focus Area2" in "---amendment:-:focusAreaTableId---" panel
+    When I check "Automation Permanent Focus Area2" boxes in flex table with id "---amendment:-:focusAreaTableId---"
+    When I click on top right button "Associate" in flex table with id "---amendment:-:focusAreaTableId---"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | Start Date                                | End Date                                |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodStartDate} | {SavedValue:updatedBudgetPeriodEndDate} |
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                            | Start Date                                | End Date                                |
+      | Automation Permanent Focus Area2 | {SavedValue:updatedBudgetPeriodStartDate} | {SavedValue:updatedBudgetPeriodEndDate} |
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Title                       | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 2000                |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent to Subrecipient"
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    When I click on "Edit" in the page details
+    Then I softly see that "New Obligation" rendered in view mode only
+    Then I softly see field "New Obligation" as "$2,000.00"
+    When I click on "Save" in the page details
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 1000                 | 100        | 0              |
+    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction  | 500                  | 100        | 0              |
+    And I refresh the page
+    #258508
+    Then I cannot see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I cannot see row level action button "Edit" against "Automation Permanent Focus Area2" in flex table with id "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$1,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$500.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$1,500.00" for title "New Obligation" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    And I wait for "3" seconds
+    And I click on "Submit to Grantor" in the page details
+    #258515
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
+    #258516
+    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction  | 5000                 | 500        | 0              |
+    And I wait for "3" seconds
+    And I refresh the page
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
+    #258539
+    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction  | 1000                  | 100        | 0              |
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
