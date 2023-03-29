@@ -10420,7 +10420,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - New Obligation must be greater than $0 |
 
-  @258053 @258326 @258349 @258522 @258525 @258530 @258536 @258537 @258538 @258333 @258348 @ValidateCompetitiveFDusercanseeNewObligationfieldasuserenterdollarfield&enternegativeValueinNewObligationfieldunderBudgetSummarysectionwhenPeriodicRenewalamendmentrequestincreatedstateFANO @sprint-19-US-250552-250556 @vaibhav @Allocation @TBE
+  @258053 @258326 @258349 @258522 @258525 @258530 @258536 @258537 @258538 @258333 @258348 @ValidateCompetitiveFDusercanseeNewObligationfieldasuserenterdollarfield&enternegativeValueinNewObligationfieldunderBudgetSummarysectionwhenPeriodicRenewalamendmentrequestincreatedstateFANO @sprint-19-US-250552-250556 @vaibhav @Allocation
   Scenario: Validate Competitive FD user can see New Obligation field as user enter dollar field & enter negative Value in New Obligation field under Budget Summary section when Periodic Renewal amendment request in created state(FA=NO)
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     When I login to "As a Grantor" app as "FD" user
@@ -10538,7 +10538,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Send Back to Subrecipient" in the page details
    Then I softly see field "Status" as "Sent to Subrecipient"
 
-  @257892 @ValidateCompetitivePOusercanseeerrormessageafterclickonremovebuttonwhileremovingthefocusareawithbudgetassociatedwithitFAYES @sprint-19-US-250552 @vaibhav @Allocation @TBE
+  @257892 @ValidateCompetitivePOusercanseeerrormessageafterclickonremovebuttonwhileremovingthefocusareawithbudgetassociatedwithitFAYES @sprint-19-US-250552 @vaibhav @Allocation
   Scenario: Validate Competitive PO user can see error message after click on remove button while removing the focus area, with budget associated with it (FA=YES)
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -10573,7 +10573,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | You cannot delete this Focus Area as the Budgeted Amount is not zero. |
 
-  @258487 @258508 @258515 @258516 @258539 @ValidateINDusercanseeNewObligationfieldasreadyonlyfieldwhenPeriodicRenewalamendmentrequestinSendtoSubrecipientstateFAYES @sprint-19-US-250556 @vaibhav @Allocation @TBE
+  @258487 @258508 @258515 @258516 @258539 @ValidateINDusercanseeNewObligationfieldasreadyonlyfieldwhenPeriodicRenewalamendmentrequestinSendtoSubrecipientstateFAYES @sprint-19-US-250556 @vaibhav @Allocation
   Scenario: Validate IND user can see New Obligation field as ready only field when Periodic Renewal amendment request in Send to Subrecipient state(FA=YES)
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default-Automation IND user"

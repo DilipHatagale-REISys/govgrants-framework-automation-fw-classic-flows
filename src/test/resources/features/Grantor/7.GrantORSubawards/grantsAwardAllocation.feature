@@ -22963,3 +22963,318 @@ Feature: Validate all scenarios of grants and award for Allocation
 #      | {SavedValue:fundingAccount} | -1000       |
 #    Then I softly see the following messages in the page details contains:
 #      | The Encumbrance cannot be less than zero. |
+
+  @268449 @ValidateValidationWillComeonsavewhenPMusertrytoenterNegativeValueinNewObligationFieldinBudgetSummarySection @sprint-21-US-265545 @vaibhav @Allocation @TBE
+  Scenario: Validate Validation Will Come on save when PM user try to enter Negative Value in New Obligation Field in Budget Summary Section
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition_ByApp_Focus_No" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I navigate to "Budget" sub tab
+    Then I see status in Progress-bar is "Created" and is "green"
+    Then I softly see field "Budgeted Amount" inside page block
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    Then I softly see fields "fieldNewObligation__c" is in edit mode
+    And I enter value "-2000" into field "fieldNewObligation__c"
+    And I click on "Save" in the page details
+    Then I softly see the following messages in the page details contains:
+      | New obligation must be greater than zero. |
+
+  @268451 @ValidateValidationWillComeonsavewhenEXEusertrytoenterNegativeValueinTotalCommitmentFieldinBudgetSummarySection @sprint-21-US-265545 @vaibhav @Allocation @TBE
+  Scenario: Validate Validation Will Come on save when EXE user try to enter Negative Value in Total Commitment Field in Budget Summary Section
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldIsBuildUpFunctionality__c"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I navigate to "Budget" sub tab
+    Then I see status in Progress-bar is "Created" and is "green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    Then I softly see fields "fieldTotalCommitment__c" is in edit mode
+    And I enter value "-2000" into field "fieldTotalCommitment__c"
+    And I click on "Save" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Total Commitment must be greater than zero. |
+
+  @268454 @268455 @268456 @270275 @ValidateAdminusercanseeFieldHistoryismaintainedforNewObligationField @sprint-21-US-265545 @vaibhav @Allocation @TBE
+  Scenario: Validate Admin user can see Field History is maintained for New Obligation Field
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields3" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition_By_App_Focus_Yes" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I navigate to "Budget" sub tab
+    Then I see status in Progress-bar is "Created" and is "green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date | New Obligation |
+      | Automation Permanent Focus Area | 0          | 3650     | 1000           |
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    And I refresh the page
+    And I navigate to "History" sub tab
+    Then I softly see value "New Obligation" for title "Changed Field" inside table "---subAwardStandAlone:-:historyTableId---"
+    Then I softly see value "$1,000.00" for title "New Value" against the value "New Obligation" inside table "---subAwardStandAlone:-:historyTableId---"
+    Then I softly see value "$0.00" for title "Old Value" against the value "New Obligation" inside table "---subAwardStandAlone:-:historyTableId---"
+    #268455
+    Then I softly see value "Total Commitment" for title "Changed Field" inside table "---subAwardStandAlone:-:historyTableId---"
+    Then I softly see value "$2,000.00" for title "New Value" against the value "Total Commitment" inside table "---subAwardStandAlone:-:historyTableId---"
+    #268456
+    Then I softly see value "Cumulative Obligation" for title "Changed Field" inside table "---subAwardStandAlone:-:historyTableId---"
+    Then I softly see value "$1,000.00" for title "New Value" against the value "Cumulative Obligation" inside table "---subAwardStandAlone:-:historyTableId---"
+    Then I softly see value "$0.00" for title "Old Value" against the value "Cumulative Obligation" inside table "---subAwardStandAlone:-:historyTableId---"
+    #270275
+    And I click on "Submit For Approval" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Budget Tab - Provide the Award Amount before submitting for approval. |
+
+  @269829 @ValidatePMuserwillseeUpdateRevisedFundingbuttononactivatedgrants @sprint-21-US-265547 @vaibhav @Allocation @TBE
+  Scenario: Validate PM user will see Update Revised Funding button on activated grants
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    Then I softly can see top right button "Revise Estimated Funding" in page detail
+
+  @269836 @269840 @ValidateAdminUserWillseeProposedEstimatedFundingfieldismandatoryfield @sprint-21-US-265547 @vaibhav @Allocation @TBE
+  Scenario: Validate Admin User Will see Proposed Estimated Funding field is mandatory field
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation ADMIN user" of type "Formula_By_Applicant_Focus_Area"
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    Then I softly can see top right button "Revise Estimated Funding" in page detail
+    When I click on "Revise Estimated Funding" in the page details
+    Then I see field "Estimated Funding" as "$0.00" on modal
+    Then I see field "Cumulative Obligation" as "$1,000.00" on modal
+    Then I softly see "Proposed Estimated Funding" inside page block detail
+    When I click modal button "Save and Continue"
+    Then I softly see the following messages in the page details contains:
+      | Proposed Estimated Funding is required to save. |
+    #269840
+    And I enter in modal value "500" into field "fieldProposedEstimatedFunding__c"
+    When I click modal button "Save and Continue"
+    Then I softly see the following messages in the page details contains:
+      | The Estimated Funding must be equal to or greater than the Cumulative Obligation 1000.00 |
+
+  @269839 @269843 @ValidateEXEusercannotenternegativevalueinProposedEstimatedFundingfield @sprint-21-US-265547 @vaibhav @Allocation @TBE
+  Scenario: Validate EXE user can not enter negative value in Proposed Estimated Funding field
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Formula_By_Applicant_Focus_Area"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    Then I softly can see top right button "Revise Estimated Funding" in page detail
+    When I click on "Revise Estimated Funding" in the page details
+    And I enter in modal value "-2000" into field "fieldProposedEstimatedFunding__c"
+    When I click modal button "Save and Continue"
+    Then I softly see the following messages in the page details contains:
+      | The Estimated Funding must be equal to or greater than the Cumulative Obligation 1000.00 |
+    #269843
+    And I enter in modal value "2000" into field "fieldProposedEstimatedFunding__c"
+    When I click modal button "Save and Continue"
+    Then I softly see field "Estimated Funding" as "$2,000.00"
+
+  @269842 @270487 @ValidatePOuserwillseeCumulativeObligationasreadOnlyFieldandValuesandvalueswillpopulatefromActivegrant @sprint-21-US-265547 @vaibhav @Allocation @TBE
+  Scenario: Validate PO user will see Cumulative Obligation as read Only Field and Values and values will populate from Active grant
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Formula_By_Applicant_Focus_Area"
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    Then I softly can see top right button "Revise Estimated Funding" in page detail
+    When I click on "Revise Estimated Funding" in the page details
+    Then I see field "Cumulative Obligation" as "$1,000.00" on modal
+    #270487
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PO" into field "s2id_autogen1"
+    And I select value "Automation PO1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PO" without tableid
+    And I pause execution for "3" seconds
+    And I Click on "Reassign Records" icon for "Grant" without tableid
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:grantSourceOwnerTableId---" panel
+    When I check "{SavedValue:Automation Runtime Award}" boxes in flex table with id "---subAwardStandAlone:-:grantSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---subAwardStandAlone:-:grantSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:grantTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:Automation Runtime Award}" for title "Grant Title" inside table "---subAwardStandAlone:-:grantTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    Then I softly can see top right button "Revise Estimated Funding" in page detail
+    When I click on "Revise Estimated Funding" in the page details
+    And I enter in modal value "2000" into field "fieldProposedEstimatedFunding__c"
+    When I click modal button "Save and Continue"
+    Then I softly see field "Estimated Funding" as "$2,000.00"
+
+  @270802 @ValidateARisinProgressValueofProposedEstimatedfundingwillbecomparedwiththevalueofcumulativeobligationatthatmomentonGrant @sprint-21-US-265547 @vaibhav @Allocation @TBE
+  Scenario: Validate AR is in Progress Value of Proposed Estimated funding will be compared with the value of cumulative obligation at that moment on Grant
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PM user" of type "Formula_By_Applicant_Focus_Area"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "FundingID"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | New Obligation |
+      | Automation Permanent Focus Area | 2000           |
+    And I refresh the page
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    Then I softly can see top right button "Revise Estimated Funding" in page detail
+    When I click on "Revise Estimated Funding" in the page details
+    Then I see field "Cumulative Obligation" as "$1,000.00" on modal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:FundingID}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    And I click on "View" icon for "{SavedValue:FundingID}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 1            |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction  | 3000                 | 150        | 150            |
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                     |
+      | 3000  | fieldRevisedCommitment__c |
+    And I click on "Save" in the page details
+    When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:FundingID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:FundingID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:FundingID}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    And I click on "View" icon for "{SavedValue:FundingID}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    And I click on "Amend Subaward" in the page details
+    And I pause execution for "10" seconds
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID1"
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    Then I softly can see top right button "Revise Estimated Funding" in page detail
+    When I click on "Revise Estimated Funding" in the page details
+    Then I see field "Cumulative Obligation" as "$1,000.00" on modal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I click on "Activate" in the page details
+    Then I softly see field "Status" as "Activated"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    Then I softly can see top right button "Revise Estimated Funding" in page detail
+    When I click on "Revise Estimated Funding" in the page details
+    Then I see field "Cumulative Obligation" as "$3,000.00" on modal
