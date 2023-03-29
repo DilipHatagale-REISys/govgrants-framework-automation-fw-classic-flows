@@ -10573,7 +10573,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | You cannot delete this Focus Area as the Budgeted Amount is not zero. |
 
-  @258487 @258508 @258515 @258516 @258539 @ValidateINDusercanseeNewObligationfieldasreadyonlyfieldwhenPeriodicRenewalamendmentrequestinSendtoSubrecipientstateFAYES @sprint-19-US-250556 @vaibhav @Allocation
+ @vai @258487 @258508 @258515 @258516 @258539 @ValidateINDusercanseeNewObligationfieldasreadyonlyfieldwhenPeriodicRenewalamendmentrequestinSendtoSubrecipientstateFAYES @sprint-19-US-250556 @vaibhav @Allocation
   Scenario: Validate IND user can see New Obligation field as ready only field when Periodic Renewal amendment request in Send to Subrecipient state(FA=YES)
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default-Automation IND user"

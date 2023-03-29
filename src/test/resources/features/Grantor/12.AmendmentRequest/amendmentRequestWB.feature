@@ -2346,7 +2346,7 @@ Feature: Amendment Request scenarios without background
     And I click on "Remove" icon for "---AUTOEnvData:-:fundingAccount1---" inside flex table with id "---amendment:-:AmendmentFundingAccountTableId---" without waiting for record
     Then I softly do not see value "---AUTOEnvData:-:fundingAccount1---" for title "Funding Account" inside table "---amendment:-:AmendmentFundingAccountTableId---"
 
-  @96668 @102294 @ValidateInternalUserIncreaseFundingAmount-PeriodicRenewal @monu @buglogged151465
+  @96668 @102294 @ValidateInternalUserIncreaseFundingAmount-PeriodicRenewal @monu
   Scenario: Verify internal user is able to increase funding amount for periodic renewal amendment request
     And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES" of type "Competitive"
     When I am on "INTERNAL" portal
@@ -2447,7 +2447,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     When I expand nested table containing column value "BP02"
     Then I softly see value "$2,000.00" for title "Award Amount" against the value "Construction" inside table "---amendment:-:GrantsActualBudgetPeriodTableId---"
-    Then I softly see value "$100.00" for title "Cash Match" against the value "Construction" inside table "---amendment:-:GrantsActualBudgetPeriodTableId---"
+    Then I softly see value "$0.00" for title "Cash Match" against the value "Construction" inside table "---amendment:-:GrantsActualBudgetPeriodTableId---"
 
   @97049 @97053 @ValidateAddEditDeleteOfFocusArea-PeriodicRenewal @monu
   Scenario Outline: Verify internal user is able to Add edit delete focus area

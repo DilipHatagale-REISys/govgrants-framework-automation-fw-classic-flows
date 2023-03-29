@@ -22988,7 +22988,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I enter value "-2000" into field "fieldNewObligation__c"
     And I click on "Save" in the page details
     Then I softly see the following messages in the page details contains:
-      | New obligation must be greater than zero. |
+      | The New obligation cannot be less than Zero. |
 
   @268451 @ValidateValidationWillComeonsavewhenEXEusertrytoenterNegativeValueinTotalCommitmentFieldinBudgetSummarySection @sprint-21-US-265545 @vaibhav @Allocation @TBE
   Scenario: Validate Validation Will Come on save when EXE user try to enter Negative Value in Total Commitment Field in Budget Summary Section
@@ -23014,9 +23014,9 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I enter value "-2000" into field "fieldTotalCommitment__c"
     And I click on "Save" in the page details
     Then I softly see the following messages in the page details contains:
-      | Total Commitment must be greater than zero. |
+      | The Total Commitment cannot be less than zero. |
 
-  @268454 @268455 @268456 @270275 @ValidateAdminusercanseeFieldHistoryismaintainedforNewObligationField @sprint-21-US-265545 @vaibhav @Allocation @TBE
+  @268454 @268455 @268456 @270275 @ValidateAdminusercanseeFieldHistoryismaintainedforNewObligationField @sprint-21-US-265545 @vaibhav @Allocation 
   Scenario: Validate Admin user can see Field History is maintained for New Obligation Field
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -23064,7 +23064,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Provide the Award Amount before submitting for approval. |
 
-  @269829 @ValidatePMuserwillseeUpdateRevisedFundingbuttononactivatedgrants @sprint-21-US-265547 @vaibhav @Allocation @TBE
+  @269829 @ValidatePMuserwillseeUpdateRevisedFundingbuttononactivatedgrants @sprint-21-US-265547 @vaibhav @Allocation 
   Scenario: Validate PM user will see Update Revised Funding button on activated grants
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -23075,7 +23075,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     Then I softly can see top right button "Revise Estimated Funding" in page detail
 
-  @269836 @269840 @ValidateAdminUserWillseeProposedEstimatedFundingfieldismandatoryfield @sprint-21-US-265547 @vaibhav @Allocation @TBE
+  @269836 @269840 @ValidateAdminUserWillseeProposedEstimatedFundingfieldismandatoryfield @sprint-21-US-265547 @vaibhav @Allocation 
   Scenario: Validate Admin User Will see Proposed Estimated Funding field is mandatory field
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation ADMIN user" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "ADMIN" user
@@ -23116,6 +23116,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #269843
     And I enter in modal value "2000" into field "fieldProposedEstimatedFunding__c"
     When I click modal button "Save and Continue"
+    And I navigate to "Budget" sub tab
     Then I softly see field "Estimated Funding" as "$2,000.00"
 
   @269842 @270487 @ValidatePOuserwillseeCumulativeObligationasreadOnlyFieldandValuesandvalueswillpopulatefromActivegrant @sprint-21-US-265547 @vaibhav @Allocation @TBE
@@ -23162,6 +23163,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I click on "Revise Estimated Funding" in the page details
     And I enter in modal value "2000" into field "fieldProposedEstimatedFunding__c"
     When I click modal button "Save and Continue"
+    And I navigate to "Budget" sub tab
     Then I softly see field "Estimated Funding" as "$2,000.00"
 
   @270802 @ValidateARisinProgressValueofProposedEstimatedfundingwillbecomparedwiththevalueofcumulativeobligationatthatmomentonGrant @sprint-21-US-265547 @vaibhav @Allocation @TBE
@@ -23196,6 +23198,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly can see top right button "Revise Estimated Funding" in page detail
     When I click on "Revise Estimated Funding" in the page details
     Then I see field "Cumulative Obligation" as "$1,000.00" on modal
+    And I refresh the page
     And I navigate to "Grants" tab
     When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -23257,6 +23260,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly can see top right button "Revise Estimated Funding" in page detail
     When I click on "Revise Estimated Funding" in the page details
     Then I see field "Cumulative Obligation" as "$1,000.00" on modal
+    And I refresh the page
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
