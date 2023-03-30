@@ -10670,7 +10670,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
 
- @vai @266733 @266737 @266734 @266735 @ValidateColumnsdisplayedtoPMuseronPaymentSummarybyFocusAresectionwhenGranttypeformulaandAllocationisByapplicantandFocusarea @sprint-21-US-266772 @vaibhav @Allocation @TBE
+  @266733 @266737 @266734 @266735 @ValidateColumnsdisplayedtoPMuseronPaymentSummarybyFocusAresectionwhenGranttypeformulaandAllocationisByapplicantandFocusarea @sprint-21-US-266772 @vaibhav @Allocation @TBE
   Scenario Outline: Validate Columns displayed to PM user on Payment Summary by Focus Area section when Grant type is formula and Allocation is By applicant and Focus area
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "<Filter>-Automation PO user" of type "Formula_By_Applicant_Focus_Area"
     And I am on "SUBPORTAL" portal

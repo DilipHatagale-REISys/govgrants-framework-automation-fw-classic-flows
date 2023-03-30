@@ -2806,7 +2806,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "$500.00" for title "Balance" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
 
-  @267758 @ValidateFormulaGrantvalueinCumulativeobligationfieldandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestisincreatedandsecondperiodicrenewalamendmentandpaymentrequestisapprovedFANO @sprint-21-US-265880 @vaibhav @Allocation @TBE
+  @vai @267758 @ValidateFormulaGrantvalueinCumulativeobligationfieldandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestisincreatedandsecondperiodicrenewalamendmentandpaymentrequestisapprovedFANO @sprint-21-US-265880 @vaibhav @Allocation @TBE
   Scenario: Validate Formula Grant value in Cumulative obligation field and Cumulative obligation column on closeout request when closeout request is in created and second periodic renewal amendment and payment request is approved(FA=NO)
     And I activated standalone subaward "Automation Runtime FDM Announcement" with properties "Automation PO user" of type "Formula_By_Applicant_Focus_Area_No"
     And I am on "SUBPORTAL" portal
@@ -2859,7 +2859,7 @@ Feature: Validate all scenarios in Closeout
       | {SavedValue:fundingAccount} | 2000                |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name           | Amendment Request |
+      | Name          | Amendment Request |
       | Automation PO | Step 1            |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
@@ -2870,8 +2870,9 @@ Feature: Validate all scenarios in Closeout
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 2000                 | 100        | 0              |
+      | Construction    | 2000                 | 200        | 0              |
     And I click on "Submit to Grantor" in the page details
+    Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2959,7 +2960,7 @@ Feature: Validate all scenarios in Closeout
       | {SavedValue:fundingAccount} | 2000                |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name           | Amendment Request |
+      | Name          | Amendment Request |
       | Automation PO | Step 1            |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
