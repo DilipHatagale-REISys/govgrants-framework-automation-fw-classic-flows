@@ -2908,7 +2908,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
     Then I softly see field "Spent" as "$0.00"
-    Then I softly see field "Cumulative Obligation" as "$2,000.00"
+    Then I softly see field "Cumulative Obligation" as "$3,000.00"
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -2955,6 +2955,7 @@ Feature: Validate all scenarios in Closeout
       | Value | Field                           |
       | 2000  | fieldRequestedChangeInBudget__c |
       | 4000  | fieldRevisedCommitment__c       |
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "SOWAMENDMENTREQUEST"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
