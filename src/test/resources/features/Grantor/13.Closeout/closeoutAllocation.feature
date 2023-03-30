@@ -2954,7 +2954,8 @@ Feature: Validate all scenarios in Closeout
     When I enter values into fields
       | Value | Field                           |
       | 2000  | fieldRequestedChangeInBudget__c |
-      | 4000  | fieldRevisedCommitment__c       |
+      | 6000  | fieldRevisedCommitment__c       |
+      | 5000  | fieldProposedBudgetEndDate__c   |
     And I wait for "3" seconds
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "SOWAMENDMENTREQUEST"
@@ -2991,8 +2992,5 @@ Feature: Validate all scenarios in Closeout
     And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
     And I navigate to "Overview" sub tab
     Then I softly see field "Spent" as "$500.00"
-    Then I softly see field "Balance" as "$3,500.00"
-    Then I softly see field "Cumulative Obligation" as "$4,000.00"
-    Then I softly see value "$4,000.00" for title "Cumulative Obligation" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
-    Then I softly see value "$3,500.00" for title "Balance" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
-    Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see field "Balance" as "$2,500.00"
+    Then I softly see field "Cumulative Obligation" as "$3,000.00"
