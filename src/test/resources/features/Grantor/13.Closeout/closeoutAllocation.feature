@@ -2429,7 +2429,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Spent" as "$0.00"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
 
-  @267749 @ValidatevalueinSpentandCumulativeobligationcolumnoncloseoutrequestwhenpaymentrequestisapproved @sprint-21-US-265880 @vaibhav @Allocation @TBE
+  @267749 @ValidatevalueinSpentandCumulativeobligationcolumnoncloseoutrequestwhenpaymentrequestisapproved @sprint-21-US-265880 @vaibhav @Allocation
   Scenario: Validate value in Spent and Cumulative obligation column on closeout request when payment request is approved
     And I activated standalone subaward "Automation Runtime Award for Closeout" with properties "Automation EXE user" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -2512,7 +2512,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "$500.00" for title "Balance" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
 
-  @267750 @ValidatevalueinSpentandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestiscreatedafterfirstpaymentrequestisapprovedandsecondpaymentrequestisrejectedfromapprovalprocess @sprint-21-US-265880 @vaibhav @Allocation @TBE
+  @267750 @ValidatevalueinSpentandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestiscreatedafterfirstpaymentrequestisapprovedandsecondpaymentrequestisrejectedfromapprovalprocess @sprint-21-US-265880 @vaibhav @Allocation
   Scenario: Validate value inSpent and Cumulative obligation  column on closeout request when closeout request is created after first payment request is approved and second payment request is rejected from approval process
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
