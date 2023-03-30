@@ -23279,7 +23279,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I click on "Revise Estimated Funding" in the page details
     Then I see field "Cumulative Obligation" as "$3,000.00" on modal
 
-  @267400 @ValidateFormulaGrantvalidationisdisplayedtoPMuseroncreateGrantmodalwhenuserselectallocationlevelasByapplicantwithFocusareaasYesandAdvancepaymentasYes @sprint-21-US-265727 @vaibhav @Allocation @TBE
+  @267400 @ValidateFormulaGrantvalidationisdisplayedtoPMuseroncreateGrantmodalwhenuserselectallocationlevelasByapplicantwithFocusareaasYesandAdvancepaymentasYes @sprint-21-US-265727 @vaibhav @Allocation
   Scenario: Validate Formula Grant validation is displayed to PM user on create Grant modal, when user select allocation level as By applicant with Focus area as Yes and Advance payment as Yes
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab

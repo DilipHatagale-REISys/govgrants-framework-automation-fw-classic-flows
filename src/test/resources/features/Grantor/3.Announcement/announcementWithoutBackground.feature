@@ -7248,7 +7248,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | {SavedValue:Automation Runtime Announcement} | Competitive      | PO   |
       | {SavedValue:Automation Runtime Announcement} | Directed         | PO   |
 
-  @265360 @ValidateCompetitiveannvalidationisdisplayedtoEXEuseroncreateannoucementmodalwhenuserselectFocusareaasYesandAdvancepaymentasYes @sprint-21-US-265727 @vaibhav @Allocation @TBE
+  @265360 @ValidateCompetitiveannvalidationisdisplayedtoEXEuseroncreateannoucementmodalwhenuserselectFocusareaasYesandAdvancepaymentasYes @sprint-21-US-265727 @vaibhav @Allocation 
   Scenario: Validate Competitive ann validation is displayed to EXE user on create annoucement modal, when user select Focus area as Yes and Advance payment as Yes
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -7265,7 +7265,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see the following messages in the page details contains:
       | If the Focus Area Required is Yes, then the Advance Payment Allowed must be selected as No. |
 
-  @265364 @267389 @ValidateFormulaannvalidationdisplayedtoPMuseroncreateannoucementmodalwhenuserselectallocationlevelasByapplicantwithFocusareaasYesandAdvancepaymentasYes @sprint-21-US-265727 @vaibhav @Allocation @TBE
+  @265364 @267389 @ValidateFormulaannvalidationdisplayedtoPMuseroncreateannoucementmodalwhenuserselectallocationlevelasByapplicantwithFocusareaasYesandAdvancepaymentasYes @sprint-21-US-265727 @vaibhav @Allocation 
   Scenario: Validate Formula ann validation is displayed to PM user on create annoucement modal, when user select allocation level as By applicant with Focus area as Yes and Advance payment as Yes
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -7295,7 +7295,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see the following messages in the page details contains:
       | If the Focus Area Required is Yes, then the Advance Payment Allowed must be selected as No. |
 
-  @267387 @ValidateCompetitiveannvalidationisdisplayedtoAdminuseronannouncementLayoutAfterclickonSavebuttonwhenuserselectFocusareaasYesandAdvancepaymentasYes @sprint-21-US-265727 @vaibhav @Allocation @TBE
+  @267387 @ValidateCompetitiveannvalidationisdisplayedtoAdminuseronannouncementLayoutAfterclickonSavebuttonwhenuserselectFocusareaasYesandAdvancepaymentasYes @sprint-21-US-265727 @vaibhav @Allocation 
   Scenario: Validate Competitive ann validation is displayed to Admin user on announcement Layout After click on Save button, when user select Focus area as Yes and Advance payment as Yes
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Announcements" tab
