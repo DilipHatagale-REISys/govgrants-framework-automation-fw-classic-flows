@@ -2415,8 +2415,8 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---closeout:-:grantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---closeout:-:grantsTableId---"
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
     When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
@@ -2682,6 +2682,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I navigate to "Monitoring" tab
     And I navigate to "Reimbursements" content inside "Payments" subheader on left panel
+    And I click toggle button to select "Reimbursements - All"
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     And I navigate to "Financials" sub tab
@@ -2853,12 +2854,6 @@ Feature: Validate all scenarios in Closeout
       | 2000  | fieldRequestedChangeInBudget__c |
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "SOWAMENDMENTREQUEST"
-    And I save the field labeled "Proposed Budget Period Start Date" as "PBPSD"
-    And I save the field labeled "Proposed Budget Period End Date" as "PBPED"
-    And I click on "Edit" icon for "Automation Permanent Focus Area" inside flex table with id "---amendment:-:FundingChangeFocusAreaTableId---" without waiting for record
-    And I enter value "{SavedValue:PBPSD}" into field "GATStartDate__c"
-    And I enter value "{SavedValue:PBPED}" into field "GATEndDate__c"
-    And I click on top right button "Save" in flex table with id "---amendment:-:FundingChangeFocusAreaTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 2000                |
@@ -2959,12 +2954,6 @@ Feature: Validate all scenarios in Closeout
       | 2000  | fieldRequestedChangeInBudget__c |
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "SOWAMENDMENTREQUEST"
-    And I save the field labeled "Proposed Budget Period Start Date" as "PBPSD"
-    And I save the field labeled "Proposed Budget Period End Date" as "PBPED"
-    And I click on "Edit" icon for "Automation Permanent Focus Area" inside flex table with id "---amendment:-:FundingChangeFocusAreaTableId---" without waiting for record
-    And I enter value "{SavedValue:PBPSD}" into field "GATStartDate__c"
-    And I enter value "{SavedValue:PBPED}" into field "GATEndDate__c"
-    And I click on top right button "Save" in flex table with id "---amendment:-:FundingChangeFocusAreaTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 2000                |

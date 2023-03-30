@@ -3,6 +3,7 @@ package com.ggproduct.automation.webservices;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
+import com.testingblaze.register.EnvironmentFactory;
 import com.testingblaze.register.I;
 
 import java.time.format.DateTimeFormatter;
@@ -859,11 +860,25 @@ public class GrantorPayloads {
                 return advancePermissibleYesnofocusareaProgramAnticipatedNo(json);
             case "AMENDMENT_REQUEST_ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO":
                 return createAwarForAmendmentRequestAdvanceYesFocusNo(json);
+            case "SUBRECIPIENT_ORG_IND_USER":
+                return createAwarForIndUser(json);
             case "USER":
                 return createStandaloneAwardUsingUser(json, user);
             default:
                 return json;
         }
+    }
+
+    private JsonObject createAwarForIndUser(JsonObject json) {
+
+        if(EnvironmentFactory.getEnvironmentName().contains("TEST8")) {
+            JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+            JsonArray newA = new JsonArray();
+            grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));
+            newA.add(grant);
+            json.add("Grant", newA);
+        }
+        return json;
     }
 
     private JsonObject createAwarForAmendmentRequestAdvanceYesFocusNo(JsonObject json) {

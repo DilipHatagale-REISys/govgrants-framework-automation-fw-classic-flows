@@ -10670,11 +10670,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
 
-  @266733 @266734 @ValidateColumnsdisplayedtoPMuseronPaymentSummarybyFocusAresectionwhenGranttypeformulaandAllocationisByapplicantandFocusarea @sprint-21-US-266772 @vaibhav @Allocation @TBE
-  Scenario: Validate Columns displayed to PM user on Payment Summary by Focus Area section when Grant type is formula and Allocation is By applicant and Focus area
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user" of type "Formula_By_Applicant_Focus_Area"
+ @vai @266733 @266737 @266734 @266735 @ValidateColumnsdisplayedtoPMuseronPaymentSummarybyFocusAresectionwhenGranttypeformulaandAllocationisByapplicantandFocusarea @sprint-21-US-266772 @vaibhav @Allocation @TBE
+  Scenario Outline: Validate Columns displayed to PM user on Payment Summary by Focus Area section when Grant type is formula and Allocation is By applicant and Focus area
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "<Filter>-Automation PO user" of type "Formula_By_Applicant_Focus_Area"
     And I am on "SUBPORTAL" portal
-    And I login to "Grants Portal" app as "SPI3" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -10737,17 +10737,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Automation Test Description | fieldFundingChangeJustification__c |
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
-    When I click on top right button "Associate" in flex table with id "---amendment:-:projectAreasTableId---"
-    And I perform quick search for "Automation Permanent Focus Area2" in "---amendment:-:focusAreaTableId---" panel
-    When I check "Automation Permanent Focus Area2" boxes in flex table with id "---amendment:-:focusAreaTableId---"
-    When I click on top right button "Associate" in flex table with id "---amendment:-:focusAreaTableId---"
-    And I refresh the page
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                           | New Obligation |
-      | Automation Permanent Focus Area | 1000           |
-    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
-      | Title                            | New Obligation |
-      | Automation Permanent Focus Area2 | 1000           |
+      | Automation Permanent Focus Area | 2000           |
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
@@ -10755,18 +10747,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | {SavedValue:EXE Username} | Step 1            |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "<User>" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction  | 1500                 | 100        | 100            |
-    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
-    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction  | 1500                 | 100        | 100            |
+      | Construction  | 3000                 | 150        | 150            |
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
@@ -10805,7 +10793,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "EGMS ID" as "AwardEGMSID1"
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "<User>" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -10821,7 +10809,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "PayreqId1"
     And I navigate to "Financials" sub tab
-    And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement |
@@ -10832,8 +10819,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:PayreqId1}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:PayreqId1}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
@@ -10848,8 +10835,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:PayreqId1}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:PayreqId1}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -10860,20 +10847,23 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I navigate to "Actuals" sub tab
-    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
-    Then I softly see value "$500.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
-    Then I softly see value "$1,000.00" for title "Balance" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
-    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
-    Then I softly see value "$300.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
-    Then I softly see value "$1,200.00" for title "Balance" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$800.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    #266737
+    Then I softly see value "$2,200.00" for title "Balance" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
     #266734
-    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "<User>" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
     When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---progressReport:-:recipientActiveGrantId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantSubrecipientFocusAreaTableId---"
-    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:grantSubrecipientFocusAreaTableId---"
-    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:grantSubrecipientFocusAreaTableId---"
+    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Examples:
+      | Filter                    | User |
+      | default                   | SPI3 |
+      | SUBRECIPIENT_ORG_IND_USER | IND  |
