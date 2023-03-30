@@ -22964,7 +22964,7 @@ Feature: Validate all scenarios of grants and award for Allocation
 #    Then I softly see the following messages in the page details contains:
 #      | The Encumbrance cannot be less than zero. |
 
-  @268449 @ValidateValidationWillComeonsavewhenPMusertrytoenterNegativeValueinNewObligationFieldinBudgetSummarySection @sprint-21-US-265545 @vaibhav @Allocation @TBE
+  @268449 @ValidateValidationWillComeonsavewhenPMusertrytoenterNegativeValueinNewObligationFieldinBudgetSummarySection @sprint-21-US-265545 @vaibhav @Allocation 
   Scenario: Validate Validation Will Come on save when PM user try to enter Negative Value in New Obligation Field in Budget Summary Section
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -22988,9 +22988,9 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I enter value "-2000" into field "fieldNewObligation__c"
     And I click on "Save" in the page details
     Then I softly see the following messages in the page details contains:
-      | The New obligation cannot be less than Zero. |
+      | The New Obligation cannot be less than zero. |
 
-  @268451 @ValidateValidationWillComeonsavewhenEXEusertrytoenterNegativeValueinTotalCommitmentFieldinBudgetSummarySection @sprint-21-US-265545 @vaibhav @Allocation @TBE
+  @268451 @ValidateValidationWillComeonsavewhenEXEusertrytoenterNegativeValueinTotalCommitmentFieldinBudgetSummarySection @sprint-21-US-265545 @vaibhav @Allocation 
   Scenario: Validate Validation Will Come on save when EXE user try to enter Negative Value in Total Commitment Field in Budget Summary Section
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -23016,7 +23016,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see the following messages in the page details contains:
       | The Total Commitment cannot be less than zero. |
 
-  @268454 @268455 @268456 @270275 @ValidateAdminusercanseeFieldHistoryismaintainedforNewObligationField @sprint-21-US-265545 @vaibhav @Allocation 
+  @268454 @268455 @268456 @270275 @ValidateAdminusercanseeFieldHistoryismaintainedforNewObligationField @sprint-21-US-265545 @vaibhav @Allocation
   Scenario: Validate Admin user can see Field History is maintained for New Obligation Field
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -23064,7 +23064,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Provide the Award Amount before submitting for approval. |
 
-  @269829 @ValidatePMuserwillseeUpdateRevisedFundingbuttononactivatedgrants @sprint-21-US-265547 @vaibhav @Allocation 
+  @269829 @ValidatePMuserwillseeUpdateRevisedFundingbuttononactivatedgrants @sprint-21-US-265547 @vaibhav @Allocation
   Scenario: Validate PM user will see Update Revised Funding button on activated grants
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -23075,7 +23075,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     Then I softly can see top right button "Revise Estimated Funding" in page detail
 
-  @269836 @269840 @ValidateAdminUserWillseeProposedEstimatedFundingfieldismandatoryfield @sprint-21-US-265547 @vaibhav @Allocation 
+  @269836 @269840 @ValidateAdminUserWillseeProposedEstimatedFundingfieldismandatoryfield @sprint-21-US-265547 @vaibhav @Allocation
   Scenario: Validate Admin User Will see Proposed Estimated Funding field is mandatory field
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation ADMIN user" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "ADMIN" user
@@ -23098,7 +23098,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see the following messages in the page details contains:
       | The Estimated Funding must be equal to or greater than the Cumulative Obligation 1000.00 |
 
-  @269839 @269843 @ValidateEXEusercannotenternegativevalueinProposedEstimatedFundingfield @sprint-21-US-265547 @vaibhav @Allocation @TBE
+  @269839 @269843 @ValidateEXEusercannotenternegativevalueinProposedEstimatedFundingfield @sprint-21-US-265547 @vaibhav @Allocation 
   Scenario: Validate EXE user can not enter negative value in Proposed Estimated Funding field
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "EXE" user
@@ -23119,7 +23119,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly see field "Estimated Funding" as "$2,000.00"
 
-  @269842 @270487 @ValidatePOuserwillseeCumulativeObligationasreadOnlyFieldandValuesandvalueswillpopulatefromActivegrant @sprint-21-US-265547 @vaibhav @Allocation @TBE
+  @269842 @270487 @ValidatePOuserwillseeCumulativeObligationasreadOnlyFieldandValuesandvalueswillpopulatefromActivegrant @sprint-21-US-265547 @vaibhav @Allocation 
   Scenario: Validate PO user will see Cumulative Obligation as read Only Field and Values and values will populate from Active grant
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PO" user
@@ -23166,7 +23166,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I softly see field "Estimated Funding" as "$2,000.00"
 
-  @270802 @ValidateARisinProgressValueofProposedEstimatedfundingwillbecomparedwiththevalueofcumulativeobligationatthatmomentonGrant @sprint-21-US-265547 @vaibhav @Allocation @TBE
+  @270802 @ValidateARisinProgressValueofProposedEstimatedfundingwillbecomparedwiththevalueofcumulativeobligationatthatmomentonGrant @sprint-21-US-265547 @vaibhav @Allocation 
   Scenario: Validate AR is in Progress Value of Proposed Estimated funding will be compared with the value of cumulative obligation at that moment on Grant
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PM user" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -23264,8 +23264,8 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---closeout:-:grantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---closeout:-:grantsTableId---"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I click on "Activate" in the page details
@@ -23275,10 +23275,22 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---closeout:-:grantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---closeout:-:grantsTableId---"
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     Then I softly can see top right button "Revise Estimated Funding" in page detail
     When I click on "Revise Estimated Funding" in the page details
     Then I see field "Cumulative Obligation" as "$3,000.00" on modal
+
+  @267400 @ValidateFormulaGrantvalidationisdisplayedtoPMuseroncreateGrantmodalwhenuserselectallocationlevelasByapplicantwithFocusareaasYesandAdvancepaymentasYes @sprint-21-US-265727 @vaibhav @Allocation @TBE
+  Scenario: Validate Formula Grant validation is displayed to PM user on create Grant modal, when user select allocation level as By applicant with Focus area as Yes and Advance payment as Yes
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition_By_App_Focus_Yes" values from "Award_Field_Values.xlsx"
+    And I enter values into fields
+      | Value | Field                      |
+      | Yes   | fieldIsAdvancePermitted__c |
+    And I click modal button "Save and Continue"
+    Then I softly see the following messages in the page details contains:
+      | If the Focus Area Required is Yes, then the Advance Payment Allowed must be selected as No. |
