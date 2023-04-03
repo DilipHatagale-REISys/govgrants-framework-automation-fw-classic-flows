@@ -2995,7 +2995,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Balance" as "$2,500.00"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
 
-  @267760 @ValidatevalueinSpentandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestisincreatedstateandBudgetrediectionamendmentisapproved @sprint-21-US-265880 @vaibhav @Allocation @TBE
+ @vai @267760 @ValidatevalueinSpentandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestisincreatedstateandBudgetrediectionamendmentisapproved @sprint-21-US-265880 @vaibhav @Allocation @TBE
   Scenario: Validate value in Spent and Cumulative obligation column on closeout request when closeout request is in created state and Budget rediection amendment is approved
     And I published "Formula" type announcement having name "Automation Runtime Award" and properties "BY_APPLICANT_RISK_ASSESSMENT_NO-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Award}" on announcement "{SavedValue:Automation Runtime Award}" with properties "default"
@@ -3041,6 +3041,7 @@ Feature: Validate all scenarios in Closeout
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Reimbursements" content inside "Payments" subheader on left panel
+    And I halt execution
 #    And I click toggle button to select "Reimbursements - All"
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
@@ -3139,6 +3140,7 @@ Feature: Validate all scenarios in Closeout
       | Title                           | Start Date | End Date | New Obligation |
       | Automation Permanent Focus Area | 0          | 3650     | 500            |
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
+    And I perform quick search for "Automation Permanent Focus Area2" in "---subAwardStandAlone:-:associateModalTableId---" panel
     When I check "Automation Permanent Focus Area2" boxes in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
 #    And I close modal by clicking the top right x button

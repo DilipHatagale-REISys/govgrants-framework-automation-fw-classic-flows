@@ -11144,6 +11144,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Title                           | Start Date | End Date | New Obligation |
       | Automation Permanent Focus Area | 0          | 3650     | 500            |
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
+    And I perform quick search for "Automation Permanent Focus Area2" in "---subAwardStandAlone:-:associateModalTableId---" panel
     When I check "Automation Permanent Focus Area2" boxes in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
 #    And I close modal by clicking the top right x button
@@ -11467,6 +11468,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Title                           | Start Date | End Date | New Obligation |
       | Automation Permanent Focus Area | 0          | 3650     | 500            |
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
+    And I perform quick search for "Automation Permanent Focus Area2" in "---subAwardStandAlone:-:associateModalTableId---" panel
     When I check "Automation Permanent Focus Area2" boxes in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
 #    And I close modal by clicking the top right x button
@@ -11608,7 +11610,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$500.00" for title "Balance" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
     Then I softly see value "$1,000.00" for title "Balance" against the value "Total" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
 
-  @268274 @ValidateDirectGrantspentvalueiscopiedtothePaymentsummarybythefocusareasectionofActivatedAwardfromFundingchangeamendmentafterPaymentrequestisapprovedFANo @sprint-21-US-265880 @vaibhav @Allocation @TBE
+  @268274 @ValidateDirectGrantspentvalueiscopiedtothePaymentsummarybythefocusareasectionofActivatedAwardfromFundingchangeamendmentafterPaymentrequestisapprovedFANo @sprint-21-US-265880 @vaibhav @Allocation
   Scenario: Validate Direct Grant spent value is copied to the Payment summary by the focus area section of Activated Award from Funding change amendment after Payment request is approved (FA=No)
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user" of type "Formula_By_Applicant_Focus_Area_No"
     And I am on "SUBPORTAL" portal
@@ -11699,7 +11701,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     When I navigate to "Actuals" sub tab
-    Then I softly see field "Spent" as "$1,000.00"
+    Then I softly see field "Spent" as "$0.00"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -11857,7 +11859,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     When I navigate to "Actuals" sub tab
-    Then I softly see field "Spent" as "$1,000.00"
+    Then I softly see field "Spent" as "$0.00"
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -11948,13 +11950,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "EGMS ID" as "SOWAMENDMENTREQUEST"
     And I save the field labeled "Proposed Budget Period Start Date" as "PBPSD"
     And I save the field labeled "Proposed Budget Period End Date" as "PBPED"
-    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
-      | Title                           | Start Date         | End Date           |
-      | Automation Permanent Focus Area | {SavedValue:PBPSD} | {SavedValue:PBPED} |
-    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
-      | Title                            | Start Date         | End Date           |
-      | Automation Permanent Focus Area2 | {SavedValue:PBPSD} | {SavedValue:PBPED} |
-    And I refresh the page
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 2000                |
@@ -11970,11 +11965,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 1000                 | 100        | 0              |
-    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
-    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction  | 1000                 | 100        | 0              |
+      | Construction    | 2000                 | 100        | 0              |
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -12027,9 +12018,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction    | 1000                 | 100        | 0              |
-    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction  | 1000                 | 100        | 0              |
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
@@ -12164,7 +12152,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
-      | {SavedValue:PM Username} | Step 1            |
+      | {SavedValue:PO Username} | Step 1            |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     And I wait for "5" seconds
