@@ -11291,7 +11291,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Automation Permanent Focus Area | 1000           |
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                           | New Obligation |
-      | Automation Permanent Focus Area | 1000           |
+      | Automation Permanent Focus Area2 | 1000           |
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
@@ -11438,7 +11438,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$1,200.00" for title "Balance" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
     Then I softly see value "$2,200.00" for title "Balance" against the value "Total" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
 
-  @266795 @266796 @ValidateSpentcolumnandbalancecolumnvalueonActualtabonGrantrecordisnotupdatedwhenpaymentrequestisrejectedfromapprovalprocess @sprint-21-US-266772 @vaibhav @Allocation @TBE
+  @266795 @266796 @ValidateSpentcolumnandbalancecolumnvalueonActualtabonGrantrecordisnotupdatedwhenpaymentrequestisrejectedfromapprovalprocess @sprint-21-US-266772 @vaibhav @Allocation
   Scenario: Validate Spent column and balance column value on Actual tab on Grant record is not updated when payment request is rejected from approval process
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -11946,6 +11946,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                           |
       | 2000  | fieldRequestedChangeInBudget__c |
+      | 4000  | fieldRevisedCommitment__c |
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "SOWAMENDMENTREQUEST"
     And I save the field labeled "Proposed Budget Period Start Date" as "PBPSD"
