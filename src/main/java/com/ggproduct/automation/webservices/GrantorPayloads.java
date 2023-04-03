@@ -1037,7 +1037,7 @@ public class GrantorPayloads {
 
         grant.addProperty("RiskAssessment_Required", "Yes");
         grant.addProperty("IsProgramIncomeAnticipated", "No");
-        grant.addProperty("IsBuildUpFunctionality", "No");
+        grant.addProperty("IsBuildUpFunctionality", "Yes");
         grant.addProperty("WBSRequired", "No");
         newA.add(grant);
         json.add("Grant", newA);

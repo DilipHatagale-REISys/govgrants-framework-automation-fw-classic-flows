@@ -113,8 +113,8 @@ public class UsersAndURL implements UsersController {
     private String getQAEnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
         username.put("ADMIN", "demoadmin@ggp.test8.qaorg");
-        username.put("EXE", "test@gmaildemo.com");
-        username.put("PM", "pm.automation@yopmail.com.qa");
+        username.put("EXE", "test@gmaildemo.com.qaorg");
+        username.put("PM", "pm.automation@yopmail.com.qaorg");
         username.put("FO", "auto.fm@auto.com.atm.qaorg");
         username.put("SPI3", "automationspi3@yopmail.com");
         username.put("SPA", "spaautomation@yopmail.com");
