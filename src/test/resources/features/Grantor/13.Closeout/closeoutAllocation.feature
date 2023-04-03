@@ -3408,7 +3408,7 @@ Feature: Validate all scenarios in Closeout
       | Construction    | 500           |
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 1500                 | 150        | 0              |
+      | Construction    | 2500                 | 250        | 0              |
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
@@ -3421,7 +3421,7 @@ Feature: Validate all scenarios in Closeout
     And I click on "Start" icon for "{SavedValue:CFAmendmentId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
-      | {SavedValue:fundingAccount} | 1500                |
+      | {SavedValue:fundingAccount} | 2500                |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
@@ -3437,6 +3437,6 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:CloseoutTableId---" panel
     And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
     And I navigate to "Overview" sub tab
-    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$2,500.00" for title "Cumulative Obligation" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$2,200.00" for title "Balance" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$800.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
