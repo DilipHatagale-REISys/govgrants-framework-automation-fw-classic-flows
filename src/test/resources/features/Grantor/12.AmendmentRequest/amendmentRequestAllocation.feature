@@ -11929,7 +11929,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$500.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
     Then I softly see value "$2,500.00" for title "Balance" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
 
-  @268291 @ValidatespentvalueiscopiedtothePaymentsummarysectionofActivatedAwardfromCarryforwardamendmentafterPaymentrequestisapprovedwhenFANO @sprint-21-US-265880 @vaibhav @Allocation @TBE
+  @268291 @ValidatespentvalueiscopiedtothePaymentsummarysectionofActivatedAwardfromCarryforwardamendmentafterPaymentrequestisapprovedwhenFANO @sprint-21-US-265880 @vaibhav @Allocation
   Scenario: Validate spent value is copied to the Payment summary section of Activated Award from Carry forward amendment after Payment request is approved when FA NO
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Formula_By_Applicant_Focus_Area_No"
     When I login to "As a Grantor" app as "PO" user
@@ -12233,7 +12233,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$500.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
     Then I softly see value "$500.00" for title "Balance" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
 
-  @268294 @ValidatespentvalueiscopiedtothePaymentsummarybythefocusareasectionofActivatedAwardfromPeriodicrenewalamendmentafterPaymentrequestisapprovedFAYes @sprint-21-US-265880 @vaibhav @Allocation
+  @268294 @ValidatespentvalueiscopiedtothePaymentsummarybythefocusareasectionofActivatedAwardfromPeriodicrenewalamendmentafterPaymentrequestisapprovedFAYes @sprint-21-US-265880 @vaibhav @Allocation @TBE
   Scenario: Validate spent value is copied to the  Payment summary by the focus area section of Activated Award from Periodic renewal amendment after Payment request is approved FA Yes
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -12469,7 +12469,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$1,200.00" for title "Balance" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:paymentSummaryFocusAreaTableid---"
     Then I softly see value "$2,200.00" for title "Balance" against the value "Total" inside table "---subAwardStandAlone:-:paymentSummaryFocusAreaTableid---"
 
-  @268300 @ValidateImpactonSpentvalueswhenPaymentrequestisinflightandAmendmentrequestisprocessedandnewawardisactivatedafterCarryforwardAmendment @sprint-21-US-265880 @vaibhav @Allocation
+  @268300 @ValidateImpactonSpentvalueswhenPaymentrequestisinflightandAmendmentrequestisprocessedandnewawardisactivatedafterCarryforwardAmendment @sprint-21-US-265880 @vaibhav @Allocation @TBE
   Scenario: Validate Impact on Spent values when Payment request is inflight and Amendment request is processed and new award is activated after Carry forward Amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -12606,7 +12606,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$2,500.00" for title "Awarded Budget" against the value "Construction" inside table "---paymentRequest:-:paymentRequestBudgetTableId---"
     Then I softly see value "$2,500.00" for title "Subaward Balance" against the value "Construction" inside table "---paymentRequest:-:paymentRequestBudgetTableId---"
 
-  @268301 @ValidateImpactonSpentvalueswhenPaymentrequestisinflightandAmendmentrequestisprocessedandnewawardisactivatedafterbudgetredirectionAmendment @sprint-21-US-265880 @vaibhav @Allocation
+  @268301 @ValidateImpactonSpentvalueswhenPaymentrequestisinflightandAmendmentrequestisprocessedandnewawardisactivatedafterbudgetredirectionAmendment @sprint-21-US-265880 @vaibhav @Allocation @TBE
   Scenario: Validate Impact on Spent values when Payment request is inflight and Amendment request is processed and new award is activated after budget redirection Amendment
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SUBRECIPIENT_ORG_IND_USER-Automation PO user" of type "Formula_By_Applicant_Focus_Area_No"
     And I am on "SUBPORTAL" portal
