@@ -12233,7 +12233,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$500.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
     Then I softly see value "$500.00" for title "Balance" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
 
-  @268294 @ValidatespentvalueiscopiedtothePaymentsummarybythefocusareasectionofActivatedAwardfromPeriodicrenewalamendmentafterPaymentrequestisapprovedFAYes @sprint-21-US-265880 @vaibhav @Allocation @TBE
+  @268294 @ValidatespentvalueiscopiedtothePaymentsummarybythefocusareasectionofActivatedAwardfromPeriodicrenewalamendmentafterPaymentrequestisapprovedFAYes @sprint-21-US-265880 @vaibhav @Allocation
   Scenario: Validate spent value is copied to the  Payment summary by the focus area section of Activated Award from Periodic renewal amendment after Payment request is approved FA Yes
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -12398,10 +12398,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "{SavedValue:PayreqId1}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     And I click on "View" icon for "{SavedValue:PayreqId1}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     And I navigate to "Financials" sub tab
-    And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
-      | Budget Category  | Spent This Action |
-      | Indirect Charges | 300               |
+      | Budget Category | Spent This Action |
+      | Construction    | 300               |
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -12444,32 +12443,32 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I navigate to "Actuals" sub tab
-    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
-    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
-    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Total" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
-    Then I softly see value "$500.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
-    Then I softly see value "$300.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
-    Then I softly see value "$800.00" for title "Spent" against the value "Total" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$2,000.00" for title "Cumulative Obligation" against the value "Total" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$0.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$0.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$0.00" for title "Spent" against the value "Total" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
     Then I softly see value "$1,000.00" for title "Balance" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
-    Then I softly see value "$1,200.00" for title "Balance" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
-    Then I softly see value "$2,200.00" for title "Balance" against the value "Total" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$1,000.00" for title "Balance" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$2,000.00" for title "Balance" against the value "Total" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
     And I navigate to "Actuals" sub tab
-    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:paymentSummaryFocusAreaTableid---"
-    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:paymentSummaryFocusAreaTableid---"
-    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Total" inside table "---subAwardStandAlone:-:paymentSummaryFocusAreaTableid---"
-    Then I softly see value "$500.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:paymentSummaryFocusAreaTableid---"
-    Then I softly see value "$300.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:paymentSummaryFocusAreaTableid---"
-    Then I softly see value "$800.00" for title "Spent" against the value "Total" inside table "---subAwardStandAlone:-:paymentSummaryFocusAreaTableid---"
-    Then I softly see value "$1,000.00" for title "Balance" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:paymentSummaryFocusAreaTableid---"
-    Then I softly see value "$1,200.00" for title "Balance" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:paymentSummaryFocusAreaTableid---"
-    Then I softly see value "$2,200.00" for title "Balance" against the value "Total" inside table "---subAwardStandAlone:-:paymentSummaryFocusAreaTableid---"
+    Then I softly see value "$2,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
+    Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
+    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Total" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
+    Then I softly see value "$800.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
+    Then I softly see value "$0.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
+    Then I softly see value "$800.00" for title "Spent" against the value "Total" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
+    Then I softly see value "$1,200.00" for title "Balance" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
+    Then I softly see value "$1,000.00" for title "Balance" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
+    Then I softly see value "$2,200.00" for title "Balance" against the value "Total" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
 
-  @268300 @ValidateImpactonSpentvalueswhenPaymentrequestisinflightandAmendmentrequestisprocessedandnewawardisactivatedafterCarryforwardAmendment @sprint-21-US-265880 @vaibhav @Allocation @TBE
+  @268300 @ValidateImpactonSpentvalueswhenPaymentrequestisinflightandAmendmentrequestisprocessedandnewawardisactivatedafterCarryforwardAmendment @sprint-21-US-265880 @vaibhav @Allocation
   Scenario: Validate Impact on Spent values when Payment request is inflight and Amendment request is processed and new award is activated after Carry forward Amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -12603,10 +12602,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Financials" sub tab
-    Then I softly see value "$2,500.00" for title "Awarded Budget" against the value "Construction" inside table "---paymentRequest:-:paymentRequestBudgetTableId---"
-    Then I softly see value "$2,500.00" for title "Subaward Balance" against the value "Construction" inside table "---paymentRequest:-:paymentRequestBudgetTableId---"
+    Then I softly see value "$1,000.00" for title "Awarded Budget" against the value "Construction" inside table "---paymentRequest:-:paymentRequestBudgetTableId---"
+    Then I softly see value "$1,000.00" for title "Subaward Balance" against the value "Construction" inside table "---paymentRequest:-:paymentRequestBudgetTableId---"
 
-  @268301 @ValidateImpactonSpentvalueswhenPaymentrequestisinflightandAmendmentrequestisprocessedandnewawardisactivatedafterbudgetredirectionAmendment @sprint-21-US-265880 @vaibhav @Allocation @TBE
+  @268301 @ValidateImpactonSpentvalueswhenPaymentrequestisinflightandAmendmentrequestisprocessedandnewawardisactivatedafterbudgetredirectionAmendment @sprint-21-US-265880 @vaibhav @Allocation
   Scenario: Validate Impact on Spent values when Payment request is inflight and Amendment request is processed and new award is activated after budget redirection Amendment
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SUBRECIPIENT_ORG_IND_USER-Automation PO user" of type "Formula_By_Applicant_Focus_Area_No"
     And I am on "SUBPORTAL" portal
@@ -12857,9 +12856,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction  | 1500                 | 100        | 100            |
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
+    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction  | 1000                 | 100        | 100            |
+      | Construction  | 1500                 | 100        | 100            |
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
@@ -12876,7 +12876,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
-      | {SavedValue:fundingAccount} | 4000                |
+      | {SavedValue:fundingAccount} | 4500                |
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I wait for "4" seconds
@@ -12894,6 +12894,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click toggle button to select "Reimbursements - All"
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
+    And I navigate to "Financials" sub tab
     Then I softly see value "$1,500.00" for title "Awarded Budget" against the value "Construction" inside table "---paymentRequest:-:paymentRequestBudgetTableId---"
     Then I softly see value "$1,500.00" for title "Subaward Balance" against the value "Construction" inside table "---paymentRequest:-:paymentRequestBudgetTableId---"
     And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"

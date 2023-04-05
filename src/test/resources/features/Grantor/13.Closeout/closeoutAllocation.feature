@@ -3047,7 +3047,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
-      | Construction    | 500              |
+      | Construction    | 500               |
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -3109,7 +3109,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "$500.00" for title "Balance" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
 
-  @267761 @ValidateAuditorvalueinSpentandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestisincreatedstateandpaymentrequestisapprovedandnewawardisactivatedfromcarryforwardamendment @sprint-21-US-265880 @vaibhav @Allocation @TBE
+  @vai @267761 @ValidateAuditorvalueinSpentandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestisincreatedstateandpaymentrequestisapprovedandnewawardisactivatedfromcarryforwardamendment @sprint-21-US-265880 @vaibhav @Allocation
   Scenario: Validate Auditor value in Spent and Cumulative obligation column on closeout request when closeout request is in created state and payment request is approved and new award is activated from carry forward amendment
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3142,7 +3142,6 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "Automation Permanent Focus Area2" in "---subAwardStandAlone:-:associateModalTableId---" panel
     When I check "Automation Permanent Focus Area2" boxes in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
-#    And I close modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                            | Start Date | End Date | New Obligation |
       | Automation Permanent Focus Area2 | 0          | 3650     | 500            |
@@ -3384,10 +3383,10 @@ Feature: Validate all scenarios in Closeout
     And I save the field labeled "EGMS ID" as "closeoutID"
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
-    Then I softly see value "$2,000.00" for title "Cumulative Obligation" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
-    Then I softly see value "$700.00" for title "Balance" against the value "Automation Permanent Focus Area" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
-    Then I softly see value "$800.00" for title "Balance" against the value "Automation Permanent Focus Area2" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
-    Then I softly see value "$1,500.00" for title "Balance" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$1,200.00" for title "Balance" against the value "Automation Permanent Focus Area" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$1,300.00" for title "Balance" against the value "Automation Permanent Focus Area2" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$2,500.00" for title "Balance" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$300.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$200.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
@@ -3402,10 +3401,15 @@ Feature: Validate all scenarios in Closeout
     When I enter "SubRecipientCF_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter value "Automation Justification" into field "fieldPurposeRTA__c"
-    And I enter value "700" into field "fieldRequestedChangeInBudget__c"
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "CFAmendmentId"
     Then I softly see status in Progress-bar is "Created" and is "Green"
+    And I edit the following rows inline in flex table with id "---amendment:-:carryForwardFocusAreaTableId---" by clicking "Edit" :
+      | Title                           | Carry Forward Amount |
+      | Automation Permanent Focus Area | 200                  |
+    And I edit the following rows inline in flex table with id "---amendment:-:carryForwardFocusAreaTableId---" by clicking "Edit" :
+      | Title                            | Carry Forward Amount |
+      | Automation Permanent Focus Area2 | 500                  |
     And I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Carry Forward |
@@ -3449,6 +3453,12 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:CloseoutTableId---" panel
     And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
     And I navigate to "Overview" sub tab
-    Then I softly see value "$2,500.00" for title "Cumulative Obligation" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
-    Then I softly see value "$2,200.00" for title "Balance" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
-    Then I softly see value "$800.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$1,700.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$2,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$3,700.00" for title "Cumulative Obligation" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$1,400.00" for title "Balance" against the value "Automation Permanent Focus Area" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$1,800.00" for title "Balance" against the value "Automation Permanent Focus Area2" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$3,200.00" for title "Balance" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$300.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$200.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
