@@ -7247,3 +7247,70 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Announcement Name                            | AnnouncementType | User |
       | {SavedValue:Automation Runtime Announcement} | Competitive      | PO   |
       | {SavedValue:Automation Runtime Announcement} | Directed         | PO   |
+
+  @265360 @ValidateCompetitiveannvalidationisdisplayedtoEXEuseroncreateannoucementmodalwhenuserselectFocusareaasYesandAdvancepaymentasYes @sprint-21-US-265727 @vaibhav @Allocation 
+  Scenario: Validate Competitive ann validation is displayed to EXE user on create annoucement modal, when user select Focus area as Yes and Advance payment as Yes
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation Second Negotiation" values from "Announcement_Field_Values.xlsx"
+    And I enter values into fields
+      | Value | Field                      |
+      | Yes   | fieldIsAdvancePermitted__c |
+    And I click modal button "Save and Continue"
+    Then I softly see the following messages in the page details contains:
+      | If the Focus Area Required is Yes, then the Advance Payment Allowed must be selected as No. |
+
+  @265364 @267389 @ValidateFormulaannvalidationdisplayedtoPMuseroncreateannoucementmodalwhenuserselectallocationlevelasByapplicantwithFocusareaasYesandAdvancepaymentasYes @sprint-21-US-265727 @vaibhav @Allocation 
+  Scenario: Validate Formula ann validation is displayed to PM user on create annoucement modal, when user select allocation level as By applicant with Focus area as Yes and Advance payment as Yes
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Formula Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
+    And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation_Formula_ByApp_FocusYes" values from "Announcement_Field_Values.xlsx"
+    And I enter values into fields
+      | Value | Field                      |
+      | Yes   | fieldIsAdvancePermitted__c |
+    And I click modal button "Save and Continue"
+    Then I softly see the following messages in the page details contains:
+      | If the Focus Area Required is Yes, then the Advance Payment Allowed must be selected as No. |
+    And I enter values into fields
+      | Value | Field                      |
+      | No   | fieldIsAdvancePermitted__c |
+    And I click modal button "Save and Continue"
+    #267389
+    And I navigate to "Overview" sub tab
+    Then I softly see fields "fieldIsAdvancePermitted__c" is in edit mode
+    And I enter values into fields
+      | Value | Field                      |
+      | Yes   | fieldIsAdvancePermitted__c |
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details contains:
+      | If the Focus Area Required is Yes, then the Advance Payment Allowed must be selected as No. |
+
+  @267387 @ValidateCompetitiveannvalidationisdisplayedtoAdminuseronannouncementLayoutAfterclickonSavebuttonwhenuserselectFocusareaasYesandAdvancepaymentasYes @sprint-21-US-265727 @vaibhav @Allocation 
+  Scenario: Validate Competitive ann validation is displayed to Admin user on announcement Layout After click on Save button, when user select Focus area as Yes and Advance payment as Yes
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "competitive_Ann_AdminUser" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation Second Negotiation" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I navigate to "Overview" sub tab
+    Then I softly see fields "fieldIsAdvancePermitted__c" is in edit mode
+    And I enter values into fields
+      | Value | Field                      |
+      | Yes   | fieldIsAdvancePermitted__c |
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details contains:
+      | If the Focus Area Required is Yes, then the Advance Payment Allowed must be selected as No. |
