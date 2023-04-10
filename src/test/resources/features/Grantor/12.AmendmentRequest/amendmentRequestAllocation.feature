@@ -13149,7 +13149,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Available Balance" as "$991,000.00"
     Then I softly see field "Appropriation Amount" as "$1,000,000.00"
 
-  @256591 @256863 @256632 @256652 @256802 @256863 @256714 @256810 @256573 @256623 @256633 @256634 @256659 @256825 @256835 @ValidatePMusercanseeNewobligationasReadOnlyfieldinsteadofAwardBudgetthisPeriodcopiedfromTotalrolledupfromtheNewobligationcolumninBudgetsummarybyFocusareaSection @sprint-19-US-241142 @vaibhav @Allocation @TBE
+  @256591 @256863 @256632 @256652 @256802 @256714 @256810 @256573 @256623 @256633 @256634 @256659 @256825 @256835 @ValidatePMusercanseeNewobligationasReadOnlyfieldinsteadofAwardBudgetthisPeriodcopiedfromTotalrolledupfromtheNewobligationcolumninBudgetsummarybyFocusareaSection @sprint-19-US-241142 @vaibhav @Allocation @TBE
   Scenario: Validate PM user can see 'New obligation' as Read Only field instead of 'Award Budget this Period' copied from Total rolled up from the New obligation column in Budget summary by Focus area Section
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -13392,27 +13392,29 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Revised Commitment should be equal to or greater than the total of Cummulative Obligation $3000.00 across all budget periods. |
     #256659
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                           | Start Date         | End Date           | New Obligation |
-      | Automation Permanent Focus Area | {SavedValue:PBPSD} | {SavedValue:PBPED} | 500           |
+      | Automation Permanent Focus Area | {SavedValue:PBPSD} | {SavedValue:PBPED} | 2000           |
     Then I softly see value "$2,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:projectAreasTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                            | Start Date         | End Date           | New Obligation |
       | Automation Permanent Focus Area2 | {SavedValue:PBPSD} | {SavedValue:PBPED} | 2000           |
     Then I softly see value "$2,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
-    And I wait for "5" seconds
+    And I wait for "10" seconds
     And I click on "Submit for Approval" in the page details
     #256825
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The Budgeted Amount must be equal to the New Obligation for the following Focus Areas - (Automation Permanent Focus Area) |
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation for following Focus Areas - (Automation Permanent Focus Area, Automation Permanent Focus Area2) |
     #256835
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 0                   |
-    And I wait for "5" seconds
+    And I wait for "10" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The New Obligation ($2500.00) must be equal to the total of Revised Encumbrance in the Funding Account ($0.00) |
+      | Overview Tab - The New Obligation ($4000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($0.0) |
 
   @256611 @256629 @ValidatevalidationisdisplayedtoPMuserwhenuserenterRevisedCommitmentlessthanNewobligationincurrentARcumulativeobligationinGrant @sprint-19-US-241142 @vaibhav @Allocation @TBE
   Scenario: Validate validation is displayed to PM user when user enter Revised Commitment less than New obligation in current AR cumulative obligation in Grant
