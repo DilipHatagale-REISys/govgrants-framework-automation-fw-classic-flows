@@ -13262,7 +13262,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "New Obligation" as "$1,000.00"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
-    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see field "Total Commitment" as "$2,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitment"
     And I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -13293,13 +13293,13 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Proposed Budget Period Start Date" as "PBPSD"
     And I save the field labeled "Proposed Budget Period End Date" as "PBPED"
     #256863
-    Then I softly see field "Current Commitment" as "$1,000.00"
+    Then I softly see field "Current Commitment" as "$2,000.00"
     And I save the field labeled "Current Commitment" as "CurrentCommitment"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:CurrentCommitment}"
     Then I softly see field "Budgeted Amount" as "$1,000.00"
     And I save the field labeled "Budgeted Amount" as "BudgetedAmount"
     Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:BudgetedAmount}"
-    Then I softly see field "Revised Commitment" as "$2,000.00"
+    Then I softly see field "Revised Commitment" as "$4,000.00"
     #256714
     Then I softly cannot see top right button "Add Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
     Then I softly cannot see row level action button "Remove Focus Area" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
@@ -13379,7 +13379,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     #256633
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Revised Commitment should be equal to or greater than the total of Cummulative Obligation $2000.00 across all budget periods. |
+      | Overview Tab - Revised Commitment should be equal to or greater than the total of Cummulative Obligation $3000.00 across all budget periods. |
     #256634
     When I click on "Edit" in the page details
     When I enter values into fields
@@ -13390,11 +13390,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "5" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Revised Commitment should be equal to or greater than the total of Cummulative Obligation $2000.00 across all budget periods. |
+      | Overview Tab - Revised Commitment should be equal to or greater than the total of Cummulative Obligation $3000.00 across all budget periods. |
     #256659
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                           | Start Date         | End Date           | New Obligation |
-      | Automation Permanent Focus Area | {SavedValue:PBPSD} | {SavedValue:PBPED} | 2000           |
+      | Automation Permanent Focus Area | {SavedValue:PBPSD} | {SavedValue:PBPED} | 500           |
     Then I softly see value "$2,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:projectAreasTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                            | Start Date         | End Date           | New Obligation |
@@ -13404,7 +13404,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     #256825
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The Budgeted Amount must be equal to the New Obligation for the following Focus Areas - (Automation Permanent Focus Area,Automation Permanent Focus Area2) |
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation for the following Focus Areas - (Automation Permanent Focus Area) |
     #256835
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
@@ -13412,7 +13412,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "5" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The New Obligation ($4000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($0.00) |
+      | Overview Tab - The New Obligation ($2500.00) must be equal to the total of Revised Encumbrance in the Funding Account ($0.00) |
 
   @256611 @256629 @ValidatevalidationisdisplayedtoPMuserwhenuserenterRevisedCommitmentlessthanNewobligationincurrentARcumulativeobligationinGrant @sprint-19-US-241142 @vaibhav @Allocation @TBE
   Scenario: Validate validation is displayed to PM user when user enter Revised Commitment less than New obligation in current AR cumulative obligation in Grant
@@ -13473,7 +13473,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "5" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Revised Commitment should be equal to or greater than the total of Cummulative Obligation $2000.00 across all budget periods. |
+      | Overview Tab - Revised Commitment should be equal to or greater than the total of Cummulative Obligation $3000.00 across all budget periods. |
     #256629
     When I click on "Edit" in the page details
     When I enter values into fields
@@ -13538,13 +13538,13 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Edit" in the page details
     When I enter values into fields
       | Value | Field                     |
-      | 2000  | fieldRevisedCommitment__c |
+      | 3000  | fieldRevisedCommitment__c |
     When I click on "Save" in the page details
     And I wait for "5" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
 
-  @256877 @ValidatePMusercaneditRevisedCommitmentfieldwhenperiodicrenewalamendmentrequestiscreatedstateafterapproversenttoowner @sprint-19-US-241142 @vaibhav @Allocation @TBE
+  @256877 @ValidatePMusercaneditRevisedCommitmentfieldwhenperiodicrenewalamendmentrequestiscreatedstateafterapproversenttoowner @sprint-19-US-241142 @vaibhav @Allocation
   Scenario: Validate PM user can edit Revised Commitment field when periodic renewal amendment request is created state after approver sent to owner
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -13595,7 +13595,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Edit" in the page details
     When I enter values into fields
       | Value | Field                     |
-      | 2000  | fieldRevisedCommitment__c |
+      | 3000  | fieldRevisedCommitment__c |
     When I click on "Save" in the page details
     And I wait for "5" seconds
     And I click on "Submit for Approval" in the page details
