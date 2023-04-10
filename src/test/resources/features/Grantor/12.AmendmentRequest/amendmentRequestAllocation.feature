@@ -13277,6 +13277,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Save" in the page details
     Then I softly see field "Revised Commitment" as "$4,000.00"
     #256632
+    When I click on "Edit" in the page details
     When I enter values into fields
       | Value                | Field                     |
       | 20000000000000000.30 | fieldRevisedCommitment__c |
@@ -13420,7 +13421,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}" and properties "Automation PM user"
     And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -13490,7 +13491,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}" and properties "Automation PM user"
     And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
