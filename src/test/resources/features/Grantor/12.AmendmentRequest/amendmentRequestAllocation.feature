@@ -13149,7 +13149,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Available Balance" as "$991,000.00"
     Then I softly see field "Appropriation Amount" as "$1,000,000.00"
 
-  @256591 @256863 @256632 @256652 @256802 @256714 @256810 @256573 @256623 @256633 @256634 @256659 @256825 @256835 @ValidatePMusercanseeNewobligationasReadOnlyfieldinsteadofAwardBudgetthisPeriodcopiedfromTotalrolledupfromtheNewobligationcolumninBudgetsummarybyFocusareaSection @sprint-19-US-241142 @vaibhav @Allocation @TBE
+  @256591 @256863 @256632 @256652 @256802 @256714 @256810 @256965 @256918 @256943 @256971 @257050 @256573 @256623 @256633 @256634 @256659 @256825 @256835 @ValidatePMusercanseeNewobligationasReadOnlyfieldinsteadofAwardBudgetthisPeriodcopiedfromTotalrolledupfromtheNewobligationcolumninBudgetsummarybyFocusareaSection @sprint-19-US-241142-241581 @vaibhav @Allocation @TBE
   Scenario: Validate PM user can see 'New obligation' as Read Only field instead of 'Award Budget this Period' copied from Total rolled up from the New obligation column in Budget summary by Focus area Section
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -13348,6 +13348,53 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    #256965
+    When I click on "Edit" in the page details
+    Then I softly see that "New Obligation" rendered in view mode only
+    Then I softly see that "Revised Obligation" rendered in view mode only
+    Then I softly see that "Budgeted Amount" rendered in view mode only
+    Then I softly see that "Current Commitment" rendered in view mode only
+    Then I softly see that "Revised Commitment" rendered in view mode only
+    When I click on "Save" in the page details
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 1000                 | 100        | 0              |
+    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction  | 1000                 | 100        | 0              |
+    And I refresh the page
+    #256918
+    Then I see the following rows under the following headers in table with id "---amendment:-:budgetChangeTableId---" :
+      | Revised Award Amount |
+      | $2,000.00            |
+    Then I softly see field "Budgeted Amount" as "$2,000.00"
+    #256943
+    Then I softly see value "$1,000.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:budgetChangeTableId---"
+    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
+    Then I softly see value "$1,000.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:budgetChangeTableId---"
+    Then I softly see value "$1,000.00" for title "Budgeted Amount" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$1,000.00" for title "Budgeted Amount" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$2,000.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    #256971
+    Then I softly see value "$2,000.00" for title "New Obligation" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    When I save the value from row "3" for column name "New Obligation" as "newObligation" from flex table "---amendment:-:subrecipientProjectAreasTableId---"
+    And I save the field labeled "New Obligation" as "newObligation1"
+    Then I softly see field "New Obligation" as "$2,000.00"
+    Then I softly see value "{SavedValue:newObligation}" is "Equals to" the value "{SavedValue:newObligation1}"
+    #257050
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 2000                 | 200        | 0              |
+    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction  | 2000                 | 200        | 0              |
+    And I refresh the page
+    And I wait for "5" seconds
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation for following Focus Areas - (Automation Permanent Focus Area, Automation Permanent Focus Area2) |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction    | 1000                 | 100        | 0              |
@@ -13401,12 +13448,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Title                            | Start Date         | End Date           | New Obligation |
       | Automation Permanent Focus Area2 | {SavedValue:PBPSD} | {SavedValue:PBPED} | 2000           |
     Then I softly see value "$2,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
-    And I wait for "10" seconds
-    And I click on "Submit for Approval" in the page details
-    #256825
-    Then I softly see the following messages in the page details contains:
-      | Overview Tab - The Budgeted Amount must be equal to the New Obligation for following Focus Areas - (Automation Permanent Focus Area, Automation Permanent Focus Area2) |
-    #256835
+    #256825,256835
     And I refresh the page
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
@@ -13414,9 +13456,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "10" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
+      | Overview Tab - The Budgeted Amount must be equal to the New Obligation for following Focus Areas - (Automation Permanent Focus Area, Automation Permanent Focus Area2) |
       | Overview Tab - The New Obligation ($4000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($0.0) |
 
-  @256611 @256629 @ValidatevalidationisdisplayedtoPMuserwhenuserenterRevisedCommitmentlessthanNewobligationincurrentARcumulativeobligationinGrant @sprint-19-US-241142 @vaibhav @Allocation @TBE
+  @256611 @256629 @ValidatevalidationisdisplayedtoPMuserwhenuserenterRevisedCommitmentlessthanNewobligationincurrentARcumulativeobligationinGrant @sprint-19-US-241142 @vaibhav @Allocation
   Scenario: Validate validation is displayed to PM user when user enter Revised Commitment less than New obligation in current AR cumulative obligation in Grant
     And I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_RISK_ASSESSMENT_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -13486,7 +13529,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
 
-  @256680 @ValidatevalidationisnotdisplayedtoPMuserwhenuserenterRevisedCommitmentequalstoNewobligationincurrentARcumulativeobligationinGrant @sprint-19-US-241142 @vaibhav @Allocation @TBE
+  @256680 @256932 @ValidatevalidationisnotdisplayedtoPMuserwhenuserenterRevisedCommitmentequalstoNewobligationincurrentARcumulativeobligationinGrant @sprint-19-US-241142 @vaibhav @Allocation @TBE
   Scenario: Validate validation is not displayed to PM user when user enter Revised Commitment equals to (New obligation in current AR cumulative obligation in Grant)
     And I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_RISK_ASSESSMENT_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -13527,6 +13570,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    #256932
+    Then I softly see value "$2,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction    | 2000                 | 200        | 0              |
@@ -13616,3 +13661,71 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "View" icon for "{SavedValue:SOWAMENDMENTREQUEST}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     When I click on "Edit" in the page details
     Then I softly see fields "fieldRevisedCommitment__c" is in edit mode
+
+  @257088 @ValidateSPIuserseeupdatedvaluesinbudgetsummarysectionafterperiodicrenewalamendmentSubmittograntor @sprint-19-US-241581 @vaibhav @Allocation @TBE
+  Scenario: Validte SPI user see updated values in budget summary section after periodic renewal amendment submit to grantor
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user" of type "Formula_By_Applicant_Focus_Area"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "SOWAMENDMENTREQUEST"
+    And I save the field labeled "Proposed Budget Period Start Date" as "PBPSD"
+    And I save the field labeled "Proposed Budget Period End Date" as "PBPED"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | Start Date         | End Date           | New Obligation |
+      | Automation Permanent Focus Area | {SavedValue:PBPSD} | {SavedValue:PBPED} | 2000           |
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Title                       | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 2000                |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 2000                 | 200        | 0              |
+    And I refresh the page
+    Then I softly see field "New Obligation" as "$2,000.00"
+    Then I softly see field "Revised Commitment" as "$2,000.00"
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                     |
+      | 8000  | fieldRevisedCommitment__c |
+    When I click on "Save" in the page details
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | Start Date         | End Date           | New Obligation |
+      | Automation Permanent Focus Area | {SavedValue:PBPSD} | {SavedValue:PBPED} | 5000           |
+    And I refresh the page
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    And I perform quick search for "SOWAMENDMENTREQUEST" in "---amendment:-:recipientSideAmendmentRequestTableId---" panel
+    When I click on "View" icon for "SOWAMENDMENTREQUEST" inside flex table with id "---amendment:-:recipientSideAmendmentRequestTableId---" without waiting for record
+    When I navigate to "Overview" sub tab
+    Then I softly see field "New Obligation" as "$5,000.00"
+    Then I softly see field "Revised Commitment" as "$8,000.00"
