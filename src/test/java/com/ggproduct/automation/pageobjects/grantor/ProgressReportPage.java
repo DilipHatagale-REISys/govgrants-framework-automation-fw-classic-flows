@@ -216,4 +216,16 @@ public class ProgressReportPage extends GrantorProjectManager {
         int value2 = Double.valueOf(savedValue2.replaceAll("[^0-9.]", "")).intValue();
         return compare.equalsIgnoreCase("Less Than") ? value1 < value2 : compare.equalsIgnoreCase("Greater Than") ? value1 > value2 : value1 == value2;
     }
+
+    public Boolean addTwoFieldValues(String savedValue1, String savedValue2, String expectedValue) {
+        int value1 = Double.valueOf(savedValue1.replaceAll("[^0-9.]", "")).intValue();
+        int value2 = Double.valueOf(savedValue2.replaceAll("[^0-9.]", "")).intValue();
+        int value3 = Double.valueOf(expectedValue.replaceAll("[^0-9.]", "")).intValue();
+        int actualValue = value1 + value2;
+
+        if(value3==actualValue)
+            return true;
+        else
+            return false;
+    }
 }
