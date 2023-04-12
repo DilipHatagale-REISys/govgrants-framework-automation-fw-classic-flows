@@ -15366,6 +15366,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Active" and is "green"
+    When I navigate to "Budget" sub tab
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation4"
     Then I softly see that "Cumulative Obligation" rendered in view mode only
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
