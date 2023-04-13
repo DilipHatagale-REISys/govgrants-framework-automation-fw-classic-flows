@@ -15545,7 +15545,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I see field "Status" as "Submitted for Approval"
     And I pause execution for "3" seconds
     And I "Reject" in the approval decision
-    Then I see status in Progress-bar is "Rejected" and is "Green"
+    Then I see status in Progress-bar is "Rejected" and is "Red"
     Then I softly cannot see top right button "Edit" in page detail
     Then I softly see that "New Obligation" rendered in view mode only
     #257662
