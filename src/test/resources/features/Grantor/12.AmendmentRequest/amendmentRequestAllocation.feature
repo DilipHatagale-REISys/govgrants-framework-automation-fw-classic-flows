@@ -15082,7 +15082,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Available Balance" as "$992,000.00"
     Then I softly see field "Appropriation Amount" as "$1,000,000.00"
 
-  @258576 @258578 @258587 @258590 @262837 @258594 @258592 @258593 @258595 @262820 @ValidateCompPOusercanseevaluedisplayedforTotalCommitmentfieldonPendingActivationstateofversion2awardiscopiedfromtheRevisedCommitmentfieldfromthebudgetsummarysectionofamendmentrequestFAYes @sprint-19-US-250551 @vaibhav @Allocation @TBE
+ @vai @258576 @258578 @258587 @258590 @262837 @258594 @258592 @258593 @258595 @262820 @ValidateCompPOusercanseevaluedisplayedforTotalCommitmentfieldonPendingActivationstateofversion2awardiscopiedfromtheRevisedCommitmentfieldfromthebudgetsummarysectionofamendmentrequestFAYes @sprint-19-US-250551 @vaibhav @Allocation @TBE
   Scenario: Validate Comp PO user can see value displayed for Total Commitment field on Pending Activation state of version 2 award is copied from the Revised Commitment field from the budget summary section of amendment request(FA=Yes)
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default-Automation IND user"
@@ -15469,17 +15469,17 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #257483
     Then I see field "Status" as "Submitted for Approval"
     Then I softly cannot see top right button "Edit" in page detail
-    Then I softly see that "fieldRequestedChangeInBudget__c" rendered in view mode only
+    Then I softly see that "New Obligation" rendered in view mode only
     #257658
-    Then I softly see that "fieldRevisedCommitment__c" rendered in view mode only
+    Then I softly see that "Revised Commitment" rendered in view mode only
     And I pause execution for "3" seconds
     And I "Approve" in the approval decision
     #257483
     Then I see status in Progress-bar is "Approved" and is "Green"
     Then I softly cannot see top right button "Edit" in page detail
-    Then I softly see that "fieldRequestedChangeInBudget__c" rendered in view mode only
+    Then I softly see that "New Obligation" rendered in view mode only
     #257658
-    Then I softly see that "fieldRevisedCommitment__c" rendered in view mode only
+    Then I softly see that "Revised Commitment" rendered in view mode only
 
   @257491 @257674 @257662 @ValidateusershouldnoteditnewobligationfiledinRejectedstateFANo @sprint-19-US-242374 @vaibhav @Allocation
   Scenario: Validate user should not edit new obligation filed in Rejected state(FA No)
@@ -15547,6 +15547,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I "Reject" in the approval decision
     Then I see status in Progress-bar is "Rejected" and is "Green"
     Then I softly cannot see top right button "Edit" in page detail
-    Then I softly see that "fieldRequestedChangeInBudget__c" rendered in view mode only
+    Then I softly see that "New Obligation" rendered in view mode only
     #257662
-    Then I softly see that "fieldRevisedCommitment__c" rendered in view mode only
+    Then I softly see that "Revised Commitment" rendered in view mode only
