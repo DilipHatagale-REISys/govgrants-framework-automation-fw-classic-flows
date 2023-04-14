@@ -15775,7 +15775,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$1,000.00" for title "New Obligation" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     Then I softly see value "$1,000.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
 
-  @vai @258816 @258820 @ValidateSPISPAusercannoteditbudgetwhenperiodicrenewalAmendmentrequestisinApprovedstatewhenFAYes @sprint-19-US-247769 @vaibhav @Allocation @TBE
+  @258816 @258820 @ValidateSPISPAusercannoteditbudgetwhenperiodicrenewalAmendmentrequestisinApprovedstatewhenFAYes @sprint-19-US-247769 @vaibhav @Allocation @TBE
   Scenario: Validate SPI user cannot edit budget when periodic renewal Amendment request is in Approved state when FA Yes
     And I activated standalone subaward "Automation Runtime Award" with properties "IS_BUILDUP_FUNCTIONALITY_YES-Automation EXE1 user" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "EXE1" user
