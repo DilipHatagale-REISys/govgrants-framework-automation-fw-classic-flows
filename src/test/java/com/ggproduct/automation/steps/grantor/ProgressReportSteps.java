@@ -108,6 +108,16 @@ public class ProgressReportSteps {
         }
     }
 
+    @Description("To make Addition of two saved values")
+    @Then("^I (see|softly see) addition of two fields \"([^\"]*)\" and \"([^\"]*)\" is equal to \"([^\"]*)\"$")
+    public void iSeeAdditionValueValue(String usage, String savedValue1, String savedValue2, String expectedValue) {
+        if (usage.contains("softly")) {
+            I.amPerforming().assertionsTo().assertThat(progressReportPage.addTwoFieldValues(savedValue1, savedValue2, expectedValue)).isTrue();
+        } else {
+            Assert.assertTrue(progressReportPage.addTwoFieldValues(savedValue1, savedValue2, expectedValue));
+        }
+    }
+
     @When("^I click on \"([^\"]*)\" icon under attachment flex table$")
     public void clickOnRowLevelButton(String buttonName) {
         progressReportPage.clickRowLevelActionIconUnderAttachmentFlexTable(buttonName);

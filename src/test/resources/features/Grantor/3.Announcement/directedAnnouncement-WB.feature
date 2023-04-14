@@ -84,7 +84,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Application EGMS ID | Application Status |
 
   @219078 @219081 @AdminUserShouldAbleToSeeTwoColumnsInApprovedOrUnderRevisionStateForDirectedAnnouncement @sprint-9-US-208408 @komal @Allocation
-  Scenario: Verify Admin user should able to see the two columns in Approved/Under Revision state for Directed Announcement
+  Scenario: Verify Admin user should able to see the two columns in Approved Under Revision state for Directed Announcement
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
@@ -153,7 +153,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Application EGMS ID | Application Status |
 
   @219102 @219104 @VerifyEXeUserAbleToSeeSuccessMessageOnAddOrgModalAfterAddingActiveSubrecipieentOrg @sprint-9-US-208408 @komal @Allocation
-  Scenario: Verify when EXE user click on the "Add Organization" button then user see modal with all the active S/R names for Directed Announcement.
+  Scenario: Verify when EXE user click on the "Add Organization" button then user see modal with all the active SR names for Directed Announcement.
   | Verify EXE user see the Success message after adding Organization & when Applicants are updated and this modal will stay open to associate more applicants: |
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -179,7 +179,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Selected Applicants are associated successfully. |
 
   @219110 @219161 @VerifyPMusershouldremovethesrbyclickingtheremoveicon&successmessageshouldbedisplayforDirectedAnnouncement @sprint-9-US-208408 @komal @Allocation
-  Scenario: Verify PM user should remove the s/r, by clicking the remove icon, & success message should be display for Directed Announcement
+  Scenario: Verify PM user should remove the sr, by clicking the remove icon, & success message should be display for Directed Announcement
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
@@ -205,7 +205,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Record removed successfully. |
 
   @219619 @219614 @INDSPIUserVerifyforDirectedannouncementinbudgetsummarysectionSubawardfloor&Subawardcellingfieldshouldbedisplay @sprint-11-US-204998 @komal @Allocation
-  Scenario Outline: IND/SPI User_Verify for Directed announcement in budget summary section Subaward floor & Subaward celling field should be display.
+  Scenario Outline: IND SPI User for Directed announcement in budget summary section Subaward floor & Subaward celling field should be display.
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     When I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "<User>" user
@@ -238,7 +238,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | IND  |
 
   @226489 @219617 @219612 @INDSPASPIUserVerifyforCompetitiveannouncementinbudgetsummarysectionSubawardfloor&Subawardcellingfieldshouldbedisplay @sprint-11-US-204998 @komal @Allocation
-  Scenario Outline: IND/SPA/SPI User_Verify for Competitive announcement in budget summary section Subaward floor & Subaward celling field should be display.
+  Scenario Outline: IND SPA SPI User for Competitive announcement in budget summary section Subaward floor & Subaward celling field should be display.
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     When I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "<User>" user
@@ -633,7 +633,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | BP02               |
 
   @219346 @234712 @DirectedAnnVerifyasPMuserIcanseeRecommendedBudgetcolumnisvisiblewhenAppstatusisnegotiationinitiated @sprint-13-US-224612 @sprint-10-US-203669 @komal @Allocation
-  Scenario Outline:Directed Ann_ Verify as PM user I can see Recommended Budget column is visible when App status is negotiation initiated
+  Scenario Outline:Directed Ann as PM user I can see Recommended Budget column is visible when App status is negotiation initiated
   | Direct Ann>>Verify PM when negotiation is initiated during FDM or from app layout then user should not get validation on UI on send to subrecipient button when the budgeted Amount is equal to the Recommended Budget |
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -663,7 +663,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | {SavedValue:Automation Runtime Announcement} | PM   |
 
   @234354 @234372 @DirectAnnVerifyPMusercanseetheRecommendedAmountBudgetedAmount&StateAllocationcolumnonRecommendedapplicationsectiononFDMlayout @sprint-13-US-224612 @komal @Allocation
-  Scenario Outline: Direct Ann PM user can see the 'Recommended Amount'  'Budgeted Amount' & 'State Allocation' column on Recommended application section on FDM layout
+  Scenario Outline: Direct Ann PM user can see the 'Recommended Amount' 'Budgeted Amount' 'State Allocation' column on Recommended application section on FDM layout
     | Direct Ann PM user can see the Show Subaward floor and Subaward Ceiling under overview section on FDM layout |
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -810,7 +810,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | {SavedValue:Automation Runtime Announcement} | PM   |
 
   @234360 @DirectAnnVerifyPMusercanseeeditedtheBudgetedAmountfieldwhenusersendtheapplicationtosrfornegotiation&subrecipientaddbudgetonitwhenonceFDMisapproved @sprint-13-US-224612 @komal @Allocation
-  Scenario Outline: Direct Ann>>Verify PM user can see edited the Budgeted Amount field when user send the application to s/r for negotiation & subrecipient add budget on it when once FDM is approved
+  Scenario Outline: Direct Ann PM user can see edited the Budgeted Amount field when user send the application to sr for negotiation subrecipient add budget on it when once FDM is approved
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
@@ -1000,7 +1000,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | {SavedValue:Automation Runtime Announcement} | PM   |
 
   @234362 @DirectAnnVerifyPOusercanseethevalidationwhenthebudgetedAmountisnotequaltotheRecommendedamountwhenusertriedtoconverttoaward @sprint-13-US-224612 @komal @Allocation
-  Scenario Outline: Direct Ann>>Verify PO user can see the validation when the budgeted Amount is not equal to the Recommended amount when user tried to convert to award
+  Scenario Outline: Direct Ann PO user can see the validation when the budgeted Amount is not equal to the Recommended amount when user tried to convert to award
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default-Automation PO user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
@@ -1164,7 +1164,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | {SavedValue:Automation Runtime Announcement} | PO   |
 
   @234715 @DirectAnnVerifyPOusershouldseevalidationonsendtosrbuttonwhennegotiationisinitiatedduringFDMuserwhenuserselectonlybudgetsummarybyFocusAreasectionfornegotiationevenwhenbudgetedamountisequaltorecommendedamount @sprint-13-US-224612 @komal @Allocation
-  Scenario Outline: Direct Ann>>Verify PO user should see validation on send to s/r button when negotiation is initiated during FDM user when user select only budget summary by Focus Area section for negotiation even when budgeted amount is equal to recommended amount
+  Scenario Outline: Direct Ann PO user should see validation on send to s/r button when negotiation is initiated during FDM user when user select only budget summary by Focus Area section for negotiation even when budgeted amount is equal to recommended amount
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default-Automation PO user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     And I created approved FDM on application "<Announcement Name>"
@@ -1191,7 +1191,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | {SavedValue:Automation Runtime Announcement} | PO   |
 
   @234920 @DirectAnnVerifyPOusershouldseevalidationonsendtosrbuttonwhennegotiationisinitiatedCustomizedreviewstepwhenuserselectonlybudgetsummarybyFocusAreasectionfornegotiation @sprint-13-US-224612 @komal @Allocation
-  Scenario Outline: Direct  Ann>>Verify PO user should see validation on send to s/r button when negotiation is initiated Customized review step when user select only budget summary by Focus Area section for negotiation
+  Scenario Outline: Direct Ann PO user should see validation on send to s/r button when negotiation is initiated Customized review step when user select only budget summary by Focus Area section for negotiation
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
     And I navigate to "Directed" content inside "Announcements" subheader on left panel
@@ -1294,7 +1294,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | {SavedValue:Automation Runtime Directed Announcement} |
 
   @219360 @DirectedAnnVerifyasAdminuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarywhenAppstatusisnegotiationsubmitted @sprint-13-US-224612 @komal @Allocation
-  Scenario Outline: Directed Ann_ Verify as Admin user I can see Recommended budget field is visible under budget summary when App status is negotiation submitted
+  Scenario Outline: Directed Ann as Admin user I can see Recommended budget field is visible under budget summary when App status is negotiation submitted
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default-Automation ADMIN user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     And I created approved FDM on application "<Announcement Name>"
@@ -1341,7 +1341,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | {SavedValue:Automation Runtime Announcement} | ADMIN   |
 
   @234918 @DirectAnnVerifyAdminusershouldseevalidationonsendtosrbuttonwhennegotiationisinitiatedonSMEreviewstepwhenuserselectonlybudgetsummarybyFocusAreasectionfornegotiation @sprint-13-US-224612 @komal @Allocation
-  Scenario Outline: Direct Ann>>Verify Admin user should see validation on send to s/r button when negotiation is initiated on SME review step when user select only budget summary by Focus Area section for negotiation
+  Scenario Outline: Direct Ann Admin user should see validation on send to s/r button when negotiation is initiated on SME review step when user select only budget summary by Focus Area section for negotiation
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default-Automation ADMIN user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "ADMIN" user
@@ -1379,7 +1379,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | {SavedValue:Automation Runtime Announcement} |
 
   @234714 @234369 @DirectAnnVerifyAdminusershouldnotseevalidationonsendtosrbuttonwhennegotiationisinitiatedduringFDMuserwhenuserselectonlyBudgettabBudgetdetailssectionfornegotiationwhenrecommendedamountisequaltoBudgetedamount @sprint-13-US-224612 @komal @Allocation
-  Scenario Outline: Direct Ann>>Verify Admin user should not see validation on send to s/r button when negotiation is initiated during FDM user when user select only Budget tab: Budget details section for negotiation when recommended amount is equal to Budgeted amount
+  Scenario Outline: Direct Ann Admin user should not see validation on send to s/r button when negotiation is initiated during FDM user when user select only Budget tab Budget details section for negotiation when recommended amount is equal to Budgeted amount
   | Direct Ann>>Verify Admin user can see the value "Budget Tab: Focus Area" replaced with "Budget Tab: Budget Summary by Focus Area" in the Application section for Negotiation |
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default-Automation ADMIN user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -1412,7 +1412,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | {SavedValue:Automation Runtime Announcement} | ADMIN   |
 
   @234412 @DirectAnnVerifyEXEusercannotseethevalidationwhenthebudgetedAmountisequaltotheRecommendedamountwhenusertriedtoconverttoaward @sprint-13-US-224612 @komal @Allocation
-  Scenario Outline: Direct Ann>>Verify EXE user can not see the validation when the budgeted Amount is equal to the Recommended amount when user tried to convert to award
+  Scenario Outline: Direct Ann EXE user can not see the validation when the budgeted Amount is equal to the Recommended amount when user tried to convert to award
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     And I created approved FDM on application "<Announcement Name>"
@@ -1438,7 +1438,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | {SavedValue:Automation Runtime Announcement} |
 
   @234368 @234371 @DirectAnnVerifyEXEusercaninlineedittheRecommendedBudgetfieldunderRecommendedApplicationsectionbeforeFDMapproval @sprint-13-US-224612 @komal @Allocation
-  Scenario Outline: Direct Ann>>Verify EXE user can inline edit the Recommended Budget field under Recommended Application section before FDM approval
+  Scenario Outline: Direct Ann EXE user can inline edit the Recommended Budget field under Recommended Application section before FDM approval
   | DirectAnn>>Verify EXE when negotiation is initiated during FDM or from app layout then it must mandatory for user to select the "Budget: Budget Details " picklist value  for Negotiation field when the budgeted Amount is not equal to the Recommended Budget |
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -1613,8 +1613,8 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | EXE  |
 
-  @234234 @234238 @234240 @DirectAnn>>VerifySPIusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiation(FromFDM),ifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
-  Scenario Outline: Direct Ann>> Verify SPI user can see Error message on submit to grantor button when user resubmit the application after negotiation (From FDM), if check when the Budgeted amount must be equal to the  Recommended Amount
+  @234234 @234238 @234240 @DirectAnnSPIusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiationFromFDMifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
+  Scenario Outline: Direct Ann SPI user can see Error message on submit to grantor button when user resubmit the application after negotiation (From FDM), if check when the Budgeted amount must be equal to the  Recommended Amount
   | Direct Ann>> Verify SPI user can able to edit the Budget Summary by focus area section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)& submit application to s/r side |
   | Direct Ann>> Verify SPI user can able to edit the Budget details section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)then mandatory to select Budget details from picklist for negotiation |
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
@@ -1814,8 +1814,8 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PM   |
 
-  @234235 @234239 @234237 @DirectAnn>>VerifyINDusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiation(FromFDM),ifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
-  Scenario Outline: Direct Ann>> Verify IND user can see Error message on submit to grantor button when user resubmit the application after negotiation (From FDM), if check when the Budgeted amount must be equal to the Recommended Amount
+  @234235 @234239 @234237 @DirectAnnINDusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiationFromFDMifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
+  Scenario Outline: Direct Ann IND user can see Error message on submit to grantor button when user resubmit the application after negotiation From FDM if check when the Budgeted amount must be equal to the Recommended Amount
   | Direct Ann>> Verify IND user can able to edit the Budget Summary by focus area section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)& submit application to s/r side |
   | Direct Ann>> Verify IND user can not see Error message on submit to grantor button when user resubmit the application after negotiation (From FDM), if  Budgeted amount is equal to the  Recommended Amount  |
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
@@ -2019,8 +2019,8 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PM  |
 
-  @234225 @234229 @234228 @CompAnn>>VerifySPIusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiation(FromFDM),ifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
-  Scenario Outline: Comp Ann>> Verify SPI user can see Error message on submit to grantor button when user resubmit the application after negotiation (From FDM), if check when the Budgeted amount must be equal to the  Recommended Amount
+  @234225 @234229 @234228 @CompAnnSPIusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiationFromFDMifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
+  Scenario Outline: Comp Ann SPI user can see Error message on submit to grantor button when user resubmit the application after negotiation From FDM if check when the Budgeted amount must be equal to the  Recommended Amount
   | Direct Ann>> Verify SPI user can able to edit the Budget Summary by focus area section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)& submit application to s/r side |
   | Direct Ann>> Verify SPI user can able to edit the Budget details section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)then mandatory to select Budget details from picklist for negotiation |
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default"
@@ -2224,8 +2224,8 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PM   |
 
-  @234227 @234231 @234233 @CompAnn>>VerifyINDusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiation(FromFDM),ifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
-  Scenario Outline: Comp Ann>> Verify IND user can see Error message on submit to grantor button when user resubmit the application after negotiation (From FDM), if check when the Budgeted amount must be equal to the Recommended Amount
+  @234227 @234231 @234233 @CompAnnINDusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiationFromFDMifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
+  Scenario Outline: Comp Ann IND user can see Error message on submit to grantor button when user resubmit the application after negotiation From FDM if check when the Budgeted amount must be equal to the Recommended Amount
   | Comp Ann>> Verify IND user can able to edit the Budget Summary by focus area section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)& submit application to s/r side |
   | Comp Ann>> Verify IND user can able to edit the Budget details section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)then mandatory to select Budget details from picklist for negotiation |
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default"
