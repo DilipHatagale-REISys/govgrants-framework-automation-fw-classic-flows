@@ -16573,12 +16573,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Edit" in the page details
     When I enter values into fields
       | Value | Field                           |
-      | 2000  | fieldRevisedCommitment__c       |
+      | 500   | fieldRevisedCommitment__c       |
       | 1000  | fieldRequestedChangeInBudget__c |
     #257651
     Then I softly see fields "fieldRevisedCommitment__c" is in edit mode
     And I click on "Save" in the page details
-    Then I softly see field "Revised Commitment" as "$2000.00"
+    Then I softly see field "Revised Commitment" as "$500.00"
     And I wait for "7" seconds
     And I click on "Submit for Approval" in the page details
     #257643
@@ -16586,8 +16586,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Overview Tab - Revised Commitment should be equal to or greater than the total of Cummulative Obligation $3000.00 across all budget periods. |
     And I click on "Edit" in the page details
     When I enter values into fields
-      | Value | Field                     |
-      | 4000  | fieldRevisedCommitment__c |
+      | Value | Field                           |
+      | 4000  | fieldRevisedCommitment__c       |
+      | 2000  | fieldRequestedChangeInBudget__c |
     And I click on "Save" in the page details
     And I click on "Submit for Approval" in the page details
     #257657
