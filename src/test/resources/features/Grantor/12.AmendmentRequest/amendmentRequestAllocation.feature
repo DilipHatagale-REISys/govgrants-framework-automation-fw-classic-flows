@@ -16892,7 +16892,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
 
- @vai @258224 @258225 @ValidateusershouldabletoseethebudgetsummarybyfocusareasectionshoulddisplaywhenfocusAreaisYes @sprint-19-US-250549 @vaibhav @Allocation
+  @258224 @258225 @ValidateusershouldabletoseethebudgetsummarybyfocusareasectionshoulddisplaywhenfocusAreaisYes @sprint-19-US-250549 @vaibhav @Allocation
   Scenario: Validate user should able to see the budget summary by focus area section should display when focus Area is Yes
     And I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_RISK_ASSESSMENT_NO-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
