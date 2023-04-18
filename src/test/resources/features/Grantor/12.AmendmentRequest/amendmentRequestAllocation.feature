@@ -15082,7 +15082,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Available Balance" as "$992,000.00"
     Then I softly see field "Appropriation Amount" as "$1,000,000.00"
 
- @vai @258576 @258578 @258587 @258590 @262837 @258594 @258592 @258593 @258595 @262820 @ValidateCompPOusercanseevaluedisplayedforTotalCommitmentfieldonPendingActivationstateofversion2awardiscopiedfromtheRevisedCommitmentfieldfromthebudgetsummarysectionofamendmentrequestFAYes @sprint-19-US-250551 @vaibhav @Allocation
+  @258576 @258578 @258587 @258590 @262837 @258594 @258592 @258593 @258595 @262820 @ValidateCompPOusercanseevaluedisplayedforTotalCommitmentfieldonPendingActivationstateofversion2awardiscopiedfromtheRevisedCommitmentfieldfromthebudgetsummarysectionofamendmentrequestFAYes @sprint-19-US-250551 @vaibhav @Allocation
   Scenario: Validate Comp PO user can see value displayed for Total Commitment field on Pending Activation state of version 2 award is copied from the Revised Commitment field from the budget summary section of amendment request(FA=Yes)
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default-Automation IND user"
@@ -15199,6 +15199,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside table
     Then I softly see status in Progress-bar is "Active" and is "green"
+    And I navigate to "Budget" sub tab
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation3"
     Then I softly see that "Cumulative Obligation" rendered in view mode only
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
@@ -16891,7 +16892,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
 
-  @258224 @258225 @ValidateusershouldabletoseethebudgetsummarybyfocusareasectionshoulddisplaywhenfocusAreaisYes @sprint-19-US-250549 @vaibhav @Allocation
+ @vai @258224 @258225 @ValidateusershouldabletoseethebudgetsummarybyfocusareasectionshoulddisplaywhenfocusAreaisYes @sprint-19-US-250549 @vaibhav @Allocation
   Scenario: Validate user should able to see the budget summary by focus area section should display when focus Area is Yes
     And I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_RISK_ASSESSMENT_NO-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
