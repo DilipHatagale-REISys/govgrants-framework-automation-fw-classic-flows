@@ -17532,6 +17532,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
     And I save the field labeled "Project Period Start Date" as "ProjectPeriodStartDate"
     And I save the field labeled "Budget Period End Date" as "BudgetPeriodDate"
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
