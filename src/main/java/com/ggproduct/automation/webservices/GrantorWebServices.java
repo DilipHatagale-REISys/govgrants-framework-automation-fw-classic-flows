@@ -259,7 +259,7 @@ public class GrantorWebServices extends ProjectWebServices {
     }
 
     private void createAwardFromFDMPostCall(JsonObject jsonObject) {
-        String finalEndPoint = endPoint + "/services/apexrest/activateAwardFromFDM/v1";
+        String finalEndPoint = endPoint + "/services/apexrest/activateAwardFromFDM/v1.1";
         I.amPerforming().waitFor().makeThreadSleep(5000);
         Response response = I.amPerforming().restHttp().postCall(jsonObject, null,
                 finalEndPoint, "Authorization", "Bearer " + tokenString, null);
