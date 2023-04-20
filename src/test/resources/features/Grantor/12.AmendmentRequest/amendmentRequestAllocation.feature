@@ -17193,6 +17193,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 1            |
     And I click on "Send to Subrecipient" in the page details
+    Then I see field "Status" as "Sent to Subrecipient"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
