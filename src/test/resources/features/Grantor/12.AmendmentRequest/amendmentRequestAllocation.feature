@@ -18566,7 +18566,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Construction  | 1500                 | 100        | 0              |
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -18803,7 +18803,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Construction  | 1500                 | 100        | 0              |
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
