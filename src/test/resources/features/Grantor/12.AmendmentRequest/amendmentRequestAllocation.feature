@@ -18913,7 +18913,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - New Obligation must be greater than $0 |
 
-  @256855 @257074 @VerifyFDusercannotseeanewsectionofBudgetSummarybyFocusAreawhenFocusAreaisNo @sprint-19-US-229281 @hitesh @Allocation
+  @hit @256855 @257074 @VerifyFDusercannotseeanewsectionofBudgetSummarybyFocusAreawhenFocusAreaisNo @sprint-19-US-229281 @hitesh @Allocation
   Scenario: Verify FD user cannot see a new section of Budget Summary by Focus Area when Focus Area is No
     And I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "FOCUS_AREA_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -19011,7 +19011,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Revised Commitment should be equal to or greater than the total of Cummulative Obligation $10000.00 across all budget periods. |
 
-  @257057 @VerifyvalidationisnotdisplayedtoFDuseronsubmitforapprovalwhenuserenterRevisedCommitmentequaltoNewobligationincurrentARcumulativeobligationinGrantWhenFANo @sprint-19-US-229281 @hitesh @Allocation
+  @hit @257057 @VerifyvalidationisnotdisplayedtoFDuseronsubmitforapprovalwhenuserenterRevisedCommitmentequaltoNewobligationincurrentARcumulativeobligationinGrantWhenFANo @sprint-19-US-229281 @hitesh @Allocation
   Scenario: Verify validation is not displayed to FD user on submit for approval when user enter Revised Commitment equal to New obligation in current AR cumulative obligation in Grant When FA No
     And I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "FOCUS_AREA_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -19076,7 +19076,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Save" in the page details
     And I click on "Submit for Approval" in the page details
 
-  @256959 @257081 @257080 @VerifyvalidationisnotdisplayedtoFDuserwhenNewObligationisequaltoRevisedEncumbrancewhenfocusareaisNo @sprint-19-US-229281 @hitesh @Allocation
+  @hit @256959 @257081 @257080 @VerifyvalidationisnotdisplayedtoFDuserwhenNewObligationisequaltoRevisedEncumbrancewhenfocusareaisNo @sprint-19-US-229281 @hitesh @Allocation
   Scenario: Verify validation is not displayed to FD user when New Obligation is equal to Revised Encumbrance when focus area is No
     And I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "FOCUS_AREA_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -19150,7 +19150,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
 
-  @257075 @257086 @VerifyFDusercanseeBudgetedAmountCurrentCommitmentSubrecipientMatchasreadonlyfieldsinBudgetsummarysectionwhenAmendmentisincreatedstateFANO @sprint-19-US-229281 @hitesh @Allocation
+  @hit @257075 @257086 @VerifyFDusercanseeBudgetedAmountCurrentCommitmentSubrecipientMatchasreadonlyfieldsinBudgetsummarysectionwhenAmendmentisincreatedstateFANO @sprint-19-US-229281 @hitesh @Allocation
   Scenario: Verify FD user can see Budgeted Amount, Current Commitment, Subrecipient Match  as read only fields in Budget summary section when Amendment is in created state FA NO
     And I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "FOCUS_AREA_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -19218,7 +19218,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | 30000  | fieldRevisedCommitment__c |
     Then I softly see field "Revised Commitment" as "$30,000.00"
 
-  @257083 @VerifyCurrentCommitmentfieldvalueiscopiedfromtotalcommitmentfromtheawardonwhichrequestiscreatedFANo @sprint-19-US-229281 @hitesh @Allocation
+  @hit @257083 @VerifyCurrentCommitmentfieldvalueiscopiedfromtotalcommitmentfromtheawardonwhichrequestiscreatedFANo @sprint-19-US-229281 @hitesh @Allocation
   Scenario: Verify Current Commitment field value is copied from total commitment from the award on which request is created FA No
     And I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "FOCUS_AREA_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -19247,7 +19247,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Current Commitment" as "CurrentCommitment"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:CurrentCommitment}"
 
-  @256952 @VerifyvalidationisdisplayedtoFDuserwhenNewObligationisgreaterthantheRevisedEncumbrancewhenfocusareaisNo @sprint-19-US-229281 @hitesh @Allocation
+  @hit @256952 @VerifyvalidationisdisplayedtoFDuserwhenNewObligationisgreaterthantheRevisedEncumbrancewhenfocusareaisNo @sprint-19-US-229281 @hitesh @Allocation
   Scenario: Verify validation is displayed to FD user when New Obligation is greater than the Revised Encumbrance when focus area is No
     And I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "FOCUS_AREA_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -19311,7 +19311,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       |Overview Tab - The New Obligation ($20000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($10000.0) |
 
-  @256948 @VerifyvalidationisdisplayedtoFDuserwhenNewObligationislessthantheRevisedEncumbrancewhenfocusareaisNo @sprint-19-US-229281 @hitesh @Allocation
+  @hit @256948 @VerifyvalidationisdisplayedtoFDuserwhenNewObligationislessthantheRevisedEncumbrancewhenfocusareaisNo @sprint-19-US-229281 @hitesh @Allocation
   Scenario: Verify validation is displayed to FD user when New Obligation is less than the Revised Encumbrance when focus area is No
     And I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "FOCUS_AREA_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -19376,7 +19376,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       |Overview Tab - The New Obligation ($10000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($20000.0) |
 
-  @257082 @256931 @256935 @256941 @DirectedVerifyvaluedisplayedforRolleBudgetedAmountfieldfromthebudgetchangesectionsRevisedAwardAmountcolumnFANo @sprint-19-US-229281 @hitesh @Allocation
+  @hit @257082 @256931 @256935 @256941 @DirectedVerifyvaluedisplayedforRolleBudgetedAmountfieldfromthebudgetchangesectionsRevisedAwardAmountcolumnFANo @sprint-19-US-229281 @hitesh @Allocation
   Scenario: Directed Verify value displayed for Rolle Budgeted Amount field from the budget change section's Revised Award Amount column FA No
     And I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "FOCUS_AREA_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -19460,7 +19460,4 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | 10000  | fieldRequestedChangeInBudget__c |
     When I click on "Save" in the page details
     And I click on "Submit for Approval" in the page details
-
-
-
-
+    Then I see status in Progress-bar is "Submit for Approval" and is "green"
