@@ -18878,7 +18878,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click "Add" after selection of "Automation IND" in the table "---announcement:-:formulaAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
-    And I expand nested table containing column value "Automation Ind"
+    And I expand nested table containing column value "Automation IND"
     And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                           | Allocation Amount |
       | Automation Permanent Focus Area | 500               |
@@ -19152,7 +19152,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date | New Obligation |
-      | Automation Permanent Focus Area | 0          | 3650     | 1000           |
+      | Automation Permanent Focus Area | 0          | 3650     | 500            |
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
     And I perform quick search for "Automation Permanent Focus Area2" in "---subAwardStandAlone:-:associateModalTableId---" panel
     When I check "Automation Permanent Focus Area2" boxes in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
@@ -19160,7 +19160,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 #    And I close modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                            | Start Date | End Date | New Obligation |
-      | Automation Permanent Focus Area2 | 0          | 3650     | 0              |
+      | Automation Permanent Focus Area2 | 0          | 3650     | 500              |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
