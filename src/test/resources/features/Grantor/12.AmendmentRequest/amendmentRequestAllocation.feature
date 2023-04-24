@@ -18936,10 +18936,15 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I get the "EGMS ID"
     When I click on "Submit Application" in the page details
     Then I see field "Status" as "Submitted to Grantor"
-    And I created approved FDM on application "{SavedValue:Automation Runtime Announcement}"
-    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties "Automation ADMIN user"
-    And I activate award from FDM having application name "{SavedValue:Automation Runtime Announcement}"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I created approved FDM on application "{SavedValue:Automation Runtime Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties "Automation PO user"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime Announcement}"
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
@@ -19003,8 +19008,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
@@ -19015,7 +19020,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "PayreqId1"
     And I navigate to "Financials" sub tab
-    And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement |
@@ -19063,8 +19067,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "SubRecipientCF_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter value "Automation Justification" into field "fieldPurposeRTA__c"
+    And I wait for "5" seconds
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "CFAmendmentId"
+    And I refresh the page
     Then I softly see status in Progress-bar is "Created" and is "Green"
     And I edit the following rows inline in flex table with id "---amendment:-:carryForwardFocusAreaTableId---" by clicking "Edit" :
       | Title                           | Carry Forward Amount |
@@ -19098,9 +19104,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I perform quick search for "{SavedValue:CFAmendmentId}" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:CFAmendmentId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
-    Then I softly see value "$1,200.00" for title "Budgeted Amount" against the value "Automation Permanent Focus Area" inside table "---amendment:-:projectAreasTableId---"
-    Then I softly see value "$1,500.00" for title "Budgeted Amount" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
-    Then I softly see value "$2,700.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "$1,200.00" for title "Budgeted Amount" against the value "Automation Permanent Focus Area" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    Then I softly see value "$1,500.00" for title "Budgeted Amount" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    Then I softly see value "$2,700.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     Then I softly see value "$1,200.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:grantorBudgetChangeTableId---"
     And I click on page navigation arrow "---amendment:-:grantorBudgetChangeTableId---" for table id "Next"
     Then I softly see value "$1,500.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:grantorBudgetChangeTableId---"
@@ -19122,8 +19128,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #264768
     Then I softly see field "Revised Obligation" as "$2,700.00"
     #264797
-    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---amendment:-:projectAreasTableId---"
-    Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
 
   @264580 @264783 @264785 @264787 @264794 @ValidatevaluesdisplayedinSpentfieldwhenCarryforwardamendmentisinsubmittedtograntorstate @sprint-20-US-228432 @vaibhav @Allocation @TBE
   Scenario: Validate values displayed in Spent field when Carry forward amendment is in submitted to grantor state
@@ -19162,7 +19168,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 #    And I close modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                            | Start Date | End Date | New Obligation |
-      | Automation Permanent Focus Area2 | 0          | 3650     | 500              |
+      | Automation Permanent Focus Area2 | 0          | 3650     | 500            |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
@@ -19316,7 +19322,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "PayreqId1"
     And I navigate to "Financials" sub tab
-    And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement |
@@ -19364,9 +19369,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "SubRecipientCF_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter value "Automation Justification" into field "fieldPurposeRTA__c"
+    And I wait for "5" seconds
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "CFAmendmentId"
     Then I softly see status in Progress-bar is "Created" and is "Green"
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---amendment:-:carryForwardFocusAreaTableId---" by clicking "Edit" :
       | Title                           | Carry Forward Amount |
       | Automation Permanent Focus Area | 200                  |
@@ -19401,24 +19408,24 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     Then I softly see field "Spent" as "$500.00"
     #264783
-    Then I softly see "Current Obligation" in flex table header "---amendment:-:projectAreasTableId---"
-    Then I softly see "Spent" in flex table header "---amendment:-:projectAreasTableId---"
-    Then I softly see "Carry Forward Amount" in flex table header "---amendment:-:projectAreasTableId---"
-    Then I softly see "Revised Obligation" in flex table header "---amendment:-:projectAreasTableId---"
-    Then I softly see "Budgeted Amount" in flex table header "---amendment:-:projectAreasTableId---"
+    Then I softly see "Current Obligation" in flex table header "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    Then I softly see "Spent" in flex table header "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    Then I softly see "Carry Forward Amount" in flex table header "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    Then I softly see "Revised Obligation" in flex table header "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    Then I softly see "Budgeted Amount" in flex table header "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     #264785
-    Then I softly see value "$200.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---amendment:-:projectAreasTableId---"
-    Then I softly see value "$300.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
-    Then I softly see value "$500.00" for title "Spent" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "$200.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    Then I softly see value "$300.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    Then I softly see value "$500.00" for title "Spent" against the value "Grand Total" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
      #264787
-    And I edit the following rows inline in flex table with id "---amendment:-:carryForwardFocusAreaTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---amendment:-:grantorCarryForwardFocusAreaTableId---" by clicking "Edit" :
       | Title                           | Carry Forward Amount |
       | Automation Permanent Focus Area | 100                  |
-    And I edit the following rows inline in flex table with id "---amendment:-:carryForwardFocusAreaTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---amendment:-:grantorCarryForwardFocusAreaTableId---" by clicking "Edit" :
       | Title                            | Carry Forward Amount |
       | Automation Permanent Focus Area2 | 400                  |
-    Then I softly see value "$100.00" for title "Carry Forward Amount" against the value "Automation Permanent Focus Area" inside table "---amendment:-:projectAreasTableId---"
-    Then I softly see value "$400.00" for title "Carry Forward Amount" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "$100.00" for title "Carry Forward Amount" against the value "Automation Permanent Focus Area" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    Then I softly see value "$400.00" for title "Carry Forward Amount" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     #264794
     Then I softly see field "Current Obligation" as "$2,000.00"
     Then I softly see field "Carry Forward Amount" as "$700.00"
