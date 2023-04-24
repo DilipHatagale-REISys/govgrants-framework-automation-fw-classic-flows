@@ -18349,7 +18349,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     Then I softly see field "Total Commitment" as "$4,000.00"
 
-
   @256668 @256677 @256710 @256715 @256717 @256718 @256721 @256803 @256808 @256838 @256841 @256842 @256843 @256844 @256850 @256861 @256864 @256919 @256924 @256925 @256930 @256934 @256940 @256944 @256951 @256956 @256972 @308952 @VerifyFieldsdisplayedtoFOuseroninthebudgetsummarySection @sprint-19-US-229281 @hitesh @Allocation
   Scenario:Verify Fields displayed to FO user on in the budget summary Section
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Directed"
