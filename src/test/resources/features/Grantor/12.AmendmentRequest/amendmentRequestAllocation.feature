@@ -18946,7 +18946,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "Budget Redirection Threshold" inside page block detail
 
   @257051 @VerifyvalidationisdisplayedtoFDuseronSubmitforapprovalwhenuserenterRevisedCommitmentlessthanNewobligationincurrentARcumulativeobligationinGrantWhenFANo @sprint-19-US-229281 @hitesh @Allocation
-  Scenario: Verify validation is displayed to FD user on Submit for approval when user enter Revised Commitment less than New obligation in current AR + cumulative obligation in Grant When FANo
+  Scenario: Verify validation is displayed to FD user on Submit for approval when user enter Revised Commitment less than New obligation in current AR cumulative obligation in Grant When FANo
     And I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "FOCUS_AREA_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
