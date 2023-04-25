@@ -822,8 +822,8 @@ Feature: Validate all scenarios for program
     And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:adminTargetOwnerReplaceTableId---" panel
     Then I see value "{SavedValue:ProgramEGMSID}" for title "Program ID" inside table "---program:-:adminTargetOwnerReplaceTableId---"
-    And I save the value from row "1" for column name "OwnerI" as "OwnerName1" from flex table "---program:-:adminTargetOwnerReplaceTableId---"
-    Then I see value "{SavedValue:OwnerName1}" for title "OwnerI" inside table "---program:-:adminTargetOwnerReplaceTableId---"
+    And I save the value from row "1" for column name "Owner" as "OwnerName1" from flex table "---program:-:adminTargetOwnerReplaceTableId---"
+    Then I see value "{SavedValue:OwnerName1}" for title "Owner" inside table "---program:-:adminTargetOwnerReplaceTableId---"
 
   @195222 @ValidateuserselectsourceuserasPMuser&targetuserasEXEuserthenusershouldgetanerrorafterclickingontheStarticon @sprint-4 @vaibhav @reassignment
   Scenario: Validate user select source user  as PM user & target user as EXE user then user should get an error after clicking on the Start icon
@@ -3931,7 +3931,7 @@ Feature: Validate all scenarios for program
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
-    And I pause execution for "120" seconds
+    And I pause execution for "150" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -5088,7 +5088,7 @@ Feature: Validate all scenarios for program
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "150" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """

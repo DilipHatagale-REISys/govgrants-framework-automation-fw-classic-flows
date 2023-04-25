@@ -849,6 +849,7 @@ Feature: Validate all scenarios for program
     And I perform quick search for "Permit" in "---program:-:programReviewPanel---" panel
     Then I softly see value "Permits" for title "Section Header" inside table "---program:-:programReviewPanel---"
     And I close "Review Form" modal by clicking the top right x button
+    And I expand nested table containing column value "SME Review"
     And I click on "Delete" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I click on "Delete" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I click on "Delete" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
@@ -4925,6 +4926,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
       | {SavedValue:PM Username} | Step 1  |
@@ -4941,7 +4943,6 @@ Feature: Validate all scenarios for program
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
     When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
-    When I navigate to "Responsibilities" sub tab
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -4987,7 +4988,6 @@ Feature: Validate all scenarios for program
     Then I softly see status in Progress-bar is "Approved" and is "green"
     And I click on "Activate" in the page details
     Then I softly see status in Progress-bar is "Active" and is "green"
-
     Examples:
       | Focus Area                      | Program Name                                     |
       | Automation Permanent Focus Area | {SavedValue:Automation Runtime Internal Program} |
