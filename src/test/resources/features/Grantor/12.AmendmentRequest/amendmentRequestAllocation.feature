@@ -19495,6 +19495,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Overview Tab - The Revised Obligation must be equal to the Budgeted Amount for the following Focus Areas - (Automation Permanent Focus Area, Automation Permanent Focus Area2) |
       | Overview Tab - The Revised Obligation ($2500.0) must be equal to the total of Revised Encumbrance in the Funding Account ($2700.0)                                             |
     #264877
+    And I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:grantorCarryForwardFocusAreaTableId---" by clicking "Edit" :
       | Title                           | Carry Forward Amount |
       | Automation Permanent Focus Area | -2000                |
@@ -19512,7 +19513,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I edit the following rows inline in flex table with id "---amendment:-:grantorCarryForwardFocusAreaTableId---" by clicking "Edit" :
       | Title                            | Carry Forward Amount |
       | Automation Permanent Focus Area2 | 500                  |
-    And I wait for "3" seconds
+    And I refresh the page
     Then I softly see field "Budgeted Amount" as "$2,700.00"
     Then I softly see field "Revised Obligation" as "$2,700.00"
     When I click on "Submit for Approval" in the page details
@@ -19714,10 +19715,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Created" and is "Green"
     #263893
     Then I softly see field "Budgeted Amount" as "$2,000.00"
-    Then I softly see value "$1,000.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:RecipientCarryForwardBudgetTableId---"
-    And I click on page navigation arrow "---amendment:-:RecipientCarryForwardBudgetTableId---" for table id "Next"
-    Then I softly see value "$1,000.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:RecipientCarryForwardBudgetTableId---"
-    Then I see the following rows under the following headers in table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" :
+    Then I softly see value "$1,000.00" for title "Revised Award Amount" against the value "Construction" inside table "---progressReport:-:budgetChangeTableId---"
+    And I click on page navigation arrow "---progressReport:-:budgetChangeTableId---" for table id "Next"
+    Then I softly see value "$1,000.00" for title "Revised Award Amount" against the value "Construction" inside table "---progressReport:-:budgetChangeTableId---"
+    Then I see the following rows under the following headers in table with id "---progressReport:-:budgetChangeTableId---" :
       | Revised Award Amount |
       | $2,000.00            |
     And I edit the following rows inline in flex table with id "---amendment:-:carryForwardFocusAreaTableId---" by clicking "Edit" :
@@ -19729,20 +19730,20 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Carry Forward |
-      | Construction    | 1000           |
+      | Construction    | 500          |
     And I click on page navigation arrow "---amendment:-:RecipientCarryForwardBudgetTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Carry Forward |
       | Construction    | 500           |
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 2000                 | 200        | 0              |
+      | Construction    | 1500                 | 150        | 0              |
     And I click on page navigation arrow "---progressReport:-:budgetChangeTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction    | 1500                 | 150        | 0              |
     And I refresh the page
-    Then I softly see field "Budgeted Amount" as "$3,500.00"
+    Then I softly see field "Budgeted Amount" as "$3,000.00"
     And I wait for "10" seconds
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
@@ -19754,7 +19755,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
-      | {SavedValue:fundingAccount} | 3500                |
+      | {SavedValue:fundingAccount} | 3000                |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
