@@ -18541,6 +18541,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Value  | Field                           |
       | -10000 | fieldRequestedChangeInBudget__c |
     When I click on "Save" in the page details
+    And I wait for "5" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Overview Tab - New Obligation must be greater than $0 |
@@ -18959,7 +18960,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
@@ -19107,7 +19108,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #257081
     Then I softly see the following messages in the page details contains:
       | New Obligation : Number is too large. |
-    And I pause execution for "5" seconds
     #257080
     When I enter values into fields
       | Value  | Field                           |
