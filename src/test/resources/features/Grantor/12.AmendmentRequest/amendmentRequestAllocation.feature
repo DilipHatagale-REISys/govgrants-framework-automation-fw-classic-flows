@@ -21206,7 +21206,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on page navigation arrow "---progressReport:-:budgetChangeTableId---" for table id "Next"
     Then I softly see value "$1,300.00" for title "Revised Award Amount" against the value "Construction" inside table "---progressReport:-:budgetChangeTableId---"
 
-  @265743 @ValidateINDusercancarryforwardpartialbudgetfromremainingbudgetofpreviousBudgetperiodFA1tofocusareafromCurrentBudgetperiod @sprint-20-US-244399 @vaibhav @Allocation @TBE
+  @265743 @ValidateINDusercancarryforwardpartialbudgetfromremainingbudgetofpreviousBudgetperiodFA1tofocusareafromCurrentBudgetperiod @sprint-20-US-244399 @vaibhav @Allocation
   Scenario: Validate IND user can carry forward partial budget from remaining budget of previous Budget period FA1 to focus area from Current Budget period
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
