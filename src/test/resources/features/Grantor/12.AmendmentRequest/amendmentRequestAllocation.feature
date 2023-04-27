@@ -22036,7 +22036,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #265192
     And I navigate to "Budget" sub tab
     Then I softly see field "Cumulative Obligation" as "$2,000.00"
-    And I save the field labeled "Cumulative Obligation" as "CumulativeAward1"
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
