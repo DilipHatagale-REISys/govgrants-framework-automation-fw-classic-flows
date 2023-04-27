@@ -21818,7 +21818,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the value from row "1" for column name "Cumulative Obligation" as "CumuObFocus1Grant" from flex table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
     And I save the value from row "2" for column name "Cumulative Obligation" as "CumuObFocus2Grant" from flex table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$1,700.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
-    Then I softly see value "$1,800.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$2,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$3,700.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
     Then I softly see addition of two fields "{SavedValue:CumuObFocus1Award1}" and "{SavedValue:CumuObFocus1Award2}" is equal to "{SavedValue:CumuObFocus1Grant}"
     Then I softly see addition of two fields "{SavedValue:CumuObFocus2Award1}" and "{SavedValue:CumuObFocus2Award2}" is equal to "{SavedValue:CumuObFocus2Grant}"
@@ -21849,7 +21849,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Total Commitment" as "$4,000.00"
     Then I softly see value "{SavedValue:TotalCommitmentAward}" is "Equals to" the value "{SavedValue:TotalCommitmentGrant}"
 
-  @265137 @265192 @ValidatePOusercanseeCumulativeObligationfieldvalueasthetotaloftheEncumbrancecolumnfromtheAwardFundingAccountinformationinactivatestateofaward @sprint-20-US-263389 @vaibhav @Allocation @TBE
+  @265137 @265192 @ValidatePOusercanseeCumulativeObligationfieldvalueasthetotaloftheEncumbrancecolumnfromtheAwardFundingAccountinformationinactivatestateofaward @sprint-20-US-263389 @vaibhav @Allocation
   Scenario: Validate PO user can see Cumulative Obligation field value as the total of the 'Encumbrance' column from the Award Funding Account information in activate state of award
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
