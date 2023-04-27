@@ -2488,6 +2488,7 @@ Feature: Application Intake scenarios without background
     And I save the field labeled "EGMS ID" as "EGMSID"
     Given I am on "SUBPORTAL" portal
     When I login as "IND" user
+    And I navigate to "Applications" tab
     And I click toggle button to select "Applications - All"
     And I perform quick search for "{SavedValue:EGMSID}" in "---applicationIntake:-:publishedOpputunityTableId---" panel
     When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---applicationIntake:-:publishedOpputunityTableId---" without waiting for record
