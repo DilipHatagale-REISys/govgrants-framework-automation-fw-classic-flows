@@ -67,8 +67,13 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "ActiveFundingOpportunities"
     #219077
+    Then I see the following headers in table with id "---announcement:-:directedInvitedApplicatsTableId---" :
+      | Application EGMS ID | Application Status |
+    Then I softly see value "{SavedValue:AppEgmdId}" for title "Application EGMS ID" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+    Then I softly see value "Submitted to Grantor" for title "Application Status" inside table "---announcement:-:directedInvitedApplicatsTableId---"
     And I click on hyperlink containing value "{SavedValue:AppEgmdId}"
     Then I see the header is "Application" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
 
   @219075 @AdminUserShouldAbleToSeeTwoColumnsInPublishedStateForDirectedAnnouncement @sprint-9-US-208408 @komal @Allocation
   Scenario: Verify Admin user should able to see the two columns in published state for Directed Announcement
@@ -656,7 +661,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     #219346
     And I refresh the page
     When I navigate to "Budget" sub tab
-    Then I softly see field "Recommended Budget" inside page block
+    Then I softly cannot see field "Recommended Budget" inside page block
 
     Examples:
       | Announcement Name                            | User |
