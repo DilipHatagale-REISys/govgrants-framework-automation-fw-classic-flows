@@ -82,8 +82,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter "Creation_Formula_ByApp_FocusYes" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I navigate to "Overview" sub tab
+    And I pause execution for "100" seconds
     When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
-    When I enter value "State governments" into field "fieldEligibleApplicantTypes__c"
+    When I enter value "State Governments" into field "fieldEligibleApplicantTypes__c"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     When I navigate to "Overview" sub tab
@@ -380,6 +381,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see field "Status" as "Published"
     And I checkout to yopmail with mailid "automationspi30@yopmail.com"
     Then I refresh the page
+    And I pause execution for "120" seconds
     And I see the mail subject is as follows :
       """
       Sandbox: Notification: New Opportunity #{SavedValue:AnnEGMSID}hasbeen Published
