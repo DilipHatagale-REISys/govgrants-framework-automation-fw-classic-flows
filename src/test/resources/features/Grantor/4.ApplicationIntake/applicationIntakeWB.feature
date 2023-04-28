@@ -2472,7 +2472,7 @@ Feature: Application Intake scenarios without background
       | {SavedValue:Automation Runtime Announcement} | Competitive       |
 
   @219507 @219641 @DirectedAnnVerifyasINDuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarysummarywhenAppstatusisconverttoaward @sprint-13-US-224176 @komal @Allocation
-  Scenario Outline: Directed Ann_ Verify as IND user I can see Recommended budget field is visible under budget summary summary when App status is convert to award
+  Scenario Outline: Directed Ann Verify as IND user I can see Recommended budget field is visible under budget summary summary when App status is convert to award
     Given I published "<Announcement Type>" type announcement having name "Automation Runtime Announcement" and properties "default"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
     And I created approved FDM on application "<Announcement Name>"
