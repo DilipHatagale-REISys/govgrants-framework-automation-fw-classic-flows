@@ -2464,7 +2464,7 @@ Feature: Application Intake scenarios without background
     #219494 #219638
     Then I softly see field "Status" as "Negotiation Initiated"
     When I navigate to "Budget" sub tab
-    Then I softly see field "Recommended Budget" as "$1,000.00"
+    Then I softly cannot see field "Recommended Budget" inside page block
 
     Examples:
       | Announcement Name                            | Announcement Type |
@@ -2472,7 +2472,7 @@ Feature: Application Intake scenarios without background
       | {SavedValue:Automation Runtime Announcement} | Competitive       |
 
   @219507 @219641 @DirectedAnnVerifyasINDuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarysummarywhenAppstatusisconverttoaward @sprint-13-US-224176 @komal @Allocation
-  Scenario Outline: Directed Ann_ Verify as IND user I can see Recommended budget field is visible under budget summary summary when App status is convert to award
+  Scenario Outline: Directed Ann Verify as IND user I can see Recommended budget field is visible under budget summary summary when App status is convert to award
     Given I published "<Announcement Type>" type announcement having name "Automation Runtime Announcement" and properties "default"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
     And I created approved FDM on application "<Announcement Name>"
@@ -2482,6 +2482,7 @@ Feature: Application Intake scenarios without background
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I save the value from row "1" for column name "EGMS ID" as "appEGMSID" from flex table "---subAwardFromFDM:-:recommendedAppTableId---"
     And I click on "Create Subaward" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
     And I pause execution for "3" seconds
     Then I softly see that "Subaward" is in "Created" status
@@ -2490,8 +2491,8 @@ Feature: Application Intake scenarios without background
     When I login as "IND" user
     And I navigate to "Applications" tab
     And I click toggle button to select "Applications - All"
-    And I perform quick search for "{SavedValue:EGMSID}" in "---applicationIntake:-:publishedOpputunityTableId---" panel
-    When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---applicationIntake:-:publishedOpputunityTableId---" without waiting for record
+    And I perform quick search for "{SavedValue:appEGMSID}" in "---applicationIntake:-:publishedOpputunityTableId---" panel
+    When I click on "View" icon for "{SavedValue:appEGMSID}" inside flex table with id "---applicationIntake:-:publishedOpputunityTableId---" without waiting for record
     #219507 #219641
     Then I softly see field "Status" as "Converted to Award"
     When I navigate to "Budget" sub tab

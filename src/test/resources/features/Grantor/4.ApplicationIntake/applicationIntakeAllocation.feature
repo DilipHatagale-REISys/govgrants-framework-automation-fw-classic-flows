@@ -2385,7 +2385,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
-    When I navigate to "Files and Forms" sub tab
+    When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
     And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
