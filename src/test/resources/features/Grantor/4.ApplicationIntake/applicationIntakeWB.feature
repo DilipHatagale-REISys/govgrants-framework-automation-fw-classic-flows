@@ -2275,7 +2275,7 @@ Feature: Application Intake scenarios without background
     Then I see the header is "Application" in the page details
     When I navigate to "Budget" sub tab
     #235107 #234957
-    Then I softly see field "Recommended Budget" inside page block
+    Then I softly cannot see field "Recommended Budget" inside page block
     When I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
@@ -2291,7 +2291,7 @@ Feature: Application Intake scenarios without background
     When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                  | Target |
       | Automation Permanent KPI | 10     |
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
     When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -2305,7 +2305,7 @@ Feature: Application Intake scenarios without background
     Then I softly see field "Status" as "Submitted to Grantor"
     When I navigate to "Budget" sub tab
     #235107 #234957
-    Then I softly see field "Recommended Budget" inside page block
+    Then I softly cannot see field "Recommended Budget" inside page block
     And I save the field labeled "EGMS ID" as "EGMSID"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -2325,7 +2325,7 @@ Feature: Application Intake scenarios without background
     Then I softly see field "Status" as "Review Initiated"
     When I navigate to "Budget" sub tab
     #235107 #234957
-    Then I softly see field "Recommended Budget" inside page block
+    Then I softly cannot see field "Recommended Budget" inside page block
     Examples:
       | Announcement Name                            | Announcement Type |
       | {SavedValue:Automation Runtime Announcement} | Directed          |
@@ -2488,6 +2488,7 @@ Feature: Application Intake scenarios without background
     And I save the field labeled "EGMS ID" as "EGMSID"
     Given I am on "SUBPORTAL" portal
     When I login as "IND" user
+    And I navigate to "Applications" tab
     And I click toggle button to select "Applications - All"
     And I perform quick search for "{SavedValue:EGMSID}" in "---applicationIntake:-:publishedOpputunityTableId---" panel
     When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---applicationIntake:-:publishedOpputunityTableId---" without waiting for record
