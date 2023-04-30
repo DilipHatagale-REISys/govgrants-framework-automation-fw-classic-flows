@@ -494,7 +494,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            | Filter  | User |
       | {SavedValue:Automation Runtime Announcement} | default | PM   |
 
-  @234672 @219363 @219366 @CompAnnVerifyPMusershouldseevalidationonsendtosrbuttonwhennegotiationisinitiatedduringFDMuserwhenuserselectonlybudgetsummarybyFocusAreasectionfornegotiationevenwhenbudgetedamountisequaltorecommendedamount @sprint-13-US-224612 @komal @Allocation
+  @hts @234672 @219363 @219366 @CompAnnVerifyPMusershouldseevalidationonsendtosrbuttonwhennegotiationisinitiatedduringFDMuserwhenuserselectonlybudgetsummarybyFocusAreasectionfornegotiationevenwhenbudgetedamountisequaltorecommendedamount @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Comp Ann PM user should see validation on send to s/r button when negotiation is initiated during FDM user when user select only budget summary by Focus Area section for negotiation even when budgeted amount is equal to recommended amount
   | Competitive Ann_ Verify as PM user I can see Recommended budget field is visible when App status is negotiation completed  |
   | Competitive Ann_ Verify as PM user I can see Recommended budget filed is visible when App status is Convert to award |
@@ -708,7 +708,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Announcement} |
 
-  @219357 @234667 @CompetativeAnnVerifyasEXEuserIcanseeRecommendedBudgetfieldisvisiblewhenAppstatusisnegotiationinitiated @sprint-13-US-224612 @komal @Allocation
+  @hts @219357 @234667 @CompetativeAnnVerifyasEXEuserIcanseeRecommendedBudgetfieldisvisiblewhenAppstatusisnegotiationinitiated @sprint-13-US-224612 @komal @Allocation
   Scenario Outline:Competative Ann as EXE user I can see "Recommended Budget" field is visible when App status is negotiation initiated
     | Comp Ann>>Verify EXE when negotiation is initiated during FDM or from app layout then user should not get validation on UI on send to subrecipient button when the budgeted Amount is equal to the Recommended Budget |
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-Automation EXE user"
