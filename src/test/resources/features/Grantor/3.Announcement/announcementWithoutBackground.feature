@@ -18,7 +18,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see field "Focus Area Required?" as "No"
     Then I softly cannot see field "Pre-Application Due Date" inside page block
 
-  @hts @70369 @validationForSubrecipientMatch @smoke @aashish
+  @70369 @validationForSubrecipientMatch @smoke @aashish
   Scenario: To Validate system generates validation message for  by keeping the "Subrecipient Match(%)" field as blank while creating Announcement
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -279,7 +279,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     Then I softly can see top right button "New" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
 
-  @hts @71150 @71578 @71303 @71051 @71054 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish @smoke
+  @71150 @71578 @71303 @71051 @71054 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish @smoke
   Scenario: To validate system generated error message when total Review Form  weight(%) is more than 100 % while creating Announcement
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -315,8 +315,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Form Name      | Form Weight (%) |
       | Fiscal Review  | 20              |
       | Program Review | 20              |
-    And I pause execution for "3" seconds
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
+    And I pause execution for "3" seconds
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 40.00%. |
     And I pause execution for "3" seconds
@@ -353,6 +353,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | 70.00%          | Program Review Form |
     And I pause execution for "2" seconds
     Then I softly see value "Program Review Form" for title "Form Name" inside table "---announcement:-:AnnouncementReviewPanel---"
+    And I pause execution for "3" seconds
     And I click on "Delete" icon for "Program Review Form" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
@@ -383,9 +384,11 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I close modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 60.00%. |
       | Setup Tab - SME Review - Fiscal Review: The total section weight must equal 100% or 0%. It is currently 180%. |
     And I pause execution for "3" seconds
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
+    And I pause execution for "3" seconds
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Budget         | 0                  |
@@ -402,6 +405,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Setup Tab - SME Review - Fiscal Review: A weighted form must contain weighted sections.                                                             |
     And I pause execution for "3" seconds
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
+    And I pause execution for "3" seconds
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Budget         | 25                 |
@@ -473,7 +477,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Delete" icon for "Review form question Edited" inside flex table with id "---announcement:-:reviewPanelQuestionsTableId---" without waiting for record
     Then I softly do not see value "Review form question Edited" for title "Question" inside table "---announcement:-:reviewPanelQuestionsTableId---"
 
-  @hts @71293 @71295 @71440 @71416 @verifyUserCanAddReviewers @aashish
+  @71293 @71295 @71440 @71416 @verifyUserCanAddReviewers @aashish
   Scenario: To verify that user is allow to add reviewers to review forms while creating Announcement | To verify default review forms & reviewer section are populated on Draft announcement
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -542,10 +546,11 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     #And I collapse nested table containing column value "Permits"
     When I close "Review Form" modal by clicking the top right x button
     And I refresh the page
+    And I pause execution for "3" seconds
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | There are no errors with the review step templates. |
-    And I pause execution for "2" seconds
+    And I pause execution for "3" seconds
     And I expand nested table containing column value "SME Review"
     When I enter the following values into flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Add" :
       | Reviewer                 |
@@ -1528,6 +1533,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see "Announcements Owned by Target User " page block displayed
     #194690
     And I click on top right button "Transfer Ownership" in flex table with id "---announcement:-:annAdminOwnerReplaceTableId---"
+    And I pause execution for "5" seconds
     Then I softly see the following messages in the page details contains:
       | You need to select at least one record |
     #194685
@@ -1567,7 +1573,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:annAdminTargetOwnerReplaceTableId---" panel
     Then I see value "{SavedValue:AnnEGMSID}" for title "Announcement ID" inside table "---announcement:-:annAdminTargetOwnerReplaceTableId---"
 
-  @hts @194694 @194714 @194712 @Validateclickontransferredbuttonthenusershouldabletoseethewarningmessage @sprint-4 @vaibhav @reassignment @ownershipcheck
+  @194694 @194714 @194712 @Validateclickontransferredbuttonthenusershouldabletoseethewarningmessage @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate click on transferred button then user should able to see the warning message
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -1600,8 +1606,10 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click table top right button "Transfer Ownership" in flex table with id "---announcement:-:annAdminOwnerReplaceTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
+    And I pause execution for "5" seconds
     Then I softly see the following messages in the page details contains:
       | Transfer is in progress, kindly wait for email confirmation. |
+    And I pause execution for "5" seconds
 
   @194722 @ValidateownershipischangedthenonlyAnnouncementownerischanged @sprint-4 @vaibhav @reassignment
   Scenario: Validate  ownership is changed then only Announcement owner is changed
@@ -3490,7 +3498,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I perform quick search for "{SavedValue:preAppId}" in "---home:-:internalHomePendingTaskTableId---" panel
     Then I see value "{SavedValue:preAppId}" for title "EGMS ID" inside table "---home:-:internalHomePendingTaskTableId---"
 
-  @hts @195276 @ValidateoldownerofapplicationinternalshouldnotabletoproccedfurtherreviewinitiationprocessifappcreatedonnewownerafterAnnownershipreassignment @sprint-4 @vaibhav @reassignment @ownvai
+  @195276 @ValidateoldownerofapplicationinternalshouldnotabletoproccedfurtherreviewinitiationprocessifappcreatedonnewownerafterAnnownershipreassignment @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate old owner of application internal should not able to procced further review initiation process if app created on new owner after Ann ownership reassignment
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -4271,7 +4279,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       The EGMS Team
       """
 
-  @hts @194721 @194718 @ValidateemailshouldgetreachedtoSApreviousownerwhenownershipofrecordischanged @sprint-11-US-224734 @vaibhav @reassignment
+  @194721 @194718 @ValidateemailshouldgetreachedtoSApreviousownerwhenownershipofrecordischanged @sprint-11-US-224734 @vaibhav @reassignment
   Scenario: Validate email should get reached to "SA"(previous owner) when ownership of record is changed
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -4351,7 +4359,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       The EGMS Team
       """
 
-  @hts @221973 @Validatetaskeassignmentdoesnothappenwhenausertriestoreassignhistasktoanotheruserisresponsiblefordifferentstepofsamemodule @sprint-11-US-218319 @vaibhav @reassignment
+  @221973 @Validatetaskeassignmentdoesnothappenwhenausertriestoreassignhistasktoanotheruserisresponsiblefordifferentstepofsamemodule @sprint-11-US-218319 @vaibhav @reassignment
   Scenario: Validate task reassignment does not happen when a user tries to reassign his task to another user is responsible for different step of same module
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -4559,7 +4567,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see value "Step 2" for title "Payment Request" against the value "Automation EXE" inside table "---announcement:-:approversTableId---"
     Then I softly see value "Step 2" for title "Monitoring" against the value "Automation EXE" inside table "---announcement:-:approversTableId---"
 
-  @hts @221979 @ValidateAnnIfapprandownerofAnnaresameafterreassigningtheownershipofAnnrecordapprovernameshouldnotchanged @sprint-11-US-218319 @vaibhav @reassignment
+  @221979 @ValidateAnnIfapprandownerofAnnaresameafterreassigningtheownershipofAnnrecordapprovernameshouldnotchanged @sprint-11-US-218319 @vaibhav @reassignment
   Scenario: Validate Ann If approver and owner of a Ann are same validate after reassigning the ownership of Ann record approver name should not changed
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab

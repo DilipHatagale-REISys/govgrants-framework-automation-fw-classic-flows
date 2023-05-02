@@ -14,7 +14,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @hts @34461 @52398 @70357 @@52399 @52397 @announcementCreationFA @smoke @annn
+  @34461 @52398 @70357 @@52399 @52397 @announcementCreationFA @smoke @annn
   Scenario: Creation of an Announcement |To Verify that if user selects "Subrecipients Match Required"-yes then he can  enter "Subrecipient Match(%)" in the Subrecipient Match(%) field while creating Announcement
     Then I softly see status in Progress-bar is "Created" and is "green"
     When I navigate to "Announcements" tab

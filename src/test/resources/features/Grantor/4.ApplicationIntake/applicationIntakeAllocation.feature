@@ -744,7 +744,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | SPA  |
       | SPI3 |
 
-  @hts @219479 @219572 @219577 @DirectedAnnasINDuserIseenewBudgetsummarysectionontopofbudgettabonAppsetasfocusareaisNo @sprint-11-US-203541 @komal @Allocation
+  @219479 @219572 @219577 @DirectedAnnasINDuserIseenewBudgetsummarysectionontopofbudgettabonAppsetasfocusareaisNo @sprint-11-US-203541 @komal @Allocation
   Scenario: Directed Ann as IND user I see new 'Budget summary' and 'Budgeted Amount' section on top of budget tab on App set as focus area is 'No'
   | Directed Ann_ Verify as IND user I should not see 'Budget Summary by Focus Area' section on App in budget tab if Focus area set as 'No' on Ann |
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "FOCUS_AREA_NO"

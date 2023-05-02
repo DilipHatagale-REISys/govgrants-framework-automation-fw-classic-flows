@@ -559,7 +559,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I see the following headers in table with id "---announcement:-:formulaInvitedApplicatsTableId---" :
       | Application EGMS ID | Application Status |
 
-  @hts @219106 @219107 @219163 @ValidatePOuserclickontheAddOrganizationbuttonthenuserseemodalwithalltheactiveS/RnamesforformulaAnnouncement @sprint-8-US-208408 @vaibhav @Allocation
+  @219106 @219107 @219163 @ValidatePOuserclickontheAddOrganizationbuttonthenuserseemodalwithalltheactiveS/RnamesforformulaAnnouncement @sprint-8-US-208408 @vaibhav @Allocation
   Scenario: Validate PO user click on the "Add Organization" button then user see modal with all the active S/R names for formula Announcement
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -780,7 +780,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly can see page block "Budget Summary"
     Then I see value "Automation Permanent Focus Area" for title "Focus Area" inside table "---applicationIntake:-:budgetSummaryTableId---"
 
-  @hts @226893 @219624 @ValidateSPISPAUserforformulaannouncementinbudgetsummarysectionAllocationAmountfieldshouldbedisplaywithallocationlevelByApplicant @sprint-9-US-204998 @vaibhav @Allocation
+  @226893 @219624 @ValidateSPISPAUserforformulaannouncementinbudgetsummarysectionAllocationAmountfieldshouldbedisplaywithallocationlevelByApplicant @sprint-9-US-204998 @vaibhav @Allocation
   Scenario Outline: Validate SPI/SPA User for formula announcement in budget summary section Allocation Amount field should be display with allocation level-By Applicant
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
     Given I am on "SUBPORTAL" portal
@@ -924,6 +924,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:formulaAddInviteApplicantTableId---"
     #226416
 #    TODO: Message disappearing shortly [exact validation message to be updated]
+    And I wait for "5" seconds
     Then I softly see the following messages in the page details contains:
       | Please associate at least one Focus Area before adding Organization As Allocation level is by "By Applicant and Focus Area". |
 
@@ -1211,7 +1212,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     #221694
     Then I softly cannot see row level action button "Edit" against "SAN DIEGO ELECTRICAL TRAINING TRUST" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
 
-  @hts @222009 @222007 @222022 @VerifyPOusercannotdeleteinvitedorganizationsforformulaAnnouncementwhenannouncementisinApprovedstate @sprint-11-US-201558 @komal @Allocation
+  @222009 @222007 @222022 @VerifyPOusercannotdeleteinvitedorganizationsforformulaAnnouncementwhenannouncementisinApprovedstate @sprint-11-US-201558 @komal @Allocation
   Scenario: Verify PO user cannot delete invited organizations for formula Announcement when announcement is in Approved state.
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -1287,8 +1288,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see field "Status" as "Under Revision"
     Then I softly cannot see top right button "Remove Selected" in flex table with id "---announcement:-:addOrganizationByAppFocusAreaTableId---"
 
-  @222464 @222465 @222468 @VerifyusercannotdeletetheassociatedfocusareawhenAnnouncementisinApprovedPublishedUnpublishedState @sprint-11-US-201558 @komal @Allocation
-  Scenario: Verify user cannot delete the associated focus area when Announcement is in Approved Published Unpublished state.
+   @222464 @222465 @222468 @VerifyusercannotdeletetheassociatedfocusareawhenAnnouncementisinApprovedPublishedUnpublishedState @sprint-11-US-201558 @komal @Allocation
+   Scenario: Verify user cannot delete the associated focus area when Announcement is in Approved Published Unpublished state.
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -5016,7 +5017,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | SPI3 |
 
-  @hts @225142 @VerifythatIfFocusareasbudgetedequaltoAllocationamountforthatfocusareainbudgetsummarysectionWhenSPIresubmittheapplicationafternegotiationinPreScreenreviewcheckthenitshouldnotthroughErrormessage @sprint-11-US-204300 @komal @Allocation
+  @225142 @VerifythatIfFocusareasbudgetedequaltoAllocationamountforthatfocusareainbudgetsummarysectionWhenSPIresubmittheapplicationafternegotiationinPreScreenreviewcheckthenitshouldnotthroughErrormessage @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify that If Focus area's budgeted equal to Allocation amount for that focus area in budget summary section When SPI resubmit the application after negotiation in Pre Screen review check then it should not through Error message
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -5038,9 +5039,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When  I enter "Negotiation_Edit_Budget" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I wait for "3" seconds
+    When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Send to Subrecipient" in the page details
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
-    When I save the field labeled "EGMS ID" as "EGMSID"
     Given I am on "SUBPORTAL" portal
     When I login as "<User>" user
     And I navigate to "Home" tab
@@ -5063,7 +5064,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | SPI3 |
 
-  @hts @226383 @VerifythatIfFocusareasbudgetedequaltoAllocationamountforthatfocusareainbudgetsummarysectionWhenSPIresubmittheapplicationafternegotiationinSMEreviewcheckthenitshouldnotthroughErrormessage @sprint-11-US-204300 @komal @Allocation
+  @226383 @VerifythatIfFocusareasbudgetedequaltoAllocationamountforthatfocusareainbudgetsummarysectionWhenSPIresubmittheapplicationafternegotiationinSMEreviewcheckthenitshouldnotthroughErrormessage @sprint-11-US-204300 @komal @Allocation
   Scenario Outline:  Verify that If Focus area's budgeted equal to Allocation amount for that focus area in budget summary section When SPI resubmit the application after negotiation in SME review check then it should not through Error message
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -5266,10 +5267,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Negotiation_Edit_Budget" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
+    When I save the field labeled "EGMS ID" as "EGMSID"
     And I wait for "5" seconds
     When I click on "Send to Subrecipient" in the page details
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
-    When I save the field labeled "EGMS ID" as "EGMSID"
     Given I am on "SUBPORTAL" portal
     When I login as "<User>" user
     And I navigate to "Home" tab
@@ -5626,3 +5627,56 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Examples:
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | IND  |
+
+    @hitesh12
+    Scenario:
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_RISK_ASSESSMENT_NO"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Formula Announcement}" on announcement "{SavedValue:Automation Runtime Formula Announcement}" with properties "default"
+    When I login to "As a Grantor" app as "PM" user
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside table
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+      When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
+        | Form Name  | Due in Days |
+        | Pre-Screen | 5           |
+      When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
+        | Reviewer                 |
+        | {SavedValue:PM Username} |
+      And I click on "Assign" icon for "{SavedValue:PM Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
+      When I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:assignApplicationsTableId---" panel
+      And I check "{SavedValue:Automation Runtime Formula Announcement}" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+      When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+      And I wait for "2" seconds
+      And I refresh the page
+      And I save the value from row "1" for column name "Application EGMS ID" as "ApplicationEGMSID" from flex table "---applicationReview:-:appreviewsTableId---"
+      When I check "{SavedValue:Automation Runtime Formula Announcement}" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
+      And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
+      When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+      And I navigate to "Applications" tab
+      When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+      And I perform quick search for "{SavedValue:ApplicationEGMSID}" in "---applicationReview:-:pendingTaskTableId---" panel
+      And I click on "Start" icon for "{SavedValue:ApplicationEGMSID}" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
+      When I complete filling in the Review form with recommendation "Recommended"
+      And I click on "Save" in the page details
+      And I wait for "6" seconds
+      When I click on "Submit" in the page details without processing
+      When I click alert button "OK"
+      And I wait for "5" seconds
+      When I navigate to "Applications" tab
+      And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+      When I click toggle button to select "Application Reviews - All"
+      And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:announcementListTableId---" panel
+      When I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---applicationReview:-:announcementListTableId---"
+      And I navigate to "Related Log" sub tab
+      When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
+      When I check "{SavedValue:Automation Runtime Formula Announcement}" boxes in flex table with id "---applicationReview:-:appTableId---"
+      And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
+      And I click on "Next Review Step" in the page details
