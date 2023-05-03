@@ -22260,9 +22260,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #257159
     Then I softly see field "New Obligation" as "$10,000.00"
     #257165
+    When I click on "Edit" in the page details
     Then I softly see that "Revised Commitment" rendered in view mode only
     #257161
-    When I click on "Edit" in the page details
     Then I softly see that "New Obligation" rendered in view mode only
     Then I softly see that "Budgeted Amount" rendered in view mode only
     Then I softly see that "Current Commitment" rendered in view mode only
@@ -22394,9 +22394,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Name                      | Award  |
       | {SavedValue:EXE Username} | Step 1 |
     And I save the field labeled "EGMS ID" as "Record Id"
-    And I pause execution for "10" seconds
     Then I softly see field "Status" as "Created"
-    And I pause execution for "10" seconds
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
@@ -22501,14 +22499,18 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Current Commitment" as "CurrentCommitment"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:CurrentCommitment}"
     #257141
+    When I click on "Edit" in the page details
     Then I softly see that "New Obligation" rendered in view mode only
     Then I softly see that "Budgeted Amount" rendered in view mode only
     Then I softly see that "Current Commitment" rendered in view mode only
     Then I softly see that "Revised Commitment" rendered in view mode only
+    When I click on "Save" in the page details
     #257148
     Then I softly see field "New Obligation" as "$10,000.00"
     #257145
+    When I click on "Edit" in the page details
     Then I softly see that "Revised Commitment" rendered in view mode only
+    When I click on "Save" in the page details
     #257146
     Then I softly see "Budget Summary by Focus Area" page block displayed
     Then I softly do not see "Funding Change - Focus Area" page block displayed
@@ -22597,7 +22599,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Name                      | Award  |
       | {SavedValue:EXE Username} | Step 1 |
     Then I softly see field "Status" as "Created"
-    And I pause execution for "10" seconds
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
@@ -22722,24 +22723,27 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I perform quick search for "Record Id" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I navigate to "Overview" sub tab
-    #And I save the value from row "1" for column name "Encumbrance" as "Encumbrance" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
-    #Then I softly see value "$2,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I save the value from row "1" for column name "New Obligation" as "newObligation" from flex table "---amendment:-:FundingChangeFocusAreaTableId---"
+    And I save the value from row "2" for column name "New Obligation" as "newObligation1" from flex table "---amendment:-:FundingChangeFocusAreaTableId---"
+    And I save the value from row "3" for column name "New Obligation" as "newObligation2" from flex table "---amendment:-:FundingChangeFocusAreaTableId---"
+    Then I softly see value "$5,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:FundingChangeFocusAreaTableId---"
+    Then I softly see value "$5,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:FundingChangeFocusAreaTableId---"
+    And I save the value from row "1" for column name "Encumbrance" as "Encumbrance" from flex table "---amendment:-:AmendmentFundingAccountTableId---"
     And I click on "Amend Subaward" in the page details
     And I pause execution for "10" seconds
     And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     When I navigate to "Budget" sub tab
+    Then I softly see field "NewObligation__c" not in edit mode
+    Then I softly see field "CumulativeObligation__c" not in edit mode
+    Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
     #257494
-    Then I softly see field "New Obligation" as "$10,000.00"
+    And I save the field labeled "New Obligation" as "NewObligation"
+    Then I softly see value "{SavedValue:NewObligation}" is "Equals to" the value "{SavedValue:Encumbrance}"
     #257492
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
     #257478
     Then I softly cannot see field "Budgeted Amount" inside page block
-    And I save the value from row "1" for column name "New Obligation" as "newObligation" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
-    And I save the value from row "2" for column name "New Obligation" as "newObligation1" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
-    And I save the value from row "3" for column name "New Obligation" as "newObligation2" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "$5,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "$5,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     #257436
     Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
     And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
@@ -22758,8 +22762,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation2"
     Then I softly see field "Cumulative Obligation" as "$10,000.00"
     #257350
-    Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area2" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see field "NewObligation__c" not in edit mode
+    Then I softly see field "CumulativeObligation__c" not in edit mode
+    Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
     #257439
     Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
     #257466
