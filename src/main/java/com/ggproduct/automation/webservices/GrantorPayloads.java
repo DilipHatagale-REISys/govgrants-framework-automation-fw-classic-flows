@@ -871,7 +871,7 @@ public class GrantorPayloads {
 
     private JsonObject createAwarForIndUser(JsonObject json) {
 
-        if(EnvironmentFactory.getEnvironmentName().contains("TEST8")) {
+        if(EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO") ) {
             JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
             JsonArray newA = new JsonArray();
             grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));
