@@ -229,14 +229,14 @@ public class GrantorPayloads {
         awardFundingAccountArray.add(awardFundingAccount);
         parent.add("AwardFundingAccount", awardFundingAccountArray);
 
-        JsonObject awardBudgetCategory = new JsonObject();
-        JsonArray awardBudgetCategoryArray = new JsonArray();
-        awardBudgetCategory.addProperty("BudgetCategory", "Construction");
-        awardBudgetCategory.addProperty("AwardedBudget", "1000");
-        awardBudgetCategory.addProperty("CashMatch", "100");
-        awardBudgetCategory.add("OtherLeverage", JsonNull.INSTANCE);
-        awardBudgetCategoryArray.add(awardBudgetCategory);
-        parent.add("AwardBudgetCategory", awardBudgetCategoryArray);
+//        JsonObject awardBudgetCategory = new JsonObject();
+//        JsonArray awardBudgetCategoryArray = new JsonArray();
+//        awardBudgetCategory.addProperty("BudgetCategory", "Construction");
+//        awardBudgetCategory.addProperty("AwardedBudget", "1000");
+//        awardBudgetCategory.addProperty("CashMatch", "100");
+//        awardBudgetCategory.add("OtherLeverage", JsonNull.INSTANCE);
+//        awardBudgetCategoryArray.add(awardBudgetCategory);
+//        parent.add("AwardBudgetCategory", awardBudgetCategoryArray);
 
         JsonObject awardServiceArea = new JsonObject();
         JsonArray awardServiceAreaArray = new JsonArray();
@@ -871,7 +871,7 @@ public class GrantorPayloads {
 
     private JsonObject createAwarForIndUser(JsonObject json) {
 
-        if(EnvironmentFactory.getEnvironmentName().contains("TEST8")) {
+        if(EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO") ) {
             JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
             JsonArray newA = new JsonArray();
             grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));

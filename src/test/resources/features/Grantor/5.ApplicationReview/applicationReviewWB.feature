@@ -1,4 +1,4 @@
-@applicationReviewWB @grantor-regression @grantor-parallel-regression @applicationReview @app @regression
+@applicationReviewWB @grantor-regression @grantor-parallel-regression @applicationReview @app @regression @applicationReviewTBE
 Feature: Validate all scenarios in the Application Review without background
 
   @78088 @InitiateReviewProcessIcon @keerti
@@ -17989,7 +17989,7 @@ Feature: Validate all scenarios in the Application Review without background
       | {SavedValue:Automation Runtime Formula Announcement} |
 
   @225595 @PMUserVerifywhennegotiationisinitiatedfromtheFDMitmustbemandatoryfortheusertoselecttheBudgetBudgetDetailspicklistvalueinfieldwhenthebudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatFA @sprint-11-US-203558 @komal @Allocation
-  Scenario Outline: PM User when negotiation is initiated from the FDM, it must be mandatory for the user to select the "Budget: Budget Details " picklist value in field when the budgeted amount in any focus area is not equal to the Allocation amount of that FA
+  Scenario Outline: PM User when negotiation is initiated from the FDM, it must be mandatory for the user to select the Budget Budget Details picklist value in field when the budgeted amount in any focus area is not equal to the Allocation amount of that FA
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "PM" user
@@ -18153,7 +18153,7 @@ Feature: Validate all scenarios in the Application Review without background
       | {SavedValue:Automation Runtime Formula Announcement} |
 
   @225607 @EXEUserVerifywhennegotiationisinitiatedfromthereviewstepsitmustbemandatoryfortheusertoselecttheBudgetBudgetDetailspicklistvaluewhenthebudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatFA @sprint-11-US-203558 @komal @Allocation
-  Scenario Outline: EXE User when negotiation is initiated from the review steps, it must be mandatory for the user to select the "Budget Budget Details " picklist value when the budgeted amount in any focus area is not equal to the Allocation amount of that FA
+  Scenario Outline: EXE User when negotiation is initiated from the review steps, it must be mandatory for the user to select the Budget Budget Details picklist value when the budgeted amount in any focus area is not equal to the Allocation amount of that FA
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "EXE" user

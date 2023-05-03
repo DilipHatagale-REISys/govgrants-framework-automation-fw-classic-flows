@@ -48,7 +48,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                  | Target |
       | Automation Permanent KPI | 10     |
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -67,8 +67,13 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "ActiveFundingOpportunities"
     #219077
+    Then I see the following headers in table with id "---announcement:-:directedInvitedApplicatsTableId---" :
+      | Application EGMS ID | Application Status |
+    Then I softly see value "{SavedValue:AppEgmdId}" for title "Application EGMS ID" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+    Then I softly see value "Submitted to Grantor" for title "Application Status" inside table "---announcement:-:directedInvitedApplicatsTableId---"
     And I click on hyperlink containing value "{SavedValue:AppEgmdId}"
     Then I see the header is "Application" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
 
   @219075 @AdminUserShouldAbleToSeeTwoColumnsInPublishedStateForDirectedAnnouncement @sprint-9-US-208408 @komal @Allocation
   Scenario: Verify Admin user should able to see the two columns in published state for Directed Announcement
@@ -149,8 +154,14 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I perform quick search for "{AUTOEnvData:ClosedStateAnnouncement}" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "{AUTOEnvData:ClosedStateAnnouncement}" inside flex table with id "ActiveFundingOpportunities"
     When I navigate to "Overview" sub tab
+    When I save the value from row "1" for column name "Application EGMS ID" as "AppEgmdId" from flex table "---announcement:-:directedInvitedApplicatsTableId---"
     Then I see the following headers in table with id "---announcement:-:directedInvitedApplicatsTableId---" :
       | Application EGMS ID | Application Status |
+    Then I softly see value "{SavedValue:AppEgmdId}" for title "Application EGMS ID" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+    Then I softly see value "Submitted to Grantor" for title "Application Status" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+    And I click on hyperlink containing value "{SavedValue:AppEgmdId}"
+    Then I see the header is "Application" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
 
   @219102 @219104 @VerifyEXeUserAbleToSeeSuccessMessageOnAddOrgModalAfterAddingActiveSubrecipieentOrg @sprint-9-US-208408 @komal @Allocation
   Scenario: Verify when EXE user click on the "Add Organization" button then user see modal with all the active SR names for Directed Announcement.
@@ -657,7 +668,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     #219346
     And I refresh the page
     When I navigate to "Budget" sub tab
-    Then I softly see field "Recommended Budget" inside page block
+    Then I softly cannot see field "Recommended Budget" inside page block
 
     Examples:
       | Announcement Name                            | User |
