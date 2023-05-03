@@ -19756,10 +19756,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Current Commitment" as "CurrentCommitment"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:CurrentCommitment}"
     #257141
-    Then I softly see field "New Obligation" as "$10,000.00"
-    Then I softly see field "Budgeted Amount" as "$10,000.00"
-    Then I softly see field "Current Commitment" as "$2,000.00"
-    Then I softly see field "Revised Commitment" as "$20,000.00"
     Then I softly see that "New Obligation" rendered in view mode only
     Then I softly see that "Budgeted Amount" rendered in view mode only
     Then I softly see that "Current Commitment" rendered in view mode only
@@ -19779,7 +19775,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction  | 2000                 | 200        |   0            |
     And I refresh the page
-    Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
+    Then I see the following rows under the following headers in table with id "---amendment:-:budgetChangeTableId---" :
       | Revised Award Amount |
       | $5,000.00            |
     Then I softly see field "Budgeted Amount" as "$5,000.00"

@@ -513,10 +513,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Fiscal Review     | 25              |
       | Program Review    | 25              |
       | Compliance Review | 50              |
-    And I pause execution for "2" seconds
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
-    And I pause execution for "2" seconds
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
