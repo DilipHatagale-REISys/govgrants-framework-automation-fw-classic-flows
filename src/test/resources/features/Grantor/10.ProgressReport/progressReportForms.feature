@@ -1,7 +1,7 @@
 @grantor-regression @grantor-parallel-regression @progressReport @progressReportForms @regression
 Feature: Validate scenarios in Progress Report Forms
 
- @vai @284145 @ValidateSF428CINDusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonform @sprint-26-US-282679 @vaibhav @Forms
+  @284145 @ValidateSF428CINDusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonform @sprint-26-US-282679 @vaibhav @Forms
   Scenario: Validate SF428-C IND user can able to save & validate form after entering correct & valid data on all fields present on form
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "SUBRECIPIENT_ORG_IND_USER-Automation PM user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"

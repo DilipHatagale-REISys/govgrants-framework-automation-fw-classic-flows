@@ -22277,7 +22277,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "Cumulative Obligation" inside page block detail
     Then I softly do not see "Awarded Amount" inside page block detail
 
-  @248798 @ValidateDirectedSPIusershouldseeupdatevaluesinCumulativeObligationTotalCommitmentfieldsunderBudgetSummarysectionofBudgettabisinClosestateonGrantlayout @sprint-21-US-263183 @vaibhav @Allocation 
+ @vai @248798 @ValidateDirectedSPIusershouldseeupdatevaluesinCumulativeObligationTotalCommitmentfieldsunderBudgetSummarysectionofBudgettabisinClosestateonGrantlayout @sprint-21-US-263183 @vaibhav @Allocation
   Scenario: Validate Directed SPI user should see update values in Cumulative Obligation & Total Commitment fields under Budget Summary section of Budget tab is in Close state on Grant layout
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -22286,7 +22286,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on top right button "New" in flex table with id "---announcement:-:annoucementTableId---"
     And I enter "DirectedAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
-    When I enter "Creation Second Modal1" values from "Announcement_Field_Values.xlsx"
+    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
