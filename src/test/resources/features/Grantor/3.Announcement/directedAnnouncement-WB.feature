@@ -186,6 +186,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | For-profit organizations |
     #219104
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    And I pause execution for "3" seconds
     Then I see the following messages in the page details contains:
       | Selected Applicants are associated successfully. |
 
@@ -2000,6 +2001,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
     And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    And I navigate to "Negotiations" sub tab
     When I enter value "Automation Test" into field "fieldApplicantResponse__c"
     When I click on "Save" in the page details
     And I wait for "5" seconds

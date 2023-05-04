@@ -733,7 +733,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I refresh the page
     When I navigate to "Budget" sub tab
     Then I softly see field "Recommended Budget" inside page block
-
     Examples:
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | EXE   |

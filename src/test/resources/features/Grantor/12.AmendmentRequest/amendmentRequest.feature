@@ -559,7 +559,7 @@ Feature: Validate all scenarios in the Amendment Request
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
 
   @56844 @ValidateGrantorCanDecreaseAwardBudgetAmountInFundingChangeTypeRequest @mahadev
-  Scenario: Verify Internal user can send request to Sub-recipient for increase in the award budget amount using Funding change option.
+  Scenario: Verify Internal user can not send request to Sub-recipient for increase in the award budget amount using Funding change option.
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -656,7 +656,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Save" in the page details
     And I click on "Send to Subrecipient" in the page details
     Then I see the following messages in the page details contains:
-      | Overview Tab - A requested change in the budget is required and cannot be $0. |
+      | Overview Tab - Please specify the New Obligation planned through this amendment request. |
 
   @56854 @checkDuplicateFundingChangeNotAllowed @jitendra
   Scenario: Verify Once Internal user request for Amendment request is in Progress then no other request can be created.
