@@ -111,6 +111,9 @@ public class UsersAndURL implements UsersController {
             case "SME":
                 password = "Salesforce2027";
                 break;
+            case "SPA":
+                password = "Salesforce2028";
+                break;
             case "FD":
                 password = "Salesforce2028";
                 break;
