@@ -22532,7 +22532,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$2,000.00" for title "Budgeted Amount" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     Then I softly see value "$5,000.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
 
-  @257350 @257436 @257439 @257466 @257565 @257567 @257571 @257486 @257492 @257478 @257494 @257497 @VerifyFOusershouldseeNewObligation&CumulativeObligationreadonlycolumnandshouldnotseeBudgetedAmountreadonlycolumninPendingActivationandActivatedstateofAward @sprint-19-US-250550 @hitesh @Allocation
+  @257350 @257436 @257439 @257466 @257473 @257565 @257567 @257571 @257573 @257486 @257492 @257478 @257494 @257497 @257569 @VerifyFOusershouldseeNewObligation&CumulativeObligationreadonlycolumnandshouldnotseeBudgetedAmountreadonlycolumninPendingActivationandActivatedstateofAward @sprint-19-US-250550 @hitesh @Allocation
   Scenario: Verify FO user should see 'New Obligation & Cumulative Obligation' read only column and should not see 'Budgeted Amount' read only column  in  Pending Activation and Activated state of Award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -22737,6 +22737,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     When I navigate to "Budget" sub tab
+    #257473
+    Then I softly cannot see field "Budgeted Amount" inside page block
     #257511
     And I save the field labeled "Total Commitment" as "TotalCommitment1"
     Then I softly see field "Total Commitment" as "$20,000.00"
@@ -22813,7 +22815,19 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Budget" sub tab
-    #257497
+    #257569
+    Then I softly see value "$0.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    #257573
+    Then I softly cannot see top right button "Edit" in page detail
+    Then I softly see that "Cumulative Obligation" rendered in view mode only
+    Then I softly see that "Total Commitment" rendered in view mode only
+    When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
+    Then I softly see "Total Awarded amount across budget periods" shown as help text
+    And I refresh the page
+    When I hovering mouse on help text icon inside page block detail "Total Commitment"
+    Then I softly see "Total amount committed through this and prior awards in this Budget period" shown as help text for label "Total Commitment"
+      #257497
     And I save the field labeled "Total Commitment" as "TotalCommitment2"
     Then I softly see field "Total Commitment" as "$20,000.00"
     Then I softly see value "{SavedValue:RevisedCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
@@ -23199,25 +23213,22 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I click on "Activate" in the page details
+    And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{ActivatedSubAwardId}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+    And I click on "View" icon for "{ActivatedSubAwardId}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
     When I navigate to "Budget" sub tab
     #257471
     Then I softly cannot see page block "Budget Summary by Focus Area"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---amendment:-:recipientActiveGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---" without waiting for record
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:SavedValue:AwardEGMSID}" inside flex table with id "---amendment:-:recipientAwardsTableId---" without waiting for record
+    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:ActivatedSubAwardId}" in "---amendment:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Budget" sub tab
     #257488
     Then I softly cannot see field "Budgeted Amount" inside page block
