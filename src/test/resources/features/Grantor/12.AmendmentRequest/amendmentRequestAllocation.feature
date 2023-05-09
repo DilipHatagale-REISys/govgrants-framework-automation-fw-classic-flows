@@ -22792,13 +22792,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---amendment:-:recipientActiveGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---" without waiting for record
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---amendment:-:recipientAwardsTableId---" without waiting for record
-    And I navigate to "Budget" sub tab
     #257578
+    And I navigate to "Budget" sub tab
     And I save the field labeled "Total Commitment" as "TotalCommitment3"
     Then I softly see field "Total Commitment" as "$20,000.00"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment3}"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---amendment:-:recipientAwardsTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
     #257486
     Then I softly cannot see field "Budgeted Amount" inside page block
     #257565
@@ -22817,18 +22818,18 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Budget" sub tab
     #257573
     Then I softly cannot see top right button "Edit" in page detail
     Then I softly see that "Cumulative Obligation" rendered in view mode only
     Then I softly see that "Total Commitment" rendered in view mode only
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
-    Then I softly see "Total amount committed through this and prior awards in this Budget period" shown as help text
+    Then I softly see "Total Awarded amount across budget periods" shown as help text
     And I refresh the page
     When I hovering mouse on help text icon inside page block detail "Total Commitment"
-    Then I softly see "Total Awarded amount across budget periods" shown as help text for label "Total Commitment"
+    Then I softly see "Total amount committed through this and prior awards in this Budget period" shown as help text for label "Total Commitment"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     #257497
     And I save the field labeled "Total Commitment" as "TotalCommitment2"
     Then I softly see field "Total Commitment" as "$20,000.00"
@@ -23184,11 +23185,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Overview" sub tab
-    When I click on "Edit" in the page details
-    When I enter values into fields
-      | Value | Field                     |
-      | 11000 | fieldRevisedCommitment__c |
-    And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 10000               |
