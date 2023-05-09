@@ -384,10 +384,21 @@ public class GrantorPayloads {
                 return byApplicantRiskAssessmentNo(json);
             case "BY_APPLICANT_FOCUS_AREA_NO_RISKASSESSMENT_NO":
                 return byApplicantFocusAreaNoRiskAssessmentNo(json);
-
+            case "NO_RISK_ASSESSMENT_FOCUS_AREA_NO":
+                return updateRiskAssesmentAsNoForAnnouncementFocusAreaNo(json);
             default:
                 return json;
         }
+    }
+
+    private JsonObject updateRiskAssesmentAsNoForAnnouncementFocusAreaNo(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("FocusAreaRequired", "No");
+        jsonObject.addProperty("RiskAssessment_Required", "No");
+        pre.add(jsonObject);
+        json.add("Announcement", pre);
+        return json;
     }
 
     private JsonObject byApplicantFocusAreaNoRiskAssessmentNo(JsonObject json) {

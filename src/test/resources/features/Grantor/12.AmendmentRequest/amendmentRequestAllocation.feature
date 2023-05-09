@@ -22767,7 +22767,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     When I navigate to "Budget" sub tab
-    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation2"
+    And I save the field labeled "Total Commitment" as "TotalCommitment"
+    Then I softly see field "Total Commitment" as "$20,000.00"
     Then I softly see field "Cumulative Obligation" as "$10,000.00"
     #257350
     Then I softly see field "NewObligation__c" not in edit mode
@@ -22794,6 +22795,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---amendment:-:recipientAwardsTableId---" without waiting for record
     And I navigate to "Budget" sub tab
+    #257578
+    And I save the field labeled "Total Commitment" as "TotalCommitment3"
+    Then I softly see field "Total Commitment" as "$20,000.00"
+    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment3}"
     #257486
     Then I softly cannot see field "Budgeted Amount" inside page block
     #257565
@@ -22815,22 +22820,25 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Budget" sub tab
-    #257569
-    Then I softly see value "$0.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     #257573
     Then I softly cannot see top right button "Edit" in page detail
     Then I softly see that "Cumulative Obligation" rendered in view mode only
     Then I softly see that "Total Commitment" rendered in view mode only
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
-    Then I softly see "Total Awarded amount across budget periods" shown as help text
+    Then I softly see "Total amount committed through this and prior awards in this Budget period" shown as help text
     And I refresh the page
     When I hovering mouse on help text icon inside page block detail "Total Commitment"
-    Then I softly see "Total amount committed through this and prior awards in this Budget period" shown as help text for label "Total Commitment"
-      #257497
+    Then I softly see "Total Awarded amount across budget periods" shown as help text for label "Total Commitment"
+    #257497
     And I save the field labeled "Total Commitment" as "TotalCommitment2"
     Then I softly see field "Total Commitment" as "$20,000.00"
     Then I softly see value "{SavedValue:RevisedCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
+    #257561
+    And I save the value from row "1" for column name "Encumbrance" as "Encumbrance" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see value "$10,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
+    Then I see field "Cumulative Obligation" as "$10,000.00"
+    Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligation}"
     #257571
     Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area2" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
@@ -23124,7 +23132,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
   @257471 @257476 @257488 @VerifyFDusercannotseeBudgetsummarybyfocusareasectiononawardwhichisinactivatedstatewhenFocusareaisNo @sprint-19-US-250550 @hitesh @Allocation
   Scenario: Verify FD user cannot see Budget summary by focus area section on award which is in activated state when Focus area is No
-    And I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "FOCUS_AREA_NO-Automation PM user"
+    And I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT_FOCUS_AREA_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}" and properties "Automation PM user"
@@ -23232,4 +23240,3 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     #257488
     Then I softly cannot see field "Budgeted Amount" inside page block
-
