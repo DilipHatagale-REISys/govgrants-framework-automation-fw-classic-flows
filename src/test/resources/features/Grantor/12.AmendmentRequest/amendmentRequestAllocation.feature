@@ -22773,6 +22773,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     When I navigate to "Budget" sub tab
+    And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligation" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$10,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     And I save the field labeled "Total Commitment" as "TotalCommitment"
     Then I softly see field "Total Commitment" as "$20,000.00"
     Then I softly see field "Cumulative Obligation" as "$10,000.00"
@@ -22806,8 +22808,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---amendment:-:recipientAwardsTableId---" without waiting for record
     And I navigate to "Budget" sub tab
-    And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligation" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "$10,000.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     #257486
     Then I softly cannot see field "Budgeted Amount" inside page block
     #257565
