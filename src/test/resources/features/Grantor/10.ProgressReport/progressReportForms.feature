@@ -1248,12 +1248,12 @@ Feature: Validate scenarios in Progress Report Forms
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
-#    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
-#    And I click on "Save" in the page details
-#    And I navigate to "Performance" sub tab
-#    Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-#      | Title                    | Actual | Reported Date |
-#      | Automation Permanent KPI | 25     | 7             |
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                    | Actual | Reported Date |
+      | Automation Permanent KPI | 25     | 7             |
     When I navigate to "Forms and Files" sub tab
     And I select value inside table "---progressReport:-:formTableId---" is "All"
     And I wait for "2" seconds
