@@ -131,4 +131,24 @@ public class ProjectManager extends ProjectWebServices {
         return flag;
     }
 
+    public void assertLengthOfFieldValues(String usage, String fieldLabel, String charCount) {
+        if (usage.equalsIgnoreCase("softly see")) {
+            I.amPerforming().assertionsTo().assertThat(assertLengthOfFieldValuewithLabel(fieldLabel, charCount)).isTrue();
+        } else if (usage.equalsIgnoreCase("softly do not see")) {
+            I.amPerforming().assertionsTo().assertThat(assertLengthOfFieldValuewithLabel(fieldLabel, charCount)).isFalse();
+        }
+    }
+
+    private boolean assertLengthOfFieldValuewithLabel(String fieldLabel, String charCount) {
+        Boolean flag = false;
+        By fieldAPIName = By.xpath("//div[@id='"+ fieldLabel +"']");
+        String actualValue=I.amPerforming().getElementReference().of(fieldAPIName).getText();
+        try {
+            return actualValue.length() == Integer.parseInt(charCount) ? true : false;
+        } catch (Exception e) {
+            /* Ignore Exception */
+        }
+        return flag;
+
+    }
 }

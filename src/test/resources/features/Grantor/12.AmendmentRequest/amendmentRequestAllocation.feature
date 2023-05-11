@@ -22991,7 +22991,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Cumulative Obligation" as "CumulativeGrant1"
     Then I softly see value "{SavedValue:CumulativeAward2}" is "Equals to" the value "{SavedValue:CumulativeGrant1}"
 
-  @265600 @265601 @ValidatePMusercanseeTotalCommitmentamountunderBudgetSummarysectiononClosedGrantvaluecopiedfromTotalcommitmentfieldfromtheversion2awardwhichisactiveFAYES @sprint-21-US-263183 @vaibhav @Allocation @TBE
+  @265600 @265601 @ValidatePMusercanseeTotalCommitmentamountunderBudgetSummarysectiononClosedGrantvaluecopiedfromTotalcommitmentfieldfromtheversion2awardwhichisactiveFAYES @sprint-21-US-263183 @vaibhav @Allocation
   Scenario: Validate PM user can see Total Commitment amount under Budget Summary section on Closed Grant & value copied from Total commitment field from the version 2 award which is active FA YES
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -23125,7 +23125,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitment2"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
 
-  @257410 @258310 @258320 @ValidateusershouldseeCumulativeObligationcolumninbudgetsummarybyfocusareasectionvalueswillrollupfromtheawardsCumulativeObligationforthatfocusareaacrossallBPsoflatestaward @sprint-21-US-263183 @vaibhav @Allocation @TBE
+  @257410 @258310 @258320 @ValidateusershouldseeCumulativeObligationcolumninbudgetsummarybyfocusareasectionvalueswillrollupfromtheawardsCumulativeObligationforthatfocusareaacrossallBPsoflatestaward @sprint-21-US-263183 @vaibhav @Allocation
   Scenario: Validate user should see Cumulative Obligation column in budget summary by focus area section & values will roll up from the award's Cumulative Obligation for that focus area across all BPs of latest award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -23376,7 +23376,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "{SavedValue:CumulativeObligation2}" is "Equals to" the value "{SavedValue:CumulativeObligationGrantcsr2}"
     Then I softly see value "{SavedValue:CumulativeObligation3}" is "Equals to" the value "{SavedValue:CumulativeObligationGrantcsr3}"
 
-  @263427 @263429 @ValidatePOusercanseeCumulativeObligationamountiscomingfromthecumulativeObligationfielthelatestawardinclosedstateacrossallBPsongrantFAisYes @sprint-21-US-263183 @vaibhav @Allocation @TBE
+  @263427 @263429 @ValidatePOusercanseeCumulativeObligationamountiscomingfromthecumulativeObligationfielthelatestawardinclosedstateacrossallBPsongrantFAisYes @sprint-21-US-263183 @vaibhav @Allocation
   Scenario: Validate PO user can see Cumulative Obligation amount is coming from the cumulative Obligation field in the latest award in closed state across all BPs on grant (FA is Yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -23625,7 +23625,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitmentGrant"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentGrant}"
 
-  @268477 @268495 @ValidatePMuserseevalueofanydollarfieldmustnotchangeandshouldremainthesameafterandbeforecloseoutiscompletedonnewversion2award @sprint-21-US-263183 @vaibhav @Allocation @TBE
+  @268477 @268495 @ValidatePMuserseevalueofanydollarfieldmustnotchangeandshouldremainthesameafterandbeforecloseoutiscompletedonnewversion2award @sprint-21-US-263183 @vaibhav @Allocation
   Scenario: Validate PM user see value of any dollar field must not change and should remain the same after and before closeout is completed on new version 2 award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -23853,7 +23853,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitmentGrant2"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentGrant2}"
 
-  @257301 @ValidatePMusercanseereadonlyTotalCommitmentamountiscomingfromTotalcommitmentfieldfromthelatestClosedawardandforLatestBPFAYes @sprint-21-US-263183 @vaibhav @Allocation @TBE
+  @257301 @ValidatePMusercanseereadonlyTotalCommitmentamountiscomingfromTotalcommitmentfieldfromthelatestClosedawardandforLatestBPFAYes @sprint-21-US-263183 @vaibhav @Allocation
   Scenario: Validate PM user can see read only Total Commitment amount is coming from Total commitment field from the latest Closed award and for Latest BP (FA Yes)
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab

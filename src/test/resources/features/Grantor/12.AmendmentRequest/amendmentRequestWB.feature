@@ -6918,7 +6918,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has been SentBack by an Approver
       """
     Then I see the mail text is as follows :
 
@@ -7691,7 +7691,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} has been SentBack by an Approver
       """
 
     Then I see the mail text is as follows :
@@ -12872,7 +12872,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -13596,7 +13596,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -14540,7 +14540,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} has been SentBack by an Approver
       """
 
     Then I see the mail text is as follows :
@@ -14984,7 +14984,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -15068,7 +15068,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} has been SentBack by an Approver
       """
 
     Then I see the mail text is as follows :
@@ -16185,7 +16185,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} has been SentBack by an Approver
       """
 
     Then I see the mail text is as follows :
@@ -16699,7 +16699,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:BudgetRedirectId} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:BudgetRedirectId} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -16786,7 +16786,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:BudgetRedirectId} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:BudgetRedirectId} has been SentBack by an Approver
       """
 
     Then I see the mail text is as follows :
@@ -17196,7 +17196,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:kpcId} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:kpcId} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -17282,7 +17282,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:kpcId} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:kpcId} has been SentBack by an Approver
       """
 
     Then I see the mail text is as follows :
@@ -17371,7 +17371,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:kpcId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:kpcId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -17572,7 +17572,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -17716,7 +17716,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -18621,7 +18621,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:BudgetRedirectId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:BudgetRedirectId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -18920,7 +18920,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen submitted
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has beensubmitted
       """
     Then I see the mail text is as follows :
 
@@ -19022,7 +19022,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has been SentBack by an Approver
       """
 
     Then I see the mail text is as follows :
@@ -19124,7 +19124,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -19225,7 +19225,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -19310,7 +19310,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -19419,7 +19419,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -19873,7 +19873,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} hasbeen submitted
+      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} has beensubmitted
       """
     Then I see the mail text is as follows :
 
@@ -20257,7 +20257,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -20364,7 +20364,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -20711,7 +20711,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -20847,7 +20847,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -21062,7 +21062,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -21172,7 +21172,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -21542,7 +21542,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -23836,7 +23836,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Notification: Amendment Request #{SavedValue:budgetPC&ScopeId} hasbeen Rejected
+      Notification: Amendment Request #{SavedValue:budgetPC&ScopeId} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -24016,7 +24016,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:budgetPC&ScopeId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:budgetPC&ScopeId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -24401,7 +24401,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:budgetPC&ScopeId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:budgetPC&ScopeId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -24855,7 +24855,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Notification: Amendment Request #{SavedValue:budgetSOWChangeId} hasbeen Approved
+      Notification: Amendment Request #{SavedValue:budgetSOWChangeId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -24981,7 +24981,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Notification: Amendment Request #{SavedValue:budgetSOWChangeId} hasbeen Approved
+      Notification: Amendment Request #{SavedValue:budgetSOWChangeId} has beenApproved
       """
 
     Then I see the mail text is as follows :
