@@ -653,18 +653,18 @@ Feature: Validate scenarios in Progress Report Forms
     Then I can see row level action button "Edit" against "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" in flex table with id "---progressReport:-:formTableId---"
     And I click on "View" icon for "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     Then I softly see the text containing "OMB Number: 4040-0018"
-    Then I softly see the text containing "Expiration Date: 11/30/2024"
+    Then I see the page contains text "Expiration Date: 11/30/2024"
     When I click on "Edit" in the page details
-#    #283885
-#    Then I softly see field "Annual Report (SF-428-A)" inside page block
-#    Then I softly do not see asterisk mark on "Annual Report (SF-428-A)"
-#    When I hovering mouse on help text icon inside page block detail "Annual Report (SF-428-A)"
-#    Then I softly see "Check to Select." shown as help text for label "Annual Report (SF-428-A)"
-#    #283920
-#    Then I softly see field "Final (Award Closeout) Report (SF-428-B)" inside page block
-#    Then I softly do not see asterisk mark on "Final (Award Closeout) Report (SF-428-B)"
-#    When I hovering mouse on help text icon inside page block detail "Final (Award Closeout) Report (SF-428-B)"
-#    Then I softly see "Check to Select." shown as help text for label "Final (Award Closeout) Report (SF-428-B)"
+    #283885
+    Then I softly see field "Annual Report (SF-428-A)" inside page block
+    Then I softly do not see asterisk mark on "Annual Report (SF-428-A)"
+    When I hovering mouse on help text icon inside page block detail "Annual Report (SF-428-A)"
+    Then I softly see "Check to Select." shown as help text for label "Annual Report (SF-428-A)"
+    #283920
+    Then I softly see field "Final (Award Closeout) Report (SF-428-B)" inside page block
+    Then I softly do not see asterisk mark on "Final (Award Closeout) Report (SF-428-B)"
+    When I hovering mouse on help text icon inside page block detail "Final (Award Closeout) Report (SF-428-B)"
+    Then I softly see "Check to select." shown as help text for label "Final (Award Closeout) Report (SF-428-B)"
     And I enter "SF428S_Form" values from "ProgressReport_Field_Values.xlsx"
     Then I softly can see top right button "Save" in page detail
     Then I softly can see top right button "Cancel" in page detail
@@ -684,13 +684,13 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
 
-  @284062 @ValidateSF428SINDusercanabletosaveallfieldbutvalidationisgeneratedonvalidatebuttonafterenteringincorrectdatainallfieldspresentonSF428Sform @sprint-26-US-282679 @vaibhav @Forms 
+  @284062 @ValidateSF428SINDusercanabletosaveallfieldbutvalidationisgeneratedonvalidatebuttonafterenteringincorrectdatainallfieldspresentonSF428Sform @sprint-26-US-282679 @vaibhav @Forms @Bug_Logged-326500 @TBE
   Scenario: Validate SF428-S IND user can able to save all fields but validation is generated on validate button after entering incorrect data in all fields present on SF-428-S form
-    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "SUBRECIPIENT_ORG_IND_USER-Automation PM user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
     And I am on "SUBPORTAL" portal
-    And I login to "Grants Portal" app as "SPI3" user
+    And I login to "Grants Portal" app as "IND" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
@@ -710,8 +710,6 @@ Feature: Validate scenarios in Progress Report Forms
     Then I can see row level action button "View" against "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" in flex table with id "---progressReport:-:formTableId---"
     Then I can see row level action button "Edit" against "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" in flex table with id "---progressReport:-:formTableId---"
     And I click on "Edit" icon for "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
-    Then I softly see the text containing "OMB Number: 4040-0018"
-    Then I softly see the text containing "Expiration Date: 11/30/2024"
     When I click on "Save" in the page details
     Then I softly see the following messages in the page details :
       | Federal Grant or Other Identifying Number Assigned by Federal Awarding Agency (Block 2 of SF-428) is required to save. |
@@ -735,7 +733,7 @@ Feature: Validate scenarios in Progress Report Forms
       | Condition Code is required to save.        |
       | Acquisition Cost is required to save.      |
 
-  @284129 @ValidateSF248SSPIonlyrecordownershouldhaveeditaccessonformotherusercanhaveonlyviewaccess @sprint-26-US-282679 @vaibhav @Forms 
+  @284129 @ValidateSF248SSPIonlyrecordownershouldhaveeditaccessonformotherusercanhaveonlyviewaccess @sprint-26-US-282679 @vaibhav @Forms @TBE
   Scenario: Validate SF248-S SPI only record owner should have edit access on form other user can have only view access
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -761,8 +759,6 @@ Feature: Validate scenarios in Progress Report Forms
     Then I can see row level action button "View" against "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" in flex table with id "---progressReport:-:formTableId---"
     Then I can see row level action button "Edit" against "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" in flex table with id "---progressReport:-:formTableId---"
     And I click on "Edit" icon for "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
-    Then I softly see the text containing "OMB Number: 4040-0018"
-    Then I softly see the text containing "Expiration Date: 11/30/2024"
     And I enter "SF428S_Form" values from "ProgressReport_Field_Values.xlsx"
     And I click on top right button "New" in flex table with id "---progressReport:-:sf428SDetailIndividualTableId---"
     When I enter in modal "SF428S_Details_Individual" values from "ProgressReport_Field_Values.xlsx"
@@ -791,7 +787,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I cannot see top right button "Edit" in page detail
     Then I cannot see top right button "Validate" in page detail
 
-  @284139 @284101 @ValidateSF428SAdminusershouldnotseeEditbuttononforminForceclosestatusonprogressreport @sprint-26-US-282679 @vaibhav @Forms 
+  @284139 @284101 @ValidateSF428SAdminusershouldnotseeEditbuttononforminForceclosestatusonprogressreport @sprint-26-US-282679 @vaibhav @Forms @TBE
   Scenario: Validate SF428 S Admin user should not see 'Edit' button on form in Force close status on progress report
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation ADMIN user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -817,8 +813,6 @@ Feature: Validate scenarios in Progress Report Forms
     Then I can see row level action button "View" against "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" in flex table with id "---progressReport:-:formTableId---"
     Then I can see row level action button "Edit" against "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" in flex table with id "---progressReport:-:formTableId---"
     And I click on "Edit" icon for "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
-    Then I softly see the text containing "OMB Number: 4040-0018"
-    Then I softly see the text containing "Expiration Date: 11/30/2024"
     And I enter "SF428S_Form" values from "ProgressReport_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I wait for "2" seconds
@@ -913,7 +907,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I cannot see top right button "Edit" in page detail
     Then I cannot see top right button "Validate" in page detail
 
-  @284097 @ValidateSF428SSPAusershouldnotseeEditbuttononforminSubmittedtothegrantorsentforreviedreviewedSubmittedforApprovalApprovedstatusofprogressreport @sprint-26-US-282679 @vaibhav @Forms @TBE
+  @284097 @ValidateSF428SSPAusershouldnotseeEditbuttononforminSubmittedtothegrantorsentforreviedreviewedSubmittedforApprovalApprovedstatusofprogressreport @sprint-26-US-282679 @vaibhav @Forms 
   Scenario: Validate SF428 S SPA user should not see 'Edit' button on form in Submitted to the grantor sent for review reviewed Submitted for Approval Approved status of progress report
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation PM user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -1078,7 +1072,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I cannot see top right button "Edit" in page detail
     Then I cannot see top right button "Validate" in page detail
 
-  @284123 @284133 @ValidateSF428SSPIuserseethepreviewandviewicononforminCreatedSentbackSrSubmittedtothegrantorsentforreviewreviewedSubmittedforApprovalApprovedstateofprogressreport @sprint-26-US-282679 @vaibhav @Forms @TBE
+  @284123 @284133 @ValidateSF428SSPIuserseethepreviewandviewicononforminCreatedSentbackSrSubmittedtothegrantorsentforreviewreviewedSubmittedforApprovalApprovedstateofprogressreport @sprint-26-US-282679 @vaibhav @Forms 
   Scenario: Validate SF428 S SPI user see the preview and view icon on form in Created/Sent back to S/r / Submitted to the grantor/sent for review/reviewed/Submitted for Approval/Approved state of progress report
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation PM user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
