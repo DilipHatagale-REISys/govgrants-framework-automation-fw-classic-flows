@@ -785,7 +785,6 @@ Feature: Pre-Application scenarios without background
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
-    And I click on "Submit For Approval" in the page details
     And I wait for "4" seconds
     And I "Approve" in the approval decision
     And I wait for "4" seconds
