@@ -153,7 +153,6 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for PreApp and App}" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for PreApp and App}" inside table without waiting for record
     And I click on "Unpublish" in the page details
-    And I pause execution for "500" seconds
     Given I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Applications" tab
