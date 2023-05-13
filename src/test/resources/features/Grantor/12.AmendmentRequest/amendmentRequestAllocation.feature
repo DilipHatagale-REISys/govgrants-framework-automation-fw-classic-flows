@@ -23520,7 +23520,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$0.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @257580 @VerifyFOusercanseeTotalCommitmentamountiscomingfromTotalcommitmentfieldfromthelatestClosedawardandforLatestBP @sprint-19-US-250550 @hitesh @Allocation
+  @hit2 @257580 @VerifyFOusercanseeTotalCommitmentamountiscomingfromTotalcommitmentfieldfromthelatestClosedawardandforLatestBP @sprint-19-US-250550 @hitesh @Allocation
   Scenario: Verify FO user can see Total Commitment amount is coming from Total commitment field from the latest Closed  award  and for Latest BP is  from FDM
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -23778,14 +23778,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---closeout:-:grantsTableId---"
     Then I softly see field "Status" as "Closed/Completed"
     And I navigate to "Budget" sub tab
     And I save the field labeled "Total Commitment" as "TotalCommitmentGrant"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentGrant}"
 
-  @308953 @VerifyFOusercannotseeaFocusareawithzerovalueforNewObligationandCumulativeObligationcolumnonthenewawardIftheinitalAwardisfromFDM @sprint-19-US-250550 @hitesh @Allocation
+  @hit2 @308953 @VerifyFOusercannotseeaFocusareawithzerovalueforNewObligationandCumulativeObligationcolumnonthenewawardIftheinitalAwardisfromFDM @sprint-19-US-250550 @hitesh @Allocation
   Scenario: Verify FO user cannot see a Focus area with zero value for New Obligation and Cumulative Obligation column on the new award If the inital Award is  from FDM
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -23876,7 +23876,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on page navigation arrow "---applicationReview:-:budgetTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 0      | 0          | 0              |
+      | Construction  | 500    | 50          | 0              |
     When I navigate to "Overview" sub tab
     When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
@@ -23950,7 +23950,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 1000                 | 100        | 0              |
+      | Construction    | 2000                 | 200        | 0              |
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
@@ -23979,7 +23979,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Amend Subaward" in the page details
     And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
-    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
