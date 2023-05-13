@@ -1,4 +1,4 @@
-@applicationIntakeAllocation @grantor-regression @grantor-parallel-regression @app @regression
+@applicationIntakeAllocation @grantor-regression @grantor-parallel-regression @app @regression @ApplicationExecution-reg
 Feature: Validate all scenarios in the Formula Announcement tab
 
   @219696 @ValidateSPIUseruserabletoseetheBudgetsummarysectionitshouldbevisibleatthetopofBudgetTabnotincludingnoncashmatchcashmatchotherleverage @sprint-11-US-203038 @vaibhav @Allocation
