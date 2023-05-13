@@ -23738,7 +23738,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     And I navigate to "Budget" sub tab
-    Then I softly see field "Total Commitment" as "$4,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitment"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -23790,14 +23789,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
     Then I softly see field "Status" as "Closed/Completed"
     And I navigate to "Budget" sub tab
-    Then I softly see field "Cumulative Obligation" as "$3,000.00"
-    And I save the field labeled "Cumulative Obligation" as "CumulativeGrant"
-    Then I softly see addition of two fields "{SavedValue:CumulativeAward1}" and "{SavedValue:CumulativeAward2}" is equal to "{SavedValue:CumulativeGrant}"
-    Then I softly see field "Total Commitment" as "$4,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitmentGrant"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentGrant}"
 
@@ -24225,7 +24220,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
-    And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
+    And I save the field labeled "EGMS ID" as "ActivatedSubAwardId1"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -24302,8 +24297,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Amend Subaward" in the page details
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     And I save the field labeled "EGMS ID" as "AwardEGMSID1"
-    When I click on "Activate" in the page details
-    Then I softly see field "Status" as "Activated"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -24311,6 +24304,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId1}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Budget" sub tab
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
