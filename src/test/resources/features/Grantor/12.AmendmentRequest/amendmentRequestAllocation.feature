@@ -22877,9 +22877,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    When I navigate to "Overview" sub tab
-    When I click on "Edit" in the page details
     When I enter values into fields
       | Value | Field                           |
       | 10000 | fieldRequestedChangeInBudget__c |
@@ -23228,9 +23225,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    When I navigate to "Overview" sub tab
-    When I click on "Edit" in the page details
     When I enter values into fields
       | Value | Field                           |
       | 10000 | fieldRequestedChangeInBudget__c |
@@ -23454,9 +23448,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    When I navigate to "Overview" sub tab
-    When I click on "Edit" in the page details
     When I enter values into fields
       | Value | Field                           |
       | 10000 | fieldRequestedChangeInBudget__c |
@@ -23663,8 +23654,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
-    When I navigate to "Overview" sub tab
-    When I click on "Edit" in the page details
     When I enter values into fields
       | Value | Field                           |
       | 10000 | fieldRequestedChangeInBudget__c |
@@ -24234,13 +24223,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
-    When I navigate to "Overview" sub tab
-    When I click on "Edit" in the page details
     When I enter values into fields
-      | Value | Field                           |
+      | Value | Field                          |
       | 2000 | fieldRequestedChangeInBudget__c |
     When I enter values into fields
-      | Value | Field                     |
+      | Value | Field                    |
       | 2000 | fieldRevisedCommitment__c |
     And I click on "Save" in the page details
     And I save the field labeled "Proposed Budget Period Start Date" as "PBPSD"
