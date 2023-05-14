@@ -23977,7 +23977,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Amend Subaward" in the page details
     And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
-    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Amendment Requests - Approved"
