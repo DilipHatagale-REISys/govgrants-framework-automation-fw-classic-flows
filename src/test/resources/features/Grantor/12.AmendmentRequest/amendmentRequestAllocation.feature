@@ -23922,9 +23922,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I enter values into fields
       | Value | Field                           |
-      | 2000  | fieldRequestedChangeInBudget__c |
-      | 4000  | fieldRevisedCommitment__c       |
+      | 2000 | fieldRequestedChangeInBudget__c  |
+    When I enter values into fields
+      | Value | Field                     |
+      | 4000  | fieldRevisedCommitment__c  |
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "SOWAMENDMENTREQUEST"
     And I save the field labeled "Proposed Budget Period Start Date" as "PBPSD"
     And I save the field labeled "Proposed Budget Period End Date" as "PBPED"
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
@@ -23976,7 +23979,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Amend Subaward" in the page details
     And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
-    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -23997,7 +24000,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @257490 @VerifyFOusercanseeCumulativeObligationcolumninBudgetsummarybyfocusareasectiononsubawardwhichisinAmendedstateFAYes @sprint-19-US-250550 @hitesh @Allocation
+  @257490 @VerifyFOusercanseeCumulativeObligationcolumninBudgetsummarybyfocusareasectiononsubawardwhichisinAmendedstateFAYes 257433
   Scenario: Verify FO user can see Cumulative Obligation column in Budget summary by focus area section on subaward which is in Amended state FAYes
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
