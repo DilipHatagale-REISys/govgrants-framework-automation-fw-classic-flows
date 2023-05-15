@@ -24408,9 +24408,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "9" seconds
     When I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount.                                               |
+      | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount.                                              |
     #264373
-      | Overview Tab - The Revised Obligation ($100.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2700.0) |
+      | Overview Tab - The Revised Obligation ($100.0) must be equal to the total of Revised Encumbrance in the Funding Account ($2700.0) |
     #263903
     And I click on "Send Back to Subrecipient" in the page details
     Then I softly see field "Status" as "Under Revision"
@@ -24980,6 +24980,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                            | Start Date         | End Date           |
       | Automation Permanent Focus Area2 | {SavedValue:PBPSD} | {SavedValue:PBPED} |
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title           | Start Date         | End Date           |
+      | Test Focus Area | {SavedValue:PBPSD} | {SavedValue:PBPED} |
     And I refresh the page
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
@@ -25262,6 +25265,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "PayreqId"
     And I navigate to "Financials" sub tab
+    And I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---"
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement |
       | Extra Salary | The narrative | 300        | 1        | Feet        |
