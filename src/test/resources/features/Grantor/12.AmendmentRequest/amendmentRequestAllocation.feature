@@ -24456,7 +24456,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Construction  | 450                  |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Category Name   | Revised Award Amount |
-      | Indirect costs  | 50                   |
+      | Site work       | 50                   |
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
     And I get the "EGMS ID"
