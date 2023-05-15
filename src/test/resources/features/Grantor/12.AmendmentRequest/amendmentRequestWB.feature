@@ -19225,7 +19225,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} has beenApproved
+      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} hasbeen Approved
       """
 
     Then I see the mail text is as follows :
@@ -21172,7 +21172,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} has beenApproved
+      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} hasbeen Approved
       """
 
     Then I see the mail text is as follows :

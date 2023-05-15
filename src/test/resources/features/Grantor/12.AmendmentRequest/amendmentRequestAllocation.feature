@@ -24400,24 +24400,24 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Edit" in the page details
     When I enter values into fields
       | Value | Field                           |
-      | -1900  | fieldRequestedChangeInBudget__c |
+      | -1900 | fieldRequestedChangeInBudget__c |
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 2700                |
-    And I wait for "7" seconds
+    And I wait for "9" seconds
     When I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount. |
+      | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount.                                               |
     #264373
-      | Overview Tab - The Revised Obligation ($100.0) must be equal to the total of Revised Encumbrance in the Funding Account ($2700.0)                                             |
+      | Overview Tab - The Revised Obligation ($100.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2700.0) |
     #263903
     And I click on "Send Back to Subrecipient" in the page details
     Then I softly see field "Status" as "Under Revision"
     When I click on "Edit" in the page details
     Then I softly see that "Carry Forward Amount" rendered in view mode only
 
-  @263868 @263900 @263927 @264222 @264302 @264187 @ValidateEXEuserseeCurrentobligationasreadonlyfieldwhichiscopiedfromthecumulativeObligationoftheawardfromwhichtherequestiscreatedFAisNo @sprint-20-US-248355 @vaibhav @Allocation @TBE
+  @263868 @263900 @263927 @264222 @264302 @264187 @ValidateEXEuserseeCurrentobligationasreadonlyfieldwhichiscopiedfromthecumulativeObligationoftheawardfromwhichtherequestiscreatedFAisNo @sprint-20-US-248355 @vaibhav @Allocation
   Scenario: Validate EXE user see 'Current obligation' as read only field which is copied from the cumulative Obligation of the award from which the request is created FA is No
     Given I activated standalone subaward "Automation Runtime Award" with properties "SUBRECIPIENT_ORG_IND_USER-Automation EXE user" of type "Formula_By_Applicant_Focus_Area_No"
     When I login to "As a Grantor" app as "EXE" user
@@ -24573,7 +24573,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Budgeted Amount" as "BudgetedAmount"
     Then I softly see value "{SavedValue:RevisedObligation}" is "Equals to" the value "{SavedValue:BudgetedAmount}"
 
-  @264171 @263925 @264221 @264186 @264392 @ValidatePMusercanenteronlypositivevalueincarryforwardamountfiledonamendmentinsubmittograntorstateFAisyes @sprint-20-US-248355 @vaibhav @Allocation @TBE
+  @264171 @263925 @264221 @264186 @264392 @ValidatePMusercanenteronlypositivevalueincarryforwardamountfiledonamendmentinsubmittograntorstateFAisyes @sprint-20-US-248355 @vaibhav @Allocation
   Scenario: Validate PM user can enter only positive value in carry forward amount filed on amendment in submit to grantor state FA is yes
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -25262,9 +25262,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "PayreqId"
     And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Spent This Action |
-      | Construction    | 300               |
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement |
+      | Extra Salary | The narrative | 300        | 1        | Feet        |
+    When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
