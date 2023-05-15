@@ -25334,7 +25334,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see fields "fieldRequestedChangeInBudget__c" is in edit mode
     When I enter values into fields
       | Value | Field                           |
-      | -900  | fieldRequestedChangeInBudget__c |
+      | -1900  | fieldRequestedChangeInBudget__c |
     And I click on "Save" in the page details
     And I wait for "7" seconds
     When I click on "Submit for Approval" in the page details
