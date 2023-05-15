@@ -24111,7 +24111,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitmentGrant"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentGrant}"
 
-  @263818 @263872 @263898 @263949 @264244 @264373 @263903 @ValidatePMusercanseeanewsectionofBudgetSummaryafteroverviewsectiononthecarryforwardamendmentrequestwhichissubmittograntorstateFAisYes @sprint-20-US-248355 @vaibhav @Allocation @TBE
+  @263818 @263872 @263898 @263949 @264244 @264373 @263903 @ValidatePMusercanseeanewsectionofBudgetSummaryafteroverviewsectiononthecarryforwardamendmentrequestwhichissubmittograntorstateFAisYes @sprint-20-US-248355 @vaibhav @Allocation
   Scenario: Validate PM user can see a new section of "Budget Summary" after overview section on the carry forward amendment request which is submit to grantor state (FA is Yes)
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -25125,9 +25125,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly cannot see row level action button "Remove" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     Then I softly cannot see row level action button "Remove" against "Automation Permanent Focus Area2" in flex table with id "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     #264326
-    And I save the value from row "1" for column name "Current Obligation" as "CurrentObligationFA1" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
-    And I save the value from row "2" for column name "Current Obligation" as "CurrentObligationFA2" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
-    And I save the value from row "3" for column name "Current Obligation" as "CurrentObligationFATotal" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    And I save the value from row "2" for column name "Current Obligation" as "CurrentObligationFA1" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    And I save the value from row "3" for column name "Current Obligation" as "CurrentObligationFA2" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    And I save the value from row "4" for column name "Current Obligation" as "CurrentObligationFATotal" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     Then I softly see value "$1,000.00" for title "Current Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     Then I softly see value "$1,000.00" for title "Current Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     Then I softly see value "$2,000.00" for title "Current Obligation" against the value "Grand Total" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
@@ -25140,9 +25140,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$2,000.00" for title "Current Obligation" against the value "Grand Total" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     Then I softly see value "$700.00" for title "Carry Forward Amount" against the value "Grand Total" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     Then I softly see value "$2,700.00" for title "Revised Obligation" against the value "Grand Total" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
-    And I save the value from row "3" for column name "Carry Forward Amount" as "CarryForward" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
-    And I save the value from row "3" for column name "Current Obligation" as "CurrentObligation" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
-    And I save the value from row "3" for column name "Revised Obligation" as "RevisedObligation" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    And I save the value from row "4" for column name "Carry Forward Amount" as "CarryForward" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    And I save the value from row "4" for column name "Current Obligation" as "CurrentObligation" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    And I save the value from row "4" for column name "Revised Obligation" as "RevisedObligation" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     Then I softly see addition of two fields "{SavedValue:CarryForward}" and "{SavedValue:CurrentObligation}" is equal to "{SavedValue:RevisedObligation}"
     #264333
     Then I softly see value "$2,700.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
@@ -25166,8 +25166,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | {SavedValue:PM Username} | Step 1            |
     #264349
     When I navigate to "Overview" sub tab
-    And I save the value from row "3" for column name "Budgeted Amount" as "BudgetedAmount" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
-    And I save the value from row "3" for column name "Revised Obligation" as "RevisedObligation" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    And I save the value from row "4" for column name "Budgeted Amount" as "BudgetedAmount" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    And I save the value from row "4" for column name "Revised Obligation" as "RevisedObligation" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     Then I softly see value "$2,700.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     Then I softly see value "$2,700.00" for title "Revised Obligation" against the value "Grand Total" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     Then I softly see value "{SavedValue:BudgetedAmount}" is "Equals to" the value "{SavedValue:RevisedObligation}"
@@ -25183,7 +25183,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Spent" as "Spent"
     Then I softly see field "Revised Obligation" as "$2,700.00"
     Then I softly see field "Spent" as "$300.00"
-    Then I softly see value "{SavedValue:RevisedObligation}" is "Less Than" the value "{SavedValue:Spent}"
+    Then I softly see value "{SavedValue:Spent}" is "Less Than" the value "{SavedValue:RevisedObligation}"
 
   @264316 @264264 @ValidateEXEuserseevalidationmessageifrevisedobligationislessthanspendamountFAisNo @sprint-20-US-248355 @vaibhav @Allocation @TBE
   Scenario: Validate EXE user see validation message if revised obligation is less than spend amount (FA is No)
@@ -25272,7 +25272,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -25284,7 +25284,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
       | Name                     | Reimbursement |
-      | {SavedValue:PM Username} | Step 1        |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I wait for "3" seconds
