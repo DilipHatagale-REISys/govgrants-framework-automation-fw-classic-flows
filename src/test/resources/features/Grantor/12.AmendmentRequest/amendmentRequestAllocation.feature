@@ -25681,6 +25681,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Construction    | 500           |
     And I refresh the page
     #264805
+    And I expand nested table containing column value "BP01"
     Then I softly see "Actions" in flex table header "---amendment:-:RecipientCarryForwardBudgetTableId---"
     Then I softly can see row level action button "Edit" against "Construction" in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---"
     And I click on page navigation arrow "---amendment:-:RecipientCarryForwardBudgetTableId---" for table id "Next"
