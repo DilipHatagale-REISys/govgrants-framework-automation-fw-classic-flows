@@ -24577,6 +24577,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
       | Name                        | Award  |
       | {SavedValue:ADMIN Username} | Step 1 |
+    And I pause execution for "10" seconds
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -24706,10 +24707,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     #258222
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
-    And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligation4" from flex table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
-    Then I softly see value "$5,00.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
+    And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligation4" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$5,00.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "{SavedValue:CumulativeObligation3}" is "Equals to" the value "{SavedValue:CumulativeObligation4}"
-      #258075
+          #258075
     When I hovering mouse on help text icon inside page block detail "Total Commitment"
     Then I softly see "Total amount committed through this and prior awards in this Budget period" shown as help text
     Then I softly see field "Total Commitment" as "$2,000.00"
@@ -24767,10 +24768,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Formula Announcements"
     And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
-    And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I enter "FormulaAnn_AdminUser" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
     When I enter "Creation_Formula_ByApp_FocusYes" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
