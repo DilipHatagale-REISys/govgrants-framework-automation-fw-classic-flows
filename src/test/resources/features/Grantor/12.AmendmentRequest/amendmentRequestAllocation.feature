@@ -24779,7 +24779,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
     And I pause execution for "3" seconds
