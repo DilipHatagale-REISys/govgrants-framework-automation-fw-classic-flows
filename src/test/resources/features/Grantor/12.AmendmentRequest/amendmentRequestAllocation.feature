@@ -24659,6 +24659,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | {SavedValue:ADMIN Username} | Step 1            |
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I "Approve" in the approval decision
     And I click on "Amend Subaward" in the page details
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     And I save the field labeled "EGMS ID" as "AwardEGMSID1"
@@ -24748,6 +24749,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click modal button "Continue"
     When I enter "Creation_Formula_ByApp_FocusYes" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
+    When I navigate to "Overview" sub tab
+    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
