@@ -24488,6 +24488,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     #257432
     Then I softly see field "New Obligation" inside page block
+    Then I softly see field "New Obligation" as "$0.00"
     Then I softly see field "Total Commitment" as "$2,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitment"
     And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
