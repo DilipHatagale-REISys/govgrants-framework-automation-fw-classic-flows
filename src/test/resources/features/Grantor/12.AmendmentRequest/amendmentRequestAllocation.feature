@@ -25695,6 +25695,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction    | 1500                 | 150        | 0              |
     And I refresh the page
+    And I wait for "9" seconds
     #264565
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Carry Forward Amount in the budget period section must be equal to the Carry Forward amount on the Budget Summary section. |
@@ -25705,9 +25706,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Save" in the page details
     And I refresh the page
     #264652
-    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---announcement:-:carryForwardFocusAreaTableId---"
-    Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---announcement:-:carryForwardFocusAreaTableId---"
-    Then I softly see value "Test Focus Area" for title "Title" inside table "---announcement:-:carryForwardFocusAreaTableId---"
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---amendment:-:carryForwardFocusAreaTableId---"
+    Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:carryForwardFocusAreaTableId---"
+    Then I softly see value "Test Focus Area" for title "Title" inside table "---amendment:-:carryForwardFocusAreaTableId---"
     #264661
     Then I softly cannot see top right button "Associate" in flex table with id "---amendment:-:carryForwardFocusAreaTableId---"
     Then I softly cannot see row level action button "Remove" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:carryForwardFocusAreaTableId---"
@@ -25717,9 +25718,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$200.00" for title "Carry Forward Amount" against the value "Automation Permanent Focus Area" inside table "---amendment:-:carryForwardFocusAreaTableId---"
     Then I softly see value "$500.00" for title "Carry Forward Amount" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:carryForwardFocusAreaTableId---"
     Then I softly see value "$700.00" for title "Carry Forward Amount" against the value "Grand Total" inside table "---amendment:-:carryForwardFocusAreaTableId---"
+    And I expand nested table containing column value "BP01"
     Then I softly see value "$200.00" for title "Carry Forward" against the value "Construction" inside table "---amendment:-:RecipientCarryForwardBudgetTableId---"
     And I click on page navigation arrow "---amendment:-:RecipientCarryForwardBudgetTableId---" for table id "Next"
-    Then I softly see value "$300.00" for title "Carry Forward" against the value "Construction" inside table "---amendment:-:RecipientCarryForwardBudgetTableId---"
+    Then I softly see value "$500.00" for title "Carry Forward" against the value "Construction" inside table "---amendment:-:RecipientCarryForwardBudgetTableId---"
     Then I see the following rows under the following headers in table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" :
       | Carry Forward |
       | $700.00       |
