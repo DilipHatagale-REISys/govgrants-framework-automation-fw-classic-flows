@@ -25723,6 +25723,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$200.00" for title "Carry Forward" against the value "Construction" inside table "---amendment:-:RecipientCarryForwardBudgetTableId---"
     And I click on page navigation arrow "---amendment:-:RecipientCarryForwardBudgetTableId---" for table id "Next"
     Then I softly see value "$500.00" for title "Carry Forward" against the value "Construction" inside table "---amendment:-:RecipientCarryForwardBudgetTableId---"
+    And I select value inside table "---amendment:-:RecipientCarryForwardBudgetTableId---" is "All"
     Then I see the following rows under the following headers in table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" :
       | Carry Forward |
       | $700.00       |
