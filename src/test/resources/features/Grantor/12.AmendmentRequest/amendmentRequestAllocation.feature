@@ -24510,7 +24510,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitmentGrant"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentGrant}"
 
-  @hit1 @257441 @258214 @257349 @257440 @25822 @258222 @VerifyAdminuserwillseeCumulativeObligationfieldontheBudgetSummarysectionOnNewAwardActivationStateandFieldwillpopulatevaluefromtotaloftheEncumbrancecolumnfromtheAwardFundingAccountinformation @sprint-19-US-255648 @hitesh @Allocation
+  @hit2 @257441 @258214 @257349 @257440 @25822 @258222 @VerifyAdminuserwillseeCumulativeObligationfieldontheBudgetSummarysectionOnNewAwardActivationStateandFieldwillpopulatevaluefromtotaloftheEncumbrancecolumnfromtheAwardFundingAccountinformation @sprint-19-US-255648 @hitesh @Allocation
   Scenario: Verify Admin user will see Cumulative Obligation field on the Budget Summary section On New Award Activation State and Field will populate value from  total of the 'Encumbrance' column from the Award Funding Account information.
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -24673,7 +24673,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Total Commitment" as "$2,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitment3"
     And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligation3" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "$5,00.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    And I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligation4" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
     When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -24683,10 +24685,13 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     When I navigate to "Budget" sub tab
     #258222
-    Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
-    And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligation4" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "$5,00.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "{SavedValue:CumulativeObligation3}" is "Equals to" the value "{SavedValue:CumulativeObligation4}"
+    Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
+    And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligation5" from flex table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "{SavedValue:CumulativeObligation3}" is "Equals to" the value "{SavedValue:CumulativeObligation5}"
+    And I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligation6" from flex table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
+    Then I softly see value "{SavedValue:CumulativeObligation4}" is "Equals to" the value "{SavedValue:CumulativeObligation6}"
           #258075
     When I hovering mouse on help text icon inside page block detail "Total Commitment"
     Then I softly see "Total amount committed through this and prior awards in this Budget period" shown as help text
@@ -24738,7 +24743,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitment2"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
 
-  @257985 @VerifyAdminuserwillseeCumilativeObligationfieldontheBudgetSummarybyFocusAreasectionOnNewAwardInActiveStateandRolluptheAwardAmountforeachfocusareafromtheawardbudgetgrid @sprint-19-US-255648 @hitesh @Allocation
+  @hit2 @257985 @VerifyAdminuserwillseeCumilativeObligationfieldontheBudgetSummarybyFocusAreasectionOnNewAwardInActiveStateandRolluptheAwardAmountforeachfocusareafromtheawardbudgetgrid @sprint-19-US-255648 @hitesh @Allocation
   Scenario: Verify Admin user will see Cumilative Obligation field on the Budget Summary by Focus Area section On New Award In Active State and Roll up the Award Amount for each focus area from the award budget grid.
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Announcements" tab
