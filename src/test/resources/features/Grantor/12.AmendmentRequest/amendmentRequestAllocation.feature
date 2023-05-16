@@ -25746,7 +25746,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I see the following rows under the following headers in table with id "---amendment:-:budgetChangeTableId---" :
       | Revised Award Amount |
       | $2,700.00            |
-    And I click on "Submit to Grantor" in the page details
     #264665
     And I save the value from row "4" for column name "Budgeted Amount" as "BudgetedAmount" from flex table "---amendment:-:carryForwardFocusAreaTableId---"
     And I save the value from row "4" for column name "Revised Obligation" as "RevisedObligation" from flex table "---amendment:-:carryForwardFocusAreaTableId---"
