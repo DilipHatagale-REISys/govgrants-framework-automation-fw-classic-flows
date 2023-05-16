@@ -25185,7 +25185,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Spent" as "$300.00"
     Then I softly see value "{SavedValue:Spent}" is "Less Than" the value "{SavedValue:RevisedObligation}"
 
-  @264523 @264573 @264553 @264316 @264264 @264588 @ValidateEXEuserseevalidationmessageifrevisedobligationislessthanspendamountFAisNo @sprint-20-US-248355-248356 @vaibhav @Allocation @TBE
+  @264523 @264573 @264553 @264316 @264264 @264588 @ValidateEXEuserseevalidationmessageifrevisedobligationislessthanspendamountFAisNo @sprint-20-US-248355-248356 @vaibhav @Allocation 
   Scenario: Validate EXE user see validation message if revised obligation is less than spend amount (FA is No)
     Given I activated standalone subaward "Automation Runtime Award" with properties "SUBRECIPIENT_ORG_IND_USER-Automation EXE user" of type "Formula_By_Applicant_Focus_Area_No"
     When I login to "As a Grantor" app as "EXE" user
@@ -25364,7 +25364,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #264316
     Then I softly do not see "Budget Summary by Focus Area" page block displayed
 
-  @264409 @264565 @264570 @264582 @264414 @264441 @264459 @264519 @264501 @264587 @264617 @264627 @264628 @264636 @264643 @264648 @264652 @264661 @264665 @264667 @264805 @ValidateSPIusercanseenewsectionofBudgetSummaryafteroverviewsectiononthecarryforwardamendmentrequestwhichisincreatedstateFAisYes @sprint-20-US-248356 @vaibhav @Allocation @TBE
+  @264409 @264565 @264570 @264582 @264414 @264441 @264459 @264519 @264501 @264587 @264617 @264627 @264628 @264636 @264643 @264648 @264652 @264661 @264665 @264667 @264805 @ValidateSPIusercanseenewsectionofBudgetSummaryafteroverviewsectiononthecarryforwardamendmentrequestwhichisincreatedstateFAisYes @sprint-20-US-248356 @vaibhav @Allocation 
   Scenario: Validate SPI user can see a new section of "Budget Summary" after overview section on the carry forward amendment request which is in created state FA is Yes
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -25695,8 +25695,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction    | 1500                 | 150        | 0              |
     And I refresh the page
-    And I wait for "9" seconds
+    And I wait for "1" seconds
     #264565
+    And I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Carry Forward Amount in the budget period section must be equal to the Carry Forward amount on the Budget Summary section. |
     #264667
