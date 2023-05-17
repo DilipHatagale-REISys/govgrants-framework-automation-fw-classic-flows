@@ -26085,6 +26085,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
       | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
       | Extra Salary | The narrative | 1700         | 170        | 0              |
+    When I close "Add Line Items" modal by clicking the top right x button
     And I refresh the page
     #265693
     Then I softly see value "$1,000.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:budgetChangeTableId---"
@@ -26098,11 +26099,13 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly cannot see top right button "New" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
     Then I cannot see row level action button "Edit" against "Extra Salary" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
     Then I cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
+    When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     Then I softly cannot see top right button "New" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
     Then I cannot see row level action button "Edit" against "Extra Salary" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
     Then I cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
+    When I close "Add Line Items" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -26130,13 +26133,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
       | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
       | Extra Salary | The narrative | 1200         | 120        | 0              |
+    When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
       | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
       | Extra Salary | The narrative | 1500         | 150        | 0              |
+    When I close "Add Line Items" modal by clicking the top right x button
     And I refresh the page
-    And I wait for "8" seconds
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
