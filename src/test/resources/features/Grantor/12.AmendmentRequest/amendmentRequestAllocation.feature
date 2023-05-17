@@ -26127,14 +26127,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "Actions" in flex table header "---amendment:-:RecipientCarryForwardBudgetTableId---"
     Then I softly can see row level action button "Edit" against "Construction" in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
-    When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
-      | Title        | Narrative     | Award Amount | Cash Match |
-      | Extra Salary | The narrative | 1200         | 120        |
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
+      | Award Amount | Cash Match |
+      | 1200         | 120        |
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
-    When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
-      | Title        | Narrative     | Award Amount | Cash Match |
-      | Extra Salary | The narrative | 1500         | 150        |
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
+      | Award Amount | Cash Match |
+      | 1500         | 150        |
     And I refresh the page
     And I wait for "8" seconds
     And I click on "Submit to Grantor" in the page details
