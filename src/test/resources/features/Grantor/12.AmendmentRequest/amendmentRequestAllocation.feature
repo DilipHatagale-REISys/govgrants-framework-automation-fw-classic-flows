@@ -25809,7 +25809,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | You cannot carry forward more than the remaining budget |
 
-  @265693 @264808 @264904 @264350 @ValidateSPIusercanedittheCarryforwardcolumnfromhebudgetperiodsectioninthesentbacktosrstateorunderrevisionstateofamendmentFAisyes @sprint-20-US-248355-248356 @vaibhav @Allocation @TBE
+  @265693 @264808 @264904 @264350 @ValidateSPIusercanedittheCarryforwardcolumnfromhebudgetperiodsectioninthesentbacktosrstateorunderrevisionstateofamendmentFAisyes @sprint-20-US-248355-248356 @vaibhav @Allocation
   Scenario: Validate SPI user can edit the 'Carry forward' column from the budget period section in the sent back to sr state or under revision state of amendment FA is yes
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
