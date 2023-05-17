@@ -713,7 +713,7 @@ Feature: Validate scenarios in Progress Report Forms
     When I click on "Save" in the page details
     Then I softly see the following messages in the page details :
       | Federal Grant or Other Identifying Number Assigned by Federal Awarding Agency (Block 2 of SF-428) is required to save. |
-    And I enter value "Test" into field "fieldFederalGrantIdentifyingNumbe__c"
+    And I enter value "78904" into field "fieldFederalGrantIdentifyingNumbe__c"
     When I click on "Save" in the page details
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
