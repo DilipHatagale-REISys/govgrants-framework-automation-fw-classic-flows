@@ -26338,6 +26338,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligationFA1" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
     And I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligationFA2" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
     And I save the value from row "3" for column name "Cumulative Obligation" as "CumulativeObligationFATotal" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    And I save the value from row "3" for column name "New Obligation" as "NewObligationFATotal" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
     And I save the field labeled "New Obligation" as "newObligationAw2"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationAw2"
     And I save the field labeled "Total Commitment" as "TotalCommitmentAw2"
