@@ -24767,6 +24767,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Title                            | Allocation Amount |
       | Automation Permanent Focus Area  | 500               |
       | Automation Permanent Focus Area2 | 500               |
+    And I save the field labeled "Announcement Name" as "Automation Runtime Announcement"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                         | Announcement |

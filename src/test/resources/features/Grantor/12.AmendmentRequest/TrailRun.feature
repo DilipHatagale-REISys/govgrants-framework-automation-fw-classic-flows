@@ -7,11 +7,11 @@ Scenario: Verify Admin user will see Cumilative Obligation field on the Budget S
   When I navigate to "Applications" tab
   And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
   When I click toggle button to select "Application Reviews - All"
-  And I perform quick search for "AN-REI-165" in "---applicationReview:-:announcementListTableId---" panel
-  When I click on "Initiate Review Process" icon for "AN-REI-165" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
-  And I created approved FDM on application "AN-REI-165"
-  Given I created award from approved FDM with announcement "AN-REI-165" and properties "Automation ADMIN user"
-  And I activate award from FDM having application name "AN-REI-165"
+  And I perform quick search for "AN-REI-166" in "---applicationReview:-:announcementListTableId---" panel
+  When I click on "Initiate Review Process" icon for "AN-REI-166" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+  And I created approved FDM on application "AN-REI-166"
+  Given I created award from approved FDM with announcement "AN-REI-166" and properties "Automation ADMIN user"
+  And I activate award from FDM having application name "AN-REI-166"
 When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
 And I navigate to "Grants" tab
 And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
