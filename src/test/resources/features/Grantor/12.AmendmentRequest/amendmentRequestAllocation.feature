@@ -24775,6 +24775,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
+    When I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
     And I pause execution for "3" seconds
@@ -24825,17 +24829,16 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I get the "EGMS ID"
     When I click on "Submit Application" in the page details
     Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "Record Id" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "Initiate Review Process" icon for "Record Id" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
-    And I created approved FDM on application "Record Id"
-    Given I created award from approved FDM with announcement "Record Id" and properties "Automation ADMIN user"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I created approved FDM on application "{SavedValue:Automation Runtime Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties "Automation ADMIN user"
     And I activate award from FDM having application name "Record Id"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
