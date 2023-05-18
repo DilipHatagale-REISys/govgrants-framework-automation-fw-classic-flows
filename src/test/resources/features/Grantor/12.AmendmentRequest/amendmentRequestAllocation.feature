@@ -26480,12 +26480,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$1,200.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "$2,700.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
-    Then I softly see value "$1,200.00" for title "Revised Award Amount" against the value "Construction" inside table "---progressReport:-:budgetChangeTableId---"
-    And I click on page navigation arrow "---progressReport:-:budgetChangeTableId---" for table id "Next"
-    Then I softly see value "$1,500.00" for title "Revised Award Amount" against the value "Construction" inside table "---progressReport:-:budgetChangeTableId---"
-    Then I see the following rows under the following headers in table with id "---progressReport:-:budgetChangeTableId---" :
-      | Revised Award Amount |
-      | $2,700.00            |
+    Then I softly see value "$1,200.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    And I click on page navigation arrow "---subAwardStandAlone:-:sRBudgetCategoryTableId---" for table id "Next"
+    Then I softly see value "$1,500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" :
+      | Award Amount |
+      | $2,700.00    |
     And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -26573,11 +26573,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$1,200.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "$2,700.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
-    Then I softly see value "$1,200.00" for title "Revised Award Amount" against the value "Construction" inside table "---progressReport:-:budgetChangeTableId---"
-    And I click on page navigation arrow "---progressReport:-:budgetChangeTableId---" for table id "Next"
-    Then I softly see value "$1,500.00" for title "Revised Award Amount" against the value "Construction" inside table "---progressReport:-:budgetChangeTableId---"
-    Then I see the following rows under the following headers in table with id "---progressReport:-:budgetChangeTableId---" :
-      | Revised Award Amount |
+    Then I softly see value "$1,200.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    And I click on page navigation arrow "---subAwardStandAlone:-:sRBudgetCategoryTableId---" for table id "Next"
+    Then I softly see value "$1,500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" :
+      | Award Amount |
       | $2,700.00            |
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -27111,7 +27111,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                       | Amendment Request |
+      | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
@@ -27163,7 +27163,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Carry Forward |
-      | Construction    | 1000           |
+      | Construction    | 1000          |
     And I refresh the page
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
