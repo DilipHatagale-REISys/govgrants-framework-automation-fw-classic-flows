@@ -26448,6 +26448,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "4" seconds
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
+    And I navigate to "Overview" sub tab
     Then I softly see field "Current Commitment" as "$4,000.00"
     And I save the field labeled "Current Commitment" as "CurrentCommitment"
     When I save the value from row "1" for column name "New Obligation" as "newObligationAmend13" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
@@ -26928,7 +26929,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "SubRecipientCF_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter value "Automation Justification" into field "fieldPurposeRTA__c"
-    And I enter value "700" into field "fieldRequestedChangeInBudget__c"
+    And I enter value "1000" into field "fieldRequestedChangeInBudget__c"
     And I wait for "5" seconds
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "CFAmendmentId"
@@ -27111,7 +27112,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                       | Amendment Request |
-      | {SavedValue:EXE1 Username} | Step 1            |
+      | {SavedValue:PM Username} | Step 1            |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -27125,7 +27126,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
     Then I see field "Status" as "Submitted to Grantor"
-    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -27154,7 +27155,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "SubRecipientCF_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter value "Automation Justification" into field "fieldPurposeRTA__c"
-    And I enter value "700" into field "fieldRequestedChangeInBudget__c"
+    And I enter value "1000" into field "fieldRequestedChangeInBudget__c"
     And I wait for "5" seconds
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "CFAmendmentId"
