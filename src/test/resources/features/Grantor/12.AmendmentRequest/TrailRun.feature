@@ -4,9 +4,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 @257 @VerifyAdminuserwillseeCumilativeObligationfieldontheBudgetSummarybyFocusAreasectionOnNewAwardInActiveStateandRolluptheAwardAmountforeachfocusareafromtheawardbudgetgrid @sprint-19-US-255648 @hitesh @Allocation
 Scenario: Verify Admin user will see Cumilative Obligation field on the Budget Summary by Focus Area section On New Award In Active State and Roll up the Award Amount for each focus area from the award budget grid.
   When I login to "As a Grantor" app as "ADMIN" user
-When I navigate to "Applications" tab
-And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
-When I click toggle button to select "Application Reviews - All"
+  When I navigate to "Applications" tab
+  And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+  When I click toggle button to select "Application Reviews - All"
   And I perform quick search for "AN-REI-165" in "---applicationReview:-:announcementListTableId---" panel
   When I click on "Initiate Review Process" icon for "AN-REI-165" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
   And I created approved FDM on application "AN-REI-165"
