@@ -26594,7 +26594,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "$2,000.00" for title "New Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
 
-  @264949 @265108 @ValidateEXEusercannotseeBudgetedAmountFieldwhenawardisinpendingactivationstatestateFAisNo @sprint-20-US-263390 @vaibhav @Allocation @TBE
+  @264949 @265108 @ValidateEXEusercannotseeBudgetedAmountFieldwhenawardisinpendingactivationstatestateFAisNo @sprint-20-US-263390 @vaibhav @Allocation
   Scenario: Validate EXE user cannot see Budgeted Amount Field when award is in pending activation state state FA is No
     Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Formula_By_Applicant_Focus_Area_No"
     When I login to "As a Grantor" app as "EXE" user
