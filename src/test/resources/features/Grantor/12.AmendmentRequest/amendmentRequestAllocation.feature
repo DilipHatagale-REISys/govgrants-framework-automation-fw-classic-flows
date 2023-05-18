@@ -24885,11 +24885,15 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "$1,000.00" for title "Award Amount" against the value "Grand Total" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
+      | Award Amount |
+      | $1,000.00 |
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     When I navigate to "Budget" sub tab
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "$1,000.00" for title "Award Amount" against the value "Grand Total" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
+      | Award Amount |
+      | $1,000.00 |
