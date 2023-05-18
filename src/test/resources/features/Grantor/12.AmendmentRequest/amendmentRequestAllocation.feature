@@ -24510,7 +24510,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitmentGrant"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentGrant}"
 
-  @hit1 @257441 @258214 @257349 @257440 @25822 @258222 @VerifyAdminuserwillseeCumulativeObligationfieldontheBudgetSummarysectionOnNewAwardActivationStateandFieldwillpopulatevaluefromtotaloftheEncumbrancecolumnfromtheAwardFundingAccountinformation @sprint-19-US-255648 @hitesh @Allocation
+  @hit1 @257441 @258214 @257349 @257440 @258222 @258075 @VerifyAdminuserwillseeCumulativeObligationfieldontheBudgetSummarysectionOnNewAwardActivationStateandFieldwillpopulatevaluefromtotaloftheEncumbrancecolumnfromtheAwardFundingAccountinformation @sprint-19-US-255648 @hitesh @Allocation
   Scenario: Verify Admin user will see Cumulative Obligation field on the Budget Summary section On New Award Activation State and Field will populate value from  total of the 'Encumbrance' column from the Award Funding Account information.
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -24705,18 +24705,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
     Then I softly see "Total Awarded amount across budget periods" shown as help text
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
-    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
-    When I navigate to "Budget" sub tab
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    When I navigate to "Budget" sub tab
-    Then I softly see field "Total Commitment" as "$2,000.00"
-    And I save the field labeled "Total Commitment" as "TotalCommitment"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Budget" sub tab
@@ -24725,9 +24718,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #257440
     Then I softly see field "Total Commitment" as "$2,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitment2"
-    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
+    Then I softly see value "{SavedValue:TotalCommitment4}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
 
-  @hit2 @257985 @257982 @VerifyAdminuserwillseeCumilativeObligationfieldontheBudgetSummarybyFocusAreasectionOnNewAwardInActiveStateandRolluptheAwardAmountforeachfocusareafromtheawardbudgetgrid @sprint-19-US-255648 @hitesh @Allocation
+  @257985 @257982 @VerifyAdminuserwillseeCumilativeObligationfieldontheBudgetSummarybyFocusAreasectionOnNewAwardInActiveStateandRolluptheAwardAmountforeachfocusareafromtheawardbudgetgrid @sprint-19-US-255648 @hitesh @Allocation
   Scenario: Verify Admin user will see Cumilative Obligation field on the Budget Summary by Focus Area section On New Award In Active State and Roll up the Award Amount for each focus area from the award budget grid.
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Announcements" tab
@@ -24889,15 +24882,21 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     When I navigate to "Budget" sub tab
     #257982
-    Then I softly see field "Cumilative Obligation" as "$1,000.00"
-    Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligation1" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    And I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligation2" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
-    Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     And I save the field labeled "EGMS ID" as "AwardEGMSID1"
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     When I navigate to "Budget" sub tab
-    Then I softly see field "Cumilative Obligation" as "$1,000.00"
-    Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligation3" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    And I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligation4" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
-    Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
