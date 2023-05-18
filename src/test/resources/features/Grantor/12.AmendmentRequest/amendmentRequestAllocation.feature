@@ -24738,7 +24738,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "Creation_Formula_ByApp_FocusYes" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I navigate to "Overview" sub tab
-    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
+    And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
