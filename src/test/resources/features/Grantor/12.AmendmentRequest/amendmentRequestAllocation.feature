@@ -26451,9 +26451,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Overview" sub tab
     Then I softly see field "Current Commitment" as "$4,000.00"
     And I save the field labeled "Current Commitment" as "CurrentCommitment"
-    When I save the value from row "1" for column name "New Obligation" as "newObligationAmend13" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
-    When I save the value from row "2" for column name "New Obligation" as "newObligationAmend23" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
-    When I save the value from row "3" for column name "New Obligation" as "newObligationAmend33" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    When I save the value from row "1" for column name "Carry Forward Amount" as "carryAmend1" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    When I save the value from row "2" for column name "Carry Forward Amount" as "carryAmend2" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    When I save the value from row "3" for column name "Carry Forward Amount" as "carryAmend3" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     And I wait for "4" seconds
     And I click on "Amend Subaward" in the page details
     And I pause execution for "5" seconds
@@ -26534,9 +26534,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$200.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$500.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---ssubAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$700.00" for title "New Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "{SavedValue:newObligationAmend13}" is "Equals to" the value "{SavedValue:newObligationAd13}"
-    Then I softly see value "{SavedValue:newObligationAmend23}" is "Equals to" the value "{SavedValue:newObligationAd23}"
-    Then I softly see value "{SavedValue:newObligationAmend33}" is "Equals to" the value "{SavedValue:newObligationAd33}"
+    Then I softly see value "{SavedValue:carryAmend1}" is "Equals to" the value "{SavedValue:newObligationAd13}"
+    Then I softly see value "{SavedValue:carryAmend2}" is "Equals to" the value "{SavedValue:newObligationAd23}"
+    Then I softly see value "{SavedValue:carryAmend3}" is "Equals to" the value "{SavedValue:newObligationAd33}"
     #265101
     When I navigate to "Actuals" sub tab
     Then I softly see field "Spent" as "$300.00"
@@ -26727,7 +26727,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
     Then I softly see "Total Awarded amount across budget periods" shown as help text
 
-  @265034 @ValidatePMusercannotseeFocusareaonthenewAwardiftheinitialAwardisfromFDMandvalueforNewObligationandspentisZeroforparticularFocusArea @sprint-20-US-263390 @vaibhav @Allocation @TBE
+  @265034 @ValidatePMusercannotseeFocusareaonthenewAwardiftheinitialAwardisfromFDMandvalueforNewObligationandspentisZeroforparticularFocusArea @sprint-20-US-263390 @vaibhav @Allocation
   Scenario: Validate PM user cannot see a Focus area on the new Award if the initial Award is from FDM and value for New Obligation and spent is Zero for a particular Focus Area
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -27163,19 +27163,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Carry Forward |
-      | Construction    | 500           |
-    And I click on page navigation arrow "---amendment:-:RecipientCarryForwardBudgetTableId---" for table id "Next"
-    And I edit the following rows inline in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Carry Forward |
-      | Construction    | 500           |
+      | Construction    | 1000           |
     And I refresh the page
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 1500                 | 150        | 0              |
-    And I click on page navigation arrow "---progressReport:-:budgetChangeTableId---" for table id "Next"
-    And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
-      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 1500                 | 150        | 0              |
+      | Construction    | 3000                 | 300        | 0              |
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
