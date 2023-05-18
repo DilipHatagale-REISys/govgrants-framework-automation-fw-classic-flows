@@ -24882,21 +24882,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     When I navigate to "Budget" sub tab
     #257982
-    And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligation1" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
-    And I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligation2" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
-    And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
-    Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
-    And I save the field labeled "EGMS ID" as "AwardEGMSID1"
+    Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$1,000.00" for title "Award Amount" against the value "Grand Total" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     When I navigate to "Budget" sub tab
-    And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligation3" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
-    And I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligation4" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
-    And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
-    Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$1,000.00" for title "Award Amount" against the value "Grand Total" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
