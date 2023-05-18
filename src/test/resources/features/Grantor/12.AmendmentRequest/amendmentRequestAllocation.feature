@@ -24770,7 +24770,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                         | Announcement |
-      | A{SavedValue:ADMIN Username} | Step 1       |
+      | {SavedValue:ADMIN Username} | Step 1       |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
