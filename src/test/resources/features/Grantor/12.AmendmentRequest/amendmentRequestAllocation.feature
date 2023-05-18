@@ -26532,7 +26532,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I save the value from row "2" for column name "New Obligation" as "newObligationAd23" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
     When I save the value from row "3" for column name "New Obligation" as "newObligationAd33" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$200.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "$500.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---ssubAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$500.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$700.00" for title "New Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "{SavedValue:carryAmend1}" is "Equals to" the value "{SavedValue:newObligationAd13}"
     Then I softly see value "{SavedValue:carryAmend2}" is "Equals to" the value "{SavedValue:newObligationAd23}"
