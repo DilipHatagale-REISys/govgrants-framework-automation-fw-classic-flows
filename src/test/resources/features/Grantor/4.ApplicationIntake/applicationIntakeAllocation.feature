@@ -2963,7 +2963,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:Automation Runtime Formula Announcement} | BY_APPLICANT               |
       | {SavedValue:Automation Runtime Formula Announcement} | BY_APPLICANT_FOCUS_AREA_NO |
 
-  @hitesh @227872 @VerifywhenSPIuserresubmittheapplicationafternegotiationfromFDMcheckFocusareasbudgetedtotalmustbeequaltoAllocationamountforthatfocusareainbudgetsummarysection @sprint-13-US-224692 @komal @Allocation
+  @hitesh1 @227872 @VerifywhenSPIuserresubmittheapplicationafternegotiationfromFDMcheckFocusareasbudgetedtotalmustbeequaltoAllocationamountforthatfocusareainbudgetsummarysection @sprint-13-US-224692 @komal @Allocation
   Scenario Outline: Verify when SPI user  resubmit the application after negotiation(from FDM) check Focus area's budgeted total, must be equal to Allocation amount for that focus area in budget summary section
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"

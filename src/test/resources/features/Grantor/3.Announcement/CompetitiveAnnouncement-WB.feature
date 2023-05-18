@@ -494,7 +494,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            | Filter  | User |
       | {SavedValue:Automation Runtime Announcement} | default | PM   |
 
-  @Hitesh @234672 @219363 @219366 @CompAnnVerifyPMusershouldseevalidationonsendtosrbuttonwhennegotiationisinitiatedduringFDMuserwhenuserselectonlybudgetsummarybyFocusAreasectionfornegotiationevenwhenbudgetedamountisequaltorecommendedamount @sprint-13-US-224612 @komal @Allocation
+  @hitesh1 @234672 @219363 @219366 @CompAnnVerifyPMusershouldseevalidationonsendtosrbuttonwhennegotiationisinitiatedduringFDMuserwhenuserselectonlybudgetsummarybyFocusAreasectionfornegotiationevenwhenbudgetedamountisequaltorecommendedamount @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Comp Ann PM user should see validation on send to s/r button when negotiation is initiated during FDM user when user select only budget summary by Focus Area section for negotiation even when budgeted amount is equal to recommended amount
   | Competitive Ann_ Verify as PM user I can see Recommended budget field is visible when App status is negotiation completed  |
   | Competitive Ann_ Verify as PM user I can see Recommended budget filed is visible when App status is Convert to award |
