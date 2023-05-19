@@ -717,7 +717,7 @@ Feature: Pre-Application scenarios without background
     And I save the total records from the flex table id "---preApplication:-:recipientPreApplicationsTableId---" as "totalRecords"
     Then I see total records count "{SavedValue:totalRecords}" in flex table "---preApplication:-:recipientPreApplicationsTableId---"
 
-  @77449 @77450 @77451 @77452 @77453 @77454 @77455 @unpublishedAnnouncementCannotSubmitpreApplication @deepika @buglogged113216 @buglogged113230
+  @77449 @77450 @77451 @77452 @77453 @77454 @77455 @unpublishedAnnouncementCannotSubmitpreApplication @deepika @buglogged113216 @buglogged113230 @wip
   Scenario: Validate whether User will be able to view the submit to grantor button if the application due date changes to the future date
   Validate once the Announcement is published and Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit to Grantor Button
   Validate whether the Applicant will be able to view qualify button of pre-application on the same funding opportunity after republish

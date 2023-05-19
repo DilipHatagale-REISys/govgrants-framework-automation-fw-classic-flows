@@ -43,7 +43,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Construction  | 1000   | 100        | 100            |
     And I refresh the page
     Then I softly see field "Budgeted Amount" as "$1,000.00"
-    Then I softly see field "Allocated Amount" as "$1,000"
+    Then I softly see field "Allocation Amount" as "$1,000"
 
   @219703 @ValidateSPIUserifbudgetedamountisnotequaltoallocationamountthenerrormessageshouldgenerateonclickonsubmittograntorbutton @sprint-11-US-203038 @vaibhav @Allocation
   Scenario: Validate SPI User if budgeted amount is not equal to allocation amount then error message should generate on click on submit to grantor button
@@ -2963,7 +2963,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:Automation Runtime Formula Announcement} | BY_APPLICANT               |
       | {SavedValue:Automation Runtime Formula Announcement} | BY_APPLICANT_FOCUS_AREA_NO |
 
-  @hitesh1 @227872 @VerifywhenSPIuserresubmittheapplicationafternegotiationfromFDMcheckFocusareasbudgetedtotalmustbeequaltoAllocationamountforthatfocusareainbudgetsummarysection @sprint-13-US-224692 @komal @Allocation
+  @227872 @VerifywhenSPIuserresubmittheapplicationafternegotiationfromFDMcheckFocusareasbudgetedtotalmustbeequaltoAllocationamountforthatfocusareainbudgetsummarysection @sprint-13-US-224692 @komal @Allocation
   Scenario Outline: Verify when SPI user  resubmit the application after negotiation(from FDM) check Focus area's budgeted total, must be equal to Allocation amount for that focus area in budget summary section
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"

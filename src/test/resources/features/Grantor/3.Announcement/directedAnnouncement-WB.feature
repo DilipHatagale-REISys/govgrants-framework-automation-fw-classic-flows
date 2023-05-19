@@ -1303,9 +1303,9 @@ Feature: Validate all scenarios in the directed Announcement tab
 
     Examples:
       | Announcement Name                                        |
-      | {SavedValue:Automation Runtime Directed Announcement} |
+      | {SavedValue:Automation Runtime Directed Announcement}    |
 
-  @hitesh1 @219360 @DirectedAnnVerifyasAdminuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarywhenAppstatusisnegotiationsubmitted @sprint-13-US-224612 @komal @Allocation
+  @219360 @DirectedAnnVerifyasAdminuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarywhenAppstatusisnegotiationsubmitted @sprint-13-US-224612 @komal @Allocation @wip
   Scenario Outline: Directed Ann as Admin user I can see Recommended budget field is visible under budget summary when App status is negotiation submitted
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default-Automation ADMIN user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
