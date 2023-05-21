@@ -24898,7 +24898,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Award Amount |
       | $1,000.00    |
 
-  @256898 @258809 @VerifyPMusercanseeanewsectionofBudgetSummaryinsteadofFundingChangeontheBudredamendmentrequestwhichiscreatedfromdirectaward @sprint-19-US-247605 @hitesh @Allocation
+  @hitesh1234 @256898 @258809 @VerifyPMusercanseeanewsectionofBudgetSummaryinsteadofFundingChangeontheBudredamendmentrequestwhichiscreatedfromdirectaward @sprint-19-US-247605 @hitesh @Allocation
   Scenario: Verify PM user can see a new section of "Budget Summary" instead of "Funding Change " on the  Bud red amendment request which is created from direct award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -25043,7 +25043,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #258809
     And I navigate to "Home" tab
     When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
-    When I reassign task to "Automation PM1"
+    When I reassign task to "Automation ADMIN"
     When I perform quick search for "{SavedValue:BUDGETREDIRECTIONID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I see value "{SavedValue:BUDGETREDIRECTIONID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     Then I softly see value "Review Amendment Request" for title "Task Type" inside table "---program:-:grantorTaskReassignTableId---"
@@ -25054,7 +25054,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:BUDGETREDIRECTIONID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:BUDGETREDIRECTIONID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
-    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BUDGETREDIRECTIONID}" in "---amendment:-:pendingTaskTableId---" panel
@@ -25065,7 +25065,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
     Then I softly can see top right button "Submit For Approval" in page detail
 
-  @256938 @VerifyAdminusercanseeasectionofBudgetSummarybyFocusAreaontheBudredamendmentrequestwhichiscreatedfromFDMandshouldhaveallthefocusareasfromtheawardEvenwithZeroObligation @sprint-19-US-255648 @hitesh @Allocation
+  @hitesh1234 @256938 @VerifyAdminusercanseeasectionofBudgetSummarybyFocusAreaontheBudredamendmentrequestwhichiscreatedfromFDMandshouldhaveallthefocusareasfromtheawardEvenwithZeroObligation @sprint-19-US-255648 @hitesh @Allocation
   Scenario: VerifyAdminusercanseeasectionofBudgetSummarybyFocusAreaontheBudredamendmentrequestwhichiscreatedfromFDMandshouldhaveallthefocusareasfromtheawardEvenwithZeroObligation
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Announcements" tab
@@ -25206,7 +25206,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Budgeted Amount" inside page block
     Then I softly see field "Spent" inside page block
 
-  @256933 @256981 @VerifyAdminusercanseeasectionofBudgetSummarybyFocusAreaontheBudredamendmentrequestwhichiscreatedfromdirectawardandshouldhaveallthefocusareasfromtheaward @sprint-19-US-247605 @hitesh @Allocation
+  @hitesh1234 @256933 @256981 @VerifyAdminusercanseeasectionofBudgetSummarybyFocusAreaontheBudredamendmentrequestwhichiscreatedfromdirectawardandshouldhaveallthefocusareasfromtheaward @sprint-19-US-247605 @hitesh @Allocation
   Scenario: Verify Admin user can see a  section of "Budget Summary by Focus Area"on the  Bud red amendment request which is created from direct award and should have  all the focus areas from the award
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
