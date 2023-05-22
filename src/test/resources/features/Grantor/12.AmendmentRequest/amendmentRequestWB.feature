@@ -4758,8 +4758,8 @@ Feature: Amendment Request scenarios without background
     When I close "Add Line Items" modal by clicking the top right x button
     Then I softly see value "$0.00" for title "Revised Award Amount" inside table "---amendment:-:BudgetChangeTableId---"
     Examples:
-      | Award Name                                      | Grant Name                                      |
-      | {SavedValue:Automation Runtime Execution Award} | {SavedValue:Automation Runtime Execution Award} |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @99499 @ValidateRejectFunctionalityForAmenedmentWithInternalUser-BudgetRedirection @monu @smoke
   Scenario: Verify that Internal User is able to reject Budget Redirection Amendment Request
@@ -5039,7 +5039,7 @@ Feature: Amendment Request scenarios without background
       | {SavedValue:EXE Username} | Step 2            |
     Then I softly see "Saved Successfully!" inside flex table with id "---amendment:-:approversTableId---"
 
-  @148949 @VerifyInheritatedApproverAtTCAmendmentRequestFromAward-RnRFunctionality @monu 
+  @148949 @VerifyInheritatedApproverAtTCAmendmentRequestFromAward-RnRFunctionality @monu
   Scenario: Validate Approvers are getting inherited from award record to terms and condition amendment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -6918,7 +6918,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has been SentBack by an Approver
       """
     Then I see the mail text is as follows :
 
@@ -7694,7 +7694,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} has been SentBack by an Approver
       """
 
     Then I see the mail text is as follows :
@@ -9303,7 +9303,7 @@ Feature: Amendment Request scenarios without background
     Then I see value "{SavedValue:kpcId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
     Then I see value "Review Amendment Request" for title "Task Type" inside table "---amendment:-:pendingTaskTableId---"
 
-  @201064 @201067 @ValidateCarryforwardPMusercanreassignownershiptootheruserinSenttoS/rstateofcarryforwardamendment @sprint-5-US-198235 @vaibhav @reassignment 
+  @201064 @201067 @ValidateCarryforwardPMusercanreassignownershiptootheruserinSenttoS/rstateofcarryforwardamendment @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry forward PM user can reassign ownership to other user in Sent to S/r state of carry forward amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -9425,7 +9425,7 @@ Feature: Amendment Request scenarios without background
     Then I can see top right button "Add" in flex table with id "---amendment:-:amendmentAddNotesTableId---"
     Then I can see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
 
-  @201079 @ValidateCarryforwardPMusercanreassignownershiptootheruserinsubmitforapprovalstateofcarryforwardamendment @sprint-5-US-198235 @vaibhav @reassignment 
+  @201079 @ValidateCarryforwardPMusercanreassignownershiptootheruserinsubmitforapprovalstateofcarryforwardamendment @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry forward PM user can reassign ownership to other user in submit for approval state of carry forward amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     When I login to "As a Grantor" app as "PM1" user
@@ -9551,7 +9551,7 @@ Feature: Amendment Request scenarios without background
     When I navigate to "Files" sub tab
     Then I can see top right button "Add" in flex table with id "---amendment:-:amendmentAddNotesTableId---"
 
-  @201081 @ValidateCarryforwardPOusercanreassignownershiptootheruserinapprovedstateofcarryforwardamendment @sprint-5-US-198235 @vaibhav @reassignment 
+  @201081 @ValidateCarryforwardPOusercanreassignownershiptootheruserinapprovedstateofcarryforwardamendment @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry forward PO user can reassign ownership to other user in approved state of carry forward amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
@@ -9684,7 +9684,7 @@ Feature: Amendment Request scenarios without background
     When I navigate to "Files" sub tab
     Then I can see top right button "Add" in flex table with id "---amendment:-:amendmentAddNotesTableId---"
 
-  @201084 @ValidateCarryforwardPOusercanreassignownershiptootheruserinapprovedstateofcarryforwardamendment @sprint-5-US-198235 @vaibhav @reassignment 
+  @201084 @ValidateCarryforwardPOusercanreassignownershiptootheruserinapprovedstateofcarryforwardamendment @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry forward PO user can reassign ownership to other user in approved state of carry forward amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -9817,7 +9817,7 @@ Feature: Amendment Request scenarios without background
     Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
     Then I softly see field "Status" as "Rejected"
 
-  @201086 @ValidateCarryforwardonlyawardownercanseeactivatebuttonandactivatenewawardevenifARownerinitiateamendsubaward @sprint-5-US-198235 @vaibhav @reassignment 
+  @201086 @ValidateCarryforwardonlyawardownercanseeactivatebuttonandactivatenewawardevenifARownerinitiateamendsubaward @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry forward only award owner can see activate button and activate new award even if AR owner initiate amend sub award
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -9962,7 +9962,7 @@ Feature: Amendment Request scenarios without background
     And I click on "Activate" in the page details
     Then I see that "Subaward" is in "Activated" status
 
-  @201089 @ValidateCarryForwardfiledhistoryshouldbeupdatedfornewownerofAR @sprint-5-US-198235 @vaibhav @reassignment 
+  @201089 @ValidateCarryForwardfiledhistoryshouldbeupdatedfornewownerofAR @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry Forward filed history should be updated for new owner of AR
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -10636,7 +10636,7 @@ Feature: Amendment Request scenarios without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
 
-  @200053 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RSideatcreatedstateforBudgetPeriodChangeARtype @sprint-5-US-198419 @vaibhav @reassignment 
+  @200053 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RSideatcreatedstateforBudgetPeriodChangeARtype @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate user should able to see the AR is updated after change the ownership by S/R  Side at created state for Budget Period Change AR type
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
@@ -12875,7 +12875,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -13599,7 +13599,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -14543,7 +14543,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} has been SentBack by an Approver
       """
 
     Then I see the mail text is as follows :
@@ -14712,7 +14712,7 @@ Feature: Amendment Request scenarios without background
     When I navigate to "Files" sub tab
     Then I cannot see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
 
-  @200134 @200151 @ValidateCarryForwardReviewAmendmentRequestpendingtaskshouldgenerateforPMuserinmytaskandinpendingtasksection @sprint-5-US-197424 @vaibhav @reassignment 
+  @200134 @200151 @ValidateCarryForwardReviewAmendmentRequestpendingtaskshouldgenerateforPMuserinmytaskandinpendingtasksection @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward 'Review Amendment Request' pending task should generate for PM user in my task and in pending task section
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -14987,7 +14987,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -15071,7 +15071,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} has been SentBack by an Approver
       """
 
     Then I see the mail text is as follows :
@@ -15090,7 +15090,7 @@ Feature: Amendment Request scenarios without background
       The EGMS Team
       """
 
-  @200136 @200158 @ValidateCarryForwardReviewAmendmentRequestpendingtaskshouldgenerateforEXEuserinmytaskandinpendingtasksection @sprint-5-US-197424 @vaibhav @reassignment 
+  @200136 @200158 @ValidateCarryForwardReviewAmendmentRequestpendingtaskshouldgenerateforEXEuserinmytaskandinpendingtasksection @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward 'Review Amendment Request' pending task should generate for EXE user in my task  and in pending task section
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
@@ -15195,7 +15195,7 @@ Feature: Amendment Request scenarios without background
     Then I see value "{SavedValue:CFAmendmentId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
     Then I see value "Review Amendment Request" for title "Task Type" inside table "---amendment:-:pendingTaskTableId---"
 
-  @200137 @200160 @ValidateCarryForwardReviewAmendmentRequestpendingtaskshouldgenerateforPOuserinmytaskandinpendingtasksection @sprint-5-US-197424 @vaibhav @reassignment 
+  @200137 @200160 @ValidateCarryForwardReviewAmendmentRequestpendingtaskshouldgenerateforPOuserinmytaskandinpendingtasksection @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward 'Review Amendment Request' pending task should generate for PO user in my task  and in pending task section
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
@@ -15298,7 +15298,7 @@ Feature: Amendment Request scenarios without background
     Then I see value "{SavedValue:CFAmendmentId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
     Then I see value "Review Amendment Request" for title "Task Type" inside table "---amendment:-:pendingTaskTableId---"
 
-  @200163 @ValidateCarryForwardasAdminusercanreassignReviewAmendmentRequestownershiptaskfromsourcePMusertotargetPMuser @sprint-5-US-197424 @vaibhav @reassignment 
+  @200163 @ValidateCarryForwardasAdminusercanreassignReviewAmendmentRequestownershiptaskfromsourcePMusertotargetPMuser @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward as Admin user can reassign 'Review Amendment Request' ownership task from source PM user to target PM user
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -15621,7 +15621,7 @@ Feature: Amendment Request scenarios without background
     When I navigate to "Files" sub tab
     Then I can see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
 
-  @200219 @ValidateCarryForwardPOasawardownercannotseeanybuttonsafterReviewAmendmentRequesttaskownershipreassigntonewownerifamendmentcreatedbyEXEuser @sprint-5-US-197424 @vaibhav @reassignment 
+  @200219 @ValidateCarryForwardPOasawardownercannotseeanybuttonsafterReviewAmendmentRequesttaskownershipreassigntonewownerifamendmentcreatedbyEXEuser @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward PO as award owner can not see any buttons after 'Review Amendment Request' task ownership reassign to new owner if amendment created by EXE user
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
@@ -15749,7 +15749,7 @@ Feature: Amendment Request scenarios without background
     When I navigate to "Files" sub tab
     Then I cannot see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
 
-  @200230 @ValidateCarryforwardPMasoldownerofARdoesnothaveanybuttonaccessifownershiptaskreassigntonewowner @sprint-5-US-197424 @vaibhav @reassignment 
+  @200230 @ValidateCarryforwardPMasoldownerofARdoesnothaveanybuttonaccessifownershiptaskreassigntonewowner @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry forward PM as old owner of AR does not have any button access if ownership task reassign to new owner
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -15862,7 +15862,7 @@ Feature: Amendment Request scenarios without background
     When I navigate to "Files" sub tab
     Then I cannot see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
 
-  @200256 @ValidateCarryForwardawardownercanseeamendmentlevelbuttonsaccessifamendmentcreatedonawardowneroramendmentowner&awardownerissame @sprint-5-US-197424 @vaibhav @reassignment 
+  @200256 @ValidateCarryForwardawardownercanseeamendmentlevelbuttonsaccessifamendmentcreatedonawardowneroramendmentowner&awardownerissame @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward award owner can see amendment level buttons access if amendment created on award owner or (amendment owner & award owner is same)
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     When I login to "As a Grantor" app as "PM1" user
@@ -15956,7 +15956,7 @@ Feature: Amendment Request scenarios without background
     When I navigate to "Files" sub tab
     Then I can see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
 
-  @200261 @ValidateCarryForwardfiledhistoryshouldbeupdatedfornewownerofAR @sprint-5-US-197424 @vaibhav @reassignment 
+  @200261 @ValidateCarryForwardfiledhistoryshouldbeupdatedfornewownerofAR @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward filed history should be updated for new owner of AR
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -16062,7 +16062,7 @@ Feature: Amendment Request scenarios without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
 
-  @200277 @ValidateCarryForwardeAmendmentRequestSentBackemailshouldbegenerateforEXEnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment 
+  @200277 @ValidateCarryForwardeAmendmentRequestSentBackemailshouldbegenerateforEXEnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward 'Amendment Request Sent Back' email should be generate for EXE new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
@@ -16188,7 +16188,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} has been SentBack by an Approver
       """
 
     Then I see the mail text is as follows :
@@ -16702,7 +16702,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:BudgetRedirectId} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:BudgetRedirectId} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -16789,7 +16789,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:BudgetRedirectId} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:BudgetRedirectId} has been SentBack by an Approver
       """
 
     Then I see the mail text is as follows :
@@ -17199,7 +17199,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:kpcId} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:kpcId} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -17285,7 +17285,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:kpcId} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:kpcId} has been SentBack by an Approver
       """
 
     Then I see the mail text is as follows :
@@ -17374,7 +17374,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:kpcId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:kpcId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -17450,7 +17450,7 @@ Feature: Amendment Request scenarios without background
     Then I cannot see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
     Then I can see top right button "Add" in flex table with id "---amendment:-:amendmentAddNotesTableId---"
 
-  @200276 @ValidateCarryForwardAmendmentRequestRejectedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment 
+  @200276 @ValidateCarryForwardAmendmentRequestRejectedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward 'Amendment Request Rejected' email should be generate for PM new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     When I login to "As a Grantor" app as "PM1" user
@@ -17575,7 +17575,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -17593,7 +17593,7 @@ Feature: Amendment Request scenarios without background
       The EGMS Team
       """
 
-  @200280 @ValidateCarryForwardAmendmentReqestApprovedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment 
+  @200280 @ValidateCarryForwardAmendmentReqestApprovedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward 'Amendment Request Approved' email should be generate for PM new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
@@ -17719,7 +17719,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -18624,7 +18624,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:BudgetRedirectId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:BudgetRedirectId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -18643,7 +18643,7 @@ Feature: Amendment Request scenarios without background
       The EGMS Team
       """
 
-  @200255 @ValidateCarryforwardifS\RusercreateamendmentandsubmittograntorthenARinternalownershouldbeawardownerevenifpreviousamendmentownershiptaskreassigntootheruserotheruser @sprint-5-US-197424 @vaibhav @reassignment 
+  @200255 @ValidateCarryforwardifS\RusercreateamendmentandsubmittograntorthenARinternalownershouldbeawardownerevenifpreviousamendmentownershiptaskreassigntootheruserotheruser @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry forward if S\R user create amendment and submit to grantor then AR internal owner should be award owner even if previous amendment ownership task reassign to other user other user
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
@@ -18808,7 +18808,7 @@ Feature: Amendment Request scenarios without background
       | Construction    | 500           |
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 1500                    | 150        | 0              |
+      | Construction    | 1500                 | 150        | 0              |
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
@@ -18923,7 +18923,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen submitted
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has beensubmitted
       """
     Then I see the mail text is as follows :
 
@@ -19029,7 +19029,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen Sent Back by an Approver
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has been SentBack by an Approver
       """
 
     Then I see the mail text is as follows :
@@ -19131,7 +19131,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -19317,7 +19317,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -19426,7 +19426,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -19742,7 +19742,7 @@ Feature: Amendment Request scenarios without background
     Then I cannot see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
     Then I can see top right button "Add" in flex table with id "---amendment:-:amendmentAddNotesTableId---"
 
-  @201088 @ValidateCarryforwardemailshouldbegeneratedfornewownerafterAmendmentRequestSubmittedGrantorNotifyownershipreassigntonewowner @sprint-5-US-198235 @vaibhav @reassignment 
+  @201088 @ValidateCarryforwardemailshouldbegeneratedfornewownerafterAmendmentRequestSubmittedGrantorNotifyownershipreassigntonewowner @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry forward email should be generated for new owner after 'Amendment Request Submitted Grantor Notify' ownership reassign to new owner
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -19880,7 +19880,7 @@ Feature: Amendment Request scenarios without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} hasbeen submitted
+      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} has beensubmitted
       """
     Then I see the mail text is as follows :
 
@@ -19899,7 +19899,7 @@ Feature: Amendment Request scenarios without background
       The EGMS Team
       """
 
-  @201098 @ValidateCarryForwardawardownerandARownerhasallbuttonaccessofcarryforwardAR @sprint-5-US-198235 @vaibhav @reassignment 
+  @201098 @ValidateCarryForwardawardownerandARownerhasallbuttonaccessofcarryforwardAR @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry Forward award owner and AR owner has all button access of carry forward AR
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -20020,7 +20020,7 @@ Feature: Amendment Request scenarios without background
     Then I can see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
     Then I can see top right button "Add" in flex table with id "---amendment:-:amendmentAddNotesTableId---"
 
-  @201615 @ValidateCarryForwardEXEusercanreassignownershiptonewownerinsubmittograntorstateofcarryforwardAR @sprint-5-US-198235 @vaibhav @reassignment 
+  @201615 @ValidateCarryForwardEXEusercanreassignownershiptonewownerinsubmittograntorstateofcarryforwardAR @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry Forward EXE user can reassign ownership to new owner  in submit to grantor state of carry forward AR
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
@@ -20132,7 +20132,7 @@ Feature: Amendment Request scenarios without background
     And I perform quick search for "{SavedValue:CFAmendmentId}" in "---amendment:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:CFAmendmentId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
 
-  @201755 @ValidateCarryForwardAmendmentRequestRejectedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-198235 @vaibhav @reassignment 
+  @201755 @ValidateCarryForwardAmendmentRequestRejectedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry Forward 'Amendment Request Rejected' email should be generate for PM new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
@@ -20264,7 +20264,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:CFAmendmentId} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -20371,7 +20371,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -20718,7 +20718,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -20854,7 +20854,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:FundingID} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -21069,7 +21069,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} hasbeen Rejected
+      Sandbox: Notification: Amendment Request #{SavedValue:PERIODICRENEWAL} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -21549,7 +21549,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:TermsCondId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -21879,7 +21879,7 @@ Feature: Amendment Request scenarios without background
     Then I cannot see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
     Then I can see top right button "Add" in flex table with id "---amendment:-:amendmentAddNotesTableId---"
 
-  @229664 @ValidateCarryForwardPMusercanreassignownershiptonewownerinsubmittograntorstateofcarryforwardAR @sprint-12-US-226646 @vaibhav @reassignment 
+  @229664 @ValidateCarryForwardPMusercanreassignownershiptonewownerinsubmittograntorstateofcarryforwardAR @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Carry Forward PM user can reassign ownership to new owner  in submit to grantor state of carry forward AR
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -21991,7 +21991,7 @@ Feature: Amendment Request scenarios without background
     Then I see value "{SavedValue:CFAmendmentId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
     Then I see value "Review Amendment Request" for title "Task Type" inside table "---amendment:-:pendingTaskTableId---"
 
-  @224654 @ValidateAmendmenttheeffectsontheR&Ronamendmen&award @sprint-12-US-226646 @vaibhav @reassignment 
+  @224654 @ValidateAmendmenttheeffectsontheR&Ronamendmen&award @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Amendment the effects on the R&R on amendment & award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -22230,7 +22230,7 @@ Feature: Amendment Request scenarios without background
     Then I softly see value "Step 2" for title "Amendment Request" against the value "Automation EXE" inside table "---subAwardStandAlone:-:awardApproversTableId---"
     Then I softly see value "Step 1" for title "Award" against the value "Automation PO" inside table "---subAwardStandAlone:-:awardApproversTableId---"
 
-  @224650 @Validateapprovertableshouldnotupdateonawardafteramendmentrequestreassignhisapprover @sprint-12-US-226646 @vaibhav @reassignment 
+  @224650 @Validateapprovertableshouldnotupdateonawardafteramendmentrequestreassignhisapprover @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate approver table should not update on award after amendment request reassign his approver
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -22429,7 +22429,7 @@ Feature: Amendment Request scenarios without background
     Then I softly see value "NA" for title "Site Visit" against the value "Automation FD" inside table "---subAwardStandAlone:-:awardApproversTableId---"
     Then I softly see value "NA" for title "Closeout" against the value "Automation FD" inside table "---subAwardStandAlone:-:awardApproversTableId---"
 
-  @200106 @ValidateEmailshouldbetriggeredwhenownershipischangeofBPCARatS/Rside @sprint-12-US-226646 @vaibhav @reassignment 
+  @200106 @ValidateEmailshouldbetriggeredwhenownershipischangeofBPCARatS/Rside @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Email should be triggered when ownership is change of BPC  AR  at S/R side
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     When I am on "SUBPORTAL" portal
@@ -23240,7 +23240,7 @@ Feature: Amendment Request scenarios without background
       The EGMS Team
       """
 
-  @200181 @ValidateCarryforwardemailshouldbegeneratednewownerafterReviewamendmentrequesttaskownershipreassigntonewowner @sprint-5-US-197424 @vaibhav @reassignment 
+  @200181 @ValidateCarryforwardemailshouldbegeneratednewownerafterReviewamendmentrequesttaskownershipreassigntonewowner @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry forward email should be generated for new owner after 'Review amendment request' task ownership reassign to new owner
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
@@ -23843,7 +23843,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Notification: Amendment Request #{SavedValue:budgetPC&ScopeId} hasbeen Rejected
+      Notification: Amendment Request #{SavedValue:budgetPC&ScopeId} has beenRejected
       """
 
     Then I see the mail text is as follows :
@@ -24023,7 +24023,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:budgetPC&ScopeId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:budgetPC&ScopeId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -24408,7 +24408,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Amendment Request #{SavedValue:budgetPC&ScopeId} hasbeen Approved
+      Sandbox: Notification: Amendment Request #{SavedValue:budgetPC&ScopeId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -24862,7 +24862,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Notification: Amendment Request #{SavedValue:budgetSOWChangeId} hasbeen Approved
+      Notification: Amendment Request #{SavedValue:budgetSOWChangeId} has beenApproved
       """
 
     Then I see the mail text is as follows :
@@ -24988,7 +24988,7 @@ Feature: Amendment Request scenarios without background
     And I refresh the page
     And I see the mail subject is as follows :
       """
-      Notification: Amendment Request #{SavedValue:budgetSOWChangeId} hasbeen Approved
+      Notification: Amendment Request #{SavedValue:budgetSOWChangeId} has beenApproved
       """
 
     Then I see the mail text is as follows :
