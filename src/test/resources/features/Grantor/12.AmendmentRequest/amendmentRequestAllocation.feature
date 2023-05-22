@@ -25047,6 +25047,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "{SavedValue:BUDGETREDIRECTIONID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I see value "{SavedValue:BUDGETREDIRECTIONID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     Then I softly see value "Review Amendment Request" for title "Task Type" inside table "---program:-:grantorTaskReassignTableId---"
+    When I check "{SavedValue:BUDGETREDIRECTIONID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"v
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
     Then I softly cannot see top right button "Edit" in page detail
     Then I softly cannot see top right button "Send Back to Subrecipient" in page detail
@@ -25364,7 +25365,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "Revised Award Amount" in flex table header "---amendment:-:grantorBudgetChangeTableId---"
     Then I softly do not see "Revised Subaward Budget" in flex table header "---amendment:-:grantorBudgetChangeTableId---"
 
-  @256985 @VerifyAdminusercanseePriorawardedBudgetfieldRenamedfromPriorAwardAmountwhenIclickonAddlineItemagainstAnyFocusAreaValuesWillpopulatedfromAward @sprint-19-US-247605 @hitesh @Allocation
+  @256985 @256992 @VerifyAdminusercanseePriorawardedBudgetfieldRenamedfromPriorAwardAmountwhenIclickonAddlineItemagainstAnyFocusAreaValuesWillpopulatedfromAward @sprint-19-US-247605 @hitesh @Allocation
   Scenario: Verify Admin user can see Prior awarded Budget field Renamed from  Prior Award Amount when I click on Add line Item against Any Focus Area, Values Will populated from Award
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -25504,14 +25505,13 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Overview" sub tab
     Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:grantorBudgetChangeTableId---"
     Then I softly see "Award Amount" in flex table header "---amendment:-:grantorBudgetChangeTableId---"
-    Then I softly do not see "Subaward Budget" in flex table header "---amendment:-:grantorBudgetChangeTableId---"
-    And I save the value from row "1" for column name "Award Amount" as "AwardAmount3" from flex table "---amendment:-:grantorBudgetChangeTableId---"
-    Then I softly see value "{SavedValue:AwardAmount1}" is "Equals to" the value "{SavedValue:AwardAmount3}"
+    Then I softly see "Prior Award Amount" in flex table header "---amendment:-:grantorBudgetChangeTableId---"
+    And I save the value from row "1" for column name "Prior Award Amount" as "PriorAwardAmount3" from flex table "---amendment:-:grantorBudgetChangeTableId---"
+    Then I softly see value "{SavedValue:AwardAmount1}" is "Equals to" the value "{SavedValue:PriorAwardAmount3}"
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:grantorBudgetChangeTableId---" for table id "Next"
     Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:grantorBudgetChangeTableId---"
     Then I softly see "Award Amount" in flex table header "---amendment:-:grantorBudgetChangeTableId---"
-    Then I softly do not see "Subaward Budget" in flex table header "---amendment:-:grantorBudgetChangeTableId---"
-    And I save the value from row "1" for column name "Award Amount" as "AwardAmount4" from flex table "---amendment:-:grantorBudgetChangeTableId---"
-    Then I softly see value "{SavedValue:AwardAmount2}" is "Equals to" the value "{SavedValue:AwardAmount4}"
-    When I close "Add Line Items" modal by clicking the top right x button
+    Then I softly see "Prior Award Amount" in flex table header "---amendment:-:grantorBudgetChangeTableId---"
+    And I save the value from row "1" for column name "Prior Award Amount" as "PriorAwardAmount4" from flex table "---amendment:-:grantorBudgetChangeTableId---"
+    Then I softly see value "{SavedValue:AwardAmount2}" is "Equals to" the value "{SavedValue:PriorAwardAmount4}"
