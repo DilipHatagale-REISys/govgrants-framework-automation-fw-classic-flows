@@ -1817,11 +1817,11 @@ Feature: Amendment Request scenarios without background
     When I click on top right button "Associate" in flex table with id "---amendment:-:AmendmentKPITableId---"
     And I enter values into fields
       | Value                    | Field             |
-      | Automation Execution KPI | fieldMasterKPI__c |
+      | Automation Permanent KPI | fieldMasterKPI__c |
       | 10                       | fieldTarget__c    |
     And I click modal button "Save"
-    Then I softly see value "Automation Execution KPI" for title "Title" inside table "---amendment:-:AmendmentKPITableId---"
-    And I click on "Edit" icon for "Automation Execution KPI" inside flex table with id "---amendment:-:AmendmentKPITableId---" without waiting for record
+    Then I softly see value "Automation Permanent KPI" for title "Title" inside table "---amendment:-:AmendmentKPITableId---"
+    And I click on "Edit" icon for "Automation Permanent KPI" inside flex table with id "---amendment:-:AmendmentKPITableId---" without waiting for record
     And I enter value "20" into field "Target__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:AmendmentKPITableId---"
     Then I softly see value "20" for title "Target" inside table "---amendment:-:AmendmentKPITableId---"
@@ -1831,7 +1831,7 @@ Feature: Amendment Request scenarios without background
     And I click "Associate" after selection of "<Objectives>" in the table "---amendment:-:objectivesTableId---"
     Then I softly see that "<Objectives>" has been added in flextable with Id "---amendment:-:goalsAndObjectivesTableId---"
     And I refresh the page
-    And I click on "Edit" icon for "Automation Permanent KPI for Regression2" inside flex table with id "---amendment:-:AmendmentKPITableId---" without waiting for record
+    And I click on "Edit" icon for "Automation Permanent KPI" inside flex table with id "---amendment:-:AmendmentKPITableId---" without waiting for record
     And I pause execution for "2" seconds
     And I enter value "5" into field "Target__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:AmendmentKPITableId---"
@@ -2579,10 +2579,10 @@ Feature: Amendment Request scenarios without background
     When I click on top right button "Associate" in flex table with id "---amendment:-:RecipientKPITableId---"
     And I enter values into fields
       | Value                    | Field             |
-      | Automation Execution KPI | fieldMasterKPI__c |
+      | Automation Permanent KPI | fieldMasterKPI__c |
       | 10                       | fieldTarget__c    |
     And I click modal button "Save"
-    Then I softly see value "Automation Execution KPI" for title "Title" inside table "---amendment:-:RecipientKPITableId---"
+    Then I softly see value "Automation Permanent KPI" for title "Title" inside table "---amendment:-:RecipientKPITableId---"
 
   @99213 @99239 @99224 @99235 @VerifySubRecipientAbleToCreateAmendmentRequest-BudgetRedirection @monu
   Scenario: Validate that subrecipient user able to create Budget Redirection Amendment
@@ -6925,12 +6925,15 @@ Feature: Amendment Request scenarios without background
       """
      Hello,
      This email is to inform you that the amendment request #{SavedValue:FundingID} which has been created for the award #{SavedValue:AwardEGMSID} has been sent back by the approver.
+
      Amendment Details:
      Amendment Type:
      Amendment ID: {SavedValue:FundingID}
      Status: Created
      Grant: {SavedValue:GrantEGMSID}
+
      Log in to EGMS and click here to access the record.
+
      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
      Thank you.
      The EGMS Team
@@ -18927,14 +18930,18 @@ Feature: Amendment Request scenarios without background
       """
       Hello,
       This email is to inform you that the amendment request #{SavedValue:FundingID} for the award #{SavedValue:AwardEGMSID} has been submitted by the subrecipient. You are requested to review the amendment made for the award.
+
       Amendment Details:
-      Amendment Type: Funding Change
-      Amendment ID: {SavedValue:FundingID}
-      Subrecipient Key POC: Automation SPI3
-      Status: Submitted to Grantor
-      Grant:  {SavedValue:GrantEGMSID}
+         Amendment Type: Funding Change
+         Amendment ID: {SavedValue:FundingID}
+         Subrecipient Key POC: Automation SPI3
+         Status: Submitted to Grantor
+         Grant:  {SavedValue:GrantEGMSID}
+
       Log in to EGMS and click here to perform the review.
+
       Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+
       Thank you.
       The EGMS Team
       """
