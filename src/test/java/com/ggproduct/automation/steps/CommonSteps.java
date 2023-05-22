@@ -71,4 +71,9 @@ public class CommonSteps {
     public void iSoftlySeeFieldNotInEditMode(String usage,String fieldAPIName) {
         projectManager.assertFieldIsNotInEditMode(fieldAPIName, usage.contains("softly"));
     }
+
+    @Then("I softly see fields value with label {string} contains {string} characters")
+    public void iSoftlySeeFieldsValueWithLabelContainsCharacters(String usage, String fieldLabel, String charCount) {
+        projectManager.assertLengthOfFieldValues(usage, fieldLabel, charCount);
+    }
 }
