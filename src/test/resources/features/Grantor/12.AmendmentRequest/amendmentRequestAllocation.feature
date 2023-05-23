@@ -30111,7 +30111,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
     When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
-    And I enter in modal value "Yes" into field "IsNegotiationsAllowed__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I save the field labeled "Announcement Name" as "Automation Runtime Announcement"
@@ -30579,6 +30578,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:CFAmendmentId}" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:CFAmendmentId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Title                       | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 2000                |
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I click on "Submit for Approval" in the page details
     #264616
@@ -30596,7 +30598,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
     When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
-    And I enter in modal value "Yes" into field "IsNegotiationsAllowed__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I save the field labeled "Announcement Name" as "Automation Runtime Announcement"
