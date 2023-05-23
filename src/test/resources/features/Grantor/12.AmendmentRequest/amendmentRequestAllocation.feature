@@ -30101,7 +30101,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$2,000.00" for title "Budgeted Amount" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:carryForwardFocusAreaTableId---"
     Then I softly see value "$3,000.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:carryForwardFocusAreaTableId---"
 
-  @264084 @264589 @264590 @264085 @264083 @264080 @264594 @ValidatePMusercanseevalidationonSubmitforApprovalbuttowhenRevisedObligationislessthanBudgetedAmountonBudgetSummarysectiononAmendmentrequestFAisYES @sprint-20-US-249450 @vaibhav @Allocation
+  @264084 @264589 @264590 @264085 @264083 @264080 @264594 @264591 @ValidatePMusercanseevalidationonSubmitforApprovalbuttowhenRevisedObligationislessthanBudgetedAmountonBudgetSummarysectiononAmendmentrequestFAisYES @sprint-20-US-249450 @vaibhav @Allocation
   Scenario: Validate PM user can see validation on Submit for Approval button when 'Revised Obligation' is less than Budgeted Amount on Budget Summary section on Amendment request (FA is YES)
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
