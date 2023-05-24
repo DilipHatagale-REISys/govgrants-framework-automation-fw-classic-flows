@@ -30728,7 +30728,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the value from row "1" for column name "Prior Award Amount" as "PriorAwardAmount4" from flex table "---amendment:-:grantorBudgetChangeTableId---"
     Then I softly see value "{SavedValue:AwardAmount2}" is "Equals to" the value "{SavedValue:PriorAwardAmount4}"
 
-  @hitesh121 @257864 @257856 @VerifySPIusercanseeCurrentCommitmentasReadonlyfieldwhichisCopyoftotalcommitmentfromthepreviousawardFAisNo @sprint-19-US-249863 @hitesh @Allocation
+  @hitesh121 @257864 @VerifySPIusercanseeCurrentCommitmentasReadonlyfieldwhichisCopyoftotalcommitmentfromthepreviousawardFAisNo @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Budget redirection - Verify SPI user can see Current Commitment as Read-only field which is Copy of total commitment from the previous award (FA is No)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -30853,14 +30853,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Current Commitment" as "$2,000.00"
     And I save the field labeled "Current Commitment" as "CurrentCommitment"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:CurrentCommitment}"
-    #257856
-    Then I softly see that "Current Obligation" rendered in view mode only
-    Then I softly see that "Current Obligation" rendered in view mode only
-    Then I softly see that "Spent" rendered in view mode only
-    Then I softly see that "Budgeted Amount" rendered in view mode only
-    Then I softly see that "Current Commitment" rendered in view mode only
 
-  @hitesh121 @257858 @VerifySPAusercanseeCurrentobligationasReadOnlyfieldonamendmentwhichiscopiedfromthecumulativeObligationoftheawardFAisNo @sprint-19-US-249863 @hitesh @Allocation
+  @hitesh121 @257858 @257856 @VerifySPAusercanseeCurrentobligationasReadOnlyfieldonamendmentwhichiscopiedfromthecumulativeObligationoftheawardFAisNo @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPA user can see 'Current obligation' as Read Only field on amendment which is copied from the cumulative Obligation of the award (FA is No)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -30981,10 +30975,17 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "Subrecipient_BRedirection" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter value "Automation Justification" into field "fieldJustification__c"
+    And I click on "Save" in the page details
     Then I softly see that "Current Obligation" rendered in view mode only
     Then I softly see field "Current Obligation" as "$1,000.00"
     And I save the field labeled "CurrentObligation" as "CurrentObligation1"
     Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CurrentObligation1}"
+    #257856
+    And I click on "Edit" in the page details
+    Then I softly see that "Current Obligation" rendered in view mode only
+    Then I softly see that "Spent" rendered in view mode only
+    Then I softly see that "Budgeted Amount" rendered in view mode only
+    Then I softly see that "Current Commitment" rendered in view mode only
 
   @hitesh121 @257885 @VerifySPIusercanseeCurrentobligationcolumnvaluewillbecopiedfromthecumulativeobligationfromtheFocusareaoftheawardFAisYes @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPI user can see Current obligation column value will be copied from the cumulative obligation from the Focus area of the award (FA is Yes)
@@ -31121,12 +31122,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
-    And I save the value from row "1" for column name "Current Obligation" as "CurrentObligationFA1" from flex table "---amendment:-:projectAreasTableId---"
-    And I save the value from row "2" for column name "Current Obligation" as "CurrentObligationFA2" from flex table "---amendment:-:projectAreasTableId---"
-    And I save the value from row "3" for column name "Current Obligation" as "CurrentObligationFATotal" from flex table "---amendment:-:projectAreasTableId---"
-    Then I softly see value "$5,00.00" for title "Current Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:projectAreasTableId---"
-    Then I softly see value "$5,00.00" for title "Current Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
-    Then I softly see value "$1,000.00" for title "Current Obligation" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
+    And I save the value from row "1" for column name "Current Obligation" as "CurrentObligationFA1" from flex table "---amendment:-:subrecipientProjectAreasTableId---"
+    And I save the value from row "2" for column name "Current Obligation" as "CurrentObligationFA2" from flex table "---amendment:-:subrecipientProjectAreasTableId---"
+    And I save the value from row "3" for column name "Current Obligation" as "CurrentObligationFATotal" from flex table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$5,00.00" for title "Current Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$5,00.00" for title "Current Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "$1,000.00" for title "Current Obligation" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     Then I softly see value "{SavedValue:CumulativeObligationFA1}" is "Equals to" the value "{SavedValue:CurrentObligationFA1}"
     Then I softly see value "{SavedValue:CumulativeObligationFA2}" is "Equals to" the value "{SavedValue:CurrentObligationFA2}"
     Then I softly see value "{SavedValue:CumulativeObligationFATotal}" is "Equals to" the value "{SavedValue:CurrentObligationFATotal}"
@@ -31259,7 +31260,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---amendment:-:projectAreasTableId---"
-    Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:projectAreasTableId---"
 
   @hitesh121 @257919 @VerifySPIuserseevalidationmessageifuserentermoreamountthanthebudgetFAisYes @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPI user see validation message if user enter more amount than the budget  (FA is Yes)
@@ -31406,7 +31407,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
-    And I enter "Grant_Edition_ByApp_Focus_No_Bd" values from "Award_Field_Values.xlsx"
+    And I enter "Grant_Edition_ByApp_Focus_No" values from "Award_Field_Values.xlsx"
+    And I enter value "Yes" into field "IsBuildUpFunctionality__c"
     When I click modal button "Save and Continue"
     And I save the field labeled "EGMS ID" as "GrantEGMSID"
     And I navigate to "Subawards" sub tab
