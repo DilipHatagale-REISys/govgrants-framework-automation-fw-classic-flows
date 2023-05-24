@@ -258,6 +258,23 @@ Feature: Payment Request Forms scenarios
       | Please enter Zip code in the Zip + 4 codes format (e.g. 12345-1234) in the 'Zip / Postal code' field.                      |
       | The estimated federal cash outlays that will be made during period covered by the advance cannot be less than zero.        |
       | The estimated balance of federal cash on hand as of beginning of advance period cannot be less than zero.                  |
+    When I click on "Edit" in the page details
+    And I enter value "-330" into field "fieldPeriodStartDate__c"
+    When I click on "Save" in the page details
+    And I wait for "7" seconds
+    And I refresh the page
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | From date cannot be in past in the Period Covered By This Request section. |
+    When I click on "Edit" in the page details
+    And I enter value "330" into field "fieldPeriodStartDate__c"
+    And I enter value "330" into field "fieldPeriodEndDate__c"
+    When I click on "Save" in the page details
+    And I wait for "7" seconds
+    And I refresh the page
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | From date and To date cannot be same in Period Covered By This Request section. |
 
   @287171 @ValidateAdvSPIusercanabletosaveallfieldsbutvalidationisgeneratedonvalidatebuttonafterenteringincorrectdatainallfieldspresentonSF270form @sprint-2-US-288254 @vaibhav @Forms
   Scenario: Validate Adv SPI user can able to save all fields but validation is generated on validate button after entering incorrect data in all fields present on SF270 form
@@ -341,3 +358,19 @@ Feature: Payment Request Forms scenarios
       | Please enter Zip code in the Zip + 4 codes format (e.g. 12345-1234) in the 'Zip / Postal code' field.                      |
       | The estimated federal cash outlays that will be made during period covered by the advance cannot be less than zero.        |
       | The estimated balance of federal cash on hand as of beginning of advance period cannot be less than zero.                  |
+    When I click on "Edit" in the page details
+    And I enter value "-330" into field "fieldPeriodStartDate__c"
+    When I click on "Save" in the page details
+    And I wait for "8" seconds
+    And I refresh the page
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | From date cannot be in past in the Period Covered By This Request section. |
+    When I click on "Edit" in the page details
+    And I enter value "330" into field "fieldPeriodStartDate__c"
+    And I enter value "330" into field "fieldPeriodEndDate__c"
+    When I click on "Save" in the page details
+    And I wait for "8" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | From date and To date cannot be same in Period Covered By This Request section. |
