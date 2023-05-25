@@ -30728,7 +30728,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the value from row "1" for column name "Prior Award Amount" as "PriorAwardAmount4" from flex table "---amendment:-:grantorBudgetChangeTableId---"
     Then I softly see value "{SavedValue:AwardAmount2}" is "Equals to" the value "{SavedValue:PriorAwardAmount4}"
 
-  @hitesh121 @257864 @VerifySPIusercanseeCurrentCommitmentasReadonlyfieldwhichisCopyoftotalcommitmentfromthepreviousawardFAisNo @sprint-19-US-249863 @hitesh @Allocation
+  @257864 @VerifySPIusercanseeCurrentCommitmentasReadonlyfieldwhichisCopyoftotalcommitmentfromthepreviousawardFAisNo @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Budget redirection - Verify SPI user can see Current Commitment as Read-only field which is Copy of total commitment from the previous award (FA is No)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -30855,7 +30855,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Edit" in the page details
     Then I softly see that "Current Commitment" rendered in view mode only
 
-  @hitesh121 @257858 @257856 @257861 @VerifySPAusercanseeCurrentobligationasReadOnlyfieldonamendmentwhichiscopiedfromthecumulativeObligationoftheawardFAisNo @sprint-19-US-249863 @hitesh @Allocation
+  @257858 @257856 @257861 @VerifySPAusercanseeCurrentobligationasReadOnlyfieldonamendmentwhichiscopiedfromthecumulativeObligationoftheawardFAisNo @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPA user can see 'Current obligation' as Read Only field on amendment which is copied from the cumulative Obligation of the award (FA is No)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -30995,7 +30995,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$1,000.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:budgetChangeTableId---"
     Then I softly see field "Budgeted Amount" as "$1,000.00"
 
-  @hitesh121 @257885 @VerifySPIusercanseeCurrentobligationcolumnvaluewillbecopiedfromthecumulativeobligationfromtheFocusareaoftheawardFAisYes @sprint-19-US-249863 @hitesh @Allocation
+  @257885 @VerifySPIusercanseeCurrentobligationcolumnvaluewillbecopiedfromthecumulativeobligationfromtheFocusareaoftheawardFAisYes @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPI user can see Current obligation column value will be copied from the cumulative obligation from the Focus area of the award (FA is Yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -31140,7 +31140,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "{SavedValue:CumulativeObligationFA2}" is "Equals to" the value "{SavedValue:CurrentObligationFA2}"
     Then I softly see value "{SavedValue:CumulativeObligationFATotal}" is "Equals to" the value "{SavedValue:CurrentObligationFATotal}"
 
-  @hitesh121 @257879 @257863 @VerifySPIusercanseeallfocusareasincludingwhichhavezeroallocationinBudgetSummarybyFocusAreasectionifawardfromFDMFAisYes @sprint-19-US-249863 @hitesh @Allocation
+  @257879 @257863 @VerifySPIusercanseeallfocusareasincludingwhichhavezeroallocationinBudgetSummarybyFocusAreasectionifawardfromFDMFAisYes @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPI user can see all focus areas including which have zero allocation in Budget Summary by Focus Area section if award from FDM (FA is Yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -31283,7 +31283,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Current Commitment" as "CurrentCommitment"
     Then I softly see value "{SavedValue:CurrentCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment}"
 
-  @hitesh121 @257919 @VerifySPIuserseevalidationmessageifuserentermoreamountthanthebudgetFAisYes @sprint-19-US-249863 @hitesh @Allocation
+  @257919 @VerifySPIuserseevalidationmessageifuserentermoreamountthanthebudgetFAisYes @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPI user see validation message if user enter more amount than the budget  (FA is Yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -32062,7 +32062,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$200.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
 
-  @257888 @VerifySPAusercanseeBudgetedAmountcolumnvalueisTotalofthebudgetenteredagainsteachfocusareaintheRevisedAwardAmountFieldFAisYes @sprint-19-US-255648 @hitesh @Allocation
+  @hitesh121 @257888 @VerifySPAusercanseeBudgetedAmountcolumnvalueisTotalofthebudgetenteredagainsteachfocusareaintheRevisedAwardAmountFieldFAisYes @sprint-19-US-255648 @hitesh @Allocation
   Scenario: Verify SPA user can see Budgeted Amount column value is Total of the budget entered against each focus area, in the Revised Award Amount Field (FA is Yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
