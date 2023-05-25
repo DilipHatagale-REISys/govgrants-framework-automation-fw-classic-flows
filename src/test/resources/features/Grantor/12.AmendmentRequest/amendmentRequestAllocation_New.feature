@@ -1528,6 +1528,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Budget Category | Spent This Action |
       | Construction    | 150               |
     And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
+    And I wait for "3" seconds 
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
       | Construction    | 150               |
