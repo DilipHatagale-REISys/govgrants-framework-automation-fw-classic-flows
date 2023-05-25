@@ -68,6 +68,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I expand nested table containing column value "BP01"
+    And I select value inside table "---applicationReview:-:budgetTableId---" is "5"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
       | Construction  | 500    | 100        | 100            |
@@ -1402,6 +1403,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I expand nested table containing column value "BP01"
+    And I select value inside table "---applicationReview:-:budgetTableId---" is "5"
     When I click on "Add Line Item Details" icon for "Construction" inside flex table with id "---applicationReview:-:budgetTableId---"
     When I enter the following values into flex table with id "---applicationReview:-:addLineItemsModalTableId---" by clicking "New" :
       | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
