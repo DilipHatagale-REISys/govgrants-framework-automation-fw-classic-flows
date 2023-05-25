@@ -30855,7 +30855,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Edit" in the page details
     Then I softly see that "Current Commitment" rendered in view mode only
 
-  @257858 @257856 @257861 @VerifySPAusercanseeCurrentobligationasReadOnlyfieldonamendmentwhichiscopiedfromthecumulativeObligationoftheawardFAisNo @sprint-19-US-249863 @hitesh @Allocation
+  @hitesh121 @257858 @257856 @257861 @VerifySPAusercanseeCurrentobligationasReadOnlyfieldonamendmentwhichiscopiedfromthecumulativeObligationoftheawardFAisNo @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPA user can see 'Current obligation' as Read Only field on amendment which is copied from the cumulative Obligation of the award (FA is No)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -30992,7 +30992,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:recipientSideAmendmentRequestTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     #257861
-    Then I softly see value "$1,000.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:budgetChangeTableId---"
+    Then I softly see value "$1,000.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:BudgetChangeTableId---"
     Then I softly see field "Budgeted Amount" as "$1,000.00"
 
   @257885 @VerifySPIusercanseeCurrentobligationcolumnvaluewillbecopiedfromthecumulativeobligationfromtheFocusareaoftheawardFAisYes @sprint-19-US-249863 @hitesh @Allocation
@@ -31140,7 +31140,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "{SavedValue:CumulativeObligationFA2}" is "Equals to" the value "{SavedValue:CurrentObligationFA2}"
     Then I softly see value "{SavedValue:CumulativeObligationFATotal}" is "Equals to" the value "{SavedValue:CurrentObligationFATotal}"
 
-  @257879 @257863 @VerifySPIusercanseeallfocusareasincludingwhichhavezeroallocationinBudgetSummarybyFocusAreasectionifawardfromFDMFAisYes @sprint-19-US-249863 @hitesh @Allocation
+ @hitesh121 @257879 @257863 @VerifySPIusercanseeallfocusareasincludingwhichhavezeroallocationinBudgetSummarybyFocusAreasectionifawardfromFDMFAisYes @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPI user can see all focus areas including which have zero allocation in Budget Summary by Focus Area section if award from FDM (FA is Yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -31270,8 +31270,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
-    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---amendment:-:projectAreasTableId---"
-    Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     Then I softly see value "$0.00" for title "Current Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     Then I softly see value "$0.00" for title "Budgeted Amount" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
       #257863
@@ -31413,9 +31413,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "Subrecipient_BRedirection" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    And I pause execution for "5" seconds
     When I edit the following rows inline in flex table with id "---amendment:-:AddLineItemForBudgetChangeTableId---" by clicking "Edit" :
       | Title        | Narrative     | Award Amount |
       | Extra Salary | The narrative | 2000         |
+    When I close "Add Line Items" modal by clicking the top right x button
+    When I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details contains:
       | Overview Tab - budget cannot be increased or decreased during a Budget Redirection |
 
@@ -31430,11 +31433,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter "Grant_Edition_ByApp_Focus_No" values from "Award_Field_Values.xlsx"
     And I enter value "Yes" into field "IsBuildUpFunctionality__c"
     When I click modal button "Save and Continue"
-    And I save the field labeled "EGMS ID" as "GrantEGMSID"
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I navigate to "Budget" sub tab
     Then I see status in Progress-bar is "Created" and is "green"
+    And I save the field labeled "Grant ID" as "GrantEGMSID"
     And I save the field labeled "EGMS ID" as "AwardEGMSID"
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -31594,6 +31597,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I edit the following rows inline in flex table with id "---amendment:-:AddLineItemForBudgetChangeTableId---" by clicking "Edit" :
       | Title        | Narrative     | Award Amount |
       | Extra Salary | The narrative | 2000         |
+    When I close "Add Line Items" modal by clicking the top right x button
+    When I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details contains:
       | Overview Tab - budget cannot be increased or decreased during a Budget Redirection |
 
@@ -31723,8 +31728,28 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
-    Then I softly see value "$1,000.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:budgetChangeTableId---"
+    And I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+    And I get the "EGMS ID"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    And I perform quick search for "Record Id" in "---amendment:-:recipientSideAmendmentRequestTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:recipientSideAmendmentRequestTableId---" without waiting for record
+    When I navigate to "Overview" sub tab
     Then I softly see field "Budgeted Amount" as "$1,000.00"
+    Then I softly see value "$1,000.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:BudgetChangeTableId---"
 
   @hitesh121 @257857 @VerifySPAusercanseeCurrentobligationasReadOnlyfieldonamendmentwhichiscopiedfromthecumulativeObligationoftheawardFAisYes @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPA user can see 'Current obligation' as Read Only field on amendment which is copied from the cumulative Obligation of the award (FA is Yes)
@@ -31861,7 +31886,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
-    Then I softly see that "Current Commitment" rendered in view mode only
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -31874,6 +31898,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Current Obligation" rendered in view mode only
     Then I softly see field "Current Obligation" as "$1,000.00"
     And I save the field labeled "Current Obligation" as "CurrentObligation"
+    Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CurrentObligation}"
 
   @hitesh121 @257890 @VerifySPIusercanseeSpentcolumnvalueCalculatedagainsteachfocusareainbudgetsummarybyfocusareasectionFAisyes @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPI user can see Spent column value Calculated against each focus area in budget summary by focus area section (FA is yes)
@@ -31992,10 +32017,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
@@ -32092,7 +32117,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Associate" after selection of "{SavedValue:PO Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     And I click on top right button "Add Organization" in flex table with id "---announcement:-:addOrganizationByAppFocusAreaTableId---"
     And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---announcement:-:formulaAddInviteApplicantTableId---" panel
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:formulaAddInviteApplicantTableId---"
@@ -32192,5 +32217,5 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Category Name   | Revised Award Amount |
       | Indirect costs  | 50                   |
     Then I softly see value "$500.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
-    Then I softly see value "$500.00" for title "Revised Award Amount" against the value "Grand Total" inside table "---amendment:-:budgetChangeTableId---"
+    Then I softly see value "$500.00" for title "Revised Award Amount" against the value "Grand Total" inside table "---amendment:-:BudgetChangeTableId---"
 
