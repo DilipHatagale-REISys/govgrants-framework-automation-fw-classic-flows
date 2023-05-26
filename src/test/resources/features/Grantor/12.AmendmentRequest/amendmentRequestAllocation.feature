@@ -31603,7 +31603,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Automation PO | Step 1       |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
-    @257920
+    And I enter value "Justified" into field "Justification__c"
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
