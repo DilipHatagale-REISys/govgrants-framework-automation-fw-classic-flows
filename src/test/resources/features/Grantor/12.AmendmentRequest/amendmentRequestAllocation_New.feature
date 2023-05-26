@@ -1,7 +1,7 @@
 @amendmentRequests @grantor-regression @grantor-parallel-regression @parallel-regression @regression
 Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
-  @264084 @264589 @264590 @264085 @264083 @264080 @264594 @264591 @264564 @264581 @264086 @263945 @264906 @264952 @264963 @264964 @264953 @264965 @264556 @263938 @264974 @ValidatePMusercanseevalidationonSubmitforApprovalbuttowhenRevisedObligationislessthanBudgetedAmountonBudgetSummarysectiononAmendmentrequestFAisYES @sprint-20-US-249450-249461 @vaibhav @Allocation @TBE
+  @264084 @264589 @264590 @264085 @264083 @264080 @264594 @264591 @264564 @264581 @264086 @263945 @264906 @264952 @264963 @264964 @264953 @264965 @264556 @263938 @264974 @ValidatePMusercanseevalidationonSubmitforApprovalbuttowhenRevisedObligationislessthanBudgetedAmountonBudgetSummarysectiononAmendmentrequestFAisYES @sprint-20-US-249450-249461 @vaibhav @Allocation
   Scenario: Validate PM user can see validation on Submit for Approval button when 'Revised Obligation' is less than Budgeted Amount on Budget Summary section on Amendment request (FA is YES)
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -1333,7 +1333,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly can see row level action button "Edit" against "Construction" in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---"
     Then I softly see value "$400.00" for title "Carry Forward" against the value "Construction" inside table "---amendment:-:RecipientCarryForwardBudgetTableId---"
 
-  @264969 @264842 @264977 @264979 @264998 @264957 @264958 @264959 @264875 @264834 @ValidateSPAusercanseeCarryForwardAmountclmunderBudgetPeriodsectioniseditableinCreatedstateofAmendmentRequestFAisYES @sprint-20-US-249461 @vaibhav @Allocation @TBE
+  @264969 @264842 @264977 @264979 @264998 @264957 @264958 @264959 @264875 @264834 @ValidateSPAusercanseeCarryForwardAmountclmunderBudgetPeriodsectioniseditableinCreatedstateofAmendmentRequestFAisYES @sprint-20-US-249461 @vaibhav @Allocation
   Scenario: Validate SPA user can see 'Carry Forward Amount clm under Budget Period section is editable in Created state of Amendment Request (FA is YES)
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -1717,7 +1717,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     Then I softly see value "$1,600.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:budgetChangeTableId---"
 
-  @265845 @ValidateSPIusercancarryforwardpartialamountfromremainingamountpresentonthatparticularFAfromoneFAtootherFAfrompreviousAwardversion1onBP02whenwedoingcarryforwardARonBP03ifwehave3budgetperiodsonAward @sprint-20-US-249461 @vaibhav @Allocation
+  @265845 @ValidateSPIusercancarryforwardpartialamountfromremainingamountpresentonthatparticularFAfromoneFAtootherFAfrompreviousAwardversion1onBP02whenwedoingcarryforwardARonBP03ifwehave3budgetperiodsonAward @sprint-20-US-249461 @vaibhav @Allocation @TBE
   Scenario: Validate SPI user can carry forward partial amount from remaining amount present on that particular FA from one FA to other FA from previous Award version 1 on BP02 when we doing carry forward AR on BP03 if we have 3 budget periods on Award
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation ADMIN user" of type "Competitive"
     When I login to "As a Grantor" app as "ADMIN" user
@@ -1869,7 +1869,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
 
-  @265846 @ValidateSPIusercancarryforwardTotalamountfromremainingamountpresentonthatparticularFAfromonFAtootherFAfrompreviousAwardversion1onBP02whenwedoingcarryforwardARonBP03ifwehave3budgetperiodsonAward @sprint-20-US-249461 @vaibhav @Allocation
+  @265846 @ValidateSPIusercancarryforwardTotalamountfromremainingamountpresentonthatparticularFAfromonFAtootherFAfrompreviousAwardversion1onBP02whenwedoingcarryforwardARonBP03ifwehave3budgetperiodsonAward @sprint-20-US-249461 @vaibhav @Allocation @TBE
   Scenario: Validate SPI user can carry forward Total amount from remaining amount present on that particular FA from one FA to other FA from previous Award (version 1 on BP02) when we doing carry forward AR on BP03 if we have 3 budget periods on Award
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation ADMIN user" of type "Competitive"
     When I login to "As a Grantor" app as "ADMIN" user
