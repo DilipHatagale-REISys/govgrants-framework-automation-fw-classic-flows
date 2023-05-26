@@ -31429,7 +31429,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Submit to Grantor" in the page details
     And I pause execution for "5" seconds
     Then I see the following messages in the page details contains:
-      | Overview Tab - budget cannot be increased or decreased during a Budget Redirection.|
+      | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection.|
 
   @hitesh121 @257920 @VerifySPIuserseevalidationmessageifuserentermoreamountthanthebudgetFAisNo @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPI user see validation message if user enter more amount than the budget FA is No
@@ -31560,7 +31560,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Submit to Grantor" in the page details
     And I pause execution for "5" seconds
     Then I see the following messages in the page details contains:
-      | Overview Tab - budget cannot be increased or decreased during a Budget Redirection. |
+      | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection. |
 
   @hitesh121 @257860 @257719 @VerifySPIusercanseeBudgetedAmountasReadonlyfieldwhichisRolledupfromthebudgetchangesectionsRevisedAwardAmountcolumnFAisYes @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPI user can see Budgeted Amount as Read only field which is Rolled up from the budget change section's Revised Award Amount column (FA is Yes)
