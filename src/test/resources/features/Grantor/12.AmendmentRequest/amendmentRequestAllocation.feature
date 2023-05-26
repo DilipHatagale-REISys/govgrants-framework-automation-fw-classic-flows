@@ -31370,14 +31370,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Add Line Item Details" icon for "Construction" inside flex table with id "---applicationReview:-:budgetTableId---"
     When I enter the following values into flex table with id "---applicationReview:-:addLineItemsModalTableId---" by clicking "New" :
       | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
-      | Construction | The narrative | 500          | 50         | 50             |
+      | Extra Salary | The narrative | 500          | 50         | 50             |
     When I close "Add Line Items" modal by clicking the top right x button
     When I expand nested table containing column value "BP01"
     And I click on page navigation arrow "---applicationReview:-:budgetTableId---" for table id "Next"
     When I click on "Add Line Item Details" icon for "Construction" inside flex table with id "---applicationReview:-:budgetTableId---"
     When I enter the following values into flex table with id "---applicationReview:-:addLineItemsModalTableId---" by clicking "New" :
       | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
-      | Construction | The narrative | 500          | 50         | 50            |
+      | Extra Salary | The narrative | 500          | 50         | 50            |
     When I close "Add Line Items" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
@@ -31424,7 +31424,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     When I edit the following rows inline in flex table with id "---amendment:-:AddLineItemForBudgetChangeTableId---" by clicking "Edit" :
       | Title        | Narrative     | Award Amount |
-      | Construction | The narrative | 2000         |
+      | Extra Salary | The narrative | 2000         |
     When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     And I pause execution for "5" seconds
@@ -31461,7 +31461,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---"
     When I enter the following values into flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---" by clicking "New" :
       | Title        | Narrative     | Award Amount | Cash Match | Non-Cash Match |
-      | Construction | The narrative | 1000         | 100        |    0           |
+      | Extra Salary | The narrative | 1000         | 100        |    0           |
     And I save the value from row "1" for column name "Award Amount" as "AwardAmount1" from flex table "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
     When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
@@ -31555,7 +31555,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     When I edit the following rows inline in flex table with id "---amendment:-:AddLineItemForBudgetChangeTableId---" by clicking "Edit" :
       | Title        | Narrative     | Award Amount |
-      | Construction | The narrative | 2000         |
+      | Extra Salary | The narrative | 2000         |
     When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     And I pause execution for "5" seconds
