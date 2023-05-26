@@ -2774,7 +2774,6 @@ Feature: Pre-Application scenarios without background
       | Directed          | ---announcement:-:annoucementTableId---             | Creation Second Modal        |
       | Formula           | ---announcement:-:formulaAnnouncementTableId---     | Creation_Formula_ByApplicant |
 
-
   @180699 @VerifyIfFormselectedforedit&usernotadded"Files&Forms:Forms"inApplicationsection,usershouldgeterroronsenttos/rclickatgrantorside. @Sprint-10 @Vrishali
   Scenario: Verify If the Form is selected for edit, and user have not added the "Forms and Files: Forms" in the Application section, then user should get error on sent to s/r click at grantor side.
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
