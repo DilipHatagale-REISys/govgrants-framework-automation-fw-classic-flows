@@ -262,7 +262,7 @@ Feature: Pre-Application scenarios without background
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I navigate to "Overview" sub tab
+    And I navigate to "Budget" sub tab
     Then I softly see selected element "{SavedValue:subawardfloor}"
     Then I softly see selected element "{SavedValue:subawardcieling}"
     Then I softly see selected element "{SavedValue:matchrequired}"
