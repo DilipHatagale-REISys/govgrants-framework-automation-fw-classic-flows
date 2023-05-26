@@ -949,7 +949,7 @@ Feature: Pre-Application scenarios without background
     #174879
     And I save the field labeled "Due Date" as "DueDate"
     Then I softly see field "Status" as "Created" in "Negotiation Request Details" pageblock
-    Then I softly see field "Pre-Application Sections for Negotiation" as "Forms and Files: Forms"
+    Then I softly see field "Pre-Application Sections for Negotiation" as "Files and Forms: Forms"
     Then I softly see field "Due Date" as "{SavedValue:DueDate}"
      #174885
     Then I softly see field "Due Date" inside page block
@@ -2737,7 +2737,7 @@ Feature: Pre-Application scenarios without background
     And I navigate to "Negotiations" sub tab
     When I enter "Negotiation_Edit" values from "PreApplication_Field_Values.xlsx"
     Then I softly see multiple selected options in "multiSelectPicklistCell":
-      | Forms and Files: Forms |
+      | Files and Forms: Forms |
      #180658
     When I clear the value from field "fieldPreApplicationSectionsforRevision__c"
     Then I see multipicklist field "fieldPreApplicationSectionsforRevision__c" contains value "Forms and Files: Forms" under list "Pre-Application Sections for Revision - Available"
