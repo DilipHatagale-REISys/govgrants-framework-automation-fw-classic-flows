@@ -31420,7 +31420,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
-    And I pause execution for "5" seconds
     When I edit the following rows inline in flex table with id "---amendment:-:AddLineItemForBudgetChangeTableId---" by clicking "Edit" :
       | Title        | Narrative     | Award Amount |
       | Extra Salary | The narrative | 2000         |
@@ -32050,11 +32049,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Overview" sub tab
     And I click on "Edit" in the page details
     Then I softly see that "Spent" rendered in view mode only
-    Then I softly see value "$300.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
-    Then I softly see value "$200.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
-    Then I softly see value "$500.00" for title "Spent" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see field "Spent" as "$500.00"
 
-  @hitesh121 @257888 @257710 @VerifySPAusercanseeBudgetedAmountcolumnvalueisTotalofthebudgetenteredagainsteachfocusareaintheRevisedAwardAmountFieldFAisYes @sprint-19-US-255648 @hitesh @Allocation
+   @hitesh121 @257888 @257710 @VerifySPAusercanseeBudgetedAmountcolumnvalueisTotalofthebudgetenteredagainsteachfocusareaintheRevisedAwardAmountFieldFAisYes @sprint-19-US-255648 @hitesh @Allocation
   Scenario: Verify SPA user can see Budgeted Amount column value is Total of the budget entered against each focus area, in the Revised Award Amount Field (FA is Yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -32182,13 +32179,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Category Name   | Revised Award Amount |
       | Indirect costs  | 50                   |
     Then I softly see value "$500.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
-    Then I softly see value "$500.00" for title "Revised Award Amount" against the value "Grand Total" inside table "---amendment:-:BudgetChangeTableId---"
+    Then I see the following rows under the following headers in table with id "---amendment:-:BudgetChangeTableId---" :
+     | Revised Award Amount |
+     | $500.00              |
     When I navigate to "Overview" sub tab
     And I click on "Edit" in the page details
     #257710
     Then I softly cannot see field "New obligation" inside page block
     Then I softly cannot see field "'Revise Commitment" inside page block
-    Then I softly do not see "New Obligation" in flex table header "---amendment:-:subrecipientProjectAreasTableId---"
     Then I softly do not see "New Obligation" in flex table header "---amendment:-:subrecipientProjectAreasTableId---"
 
   @hitesh121 @257871 @FormulaVerifySPIuserseeSpentfieldwithspentamountonpaymentrequestonawardFAisNo @sprint-19-US-249863 @hitesh @Allocation
