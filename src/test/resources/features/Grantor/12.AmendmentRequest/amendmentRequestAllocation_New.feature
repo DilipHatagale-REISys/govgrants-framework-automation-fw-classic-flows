@@ -1797,6 +1797,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Value | Field                           |
       | 2000  | fieldRequestedChangeInBudget__c |
       | 4000  | fieldRevisedCommitment__c       |
+      | 4100  | fieldProposedBudgetEndDate__c   |
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "PeriodicID"
     And I refresh the page
@@ -1950,6 +1951,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Value | Field                           |
       | 2000  | fieldRequestedChangeInBudget__c |
       | 4000  | fieldRevisedCommitment__c       |
+      | 4100  | fieldProposedBudgetEndDate__c   |
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "PeriodicID"
     And I refresh the page
@@ -2010,11 +2012,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Carry Forward |
-      | Construction    | 1000           |
+      | Construction    | 1000          |
     And I expand nested table containing column value "BP02"
     And I edit the following rows inline in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Carry Forward |
-      | Construction    | 2000           |
+      | Construction    | 2000          |
     And I refresh the page
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
