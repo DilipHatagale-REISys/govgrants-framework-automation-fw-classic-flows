@@ -1796,7 +1796,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                           |
       | 2000  | fieldRequestedChangeInBudget__c |
-      | 4000  | fieldRevisedCommitment__c       |
+      | 6000  | fieldRevisedCommitment__c       |
       | 4100  | fieldProposedBudgetEndDate__c   |
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "PeriodicID"
@@ -1950,7 +1950,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                           |
       | 2000  | fieldRequestedChangeInBudget__c |
-      | 4000  | fieldRevisedCommitment__c       |
+      | 6000  | fieldRevisedCommitment__c       |
       | 4100  | fieldProposedBudgetEndDate__c   |
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "PeriodicID"
