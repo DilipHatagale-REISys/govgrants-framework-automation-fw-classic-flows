@@ -176,7 +176,7 @@ Feature: Validate all scenarios in the Pre-Application
      | EGMS ID                  | Target |
       | Automation Permanent KPI | 10     |
     And I get the "EGMS ID"
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details

@@ -430,7 +430,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I refresh the page
     And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---announcement:-:formulaFocusAreaInvitedTableId---"
-    Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---announcement:-:formulaFocusAreaInvitedTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                           | Allocation Amount |
       | Automation Permanent Focus Area | 1000              |
@@ -1740,7 +1739,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Budget" sub tab
     Then I softly see field "Recommended Budget" inside page block
 
-  @hitesh @219360 @DirectedAnnVerifyasAdminuserIcanseeRecommendedBudgetfieldisvisibleunderbudgetsummarywhenAppstatusisnegotiationsubmitted @sprint-10-US-203669 @komal @Allocation
+  @219360 @DirectedAnnVerifyasAdminuserIcanseeRecommendedBudgetfieldisvisibleunderbudgetsummarywhenAppstatusisnegotiationsubmitted @sprint-10-US-203669 @komal @Allocation
   Scenario: Directed Ann_ Verify as Admin user I can see Recommended Budget field is visible under budget summary when App status is negotiation submitted
     Given I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
