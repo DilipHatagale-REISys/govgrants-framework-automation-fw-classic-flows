@@ -82,7 +82,7 @@ Feature: Validate all scenarios in the Application Intake
       | Forms and Files Tab - All mandatory forms must be 100% completed. |
     When I navigate to "Forms and Files" sub tab
     Then I see only the following headers in table with id "---applicationReview:-:allFormsTableId---" :
-      | Form Name | Mandatory | Percentage | Last Modified By | Last Modified Date |  Actions |
+      | Form Name |Report Type |Mandatory | Percentage | Last Modified By | Last Modified Date |  Actions |
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -340,11 +340,11 @@ Feature: Validate all scenarios in the Application Intake
     When I navigate to "Opportunities" tab
     When I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Opportunities Converted to Application - All"
-    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "cae"
+    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "---applicationIntake:-:convertedToApplicationTableID---"
     And I click toggle button to select "Opportunities Converted to Application - Open"
-    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "cae"
-    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "cae" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "cae"
+    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "---applicationIntake:-:convertedToApplicationTableID---"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:convertedToApplicationTableID---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---"
     When I click on "Create Application" in the page details
     #needtocheck 71409
 #    Then I softly see the following messages in the page details contains:

@@ -351,7 +351,7 @@ Feature: Application Intake scenarios without background
     When I click on "Submit Application" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
 
-  @71112 @71113 @appDueDateValidation @deepika
+  @hit121 @71112 @71113 @appDueDateValidation @deepika
   Scenario: Validate the Application Submission before the due date | Validate whether the application due date on Announcement is reflecting same while creating an application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for App Intake and PreApp" and properties "TODAY_APP_DUE_DATE"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -403,7 +403,7 @@ Feature: Application Intake scenarios without background
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "Green"
 
-  @71408 @71488 @71490 @71489 @preApplicationSettinsAsNowhileAnnouncementCreation @deepika
+  @hit121 @71408 @71488 @71490 @71489 @preApplicationSettinsAsNowhileAnnouncementCreation @deepika
   Scenario: Validate whether user is able to create Application only when the Opportunity setting for Pre Application (No)
   Validate whether User will be able to view the Match column in the budget grid when the value set as Yes
   Validate whether User will be able to view the Leverage column in the budget grid when the value set as Yes.
@@ -435,7 +435,7 @@ Feature: Application Intake scenarios without background
     Then I softly see all values "$0.00" under column "Total Match" inside flextable with id "---applicationIntake:-:budgetPeriodTableId---"
     And I softly see all values "$0.00" under column "Other Leverage" inside flextable with id "---applicationIntake:-:budgetPeriodTableId---"
 
-  @72305 @72306 @isKeyContactWhileCreatingApplication @deepika
+  @hit121 @72305 @72306 @isKeyContactWhileCreatingApplication @deepika
   Scenario: Validate whether user can see a Sucess message after making the Contact User a Is key Contact and associate the Project Role
   Validate whether user can change the address in Primary place of Performace while creating an Application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
@@ -463,7 +463,7 @@ Feature: Application Intake scenarios without background
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
 
-  @72307 @34330 @newApplicationOncetheOppurtunitySubmittedToGrantor @deepika
+  @hit121 @72307 @34330 @newApplicationOncetheOppurtunitySubmittedToGrantor @deepika
   Scenario: Validate whether user is able to create a new/multiple applications from same Oppurtunity once it is Converted to an Application | Verify snapshot is not added to the Snapshot History after Application is submitted to Grantor
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
     Given I am on "SUBPORTAL" portal
@@ -515,7 +515,7 @@ Feature: Application Intake scenarios without background
     When I navigate to "History" sub tab
     Then I softly cannot see field "Snapshot History" inside page block
 
-  @72308 @77658 @34324 @72309 @userCanEditApplicationInCreatedStatusAndCannotInSubmitTedStatus @deepika
+  @hit121 @72308 @77658 @34324 @72309 @userCanEditApplicationInCreatedStatusAndCannotInSubmitTedStatus @deepika
   Scenario: Validate whether the User can view the edit icon for the application that is in Created Status and Submiited to Grantor Status
   Validate whether SPI user have delete access to delete the Application that is in Created Sttaus
   Verify SPI & SPA user is not able to Submit Application to Grantor with Requested Amount is less than or equal to the Subaward Floor Amount
@@ -848,7 +848,7 @@ Feature: Application Intake scenarios without background
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
     Then I softly see "Supporting Documents" has been added in "Attachments" flex table
 
-  @73750 @73751 @validateFilterCriteriaForGoalsAndObjectives @deepika
+  @hit121 @73750 @73751 @validateFilterCriteriaForGoalsAndObjectives @deepika
   Scenario: Validate the searched functionality for goals and Objectives Associated in section of Performance tab in Application | Validate the filter criteria for Goals and Objectives in Proposal Tab while creating Application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     When I am on "SUBPORTAL" portal
@@ -1100,7 +1100,7 @@ Feature: Application Intake scenarios without background
       | Construction  | 1000   | 0          | 0              | 0              |
     Then I softly see value "$1,000.00" for title "Budget" against the value "Construction" inside table "---applicationIntake:-:budgetPeriodTableId---"
 
-  @34322 @zeroBudgetRequestedAmount @deepika
+  @hit121 @34322 @zeroBudgetRequestedAmount @deepika
   Scenario: Verify SPI user is not able to Submit Application to Grantor with zero budget/requested amount
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     Given I am on "SUBPORTAL" portal
@@ -1179,7 +1179,7 @@ Feature: Application Intake scenarios without background
       | Contact        |
       | Automation SPA |
 
-  @77044 @34324 @requestedAmountMustBeLessThanCelingAmount @deepika
+  @hit121 @77044 @34324 @requestedAmountMustBeLessThanCelingAmount @deepika
   Scenario: Verify SPI & SPA user is not able to Submit Application to Grantor with Requested Amount less than Subaward Floor Amount |
   Validate when the supporting documents  checklist are not entered by Announcement owner then Applicant will not be able to upload any document while submitting the application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"

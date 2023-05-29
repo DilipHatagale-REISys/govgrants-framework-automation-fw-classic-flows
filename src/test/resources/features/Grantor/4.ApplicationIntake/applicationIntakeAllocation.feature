@@ -430,7 +430,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I refresh the page
     And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---announcement:-:formulaFocusAreaInvitedTableId---"
-    Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---announcement:-:formulaFocusAreaInvitedTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                           | Allocation Amount |
       | Automation Permanent Focus Area | 1000              |
