@@ -32307,7 +32307,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name           | Announcement |
-      | Automation PM | Step 1       |
+      | Automation P0  | Step 1       |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
