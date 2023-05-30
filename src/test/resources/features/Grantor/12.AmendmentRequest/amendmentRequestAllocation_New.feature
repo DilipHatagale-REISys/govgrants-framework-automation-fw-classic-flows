@@ -1717,7 +1717,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     Then I softly see value "$1,600.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:budgetChangeTableId---"
 
-  @265845 @ValidateSPIusercancarryforwardpartialamountfromremainingamountpresentonthatparticularFAfromoneFAtootherFAfrompreviousAwardversion1onBP02whenwedoingcarryforwardARonBP03ifwehave3budgetperiodsonAward @sprint-20-US-249461 @vaibhav @Allocation @TBE
+  @265845 @ValidateSPIusercancarryforwardpartialamountfromremainingamountpresentonthatparticularFAfromoneFAtootherFAfrompreviousAwardversion1onBP02whenwedoingcarryforwardARonBP03ifwehave3budgetperiodsonAward @sprint-20-US-249461 @vaibhav @Allocation
   Scenario: Validate SPI user can carry forward partial amount from remaining amount present on that particular FA from one FA to other FA from previous Award version 1 on BP02 when we doing carry forward AR on BP03 if we have 3 budget periods on Award
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation ADMIN user" of type "Competitive"
     When I login to "As a Grantor" app as "ADMIN" user
@@ -1867,7 +1867,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
 
-  @265846 @ValidateSPIusercancarryforwardTotalamountfromremainingamountpresentonthatparticularFAfromonFAtootherFAfrompreviousAwardversion1onBP02whenwedoingcarryforwardARonBP03ifwehave3budgetperiodsonAward @sprint-20-US-249461 @vaibhav @Allocation @TBE
+  @265846 @ValidateSPIusercancarryforwardTotalamountfromremainingamountpresentonthatparticularFAfromonFAtootherFAfrompreviousAwardversion1onBP02whenwedoingcarryforwardARonBP03ifwehave3budgetperiodsonAward @sprint-20-US-249461 @vaibhav @Allocation
   Scenario: Validate SPI user can carry forward Total amount from remaining amount present on that particular FA from one FA to other FA from previous Award (version 1 on BP02) when we doing carry forward AR on BP03 if we have 3 budget periods on Award
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation ADMIN user" of type "Competitive"
     When I login to "As a Grantor" app as "ADMIN" user
