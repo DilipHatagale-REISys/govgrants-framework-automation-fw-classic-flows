@@ -2179,7 +2179,7 @@ Feature: Validate scenarios in Progress Report Forms
       | Select the Disposition Report/Request (SF-428-C) as required form is filled.    |
       | Select Supplement Sheet as Yes as required form is filled.                      |
 
-  @282976 @282974 @ValidateSF428ASPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonSF428AformandCompleteBusinessFlow @sprint-26-US-282679 @vaibhav @Forms @TBE
+  @282976 @282974 @ValidateSF428ASPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonSF428AformandCompleteBusinessFlow @sprint-26-US-282679 @vaibhav @Forms
   Scenario: Validate SF428 A SPI user can able to save & validate form after entering correct & valid data on all fields present on SF-428-A form and Complete Business flow
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -2309,7 +2309,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I can see row level action button "View" against "Tangible Personal Property Report - Annual Report - SF-428-A" in flex table with id "---progressReport:-:formTableId---"
     Then I cannot see row level action button "Edit" against "Tangible Personal Property Report - Annual Report - SF-428-A" in flex table with id "---progressReport:-:formTableId---"
 
-  @281845 @ValidateusercanabletofillformsSF428ABSF428SsubmitprogressreportusershouldabletocompletebusinessworkflowApprovedProgressReport @sprint-25-US-280119 @vaibhav @Forms @TBE
+  @281845 @ValidateusercanabletofillformsSF428ABSF428SsubmitprogressreportusershouldabletocompletebusinessworkflowApprovedProgressReport @sprint-25-US-280119 @vaibhav @Forms
   Scenario: Validate user can able to fill forms SF 428, A, B, C & SF428 S submit progress report & user should able to complete business work flow & Approved Progress Report
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -2565,7 +2565,6 @@ Feature: Validate scenarios in Progress Report Forms
     And I click on "View" icon for "Tangible Personal Property Report - Annual Report - SF-428-A" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     Then I softly see the text containing "OMB Number: 4040-0018"
     Then I see the page contains text " Expiration Date: 11/30/2024"
-    And I click on "Edit" in the page details
     And I click on top right button "New" in flex table with id "---progressReport:-:sf428AFederallyOwnedTableId---"
     And I click modal button "Save"
     Then I softly see the following messages in the page details :
@@ -2581,6 +2580,8 @@ Feature: Validate scenarios in Progress Report Forms
     And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     And I refresh the page
+    And I click on "Edit" in the page details
+    And I wait for "2" seconds
     When I click on "Save" in the page details
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
@@ -2595,6 +2596,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
+    And I refresh the page
     And I click on top right button "New" in flex table with id "---progressReport:-:sf428AFederallyOwnedTableId---"
     When I enter in modal "SF428A_Federal_Property" values from "ProgressReport_Field_Values.xlsx"
     And I click modal button "Save"
@@ -2671,6 +2673,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
     And I select "Tangible Personal Property Report - Annual Report - SF-428-A" from dropdown at forms
+    When I click on "Edit" in the page details
     And I enter "SF428A_Form" values from "ProgressReport_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I wait for "2" seconds
@@ -2692,16 +2695,12 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
     And I select "Tangible Personal Property Report - SF-428" from dropdown at forms
-    When I click on "Save" in the page details
-    And I wait for "2" seconds
-    Then I softly see the following messages in the page details :
-      | Form saved successfully. |
     When I click on "Validate" in the page details
     And I wait for "7" seconds
     Then I softly see the following messages in the page details :
       | Select the Annual Report (SF-428-A) as required form is filled. |
 
-  @280402 @ValidateSPIusercanseesection6AttachmentonSF428Formseebelowfieldsonsection @sprint-25-US-280119 @vaibhav @Forms @TBE
+  @280402 @ValidateSPIusercanseesection6AttachmentonSF428Formseebelowfieldsonsection @sprint-25-US-280119 @vaibhav @Forms
   Scenario: Validate SPI user can see section 6 Attachment on SF428 Form & see below fields on section
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -2857,8 +2856,6 @@ Feature: Validate scenarios in Progress Report Forms
     And I save the field labeled "EGMS ID" as "progID"
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
-    When I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
-    And I wait for "2" seconds
     And I select value inside table "---progressReport:-:formTableId---" is "All"
     When I navigate to "Forms and Files" sub tab
     And I click on "View" icon for "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
@@ -2909,7 +2906,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
     And I select "Tangible Personal Property Report - SF-428" from dropdown at forms
-    When I click on "Save" in the page details
+    When I click on "Edit" in the page details
     And I enter value "No" into field "fieldSupplementalSheet__c"
     When I click on "Save" in the page details
     And I wait for "2" seconds
@@ -2936,8 +2933,6 @@ Feature: Validate scenarios in Progress Report Forms
     And I save the field labeled "EGMS ID" as "progID"
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
-    When I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
-    And I wait for "2" seconds
     And I select value inside table "---progressReport:-:formTableId---" is "All"
     When I navigate to "Forms and Files" sub tab
     And I click on "View" icon for "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
@@ -3034,6 +3029,7 @@ Feature: Validate scenarios in Progress Report Forms
       | Form validated successfully. |
     And I click on "Edit" in the page details
     When I enter value "Checked" into field "fieldDispositionReportRequestSF428C__c"
+    And I click on "Save" in the page details
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
     When I click on "Validate" in the page details
