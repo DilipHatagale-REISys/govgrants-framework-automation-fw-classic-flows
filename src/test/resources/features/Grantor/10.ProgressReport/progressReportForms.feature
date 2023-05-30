@@ -2652,7 +2652,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
-    And I wait for "7" seconds
+    And I wait for "5" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -2691,7 +2691,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     And I refresh the page
     When I click on "Validate" in the page details
-    And I wait for "7" seconds
+    And I wait for "4" seconds
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
     And I select "Tangible Personal Property Report - SF-428" from dropdown at forms
@@ -2856,8 +2856,8 @@ Feature: Validate scenarios in Progress Report Forms
     And I save the field labeled "EGMS ID" as "progID"
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I select value inside table "---progressReport:-:formTableId---" is "All"
     When I navigate to "Forms and Files" sub tab
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
     And I click on "View" icon for "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2933,8 +2933,8 @@ Feature: Validate scenarios in Progress Report Forms
     And I save the field labeled "EGMS ID" as "progID"
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I select value inside table "---progressReport:-:formTableId---" is "All"
     When I navigate to "Forms and Files" sub tab
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
     And I click on "View" icon for "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
