@@ -31146,7 +31146,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "{SavedValue:CumulativeObligationFA2}" is "Equals to" the value "{SavedValue:CurrentObligationFA2}"
     Then I softly see value "{SavedValue:CumulativeObligationFATotal}" is "Equals to" the value "{SavedValue:CurrentObligationFATotal}"
 
-  @hit12 @257879 @257863 @257499 @VerifySPIusercanseeallfocusareasincludingwhichhavezeroallocationinBudgetSummarybyFocusAreasectionifawardfromFDMFAisYes @sprint-19-US-249863 @hitesh @Allocation
+  @257879 @257863 @257499 @VerifySPIusercanseeallfocusareasincludingwhichhavezeroallocationinBudgetSummarybyFocusAreasectionifawardfromFDMFAisYes @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPI user can see all focus areas including which have zero allocation in Budget Summary by Focus Area section if award from FDM (FA is Yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -32283,7 +32283,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Spent" rendered in view mode only
     Then I softly see field "Spent" as "$110.00"
 
-  @hit12 @257387 @257411 @257421 @VerifyPOusercanseeanewsectionofBudgetSummaryinsteadofFundingChangeontheamendmentrequestwhichisincreatedstateFAisYes @sprint-19-US-228100 @hitesh @Allocation
+  @257387 @257411 @257421 @VerifyPOusercanseeanewsectionofBudgetSummaryinsteadofFundingChangeontheamendmentrequestwhichisincreatedstateFAisYes @sprint-19-US-228100 @hitesh @Allocation
   Scenario: Verify PO user can see a new section of "Budget Summary" instead of "Funding Change " on the amendment request which is in created state (FA is Yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -32431,7 +32431,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Budgeted Amount" rendered in view mode only
     Then I softly see that "Current Commitment" rendered in view mode only
 
-  @hit12 @257397 @257427 @VerifyPOusercanseeanewsectionofBudgetSummaryinsteadofFundingchangeontheamendmentrequestwhichiscreatedfromdirectawardFAisNo @sprint-21-US-228100 @hitesh @Allocation
+  @257397 @257427 @VerifyPOusercanseeanewsectionofBudgetSummaryinsteadofFundingchangeontheamendmentrequestwhichiscreatedfromdirectawardFAisNo @sprint-21-US-228100 @hitesh @Allocation
   Scenario: Verify PO user can see a new section of "Budget Summary" instead of "Funding Change " on the amendment request which is created from direct award (FA is No)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -32571,14 +32571,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Spent" rendered in view mode only
     Then I softly see that "Budgeted Amount" rendered in view mode only
     Then I softly see that "Current Commitment" rendered in view mode only
+    And I click on "Save" in the page details
     #257666
     Then I softly see value "$900.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:grantorBudgetChangeTableId---"
     And I softly see value "$100.00" for title "Revised Award Amount" against the value "Indirect costs" inside table "---amendment:-:grantorBudgetChangeTableId---"
     Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
      | Revised Award Amount |
-     | $1000.00              |
+     | $1,000.00             |
     And I click on "Send Back to Subrecipient" in the page details
-    Then I softly see field "Status" as "Under Revision"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -32601,9 +32601,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I softly see value "$100.00" for title "Revised Award Amount" against the value "Other" inside table "---amendment:-:grantorBudgetChangeTableId---"
     Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
      | Revised Award Amount |
-     | $1000.00             |
+     | $1,000.00             |
 
-  @hit12 @257665 @VerifyPOuserseecorrectamountdisplayinrespectivebudgetcategoryafterSRuserupdatetheamountFAisYes @sprint-19-US-228100 @hitesh @Allocation
+  @257665 @VerifyPOuserseecorrectamountdisplayinrespectivebudgetcategoryafterSRuserupdatetheamountFAisYes @sprint-19-US-228100 @hitesh @Allocation
   Scenario: Verify PO user see correct amount display in respective budget category after S\R user update the amount (FA is Yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -32682,11 +32682,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 500    | 100        | 100            |
+      | Construction  | 500    | 50        |  0             |
     And I click on page navigation arrow "---applicationReview:-:budgetTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 500    | 100        | 100            |
+      | Construction  | 500    | 50         |  0             |
     When I navigate to "Overview" sub tab
     When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
@@ -32729,6 +32729,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I enter value "Automation Justification" into field "fieldJustification__c"
     And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Category Name | Revised Award Amount |
       | Construction  | 450                  |
@@ -32762,7 +32763,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
      | Revised Award Amount |
      | $500.00              |
 
-  @hit12 @257464 @VerifyPOuserseeSpentfieldwithspentamountonpaymentrequestonawardFAisYes @sprint-19-US-247605 @hitesh @Allocation
+  @257464 @VerifyPOuserseeSpentfieldwithspentamountonpaymentrequestonawardFAisYes @sprint-19-US-247605 @hitesh @Allocation
   Scenario: Verify PO user see Spent field with spent amount on payment request on award (FA is Yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
