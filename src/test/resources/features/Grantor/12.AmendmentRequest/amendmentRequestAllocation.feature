@@ -32455,7 +32455,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
      | Revised Award Amount |
      | $1,000.00             |
 
-  @257665 @VerifyPOuserseecorrectamountdisplayinrespectivebudgetcategoryafterSRuserupdatetheamountFAisYes @sprint-19-US-228100 @hitesh @Allocation
+  @257665 @257484 @VerifyPOuserseecorrectamountdisplayinrespectivebudgetcategoryafterSRuserupdatetheamountFAisYes @sprint-19-US-228100 @hitesh @Allocation
   Scenario: Verify PO user see correct amount display in respective budget category after S\R user update the amount (FA is Yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -32614,6 +32614,16 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
      | Revised Award Amount |
      | $500.00              |
+    #257484
+    Then I softly see "Budget Summary by Focus Area" page block displayed
+    Then I softly do not see "Funding Change" page block displayed
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see "Start Date" in flex table header "---amendment:-:projectAreasTableId---"
+    Then I softly see "End Date" in flex table header "---amendment:-:projectAreasTableId---"
+    Then I softly see "Current Obligation" in flex table header "---amendment:-:projectAreasTableId---"
+    Then I softly see "Budgeted Amount" in flex table header "---amendment:-:projectAreasTableId---"
+    Then I softly see "Spent" in flex table header "---amendment:-:projectAreasTableId---"
 
   @257464 @VerifyPOuserseeSpentfieldwithspentamountonpaymentrequestonawardFAisYes @sprint-19-US-228100 @hitesh @Allocation
   Scenario: Verify PO user see Spent field with spent amount on payment request on award (FA is Yes)
@@ -33017,11 +33027,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Name                        | Reimbursement |
       | {SavedValue:PO Username}    |   Step 1      |
     When I get the "EGMS ID"
-    And I wait for "3" seconds
+    And I refresh the page
     When I click on "Submit for Approval" in the page details
-    And I wait for "3" seconds
+    And I refresh the page
     When I "Approve" in the approval decision
-    And I wait for "3" seconds
+    And I wait for "5" seconds
     When I click on "Mark As Paid" in the page details
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
