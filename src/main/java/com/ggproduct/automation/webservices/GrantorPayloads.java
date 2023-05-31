@@ -1290,6 +1290,7 @@ public class GrantorPayloads {
         buildUpItems.addProperty("CashMatch", 100);
         buildUpItems.addProperty("NonCashMatch", 100);
         buildUpItems.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems.addProperty("ServiceAreaTitle", "Automation Permanent Focus Area");
         buildUpItemsA.add(buildUpItems);
         parent.add("BuildUpItems", buildUpItemsA);
 
