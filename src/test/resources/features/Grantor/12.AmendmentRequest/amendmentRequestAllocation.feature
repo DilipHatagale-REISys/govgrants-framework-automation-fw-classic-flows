@@ -32320,8 +32320,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click "Associate" after selection of "Automation PM" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name           | Announcement |
-      | Automation PO  | Step 1       |
+      | Name          | Announcement |
+      | Automation PO | Step 1       |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -32362,7 +32362,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 500    | 50         | 0              |
+      | Construction  | 500    | 50        |  0              |
     When I navigate to "Overview" sub tab
     When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
