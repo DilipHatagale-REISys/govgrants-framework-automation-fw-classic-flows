@@ -33015,7 +33015,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
       | Name                        | Reimbursement |
-      | {SavedValue:ADMIN Username} | Step 1        |
+      | {SavedValue:PO Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I wait for "3" seconds
