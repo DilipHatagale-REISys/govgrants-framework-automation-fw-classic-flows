@@ -1879,7 +1879,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "{SavedValue:AwardEGMSID}" in "---amendment:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    Then I softly see field "Spent" as "$500.00"
+    Then I softly see field "Spent" as "$100.00"
     And I save the field labeled "Spent" as "Spent"
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:recipientAwardAmendmentRequestTableId---"
@@ -1888,12 +1888,16 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
-    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 900                  |
-    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Indirect Charges  | 100                  |
+    Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I edit the following rows inline in flex table with id "---amendment:-:AddLineItemForBudgetChangeTableId---" by clicking "Edit" :
+      | Title        | Narrative     | Award Amount |
+      | Extra Salary | The narrative | 900         |
+    When I close "Add Line Items" modal by clicking the top right x button
+    Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I edit the following rows inline in flex table with id "---amendment:-:AddLineItemForBudgetChangeTableId---" by clicking "Edit" :
+      | Title        | Narrative     | Award Amount |
+      | Extra Salary | The narrative | 100          |
+    When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -1904,7 +1908,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Overview" sub tab
     And I click on "Edit" in the page details
     Then I softly see that "Spent" rendered in view mode only
-    Then I softly see field "Spent" as "$110.00"
+    Then I softly see field "Spent" as "$100.00"
     And I save the field labeled "Spent" as "Spent1"
     Then I softly see value "{SavedValue:Spent}" is "Equals to" the value "{SavedValue:Spent1}"
 
