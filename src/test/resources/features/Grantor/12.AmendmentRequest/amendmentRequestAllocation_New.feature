@@ -1876,7 +1876,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - All"
-    When I perform quick search for "{SavedValue:AwardEGMSID" in "---amendment:-:recipientsSubawardTableId---" panel
+    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---amendment:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
     Then I softly see field "Spent" as "$500.00"
