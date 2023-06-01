@@ -31,6 +31,8 @@ public class GrantorPayloads {
                 break;
             case "BUDGETCATEGORY":
                 break;
+            case "SECOND_BUDGET_CATEGORY":
+                return updateBudgetCategoryForTwoFocusAreas(defaultJson);
             case "KYECONTACTS":
                 break;
             case "KEYOUTCOME":
@@ -39,6 +41,30 @@ public class GrantorPayloads {
                 return defaultJson;
         }
         return defaultJson;
+    }
+
+    private JsonObject updateBudgetCategoryForTwoFocusAreas(JsonObject json) {
+        JsonArray budgetCategoryArray = new JsonArray();
+        JsonObject budgetCategory2 = json.getAsJsonArray("BudgetCategory").get(0).getAsJsonObject();
+
+        JsonObject budgetCategory1 = new JsonObject();
+        budgetCategory1.addProperty("BudgetCategory", "Construction");
+        budgetCategory1.addProperty("BudgetRequest", 500);
+        budgetCategory1.addProperty("CashMatch", 100);
+        budgetCategory1.add("NonCashMatch", JsonNull.INSTANCE);
+        budgetCategory1.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        budgetCategory1.addProperty("ServiceAreaTitle", "Automation Permanent Focus Area");
+        budgetCategoryArray.add(budgetCategory1);
+
+        budgetCategory2.addProperty("BudgetCategory", "Construction");
+        budgetCategory2.addProperty("BudgetRequest", 500);
+        budgetCategory2.addProperty("CashMatch", 100);
+        budgetCategory2.add("NonCashMatch", JsonNull.INSTANCE);
+        budgetCategory2.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        budgetCategory2.addProperty("ServiceAreaTitle", "Automation Permanent Focus Area2");
+        budgetCategoryArray.add(budgetCategory2);
+        json.add("BudgetCategory", budgetCategoryArray);
+        return json;
     }
 
     private void updateAppOwnerAndContact(JsonObject json, String user) {
@@ -400,6 +426,8 @@ public class GrantorPayloads {
                 return invitedIndUserOrganizationPreApplicationAndNegotiationAsYes(json);
             case "SECOND_FOCUS_AREA":
                 return updateAnnouncementWithSecondFocusArea(json);
+            case "SECOND_FOCUS_AREA_BY_APPL_RISK_ASS_NO":
+                return updateAnnouncementWithSecondFocusAreaByappRiskNo(json);
             default:
                 return json;
         }
@@ -411,6 +439,21 @@ public class GrantorPayloads {
         serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         serviceArea.add(serviceAreaB);
         json.add("AnnouncementServiceArea", serviceArea);
+        return json;
+    }
+
+    private JsonObject updateAnnouncementWithSecondFocusAreaByappRiskNo(JsonObject json) {
+        JsonArray serviceArea = new JsonArray();
+        JsonObject serviceAreaB = new JsonObject();
+        serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        serviceArea.add(serviceAreaB);
+        json.add("AnnouncementServiceArea", serviceArea);
+        JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre1 = new JsonArray();
+        jsonObject1.addProperty("Allocationlevel","By Applicant");
+        jsonObject1.addProperty("RiskAssessment_Required", "No");
+        pre1.add(jsonObject1);
+        json.add("Announcement", pre1);
         return json;
     }
 
