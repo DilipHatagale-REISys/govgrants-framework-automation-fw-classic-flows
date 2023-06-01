@@ -398,9 +398,20 @@ public class GrantorPayloads {
                 return invitedIndUserOrganizationbyApplicantFocusArea(json);
             case "INVITED_APPLICANT_IND_ORGPRE_PRE_APPLICATION_NEGOTIATION":
                 return invitedIndUserOrganizationPreApplicationAndNegotiationAsYes(json);
+            case "SECOND_FOCUS_AREA":
+                return updateAnnouncementWithSecondFocusArea(json);
             default:
                 return json;
         }
+    }
+
+    private JsonObject updateAnnouncementWithSecondFocusArea(JsonObject json) {
+        JsonArray serviceArea = new JsonArray();
+        JsonObject serviceAreaB = new JsonObject();
+        serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        serviceArea.add(serviceAreaB);
+        json.add("AnnouncementServiceArea", serviceArea);
+        return json;
     }
 
     private JsonObject invitedIndUserOrganization(JsonObject json) {

@@ -32473,7 +32473,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Construction  | 900                  |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Category Name | Revised Award Amount |
-      | Other         | 100                  |
+      | Site work     | 100                  |
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
