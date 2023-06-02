@@ -2017,7 +2017,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties "Automation PO user"
     And I activate award from FDM having application name "{SavedValue:Automation Runtime Announcement}"
     And I am on "SUBPORTAL" portal
-    And I login to "Grants Portal" app as "SPA" user
+    And I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - All"
@@ -2063,6 +2063,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter "GrantFields3" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
     And I enter "Grant_Edition_By_App_Focus_Yes" values from "Award_Field_Values.xlsx"
+    And I enter value "Yes" into field "IsBuildUpFunctionality__c"
     When I click modal button "Save and Continue"
     And I save the field labeled "EGMS ID" as "GrantEGMSID"
     And I navigate to "Subawards" sub tab
@@ -2093,13 +2094,17 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Award Amount | Cash Match | Non-Cash Match |
-      | Construction    | 500          | 50         | 0              |
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---" by clicking "New" :
+      | Title        | Narrative     | Award Amount | Cash Match | Non-Cash Match |
+      | Construction | The narrative | 500          | 50         |    0           |
+    And I save the value from row "1" for column name "Award Amount" as "AwardAmount1" from flex table "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
+    When I close "Subaward Budget Category" modal by clicking the top right x button
     And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Award Amount | Cash Match | Non-Cash Match |
-      | Construction    | 500          | 50         | 0              |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---" by clicking "New" :
+      | Title        | Narrative     | Award Amount | Cash Match | Non-Cash Match |
+      | Construction | The narrative | 500          | 50         |    0           |
+    When I close "Subaward Budget Category" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
@@ -2177,12 +2182,13 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I enter value "Automation Justification" into field "fieldJustification__c"
     And I click on "Save" in the page details
-    #256766
+    #256766 #256804
     Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     Then I softly see "Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
     Then I softly see "Prior Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
     Then I softly see "Revised Subaward Budget" in flex table header "---amendment:-:budgetChangeTableId---"
     Then I softly do not see "Revised Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
+    Then I softly do not see "Awarded Budget" in flex table header "---amendment:-:budgetChangeTableId---"
     And I save the value from row "1" for column name "Prior Award Amount" as "PriorAwardAmount3" from flex table "---amendment:-:budgetChangeTableId---"
     Then I softly see value "{SavedValue:AwardAmount1}" is "Equals to" the value "{SavedValue:PriorAwardAmount3}"
     When I close "Add Line Items" modal by clicking the top right x button
@@ -2192,6 +2198,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "Prior Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
     Then I softly see "Revised Subaward Budget" in flex table header "---amendment:-:budgetChangeTableId---"
     Then I softly do not see "Revised Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
+    Then I softly do not see "Awarded Budget" in flex table header "---amendment:-:budgetChangeTableId---"
     And I save the value from row "1" for column name "Prior Award Amount" as "PriorAwardAmount4" from flex table "---amendment:-:budgetChangeTableId---"
     Then I softly see value "{SavedValue:AwardAmount2}" is "Equals to" the value "{SavedValue:PriorAwardAmount4}"
 
