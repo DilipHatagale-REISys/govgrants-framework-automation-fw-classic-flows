@@ -1912,7 +1912,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Spent" as "Spent1"
     Then I softly see value "{SavedValue:Spent}" is "Equals to" the value "{SavedValue:Spent1}"
 
-  @257449 @VerifyPOusercanseeBudgetedAmountasReadonlyfieldwhichisRolledupfromthebudgetchangesectionsRevisedAwardAmountcolumnFAisYes @sprint-19-US-228100 @hitesh @Allocation
+  @257449 @257456 @VerifyPOusercanseeBudgetedAmountasReadonlyfieldwhichisRolledupfromthebudgetchangesectionsRevisedAwardAmountcolumnFAisYes @sprint-19-US-228100 @hitesh @Allocation
   Scenario: Verify PO user can see Budgeted Amount as Read only field which is Rolled up from the budget change section's Revised Award Amount column (FA is Yes)
     And I published "Formula" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA_BY_APPL_RISK_ASS_NO-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
