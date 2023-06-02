@@ -2054,7 +2054,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Award Amount |
       | $1,000.00    |
 
-  @hit1 @hitesh12 @256760 @VerifySPIusercanseeRevisedSubawardBudgetfieldRenamedfromRevisedAwardAmountinBudgetChangesectionontheBudredARValuescanbeeditableonAR @sprint-19-US-244517 @hitesh @Allocation
+  @hitesh12 @256760 @256744 @256766 @256804 @VerifySPIusercanseeRevisedSubawardBudgetfieldRenamedfromRevisedAwardAmountinBudgetChangesectionontheBudredARValuescanbeeditableonAR @sprint-19-US-244517 @hitesh @Allocation
   Scenario: VerifySPIusercanseeRevisedSubawardBudgetfieldRenamedfromRevisedAwardAmountinBudgetChangesectionontheBudredARValuescanbeeditableonAR
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -2184,23 +2184,38 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I enter value "Automation Justification" into field "fieldJustification__c"
     And I click on "Save" in the page details
+    #256760
+    Then I softly see "Revised Subaward Budget" in flex table header "---amendment:-:budgetChangeTableId---"
+    Then I softly do not see "Revised Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
+    #256744
+    Then I softly see "Budget Change" page block displayed
+    Then I softly see "Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
+    Then I softly do not see "Subaward Budget" in flex table header "---amendment:-:budgetChangeTableId---"
+    Then I see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---amendment:-:budgetChangeTableId---"
+    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
+    Then I see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---amendment:-:budgetChangeTableId---"
+    Then I see the following rows under the following headers in table with id "---amendment:-:budgetChangeTableId---" :
+      | Award Amount |
+      | $1,000.00    |
     #256766 #256804
     Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     Then I softly see "Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
-    Then I softly see "Prior Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
-    Then I softly see "Revised Subaward Budget" in flex table header "---amendment:-:budgetChangeTableId---"
-    Then I softly do not see "Revised Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
     Then I softly do not see "Awarded Budget" in flex table header "---amendment:-:budgetChangeTableId---"
+    And I save the value from row "1" for column name "Award Amount" as "AwardAmount3" from flex table "---amendment:-:budgetChangeTableId---"
+    Then I softly see value "{SavedValue:AwardAmount1}" is "Equals to" the value "{SavedValue:AwardAmount3}"
+    Then I softly see "Prior Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
+    Then I softly do not see "Prior Awarded Budget" in flex table header "---amendment:-:budgetChangeTableId---"
     And I save the value from row "1" for column name "Prior Award Amount" as "PriorAwardAmount3" from flex table "---amendment:-:budgetChangeTableId---"
     Then I softly see value "{SavedValue:AwardAmount1}" is "Equals to" the value "{SavedValue:PriorAwardAmount3}"
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     Then I softly see "Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
-    Then I softly see "Prior Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
-    Then I softly see "Revised Subaward Budget" in flex table header "---amendment:-:budgetChangeTableId---"
-    Then I softly do not see "Revised Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
     Then I softly do not see "Awarded Budget" in flex table header "---amendment:-:budgetChangeTableId---"
+    And I save the value from row "1" for column name "Award Amount" as "AwardAmount4" from flex table "---amendment:-:budgetChangeTableId---"
+    Then I softly see value "{SavedValue:AwardAmount1}" is "Equals to" the value "{SavedValue:AwardAmount4}"
+    Then I softly see "Prior Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
+    Then I softly do not see "Prior Awarded Budget" in flex table header "---amendment:-:budgetChangeTableId---"
     And I save the value from row "1" for column name "Prior Award Amount" as "PriorAwardAmount4" from flex table "---amendment:-:budgetChangeTableId---"
     Then I softly see value "{SavedValue:AwardAmount2}" is "Equals to" the value "{SavedValue:PriorAwardAmount4}"
 
