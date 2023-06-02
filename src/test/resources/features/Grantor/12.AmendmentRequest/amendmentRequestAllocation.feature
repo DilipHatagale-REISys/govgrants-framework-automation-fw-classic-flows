@@ -23520,7 +23520,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$0.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @hit2 @257580 @VerifyFOusercanseeTotalCommitmentamountiscomingfromTotalcommitmentfieldfromthelatestClosedawardandforLatestBP @sprint-19-US-250550 @hitesh @Allocation
+  @257580 @VerifyFOusercanseeTotalCommitmentamountiscomingfromTotalcommitmentfieldfromthelatestClosedawardandforLatestBP @sprint-19-US-250550 @hitesh @Allocation
   Scenario: Verify FO user can see Total Commitment amount is coming from Total commitment field from the latest Closed  award  and for Latest BP is  from FDM
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -31871,7 +31871,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Current Obligation" as "CurrentObligation"
     Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CurrentObligation}"
 
-  @257890 @257869 @VerifySPIusercanseeSpentcolumnvalueCalculatedagainsteachfocusareainbudgetsummarybyfocusareasectionFAisyes @sprint-19-US-249863 @hitesh @Allocation
+  @257890 @257869 @257570 @VerifySPIusercanseeSpentcolumnvalueCalculatedagainsteachfocusareainbudgetsummarybyfocusareasectionFAisyes @sprint-19-US-249863 @hitesh @Allocation
   Scenario: Verify SPI user can see Spent column value Calculated against each focus area in budget summary by focus area section (FA is yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -32069,6 +32069,23 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Edit" in the page details
     Then I softly see that "Spent" rendered in view mode only
     Then I softly see field "Spent" as "$500.00"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    And I perform quick search for "{SavedValue:BUDGETREDIRECTIONID}" in "---amendment:-:recipientSideAmendmentRequestTableId---" panel
+    When I click on "View" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:recipientSideAmendmentRequestTableId---" without waiting for record
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:BUDGETREDIRECTIONID}" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Overview" sub tab
+    #257570
+    Then I softly see value "$300.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "$200.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "$500.00" for title "Spent" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
 
   @257888 @257710 @VerifySPAusercanseeBudgetedAmountcolumnvalueisTotalofthebudgetenteredagainsteachfocusareaintheRevisedAwardAmountFieldFAisYes @sprint-19-US-255648 @hitesh @Allocation
   Scenario: Verify SPA user can see Budgeted Amount column value is Total of the budget entered against each focus area, in the Revised Award Amount Field (FA is Yes)
@@ -32283,7 +32300,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Spent" rendered in view mode only
     Then I softly see field "Spent" as "$110.00"
 
-    @257397 @257427 @257666 @VerifyPOusercanseeanewsectionofBudgetSummaryinsteadofFundingchangeontheamendmentrequestwhichiscreatedfromdirectawardFAisNo @sprint-21-US-228100 @hitesh @Allocation
+  @hitesh1 @257397 @257427 @257666 @257450 @257447 @VerifyPOusercanseeanewsectionofBudgetSummaryinsteadofFundingchangeontheamendmentrequestwhichiscreatedfromdirectawardFAisNo @sprint-21-US-228100 @hitesh @Allocation
   Scenario: Verify PO user can see a new section of "Budget Summary" instead of "Funding Change " on the amendment request which is created from direct award (FA is No)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -32387,6 +32404,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Activate" in the page details
     Then I softly see that "Subaward" is in "Activated" status
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
+    Then I softly see field "Total Commitment" as "$2,000.00"
+    And I save the field labeled "Total Commitment" as "TotalCommitment"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -32418,6 +32440,16 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "Budget Summary" page block displayed
     Then I softly do not see "Funding Change" page block displayed
     And I click on "Edit" in the page details
+    #257447
+    Then I softly see that "Current Obligation" rendered in view mode only
+    Then I softly see field "Current Obligation" as "$1,000.00"
+    And I save the field labeled "Current Obligation" as "CurrentObligation"
+    Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CurrentObligation}"
+    #257458
+    Then I softly see that "Current Commitment" rendered in view mode only
+    Then I softly see field "Current Commitment" as "$2,000.00"
+    And I save the field labeled "Current Commitment" as "CurrentCommitment"
+    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:CurrentCommitment}"
     #257427
     Then I softly see that "Current Obligation" rendered in view mode only
     Then I softly see that "Spent" rendered in view mode only
@@ -32429,7 +32461,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I softly see value "$100.00" for title "Revised Award Amount" against the value "Indirect costs" inside table "---amendment:-:grantorBudgetChangeTableId---"
     Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
      | Revised Award Amount |
-     | $1,000.00             |
+     | $1,000.00            |
     And I click on "Send Back to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -32440,8 +32472,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Category Name | Revised Award Amount |
       | Construction  | 900                  |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Category Name     | Revised Award Amount |
+      | Indirect costs    | 0                    |
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Category Name | Revised Award Amount |
-      | Other         | 100                  |
+      | Site work     | 100                  |
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -32450,12 +32485,19 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     Then I softly see value "$900.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:grantorBudgetChangeTableId---"
-    And I softly see value "$100.00" for title "Revised Award Amount" against the value "Other" inside table "---amendment:-:grantorBudgetChangeTableId---"
+    And I softly see value "$100.00" for title "Revised Award Amount" against the value "Site work" inside table "---amendment:-:grantorBudgetChangeTableId---"
     Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
      | Revised Award Amount |
-     | $1,000.00             |
+     | $1,000.00            |
+    #257450
+    And I click on "Edit" in the page details
+    Then I softly see that "Budgeted Amount" rendered in view mode only
+    Then I softly see field "Budgeted Amount" as "$1,000.00"
+    Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
+     | Revised Award Amount |
+     | $1,000.00            |
 
-  @257665 @VerifyPOuserseecorrectamountdisplayinrespectivebudgetcategoryafterSRuserupdatetheamountFAisYes @sprint-19-US-228100 @hitesh @Allocation
+  @257665 @257484 @257509 @257521 @257446 @VerifyPOuserseecorrectamountdisplayinrespectivebudgetcategoryafterSRuserupdatetheamountFAisYes @sprint-19-US-228100 @hitesh @Allocation
   Scenario: Verify PO user see correct amount display in respective budget category after S\R user update the amount (FA is Yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -32568,6 +32610,17 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I created approved FDM on application "{SavedValue:Automation Runtime Announcement}"
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties "Automation PO user"
     And I activate award from FDM having application name "{SavedValue:Automation Runtime Announcement}"
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligationFA1" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    And I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligationFA2" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    And I save the value from row "3" for column name "Cumulative Obligation" as "CumulativeObligationFATotal" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -32614,8 +32667,39 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
      | Revised Award Amount |
      | $500.00              |
+    #257484
+    Then I softly see "Budget Summary by Focus Area" page block displayed
+    Then I softly do not see "Funding Change" page block displayed
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see "Start Date" in flex table header "---amendment:-:projectAreasTableId---"
+    Then I softly see "End Date" in flex table header "---amendment:-:projectAreasTableId---"
+    Then I softly see "Current Obligation" in flex table header "---amendment:-:projectAreasTableId---"
+    Then I softly see "Budgeted Amount" in flex table header "---amendment:-:projectAreasTableId---"
+    Then I softly see "Spent" in flex table header "---amendment:-:projectAreasTableId---"
+    #257509
+    And I save the value from row "1" for column name "Current Obligation" as "CurrentObligationFA1" from flex table "---amendment:-:projectAreasTableId---"
+    And I save the value from row "2" for column name "Current Obligation" as "CurrentObligationFA2" from flex table "---amendment:-:projectAreasTableId---"
+    And I save the value from row "3" for column name "Current Obligation" as "CurrentObligationFATotal" from flex table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "$500.00" for title "Current Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "$500.00" for title "Current Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "$1,000.00" for title "Current Obligation" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "{SavedValue:CumulativeObligationFA1}" is "Equals to" the value "{SavedValue:CurrentObligationFA1}"
+    Then I softly see value "{SavedValue:CumulativeObligationFA2}" is "Equals to" the value "{SavedValue:CurrentObligationFA2}"
+    Then I softly see value "{SavedValue:CumulativeObligationFATotal}" is "Equals to" the value "{SavedValue:CurrentObligationFATotal}"
+    #257521
+    Then I softly see value "$1000.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
+    Then I see the following rows under the following headers in table with id "---amendment:-:BudgetChangeTableId---" :
+     | Revised Award Amount |
+     | $1000.00             |
+    #257446
+    And I click on "Edit" in the page details
+    Then I softly see that "Current Obligation" rendered in view mode only
+    Then I softly see field "Current Obligation" as "$1,000.00"
+    And I save the field labeled "Current Obligation" as "CurrentObligation"
+    Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CurrentObligation}"
 
-  @257464 @VerifyPOuserseeSpentfieldwithspentamountonpaymentrequestonawardFAisYes @sprint-19-US-247605 @hitesh @Allocation
+  @257464 @VerifyPOuserseeSpentfieldwithspentamountonpaymentrequestonawardFAisYes @sprint-19-US-228100 @hitesh @Allocation
   Scenario: Verify PO user see Spent field with spent amount on payment request on award (FA is Yes)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -32907,7 +32991,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 1000    | 100        |  0              |
+      | Construction  | 1000    | 100       |  0             |
     When I navigate to "Overview" sub tab
     When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
