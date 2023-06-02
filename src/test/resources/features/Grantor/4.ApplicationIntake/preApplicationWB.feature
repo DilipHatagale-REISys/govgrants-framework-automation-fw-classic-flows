@@ -153,6 +153,7 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for PreApp and App}" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for PreApp and App}" inside table without waiting for record
     And I click on "Unpublish" in the page details
+    And I pause execution for "6" seconds
     Given I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Applications" tab
@@ -262,7 +263,7 @@ Feature: Pre-Application scenarios without background
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I navigate to "Overview" sub tab
+    And I navigate to "Budget" sub tab
     Then I softly see selected element "{SavedValue:subawardfloor}"
     Then I softly see selected element "{SavedValue:subawardcieling}"
     Then I softly see selected element "{SavedValue:matchrequired}"
@@ -581,7 +582,7 @@ Feature: Pre-Application scenarios without background
       | Name                       | Project Role             | Is Key Contact |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I navigate to "Budget" sub tab
-    Then I softly see "Focus Areas" page block displayed
+    Then I softly see "Budget Summary by Focus Area" page block displayed
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
@@ -949,7 +950,7 @@ Feature: Pre-Application scenarios without background
     #174879
     And I save the field labeled "Due Date" as "DueDate"
     Then I softly see field "Status" as "Created" in "Negotiation Request Details" pageblock
-    Then I softly see field "Pre-Application Sections for Negotiation" as "Forms and Files: Forms"
+    Then I softly see field "Pre-Application Sections for Negotiation" as "Files and Forms: Forms"
     Then I softly see field "Due Date" as "{SavedValue:DueDate}"
      #174885
     Then I softly see field "Due Date" inside page block
@@ -1571,7 +1572,7 @@ Feature: Pre-Application scenarios without background
     And I click on "Start" icon for "Record Id" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
     When I click on "Request Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
-    When I enter "FileFormForms2" values from "PreApplication_Field_Values.xlsx"
+    When I enter "Nego_Edit1" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I softly can see top right button "Send to Subrecipient" in page detail
     And I click on "Send to Subrecipient" in the page details
@@ -2065,8 +2066,8 @@ Feature: Pre-Application scenarios without background
     And I enter "Automation Test" values from "fieldQuestion1__c"
     And I enter "Automation Test" values from "fieldQuestion3__c"
     And I enter "9" values from "fieldsbirEmpNumber__c"
-    And I enter "Automation Test" values from "fieldAppplicationSubmitted__c"
     And I enter "5" values from "fieldSubmittedOnForm__c"
+    And I enter "Automation Test" values from "fieldAppplicationSubmitted__c"
     When I click on "Save" in the page details
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
@@ -2737,10 +2738,10 @@ Feature: Pre-Application scenarios without background
     And I navigate to "Negotiations" sub tab
     When I enter "Negotiation_Edit" values from "PreApplication_Field_Values.xlsx"
     Then I softly see multiple selected options in "multiSelectPicklistCell":
-      | Forms and Files: Forms |
+      | Files and Forms: Forms |
      #180658
     When I clear the value from field "fieldPreApplicationSectionsforRevision__c"
-    Then I see multipicklist field "fieldPreApplicationSectionsforRevision__c" contains value "Forms and Files: Forms" under list "Pre-Application Sections for Revision - Available"
+    Then I see multipicklist field "fieldPreApplicationSectionsforRevision__c" contains value "Files and Forms": Forms" under list "Pre-Application Sections for Revision - Available"
 
   @174568 @Grantorpre-applicationformshoulddisplayalltypesofAnnouncement @Sprint-7 @Vrishali
   Scenario Outline: Verify Grantor pre-application form should display all types of Announcement.
@@ -2773,7 +2774,6 @@ Feature: Pre-Application scenarios without background
       | Competitive       | ---announcement:-:competitiveAnnouncementTableId--- | Creation Second Modal        |
       | Directed          | ---announcement:-:annoucementTableId---             | Creation Second Modal        |
       | Formula           | ---announcement:-:formulaAnnouncementTableId---     | Creation_Formula_ByApplicant |
-
 
   @180699 @VerifyIfFormselectedforedit&usernotadded"Files&Forms:Forms"inApplicationsection,usershouldgeterroronsenttos/rclickatgrantorside. @Sprint-10 @Vrishali
   Scenario: Verify If the Form is selected for edit, and user have not added the "Forms and Files: Forms" in the Application section, then user should get error on sent to s/r click at grantor side.
