@@ -1888,15 +1888,15 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
-    Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
-    When I edit the following rows inline in flex table with id "---amendment:-:AddLineItemForBudgetChangeTableId---" by clicking "Edit" :
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
       | Title        | Narrative     | Award Amount |
-      | Extra Salary | The narrative | 900         |
+      | Extra Salary | The narrative | 900          |
     When I close "Add Line Items" modal by clicking the top right x button
-    Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
-    When I edit the following rows inline in flex table with id "---amendment:-:AddLineItemForBudgetChangeTableId---" by clicking "Edit" :
-      | Title        | Narrative     | Award Amount |
-      | Extra Salary | The narrative | 100          |
+    When I click on "Add Line Items" icon for "Indirect costs" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
+      | Title          | Narrative     | Award Amount |
+      | Indirect costs | The narrative | 100          |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
@@ -1912,7 +1912,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Spent" as "Spent1"
     Then I softly see value "{SavedValue:Spent}" is "Equals to" the value "{SavedValue:Spent1}"
 
-  @hitesh1 @257449 @VerifyPOusercanseeBudgetedAmountasReadonlyfieldwhichisRolledupfromthebudgetchangesectionsRevisedAwardAmountcolumnFAisYes @sprint-19-US-228100 @hitesh @Allocation
+  @257449 @VerifyPOusercanseeBudgetedAmountasReadonlyfieldwhichisRolledupfromthebudgetchangesectionsRevisedAwardAmountcolumnFAisYes @sprint-19-US-228100 @hitesh @Allocation
   Scenario: Verify PO user can see Budgeted Amount as Read only field which is Rolled up from the budget change section's Revised Award Amount column (FA is Yes)
     And I published "Formula" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA_BY_APPL_RISK_ASS_NO-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
