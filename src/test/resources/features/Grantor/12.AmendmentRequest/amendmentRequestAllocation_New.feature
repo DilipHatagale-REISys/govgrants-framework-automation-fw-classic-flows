@@ -2009,52 +2009,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Revised Award Amount |
       | $1,000.00            |
 
-  @hitesh12 @256744 @VerifySPIusercanseeAwardamountfieldRenamedfromSubawardBudgetinBudgetChangesectionontheBudredARValueswillBePopulatedfromAward @sprint-19-US-244517 @hitesh @Allocation
-  Scenario: Verify SPI user can see Award amount field Renamed from Subaward Budget in  "Budget Change" section on the  Bud red AR, Values will Be Populated from Award
-    And I published "Formula" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA_BY_APPLICANT_FOCUS_AREA_RISK_ASS_NO-Automation PO user"
-    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
-    And I created approved FDM on application "{SavedValue:Automation Runtime Announcement}"
-    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties "Automation PO user"
-    And I activate award from FDM having application name "{SavedValue:Automation Runtime Announcement}"
-    And I am on "SUBPORTAL" portal
-    And I login to "Grants Portal" app as "SPI3" user
-    And I navigate to "Grants" tab
-    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Subawards  - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---amendment:-:recipientsSubawardTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
-    Given I navigate to "Management" sub tab
-    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:recipientAwardAmendmentRequestTableId---"
-    When I enter "Subrecipient_BRedirection" values from "AmendmentRequest_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    And I enter value "Automation Justification" into field "fieldJustification__c"
-    When I click on "Save" in the page details
-    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name | Revised Award Amount |
-      | Construction  | 450                  |
-    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount|
-      | Other             | 50                  |
-    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
-    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name | Revised Award Amount |
-      | Construction  | 450                  |
-    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount|
-      | Other             | 50                  |
-    Then I softly see status in Progress-bar is "Created" and is "green"
-    And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
-    Then I softly see "Budget Change" page block displayed
-    Then I softly see "Award Amount" in flex table header "---amendment:-:budgetChangeTableId---"
-    Then I softly do not see "Subaward Budget" in flex table header "---amendment:-:budgetChangeTableId---"
-    Then I see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---amendment:-:budgetChangeTableId---"
-    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
-    Then I see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---amendment:-:budgetChangeTableId---"
-    Then I see the following rows under the following headers in table with id "---amendment:-:budgetChangeTableId---" :
-      | Award Amount |
-      | $1,000.00    |
-
-  @hitesh12 @256760 @256744 @256766 @256804 @VerifySPIusercanseeRevisedSubawardBudgetfieldRenamedfromRevisedAwardAmountinBudgetChangesectionontheBudredARValuescanbeeditableonAR @sprint-19-US-244517 @hitesh @Allocation
+  @256760 @256744 @256766 @256804 @256581 @256822 @VerifySPIusercanseeRevisedSubawardBudgetfieldRenamedfromRevisedAwardAmountinBudgetChangesectionontheBudredARValuescanbeeditableonAR @sprint-19-US-244517 @hitesh @Allocation
   Scenario: VerifySPIusercanseeRevisedSubawardBudgetfieldRenamedfromRevisedAwardAmountinBudgetChangesectionontheBudredARValuescanbeeditableonAR
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -2237,30 +2192,3 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I close "Add Line Items" modal by clicking the top right x button
     Then I see the following messages in the page details contains:
       | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection.|
-
-  @256581 @VerifySPIusercanseeanewsectionofBudgetSummaryinsteadofFundingChangeontheBudredamendmentrequestwhichiscreatedfromdirectaward @sprint-19-US-244517 @hitesh @Allocation
-  Scenario: Verify SPI user can see a new section of "Budget Summary" instead of "Funding Change " on the  Bud red amendment request which is created from direct award
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Formula_By_Applicant_Focus_Area"
-    And I am on "SUBPORTAL" portal
-    And I login to "Grants Portal" app as "SPI3" user
-    And I navigate to "Grants" tab
-    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Subawards  - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---amendment:-:recipientsSubawardTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
-    Given I navigate to "Management" sub tab
-    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:recipientAwardAmendmentRequestTableId---"
-    When I enter "Subrecipient_BRedirection" values from "AmendmentRequest_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    Then I softly see status in Progress-bar is "Created" and is "green"
-    And I enter value "Automation Justification" into field "fieldJustification__c"
-    And I click on "Save" in the page details
-    Then I softly see "Budget Summary" page block displayed
-    Then I softly do not see "Funding Change" page block displayed
-    And I click on "Edit" in the page details
-    Then I softly see that "Current Obligation" rendered in view mode only
-    Then I softly see that "Spent" rendered in view mode only
-    Then I softly see that "Budgeted Amount" rendered in view mode only
-    Then I softly see that "Current Commitment" rendered in view mode only
-
-
