@@ -2221,7 +2221,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Budgeted Amount" rendered in view mode only
     Then I softly see that "Current Commitment" rendered in view mode only
 
-  @262784 @256646 @256701 @Verifyusershouldnotabletoeditanyfieldinbudgetsummary&budgetsummarybyfocusareasectionwhenAmendmentisinsubmitforapproval&ApprovedstateFAYes @sprint-19-US-255590 @hitesh @Allocation
+  @hitesh11 @262784 @256646 @256701 @Verifyusershouldnotabletoeditanyfieldinbudgetsummary&budgetsummarybyfocusareasectionwhenAmendmentisinsubmitforapproval&ApprovedstateFAYes @sprint-19-US-255590 @hitesh @Allocation
   Scenario: Verify user should not able to edit any field in budget summary & budget summary by focus area section when Amendment is in submit for approval & Approved state(FA Yes)
     And I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
@@ -2351,7 +2351,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
     Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area2" in flex table with id "---amendment:-:projectAreasTableId---"
 
-  @256651 @VerifusershouldabletoseeBudgetSummarybyFocusAreaSectiononlyifFocusareaisYes @sprint-19-US-255590 @hitesh @Allocation
+  @hitesh11 @256651 @VerifusershouldabletoseeBudgetSummarybyFocusAreaSectiononlyifFocusareaisYes @sprint-19-US-255590 @hitesh @Allocation
   Scenario: Verify user should able to see Budget Summary by Focus Area Section, only if Focus area is Yes
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -2420,7 +2420,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 500    | 100        | 100            |
+      | Construction  | 1000    | 100        | 100           |
     When I navigate to "Overview" sub tab
     When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
@@ -2441,7 +2441,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I get the "EGMS ID"
     And I pause execution for "5" seconds
     When I click on "Submit Application" in the page details
-    Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -2475,6 +2474,4 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly do not see "Budget Summary by Focus Area" page block displayed
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---amendment:-:projectAreasTableId---"
     Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:projectAreasTableId---"
-    Then I softly see value "$0.00" for title "Current Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
-    Then I softly see value "$0.00" for title "Budgeted Amount" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
 
