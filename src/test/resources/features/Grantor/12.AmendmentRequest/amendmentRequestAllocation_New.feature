@@ -2084,6 +2084,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
       | Name                        | Award  |
       | {SavedValue:ADMIN Username} | Step 1 |
+    And I refresh the page
     And I pause execution for "5" seconds
     And I click on "Send to Subrecipient" in the page details
     And I pause execution for "5" seconds
