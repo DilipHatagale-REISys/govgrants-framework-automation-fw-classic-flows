@@ -2340,9 +2340,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$500.00" for title "Spent" against the value "Grand Total" inside table "---amendment:-:ProjectAreasTableId---"
     Then I softly see "Spent" in flex table header "---amendment:-:grantorBudgetChangeTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:PM Username}     | Step 1        |
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
     And I click on "Edit" in the page details
@@ -2451,6 +2451,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Save" in the page details
     When I click on "Back" in the page details
     And I get the "EGMS ID"
+    And I pause execution for "5" seconds
     When I click on "Submit Application" in the page details
     Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
