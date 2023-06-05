@@ -2195,3 +2195,28 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I pause execution for "5" seconds
     Then I see the following messages in the page details contains:
       | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection.|
+
+  @256581 @VerifySPIusercanseeanewsectionofBudgetSummaryinsteadofFundingChangeontheBudredamendmentrequestwhichiscreatedfromdirectaward @sprint-19-US-244517 @hitesh @Allocation
+  Scenario: Verify SPI user can see a new section of "Budget Summary" instead of "Funding Change " on the  Bud red amendment request which is created from direct award
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Formula_By_Applicant_Focus_Area"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Grants" tab
+    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---amendment:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
+    Given I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:recipientAwardAmendmentRequestTableId---"
+    When I enter "Subrecipient_BRedirection" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I enter value "Automation Justification" into field "fieldJustification__c"
+    And I click on "Save" in the page details
+    Then I softly see "Budget Summary" page block displayed
+    Then I softly do not see "Funding Change" page block displayed
+    And I click on "Edit" in the page details
+    Then I softly see that "Current Obligation" rendered in view mode only
+    Then I softly see that "Spent" rendered in view mode only
+    Then I softly see that "Budgeted Amount" rendered in view mode only
+    Then I softly see that "Current Commitment" rendered in view mode only
