@@ -2263,6 +2263,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I click on "Edit" in the page details
+    #257456
     Then I softly see that "Current Commitment" rendered in view mode only
     Then I softly see that "Current Obligation" rendered in view mode only
     Then I softly see field "Current Obligation" as "$1,000.00"
