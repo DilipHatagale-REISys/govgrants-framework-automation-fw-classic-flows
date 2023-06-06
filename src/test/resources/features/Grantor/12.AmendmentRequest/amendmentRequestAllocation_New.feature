@@ -2479,4 +2479,3 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "Budget Summary by Focus Area" page block displayed
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---amendment:-:projectAreasTableId---"
     Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:projectAreasTableId---"
-
