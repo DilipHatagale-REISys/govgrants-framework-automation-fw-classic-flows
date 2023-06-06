@@ -197,7 +197,7 @@ Feature: Application Intake scenarios without background
     When I get the "EGMS ID"
     Then I softly see field "Application Due Date" is getting updated with todays date
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" in "---applicationIntake:-:publishedOpputunityTableId---" panel
     Then I softly see "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" inside flex table with id "---applicationIntake:-:publishedOpputunityTableId---"
@@ -223,7 +223,7 @@ Feature: Application Intake scenarios without background
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     When I get the "EGMS ID"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -693,7 +693,7 @@ Feature: Application Intake scenarios without background
   Scenario: Validate the Aplications are not visible for other organizations Users
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     When I am on "SUBPORTAL" portal
-    And I login as "SA" user
+    And And I login to "Grants Portal" app as "SA" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -727,8 +727,7 @@ Feature: Application Intake scenarios without background
   @34315 @appDueDatepassed @deepika @needStaticRecordsForThis
   Scenario Outline: Validate SPI & SPA user is not able to Create an Application if Application Due Date is passed
     When I am on "SUBPORTAL" portal
-    And I login as "<User>" user
-    When I navigate to "Opportunities" tab
+    And I login to "Grants Portal" app as "<User>" user
     When I navigate to "Opportunities" tab
     When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Qualified Opportunities - All"
@@ -746,7 +745,7 @@ Feature: Application Intake scenarios without background
   Scenario Outline: Validate whether SPI & SPA user were able to view the allocated amount once the Oppurtunity is Converted to Application when Announcement is of type - Formula
     Given I published "Formula" type announcement having name "Automation Runtime Announcement Application Review" and properties "BY_APPLICANT"
     When I am on "SUBPORTAL" portal
-    And I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     When I navigate to "Opportunities" tab
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationIntake:-:publishedOpputunityTableId---" panel
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
@@ -1079,7 +1078,7 @@ Feature: Application Intake scenarios without background
   Validate whether the user is able to Edit the budget category while creating an Application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "FOCUS_AREA_NO"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1232,7 +1231,7 @@ Feature: Application Intake scenarios without background
   Validate when the Funding Opportunity Detailed budget Grid Setup as Yes then User will be able to view the Bulid up Line in the Budget Grid
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationIntake:-:publishedOpputunityTableId---" panel
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
@@ -1705,7 +1704,7 @@ Feature: Application Intake scenarios without background
   Scenario: Validate App S\R SPI user of application owner should not change even if app ownership change after Ann owner will get change in created by field
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationIntake:-:publishedOpputunityTableId---" panel
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
@@ -2315,7 +2314,7 @@ Feature: Application Intake scenarios without background
     When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I wait for "3" seconds
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     When I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -2355,7 +2354,7 @@ Feature: Application Intake scenarios without background
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
     And I save the field labeled "EGMS ID" as "EGMSID"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -2380,7 +2379,7 @@ Feature: Application Intake scenarios without background
     And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:phasePendingTasksTableId---"
     When I click on "Complete Negotiation" in the page details
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "Applications - All"
@@ -2417,7 +2416,7 @@ Feature: Application Intake scenarios without background
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
     And I save the field labeled "EGMS ID" as "EGMSID"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPA" user
+    When I login to "Grants Portal" app as "SPA" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "Applications - All"
@@ -2456,7 +2455,7 @@ Feature: Application Intake scenarios without background
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
     And I save the field labeled "EGMS ID" as "EGMSID"
     Given I am on "SUBPORTAL" portal
-    When I login as "IND" user
+    When I login to "Grants Portal" app as "IND" user
     And I navigate to "Applications" tab
     And I click toggle button to select "Applications - All"
     And I perform quick search for "{SavedValue:EGMSID}" in "---applicationIntake:-:publishedOpputunityTableId---" panel
@@ -2488,7 +2487,7 @@ Feature: Application Intake scenarios without background
     Then I softly see that "Subaward" is in "Created" status
     And I save the field labeled "EGMS ID" as "EGMSID"
     Given I am on "SUBPORTAL" portal
-    When I login as "IND" user
+    When I login to "Grants Portal" app as "IND" user
     And I navigate to "Applications" tab
     And I click toggle button to select "Applications - All"
     And I perform quick search for "{SavedValue:appEGMSID}" in "---applicationIntake:-:publishedOpputunityTableId---" panel
@@ -2658,7 +2657,7 @@ Feature: Application Intake scenarios without background
     And I "Disapprove" in the approval decision
     Then I see status in Progress-bar is "Rejected" and is "Red"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"

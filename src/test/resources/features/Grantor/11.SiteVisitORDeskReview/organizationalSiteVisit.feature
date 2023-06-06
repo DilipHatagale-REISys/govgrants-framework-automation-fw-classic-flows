@@ -171,7 +171,7 @@ Feature: Validate all scenarios in Organizational Site Visit
 #    Then I softly can see mail notification for "EXTERNAL" user with following subject:
 #      | Site Visit for {SavedValue:SiteVisitId} has been scheduled |
     Given I am on "INTERNAL" portal
-    When I login as "dynamicUser" user
+    When I login to "As a Grantor" app as "dynamicUser" user user
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "{SavedValue:SiteVisitId}" in "---sitevisits:-:manageSiteVisitTableId---" panel

@@ -5053,7 +5053,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on top right button "Send Back to Applicant" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly see value "Sent Back" for title "Decision Status" inside table "---applicationReview:-:appTableId---"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -5167,7 +5167,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on top right button "Send Back to Applicant" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly see value "Sent Back" for title "Decision Status" inside table "---applicationReview:-:appTableId---"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -5357,7 +5357,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on top right button "Send Back to Applicant" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly see value "Sent Back" for title "Decision Status" inside table "---applicationReview:-:appTableId---"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"

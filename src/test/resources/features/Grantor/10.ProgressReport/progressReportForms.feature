@@ -3972,3 +3972,490 @@ Feature: Validate scenarios in Progress Report Forms
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
+
+  @282676 @ValidateSF429eSPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonSF429form @sprint-26-US-282688 @vaibhav @Forms
+  Scenario: Validate SF429 SPI user can able to save & validate form after entering correct & valid data on all fields present on SF-429 form
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I wait for "2" seconds
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "2" seconds
+    Then I softly see value "Real Property Status Report (Cover Page) - SF-429" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I can see row level action button "Preview" against "Real Property Status Report (Cover Page) - SF-429" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "View" against "Real Property Status Report (Cover Page) - SF-429" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "Edit" against "Real Property Status Report (Cover Page) - SF-429" in flex table with id "---progressReport:-:formTableId---"
+    And I click on "View" icon for "Real Property Status Report (Cover Page) - SF-429" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    Then I softly see the text containing "OMB Number: 4040-0016"
+    Then I see the page contains text "Expiration Date: 02/28/2025"
+    And I click on "Edit" in the page details
+    And I enter "SF429_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+
+  @282826 @288910 @ValidateSF429ASPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldpresentonSF429Aform @sprint-26-US-282688 @vaibhav @Forms
+  Scenario: Validate SF429A SPI user can able to save & validate form after entering correct & valid data on all fields present on SF429A form
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I wait for "2" seconds
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "2" seconds
+    Then I softly see value "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I can see row level action button "Preview" against "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "View" against "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "Edit" against "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" in flex table with id "---progressReport:-:formTableId---"
+    And I click on "View" icon for "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    Then I softly see the text containing "OMB Number: 4040-0016"
+    Then I see the page contains text "Expiration Date: 02/28/2025"
+    And I click on "Edit" in the page details
+    And I enter "SF429A_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I refresh the page
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14k. NHPA" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "15. Significant Change" from computer
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #288910
+    When I click on "Back" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
+    And I wait for "3" seconds
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---progressReport:-:approversTableId---" by clicking "New" :
+      | Name          | Progress Report |
+      | Automation FO | Step 1          |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+
+  @282871 @ValidateSF429ASPIusercannotabletosavevalidateformafterenteringincorrectinvaliddataonallfieldspresentonSF429Aform @sprint-26-US-282688 @vaibhav @Forms
+  Scenario: Validate SF429A SPI user can not able to save & validate form after entering incorrect invalid data on all fields present on SF429A form
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I wait for "2" seconds
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "2" seconds
+    Then I softly see value "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I can see row level action button "Preview" against "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "View" against "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "Edit" against "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" in flex table with id "---progressReport:-:formTableId---"
+    And I click on "View" icon for "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    Then I softly see the text containing "OMB Number: 4040-0016"
+    Then I see the page contains text "Expiration Date: 02/28/2025"
+    And I click on "Edit" in the page details
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Federal Grant or Other Identifying Number Assigned by Federal Agency (#2 on cover page) is required to save. |
+      | Street1 is required to save.                                                                                 |
+      | City is required to save.                                                                                    |
+      | State is required to save.                                                                                   |
+      | ZIP / Postal Code is required to save.                                                                       |
+    And I enter "SF429A_Form_incorrect_data" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I refresh the page
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | The Gross Amount cannot be less than zero.                                                                                                   |
+      | The Usable Amount cannot be less than zero.                                                                                                  |
+      | The Land Acreage Amount cannot be less than zero.                                                                                            |
+      | Federal Share cannot be less than zero.                                                                                                      |
+      | Non Federal Share cannot be less than zero.                                                                                                  |
+      | Federal Percentage cannot be less than zero.                                                                                                 |
+      | Non Federal Percentage cannot be less than zero.                                                                                             |
+      | The Amount of Funds in "16 (i)" section cannot be less than zero.                                                                            |
+      | The Amount in "16 (ii)" section cannot be less than zero.                                                                                    |
+      | The Amount of funds in "16 (iii)" section cannot be less than zero.                                                                          |
+      | Value in "Electric" cannot be less than zero.                                                                                                |
+      | Value in "Btu" cannot be less than zero.                                                                                                     |
+      | Value in "Petroleum" cannot be less than zero.                                                                                               |
+      | Value in "Natural Gas" cannot be less than zero.                                                                                             |
+      | Value in "Other" cannot be less than zero.                                                                                                   |
+      #Below Is the Framework side logged bug Bug Id:- 321742 Once this resolved update the error message
+      | If \"Other\" is selected in \"Real Property Ownership Type\", Description is required.                                                       |
+      | If "Yes" is selected in section 14g, Describing the Instrument used is mandatory.                                                            |
+      | If "Yes" is selected in section 14g, Date is mandatory.                                                                                      |
+      | If "Yes" is selected in section 14g, Entering the Jurisdiction is mandatory.                                                                 |
+      | If "Other" option is selected in section 17, Justification in specify is required.                                                           |
+      | Unit type is required, if amount entered in "14c. Land Acreage Amount".                                                                      |
+      | Unit type required, if amount entered in "14d. Gross and Usable Square Footage/Meters".                                                      |
+      | Values can only be entered against the Electric (KWh) or Electric (Btu).                                                                     |
+      | Please enter Zip code in the Zip + 4 codes format (e.g. 12345-1234) in the 'Zip / Postal code' field.                                        |
+      | Adding file is required in "Files section" with classification "Environmental Compliance Requirements", if "Yes" option in "14j" is checked. |
+      | Adding file is required in "Files section" with classification "NHPA", if "Yes" option in "14k" is checked.                                  |
+      | Adding file is required in "Files section", if "Yes" option in "15" checked.                                                                 |
+
+  @282918 @288917 @ValidateSF429BSPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonSF429Bform @sprint-26-US-282693 @vaibhav @Forms
+  Scenario: Validate SF429B SPI user can able to save & validate form after entering correct & valid data on all fields present on SF429B form
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I wait for "2" seconds
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "2" seconds
+    Then I softly see value "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I can see row level action button "Preview" against "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "View" against "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "Edit" against "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" in flex table with id "---progressReport:-:formTableId---"
+    And I click on "View" icon for "Real Property Status Report ATTACHMENT B (Request to Acquire" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    Then I softly see the text containing "OMB Number: 4040-0016"
+    Then I see the page contains text "Expiration Date: 02/28/2025"
+    And I click on "Edit" in the page details
+    And I enter "SF429B_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I refresh the page
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14i. NHPA Description" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14h. Environmental Compliance Requirements" from computer
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #288917
+    When I click on "Back" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
+    And I wait for "3" seconds
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---progressReport:-:approversTableId---" by clicking "New" :
+      | Name          | Progress Report |
+      | Automation FO | Step 1          |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+
+  @vai @282920 @ValidateSF429BSPIusercannotabletosavevalidateformafterenteringincorrectinvaliddataonallfieldspresentonSF429Bform @sprint-26-US-282693 @vaibhav @Forms
+  Scenario: Validate SF429B SPI user cannot able to save & validate form after entering incorrect & invalid data on all fields present on SF429B form
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I wait for "2" seconds
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "2" seconds
+    Then I softly see value "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I can see row level action button "Preview" against "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "View" against "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "Edit" against "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" in flex table with id "---progressReport:-:formTableId---"
+    And I click on "View" icon for "Real Property Status Report ATTACHMENT B (Request to Acquire" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    Then I softly see the text containing "OMB Number: 4040-0016"
+    Then I see the page contains text "Expiration Date: 02/28/2025"
+    And I click on "Edit" in the page details
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Federal Grant or Other Identifying Number Assigned by Federal Agency (#2 on cover page) is required to save. |
+      | Street1 is required to save.                                                                                 |
+      | City is required to save.                                                                                    |
+      | State is required to save.                                                                                   |
+      | ZIP / Postal Code is required to save.                                                                       |
+    And I enter "SF429B_Form_incorrect_data" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | If "Other" option is selected in "14k", Justification in specify is required.                                                                |
+      | If "Other" option is selected in "14l", Justification in specify is required.                                                                |
+      | If "Other" is selected in "Real Property Ownership Type", Description is required.                                                           |
+      | Unit type is required, if amount entered in " 14d. Land Acreage or Square Units ".                                                           |
+      | Unit type is required, if amount entered in " 14e. Gross and Usable Square Footage/Meters ".                                                 |
+      | Values can only be entered against the Electric (KWh) or Electric (Btu) in section "14k"                                                     |
+      | Values can only be entered against the Electric (KWh) or Electric (Btu) in section "14l"                                                     |
+      | Please enter Zip code in the Zip + 4 codes format (e.g. 12345-1234) in the 'Zip / Postal code' field.                                        |
+      | Federal Percentage cannot be less than zero.                                                                                                 |
+      | Non Federal Percentage cannot be less than zero.                                                                                             |
+      | The Land Acreage Amount cannot be less than zero.                                                                                            |
+      | The Gross Amount cannot be less than zero.                                                                                                   |
+      | The Usable Amount cannot be less than zero.                                                                                                  |
+      | Federal Share cannot be less than zero.                                                                                                      |
+      | Non Federal Share cannot be less than zero.                                                                                                  |
+      | Value in "Electric " in "14k" cannot be less than zero.                                                                                      |
+      | Value in "Btu "in "14k" cannot be less than zero.                                                                                            |
+      | Value in "Petroleum " in "14k" cannot be less than zero.                                                                                     |
+      | Value in "Natural Gas" in "14k"cannot be less than zero.                                                                                     |
+      | Value in "Other " in "14k" cannot be less than zero.                                                                                         |
+      | Value in "Electric " in "14l" cannot be less than zero.                                                                                      |
+      | Value in "Btu "in "14l" cannot be less than zero.                                                                                            |
+      | Value in "Petroleum " in "14l" cannot be less than zero.                                                                                     |
+      | Value in "Natural Gas" in "14l"cannot be less than zero.                                                                                     |
+      | Value in "Other " in "14l" cannot be less than zero.                                                                                         |
+      | Adding file is required in "Files section" with classification "Environmental Compliance Requirements", if "Yes" option in "14h" is checked. |
+      | Adding file is required in "Files section" with classification "NHPA", if "Yes" option in "14i" is checked.                                  |
+    When I click on "Edit" in the page details
+    And I enter value "200" into field "fieldFederalSharePercentage__c"
+    And I enter value "300" into field "fieldNon_FederalSharePercentage__c"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Federal Share Percentage must be equal to or less than 100%.     |
+      | Non-Federal Share Percentage must be equal to or less than 100%. |
+
+  @282930 @288918 @ValidateSF429CSPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonSF429Cform @sprint-26-US-282693 @vaibhav @Forms
+  Scenario: Validate SF429C SPI user can able to save & validate form after entering correct & valid data on all fields present on SF-429C form
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I wait for "2" seconds
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "2" seconds
+    Then I softly see value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I can see row level action button "Preview" against "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "View" against "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "Edit" against "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" in flex table with id "---progressReport:-:formTableId---"
+    And I click on "View" icon for "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    Then I softly see the text containing "OMB Number: 4040-0016"
+    Then I see the page contains text "Expiration Date: 02/28/2025"
+    And I click on "Edit" in the page details
+    And I enter "SF429C_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I refresh the page
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14c. Proposed Use" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14g. Environmental Compliance Requirements" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14h. NHPA Description" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14i. Encumbered Parties" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "15. Request Reasons" from computer
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #288918
+    When I click on "Back" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
+    And I wait for "3" seconds
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---progressReport:-:approversTableId---" by clicking "New" :
+      | Name          | Progress Report |
+      | Automation FO | Step 1          |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+
+  @282921 @ValidateSF429CSPIusercannotabletosavevalidateformafterenteringincorrectinvaliddataonallfieldpresentonSF429Cform @sprint-26-US-282693 @vaibhav @Forms
+  Scenario: Validate SF429C SPI user cannot able to save & validate form after entering incorrect & invalid data on all fields present on SF-429C form
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I wait for "2" seconds
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "2" seconds
+    Then I softly see value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I can see row level action button "Preview" against "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "View" against "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "Edit" against "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" in flex table with id "---progressReport:-:formTableId---"
+    And I click on "View" icon for "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    Then I softly see the text containing "OMB Number: 4040-0016"
+    Then I see the page contains text "Expiration Date: 02/28/2025"
+    And I click on "Edit" in the page details
+    And I wait for "6" seconds
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Federal Grant or Other Identifying Number Assigned by Federal Agency (#2 on cover page) is required to save. |
+      | Street 1 is required to save.                                                                                |
+      | City is required to save.                                                                                    |
+      | State is required to save.                                                                                   |
+      | Zip Code is required to save.                                                                                |
+    And I enter "SF429C_Form_incorrect_data" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "6" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Unit type is required, if amount entered in " 13c. Land Acreage or Square Units ".                                                           |
+      | Unit type is required, if amount entered in " 13d. Gross and Usable Square Footage/Meters ".                                                 |
+      | Federal Percentage cannot be less than zero.                                                                                                 |
+      | Non Federal Percentage cannot be less than zero.                                                                                             |
+      | The Land Acreage Amount cannot be less than zero.                                                                                            |
+      | The Gross Amount cannot be less than zero.                                                                                                   |
+      | The Usable Amount cannot be less than zero.                                                                                                  |
+      | Federal Share cannot be less than zero.                                                                                                      |
+      | Non Federal Share cannot be less than zero.                                                                                                  |
+      | Adding file is required in "Files section" with classification "Environmental Compliance Requirements", if "Yes" option in "14g" is checked. |
+      | Adding file is required in "Files section" with classification "NHPA", if "Yes" option in "14h" is checked.                                  |
+      | Adding file is required in "Files section" with classification "Proposed Use", if "Yes" option in "14c" is checked.                          |
+      | Adding file is required in "Files section" with classification "Encumbered Parties" ,if "Yes" option in "14i" is checked.                    |
+      | Adding file is required in "Files section" with classification "Request Reason", if "Yes" option in "15" is checked.                         |
+      | Please enter Zip code in the Zip + 4 codes format (e.g. 12345-1234) in the 'Zip / Postal code' field.                                        |
+    When I click on "Edit" in the page details
+    And I enter value "200" into field "fieldFederalSharePercentage__c"
+    And I enter value "300" into field "fieldNon_FederalSharePercentage__c"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Federal Share Percentage must be equal to or less than 100%.     |
+      | Non-Federal Share Percentage must be equal to or less than 100%. |
