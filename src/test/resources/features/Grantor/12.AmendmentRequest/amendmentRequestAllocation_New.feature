@@ -2726,8 +2726,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I navigate to "Budget" sub tab
-    Then I softly see field "Total Commitment" as "$1,000.00"
-    And I save the field labeled "Total Commitment" as "TotalCommitment"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -2798,14 +2796,15 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "Subrecipient_BRedirection" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter value "Automation Justification" into field "fieldJustification__c"
-    When I click on "Save" in the page details
-    Then I softly see status in Progress-bar is "Created" and is "green"
-    And I click on "Edit" in the page details
     Then I softly see that "Spent" rendered in view mode only
     Then I softly see value "$300.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     Then I softly see value "$200.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     Then I softly see value "$500.00" for title "Spent" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     Then I softly see field "Spent" as "$500.00"
+    #256966
+    Then I softly see field "Current Obligation" as "$1,000.00"
+    And I save the field labeled "Current Obligation" as "CurrentObligation"
+    Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CurrentObligation}"
 
   @hitesh11 @256780 @VerifyusershouldabletoseePriorawardedbudgetAwardedbudgetshouldberenamedFAyes @sprint-19-US-255590 @hitesh @Allocation
   Scenario: Verify user should able to see Budget Summary by Focus Area Section, only if Focus area is Yes
@@ -2917,17 +2916,19 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I created approved FDM on application "{SavedValue:Automation Runtime Announcement}"
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties "Automation PM user"
     And I activate award from FDM having application name "{SavedValue:Automation Runtime Announcement}"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Subawards  - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
+    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---amendment:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:recipientAwardAmendmentRequestTableId---"
     When I enter "Subrecipient_BRedirection" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
     Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     When I edit the following rows inline in flex table with id "---amendment:-:AddLineItemForBudgetChangeTableId---" by clicking "Edit" :
       | Title        | Narrative     | Award Amount |
