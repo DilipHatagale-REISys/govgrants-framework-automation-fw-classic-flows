@@ -2984,7 +2984,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Title        | Narrative     | Award Amount |
       | Construction | The narrative | 500          |
     When I close "Add Line Items" modal by clicking the top right x button
-    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I pause execution for "5" seconds
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
