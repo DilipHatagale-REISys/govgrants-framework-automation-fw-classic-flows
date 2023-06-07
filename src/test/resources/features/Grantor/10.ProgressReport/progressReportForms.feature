@@ -3992,11 +3992,67 @@ Feature: Validate scenarios in Progress Report Forms
     When I navigate to "Forms and Files" sub tab
     And I select value inside table "---progressReport:-:formTableId---" is "All"
     And I wait for "2" seconds
-    Then I softly see value "Real Property Status Report (Cover Page) - SF-429" for title "Form Name" inside table "---progressReport:-:formTableId---"
-    Then I can see row level action button "Preview" against "Real Property Status Report (Cover Page) - SF-429" in flex table with id "---progressReport:-:formTableId---"
-    Then I can see row level action button "View" against "Real Property Status Report (Cover Page) - SF-429" in flex table with id "---progressReport:-:formTableId---"
-    Then I can see row level action button "Edit" against "Real Property Status Report (Cover Page) - SF-429" in flex table with id "---progressReport:-:formTableId---"
-    And I click on "View" icon for "Real Property Status Report (Cover Page) - SF-429" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    # SF429-A Form
+    And I click on "View" icon for "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    Then I softly see the text containing "OMB Number: 4040-0016"
+    Then I see the page contains text "Expiration Date: 02/28/2025"
+    And I click on "Edit" in the page details
+    And I enter "SF429A_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I refresh the page
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14k. NHPA" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "15. Significant Change" from computer
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    # SF429-B Form
+    And I select "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF429B_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I refresh the page
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14i. NHPA Description" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14h. Environmental Compliance Requirements" from computer
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    # SF429-C Form
+    And I select "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF429C_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I refresh the page
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14c. Proposed Use" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14g. Environmental Compliance Requirements" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14h. NHPA Description" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14i. Encumbered Parties" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "15. Request Reasons" from computer
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    # SF429 Form
+    And I select "Real Property Status Report (Cover Page) - SF-429" from dropdown at forms
     Then I softly see the text containing "OMB Number: 4040-0016"
     Then I see the page contains text "Expiration Date: 02/28/2025"
     And I click on "Edit" in the page details
@@ -4180,7 +4236,8 @@ Feature: Validate scenarios in Progress Report Forms
     Then I can see row level action button "Preview" against "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" in flex table with id "---progressReport:-:formTableId---"
     Then I can see row level action button "View" against "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" in flex table with id "---progressReport:-:formTableId---"
     Then I can see row level action button "Edit" against "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" in flex table with id "---progressReport:-:formTableId---"
-    And I click on "View" icon for "Real Property Status Report ATTACHMENT B (Request to Acquire" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I click on "View" icon for "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I select "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" from dropdown at forms
     Then I softly see the text containing "OMB Number: 4040-0016"
     Then I see the page contains text "Expiration Date: 02/28/2025"
     And I click on "Edit" in the page details
@@ -4226,7 +4283,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
 
-  @vai @282920 @ValidateSF429BSPIusercannotabletosavevalidateformafterenteringincorrectinvaliddataonallfieldspresentonSF429Bform @sprint-26-US-282693 @vaibhav @Forms
+  @282920 @ValidateSF429BSPIusercannotabletosavevalidateformafterenteringincorrectinvaliddataonallfieldspresentonSF429Bform @sprint-26-US-282693 @vaibhav @Forms
   Scenario: Validate SF429B SPI user cannot able to save & validate form after entering incorrect & invalid data on all fields present on SF429B form
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -4251,7 +4308,8 @@ Feature: Validate scenarios in Progress Report Forms
     Then I can see row level action button "Preview" against "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" in flex table with id "---progressReport:-:formTableId---"
     Then I can see row level action button "View" against "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" in flex table with id "---progressReport:-:formTableId---"
     Then I can see row level action button "Edit" against "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" in flex table with id "---progressReport:-:formTableId---"
-    And I click on "View" icon for "Real Property Status Report ATTACHMENT B (Request to Acquire" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I click on "View" icon for "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I select "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" from dropdown at forms
     Then I softly see the text containing "OMB Number: 4040-0016"
     Then I see the page contains text "Expiration Date: 02/28/2025"
     And I click on "Edit" in the page details
