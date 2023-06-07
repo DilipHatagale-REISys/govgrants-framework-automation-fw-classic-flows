@@ -1527,7 +1527,7 @@ Feature: Validate all scenarios in Organizational Site Visit Without Background
       The EGMS Team
       """
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel

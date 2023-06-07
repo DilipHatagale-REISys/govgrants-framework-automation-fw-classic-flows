@@ -526,7 +526,7 @@ Feature: Validate all scenarios in the home tab
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Application" and properties "default"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Not Yet Qualified Opportunities - Open"
@@ -740,7 +740,7 @@ Feature: Validate all scenarios in the home tab
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---home:-:externalPendingTasktableId---" panel
@@ -749,7 +749,7 @@ Feature: Validate all scenarios in the home tab
   @62106 @indUserEditProfile @deepika
   Scenario: Verify whether the Individual Sub Profile Users can view their own contact information under Overview Tab
     Given I am on "SUBPORTAL" portal
-    When I login as "IND" user
+    When I login to "Grants Portal" app as "IND" user
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     When I navigate to "Overview" sub tab

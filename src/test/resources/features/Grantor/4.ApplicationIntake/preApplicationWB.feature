@@ -8,7 +8,7 @@ Feature: Pre-Application scenarios without background
   Validate whether User will be able to enter the required information for the creation on Pre Application before the Due date
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPA" user
+    And I login to "Grants Portal" app as "SPA" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -35,7 +35,7 @@ Feature: Pre-Application scenarios without background
   Validate whether users from other organizations will be able to create Pre-Applications
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES"
     Given I am on "SUBPORTAL" portal
-    And I login as "SPA" user
+    And I login to "Grants Portal" app as "SPA" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -58,7 +58,7 @@ Feature: Pre-Application scenarios without background
       | Construction  | 5000   | 5000       | 50             | 100            |
     Then I softly cannot see top right button "Submit Application" in page detail
     Given I am on "SUBPORTAL" portal
-    And I login as "SA" user
+    And And I login to "Grants Portal" app as "SA" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -73,7 +73,7 @@ Feature: Pre-Application scenarios without background
   Validate whether User is able to view the Leverage column in the budget grid when the value set as Yes. |Validate the user  will be able to view the the Program Income field on the overview tab when the value set as Yes.
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -110,7 +110,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate whether the User is able to create Pre Application when the Opportunity setting for Pre Application (No)
     And I published "Competitive" type announcement having name "Automation Runtime Announcement for PreApp and App" and properties "default"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -133,7 +133,7 @@ Feature: Pre-Application scenarios without background
     And I navigate to "Overview" sub tab
     Then I softly see field "PreApplication Due Date" is getting updated with todays date
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -155,7 +155,7 @@ Feature: Pre-Application scenarios without background
     And I click on "Unpublish" in the page details
     And I pause execution for "6" seconds
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - All"
@@ -301,7 +301,7 @@ Feature: Pre-Application scenarios without background
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnId"
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -362,7 +362,7 @@ Feature: Pre-Application scenarios without background
   Scenario Outline: Validate whether SPI/SPA user has the ability to delete the created pre-Application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -388,7 +388,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate whether user can edit the Opportunity Overview page block fields when the pre-application is in draft status |Validate whether SPI & SPA users are able to view the qualified and created Status of Qualified Pre-Application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -436,7 +436,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate the Pre-applications are visible for other organizations
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SA" user
+    And And I login to "Grants Portal" app as "SA" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -447,7 +447,7 @@ Feature: Pre-Application scenarios without background
   Scenario Outline: Validate the Pre-applications are visible for their own organization and for child organizations.
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -538,7 +538,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate when the focus area setting from the funding opportunity is No, then SPI User should be able to view the focus area settings as No and cannot see the page block
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APP_YES_FOCUS_AREA_NO"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -734,7 +734,7 @@ Feature: Pre-Application scenarios without background
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-App}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I get the "EGMS ID"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -790,7 +790,7 @@ Feature: Pre-Application scenarios without background
     And I wait for "4" seconds
     And I click on "Publish" in the page details
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -825,7 +825,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate whether User will be able to view the Match column in the budget grid when the value set as Yes while announcement creation with pre-application is set as yes
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES_AND_NO_MATCH"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -851,7 +851,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate whether SPI user will be able to take the snapshot on page when the pre-application is in draft status and is saved under snapshot history
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -874,7 +874,7 @@ Feature: Pre-Application scenarios without background
   Validate the title entered while creating the pre-application reflects same under Oppurtunity Name
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement PreApplication" and properties "PRE_APP_YES_PROGRAM_INCOME_NO"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement PreApplication}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
@@ -895,7 +895,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate submitted pre application send back to negotiation from grantor side after selecting the Request Negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -971,7 +971,7 @@ Feature: Pre-Application scenarios without background
   Scenario: when pre-application is Accept then "Request Negotiation" button is hide  from Grantor
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1017,7 +1017,7 @@ Feature: Pre-Application scenarios without background
   Scenario: on Rejected preapplication negotiation tab should be hidden if the negotiation is not initiated
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1064,7 +1064,7 @@ Feature: Pre-Application scenarios without background
   Scenario: task is created when negotiation request preapplication  is send to subrecipient
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1117,7 +1117,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate save and cancel button is displayed on subrecipient side
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1173,7 +1173,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate Due date field is displayed on subrecipient side
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1233,7 +1233,7 @@ Feature: Pre-Application scenarios without background
   Scenario: button Request Negotiation is displayed on Grantor to Initiate Negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1275,7 +1275,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Subrecipient  user is able to  submit to grantor the negotiation request  preapplication
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1335,7 +1335,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Due Date field should be Required to submit under Negotiation Request details section on Grantor
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1385,7 +1385,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Explanation of negotiation needed field should be Required to submit under Negotiation Request details section on Grantor
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1437,7 +1437,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate user should able to click on Send to Subrecipient button  on Grantor Side
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1488,7 +1488,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate Internal User should able to edit the field after in click on Request negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1534,7 +1534,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate subrecipient should able to to see the status of pre-application is Negotiation Initiated
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1600,7 +1600,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Verify user should able to select the picklist value at "Negotiations Request Details" section in "Pre-Application Section for Negotiation" multi-pick list.
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1643,7 +1643,7 @@ Feature: Pre-Application scenarios without background
   Scenario:The status on pre-application when negotiation is initiated on subrecipient side
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1699,7 +1699,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Verify the Applicant Response section is displayed for the Negotiation tab
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I pause execution for "3" seconds
@@ -1754,7 +1754,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Verify the edit button is displayed on pre-applications on subrecipient side
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1809,7 +1809,7 @@ Feature: Pre-Application scenarios without background
   Scenario Outline: Validate Negotiation Request Details section should contain the Negotiation details for the applicant to view on Grantor
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1860,7 +1860,7 @@ Feature: Pre-Application scenarios without background
   Scenario Outline: Validate help text displayed for the Negotiation request details section on subrecipient side
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1919,7 +1919,7 @@ Feature: Pre-Application scenarios without background
   Scenario Outline: help text is displayed on subrecipient side for pre-application for applicant  response section
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1978,7 +1978,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate User Should Able To See EDit View Preview Button In Files Form
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2036,7 +2036,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate user should able to see Error Message on validate button
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2077,7 +2077,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate user should able to see the Success Message on validate button
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2125,7 +2125,7 @@ Feature: Pre-Application scenarios without background
   Scenario Outline: Validate SPI & SPA both user can edit the form many times before submitting the pre-application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2165,7 +2165,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate user should able to see the Edit Validate Back button after saving the preapplication form
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2202,7 +2202,7 @@ Feature: Pre-Application scenarios without background
   Scenario Outline: Validate preapplication is accepted/rejected then user should only view preview the form in form table
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2252,7 +2252,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Verify the Explanation of Revisions needed section  displayed on negotiation section is read only on subrecipient side
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2306,7 +2306,7 @@ Feature: Pre-Application scenarios without background
   Scenario: the user can edit only those section which are selected by grantor while initiating the negotiation request on pre-application on Subrecipient side
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2365,7 +2365,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Verify the subrecipient user is able to save details
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2432,7 +2432,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Verify user should not submit the pre-application if pre-application form is not fill the 100% & as per filling field % should be display on the form
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2470,7 +2470,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Verify Internal User can view & preview the pre-application form & internal user should not edit the form .
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2515,7 +2515,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate announcement owner should able to see the Forms and Files:Forms option in the pre application section for Negotiation tab at grantor side
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2578,7 +2578,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate user select the Forms and Files Forms and have not selected any form for negotiation To Show Error Message
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2625,7 +2625,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate user should able to see the changes after feeling the format grantor & Subrecipient side
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2699,7 +2699,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate announcement owner should able to see the Forms and Files Forms option in the pre application section for Negotiation tab at grantor side
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2779,7 +2779,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Verify If the Form is selected for edit, and user have not added the "Forms and Files: Forms" in the Application section, then user should get error on sent to s/r click at grantor side.
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2835,7 +2835,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Verify spi user (pre-application record owner)should edit only sections and the forms which internal user selected while requesting negotiation for the pre-application.
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2894,7 +2894,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate the pending task is created for the grantor on submit to grantor  negotiation request
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -3056,7 +3056,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate Pre-Application Review Negotiation task should not generate for admin user on reassign my task page
     And I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_YES-Automation EXE user"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -3317,7 +3317,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate Pre-Application Review Negotiation' task should not generate for PM user on reassign my task page
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -4532,7 +4532,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate Pre-app Pre-application review task should not generate for new owner of Ann after Ann owner change his ownership
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -5710,7 +5710,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate Pre-app new owner should see the below buttons when s/r user submit the pre-application negotiation to grantor after it's related Ann owner will change its ownership and assign to new user
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"

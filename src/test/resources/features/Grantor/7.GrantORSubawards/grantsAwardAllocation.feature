@@ -10621,7 +10621,7 @@ Feature: Validate all scenarios of grants and award for Allocation
   @244290 @244292 @244196 @ValidateSPISPAusershouldnotseebudgetedamountcolumninsubmitforclosestateofaward @sprint-16-US-238299 @vaibhav @Allocation
   Scenario Outline: Validate SPI/SPA user should not see 'budgeted amount' column in submit for close state of award
     Given I am on "SUBPORTAL" portal
-    When I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -11261,7 +11261,7 @@ Feature: Validate all scenarios of grants and award for Allocation
   @244309 @ValidateINDusershouldseeCumulativeObligationreadonlycolumninclosestateofaward @sprint-16-US-238299 @vaibhav @Allocation
   Scenario: Validate IND user should see 'Cumulative Obligation' read only column in close state of award
     Given I am on "SUBPORTAL" portal
-    When I login as "IND" user
+    When I login to "Grants Portal" app as "IND" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -14373,7 +14373,7 @@ Feature: Validate all scenarios of grants and award for Allocation
   @244137 @244170 @ValidateSPIusershouldnotseeBudgetedAmountfieldonawardinclosestate @sprint-16-US-239751 @vaibhav @Allocation
   Scenario: Validate SPI user should not see 'Budgeted Amount' field on award in close state
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -15468,7 +15468,7 @@ Feature: Validate all scenarios of grants and award for Allocation
   Scenario Outline: Validate SPI/SPA user see cumulative Obligation which is coming from the cumulative Obligation field in the latest active award
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     When I am on "SUBPORTAL" portal
-    And I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -16769,7 +16769,7 @@ Feature: Validate all scenarios of grants and award for Allocation
   Scenario: Validate Direct IND user should see update values in Cumulative Obligation & Total Commitment fields under Budget Summary section of Budget tab is in Active state on Grant layout
     Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Directed"
     When I am on "SUBPORTAL" portal
-    And I login as "IND" user
+    And I login to "Grants Portal" app as "IND" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -16816,7 +16816,7 @@ Feature: Validate all scenarios of grants and award for Allocation
   Scenario: Validate Comp Ann IND user should see update values in Cumulative Obligation & Total Commitment fields under Budget Summary section of Budget tab is in Active state on Grant layout
     Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I am on "SUBPORTAL" portal
-    And I login as "IND" user
+    And I login to "Grants Portal" app as "IND" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"

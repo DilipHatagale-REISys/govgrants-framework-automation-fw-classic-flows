@@ -375,7 +375,7 @@ Feature: Validate sanity testing of Complete UAT Business Flow
     And I click on "Publish" in the page details
     Then I softly see field "Status" as "Published"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Record Id" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
@@ -412,7 +412,7 @@ Feature: Validate sanity testing of Complete UAT Business Flow
   @138919 @VerifyDeletionOfKPI_KPI @monu
   Scenario: Validate user (record owner) should able to delete KPI
     Given I am on "INTERNAL" portal
-    Given I login as "EXE" user
+    Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
@@ -431,7 +431,7 @@ Feature: Validate sanity testing of Complete UAT Business Flow
   @138954 @VerifyVisibilityOfKPIToAllUsers_KPI @monu
   Scenario Outline: Validate user (all users) should able to View KPI
     Given I am on "INTERNAL" portal
-    Given I login as "EXE" user
+    Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
@@ -458,7 +458,7 @@ Feature: Validate sanity testing of Complete UAT Business Flow
   Scenario: Validate user should able to create Package
   |Validate user should able to associate forms in the Package|
     Given I am on "INTERNAL" portal
-    Given I login as "PM" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     And I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
     When I click on top right button "New Package" in flex table with id "---UATRelatedTableID:-:GrantorPackagesTableId---"
@@ -488,7 +488,7 @@ Feature: Validate sanity testing of Complete UAT Business Flow
   |Validate user should able to Edit Terms and Condtions|
   |Validate that user should able to View Terms and Conditions|
     Given I am on "INTERNAL" portal
-    Given I login as "Admin" user
+    Given I login to "As a Grantor" app as "Admin" user
     When I navigate to "Planning" tab
     And I navigate to "Terms and Conditions" content inside "Setup" subheader on left panel
     When I click on top right button "New" in flex table with id "---UATRelatedTableID:-:GrantorTermsAndConditionTableId---"
@@ -2064,7 +2064,7 @@ Feature: Validate sanity testing of Complete UAT Business Flow
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
@@ -2720,7 +2720,7 @@ Feature: Validate sanity testing of Complete UAT Business Flow
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
@@ -2787,7 +2787,7 @@ Feature: Validate sanity testing of Complete UAT Business Flow
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel

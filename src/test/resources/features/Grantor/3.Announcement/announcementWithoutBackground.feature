@@ -5891,7 +5891,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see status in Progress-bar is "Created" and is "Green"
     Given I published "Competitive" type announcement having name "Automation Runtime Competitive Announcement" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"

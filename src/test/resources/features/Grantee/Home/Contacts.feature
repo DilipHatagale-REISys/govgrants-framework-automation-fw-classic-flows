@@ -137,7 +137,7 @@ Feature: Contacts related scenarios
   @61905 @validateAddingOfContactForFederalOrganizationUnderExternalContact  @needToCheckWithParallelExecution  @positive
   Scenario Outline: Validate addition of contact for federal organization to check maximum length at external federal contact table
     When I delete the record "<contactName>" from the object "Contact"
-    When I login as "<userType>" user
+    When I login to "As a Grantor" app as "<userType>" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalFederalContacts}"
@@ -169,7 +169,7 @@ Feature: Contacts related scenarios
   @61917 @validateAddingOfContactForNonFederalOrganizationUnderExternalContact @needToCheckWithParallelExecution  @positive
   Scenario Outline: Validate addition of contact for non federal organization to check maximum length at external non federal contact table
     When I delete the record "<contactName>" from the object "Contact"
-    When I login as "<userType>" user
+    When I login to "As a Grantor" app as "<userType>" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
@@ -524,7 +524,7 @@ Feature: Contacts related scenarios
 
   @62011 @validateDeletionOfContactUsingLoggedInUser @smoke  @positive
   Scenario: Validate deletion of contact from external federal contact table using logged in user but not with record owner
-    Given I login as "PM" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalFederalContacts}"
@@ -544,7 +544,7 @@ Feature: Contacts related scenarios
 
   @62011 @validateImpactOfDeletionOfContactFromExternalFederalContacts  @positive
   Scenario: Validate after deletion of contact from external federal contact table it should not displayed under respective organization
-    Given I login as "PM" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalFederalContacts}"
@@ -594,7 +594,7 @@ Feature: Contacts related scenarios
 
   @62010 @validateDeletionOfContactUsingLoggedInUserForNonFederalContact @smoke
   Scenario: Validate deletion of contact from external non federal contact table using logged in user but not with record owner
-    Given I login as "PM" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
@@ -613,7 +613,7 @@ Feature: Contacts related scenarios
 
   @62010 @validateImpactOfDeletionOfContactFromExternalNonFederalContacts
   Scenario: Validate after deletion of contact from external non federal contact table it should not displayed under respective organization
-    Given I login as "PM" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalNonFederalContacts}"

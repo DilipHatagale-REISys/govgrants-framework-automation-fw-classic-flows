@@ -5,7 +5,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Validate SPI User user able to see the Budget summary section it should be visible at the top of Budget Tab(not including noncash match/cash match, other leverage)
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -22,7 +22,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Validate SPI User in budget summary tab Budgeted Amount should be equal to Allocation Amount
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -49,7 +49,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Validate SPI User if budgeted amount is not equal to allocation amount then error message should generate on click on submit to grantor button
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -344,7 +344,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Validate SPA User user should able to add & remove focus area from budget summary by focus area section at S/R side
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPA" user
+    When I login to "Grants Portal" app as "SPA" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -364,7 +364,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Validate SPA User user should able to add & remove the focus area from Budget Summary by Focus Area section at s/r side
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPA" user
+    When I login to "Grants Portal" app as "SPA" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -473,7 +473,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Validate IND User budgeted Amount each focus area should get updated from the budget section
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "INVITED_APPLICANT_IND_ORG_BY_APPLICANT"
     Given I am on "SUBPORTAL" portal
-    When I login as "IND" user
+    When I login to "Grants Portal" app as "IND" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -501,7 +501,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Validate SPA User when For announcements with allocation-level = By Applicant and Focus Area is yes then user should see the Budget Summary by focus Area Section & budget summary section also
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPA" user
+    When I login to "Grants Portal" app as "SPA" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -645,7 +645,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Validate IND User if budgeted amount & Allocation Amount is not equal then user should able to see the error message on click on submit to grantor button
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "INVITED_APPLICANT_IND_ORG_BY_APPLICANT_FOCUS_AREA"
     Given I am on "SUBPORTAL" portal
-    When I login as "IND" user
+    When I login to "Grants Portal" app as "IND" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -690,7 +690,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Validate IND User Focus area's budgeted amount, must be equal to Allocation amount for that focus area in budget summary section
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "INVITED_APPLICANT_IND_ORG_BY_APPLICANT_FOCUS_AREA"
     Given I am on "SUBPORTAL" portal
-    When I login as "IND" user
+    When I login to "Grants Portal" app as "IND" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -1041,7 +1041,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario Outline: Verify Page layout modification due to Allocation level on submitted Applications layout submitted against all announcements (Internal Side)
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "INVITED_APPLICANT_IND_ORG_FOCUS_AREA_NO"
     Given I am on "SUBPORTAL" portal
-    When I login as "IND" user
+    When I login to "Grants Portal" app as "IND" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -1099,7 +1099,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Formula Ann_ Verify as Admin user I see 'Budget Summary by Focus Area' section exact after the budget summary section under budget tab on App
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -1158,7 +1158,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Formula Ann_ Verify as EXE user I can see 'Budget Summary by Focus Area' section on App if setting allocation-level = By applicant and Focus area is 'Yes' on Ann
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -1212,7 +1212,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Formula Ann_ Verify Focus area section should be hidden on app, even if Focus Area is "no" and Allocation level
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -1264,7 +1264,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Directed Ann_ Verify as PM user I cannot see  sub-award floor and sub-award ceiling, under the overview tab in App
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -1321,7 +1321,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Directed Ann_ Verify as PM user I see new 'Budget summary' section on top of budget tab on App
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "FOCUS_AREA_NO"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -1376,7 +1376,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Directed Ann_ Verify as EXE user I can not see 'Budget Summary by Focus Area' section on App  if setting focus area is No on Ann
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "FOCUS_AREA_NO"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -1427,7 +1427,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Directed Ann_ Verify as EXE user I see new 'Budget summary' section on top of budget tab on App
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -1480,7 +1480,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Competitive Ann_ Verify as PM user I cannot see  sub-award floor and sub-award ceiling, under the overview tab in App
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -1537,7 +1537,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Competitive Ann_ Verify as EXE user I see new 'Budget summary' section on top of budget tab on App
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -1591,7 +1591,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Competitive Ann_ Verify as PM user I see new 'Budget summary' section on top of budget tab on App
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "FOCUS_AREA_NO"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -1645,7 +1645,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Competitive Ann_ Verify as Admin user I can not see 'Budget Summary by Focus Area' section on App  if setting focus area is No on Ann
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "FOCUS_AREA_NO"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -1785,7 +1785,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Competitive Ann as PM user should not see 'Focus Area' section under Budget subtab of pre-application even if setting as Allocation level is 'NA' & Focus Area is 'YES'
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
@@ -1828,7 +1828,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Competitive Ann>> Verify as PM user can not see 'Budget Summary by Focus Area' section below Budget summary section under Budget subtab of pre-application if setting as focus Area is 'NO'
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "PRE_APP_YES_FOCUS_AREA_NO"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
@@ -1872,7 +1872,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   | Directed Ann>> Verify as EXE user can see 'Budget Summary by Focus Area' section below Budget summary section under Budget subtab of pre-application if setting as focus Area is 'YES''|
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
@@ -1921,7 +1921,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Directed Ann>> Verify as PO user can not see 'Budget Summary by Focus Area' section below Budget summary section under Budget subtab of pre-application if setting as focus Area is 'NO'
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "PRE_APP_YES_FOCUS_AREA_NO"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
@@ -1966,7 +1966,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   | Pre-application>>Verify as SPI user should not see both Sub award floor & sub award ceiling field under Opportunity overview section for Competitive Announcement |
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
@@ -2021,7 +2021,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Pre-application>>Verify as SPA user should see Budget Summary by Focus Area section below Budget Summary section under budget tab of pre-application if focus area is 'YES' for Competitive Announcement
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPA" user
+    And I login to "Grants Portal" app as "SPA" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
@@ -2043,7 +2043,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   | Pre-application>>Verify as SPI user should see validation related to sub award floor and sub award ceiling fields & pointing to the Budget tab of pre-application for Directed Announcement|
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
@@ -2103,7 +2103,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario:Pre-application>>Verify as SPI user should not see Budget Summary by Focus Area section below Budget Summary section under budget tab of pre-application if focus area is 'NO' for Directed Announcement
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "PRE_APP_YES_FOCUS_AREA_NO"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
@@ -2119,7 +2119,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Pre-application>>Verify as SPA user should see 'Budgeted Amount' field under 'Pre-application Overview' section under Overview subtab of pre-application for Directed Announcement
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
@@ -2136,7 +2136,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Directive Ann - Verify IND user can edit "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "INVITED_APPLICANT_IND_ORGPRE_PRE_APPLICATION_NEGOTIATION"
     When I am on "SUBPORTAL" portal
-    And I login as "IND" user
+    And I login to "Grants Portal" app as "IND" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2195,7 +2195,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Verify IND user can not edit "Budget Tab: Budget Summary by Focus Area" section in negotiation accept state for pre-app
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "IND" user
+    And I login to "Grants Portal" app as "IND" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2274,7 +2274,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Directive Ann - Verify IND user can't edit "Budget Tab: Budget Summary by Focus Area" section if grantor not selected "Budget Tab: Budget Summary by Focus Area" for pre-application for negotiation
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "INVITED_APPLICANT_IND_ORGPRE_PRE_APPLICATION_NEGOTIATION"
     When I am on "SUBPORTAL" portal
-    And I login as "IND" user
+    And I login to "Grants Portal" app as "IND" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2359,7 +2359,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
     When I am on "SUBPORTAL" portal
-    And I login as "IND" user
+    And I login to "Grants Portal" app as "IND" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2431,7 +2431,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Verify EXE user can see "Budget Tab: Budget Summary by Focus Area" option instead of "Budget Tab: Focus Area" in Pre-Application section for Negotiation
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "INVITED_APPLICANT_IND_ORGPRE_PRE_APPLICATION_NEGOTIATION"
     When I am on "SUBPORTAL" portal
-    And I login as "IND" user
+    And I login to "Grants Portal" app as "IND" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
@@ -2480,7 +2480,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   | Verify SPI/SPA user can not edit/add/remove focus area from "Budget Tab: Budget Summary by Focus Area" section in negotiation submit to grantor state for pre-app |
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2547,7 +2547,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario Outline: Verify SPI SPA user can't edit Budget Tab Budget Summary by Focus Area" section if grantor not selected Budget Tab Budget Summary by Focus Area for pre application for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2634,7 +2634,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
     When I am on "SUBPORTAL" portal
-    And I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2710,7 +2710,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario Outline: Verify SPI/SPA user can edit "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2773,7 +2773,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Verify 'Budget summary by focus area' section should be hidden on pre-app if focus area set as 'No' on Ann but still the option 'Budget summary by focus area' on pre-app negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APP_YES_NEGO_YES_FOCUS_AREA_NO"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2858,7 +2858,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
