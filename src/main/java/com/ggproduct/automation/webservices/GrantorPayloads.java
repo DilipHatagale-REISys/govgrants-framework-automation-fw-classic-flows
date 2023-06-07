@@ -429,6 +429,8 @@ public class GrantorPayloads {
                 return updateAnnouncementWithSecondFocusArea(json);
             case "SECOND_FOCUS_AREA_BY_APPL_RISK_ASS_NO":
                 return updateAnnouncementWithSecondFocusAreaByappRiskNo(json);
+            case "SECOND_FOCUS_AREA_BY_APPLICANT_FOCUS_AREA_RISK_ASS_NO":
+                return updateAnnouncementWithSecondFocusAreaByappFocusAreaRiskNo(json);
             default:
                 return json;
         }
@@ -452,6 +454,21 @@ public class GrantorPayloads {
         JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre1 = new JsonArray();
         jsonObject1.addProperty("Allocationlevel","By Applicant");
+        jsonObject1.addProperty("RiskAssessment_Required", "No");
+        pre1.add(jsonObject1);
+        json.add("Announcement", pre1);
+        return json;
+    }
+
+    private JsonObject updateAnnouncementWithSecondFocusAreaByappFocusAreaRiskNo(JsonObject json) {
+        JsonArray serviceArea = new JsonArray();
+        JsonObject serviceAreaB = new JsonObject();
+        serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        serviceArea.add(serviceAreaB);
+        json.add("AnnouncementServiceArea", serviceArea);
+        JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre1 = new JsonArray();
+        jsonObject1.addProperty("Allocationlevel", "By Applicant and Focus Area");
         jsonObject1.addProperty("RiskAssessment_Required", "No");
         pre1.add(jsonObject1);
         json.add("Announcement", pre1);
