@@ -2953,10 +2953,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Current Obligation" as "CurrentObligation"
     Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CurrentObligation}"
     Then I softly see that "Spent" rendered in view mode only
-    Then I softly see field "Spent" as "$500.00"
+    Then I softly see field "Spent" as "$0.00"
     Then I softly see that "Budgeted Amount" rendered in view mode only
     Then I softly see field "Budgeted Amount" as "$1,000.00"
-    Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
+    Then I see the following rows under the following headers in table with id "---amendment:-:budgetChangeTableId---" :
       | Revised Award Amount |
       | $1,000.00            |
     Then I softly see field "Current Commitment" as "$1,000.00"
