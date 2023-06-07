@@ -1073,7 +1073,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Submit" in the page details
     Given I am on "SUBPORTAL" portal
-    When I login as "IND" user
+    When I login to "Grants Portal" app as "IND" user
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
@@ -1709,7 +1709,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
   @64603 @taskIsNotCreatedForSPI @deepika
   Scenario: Verify Task is not generated for SPI to Create Risk Assessment for an Organization
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     When I create a risk assessment record for organization "Automation Permanent Organization for Risk Assessment"
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel

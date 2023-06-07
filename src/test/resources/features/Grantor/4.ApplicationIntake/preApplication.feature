@@ -4,7 +4,7 @@ Feature: Validate all scenarios in the Pre-Application
   Background: Qualify Announcement and Create PreApplication
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
@@ -137,7 +137,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     And I click on "Submit to Grantor" in the page details
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - All"
@@ -277,7 +277,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "Reject" in the page details
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - All"
@@ -304,7 +304,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - All"
@@ -319,7 +319,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I click on "Start" icon for "Record id" inside flex table with id "---preApplication:-:pendingTaskTableId---"
     When I click on "Accept" in the page details
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - Submitted"

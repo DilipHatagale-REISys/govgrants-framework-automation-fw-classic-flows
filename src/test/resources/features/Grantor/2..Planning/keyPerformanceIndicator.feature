@@ -84,7 +84,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
   @52625 @userFOEditKPI
   Scenario: Negative Case-Verfiy that PM user cannot Edit the record
     Given I am on "INTERNAL" portal
-    Given I login as "EXE" user
+    Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
@@ -102,7 +102,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
   @52622 @userFODeleteKPI
   Scenario: Negative Case-Verfiy that PM user cannot Delete the record
     Given I am on "INTERNAL" portal
-    Given I login as "EXE" user
+    Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
@@ -120,7 +120,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
   @52623 @deactivateKPI
   Scenario Outline: Negative Case-Verfiy that EXE can deactivate the record
     Given I am on "INTERNAL" portal
-    Given I login as "<User>" user
+    When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
@@ -139,7 +139,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
   @52536 @deactivateKPIFOUser
   Scenario Outline:  Negative Case- Verfiy that other users (other than Admin, EXE) can not deactivate KPI
     Given I am on "INTERNAL" portal
-    Given I login as "<User>" user
+    When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
@@ -162,7 +162,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
   @52535 @closedKPIListView
   Scenario: Verfiy that user can see Closed KPI under Inactive KPI list view.
     Given I am on "INTERNAL" portal
-    Given I login as "EXE" user
+    Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     And I click toggle button to select "Key Performance Indicators (KPI) - Draft"

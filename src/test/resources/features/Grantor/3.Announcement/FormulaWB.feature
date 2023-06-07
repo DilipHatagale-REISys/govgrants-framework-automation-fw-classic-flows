@@ -685,7 +685,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Validate SPI User Name should be change to Budget Summary from Financial Details for formula Announcement on qualified/Not yet qualified Opportunity page layouts
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -700,7 +700,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Validate SPI User for formula announcements with allocation-level = By Applicant and Focus Area budget summary section display including focus area & Allocation amount field (Qualified & Not yet Qualified  page )
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -728,7 +728,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario Outline: Validate SPA User_for formula announcement Allocation Amount Section should be hide(Qualified/Not Yet Qualified opportunity page)
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     Given I am on "SUBPORTAL" portal
-    When I login as "<userType>" user
+    And I login to "Grants Portal" app as "<userType>" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -759,7 +759,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Validate user add same focus area to different Organization then only respective focus area should display to this organization
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -784,7 +784,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario Outline: Validate SPI/SPA User for formula announcement in budget summary section Allocation Amount field should be display with allocation level-By Applicant
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
     Given I am on "SUBPORTAL" portal
-    When I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -3666,7 +3666,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Verify when Allocation amount is updated for Allocation in Applicants then email should be triggered (Announcement is in Published state)(For formula announcements with allocationlevel By Applicant & Focus Area)
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -4812,7 +4812,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
     When I save the field labeled "EGMS ID" as "EGMSID"
     Given I am on "SUBPORTAL" portal
-    When I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -4943,7 +4943,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
     When I save the field labeled "EGMS ID" as "EGMSID"
     Given I am on "SUBPORTAL" portal
-    When I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -4995,7 +4995,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
     When I save the field labeled "EGMS ID" as "EGMSID"
     Given I am on "SUBPORTAL" portal
-    When I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -5043,7 +5043,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Send to Subrecipient" in the page details
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
     Given I am on "SUBPORTAL" portal
-    When I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -5095,7 +5095,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
     When I save the field labeled "EGMS ID" as "EGMSID"
     Given I am on "SUBPORTAL" portal
-    When I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -5225,7 +5225,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
     When I save the field labeled "EGMS ID" as "EGMSID"
     Given I am on "SUBPORTAL" portal
-    When I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -5272,7 +5272,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Send to Subrecipient" in the page details
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
     Given I am on "SUBPORTAL" portal
-    When I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -5324,7 +5324,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
     When I save the field labeled "EGMS ID" as "EGMSID"
     Given I am on "SUBPORTAL" portal
-    When I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -5468,7 +5468,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Applicants                          | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
     Given I am on "SUBPORTAL" portal
-    When I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -5532,7 +5532,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Automation Permanent Focus Area | 2000              |
     And I refresh the page
     Given I am on "SUBPORTAL" portal
-    When I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -5601,7 +5601,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Automation Permanent Focus Area | 2000              |
     And I refresh the page
     Given I am on "SUBPORTAL" portal
-    When I login as "<User>" user
+    And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel

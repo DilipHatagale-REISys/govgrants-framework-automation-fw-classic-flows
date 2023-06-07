@@ -84,7 +84,7 @@ Feature: Opportunities related scenarios
 
   @63052 @NotConverted @validateAllInternalOrganizationsCanViewOpportunitiesAreViewableToAll @smoke @positive
   Scenario Outline: verify all users can view opportunities -Not Converted to Application List Page
-    Given I login as "<user type>" user
+    When I login to "As a Grantor" app as "<userType>" user
     And I navigate to "Opportunities" tab
     And I select value inside table "{grantee_tableId:Opportunities}" is "All"
     Then I see total records count is same as total row of table id "{grantee_tableId:Opportunities}" and table name "flexTable"

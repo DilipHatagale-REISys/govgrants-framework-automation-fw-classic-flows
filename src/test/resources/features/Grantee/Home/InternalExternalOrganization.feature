@@ -4,7 +4,7 @@ Feature:Internal organization related scenarios
 
   @61962 @validateInternalLoginForProductGrantee @smoke @positive
   Scenario Outline: User enters correct username and password to login and reaches homepage
-    When I login as "<userType>" user
+    When I login to "As a Grantor" app as "<userType>" user
     Then I am logged in
     Examples:
       | userType      |
@@ -613,7 +613,7 @@ Feature:Internal organization related scenarios
 
   @61784 @validateInternalUserCanAccessFederalOrganization @smoke
   Scenario Outline: Validate different internal users can access federal organizations
-    When I login as "<userType>" user
+    When I login to "As a Grantor" app as "<userType>" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "ACC-APG-Belvoir" in "{grantee_tableId:FederalOrganizations}" panel
@@ -723,7 +723,7 @@ Feature:Internal organization related scenarios
 
   @62555 @validateTotalRecordsAtNonFederalOrganizationTable
   Scenario Outline: Validate total records inside table is equal to total number of rows present inside External federal contacts table will all users
-    When I login as "<userType>" user
+    When I login to "As a Grantor" app as "<userType>" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I pause execution for "5" seconds
