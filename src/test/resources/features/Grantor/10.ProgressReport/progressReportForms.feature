@@ -4359,7 +4359,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the following messages in the page details :
       | If "Other" option is selected in "14k", Justification in specify is required.                                                                |
       | If "Other" option is selected in "14l", Justification in specify is required.                                                                |
-      | If "Other" is selected in "Real Property Ownership Type", Description is required.                                                           |
+      | If \"Other\" is selected in \"Real Property Ownership Type\", Description is required.                                                       |
       | Unit type is required, if amount entered in " 14d. Land Acreage or Square Units ".                                                           |
       | Unit type is required, if amount entered in " 14e. Gross and Usable Square Footage/Meters ".                                                 |
       | Values can only be entered against the Electric (KWh) or Electric (Btu) in section "14k"                                                     |
@@ -4568,7 +4568,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I select value inside table "---progressReport:-:formTableId---" is "All"
     And I wait for "2" seconds
-    And I click on "Edit" icon for "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I click on "Edit" icon for "Real Property Status Report (Cover Page) - SF-429" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I wait for "3" seconds
     When I click on "Save" in the page details
     And I wait for "2" seconds
