@@ -4754,3 +4754,516 @@ Feature: Validate scenarios in Progress Report Forms
       | Select the General Reporting (SF-429-A) as required form is filled.                      |
       | Select the Request to Acquire, Improve or Furnish (SF-429-B) as required form is filled. |
       | Select the Disposition Request (SF-429-C) as required form is filled.                    |
+
+  @297940 @298087 @Validatesf429userwillseerecipientaccountandIdentifyingfieldvalidationsuponclickonsavebuttonifkeptblank @sprint-4-US-295000 @vaibhav @Forms
+  Scenario: Validate sf 429 user will see recipient account and Identifying no field validations upon click on save button if kept blank
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I wait for "2" seconds
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "2" seconds
+    And I click on "Edit" icon for "Real Property Status Report (Cover Page) - SF-429" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I enter "SF429_Form" values from "ProgressReport_Field_Values.xlsx"
+    And I clear the value from field "fieldRecipientAccountNumber__c"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | 5. Recipient Account or Identifying Number is required to save. |
+    When I enter value "12345" into field "fieldRecipientAccountNumber__c"
+    When I enter value "Unchecked" into field "fieldAcknowledgementSF428__c"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    #298087
+    Then I softly see the following messages in the page details :
+      | Certify the Real Property Status Report (Cover Page)-SF-429 by checking the Acknowledgment Box before submitting to Grantor. |
+
+  @288253 @288898 @ValidateSF271SPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonSF271form @sprint-1-US-282698 @vaibhav @Forms
+  Scenario: Validate SF271 SPI user can able to save & validate form after entering correct & valid data on all fields present on SF271 form
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I wait for "2" seconds
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "2" seconds
+    Then I softly see value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I can see row level action button "Preview" against "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "View" against "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "Edit" against "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" in flex table with id "---progressReport:-:formTableId---"
+    And I click on "View" icon for "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    Then I softly see the text containing "OMB Number: 4040–0011"
+    Then I softly see the text containing "Expiration Date: 01/31/2025"
+    And I click on "Edit" in the page details
+    And I enter "SF271_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I edit the following rows inline in flex table with id "---progressReport:-:sf271FormTableId---" by clicking "Edit" :
+      | Classification                                       | Programs | Functions | Activities |
+      | a. Administrative expense                            | 12345    | 12345     | 12345      |
+      | b. Preliminary expense                               | 12345    | 12345     | 12345      |
+      | c. Land, structures, right-of-way                    | 12345    | 12345     | 12345      |
+      | d. Architectural engineering basic fees              | 12345    | 12345     | 12345      |
+      | e. Other architectural engineering fees              | 12345    | 12345     | 12345      |
+      | f. Project inspection fees                           | 12345    | 12345     | 12345      |
+      | g. Land development                                  | 12345    | 12345     | 12345      |
+      | h. Relocation expense                                | 12345    | 12345     | 12345      |
+      | i. Relocation payments to individuals and businesses | 12345    | 12345     | 12345      |
+      | j. Demolition and removal                            | 12345    | 12345     | 12345      |
+      | k. Construction and project improvement cost         | 12345    | 12345     | 12345      |
+      | l. Equipment                                         | 12345    | 12345     | 12345      |
+      | m. Miscellaneous cost                                | 12345    | 12345     | 12345      |
+      | o. Deductions for program income                     | 12345    | 12345     | 12345      |
+      | q. Federal share to date                             | 12345    | 12345     | 12345      |
+      | r. Rehabilitation grants (100% reimbursement)        | 12345    | 12345     | 12345      |
+      | t. Federal payments previously requested             | 12345    | 12345     | 12345      |
+      | u. Amount requested for reimbursement                | 12345    | 12345     | 12345      |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #288898
+    When I click on "Back" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
+    And I wait for "3" seconds
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---progressReport:-:approversTableId---" by clicking "New" :
+      | Name          | Progress Report |
+      | Automation FO | Step 1          |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+
+  @288257 @ValidateSF271SPIusercannotabletosavevalidateformafterenteringincorrectinvaliddataonallfieldspresentonSF271form @sprint-1-US-282698 @vaibhav @Forms
+  Scenario: Validate SF271 SPI user can not able to save & validate form after entering incorrect &in valid data on all fields present on SF-271 form
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I wait for "2" seconds
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "2" seconds
+    Then I softly see value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I can see row level action button "Preview" against "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "View" against "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" in flex table with id "---progressReport:-:formTableId---"
+    Then I can see row level action button "Edit" against "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" in flex table with id "---progressReport:-:formTableId---"
+    And I click on "View" icon for "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    Then I softly see the text containing "OMB Number: 4040–0011"
+    Then I softly see the text containing "Expiration Date: 01/31/2025"
+    And I click on "Edit" in the page details
+    And I wait for "3" seconds
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | 1. Type of Request is required to save.                                                                        |
+      | 2. Basis of Request is required to save.                                                                       |
+      | 3. Federal Sponsoring Agency and Organizational Element to Which This Report Is Submitted is required to save. |
+      | From is required to save.                                                                                      |
+      | To is required to save.                                                                                        |
+      | Street1 is required to save.                                                                                   |
+      | City is required to save.                                                                                      |
+      | State is required to save.                                                                                     |
+      | ZIP / Postal Code is required to save.                                                                         |
+      | Street1 is required to save.                                                                                   |
+      | City is required to save.                                                                                      |
+      | State is required to save.                                                                                     |
+      | ZIP / Postal Code is required to save.                                                                         |
+      | Signature of Authorized Certifying Official is required to save.                                               |
+      | Submitted On : is required to save.                                                                            |
+      | Signature of Authorized Certifying Official is required to save.                                               |
+      | Date Request Submitted is required to save.                                                                    |
+    And I enter "SF271_incorrect_data" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I wait for "2" seconds
+    And I edit the following rows inline in flex table with id "---progressReport:-:sf271FormTableId---" by clicking "Edit" :
+      | Classification                                       | Programs | Functions | Activities |
+      | a. Administrative expense                            | -12345   | -12345    | -12345     |
+      | b. Preliminary expense                               | -12345   | -12345    | -12345     |
+      | c. Land, structures, right-of-way                    | -12345   | -12345    | -12345     |
+      | d. Architectural engineering basic fees              | -12345   | -12345    | -12345     |
+      | e. Other architectural engineering fees              | -12345   | -12345    | -12345     |
+      | f. Project inspection fees                           | -12345   | -12345    | -12345     |
+      | g. Land development                                  | -12345   | -12345    | -12345     |
+      | h. Relocation expense                                | -12345   | -12345    | -12345     |
+      | i. Relocation payments to individuals and businesses | -12345   | -12345    | -12345     |
+      | j. Demolition and removal                            | -12345   | -12345    | -12345     |
+      | k. Construction and project improvement cost         | -12345   | -12345    | -12345     |
+      | l. Equipment                                         | -12345   | -12345    | -12345     |
+      | m. Miscellaneous cost                                | -12345   | -12345    | -12345     |
+      | o. Deductions for program income                     | -12345   | -12345    | -12345     |
+      | q. Federal share to date                             | -12345   | -12345    | -12345     |
+      | r. Rehabilitation grants (100% reimbursement)        | -12345   | -12345    | -12345     |
+      | t. Federal payments previously requested             | -12345   | -12345    | -12345     |
+      | u. Amount requested for reimbursement                | -12345   | -12345    | -12345     |
+    Then I softly see the following messages in the page details :
+      | The amount cannot be less than zero. |
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---progressReport:-:sf271FormTableId---" by clicking "Edit" :
+      | Classification                                       | Programs | Functions | Activities |
+      | a. Administrative expense                            | 12345    | 12345     | 12345      |
+      | b. Preliminary expense                               | 12345    | 12345     | 12345      |
+      | c. Land, structures, right-of-way                    | 12345    | 12345     | 12345      |
+      | d. Architectural engineering basic fees              | 12345    | 12345     | 12345      |
+      | e. Other architectural engineering fees              | 12345    | 12345     | 12345      |
+      | f. Project inspection fees                           | 12345    | 12345     | 12345      |
+      | g. Land development                                  | 12345    | 12345     | 12345      |
+      | h. Relocation expense                                | 12345    | 12345     | 12345      |
+      | i. Relocation payments to individuals and businesses | 12345    | 12345     | 12345      |
+      | j. Demolition and removal                            | 12345    | 12345     | 12345      |
+      | k. Construction and project improvement cost         | 12345    | 12345     | 12345      |
+      | l. Equipment                                         | 12345    | 12345     | 12345      |
+      | m. Miscellaneous cost                                | 12345    | 12345     | 12345      |
+      | o. Deductions for program income                     | 12345    | 12345     | 12345      |
+      | q. Federal share to date                             | 12345    | 12345     | 12345      |
+      | r. Rehabilitation grants (100% reimbursement)        | 12345    | 12345     | 12345      |
+      | t. Federal payments previously requested             | 45       | 12        | 23         |
+      | u. Amount requested for reimbursement                | 35       | 13        | 12         |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Amount requested for reimbursement" should be same as the difference between the amounts of Line s and t. if different, adding file is required with classification "11.u.Amount requested for reimbursement. |
+      | The Percentage cannot be less than zero.                                                                                                                                                                      |
+      | Certify the Outlay Report and Request for Reimbursement for Construction Programs-SF-271 by checking the Acknowledgment Box before submitting to Grantor.                                                     |
+      | Please enter Zip code in the Zip + 4 codes format (e.g. 12345-1234) in the 'Zip / Postal code' field.                                                                                                         |
+    When I click on "Edit" in the page details
+    And I enter value "Final" into field "fieldTypeOfRequest__c"
+    And I enter value "Cash" into field "fieldBasisOfRequest__c"
+    And I enter value "200" into field "fieldProgramPercentage__c"
+    And I enter value "300" into field "fieldFunctionPercentage__c"
+    And I enter value "400" into field "fieldActivityPercentage__c"
+    And I enter value "500" into field "fieldTotalPercentage271__c"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Percentage must equal to 100 or less than 100 is required to save. |
+
+  @286657 @286672 @ValidateEXEusercanseeallbelowformsunderGrantorprogressReportareflowfromInternalProgramtoAnnouncementwhenweareusingsameprogramforcreatingAnnouncement @sprint-1-US-278368 @vaibhav @Forms
+  Scenario: Validate EXE user can see all below forms under Grantor progress Report are flow from Internal Program to Announcement when we are using same program for creating Announcement
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
+    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I perform quick search for "Grantor Progress Report Forms" in "---program:-:businessFormTableId---" panel
+    When I click on "Preview" icon for "Grantor Progress Report Forms" inside table
+    And I select value inside table "---program:-:previewPackageTableId---" is "All"
+    Then I softly see value "Community Initiative Progress Report" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Progress Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - SF-428" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Annual Report - SF-428-A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Final Report - SF-428-B" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report (Cover Page) - SF-429" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report - SF-425" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report Attachment - SF-425A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see total records count "Total Records:13" in flex table "---program:-:previewPackageTableId---"
+    And I refresh the page
+    #286672
+    When I click on "Preview" icon for "Grantor Payment Request Forms" inside table
+    Then I softly see value "Request for Advance or Reimbursement - SF-270" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Payment Request Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 1  |
+    And I click on "Submit For Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I wait for "3" seconds
+    When I "Approve" in the approval decision
+    And I wait for "3" seconds
+    And I click on "Activate" in the page details
+    Then I softly see field "Status" as "Active"
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I enter values into fields
+      | Value                      | Field      |
+      | {SavedValue:ProgramEGMSID} | Program__c |
+    And I click modal button "Continue"
+    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    And I navigate to "Setup" sub tab
+    When I perform quick search for "Grantor Progress Report Forms" in "---announcement:-:businessFormlistTableId---" panel
+    When I click on "Preview" icon for "Grantor Progress Report Forms" inside table
+    And I select value inside table "---program:-:previewPackageTableId---" is "All"
+    Then I softly see value "Community Initiative Progress Report" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Progress Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - SF-428" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Annual Report - SF-428-A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Final Report - SF-428-B" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report (Cover Page) - SF-429" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report - SF-425" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report Attachment - SF-425A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see total records count "Total Records:13" in flex table "---program:-:previewPackageTableId---"
+    And I refresh the page
+    #286672
+    When I click on "Preview" icon for "Grantor Payment Request Forms" inside table
+    Then I softly see value "Request for Advance or Reimbursement - SF-270" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Payment Request Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+
+  @286659 @286678 @ValidateEXEusercanseeallbelowformsunderGrantorprogressReportareflowfromAnnouncementtoGrantwhenGrantiscreatedfromapplication @sprint-1-US-278368 @vaibhav @Forms
+  Scenario: Validate EXE user can see all below forms under Grantor progress Report are flow from Announcement to Grant when Grant is created from application
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default-Automation EXE user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    And I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    When I click on "Preview" icon for "Grantor Progress Report Forms" inside table
+    And I select value inside table "---program:-:previewPackageTableId---" is "All"
+    Then I softly see value "Community Initiative Progress Report" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Progress Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - SF-428" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Annual Report - SF-428-A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Final Report - SF-428-B" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report (Cover Page) - SF-429" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report - SF-425" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report Attachment - SF-425A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see total records count "Total Records:13" in flex table "---program:-:previewPackageTableId---"
+    And I refresh the page
+   #286678
+   When I click on "Preview" icon for "Grantor Payment Request Forms" inside table
+   Then I softly see value "Request for Advance or Reimbursement - SF-270" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+   Then I softly see value "Payment Request Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+
+  @286663 @286680 @ValidatePOusercanseeallbelowformsareflowfromProgramtoGrantwhenDirectGrantiscreatedonGrantorprogressReport @sprint-1-US-278368 @vaibhav @Forms
+  Scenario: Validate PO user can see all below forms are flow from Program to Grant when Direct Grant is created on Grantor progress Report
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
+    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 1  |
+    And I click on "Submit For Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I wait for "3" seconds
+    When I "Approve" in the approval decision
+    And I wait for "3" seconds
+    And I click on "Activate" in the page details
+    Then I softly see field "Status" as "Active"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I enter values into fields
+      | Value                      | Field           |
+      | {SavedValue:ProgramEGMSID} | fieldProgram__c |
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Files" sub tab
+    When I click on "Preview" icon for "Grantor Progress Report Forms" inside table
+    And I select value inside table "---program:-:previewPackageTableId---" is "All"
+    Then I softly see value "Community Initiative Progress Report" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Progress Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - SF-428" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Annual Report - SF-428-A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Final Report - SF-428-B" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report (Cover Page) - SF-429" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report - SF-425" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report Attachment - SF-425A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Federal Financial Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see total records count "Total Records:13" in flex table "---program:-:previewPackageTableId---"
+    And I refresh the page
+    #286680
+    When I click on "Preview" icon for "Grantor Payment Request Forms" inside table
+    Then I softly see value "Request for Advance or Reimbursement - SF-270" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Payment Request Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
