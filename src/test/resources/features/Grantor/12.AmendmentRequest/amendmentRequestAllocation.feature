@@ -1,4 +1,4 @@
-@amendmentRequests @grantor-regression @grantor-parallel-regression @parallel-regression @regression
+@amendmentRequestsAllocation @amendmentRequests @grantor-regression @grantor-parallel-regression @parallel-regression @regression
 Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
   @57366 @verifySubRecipientIsAbleToSeeAmendedBudgetPeriodOnAdvancePaymentRequest @mahadev @buglogged142465
