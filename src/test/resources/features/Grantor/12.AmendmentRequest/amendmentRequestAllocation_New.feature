@@ -1,4 +1,4 @@
-@amendmentRequestsAllocation @amendmentRequests @grantor-regression @grantor-parallel-regression @parallel-regression @regression
+@amendmentAllocationNew @amendmentRequests @grantor-regression @grantor-parallel-regression @parallel-regression @regression
 Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
   @264084 @264589 @264590 @264085 @264083 @264080 @264594 @264591 @264564 @264581 @264086 @263945 @264906 @264952 @264963 @264964 @264953 @264965 @264556 @263938 @264974 @ValidatePMusercanseevalidationonSubmitforApprovalbuttowhenRevisedObligationislessthanBudgetedAmountonBudgetSummarysectiononAmendmentrequestFAisYES @sprint-20-US-249450-249461 @vaibhav @Allocation
