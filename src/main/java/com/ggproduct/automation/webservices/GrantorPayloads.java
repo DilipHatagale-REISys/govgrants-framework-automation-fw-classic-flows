@@ -891,7 +891,7 @@ public class GrantorPayloads {
         ann.addProperty("name", annName);
         ann.addProperty("AnnouncementType", annType);
         ann.addProperty("Program", ProjectWebServices.getIdOf("Program__c", program));
-        ann.addProperty("BudgetType", "Non-Construction");
+        ann.addProperty("BudgetType", "Construction");
         ann.addProperty("MaxApplicationsAllowed", 500);
         ann.addProperty("IsMatchRequired", "Yes");
         ann.addProperty("GranteeMatch", 10);

@@ -396,7 +396,7 @@ Feature: Payment Request Forms scenarios
     When I navigate to "Forms and Files" sub tab
     Then I softly see value "Request for Advance or Reimbursement - SF-270" for title "Form Name" inside table "---paymentRequest:-:paymentRequestFormsTableId---"
     Then I softly see value "Payment Request Report" for title "Report Type" against the value "Request for Advance or Reimbursement - SF-270" inside table "---paymentRequest:-:paymentRequestFormsTableId---"
-    Then I softly see value "False" for title "Mandatory" against the value "Request for Advance or Reimbursement - SF-270" inside table "---paymentRequest:-:paymentRequestFormsTableId---"
+    Then I softly see value "false" for title "Mandatory" against the value "Request for Advance or Reimbursement - SF-270" inside table "---paymentRequest:-:paymentRequestFormsTableId---"
 
   @286321 @ValidatePMusercanseebelowformafterexpandinggridofnewpackageGrantorPaymentRequestonPackagessectionofFormsPackagessectionundersetupofPlanningmodule @sprint-1-US-278368 @vaibhav @Forms @TBE
   Scenario: Validate PM user can see below form after expanding grid of new package - Grantor Payment Request on Packages section of Forms & Packages section under setup of Planning module
@@ -406,6 +406,7 @@ Feature: Payment Request Forms scenarios
     When I perform quick search for "Grantor Payment Request Forms" in "---program:-:packagesTableId---" panel
     Then I softly see value "Grantor Payment Request Forms" for title "Package Name" inside table "---program:-:packagesTableId---"
     And I expand nested table containing column value "Grantor Payment Request Forms"
+    When I click on "Preview" icon for "Grantor Payment Request Forms" inside table
     Then I softly see value "Request for Advance or Reimbursement - SF-270" for title "Form Name" inside table "---program:-:packagesTableId---"
     Then I softly see value "Payment Request Report" for title "Report Type" inside table "---program:-:packagesTableId---"
     Then I softly see value "4040-0012" for title "Form Number" inside table "---program:-:packagesTableId---"
