@@ -2864,11 +2864,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     #264458
     Then I softly see field "Carry Forward Amount" as "$700.00"
-    And I expand nested table containing column value "BP01"
-    And I select value inside table "---amendment:-:grantorBudgetPeriodTableId---" is "All"
-    Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetPeriodTableId---" :
-      | Carry Forward |
-      | $700.00       |
+    Then I softly see value "$200.00" for title "Carry Forward Amount" against the value "Automation Permanent Focus Area" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    Then I softly see value "$500.00" for title "Carry Forward Amount" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    Then I softly see value "$700.00" for title "Carry Forward Amount" against the value "Grand Total" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     #264472
     And I save the field labeled "Carry Forward Amount" as "CarryForward"
     And I save the field labeled "Current Obligation" as "CurrentObligation"
@@ -2879,7 +2877,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Revised Obligation" as "$2,700.00"
     #264451
     Then I softly see value "$150.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
-    Then I softly see value "$150.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    Then I softly see value "$150.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     Then I softly see value "$300.00" for title "Spent" against the value "Grand Total" inside table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
     #264526
     And I click on "Edit" in the page details
