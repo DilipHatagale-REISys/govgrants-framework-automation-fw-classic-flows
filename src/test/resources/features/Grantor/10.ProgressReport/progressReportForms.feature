@@ -5134,6 +5134,9 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "{SavedValue:formExpiration11}" for title "Form Expiration" against the value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "false" for title "Is Mandatory" against the value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Active" for title "Status" against the value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside table "---program:-:previewPackageTableId---"
+    And I refresh the page
+    When I click on "Preview" icon for "Grantor Progress Report Forms" inside table
+    And I select value inside table "---program:-:previewPackageTableId---" is "All"
     Then I softly see total records count "Total Records: 13" in flex table "---program:-:previewPackageTableId---"
     Then I softly do not see "Is Available" in flex table header "---program:-:previewPackageTableId---"
     And I refresh the page
@@ -5205,6 +5208,8 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Federal Financial Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" for title "Form Name" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    When I click on "Preview" icon for "Grantor Progress Report Forms" inside table
+    And I select value inside table "---program:-:previewPackageTableId---" is "All"
     Then I softly see total records count "Total Records: 13" in flex table "---program:-:previewPackageTableId---"
     And I refresh the page
     #286672
@@ -5738,7 +5743,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I perform quick search for "Federal Financial Report Attachment - SF-425A" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Federal Financial Report Attachment - SF-425A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Federal Financial Report" for title "Report Type" against the value "Federal Financial Report Attachment - SF-425A" inside table "---program:-:previewPackageTableId---"
-    Then I softly see value "4040-0014" for title "Form Number" against the value "Federal Financial Report - SF-425" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "4040-0014" for title "Form Number" against the value "Federal Financial Report Attachment - SF-425A" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration10" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration10}" for title "Form Expiration" against the value "Federal Financial Report Attachment - SF-425A" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "false" for title "Is Mandatory" against the value "Federal Financial Report Attachment - SF-425A" inside table "---program:-:previewPackageTableId---"
@@ -5751,5 +5756,5 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "{SavedValue:formExpiration11}" for title "Form Expiration" against the value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "false" for title "Is Mandatory" against the value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Active" for title "Status" against the value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside table "---program:-:previewPackageTableId---"
-    Then I softly see total records count "Total Records:13" in flex table "---program:-:previewPackageTableId---"
+    Then I softly see total records count "Total Records: 13" in flex table "---program:-:previewPackageTableId---"
     Then I softly do not see "Is Available" in flex table header "---program:-:previewPackageTableId---"
