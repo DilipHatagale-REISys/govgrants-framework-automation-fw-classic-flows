@@ -374,3 +374,42 @@ Feature: Payment Request Forms scenarios
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | From date and To date cannot be same in Period Covered By This Request section. |
+
+  @287722 @ValidateEXEusercanseebelowformonReimbursementPaymentRequestunderFilesFormssectionofPaymentRequest @sprint-1-US-278368 @vaibhav @Forms @TBE
+  Scenario: Validate EXE user can see below form on Reimbursement Payment Request under Files & Forms section of Payment Request
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default-Automation EXE user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}" and properties "Automation EXE user"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I delete the record "{SavedValue:Automation Runtime FDM Announcement}" from the object "Payment Request"
+    When I create a post award record "PaymentRequest" for the Award "{SavedValue:Automation Runtime FDM Announcement}" having object api name as "PaymentRequest__c"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Forms and Files" sub tab
+    Then I softly see value "Request for Advance or Reimbursement - SF-270" for title "Form Name" inside table "---paymentRequest:-:paymentRequestFormsTableId---"
+    Then I softly see value "Payment Request Report" for title "Report Type" against the value "Request for Advance or Reimbursement - SF-270" inside table "---paymentRequest:-:paymentRequestFormsTableId---"
+    Then I softly see value "False" for title "Mandatory" against the value "Request for Advance or Reimbursement - SF-270" inside table "---paymentRequest:-:paymentRequestFormsTableId---"
+
+  @286321 @ValidatePMusercanseebelowformafterexpandinggridofnewpackageGrantorPaymentRequestonPackagessectionofFormsPackagessectionundersetupofPlanningmodule @sprint-1-US-278368 @vaibhav @Forms @TBE
+  Scenario: Validate PM user can see below form after expanding grid of new package - Grantor Payment Request on Packages section of Forms & Packages section under setup of Planning module
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
+    When I perform quick search for "Grantor Payment Request Forms" in "---program:-:packagesTableId---" panel
+    Then I softly see value "Grantor Payment Request Forms" for title "Package Name" inside table "---program:-:packagesTableId---"
+    And I expand nested table containing column value "Grantor Payment Request Forms"
+    Then I softly see value "Request for Advance or Reimbursement - SF-270" for title "Form Name" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Payment Request Report" for title "Report Type" inside table "---program:-:packagesTableId---"
+    Then I softly see value "4040-0012" for title "Form Number" inside table "---program:-:packagesTableId---"
+    And I save the value from row "1" for column name "Form Expiration" as "formExpiration" from flex table "---program:-:packagesTableId---"
+    Then I softly see value "{SavedValue:formExpiration}" for title "Form Expiration" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Active" for title "Status" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Payment Request" for title "Package Type" inside table "---program:-:packagesTableId---"
