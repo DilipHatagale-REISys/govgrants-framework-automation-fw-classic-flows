@@ -375,7 +375,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see the following messages in the page details :
       | From date and To date cannot be same in Period Covered By This Request section. |
 
-  @287722 @ValidateEXEusercanseebelowformonReimbursementPaymentRequestunderFilesFormssectionofPaymentRequest @sprint-1-US-278368 @vaibhav @Forms @TBE
+  @287722 @ValidateEXEusercanseebelowformonReimbursementPaymentRequestunderFilesFormssectionofPaymentRequest @sprint-1-US-278368 @vaibhav @Forms
   Scenario: Validate EXE user can see below form on Reimbursement Payment Request under Files & Forms section of Payment Request
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -399,18 +399,14 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "false" for title "Mandatory" against the value "Request for Advance or Reimbursement - SF-270" inside table "---paymentRequest:-:paymentRequestFormsTableId---"
 
   @286321 @ValidatePMusercanseebelowformafterexpandinggridofnewpackageGrantorPaymentRequestonPackagessectionofFormsPackagessectionundersetupofPlanningmodule @sprint-1-US-278368 @vaibhav @Forms @TBE
-  Scenario: Validate PM user can see below form after expanding grid of new package - Grantor Payment Request on Packages section of Forms & Packages section under setup of Planning module
+  Scenario: Validate PM user can see below form after expanding grid of new package Grantor Payment Request on Packages section of Forms & Packages section under setup of Planning module
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
     When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
     When I perform quick search for "Grantor Payment Request Forms" in "---program:-:packagesTableId---" panel
     Then I softly see value "Grantor Payment Request Forms" for title "Package Name" inside table "---program:-:packagesTableId---"
-    And I expand nested table containing column value "Grantor Payment Request Forms"
-    When I click on "Preview" icon for "Grantor Payment Request Forms" inside table
-    Then I softly see value "Request for Advance or Reimbursement - SF-270" for title "Form Name" inside table "---program:-:packagesTableId---"
-    Then I softly see value "Payment Request Report" for title "Report Type" inside table "---program:-:packagesTableId---"
-    Then I softly see value "4040-0012" for title "Form Number" inside table "---program:-:packagesTableId---"
-    And I save the value from row "1" for column name "Form Expiration" as "formExpiration" from flex table "---program:-:packagesTableId---"
-    Then I softly see value "{SavedValue:formExpiration}" for title "Form Expiration" inside table "---program:-:packagesTableId---"
-    Then I softly see value "Active" for title "Status" inside table "---program:-:packagesTableId---"
-    Then I softly see value "Payment Request" for title "Package Type" inside table "---program:-:packagesTableId---"
+    When I click on "View" icon for "Grantor Payment Request Forms" inside table
+    Then I softly see value "Request for Advance or Reimbursement - SF-270" for title "Form Name" inside table "---program:-:packagesFormsTableId---"
+    Then I softly see value "Payment Request Report" for title "Report Type" inside table "---program:-:packagesFormsTableId---"
+    Then I softly see value "Payment Request" for title "Package Type" inside table "---program:-:packagesFormsTableId---"
+    Then I softly see value "true" for title "Is Mandatory?" against the value "Request for Advance or Reimbursement - SF-270" inside table "---program:-:packagesFormsTableId---"
