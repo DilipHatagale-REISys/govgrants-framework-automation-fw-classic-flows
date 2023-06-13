@@ -431,6 +431,8 @@ public class GrantorPayloads {
                 return updateAnnouncementWithSecondFocusAreaByappRiskNo(json);
             case "SECOND_FOCUS_AREA_BY_APPLICANT_FOCUS_AREA_RISK_ASS_NO":
                 return updateAnnouncementWithSecondFocusAreaByappFocusAreaRiskNo(json);
+            case "SECOND_FOCUS_AREA_BY_APPL_NEGOTIATION_NO":
+                return updateAnnouncementWithSecondFocusAreaByappNegotiationsNo(json);
             default:
                 return json;
         }
@@ -455,6 +457,21 @@ public class GrantorPayloads {
         JsonArray pre1 = new JsonArray();
         jsonObject1.addProperty("Allocationlevel","By Applicant");
         jsonObject1.addProperty("RiskAssessment_Required", "No");
+        pre1.add(jsonObject1);
+        json.add("Announcement", pre1);
+        return json;
+    }
+
+    private JsonObject updateAnnouncementWithSecondFocusAreaByappNegotiationsNo(JsonObject json) {
+        JsonArray serviceArea = new JsonArray();
+        JsonObject serviceAreaB = new JsonObject();
+        serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        serviceArea.add(serviceAreaB);
+        json.add("AnnouncementServiceArea", serviceArea);
+        JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre1 = new JsonArray();
+        jsonObject1.addProperty("Allocationlevel","By Applicant");
+        jsonObject1.addProperty("IsNegotiationsAllowed","No");
         pre1.add(jsonObject1);
         json.add("Announcement", pre1);
         return json;
@@ -891,7 +908,7 @@ public class GrantorPayloads {
         ann.addProperty("name", annName);
         ann.addProperty("AnnouncementType", annType);
         ann.addProperty("Program", ProjectWebServices.getIdOf("Program__c", program));
-        ann.addProperty("BudgetType", "Non-Construction");
+        ann.addProperty("BudgetType", "Construction");
         ann.addProperty("MaxApplicationsAllowed", 500);
         ann.addProperty("IsMatchRequired", "Yes");
         ann.addProperty("GranteeMatch", 10);
