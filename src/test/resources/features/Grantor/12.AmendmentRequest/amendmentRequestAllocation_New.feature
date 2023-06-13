@@ -3301,11 +3301,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "PayreqId"
     And I navigate to "Financials" sub tab
-    And I select value inside table "---paymentRequest:-:paymentRequestBudgetTableId---" is "5"
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
       | Construction    | 150               |
-    And I select value inside table "---paymentRequest:-:paymentRequestBudgetTableId---" is "5"
     And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
     And I wait for "3" seconds
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
