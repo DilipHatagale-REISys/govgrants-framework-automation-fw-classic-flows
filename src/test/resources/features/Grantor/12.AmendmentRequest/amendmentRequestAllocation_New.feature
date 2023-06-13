@@ -3453,8 +3453,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Grant ID" as "GrantEGMSID"
     And I click on hyperlink containing value "{SavedValue:GrantEGMSID}"
     And I navigate to "Budget" sub tab
-    Then I softly see field "Total Commitment" as "$0.00"
-    Then I softly see field "Cumulative Obligation" as "$0.00"
+    Then I softly see field "Total Commitment" as "$2,000.00"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:BUDGETREDIRECTIONID}" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -3468,7 +3472,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on hyperlink containing value "{SavedValue:GrantEGMSID}"
     And I navigate to "Budget" sub tab
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
-    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see field "Total Commitment" as "$2,000.00"
 
   @hitesh1 @258244 @VerifyPOusercanseeNewObligationfieldvalueisdisplayas$0afterbudgetredirectionamendmentamendmentonawardinactivatedstateFAisNo @sprint-19-US-255644 @hitesh @Allocation
   Scenario: Verify PO user can see New Obligation field value is display as $0 after budget redirection amendment amendment on award in activated state (FA is No)
@@ -3616,16 +3620,16 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     And I save the field labeled "EGMS ID" as "AwardEGMSID1"
     And I save the field labeled "Grant ID" as "GrantEGMSID"
+    #258231
+    And I click on "Edit" in the page details
+    And I navigate to "Budget" sub tab
+    Then I softly see that "New Obligation" rendered in view mode only
+    Then I softly see that "Cumulative Obligation" rendered in view mode only
+    Then I softly see that "Total Commitment" rendered in view mode only
+    When I click on "Save" in the page details
     And I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
-    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside table
-    Then I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    #@258244
     And I navigate to "Budget" sub tab
     Then I softly see field "New bligation" as "$0.00"
 
@@ -3683,6 +3687,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Grant ID" as "GrantEGMSID"
     And I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
+    When I navigate to "Budget" sub tab
+    And I save the value from row "1" for column name "Encumbrance" as "Encumbrance" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3694,8 +3701,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Status" as "Activated"
     When I navigate to "Budget" sub tab
     #258251
-    And I save the value from row "1" for column name "Encumbrance" as "Encumbrance" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
-    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
     Then I see field "Cumulative Obligation" as "$1,000.00"
     Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligation}"
