@@ -2928,6 +2928,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Budgeted Amount" as "$2,700.00"
     And I save the field labeled "Budgeted Amount" as "BudgetedAmount"
     Then I softly see value "{SavedValue:RevisedObligation}" is "Equals to" the value "{SavedValue:BudgetedAmount}"
+    And I wait for "3" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
 
@@ -3036,7 +3037,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Edit" in the page details
     Then I softly see fields "fieldRequestedChangeInBudget__c" is in edit mode
     And I click on "Save" in the page details
-    Then I softly see field "Carry Forward Amount" as "$1.000.00"
+    Then I softly see field "Carry Forward Amount" as "$1,000.00"
     #264475
     And I save the field labeled "Carry Forward Amount" as "CarryForward"
     And I save the field labeled "Current Obligation" as "CurrentObligation"
@@ -3052,10 +3053,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #264345
     Then I softly see that "Budgeted Amount" rendered in view mode only
     And I click on "Save" in the page details
-    Then I softly see field "Budgeted Amount" as "$2,700.00"
+    Then I softly see field "Budgeted Amount" as "$3,000.00"
     Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
       | Revised Award Amount |
-      | $2,700.00            |
+      | $3,000.00            |
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 3000                |
@@ -3064,7 +3065,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - The Revised Obligation must be equal to the Budgeted Amount in the Budget Summary Section.                                 |
     #264536
-      | Overview Tab - The Revised Obligation ($2500.0) must be equal to the total of Revised Encumbrance in the Funding Account ($2700.0)        |
+      | Overview Tab - The Revised Obligation ($2500.0) must be equal to the total of Revised Encumbrance in the Funding Account ($3000.0)        |
     #309062
       | Overview Tab - Carry Forward Amount in the budget period section must be equal to the Carry Forward amount on the Budget Summary section. |
     #309070,309076
@@ -3074,11 +3075,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | 1000  | fieldRequestedChangeInBudget__c |
     And I click on "Save" in the page details
     And I refresh the page
-    Then I softly see field "Revised Obligation" as "$2,700.00"
+    Then I softly see field "Revised Obligation" as "$3,000.00"
     And I save the field labeled "Revised Obligation" as "RevisedObligation"
-    Then I softly see field "Budgeted Amount" as "$2,700.00"
+    Then I softly see field "Budgeted Amount" as "$3,000.00"
     And I save the field labeled "Budgeted Amount" as "BudgetedAmount"
     Then I softly see value "{SavedValue:RevisedObligation}" is "Equals to" the value "{SavedValue:BudgetedAmount}"
+    And I wait for "3" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
 
@@ -3206,7 +3208,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "Initiate Review Process" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I created approved FDM on application "{SavedValue:Automation Runtime Announcement}"
-    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties "Automation PM user"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties "Automation EXE user"
     And I activate award from FDM having application name "{SavedValue:Automation Runtime Announcement}"
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
