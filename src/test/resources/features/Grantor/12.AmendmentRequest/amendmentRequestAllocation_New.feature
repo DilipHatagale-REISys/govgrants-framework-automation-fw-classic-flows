@@ -3296,6 +3296,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on hyperlink containing value "{SavedValue:GrantEGMSID}"
     #258327
     And I navigate to "Budget" sub tab
+    Then I softly see field "Total Commitment" as "$1,000.00"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:grantsBudgetSummaryFocusAreaTableId---"
