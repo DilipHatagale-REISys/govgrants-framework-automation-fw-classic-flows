@@ -10120,7 +10120,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary section. |
     #257747
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - The New Obligation ($1000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2000.0) |
+      | Overview Tab - The New Obligation ($1000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2000.00) |
     #257745,257748
     When I click on "Edit" in the page details
     When I enter values into fields
@@ -10131,7 +10131,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Overview Tab - The Budgeted Amount must be equal to the New Obligation in the Budget Summary section.                           |
-      | Overview Tab - The New Obligation ($5000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2000.0) |
+      | Overview Tab - The New Obligation ($5000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($2000.00) |
     #257746,257749
     When I click on "Edit" in the page details
     When I enter values into fields
