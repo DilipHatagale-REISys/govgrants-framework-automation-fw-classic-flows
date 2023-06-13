@@ -3474,7 +3474,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     Then I softly see field "Total Commitment" as "$2,000.00"
 
-  @hitesh1 @258244 @VerifyPOusercanseeNewObligationfieldvalueisdisplayas$0afterbudgetredirectionamendmentamendmentonawardinactivatedstateFAisNo @sprint-19-US-255644 @hitesh @Allocation
+  @hitesh1 @258244 @258231 @VerifyPOusercanseeNewObligationfieldvalueisdisplayas$0afterbudgetredirectionamendmentamendmentonawardinactivatedstateFAisNo @sprint-19-US-255644 @hitesh @Allocation
   Scenario: Verify PO user can see New Obligation field value is display as $0 after budget redirection amendment amendment on award in activated state (FA is No)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -3629,8 +3629,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Save" in the page details
     And I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
-    #@258244
+    #258231
     And I navigate to "Budget" sub tab
+    Then I softly see that "New Obligation" rendered in view mode only
+    Then I softly see that "Cumulative Obligation" rendered in view mode only
+    Then I softly see that "Total Commitment" rendered in view mode only
+    #@258244
     Then I softly see field "New bligation" as "$0.00"
 
   @hitesh1 @258247 @258251 @VerifyPOusercanseeTotalCommitmentfieldvalueonawardwhichisinActivatedstateiscopiedfromthecurrentCommitmentfieldfromthebudgetsummarysectionFAisYes @sprint-19-US-255644 @hitesh @Allocation
