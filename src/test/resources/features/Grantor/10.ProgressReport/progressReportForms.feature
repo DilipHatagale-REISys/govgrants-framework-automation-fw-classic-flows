@@ -5108,7 +5108,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Real Property Report" for title "Report Type" against the value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0016" for title "Form Number" against the value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration8" from flex table "---program:-:previewPackageTableId---"
-    Then I softly see value "{SavedValue:formExpiration9}" for title "Form Expiration" against the value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "{SavedValue:formExpiration8}" for title "Form Expiration" against the value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "false" for title "Is Mandatory" against the value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Active" for title "Status" against the value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Federal Financial Report - SF-425" in "---program:-:previewPackageTableId---" panel
@@ -5174,7 +5174,6 @@ Feature: Validate scenarios in Progress Report Forms
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
     And I navigate to "Setup" sub tab
-    When I perform quick search for "Grantor Progress Report Forms" in "---announcement:-:businessFormlistTableId---" panel
     When I click on "Preview" icon for "Grantor Progress Report Forms" inside table
     And I select value inside table "---program:-:previewPackageTableId---" is "All"
     Then I softly see total records count "Total Records: 13" in flex table "---program:-:previewPackageTableId---"
@@ -5475,7 +5474,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly can see row level action button "Preview" against "Grantor Progress Report Forms" in flex table with id "---announcement:-:businessFormlistTableId---"
     When I click on "Preview" icon for "Grantor Progress Report Forms" inside table
     And I select value inside table "---program:-:previewPackageTableId---" is "All"
-    Then I softly see total records count "Total Records:13" in flex table "---program:-:previewPackageTableId---"
+    Then I softly see total records count "Total Records: 13" in flex table "---program:-:previewPackageTableId---"
     And I perform quick search for "Community Initiative Progress Report" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Community Initiative Progress Report" for title "Form Name" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Progress Report" for title "Report Type" against the value "Community Initiative Progress Report" inside table "---program:-:previewPackageTableId---"
