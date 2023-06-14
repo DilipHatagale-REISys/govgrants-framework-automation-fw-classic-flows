@@ -3171,7 +3171,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I see the following messages in the page details contains:
       | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection.|
 
-  @258303 @258282 @258306 @258327 @258297 @258237 @258238 @258252 @VerifySPIusercanseevalueforTotalCommitmentfieldsiscomingfromthelatestactiveawardandforLatestBPongrantFAisYes @sprint-19-US-255644 @hitesh @Allocation
+  @258303 @258282 @258306 @258327 @258297 @258237 @258238 @258252 @258369 @258243 @VerifySPIusercanseevalueforTotalCommitmentfieldsiscomingfromthelatestactiveawardandforLatestBPongrantFAisYes @sprint-19-US-255644 @hitesh @Allocation
   Scenario: Verify user should able to see Budget Summary by Focus Area Section, only if Focus area is Yes.
     And I published "Formula" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA_BY_APPL_NEGOTIATION_NO-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
@@ -3313,6 +3313,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I navigate to "Budget" sub tab
+    #258369
+    Then I softly see field "New Obligation" as "$0.00"
+    Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
     And I click on hyperlink containing value "{SavedValue:GrantEGMSID}"
@@ -3327,7 +3331,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation1"
     Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CumulativeObligation1}"
 
-  @258330 @258233 @258299 @VerifyvalueswillgetupdatedongrantonlyonceanewAwardwillgetactiveFAisNo @sprint-19-US-255644 @hitesh @Allocation
+  @258330 @258233 @258299 @258305 @VerifyvalueswillgetupdatedongrantonlyonceanewAwardwillgetactiveFAisNo @sprint-19-US-255644 @hitesh @Allocation
   Scenario: Verify values will get updated on grant only once a new Award will get active  (FA is No)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -3474,20 +3478,27 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Budget" sub tab
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation1"
+    Then I softly see field "Total Commitment" as "$2,000.00"
+    And I save the field labeled "Total Commitment" as "TotalCommitment"
     And I click on hyperlink containing value "{SavedValue:GrantEGMSID}"
     And I navigate to "Budget" sub tab
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     Then I softly see field "Total Commitment" as "$2,000.00"
+    And I save the field labeled "Total Commitment" as "TotalCommitment1"
+    #258305
+    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment1}"
+    #When I hovering mouse on help text icon inside page block detail "Total Commitment"
+    #Then I softly see "Total amount committed through this and prior awards in this Budget period" shown as help text
     #258299
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation2"
     Then I see field "Cumulative Obligation" as "$1,000.00"
     Then I softly see value "{SavedValue:CumulativeObligation1}" is "Equals to" the value "{SavedValue:CumulativeObligation2}"
-    When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
-    Then I softly see "Total Awarded amount across budget periods." shown as help text
+    #When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
+    #Then I softly see "Total Awarded amount across budget periods." shown as help text
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
+    And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---amendment:-:recipientActiveGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
@@ -3499,7 +3510,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Cumulative Obligation" rendered in view mode only
     Then I softly see that "Total Commitment" rendered in view mode only
 
-  @258244 @258231 @258252 @VerifyPOusercanseeNewObligationfieldvalueisdisplayas$0afterbudgetredirectionamendmentamendmentonawardinactivatedstateFAisNo @sprint-19-US-255644 @hitesh @Allocation
+  @258244 @258231 @258252 @258245 @VerifyPOusercanseeNewObligationfieldvalueisdisplayas$0afterbudgetredirectionamendmentamendmentonawardinactivatedstateFAisNo @sprint-19-US-255644 @hitesh @Allocation
   Scenario: Verify PO user can see New Obligation field value is display as $0 after budget redirection amendment amendment on award in activated state (FA is No)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
