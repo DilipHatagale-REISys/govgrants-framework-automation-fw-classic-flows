@@ -3301,7 +3301,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #258238
     Then I softly see that "New Obligation" rendered in view mode only
     Then I softly see that "Cumulative Obligation" rendered in view mode only
-    Then I softly see that "Total Cumulative" rendered in view mode only
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -3487,14 +3486,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitment1"
     #258305
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment1}"
-    #When I hovering mouse on help text icon inside page block detail "Total Commitment"
-    #Then I softly see "Total amount committed through this and prior awards in this Budget period" shown as help text
+    When I hovering mouse on help text icon inside page block detail "Total Commitment"
+    Then I softly see "Total amount committed through this and prior awards in this Budget period" shown as help text
     #258299
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation2"
     Then I see field "Cumulative Obligation" as "$1,000.00"
     Then I softly see value "{SavedValue:CumulativeObligation1}" is "Equals to" the value "{SavedValue:CumulativeObligation2}"
-    #When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
-    #Then I softly see "Total Awarded amount across budget periods." shown as help text
+    When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
+    Then I softly see "Total Awarded amount across budget periods." shown as help text
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3650,6 +3649,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "4" seconds
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Current Commitment" as "$1,000.00"
+    And I save the field labeled "Current Commitment" as "CurrentCommitment"
     And I wait for "4" seconds
     And I click on "Amend Subaward" in the page details
     And I pause execution for "5" seconds
@@ -3660,14 +3662,13 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---amendment:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---amendment:-:recipientGrantTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Pending Activation" inside flex table with id "---amendment:-:recipientAwardsTableId---" without waiting for record
+    And I click on "View" icon for "Pending Activation" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     #258245
-    Then I softly see field "Current Commitment" as "$1,000.00"
-    And I save the field labeled "Current Commitment" as "CurrentCommitment"
-    Then I softly see field "Total Commitment" as "$1,000.00"
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Total Commitment" as "$2,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitment"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:CurrentCommitment}"
     Then I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -3782,4 +3783,3 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Total Commitment" as "$1,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitment1"
     Then I softly see value "{SavedValue:CurrentCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment1}"
-
