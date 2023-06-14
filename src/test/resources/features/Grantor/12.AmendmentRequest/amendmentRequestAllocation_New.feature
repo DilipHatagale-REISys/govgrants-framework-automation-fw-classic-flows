@@ -3171,8 +3171,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I see the following messages in the page details contains:
       | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection.|
 
-
-  @258303 @258282 @258306 @258327 @258297 @VerifySPIusercanseevalueforTotalCommitmentfieldsiscomingfromthelatestactiveawardandforLatestBPongrantFAisYes @sprint-19-US-255644 @hitesh @Allocation
+  @258303 @258282 @258306 @258327 @258297 @258237 @VerifySPIusercanseevalueforTotalCommitmentfieldsiscomingfromthelatestactiveawardandforLatestBPongrantFAisYes @sprint-19-US-255644 @hitesh @Allocation
   Scenario: Verify user should able to see Budget Summary by Focus Area Section, only if Focus area is Yes.
     And I published "Formula" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA_BY_APPL_NEGOTIATION_NO-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
@@ -3219,13 +3218,20 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | {SavedValue:PO Username} | Step 1            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
-    And I wait for "4" seconds
+    And I wait for "3" seconds
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
-    And I wait for "4" seconds
+    And I wait for "3" seconds
     And I click on "Amend Subaward" in the page details
-    And I pause execution for "5" seconds
+    And I pause execution for "3" seconds
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    #258237
+    And I navigate to "Budget" sub tab
+    Then I softly see that "New Obligation" rendered in view mode only
+    Then I softly see that "Cumulative Obligation" rendered in view mode only
+    Then I softly see that "Total Commitment" rendered in view mode only
+    Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see "New Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
     And I save the field labeled "EGMS ID" as "AwardEGMSID1"
     And I save the field labeled "Grant ID" as "GrantEGMSID"
     And I click on "Activate" in the page details
@@ -3260,9 +3266,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitmentGrant"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentGrant}"
     When I hovering mouse on help text icon inside page block detail "Total Commitment"
-    And I pause execution for "5" seconds
     Then I softly see "Total amount committed through this and prior awards in this Budget period" shown as help text
-    And I pause execution for "5" seconds
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3305,7 +3309,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation1"
     Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CumulativeObligation1}"
 
- @hitesh1 @258330 @VerifyvalueswillgetupdatedongrantonlyonceanewAwardwillgetactiveFAisNo @sprint-19-US-255644 @hitesh @Allocation
+  @258330 @258233 @VerifyvalueswillgetupdatedongrantonlyonceanewAwardwillgetactiveFAisNo @sprint-19-US-255644 @hitesh @Allocation
   Scenario: Verify values will get updated on grant only once a new Award will get active  (FA is No)
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -3356,7 +3360,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
       | Name                      | Award  |
-      | {SavedValue:EXE Username} | Step 1 |
+      | {SavedValue:PO Username} | Step 1 |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -3377,22 +3381,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I pause execution for "3" seconds
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Approved" and is "green"
+    And I pause execution for "3" seconds
     And I click on "Send to Subrecipient" in the page details
+    And I pause execution for "3" seconds
     Then I softly see field "Status" as "Sent to Subrecipient after Approval"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -3442,33 +3436,28 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | {SavedValue:PO Username} | Step 1            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
-    And I wait for "4" seconds
+    And I wait for "3" seconds
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
-    And I wait for "4" seconds
+    And I pause execution for "3" seconds
     And I click on "Amend Subaward" in the page details
-    And I pause execution for "5" seconds
+    And I pause execution for "3" seconds
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     And I save the field labeled "EGMS ID" as "AwardEGMSID1"
     And I save the field labeled "Grant ID" as "GrantEGMSID"
     And I click on hyperlink containing value "{SavedValue:GrantEGMSID}"
     And I navigate to "Budget" sub tab
-    Then I softly see field "Total Commitment" as "$2,000.00"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
-    And I navigate to "Grants" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:BUDGETREDIRECTIONID}" in "---amendment:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    Then I softly see field "Total Commitment" as "$2,000.00"
+    Then I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Pending Activation" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
-    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside table
-    Then I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    #258233
+    And I navigate to "Budget" sub tab
+    Then I softly see that "New Obligation" rendered in view mode only
+    Then I softly see that "Cumulative Obligation" rendered in view mode only
+    Then I softly see that "Total Commitment" rendered in view mode only
     And I click on hyperlink containing value "{SavedValue:GrantEGMSID}"
     And I navigate to "Budget" sub tab
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
@@ -3621,23 +3610,16 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "EGMS ID" as "AwardEGMSID1"
     And I save the field labeled "Grant ID" as "GrantEGMSID"
     #258231
-    And I click on "Edit" in the page details
     And I navigate to "Budget" sub tab
     Then I softly see that "New Obligation" rendered in view mode only
     Then I softly see that "Cumulative Obligation" rendered in view mode only
     Then I softly see that "Total Commitment" rendered in view mode only
-    When I click on "Save" in the page details
     And I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
-    #258231
-    And I navigate to "Budget" sub tab
-    Then I softly see that "New Obligation" rendered in view mode only
-    Then I softly see that "Cumulative Obligation" rendered in view mode only
-    Then I softly see that "Total Commitment" rendered in view mode only
-    #@258244
-    Then I softly see field "New bligation" as "$0.00"
+    #258244
+    Then I softly see field "New Obligation" as "$0.00"
 
-  @hitesh1 @258247 @258251 @VerifyPOusercanseeTotalCommitmentfieldvalueonawardwhichisinActivatedstateiscopiedfromthecurrentCommitmentfieldfromthebudgetsummarysectionFAisYes @sprint-19-US-255644 @hitesh @Allocation
+  @258247 @258251 @258232 @VerifyPOusercanseeTotalCommitmentfieldvalueonawardwhichisinActivatedstateiscopiedfromthecurrentCommitmentfieldfromthebudgetsummarysectionFAisYes @sprint-19-US-255644 @hitesh @Allocation
   Scenario: Verify PO user can see Total Commitment field value on award which is in Activated state is copied from the current Commitment field from the budget summary section (FA is Yes)
     And I published "Formula" type announcement having name "Automation Runtime Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NEGOTIATION_NO-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "default"
@@ -3694,6 +3676,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     And I save the value from row "1" for column name "Encumbrance" as "Encumbrance" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    #258232
+    Then I softly see that "New Obligation" rendered in view mode only
+    Then I softly see that "Cumulative Obligation" rendered in view mode only
+    Then I softly see that "Total Commitment" rendered in view mode only
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
