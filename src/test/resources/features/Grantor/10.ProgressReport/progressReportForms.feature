@@ -5173,8 +5173,12 @@ Feature: Validate scenarios in Progress Report Forms
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    When I navigate to "Overview" sub tab
+    And I save the field labeled "Announcement Name" as "announcementName"
     And I navigate to "Setup" sub tab
     When I click on "Preview" icon for "Grantor Progress Report Forms" inside table
+    And I click on parallel menu button in flex table title "Forms "
+    And I select "Reset Table" from parallel lines dropdown of "Forms "
     And I select value inside table "---program:-:previewPackageTableId---" is "All"
     Then I softly see total records count "Total Records: 13" in flex table "---program:-:previewPackageTableId---"
     Then I softly see value "Community Initiative Progress Report" for title "Form Name" inside table "---program:-:previewPackageTableId---"
@@ -5210,8 +5214,9 @@ Feature: Validate scenarios in Progress Report Forms
     When I click on "Preview" icon for "Grantor Payment Request Forms" inside table
     Then I softly see value "Request for Advance or Reimbursement - SF-270" for title "Form Name" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Payment Request Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I delete the record "{SavedValue:announcementName}" from the object "announcement"
 
-  @286659 @286678 @ValidateEXEusercanseeallbelowformsunderGrantorprogressReportareflowfromAnnouncementtoGrantwhenGrantiscreatedfromapplication @sprint-1-US-278368 @vaibhav @Forms 
+  @286659 @286678 @ValidateEXEusercanseeallbelowformsunderGrantorprogressReportareflowfromAnnouncementtoGrantwhenGrantiscreatedfromapplication @sprint-1-US-278368 @vaibhav @Forms
   Scenario: Validate EXE user can see all below forms under Grantor progress Report are flow from Announcement to Grant when Grant is created from application
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -5261,7 +5266,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Request for Advance or Reimbursement - SF-270" for title "Form Name" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Payment Request Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
 
-  @286663 @286680 @ValidatePOusercanseeallbelowformsareflowfromProgramtoGrantwhenDirectGrantiscreatedonGrantorprogressReport @sprint-1-US-278368 @vaibhav @Forms 
+  @286663 @286680 @ValidatePOusercanseeallbelowformsareflowfromProgramtoGrantwhenDirectGrantiscreatedonGrantorprogressReport @sprint-1-US-278368 @vaibhav @Forms
   Scenario: Validate PO user can see all below forms are flow from Program to Grant when Direct Grant is created on Grantor progress Report
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -5291,7 +5296,7 @@ Feature: Validate scenarios in Progress Report Forms
     When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-      | Name                      | Program |
+      | Name                     | Program |
       | {SavedValue:PM Username} | Step 1  |
     And I click on "Submit For Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
@@ -5469,6 +5474,8 @@ Feature: Validate scenarios in Progress Report Forms
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    When I navigate to "Overview" sub tab
+    And I save the field labeled "Announcement Name" as "announcementName"
     And I navigate to "Setup" sub tab
     Then I softly can see row level action button "Edit" against "Grantor Progress Report Forms" in flex table with id "---announcement:-:businessFormlistTableId---"
     Then I softly can see row level action button "Preview" against "Grantor Progress Report Forms" in flex table with id "---announcement:-:businessFormlistTableId---"
@@ -5590,6 +5597,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "false" for title "Is Mandatory" against the value "Request for Advance or Reimbursement - SF-270" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Active" for title "Status" against the value "Request for Advance or Reimbursement - SF-270" inside table "---program:-:previewPackageTableId---"
     Then I softly do not see "Is Available" in flex table header "---program:-:previewPackageTableId---"
+    Then I delete the record "{SavedValue:announcementName}" from the object "announcement"
 
   @286633 @ValidatePMusercanseebelow13formsonPreviewmodalofpackageswhenuserclickonviewicononGrantorProgressReportFormsunderBusinessFormssectiononFilestabofGrant @sprint-1-US-278368 @vaibhav @Forms @TBE @Buglogged-339404
   Scenario: Validate PM user can see below 13 forms on Preview modal of packages when user click on view icon on Grantor Progress Report Forms under Business Forms section on Files tab of Grant
@@ -5752,3 +5760,10 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "false" for title "Is Mandatory" against the value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Active" for title "Status" against the value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside table "---program:-:previewPackageTableId---"
     Then I softly do not see "Is Available" in flex table header "---program:-:previewPackageTableId---"
+
+  @vai
+  Scenario:
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to url "https://test8-internal--c.vf.force.com/apex/ProgramView?id=a374T000000D0GGQA0&RefreshBehaviour=null&TableName=Programs&TableType=flextable&retURL=%2Fapex%2Fc__FlexTableView%3FflexTableHeader%3Dnull%26flexTableName%3DPrograms%26pageTitle%3DInternal%2BPrograms%2B-%2BActive%26RecordType%3DFlex%2BTable"
+    And I save the field labeled "EGMS ID" as "Automation Runtime Internal Program"
+    And I save the field labeled "EGMS ID" as "Automation Runtime Internal Announcement"
