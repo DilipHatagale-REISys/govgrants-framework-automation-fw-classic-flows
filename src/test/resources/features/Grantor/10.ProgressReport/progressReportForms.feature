@@ -5178,7 +5178,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I navigate to "Setup" sub tab
     When I click on "Preview" icon for "Grantor Progress Report Forms" inside table
     And I click on parallel menu button in flex table title "Forms "
-    And I select "Reset Table" from parallel lines dropdown of "Forms "
+    And I select "Reset Table" from parallel lines dropdown of "Forms"
     And I select value inside table "---program:-:previewPackageTableId---" is "All"
     Then I softly see total records count "Total Records: 13" in flex table "---program:-:previewPackageTableId---"
     Then I softly see value "Community Initiative Progress Report" for title "Form Name" inside table "---program:-:previewPackageTableId---"
@@ -5760,10 +5760,3 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "false" for title "Is Mandatory" against the value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Active" for title "Status" against the value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside table "---program:-:previewPackageTableId---"
     Then I softly do not see "Is Available" in flex table header "---program:-:previewPackageTableId---"
-
-  @vai
-  Scenario:
-    When I login to "As a Grantor" app as "PM" user
-    And I navigate to url "https://test8-internal--c.vf.force.com/apex/ProgramView?id=a374T000000D0GGQA0&RefreshBehaviour=null&TableName=Programs&TableType=flextable&retURL=%2Fapex%2Fc__FlexTableView%3FflexTableHeader%3Dnull%26flexTableName%3DPrograms%26pageTitle%3DInternal%2BPrograms%2B-%2BActive%26RecordType%3DFlex%2BTable"
-    And I save the field labeled "EGMS ID" as "Automation Runtime Internal Program"
-    And I save the field labeled "EGMS ID" as "Automation Runtime Internal Announcement"

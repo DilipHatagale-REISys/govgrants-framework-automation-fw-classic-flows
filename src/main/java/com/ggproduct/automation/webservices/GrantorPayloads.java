@@ -1064,8 +1064,12 @@ public class GrantorPayloads {
                 return advancePermissibleYesnofocusareaProgramAnticipatedNo(json);
             case "AMENDMENT_REQUEST_ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO":
                 return createAwarForAmendmentRequestAdvanceYesFocusNo(json);
+            case "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_SUB_ORG_IND":
+                return advancePermissibleYesnofocusareaSubrecipientInd(json);
             case "SUBRECIPIENT_ORG_IND_USER":
                 return createAwarForIndUser(json);
+            case "SECOND_FOCUS_AREA":
+                return createAwarForSecondFocusArea(json);
             case "SECOND_FOCUS_AREA_BUDGET_CATEGORY":
                 return createAwarForSecondFocusAreaandBudgetCategory(json);
             case "SECOND_FOCUS_AREA_BUD_CAT_SUB_ORG_IND":
@@ -1075,6 +1079,55 @@ public class GrantorPayloads {
             default:
                 return json;
         }
+    }
+
+    private JsonObject createAwarForSecondFocusArea(JsonObject json) {
+        JsonArray awardServiceAreaArray = new JsonArray();
+        JsonObject awardServiceAreaA = new JsonObject();
+        awardServiceAreaA.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area"));
+        awardServiceAreaA.addProperty("GATStartDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceAreaA.addProperty("GATEndDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceAreaArray.add(awardServiceAreaA);
+        JsonObject awardServiceAreaB = new JsonObject();
+        awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        awardServiceAreaB.addProperty("GATStartDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceAreaB.addProperty("GATEndDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceAreaArray.add(awardServiceAreaB);
+        json.add("AwardServiceArea", awardServiceAreaArray);
+        return json;
+    }
+
+    private JsonObject advancePermissibleYesnofocusareaSubrecipientInd(JsonObject json) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+        grant.addProperty("FocusAreaRequired", "No");
+        grant.addProperty("IsAdvancePermitted", "Yes");
+        if(EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO") ) {
+            grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));
+        }
+        newA.add(grant);
+        json.add("Grant", newA);
+        JsonArray buildUpItemsA = new JsonArray();
+        JsonObject buildUpItems = new JsonObject();
+        buildUpItems.addProperty("BudgetCategory", "Construction");
+        buildUpItems.addProperty("Title", "Construction");
+        buildUpItems.addProperty("Narrative", "Test Build-up");
+        buildUpItems.addProperty("AwardedBudget", 1000);
+        buildUpItems.addProperty("CashMatch", 100);
+        buildUpItems.addProperty("NonCashMatch", 100);
+        buildUpItems.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems.addProperty("ServiceAreaName", "Standard Focus Area");
+        buildUpItemsA.add(buildUpItems);
+        json.add("BuildUpItems", buildUpItemsA);
+        return json;
     }
 
     private JsonObject createAwarForSecondFocusAreaandBudgetCategorySubrecipientIndProfile(JsonObject json) {
