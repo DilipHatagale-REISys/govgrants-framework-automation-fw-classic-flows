@@ -3626,6 +3626,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click modal button "Save and Continue"
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
+    Then I softly see field "Current Commitment" as "$2,000.00"
+    And I save the field labeled "Current Commitment" as "CurrentCommitment"
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
       | Category Name     | Revised Award Amount |
       | Construction      | 960                  |
@@ -3667,8 +3669,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Budget" sub tab
     Then I softly see field "Total Commitment" as "$2,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitment"
-    Then I softly see field "Current Commitment" as "$2,000.00"
-    And I save the field labeled "Current Commitment" as "CurrentCommitment"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:CurrentCommitment}"
     Then I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
