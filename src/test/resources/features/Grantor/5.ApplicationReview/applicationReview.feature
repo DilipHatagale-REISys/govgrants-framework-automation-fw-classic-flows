@@ -481,7 +481,7 @@ Feature: Validate all scenarios in the Application Review
     And I softly can see "Budget" sub tab at view detail page
     #And I softly can see "Monitoring" sub tab at view detail page
     And I softly can see "Proposal" sub tab at view detail page
-    And I softly can see "Files" sub tab at view detail page
+    And I softly can see "Forms and Files" sub tab at view detail page
     And I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
     Examples:
@@ -844,7 +844,7 @@ Feature: Validate all scenarios in the Application Review
     And I softly can see "Budget" sub tab at view detail page
    # And I softly can see "Monitoring" sub tab at view detail page
     And I softly can see "Proposal" sub tab at view detail page
-    And I softly can see "Files" sub tab at view detail page
+    And I softly can see "Forms and Files" sub tab at view detail page
     And I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -942,7 +942,7 @@ Feature: Validate all scenarios in the Application Review
     And I softly can see "Budget" sub tab at view detail page
     #And I softly can see "Monitoring" sub tab at view detail page
     And I softly can see "Proposal" sub tab at view detail page
-    And I softly can see "Files" sub tab at view detail page
+    And I softly can see "Forms and Files" sub tab at view detail page
     And I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
     Examples:
