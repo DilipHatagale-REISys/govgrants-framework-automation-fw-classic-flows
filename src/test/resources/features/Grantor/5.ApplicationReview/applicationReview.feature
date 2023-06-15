@@ -451,7 +451,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @78318 @78319 @79203 @reviewStepsAndPreScreenReview @keerti
+  @hit @78318 @78319 @79203 @reviewStepsAndPreScreenReview @keerti
   Scenario Outline: To verify user will be able to view the review steps under the respective announcement related log tab
   | To verify User will be able to click the view icon on the Prescreening review step under announcement related log tab review steps section
   | To verify that,user able to click view icon for Application in prescreening review step in related log tab of Appliction phase
@@ -778,7 +778,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @79664 @79665 @TabOfApplicationPhase @keerti
+  @hit @79664 @79665 @TabOfApplicationPhase @keerti
   Scenario Outline: To verify that,user able to click view icon for Application in SME review step in related log tab of Appliction phase
   | To verify that,user able to click view icon for Application in Management review step in related log tab of Application phase
     And I login to "As a Grantor" app as "dynamicUser" user
