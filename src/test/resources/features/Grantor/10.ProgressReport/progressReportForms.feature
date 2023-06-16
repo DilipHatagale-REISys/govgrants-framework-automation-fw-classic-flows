@@ -4984,6 +4984,7 @@ Feature: Validate scenarios in Progress Report Forms
       | The Percentage cannot be less than zero.                                                                                                                                                                      |
       | Certify the Outlay Report and Request for Reimbursement for Construction Programs-SF-271 by checking the Acknowledgment Box before submitting to Grantor.                                                     |
       | Please enter Zip code in the Zip + 4 codes format (e.g. 12345-1234) in the 'Zip / Postal code' field.                                                                                                         |
+    And I wait for "2" seconds
     When I click on "Edit" in the page details
     And I enter value "Final" into field "fieldTypeOfRequest__c"
     And I enter value "Cash" into field "fieldBasisOfRequest__c"
@@ -5041,7 +5042,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Community Initiative Progress Report" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - SF-428" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - SF-428" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration}" for title "Form Expiration" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
@@ -5049,7 +5050,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - Annual Report - SF-428-A" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - Annual Report - SF-428-A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration1" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration1}" for title "Form Expiration" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
@@ -5057,7 +5058,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - Final Report - SF-428-B" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - Final Report - SF-428-B" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration2" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration2}" for title "Form Expiration" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
@@ -5065,7 +5066,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration3" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration3}" for title "Form Expiration" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
@@ -5073,7 +5074,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration4" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration4}" for title "Form Expiration" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---program:-:previewPackageTableId---"
@@ -5185,15 +5186,15 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Community Initiative Progress Report" for title "Form Name" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Progress Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Tangible Personal Property Report - SF-428" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Tangible Personal Property Report - Annual Report - SF-428-A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Tangible Personal Property Report - Final Report - SF-428-B" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Real Property Status Report (Cover Page) - SF-429" for title "Form Name" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Real Property Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
@@ -5404,19 +5405,19 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Real Property Report" for title "Report Type" against the value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" inside table "---progressReport:-:formTableId---"
     Then I softly see value "false" for title "Mandatory" against the value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" inside table "---progressReport:-:formTableId---"
     Then I softly see value "Tangible Personal Property Report - Annual Report - SF-428-A" for title "Form Name" inside table "---progressReport:-:formTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---progressReport:-:formTableId---"
     Then I softly see value "false" for title "Mandatory" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---progressReport:-:formTableId---"
     Then I softly see value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" for title "Form Name" inside table "---progressReport:-:formTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---progressReport:-:formTableId---"
     Then I softly see value "false" for title "Mandatory" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---progressReport:-:formTableId---"
     Then I softly see value "Tangible Personal Property Report - Final Report - SF-428-B" for title "Form Name" inside table "---progressReport:-:formTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---progressReport:-:formTableId---"
     Then I softly see value "false" for title "Mandatory" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---progressReport:-:formTableId---"
     Then I softly see value "Tangible Personal Property Report - SF-428" for title "Form Name" inside table "---progressReport:-:formTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - SF-428" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - SF-428" inside table "---progressReport:-:formTableId---"
     Then I softly see value "false" for title "Mandatory" against the value "Tangible Personal Property Report - SF-428" inside table "---progressReport:-:formTableId---"
     Then I softly see value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" for title "Form Name" inside table "---progressReport:-:formTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---progressReport:-:formTableId---"
     Then I softly see value "false" for title "Mandatory" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---progressReport:-:formTableId---"
 
   @286533 @286557 @ValidatePMusercanseebelow13formsonPreviewmodalofpackageswhenuserclickonviewicononGrantorProgressReportFormsunderBusinessFormssectiononsetuptabofAnnouncement @sprint-1-US-278368 @vaibhav @Forms @Buglogged-339404
@@ -5491,7 +5492,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Community Initiative Progress Report" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - SF-428" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - SF-428" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration}" for title "Form Expiration" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
@@ -5499,7 +5500,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - Annual Report - SF-428-A" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - Annual Report - SF-428-A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration1" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration1}" for title "Form Expiration" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
@@ -5507,7 +5508,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - Final Report - SF-428-B" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - Final Report - SF-428-B" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration2" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration2}" for title "Form Expiration" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
@@ -5515,7 +5516,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration3" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration3}" for title "Form Expiration" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
@@ -5523,7 +5524,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration4" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration4}" for title "Form Expiration" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---program:-:previewPackageTableId---"
@@ -5666,7 +5667,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Community Initiative Progress Report" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - SF-428" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - SF-428" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration}" for title "Form Expiration" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
@@ -5674,7 +5675,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Tangible Personal Property Report - SF-428" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - Annual Report - SF-428-A" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - Annual Report - SF-428-A" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration1" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration1}" for title "Form Expiration" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
@@ -5682,7 +5683,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Tangible Personal Property Report - Annual Report - SF-428-A" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - Final Report - SF-428-B" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - Final Report - SF-428-B" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration2" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration2}" for title "Form Expiration" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
@@ -5690,7 +5691,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Tangible Personal Property Report - Final Report - SF-428-B" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration3" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration3}" for title "Form Expiration" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
@@ -5698,7 +5699,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see value "Active" for title "Status" against the value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside table "---program:-:previewPackageTableId---"
     And I perform quick search for "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" in "---program:-:previewPackageTableId---" panel
     Then I softly see value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" for title "Form Name" inside table "---program:-:previewPackageTableId---"
-#    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Tangible Property Report" for title "Report Type" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "4040-0018" for title "Form Number" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---program:-:previewPackageTableId---"
     And I save the value from row "1" for column name "Form Expiration" as "formExpiration4" from flex table "---program:-:previewPackageTableId---"
     Then I softly see value "{SavedValue:formExpiration4}" for title "Form Expiration" against the value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" inside table "---program:-:previewPackageTableId---"
