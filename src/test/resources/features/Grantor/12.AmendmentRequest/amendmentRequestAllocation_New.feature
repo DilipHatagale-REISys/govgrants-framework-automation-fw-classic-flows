@@ -3786,7 +3786,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitment1"
     Then I softly see value "{SavedValue:CurrentCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment1}"
 
-  @257249 @257244 @257260 @257279 @257112 @257315 @257342 @257305 @257265 @257242 @VerifySPIusershouldabletoseeallvaluesontheoldAmendedawardshouldremainthesameandusershouldnotabletochangeFAYes @sprint-19-US-255639 @hitesh @Allocation
+  @257249 @257244 @257260 @257279 @257112 @257315 @257342 @257305 @257265 @257242 @257246 @VerifySPIusershouldabletoseeallvaluesontheoldAmendedawardshouldremainthesameandusershouldnotabletochangeFAYes @sprint-19-US-255639 @hitesh @Allocation
   Scenario: Verify SPI user should able to see all values on the old(Amended) award should  remain the same and  user should  not able to change(FA Yes)
     And I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
