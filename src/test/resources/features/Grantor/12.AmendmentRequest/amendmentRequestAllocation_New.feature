@@ -4077,7 +4077,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Actuals" sub tab
     Then I softly see that "Spent" rendered in view mode only
     Then I softly see field "Spent" as "$500.00"
-    When I login to "As a Grantor" app as "PM" user
+    Then I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
