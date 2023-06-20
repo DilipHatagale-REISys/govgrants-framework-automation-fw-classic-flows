@@ -5855,7 +5855,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
 
- @vai @329603 @ValidateSF271validationshoulddisplayonvalidatebutton @sprint-11-US-328863 @vaibhav @Forms
+  @329603 @ValidateSF271validationshoulddisplayonvalidatebutton @sprint-11-US-328863 @vaibhav @Forms
   Scenario: Validate SF271 validation should display on validate button
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"

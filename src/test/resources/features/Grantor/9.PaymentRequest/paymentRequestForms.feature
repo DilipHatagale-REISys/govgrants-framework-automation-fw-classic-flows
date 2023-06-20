@@ -411,7 +411,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "Payment Request" for title "Package Type" inside table "---program:-:packagesFormsTableId---"
     Then I softly see "Cross" symbol in flex table with id "---program:-:packagesFormsTableId---"
 
- @vai @293600 @ValidatePMusercanseeReportTypeonformsforSiteVisitOrganizationDeskReviewPreapplicationApplicationonFormssectionofFormsPackagessectionundersetupofPlanningmodule @sprint-3-US-288713 @vaibhav @Forms
+  @vai @293600 @ValidatePMusercanseeReportTypeonformsforSiteVisitOrganizationDeskReviewPreapplicationApplicationonFormssectionofFormsPackagessectionundersetupofPlanningmodule @sprint-3-US-288713 @vaibhav @Forms
   Scenario: Validate PM user can see Report Type on forms for Site Visit Organization Desk Review Pre-application Application on Forms section of Forms & Packages section under setup of Planning module
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -560,6 +560,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "Standard Assurances Form" for title "Form Name" inside table "---program:-:packagesTableId---"
     Then I softly see value "Application Report" for title "Report Type" against the value "Standard Assurances Form" inside table "---program:-:packagesTableId---"
     And I collapse nested table containing column value "Grantor Application Forms"
+    When I perform quick search for "Organization Desk Review" in "---program:-:packagesTableId---" panel
     And I expand nested table containing column value "Organization Desk Review"
     Then I softly see value "General Review Form" for title "Form Name" inside table "---program:-:packagesTableId---"
     Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "General Review Form" inside table "---program:-:packagesTableId---"
@@ -586,6 +587,10 @@ Feature: Payment Request Forms scenarios
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 1  |
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -596,10 +601,7 @@ Feature: Payment Request Forms scenarios
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
     When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-      | Name                      | Program |
-      | {SavedValue:EXE Username} | Step 1  |
+    And I wait for "3" seconds
     And I click on "Submit For Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     And I wait for "3" seconds
@@ -653,6 +655,10 @@ Feature: Payment Request Forms scenarios
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -663,10 +669,7 @@ Feature: Payment Request Forms scenarios
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
     When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-      | Name                      | Program |
-      | {SavedValue:PM Username} | Step 1  |
+    And I wait for "3" seconds
     And I click on "Submit For Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     And I wait for "3" seconds
@@ -730,6 +733,10 @@ Feature: Payment Request Forms scenarios
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:PM Username} | Step 1  |
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -740,10 +747,7 @@ Feature: Payment Request Forms scenarios
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
     When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-      | Name                      | Program |
-      | {SavedValue:EXE Username} | Step 1  |
+    And I wait for "3" seconds
     And I click on "Submit For Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     And I wait for "3" seconds
