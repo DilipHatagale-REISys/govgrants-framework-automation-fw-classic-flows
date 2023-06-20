@@ -1067,8 +1067,8 @@ public class GrantorPayloads {
                 return createAwarForAmendmentRequestAdvanceYesFocusNo(json);
             case "SUBRECIPIENT_ORG_IND_USER":
                 return createAwarForIndUser(json);
-            case "SUBRECIPIENT_ORG_IND_USER_ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO":
-                return createAwarForIndUserAdvanceYesFocusNo(json);
+            case "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_SUB_ORG_IND":
+                return advancePermissibleYesnofocusareaSubrecipientInd(json);
             case "SECOND_FOCUS_AREA_BUDGET_CATEGORY":
                 return createAwarForSecondFocusAreaandBudgetCategory(json);
             case "USER":
@@ -1138,21 +1138,28 @@ public class GrantorPayloads {
         return json;
     }
 
-    private JsonObject createAwarForIndUserAdvanceYesFocusNo(JsonObject json) {
-
+    private JsonObject advancePermissibleYesnofocusareaSubrecipientInd(JsonObject json) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+        grant.addProperty("FocusAreaRequired", "No");
+        grant.addProperty("IsAdvancePermitted", "Yes");
         if(EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO") ) {
-            JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
-            JsonArray newA = new JsonArray();
             grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));
-            grant.addProperty("RiskAssessment_Required", "No");
-            grant.addProperty("IsMatchRequired", "Yes");
-            grant.addProperty("IsBuildUpFunctionality", "No");
-            grant.addProperty("WBSRequired", "No");
-            grant.addProperty("FocusAreaRequired", "No");
-            grant.addProperty("IsAdvancePermitted", "Yes");
-            newA.add(grant);
-            json.add("Grant", newA);
         }
+        newA.add(grant);
+        json.add("Grant", newA);
+        JsonArray buildUpItemsA = new JsonArray();
+        JsonObject buildUpItems = new JsonObject();
+        buildUpItems.addProperty("BudgetCategory", "Construction");
+        buildUpItems.addProperty("Title", "Construction");
+        buildUpItems.addProperty("Narrative", "Test Build-up");
+        buildUpItems.addProperty("AwardedBudget", 1000);
+        buildUpItems.addProperty("CashMatch", 100);
+        buildUpItems.addProperty("NonCashMatch", 100);
+        buildUpItems.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems.addProperty("ServiceAreaName", "Standard Focus Area");
+        buildUpItemsA.add(buildUpItems);
+        json.add("BuildUpItems", buildUpItemsA);
         return json;
     }
 
