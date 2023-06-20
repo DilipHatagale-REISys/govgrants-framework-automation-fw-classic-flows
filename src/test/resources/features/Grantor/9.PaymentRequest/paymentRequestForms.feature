@@ -410,3 +410,367 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "Payment Request Report" for title "Report Type" inside table "---program:-:packagesFormsTableId---"
     Then I softly see value "Payment Request" for title "Package Type" inside table "---program:-:packagesFormsTableId---"
     Then I softly see "Cross" symbol in flex table with id "---program:-:packagesFormsTableId---"
+
+ @vai @293600 @ValidatePMusercanseeReportTypeonformsforSiteVisitOrganizationDeskReviewPreapplicationApplicationonFormssectionofFormsPackagessectionundersetupofPlanningmodule @sprint-3-US-288713 @vaibhav @Forms
+  Scenario: Validate PM user can see Report Type on forms for Site Visit Organization Desk Review Pre-application Application on Forms section of Forms & Packages section under setup of Planning module
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
+    When I perform quick search for "Standard Pre-Application Form" in "---program:-:formsPackagesFormsTableId---" panel
+    Then I softly see value "Standard Pre-Application Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
+    Then I softly see value "Pre-Application Report" for title "Report Type" inside table "---program:-:formsPackagesFormsTableId---"
+    And I click on parallel menu button in flex table title "Forms"
+    And I select "Reset Table" from parallel lines dropdown of "Forms"
+    And I wait for "3" seconds
+    When I perform quick search for "Standard Pre-Application Form" in "---program:-:formsPackagesFormsTableId---" panel
+    Then I softly see value "Program Application Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
+    Then I softly see value "Application Report" for title "Report Type" inside table "---program:-:formsPackagesFormsTableId---"
+    And I click on parallel menu button in flex table title "Forms"
+    And I select "Reset Table" from parallel lines dropdown of "Forms"
+    And I wait for "3" seconds
+    When I perform quick search for "Standard Assurances Form" in "---program:-:formsPackagesFormsTableId---" panel
+    Then I softly see value "Standard Assurances Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
+    Then I softly see value "Application Report" for title "Report Type" inside table "---program:-:formsPackagesFormsTableId---"
+    And I click on parallel menu button in flex table title "Forms"
+    And I select "Reset Table" from parallel lines dropdown of "Forms"
+    And I wait for "3" seconds
+    When I perform quick search for "Desk" in "---program:-:formsPackagesFormsTableId---" panel
+    Then I softly see value "Program Review Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" inside table "---program:-:formsPackagesFormsTableId---"
+    Then I softly see value "General Review Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" inside table "---program:-:formsPackagesFormsTableId---"
+    Then I softly see value "Financial Review Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" inside table "---program:-:formsPackagesFormsTableId---"
+    Then I softly see value "Program Review Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" inside table "---program:-:formsPackagesFormsTableId---"
+    Then I softly see value "General Review Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" inside table "---program:-:formsPackagesFormsTableId---"
+    Then I softly see value "Financial Review Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" inside table "---program:-:formsPackagesFormsTableId---"
+
+  @293601 @293603 @ValidatePMusercanseeReportTypeclmonSiteVisitformswhenuserclickonviewicononGrantorSiteVisitFormsunderBusinessFormssectiononsetuptabofInternalProgram @sprint-3-US-288713 @vaibhav @Forms @vai1
+  Scenario: Validate PM user can see Report Type clm on Site Visit forms when user click on view icon on Grantor Site Visit Forms under Business Forms section on setup tab of Internal Program
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Setup" sub tab
+    Then I can see row level action button "Preview" against "Grantor Site Visit Forms" in flex table with id "---program:-:businessFormTableId---"
+    Then I can see row level action button "Edit" against "Grantor Site Visit Forms" in flex table with id "---program:-:businessFormTableId---"
+    When I click on "Preview" icon for "Grantor Site Visit Forms" inside table
+    Then I softly see value "General Review Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "General Review Form" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Financial Review Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Financial Review Form" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Program Review Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Program Review Form" inside table "---program:-:previewPackageTableId---"
+    And I refresh the page
+    #293603
+    Then I can see row level action button "Preview" against "Grantor Pre-application Form" in flex table with id "---program:-:businessFormTableId---"
+    Then I can see row level action button "Edit" against "Grantor Pre-application Form" in flex table with id "---program:-:businessFormTableId---"
+    When I click on "Preview" icon for "Grantor Pre-application Form" inside table
+    Then I softly see value "Standard Pre-Application form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Pre-Application Report" for title "Report Type" against the value "Standard Pre-Application form" inside table "---program:-:previewPackageTableId---"
+
+  @293602 @ValidateEXEusercanseeReportTypeclmonOrganizationDeskReviewformwhenuserclickonviewicononOrganizationDeskReviewunderBusinessFormssectiononsetuptabofInternalProgram @sprint-3-US-288713 @vaibhav @Forms @vai1
+  Scenario: Validate EXE user can see Report Type clm on Organization Desk Review form when user click on view icon on Organization Desk Review under Business Forms section on setup tab of Internal Program
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Setup" sub tab
+    Then I can see row level action button "Preview" against "Organization Desk Review" in flex table with id "---program:-:businessFormTableId---"
+    Then I can see row level action button "Edit" against "Organization Desk Review" in flex table with id "---program:-:businessFormTableId---"
+    When I click on "Preview" icon for "Organization Desk Review" inside table
+    Then I softly see value "General Review Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "General Review Form" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Financial Review Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Financial Review Form" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Program Review Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Program Review Form" inside table "---program:-:previewPackageTableId---"
+
+  @293604 @ValidateAdminusercanseeReportTypeclmonApplicationwhenuserclickviewicononGrantorApplicationFormsunderBusinessFormssectiononsetuptabofInternalProgram @sprint-3-US-288713 @vaibhav @Forms @vai1
+  Scenario: Validate Admin user can see Report Type clm on Application when user click on view icon on Grantor Application Forms under Business Forms section on setup tab of Internal Program
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Setup" sub tab
+    Then I can see row level action button "Preview" against "Grantor Application Forms" in flex table with id "---program:-:businessFormTableId---"
+    Then I can see row level action button "Edit" against "Grantor Application Forms" in flex table with id "---program:-:businessFormTableId---"
+    When I click on "Preview" icon for "Grantor Application Forms" inside table
+    Then I softly see value "Program Application Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Application Report" for title "Report Type" against the value "Program Application Form" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Standard Assurances Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Application Report" for title "Report Type" against the value "Standard Assurances Form" inside table "---program:-:previewPackageTableId---"
+
+  @293607 @ValidatePOusercanseeReportTypeonGrantorPreapplicationFormsGrantorApplicationFormsGrantorSiteVisitFormsOrganizationDeskreviewonPackagessectionofFormsandPackagessectionundersetupofPlanningmodule @sprint-3-US-288713 @vaibhav @Forms @vai1
+  Scenario: Validate PO user can see Report Type on Grantor Pre-application Forms, Grantor Application Forms, Grantor Site Visit Forms, Organization Desk review on Packages section of Forms & Packages section under setup of Planning module
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Planning" tab
+    When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
+    When I perform quick search for "Grantor Site Visit" in "---program:-:packagesTableId---" panel
+    Then I softly see value "Grantor Site Visit" for title "Package Name" inside table "---program:-:packagesTableId---"
+    And I expand nested table containing column value "Grantor Site Visit Forms"
+    Then I softly see value "General Review Form" for title "Form Name" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "General Review Form" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Financial Review Form" for title "Form Name" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Financial Review Form" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Program Review Form" for title "Form Name" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Program Review Form" inside table "---program:-:packagesTableId---"
+    And I collapse nested table containing column value "Grantor Site Visit"
+    When I perform quick search for "Grantor Pre-application Form" in "---program:-:packagesTableId---" panel
+    Then I softly see value "Grantor Pre-application Form" for title "Package Name" inside table "---program:-:packagesTableId---"
+    And I expand nested table containing column value "Grantor Pre-application Form"
+    Then I softly see value "Standard Pre-Application form" for title "Form Name" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Pre-Application Report" for title "Report Type" against the value "Standard Pre-Application form" inside table "---program:-:packagesTableId---"
+    And I collapse nested table containing column value "Grantor Pre-application Form"
+    When I perform quick search for "Grantor Application Forms" in "---program:-:packagesTableId---" panel
+    Then I softly see value "Grantor Application Forms" for title "Package Name" inside table "---program:-:packagesTableId---"
+    And I expand nested table containing column value "Grantor Application Forms"
+    Then I softly see value "Program Application Form" for title "Form Name" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Application Report" for title "Report Type" against the value "Program Application Form" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Standard Assurances Form" for title "Form Name" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Application Report" for title "Report Type" against the value "Standard Assurances Form" inside table "---program:-:packagesTableId---"
+    And I collapse nested table containing column value "Grantor Application Forms"
+    And I expand nested table containing column value "Organization Desk Review"
+    Then I softly see value "General Review Form" for title "Form Name" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "General Review Form" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Financial Review Form" for title "Form Name" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Financial Review Form" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Program Review Form" for title "Form Name" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Program Review Form" inside table "---program:-:packagesTableId---"
+
+  @293613 @ValidateEXEusercanseeReportTypeclmonSiteVisitformswhenuserclickonviewicononGrantorSiteVisitFormsunderBusinessFormssectiononsetuptabofAnnouncement @sprint-3-US-288713 @vaibhav @Forms @vai1
+  Scenario: Validate EXE user can see Report Type clm on Site Visit forms  when user click on view icon on Grantor Site Visit Forms under Business Forms section on setup tab of Announcement
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
+    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 1  |
+    And I click on "Submit For Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I wait for "3" seconds
+    When I "Approve" in the approval decision
+    And I wait for "3" seconds
+    And I click on "Activate" in the page details
+    Then I softly see field "Status" as "Active"
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I enter values into fields
+      | Value                      | Field      |
+      | {SavedValue:ProgramEGMSID} | Program__c |
+    And I click modal button "Continue"
+    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    When I navigate to "Overview" sub tab
+    And I save the field labeled "Announcement Name" as "announcementName"
+    And I navigate to "Setup" sub tab
+    Then I can see row level action button "Preview" against "Grantor Site Visit Forms" in flex table with id "---announcement:-:businessFormlistTableId---"
+    Then I can see row level action button "Edit" against "Organization Desk Review" in flex table with id "---announcement:-:businessFormlistTableId---"
+    Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
+    When I click on "Preview" icon for "Grantor Site Visit Forms" inside table
+    Then I softly see value "General Review Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "General Review Form" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Financial Review Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Financial Review Form" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Program Review Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Program Review Form" inside table "---program:-:previewPackageTableId---"
+
+  @293617 @293620 @ValidatePOusecanseeReportTypeclmonOrganizationDeskReviewformswhenuserclickonviewicononOrganizationDeskReviewFormsunderBusinessFormssectiononsetuptabofAnnouncement @sprint-3-US-288713 @vaibhav @Forms @vai1
+  Scenario: Validate PO user can see Report Type clm on Organization Desk Review forms when user click on view icon on Organization Desk Review Forms under Business Forms section on setup tab of Announcement
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
+    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:PO Username} | Step 1  |
+    And I click on "Submit For Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I wait for "3" seconds
+    When I "Approve" in the approval decision
+    And I wait for "3" seconds
+    And I click on "Activate" in the page details
+    Then I softly see field "Status" as "Active"
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I enter values into fields
+      | Value                      | Field      |
+      | {SavedValue:ProgramEGMSID} | Program__c |
+    And I click modal button "Continue"
+    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    When I navigate to "Overview" sub tab
+    And I save the field labeled "Announcement Name" as "announcementName"
+    When I navigate to "Setup" sub tab
+    Then I can see row level action button "Preview" against "Organization Desk Review" in flex table with id "---announcement:-:businessFormlistTableId---"
+    Then I can see row level action button "Edit" against "Organization Desk Review" in flex table with id "---announcement:-:businessFormlistTableId---"
+    Then I softly see value "Organization Desk Review" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
+    When I click on "Preview" icon for "Organization Desk Review" inside table
+    Then I softly see value "General Review Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "General Review Form" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Financial Review Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Financial Review Form" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Program Review Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Program Review Form" inside table "---program:-:previewPackageTableId---"
+    And I refresh the page
+    #293620
+    Then I can see row level action button "Preview" against "Grantor Application Forms" in flex table with id "---program:-:businessFormTableId---"
+    Then I can see row level action button "Edit" against "Grantor Application Forms" in flex table with id "---program:-:businessFormTableId---"
+    Then I softly see value "Grantor Application Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
+    When I click on "Preview" icon for "Grantor Application Forms" inside table
+    Then I softly see value "Program Application Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Application Report" for title "Report Type" against the value "Program Application Form" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Standard Assurances Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Application Report" for title "Report Type" against the value "Standard Assurances Form" inside table "---program:-:previewPackageTableId---"
+
+  @293619 @ValidatePMusercanseeReportTypeclmonPreapplicationformswhenuserclickonviewicononGrantorPreapplicationFormsunderBusinessFormssectiononsetuptabofAnnouncement @sprint-3-US-288713 @vaibhav @Forms @vai1
+  Scenario: validate PM user can see Report Type clm on Pre-application forms when user click on view icon on Grantor Pre-application Forms under Business Forms section on setup tab of Announcement
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
+    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 1  |
+    And I click on "Submit For Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I wait for "3" seconds
+    When I "Approve" in the approval decision
+    And I wait for "3" seconds
+    And I click on "Activate" in the page details
+    Then I softly see field "Status" as "Active"
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I enter values into fields
+      | Value                      | Field      |
+      | {SavedValue:ProgramEGMSID} | Program__c |
+    And I click modal button "Continue"
+    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    When I navigate to "Overview" sub tab
+    And I save the field labeled "Announcement Name" as "announcementName"
+    And I navigate to "Setup" sub tab
+    Then I can see row level action button "Preview" against "Grantor Pre-application Form" in flex table with id "---announcement:-:businessFormlistTableId---"
+    Then I can see row level action button "Edit" against "Grantor Pre-application Form" in flex table with id "---announcement:-:businessFormlistTableId---"
+    Then I softly see value "Grantor Pre-application Form" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
+    When I click on "Preview" icon for "Grantor Pre-application Form" inside table
+    Then I softly see value "Standard Pre-Application form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
+    Then I softly see value "Pre-Application Report" for title "Report Type" against the value "Standard Pre-Application form" inside table "---program:-:previewPackageTableId---"
