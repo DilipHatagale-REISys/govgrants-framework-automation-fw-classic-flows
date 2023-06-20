@@ -2177,7 +2177,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I softly can see "Terms" sub tab at view detail page
     Then I softly can see "Performance" sub tab at view detail page
     And I softly can see "Responsibilities" sub tab at view detail page
-    Then I softly can see "Files" sub tab at view detail page
+    Then I softly can see "Forms and Files" sub tab at view detail page
     And I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
 
