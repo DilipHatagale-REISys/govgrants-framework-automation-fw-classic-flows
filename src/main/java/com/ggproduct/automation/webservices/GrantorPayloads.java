@@ -1067,8 +1067,8 @@ public class GrantorPayloads {
                 return createAwarForAmendmentRequestAdvanceYesFocusNo(json);
             case "SUBRECIPIENT_ORG_IND_USER":
                 return createAwarForIndUser(json);
-            case "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_SUB_ORG_IND":
-                return advancePermissibleYesnofocusareaSubrecipientInd(json);
+            case "ADVANCE_PERMIS_YES_FOCUS_AREA_YES_SUB_ORG_IND":
+                return advancePermissibleYesfocusareaYesSubrecipientInd(json);
             case "SECOND_FOCUS_AREA_BUDGET_CATEGORY":
                 return createAwarForSecondFocusAreaandBudgetCategory(json);
             case "USER":
@@ -1138,10 +1138,10 @@ public class GrantorPayloads {
         return json;
     }
 
-    private JsonObject advancePermissibleYesnofocusareaSubrecipientInd(JsonObject json) {
+    private JsonObject advancePermissibleYesfocusareaYesSubrecipientInd(JsonObject json) {
         JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
         JsonArray newA = new JsonArray();
-        grant.addProperty("FocusAreaRequired", "No");
+        grant.addProperty("FocusAreaRequired", "Yes");
         grant.addProperty("IsAdvancePermitted", "Yes");
         if(EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO") ) {
             grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));
