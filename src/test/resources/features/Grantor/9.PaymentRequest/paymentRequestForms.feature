@@ -448,7 +448,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "Financial Review Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
     Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" inside table "---program:-:formsPackagesFormsTableId---"
 
-  @293601 @293603 @ValidatePMusercanseeReportTypeclmonSiteVisitformswhenuserclickonviewicononGrantorSiteVisitFormsunderBusinessFormssectiononsetuptabofInternalProgram @sprint-3-US-288713 @vaibhav @Forms @vai1
+  @293601 @293603 @ValidatePMusercanseeReportTypeclmonSiteVisitformswhenuserclickonviewicononGrantorSiteVisitFormsunderBusinessFormssectiononsetuptabofInternalProgram @sprint-3-US-288713 @vaibhav @Forms
   Scenario: Validate PM user can see Report Type clm on Site Visit forms when user click on view icon on Grantor Site Visit Forms under Business Forms section on setup tab of Internal Program
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -481,7 +481,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "Standard Pre-Application form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Pre-Application Report" for title "Report Type" against the value "Standard Pre-Application form" inside table "---program:-:previewPackageTableId---"
 
-  @293602 @ValidateEXEusercanseeReportTypeclmonOrganizationDeskReviewformwhenuserclickonviewicononOrganizationDeskReviewunderBusinessFormssectiononsetuptabofInternalProgram @sprint-3-US-288713 @vaibhav @Forms @vai1
+  @293602 @ValidateEXEusercanseeReportTypeclmonOrganizationDeskReviewformwhenuserclickonviewicononOrganizationDeskReviewunderBusinessFormssectiononsetuptabofInternalProgram @sprint-3-US-288713 @vaibhav @Forms
   Scenario: Validate EXE user can see Report Type clm on Organization Desk Review form when user click on view icon on Organization Desk Review under Business Forms section on setup tab of Internal Program
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -507,7 +507,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "Program Review Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Program Review Form" inside table "---program:-:previewPackageTableId---"
 
-  @293604 @ValidateAdminusercanseeReportTypeclmonApplicationwhenuserclickviewicononGrantorApplicationFormsunderBusinessFormssectiononsetuptabofInternalProgram @sprint-3-US-288713 @vaibhav @Forms @vai1
+  @293604 @ValidateAdminusercanseeReportTypeclmonApplicationwhenuserclickviewicononGrantorApplicationFormsunderBusinessFormssectiononsetuptabofInternalProgram @sprint-3-US-288713 @vaibhav @Forms
   Scenario: Validate Admin user can see Report Type clm on Application when user click on view icon on Grantor Application Forms under Business Forms section on setup tab of Internal Program
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Planning" tab
@@ -537,7 +537,7 @@ Feature: Payment Request Forms scenarios
     And I navigate to "Planning" tab
     When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
     When I perform quick search for "Grantor Site Visit" in "---program:-:packagesTableId---" panel
-    Then I softly see value "Grantor Site Visit" for title "Package Name" inside table "---program:-:packagesTableId---"
+    Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---program:-:packagesTableId---"
     And I expand nested table containing column value "Grantor Site Visit Forms"
     Then I softly see value "General Review Form" for title "Form Name" inside table "---program:-:packagesTableId---"
     Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "General Review Form" inside table "---program:-:packagesTableId---"
@@ -545,7 +545,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Financial Review Form" inside table "---program:-:packagesTableId---"
     Then I softly see value "Program Review Form" for title "Form Name" inside table "---program:-:packagesTableId---"
     Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Program Review Form" inside table "---program:-:packagesTableId---"
-    And I collapse nested table containing column value "Grantor Site Visit"
+    And I collapse nested table containing column value "Grantor Site Visit Forms"
     When I perform quick search for "Grantor Pre-application Form" in "---program:-:packagesTableId---" panel
     Then I softly see value "Grantor Pre-application Form" for title "Package Name" inside table "---program:-:packagesTableId---"
     And I expand nested table containing column value "Grantor Pre-application Form"
@@ -637,7 +637,7 @@ Feature: Payment Request Forms scenarios
 
   @293617 @293620 @ValidatePOusecanseeReportTypeclmonOrganizationDeskReviewformswhenuserclickonviewicononOrganizationDeskReviewFormsunderBusinessFormssectiononsetuptabofAnnouncement @sprint-3-US-288713 @vaibhav @Forms @vai1
   Scenario: Validate PO user can see Report Type clm on Organization Desk Review forms when user click on view icon on Organization Desk Review Forms under Business Forms section on setup tab of Announcement
-    When I login to "As a Grantor" app as "PO" user
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Internal Programs - Draft"
@@ -666,7 +666,7 @@ Feature: Payment Request Forms scenarios
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                      | Program |
-      | {SavedValue:PO Username} | Step 1  |
+      | {SavedValue:PM Username} | Step 1  |
     And I click on "Submit For Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     And I wait for "3" seconds
