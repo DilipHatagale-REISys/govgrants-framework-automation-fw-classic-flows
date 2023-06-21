@@ -1067,6 +1067,8 @@ public class GrantorPayloads {
                 return createAwarForAmendmentRequestAdvanceYesFocusNo(json);
             case "SUBRECIPIENT_ORG_IND_USER":
                 return createAwarForIndUser(json);
+            case "SECOND_FOCUS_AREA_BUD_CAT_SUB_ORG_IND":
+                return createAwarForSecondFocusAreaandBudgetCategorySubrecipientIndProfile(json);
             case "SECOND_FOCUS_AREA_BUDGET_CATEGORY":
                 return createAwarForSecondFocusAreaandBudgetCategory(json);
             case "USER":
@@ -1133,6 +1135,61 @@ public class GrantorPayloads {
             newA.add(grant);
             json.add("Grant", newA);
         }
+        return json;
+    }
+
+    private JsonObject createAwarForSecondFocusAreaandBudgetCategorySubrecipientIndProfile(JsonObject json) {
+        if(EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO") ) {
+            JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+            JsonArray newA = new JsonArray();
+            grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));
+            newA.add(grant);
+            json.add("Grant", newA);
+        }
+        JsonArray awardServiceAreaArray = new JsonArray();
+        JsonObject awardServiceAreaA = new JsonObject();
+        awardServiceAreaA.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area"));
+        awardServiceAreaA.addProperty("GATStartDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceAreaA.addProperty("GATEndDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceAreaArray.add(awardServiceAreaA);
+        JsonObject awardServiceAreaB = new JsonObject();
+        awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        awardServiceAreaB.addProperty("GATStartDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceAreaB.addProperty("GATEndDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceAreaArray.add(awardServiceAreaB);
+        json.add("AwardServiceArea", awardServiceAreaArray);
+
+        JsonArray buildUpItemsA = new JsonArray();
+        JsonObject buildUpItems = new JsonObject();
+        buildUpItems.addProperty("BudgetCategory", "Construction");
+        buildUpItems.addProperty("Title", "Construction");
+        buildUpItems.addProperty("Narrative", "Test Build-up");
+        buildUpItems.addProperty("AwardedBudget", 500);
+        buildUpItems.addProperty("CashMatch", 100);
+        buildUpItems.addProperty("NonCashMatch", 100);
+        buildUpItems.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems.addProperty("ServiceAreaName", "Automation Permanent Focus Area");
+        buildUpItemsA.add(buildUpItems);
+        JsonObject buildUpItems2 = new JsonObject();
+        buildUpItems2.addProperty("BudgetCategory", "Construction");
+        buildUpItems2.addProperty("Title", "Construction");
+        buildUpItems2.addProperty("Narrative", "Test Build-up");
+        buildUpItems2.addProperty("AwardedBudget", 500);
+        buildUpItems2.addProperty("CashMatch", 100);
+        buildUpItems2.addProperty("NonCashMatch", 100);
+        buildUpItems2.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems2.addProperty("ServiceAreaName", "Automation Permanent Focus Area2");
+        buildUpItemsA.add(buildUpItems2);
+        json.add("BuildUpItems", buildUpItemsA);
+
         return json;
     }
 
