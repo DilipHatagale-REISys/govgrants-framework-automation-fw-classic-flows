@@ -408,6 +408,8 @@ public class GrantorPayloads {
                 return updateRiskAssesmentAsNoForAnnouncement(json);
             case "PRE_APPLICATION_YES":
                 return updatePreApplicationAsYesForAnnouncement(json);
+            case "PRE_APPLICATION_YES_WITH_IND_ORG":
+                return updatePreApplicationAsYesForAnnouncementWithIndOrg(json);
             case "PRE_APPLICATION_NEGOTIATION_YES":
                 return updatePreApplicationAndNegotiationAsYesForAnnouncement(json);
             case "PRE_APP_YES_NEGO_YES_FOCUS_AREA_NO":
@@ -480,6 +482,18 @@ public class GrantorPayloads {
             default:
                 return json;
         }
+    }
+
+    private JsonObject updatePreApplicationAsYesForAnnouncementWithIndOrg(JsonObject json) {
+        JsonObject pre_application = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        pre_application.addProperty("PreApplicationNeeded", "Yes");
+        pre.add(pre_application);
+        pre_application.addProperty("Organization", ProjectWebServices.getIdOf("Account", "Automation IND"));
+        pre.add(pre_application);
+        json.add("InvitedApplicant", pre);
+        json.add("Announcement", pre);
+        return json;
     }
 
     private JsonObject updateAnnouncementWithSecondFocusAreaRiskNo(JsonObject json) {

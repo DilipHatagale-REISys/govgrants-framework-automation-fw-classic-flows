@@ -5914,3 +5914,740 @@ Feature: Validate scenarios in Progress Report Forms
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Please enter Zip code in the Zip + 4 codes format (e.g. 12345-1234) in the 'Zip / Postal code' field. |
+
+  @339610 @Validateusershouldbeabletosubmitandapprovedprogressreportwithfillingalldataonall13forms @sprint-12-US-328869 @vaibhav @Forms @TBE
+  Scenario: Validate user should be able to submit and approved progress report with filling all data on all 13 forms
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I wait for "2" seconds
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "2" seconds
+    # SF-425
+    Then I softly see value "Federal Financial Report - SF-425" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    And I click on "Edit" icon for "Federal Financial Report - SF-425" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I enter "SF425_Form" values from "ProgressReport_Field_Values.xlsx"
+    And I edit the following rows inline in flex table with id "---progressReport:-:sf425TransactionTableID---" by clicking "Edit" :
+      | Classification                                                          | Cumulative |
+      | a. Cash Receipts                                                        | 1000       |
+      | b. Cash Disbursements                                                   | 500        |
+      | d. Total Federal funds authorized                                       | 1000       |
+      | e. Federal share of expenditures                                        | 1000       |
+      | f. Federal share of unliquated obligations                              | 500        |
+      | i. Total recipient share required                                       | 1000       |
+      | j. Recipient share of expenditures                                      | 500        |
+      | l. Total Federal share of program income earned                         | 1000       |
+      | m. Program income expended in accordance with the deduction alternative | 500        |
+      | n. Program income expended in accordance with the addition alternative  | 200        |
+    When I enter the following values into flex table with id "---progressReport:-:sf425IndirectExpenseTableId---" by clicking "Add" :
+      | Type  | Rate | Period From | Period To | Base | Federal Share |
+      | Fixed | 100  | 25          | 30        | 10   | 10            |
+    When I click on "Save" in the page details
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    When I click on "Back" in the page details
+    # SF-425A
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "4" seconds
+    And I click on "Edit" icon for "Federal Financial Report Attachment - SF-425A" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I enter "SF425A_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "3" seconds
+    When I enter the following values into flex table with id "---progressReport:-:sf425AGrantCoveredTableId---" by clicking "New" :
+      | Federal Grant Number | Recipient Account Number | Cumulative Federal Cash Disbursement |
+      | 6723457              | 89376289                 | 500                                  |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+     #Fill SF428-C Form
+    And I select "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF428C_Form" values from "ProgressReport_Field_Values.xlsx"
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "1. Supplemental Sheet SF-428S or recipient equivalent" from computer
+    And I wait for "2" seconds
+    When I click on "Validate" in the page details
+    And I wait for "9" seconds
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #Fill SF428-B Form
+    And I select "Tangible Personal Property Report - Final Report - SF-428-B" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF428B_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "1. Supplemental Sheet SF-428S or recipient equivalent" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "2. Additional File for Comments" from computer
+    And I refresh the page
+    And I wait for "8" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #Fill SF428-A Form
+    And I select "Tangible Personal Property Report - Annual Report - SF-428-A" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF428A_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    And I click on top right button "New" in flex table with id "---progressReport:-:sf428AFederallyOwnedTableId---"
+    When I enter in modal "SF428A_Federal_Property" values from "ProgressReport_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I refresh the page
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "1.a Individual item information" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "1.b Consolidated Annual Report Attachments" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
+    And I refresh the page
+    When I click on "Validate" in the page details
+    And I wait for "7" seconds
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #Fill SF428-S
+    And I select "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF428S_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    And I click on top right button "New" in flex table with id "---progressReport:-:sf428SDetailIndividualTableId---"
+    When I enter in modal "SF428S_Details_Individual" values from "ProgressReport_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I refresh the page
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #SF 428 Form
+    And I select "Tangible Personal Property Report - SF-428" from dropdown at forms
+    When I click on "Edit" in the page details
+    And I enter "SF428_Form" values from "ProgressReport_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSupplementalSheet__c"
+    When I click on "Save" in the page details
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    # SF429-A Form
+    And I select "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF429A_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    And I refresh the page
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14k. NHPA" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "15. Significant Change" from computer
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    # SF429-B Form
+    And I select "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF429B_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    And I refresh the page
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14i. NHPA Description" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14h. Environmental Compliance Requirements" from computer
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    # SF429-C Form
+    And I select "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF429C_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I refresh the page
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14c. Proposed Use" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14g. Environmental Compliance Requirements" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14h. NHPA Description" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14i. Encumbered Parties" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "15. Request Reasons" from computer
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    # SF429 Form
+    And I select "Real Property Status Report (Cover Page) - SF-429" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF429_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #SF-271
+    And I select "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF271_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    And I edit the following rows inline in flex table with id "---progressReport:-:sf271FormTableId---" by clicking "Edit" :
+      | Classification                                       | Programs | Functions | Activities |
+      | a. Administrative expense                            | 12345    | 12345     | 12345      |
+      | b. Preliminary expense                               | 12345    | 12345     | 12345      |
+      | c. Land, structures, right-of-way                    | 12345    | 12345     | 12345      |
+      | d. Architectural engineering basic fees              | 12345    | 12345     | 12345      |
+      | e. Other architectural engineering fees              | 12345    | 12345     | 12345      |
+      | f. Project inspection fees                           | 12345    | 12345     | 12345      |
+      | g. Land development                                  | 12345    | 12345     | 12345      |
+      | h. Relocation expense                                | 12345    | 12345     | 12345      |
+      | i. Relocation payments to individuals and businesses | 12345    | 12345     | 12345      |
+      | j. Demolition and removal                            | 12345    | 12345     | 12345      |
+      | k. Construction and project improvement cost         | 12345    | 12345     | 12345      |
+      | l. Equipment                                         | 12345    | 12345     | 12345      |
+      | m. Miscellaneous cost                                | 12345    | 12345     | 12345      |
+      | o. Deductions for program income                     | 12345    | 12345     | 12345      |
+      | q. Federal share to date                             | 12345    | 12345     | 12345      |
+      | r. Rehabilitation grants (100% reimbursement)        | 12345    | 12345     | 12345      |
+      | t. Federal payments previously requested             | 12345    | 12345     | 12345      |
+      | u. Amount requested for reimbursement                | 12345    | 12345     | 12345      |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #Community Form
+    And I select "Community Initiative Progress Report" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    When I click on "Back" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
+    And I wait for "3" seconds
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---progressReport:-:approversTableId---" by clicking "New" :
+      | Name          | Progress Report |
+      | Automation FO | Step 1          |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+
+  @329635 @Validateusershouldabletosubmitandaprovedprogressreportwithfillingpartialdataforsomefieldsondifferentdifferentformsfromall13forms @sprint-11-US-328863 @vaibhav @Forms @TBE
+  Scenario: Validate user should able to submit and approved progress report with filling partial data for some fields on different different forms from all 13 forms
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I wait for "2" seconds
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "2" seconds
+    # SF-425
+    Then I softly see value "Federal Financial Report - SF-425" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    And I click on "Edit" icon for "Federal Financial Report - SF-425" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I enter "SF425_Form" values from "ProgressReport_Field_Values.xlsx"
+    And I edit the following rows inline in flex table with id "---progressReport:-:sf425TransactionTableID---" by clicking "Edit" :
+      | Classification                                                          | Cumulative |
+      | a. Cash Receipts                                                        | 1000       |
+      | b. Cash Disbursements                                                   | 500        |
+      | d. Total Federal funds authorized                                       | 1000       |
+      | e. Federal share of expenditures                                        | 1000       |
+      | f. Federal share of unliquated obligations                              | 500        |
+      | i. Total recipient share required                                       | 1000       |
+      | j. Recipient share of expenditures                                      | 500        |
+      | l. Total Federal share of program income earned                         | 1000       |
+      | m. Program income expended in accordance with the deduction alternative | 500        |
+      | n. Program income expended in accordance with the addition alternative  | 200        |
+    When I enter the following values into flex table with id "---progressReport:-:sf425IndirectExpenseTableId---" by clicking "Add" :
+      | Type  | Rate | Period From | Period To | Base | Federal Share |
+      | Fixed | 100  | 25          | 30        | 10   | 10            |
+    When I enter value "Unchecked" into field "fieldAcknowledgementSF428__c"
+    When I click on "Save" in the page details
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Certify the Federal Financial Report (SF-425) by checking the Acknowledgment Box before submitting to Grantor. |
+    When I click on "Back" in the page details
+    # SF-425A
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "4" seconds
+    And I click on "Edit" icon for "Federal Financial Report Attachment - SF-425A" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I enter "SF425A_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    When I enter the following values into flex table with id "---progressReport:-:sf425AGrantCoveredTableId---" by clicking "New" :
+      | Federal Grant Number | Recipient Account Number | Cumulative Federal Cash Disbursement |
+      | 89376289             | 89376289                 | 250                                  |
+    And I wait for "8" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | "Sum of Cumulative Federal Cash Disbursement" must be Equal to "10 b Cash Disbursement" in Transactions section of Federal Financial Report (SF-425). |
+     #Fill SF428-C Form
+    And I select "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF428C_half_fill" values from "ProgressReport_Field_Values.xlsx"
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "1. Supplemental Sheet SF-428S or recipient equivalent" from computer
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    #Fill SF428-B Form
+    And I select "Tangible Personal Property Report - Final Report - SF-428-B" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter value "12345" into field "fieldFederalGrantIdentifyingNumbe__c"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    #Fill SF428-A Form
+    And I select "Tangible Personal Property Report - Annual Report - SF-428-A" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF428A_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    #Fill SF428-S
+    And I select "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF428S_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    And I click on top right button "New" in flex table with id "---progressReport:-:sf428SDetailIndividualTableId---"
+    When I enter in modal "SF428S_Details_Individual" values from "ProgressReport_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I refresh the page
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #SF 428 Form
+    And I select "Tangible Personal Property Report - SF-428" from dropdown at forms
+    When I click on "Edit" in the page details
+    And I enter "SF428_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Select Supplement Sheet as Yes as required form is filled. |
+    # SF429-A Form
+    And I select "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF429A_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    And I refresh the page
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14k. NHPA" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "15. Significant Change" from computer
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    # SF429-B Form
+    And I select "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF429B_half_fill" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    # SF429-C Form
+    And I select "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF429C_half_fill" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    # SF429 Form
+    And I select "Real Property Status Report (Cover Page) - SF-429" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF429_half_fill" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    #SF-271
+    And I select "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF271_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    And I edit the following rows inline in flex table with id "---progressReport:-:sf271FormTableId---" by clicking "Edit" :
+      | Classification                                       | Programs | Functions | Activities |
+      | a. Administrative expense                            | 12345    | 12345     | 12345      |
+      | b. Preliminary expense                               | 12345    | 12345     | 12345      |
+      | c. Land, structures, right-of-way                    | 12345    | 12345     | 12345      |
+      | d. Architectural engineering basic fees              | 12345    | 12345     | 12345      |
+      | e. Other architectural engineering fees              | 12345    | 12345     | 12345      |
+      | f. Project inspection fees                           | 12345    | 12345     | 12345      |
+      | g. Land development                                  | 12345    | 12345     | 12345      |
+      | h. Relocation expense                                | 12345    | 12345     | 12345      |
+      | i. Relocation payments to individuals and businesses | 12345    | 12345     | 12345      |
+      | j. Demolition and removal                            | 12345    | 12345     | 12345      |
+      | k. Construction and project improvement cost         | 12345    | 12345     | 12345      |
+      | l. Equipment                                         | 12345    | 12345     | 12345      |
+      | m. Miscellaneous cost                                | 12345    | 12345     | 12345      |
+      | o. Deductions for program income                     | 12345    | 12345     | 12345      |
+      | q. Federal share to date                             | 12345    | 12345     | 12345      |
+      | r. Rehabilitation grants (100% reimbursement)        | 12345    | 12345     | 12345      |
+      | t. Federal payments previously requested             | 12345    | 12345     | 12345      |
+      | u. Amount requested for reimbursement                | 12345    | 12345     | 12345      |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #Community Form
+    And I select "Community Initiative Progress Report" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "Comm_half_fill" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Fill all the required data in the form before submitting. |
+    When I click on "Back" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
+    And I wait for "3" seconds
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---progressReport:-:approversTableId---" by clicking "New" :
+      | Name          | Progress Report |
+      | Automation FO | Step 1          |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+
+  @329934 @ValidateusershouldbeabletoeditallformsontheprogressreportwhichisreparentedtonewawardafterFCamendmentrequestandapproveprogressreportsuccessfullyPreconditionPartiallyfilledsomeformsonProgressreportofInitialaward @sprint-11-US-328848 @vaibhav @Forms @TBE
+  Scenario: Validate user should be able to edit all forms on the progress report which is reparented to new award after FC amendment request and approve progress report successfully Pre-condition Partially filled some forms on Progress report of Initial award
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I wait for "2" seconds
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "2" seconds
+    Then I softly see value "Community Initiative Progress Report" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Personal Property Report - SF-428" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Personal Property Report - Annual Report - SF-428-A" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Personal Property Report - Final Report - SF-428-B" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Real Property Status Report (Cover Page) - SF-429" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Federal Financial Report - SF-425" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Federal Financial Report Attachment - SF-425A" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    #Fill SF428-B Form
+    And I click on "Edit" icon for "Tangible Personal Property Report - Final Report - SF-428-B" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I enter value "12345" into field "fieldFederalGrantIdentifyingNumbe__c"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    #Fill SF428-A Form
+    And I select "Tangible Personal Property Report - Annual Report - SF-428-A" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF428A_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    #Fill SF428-S
+    And I select "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF428S_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    And I click on top right button "New" in flex table with id "---progressReport:-:sf428SDetailIndividualTableId---"
+    When I enter in modal "SF428S_Details_Individual" values from "ProgressReport_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I refresh the page
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #SF 428 Form
+    And I select "Tangible Personal Property Report - SF-428" from dropdown at forms
+    When I click on "Edit" in the page details
+    And I enter "SF428_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I wait for "9" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Select Supplement Sheet as Yes as required form is filled. |
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 2000                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "FundingID"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction  | 3000                 | 150        | 150            |
+    And I refresh the page
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I wait for "4" seconds
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    And I wait for "4" seconds
+    And I click on "Amend Subaward" in the page details
+    And I pause execution for "10" seconds
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID1"
+    When I click on "Activate" in the page details
+    Then I softly see status in Progress-bar is "Activated" and is "green"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    When I navigate to "Performance" sub tab
+    Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Progress Reports - All"
+    When I perform quick search for "{SavedValue:progID}" in "---progressReport:-:progressReportFlexTableId---" panel
+    And I click on "View" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:progressReportFlexTableId---" without waiting for record
+    #Fill SF428-C Form
+    When I navigate to "Forms and Files" sub tab
+    And I select value inside table "---progressReport:-:formTableId---" is "All"
+    And I wait for "2" seconds
+    Then I softly see value "Community Initiative Progress Report" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Personal Property Report - SF-428" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Personal Property Report - Annual Report - SF-428-A" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Personal Property Report - Final Report - SF-428-B" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Tangible Personal Property Report - Supplemental Sheet - SF-428-S" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Real Property Status Report (Cover Page) - SF-429" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT B (Request to Acquire, Improve or Furnish)- SF-429-B" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Real Property Status Report ATTACHMENT C (Disposition or Encumbrance Request)-SF-429-C" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Federal Financial Report - SF-425" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Federal Financial Report Attachment - SF-425A" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    Then I softly see value "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" for title "Form Name" inside table "---progressReport:-:formTableId---"
+    And I click on "Edit" icon for "Tangible Personal Property Report - Disposition Request/Report - SF-428-C" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I enter "SF428C_Form" values from "ProgressReport_Field_Values.xlsx"
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "1. Supplemental Sheet SF-428S or recipient equivalent" from computer
+    And I wait for "2" seconds
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    When I click on "Validate" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #Fill SF428-B Form
+    And I select "Tangible Personal Property Report - Final Report - SF-428-B" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF428B_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "1. Supplemental Sheet SF-428S or recipient equivalent" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "2. Additional File for Comments" from computer
+    And I refresh the page
+    And I wait for "3" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #Fill SF428-A Form
+    And I select "Tangible Personal Property Report - Annual Report - SF-428-A" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF428A_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I click on top right button "New" in flex table with id "---progressReport:-:sf428AFederallyOwnedTableId---"
+    When I enter in modal "SF428A_Federal_Property" values from "ProgressReport_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I refresh the page
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "1.a Individual item information" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "1.b Consolidated Annual Report Attachments" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
+    And I refresh the page
+    When I click on "Validate" in the page details
+    And I wait for "7" seconds
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    #SF 428 Form
+    And I select "Tangible Personal Property Report - SF-428" from dropdown at forms
+    When I click on "Edit" in the page details
+    And I enter "SF428_Form" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    And I wait for "7" seconds
+    When I click on "Validate" in the page details
+    Then I softly see the following messages in the page details :
+      | Form validated successfully. |
+    When I click on "Back" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
+    And I wait for "3" seconds
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---progressReport:-:approversTableId---" by clicking "New" :
+      | Name          | Progress Report |
+      | Automation FO | Step 1          |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
