@@ -4382,7 +4382,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---amendment:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    When I navigate to "Actuals" sub tab
     And I save the field labeled "Spent" as "awardSpent"
     Then I softly see field "Spent" as "$300.00"
     Given I navigate to "Management" sub tab
@@ -4427,7 +4426,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | $1,000.00            |
     Then I softly see that "Current Commitment" rendered in view mode only
     Then I softly see field "Current Commitment" as "$1,000.00"
-    And I save the field labeled "CurrentCommitment" as "CurrentCommitment"
+    And I save the field labeled "Current Commitment" as "CurrentCommitment"
     Then I softly see value "{SavedValue:CurrentCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentAward}"
 
   @263955 @263956 @263960 @263951 @263957 @VerifyusershouldnotabletoedittheBudgetSummarybyFocusAreaSection @sprint-20-US-263425 @hitesh @Allocation
@@ -4676,11 +4675,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Revised Award Amount |
       | $1,000.00            |
     Then I softly see that "Current Commitment" rendered in view mode only
-    And I save the field labeled "CurrentCommitment" as "CurrentCommitment"
+    And I save the field labeled "Current Commitment" as "CurrentCommitment"
     Then I softly see value "{SavedValue:CurrentCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentAward}"
     #263957
     Then I softly see field "Current Obligation" as "$1,000.00"
     And I save the field labeled "Current Obligation" as "CurrentObligation"
     Then I softly see value "$1,000.00" for title "Current Obligation" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
-    And I save the value from row "3" for column name "Current Obligation" as "CurrentObligationTotal" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    And I save the value from row "3" for column name "Current Obligation" as "CurrentObligationTotal" from flex table "---amendment:-:projectAreasTableId--"
     Then I softly see value "{SavedValue:CurrentObligation}" is "Equals to" the value "{SavedValue:CurrentObligationTotal}"
