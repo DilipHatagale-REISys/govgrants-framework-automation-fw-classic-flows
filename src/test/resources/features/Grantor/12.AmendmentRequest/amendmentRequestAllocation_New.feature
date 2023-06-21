@@ -4382,6 +4382,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---amendment:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
+    When I navigate to "Actuals" sub tab
+    And I save the field labeled "Spent" as "awardSpent"
     Then I softly see field "Spent" as "$300.00"
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:recipientAwardAmendmentRequestTableId---"
@@ -4574,7 +4576,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
       | Construction    | 300              |
-    And I select value inside table "---paymentRequest:-:paymentRequestBudgetTableId---" is "5"
+    And I select value inside table "---paymentRequest:-:paymentRequestBudgetTableId---" is "10"
     And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
