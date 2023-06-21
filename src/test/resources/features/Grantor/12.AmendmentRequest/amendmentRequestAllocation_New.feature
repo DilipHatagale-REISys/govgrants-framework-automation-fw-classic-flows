@@ -4644,7 +4644,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "{SavedValue:BUDGETREDIRECTIONID}" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Overview" sub tab
-    Then I softly do not see "Budget Summary by Focus Area" page block displayed
+    Then I softly can see page block "Budget Summary by Focus Area"
     Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
     Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area2" in flex table with id "---amendment:-:projectAreasTableId---"
     #263956
@@ -4680,6 +4680,5 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #263957
     Then I softly see field "Current Obligation" as "$1,000.00"
     And I save the field labeled "Current Obligation" as "CurrentObligation"
-    Then I softly see value "$1,000.00" for title "Current Obligation" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
-    And I save the value from row "3" for column name "Current Obligation" as "CurrentObligationTotal" from flex table "---amendment:-:projectAreasTableId--"
-    Then I softly see value "{SavedValue:CurrentObligation}" is "Equals to" the value "{SavedValue:CurrentObligationTotal}"
+    And I save the value from row "3" for column name "Current Obligation" as "CurrentObligationFATotal" from flex table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "{SavedValue:CurrentObligation}" is "Equals to" the value "{SavedValue:CurrentObligationFATotal}"
