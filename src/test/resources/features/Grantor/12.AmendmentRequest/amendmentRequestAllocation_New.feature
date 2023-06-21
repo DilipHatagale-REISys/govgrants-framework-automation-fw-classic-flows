@@ -4303,7 +4303,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$0.00" for title "Budgeted Amount" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
     Then I softly see value "$0.00" for title "Current Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
 
-  @263954 @263959 @VerifyusershouldnotabletoseeBudgetSummarybyFocusAreaSectiononlyifFocusareaisNo @sprint-20-US-263425 @hitesh @Allocation
+  @263954 @263959 @263952 @VerifyusershouldnotabletoseeBudgetSummarybyFocusAreaSectiononlyifFocusareaisNo @sprint-20-US-263425 @hitesh @Allocation
   Scenario: Verify user should not  able to see Budget Summary by Focus Area Section, only if Focus area is No
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PO user" of type "Directed"
     When I am on "SUBPORTAL" portal
@@ -4342,7 +4342,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
       | Name                         | Reimbursement |
-      | {SavedValue:EXE Username}     | Step 1       |
+      | {SavedValue:EXE Username}    | Step 1       |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -4361,12 +4361,28 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click modal button "Save"
     When I close "{SavedValue:PayreqId}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "green"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationAward"
+    And I save the field labeled "Total Commitment" as "TotalCommitmentAward"
+    Then I softly see field "Total Commitment" as "$1,000.00"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - All"
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---amendment:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
+    When I navigate to "Actuals" sub tab
+    Then I softly see field "Spent" as "$300.00"
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:recipientAwardAmendmentRequestTableId---"
     When I enter "Subrecipient_BRedirection" values from "AmendmentRequest_Field_Values.xlsx"
@@ -4392,8 +4408,27 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #263959
     Then I softly see field "Spent" as "$300.00"
     Then I softly see value "$300.00" for title "Spent" against the value "Total" inside table "---amendment:-:grantorBudgetChangeTableId---"
+    #263952
+    And I click on "Edit" in the page details
+    Then I softly see that "Current Obligation" rendered in view mode only
+    Then I softly see field "CurrentObligation" as "$1,000.00"
+    And I save the field labeled "Current Obligation" as "CurrentObligation"
+    Then I softly see value "{SavedValue:CurrentObligation}" is "Equals to" the value "{SavedValue:CumulativeObligationAward}"
+    Then I softly see that "Spent" rendered in view mode only
+    Then I softly see field "Spent" as "$300.00"
+    And I save the field labeled "Spent" as "Spent1"
+    Then I softly see value "{SavedValue:awardSpent}" is "Equals to" the value "{SavedValue:Spent1}"
+    Then I softly see that "Budgeted Amount" rendered in view mode only
+    Then I softly see field "Budgeted Amount" as "$1,000.00"
+    Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
+      | Revised Award Amount |
+      | $1,000.00            |
+    Then I softly see that "Current Commitment" rendered in view mode only
+    Then I softly see field "Current Commitment" as "$1,000.00"
+    And I save the field labeled "CurrentCommitment" as "CurrentCommitment"
+    Then I softly see value "{SavedValue:CurrentCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentAward}"
 
-  @263955 @263956 @236960 @263951 @VerifyusershouldnotabletoedittheBudgetSummarybyFocusAreaSection @sprint-20-US-263425 @hitesh @Allocation
+  @263955 @263956 @263960 @263951 @263957 @VerifyusershouldnotabletoedittheBudgetSummarybyFocusAreaSection @sprint-20-US-263425 @hitesh @Allocation
   Scenario: Verify user should not  able to edit the  Budget Summary by Focus Area Section  not able to change(FA Yes)
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -4614,7 +4649,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #263956
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---amendment:-:projectAreasTableId---"
     Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---amendment:-:projectAreasTableId---"
-    #236960
+    #263960
     Then I softly can see page block "Budget Summary"
     Then I softly do not see "Funding Change" page block displayed
     Then I softly see field "Budgeted Amount" inside "Budget Summary" section
@@ -4626,12 +4661,13 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #263951
     And I click on "Edit" in the page details
     Then I softly see that "Current Obligation" rendered in view mode only
+    Then I softly see field "Current Obligation" as "$1,000.00"
     And I save the field labeled "Current Obligation" as "CurrentObligation"
     Then I softly see value "{SavedValue:CurrentObligation}" is "Equals to" the value "{SavedValue:CumulativeObligationAward}"
     Then I softly see that "Spent" rendered in view mode only
-    And I save the field labeled "Spent" as "Spent"
     Then I softly see field "Spent" as "$500.00"
-    Then I softly see value "{SavedValue:awardSpent}" is "Equals to" the value "{SavedValue:Spent}"
+    And I save the field labeled "Spent" as "Spent1"
+    Then I softly see value "{SavedValue:awardSpent}" is "Equals to" the value "{SavedValue:Spent1}"
     Then I softly see that "Budgeted Amount" rendered in view mode only
     Then I softly see field "Budgeted Amount" as "$1,000.00"
     Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
@@ -4640,3 +4676,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Current Commitment" rendered in view mode only
     And I save the field labeled "CurrentCommitment" as "CurrentCommitment"
     Then I softly see value "{SavedValue:CurrentCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentAward}"
+    #263957
+    Then I softly see field "Current Obligation" as "$1,000.00"
+    And I save the field labeled "Current Obligation" as "CurrentObligation"
+    Then I softly see value "$1,000.00" for title "Current Obligation" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
+    And I save the value from row "3" for column name "Current Obligation" as "CurrentObligationTotal" from flex table "---amendment:-:grantorCarryForwardFocusAreaTableId---"
+    Then I softly see value "{SavedValue:CurrentObligation}" is "Equals to" the value "{SavedValue:CurrentObligationTotal}"
