@@ -6582,23 +6582,19 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
-    #Fill SF428-B Form
-    And I select "Tangible Personal Property Report - Final Report - SF-428-B" from dropdown at forms
-    And I click on "Edit" in the page details
-    And I clear the value from field "fieldFederalGrantIdentifyingNumbe__c"
+    # SF429-A Form
+    And I select "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" from dropdown at forms
     And I refresh the page
-    And I wait for "3" seconds
-    And I enter "SF428B_Form" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Edit" in the page details
+    And I enter "SF429A_Form" values from "ProgressReport_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I wait for "2" seconds
-    Then I softly see the following messages in the page details :
-      | Form saved successfully. |
-    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
-    And I upload attachment "Attachment.pdf" of type "1. Supplemental Sheet SF-428S or recipient equivalent" from computer
-    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
-    And I upload attachment "Attachment.pdf" of type "2. Additional File for Comments" from computer
     And I refresh the page
-    And I wait for "3" seconds
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "14k. NHPA" from computer
+    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "15. Significant Change" from computer
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -6625,15 +6621,33 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "7" seconds
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
-    #SF 428 Form
-    And I select "Tangible Personal Property Report - SF-428" from dropdown at forms
-    When I click on "Edit" in the page details
-    And I enter "SF428_Form" values from "ProgressReport_Field_Values.xlsx"
+    #SF-271
+    And I select "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" from dropdown at forms
+    And I click on "Edit" in the page details
+    And I enter "SF271_Form" values from "ProgressReport_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I wait for "2" seconds
-    Then I softly see the following messages in the page details :
-      | Form saved successfully. |
-    And I wait for "7" seconds
+    And I edit the following rows inline in flex table with id "---progressReport:-:sf271FormTableId---" by clicking "Edit" :
+      | Classification                                       | Programs | Functions | Activities |
+      | a. Administrative expense                            | 12345    | 12345     | 12345      |
+      | b. Preliminary expense                               | 12345    | 12345     | 12345      |
+      | c. Land, structures, right-of-way                    | 12345    | 12345     | 12345      |
+      | d. Architectural engineering basic fees              | 12345    | 12345     | 12345      |
+      | e. Other architectural engineering fees              | 12345    | 12345     | 12345      |
+      | f. Project inspection fees                           | 12345    | 12345     | 12345      |
+      | g. Land development                                  | 12345    | 12345     | 12345      |
+      | h. Relocation expense                                | 12345    | 12345     | 12345      |
+      | i. Relocation payments to individuals and businesses | 12345    | 12345     | 12345      |
+      | j. Demolition and removal                            | 12345    | 12345     | 12345      |
+      | k. Construction and project improvement cost         | 12345    | 12345     | 12345      |
+      | l. Equipment                                         | 12345    | 12345     | 12345      |
+      | m. Miscellaneous cost                                | 12345    | 12345     | 12345      |
+      | o. Deductions for program income                     | 12345    | 12345     | 12345      |
+      | q. Federal share to date                             | 12345    | 12345     | 12345      |
+      | r. Rehabilitation grants (100% reimbursement)        | 12345    | 12345     | 12345      |
+      | t. Federal payments previously requested             | 12345    | 12345     | 12345      |
+      | u. Amount requested for reimbursement                | 12345    | 12345     | 12345      |
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
