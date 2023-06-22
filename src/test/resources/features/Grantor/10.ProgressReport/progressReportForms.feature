@@ -6043,7 +6043,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I enter "SF428_Form" values from "ProgressReport_Field_Values.xlsx"
     And I enter value "Yes" into field "fieldSupplementalSheet__c"
     When I click on "Save" in the page details
-    And I wait for "9" seconds
+    And I wait for "13" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -6058,7 +6058,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I upload attachment "Attachment.pdf" of type "14k. NHPA" from computer
     And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
     And I upload attachment "Attachment.pdf" of type "15. Significant Change" from computer
-    And I wait for "9" seconds
+    And I wait for "6" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -6073,7 +6073,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I upload attachment "Attachment.pdf" of type "14i. NHPA Description" from computer
     And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
     And I upload attachment "Attachment.pdf" of type "14h. Environmental Compliance Requirements" from computer
-    And I wait for "9" seconds
+    And I wait for "7" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -6262,7 +6262,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I click on "Edit" in the page details
     And I enter "SF428A_Form" values from "ProgressReport_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I wait for "2" seconds
+    And I wait for "6" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
     #Fill SF428-S
@@ -6293,6 +6293,7 @@ Feature: Validate scenarios in Progress Report Forms
       | Select Supplement Sheet as Yes as required form is filled. |
     # SF429-A Form
     And I select "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" from dropdown at forms
+    And I refresh the page
     And I click on "Edit" in the page details
     And I enter "SF429A_Form" values from "ProgressReport_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -6396,7 +6397,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
 
-  @329934 @ValidateusershouldbeabletoeditallformsontheprogressreportwhichisreparentedtonewawardafterFCamendmentrequestandapproveprogressreportsuccessfullyPreconditionPartiallyfilledsomeformsonProgressreportofInitialaward @sprint-11-US-328848 @vaibhav @Forms
+  @vai @329934 @ValidateusershouldbeabletoeditallformsontheprogressreportwhichisreparentedtonewawardafterFCamendmentrequestandapproveprogressreportsuccessfullyPreconditionPartiallyfilledsomeformsonProgressreportofInitialaward @sprint-11-US-328848 @vaibhav @Forms
   Scenario: Validate user should be able to edit all forms on the progress report which is reparented to new award after FC amendment request and approve progress report successfully Pre-condition Partially filled some forms on Progress report of Initial award
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6434,7 +6435,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I click on "Edit" icon for "Tangible Personal Property Report - Final Report - SF-428-B" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter value "12345" into field "fieldFederalGrantIdentifyingNumbe__c"
     When I click on "Save" in the page details
-    And I wait for "2" seconds
+    And I wait for "6" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
     #Fill SF428-A Form
@@ -6517,6 +6518,11 @@ Feature: Validate scenarios in Progress Report Forms
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 3000                |
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                     |
+      | 4100  | fieldRevisedCommitment__c |
+    And I click on "Save" in the page details
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I wait for "4" seconds
@@ -6578,6 +6584,7 @@ Feature: Validate scenarios in Progress Report Forms
     #Fill SF428-B Form
     And I select "Tangible Personal Property Report - Final Report - SF-428-B" from dropdown at forms
     And I click on "Edit" in the page details
+    And I enter value "Checked" into field "fieldFederallyownedProperty__c"
     And I enter "SF428B_Form" values from "ProgressReport_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I wait for "2" seconds
