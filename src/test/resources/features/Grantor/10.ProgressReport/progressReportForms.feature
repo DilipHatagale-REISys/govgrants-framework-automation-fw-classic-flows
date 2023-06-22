@@ -5915,7 +5915,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the following messages in the page details :
       | Please enter Zip code in the Zip + 4 codes format (e.g. 12345-1234) in the 'Zip / Postal code' field. |
 
-  @339610 @Validateusershouldbeabletosubmitandapprovedprogressreportwithfillingalldataonall13forms @sprint-12-US-328869 @vaibhav @Forms @TBE
+  @339610 @Validateusershouldbeabletosubmitandapprovedprogressreportwithfillingalldataonall13forms @sprint-12-US-328869 @vaibhav @Forms @TBE @EndToEndFlow
   Scenario: Validate user should be able to submit and approved progress report with filling all data on all 13 forms
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6178,7 +6178,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
 
-  @329635 @Validateusershouldabletosubmitandaprovedprogressreportwithfillingpartialdataforsomefieldsondifferentdifferentformsfromall13forms @sprint-11-US-328863 @vaibhav @Forms
+  @329635 @Validateusershouldabletosubmitandaprovedprogressreportwithfillingpartialdataforsomefieldsondifferentdifferentformsfromall13forms @sprint-11-US-328863 @vaibhav @Forms @EndToEndFlow
   Scenario: Validate user should able to submit and approved progress report with filling partial data for some fields on different different forms from all 13 forms
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6397,7 +6397,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
 
-  @vai @329934 @ValidateusershouldbeabletoeditallformsontheprogressreportwhichisreparentedtonewawardafterFCamendmentrequestandapproveprogressreportsuccessfullyPreconditionPartiallyfilledsomeformsonProgressreportofInitialaward @sprint-11-US-328848 @vaibhav @Forms
+  @329934 @ValidateusershouldbeabletoeditallformsontheprogressreportwhichisreparentedtonewawardafterFCamendmentrequestandapproveprogressreportsuccessfullyPreconditionPartiallyfilledsomeformsonProgressreportofInitialaward @sprint-11-US-328848 @vaibhav @Forms @EndToEndFlow
   Scenario: Validate user should be able to edit all forms on the progress report which is reparented to new award after FC amendment request and approve progress report successfully Pre-condition Partially filled some forms on Progress report of Initial award
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6434,6 +6434,7 @@ Feature: Validate scenarios in Progress Report Forms
     #Fill SF428-B Form
     And I click on "Edit" icon for "Tangible Personal Property Report - Final Report - SF-428-B" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter value "12345" into field "fieldFederalGrantIdentifyingNumbe__c"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I wait for "6" seconds
     Then I softly see the following messages in the page details :
