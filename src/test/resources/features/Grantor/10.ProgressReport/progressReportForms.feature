@@ -6585,7 +6585,7 @@ Feature: Validate scenarios in Progress Report Forms
     #Fill SF428-B Form
     And I select "Tangible Personal Property Report - Final Report - SF-428-B" from dropdown at forms
     And I click on "Edit" in the page details
-    And I clear the value from field ""fieldFederalGrantIdentifyingNumbe__c""
+    And I clear the value from field "fieldFederalGrantIdentifyingNumbe__c"
     And I refresh the page
     And I wait for "3" seconds
     And I enter "SF428B_Form" values from "ProgressReport_Field_Values.xlsx"
