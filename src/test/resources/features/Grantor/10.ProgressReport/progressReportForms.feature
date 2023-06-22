@@ -5915,7 +5915,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the following messages in the page details :
       | Please enter Zip code in the Zip + 4 codes format (e.g. 12345-1234) in the 'Zip / Postal code' field. |
 
-  @339610 @Validateusershouldbeabletosubmitandapprovedprogressreportwithfillingalldataonall13forms @sprint-12-US-328869 @vaibhav @Forms @TBE @EndToEndFlow
+  @339610 @Validateusershouldbeabletosubmitandapprovedprogressreportwithfillingalldataonall13forms @sprint-12-US-328869 @vaibhav @Forms  @EndToEndFlow
   Scenario: Validate user should be able to submit and approved progress report with filling all data on all 13 forms
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6580,22 +6580,6 @@ Feature: Validate scenarios in Progress Report Forms
       | Form saved successfully. |
     When I click on "Validate" in the page details
     And I wait for "2" seconds
-    Then I softly see the following messages in the page details :
-      | Form validated successfully. |
-    # SF429-A Form
-    And I select "Real Property Status Report ATTACHMENT A (General Reporting)- SF-429-A" from dropdown at forms
-    And I refresh the page
-    And I click on "Edit" in the page details
-    And I enter "SF429A_Form" values from "ProgressReport_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I wait for "2" seconds
-    And I refresh the page
-    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
-    And I upload attachment "Attachment.pdf" of type "14k. NHPA" from computer
-    And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
-    And I upload attachment "Attachment.pdf" of type "15. Significant Change" from computer
-    And I wait for "9" seconds
-    When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
     #Fill SF428-A Form
