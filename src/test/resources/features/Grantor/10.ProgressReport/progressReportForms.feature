@@ -6586,6 +6586,8 @@ Feature: Validate scenarios in Progress Report Forms
     And I select "Tangible Personal Property Report - Final Report - SF-428-B" from dropdown at forms
     And I click on "Edit" in the page details
     And I enter value "Checked" into field "fieldFederallyownedProperty__c"
+    And I enter value "Checked" into field "fieldAcquiredEquipment__c"
+    And I enter value "Checked" into field "fieldResidualUnusedSupplies__c"
     And I enter "SF428B_Form" values from "ProgressReport_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I wait for "2" seconds
