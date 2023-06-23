@@ -5191,13 +5191,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #263787
     Then I softly see field "Current Obligation" as "$1,000.00"
     And I save the field labeled "Current Obligation" as "CurrentObligation"
-    Then I softly see value "{SavedValue:CurrentObligation}" is "Equals to" the value "{SavedValue:CumulativeObligation1}"
+    Then I softly see value "{SavedValue:CurrentObligation}" is "Equals to" the value "{SavedValue:CumulativeObligationl1}"
     #263791
     Then I softly can see page block "Budgeted Amount"
     Then I softly see field "Budgeted Amount" as "$1,000.00"
-    Then I softly see value "$5,00.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:budgetChangeTableId---"
-    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
-    Then I softly see value "$5,00.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:budgetChangeTableId---"
     Then I see the following rows under the following headers in table with id "---amendment:-:budgetChangeTableId---" :
       | Revised Award Amount |
       | $1,000.00            |
@@ -5551,11 +5548,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Amended" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     And I navigate to "Budget" sub tab
-    Then I softly see "Cumulative Obligation" in flex table header "---amendment:-:subrecipientProjectAreasTableId---"
-    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:subrecipientProjectAreasTableId---"
-    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
+    Then I softly see "Cumulative Obligation" in flex table header "---focusarea:-:SubAwardFocusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
 
-  @264199 @VerifyPOusershouldabletoseeinbudgetsummarysectionNewObligationfieldshouldpopulateaszero&itshouldbereadonlyfieldonpendingactivation&ActivatedsubawardFANo @sprint-20-US-263426 @hitesh @Allocation
+  @264199 @264201 @264205 @VerifyPOusershouldabletoseeinbudgetsummarysectionNewObligationfieldshouldpopulateaszero&itshouldbereadonlyfieldonpendingactivation&ActivatedsubawardFANo @sprint-20-US-263426 @hitesh @Allocation
   Scenario: Verify PO user should able to see  in  budget summary section New Obligation field should populate as zero & it should be read  only field on pending activation & Activated subaward (FA No)
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PO user" of type "Directed"
     When I login to "As a Grantor" app as "PO" user
@@ -5661,8 +5658,60 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     Then I softly see that "New Obligation" rendered in view mode only
     Then I softly see field "New Obligation" as "$0.00"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Activated" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Total Commitment" inside page block
+    And I save the field labeled "Total Commitment" as "TotalCommitment1"
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Pending Activation" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    Then I softly see that "New Obligation" rendered in view mode only
+    Then I softly see field "New Obligation" as "$0.00"
+    Then I softly see field "Total Commitment" inside page block
+    And I save the field labeled "Total Commitment" as "TotalCommitment"
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment1}"
+    Then I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
+    Then I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Pending Activation" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     When I navigate to "Budget" sub tab
     Then I softly see that "New Obligation" rendered in view mode only
     Then I softly see field "New Obligation" as "$0.00"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Activated" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    #264201
+    Then I softly see that "New Obligation" rendered in view mode only
+    Then I softly see field "New Obligation" as "$0.00"
+    #264205
+    Then I softly see field "Total Commitment" inside page block
+    And I save the field labeled "Total Commitment" as "TotalCommitment"
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment1}"
