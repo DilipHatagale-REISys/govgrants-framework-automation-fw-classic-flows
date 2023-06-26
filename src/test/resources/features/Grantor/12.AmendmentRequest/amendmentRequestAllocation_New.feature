@@ -4637,7 +4637,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Carry Forward Amount" rendered in view mode only
     #264598
     Then I softly see field "Carry Forward Amount" as "$1,000.00"
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:CFAmendmentId}" in "---amendment:-:pendingTaskTableId---" panel
