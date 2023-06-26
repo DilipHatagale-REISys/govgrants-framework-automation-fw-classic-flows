@@ -5022,6 +5022,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Budget Category | Carry Forward |
       | Construction    | 500           |
     And I refresh the page
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
       | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
       | Extra Salary | The narrative | 1200         | 120        | 0              |
