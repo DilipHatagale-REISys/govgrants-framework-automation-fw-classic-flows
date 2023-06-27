@@ -5199,7 +5199,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Revised Award Amount |
       | $1,000.00            |
 
-  @264192 @VerifyEXEusershouldabletoSeeCumulativeObligationcolumninBudgetsummarybyfocusareasectiononamendedoldAwardFAyes @sprint-20-US-263426 @hitesh @Allocation
+  @264192 @264202 @VerifyEXEusershouldabletoSeeCumulativeObligationcolumninBudgetsummarybyfocusareasectiononamendedoldAwardFAyes @sprint-20-US-263426 @hitesh @Allocation
   Scenario: Verify EXE user should able to See Cumulative Obligation column in Budget summary by focus area section on amended(old Award) (FA yes)
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -5316,6 +5316,18 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I created approved FDM on application "{SavedValue:Automation Runtime Announcement}"
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties "Automation EXE user"
     And I activate award from FDM having application name "{SavedValue:Automation Runtime Announcement}"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    And I save the field labeled "Total Commitment" as "TotalCommitmentAward"
+    Then I softly see field "Total Commitment" as "$1,000.00"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5410,8 +5422,18 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     And I save the field labeled "EGMS ID" as "AwardEGMSID1"
     And I save the field labeled "Grant ID" as "GrantEGMSID"
+    #264202
+    When I navigate to "Budget" sub tab
+    And I save the field labeled "Total Commitment" as "TotalCommitment1"
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see value "{SavedValue:TotalCommitmentAward}" is "Equals to" the value "{SavedValue:TotalCommitment1}"
     And I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
+     #264202
+    When I navigate to "Budget" sub tab
+    And I save the field labeled "Total Commitment" as "TotalCommitment2"
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see value "{SavedValue:TotalCommitmentAward}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
     And I click on hyperlink containing value "{SavedValue:GrantEGMSID}"
     Then I navigate to "Subawards" sub tab
     And I click on "View" icon for "Amended" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
@@ -5420,7 +5442,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @264193 @264209 @264218 @264219 @264216 @VerifySPIusershouldabletoShowCumulativeObligationcolumnisBudgetsummarybyfocusareasectiononamendedoldAwardFAyes @sprint-20-US-263426 @hitesh @Allocation
+  @264193 @264204 @264206 @264209 @264218 @264219 @264215 @264216 @264213 @VerifySPIusershouldabletoShowCumulativeObligationcolumnisBudgetsummarybyfocusareasectiononamendedoldAwardFAyes @sprint-20-US-263426 @hitesh @Allocation
   Scenario: Verify SPI user should able to Show Cumulative Obligation column is Budget summary by focus area section on amended(old Award) (FA yes)
     And I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
@@ -5493,6 +5515,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Total Commitment" as "$1,000.00"
     Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     And I save the value from row "3" for column name "Cumulative Obligation" as "CumulativeObligationl1" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    And I save the value from row "1" for column name "Encumbrance" as "Encumbrance" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5540,6 +5564,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #264209
     And I navigate to "Budget" sub tab
     Then I softly can see page block "Budget Summary by Focus Area"
+    #264206
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationPA"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligationPA}"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5551,6 +5579,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Budget" sub tab
     #264209
     Then I softly can see page block "Budget Summary by Focus Area"
+    #264204
+    And I save the field labeled "Total Commitment" as "TotalCommitment4"
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see value "{SavedValue:TotalCommitmentAward}" is "Equals to" the value "{SavedValue:TotalCommitment4}"
+    #264208
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation4"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligation4}"
     Then I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5568,6 +5604,19 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligationAward2" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
     #264209
     Then I softly can see page block "Budget Summary by Focus Area"
+    #264213
+    Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area2" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
+      | Award Amount |
+      | $500.00      |
+    And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
+      | Award Amount |
+      | $500.00      |
     #264216
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation1"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
@@ -5583,6 +5632,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Total Commitment" as "$1,000.00"
     Then I softly see value "{SavedValue:CumulativeObligation1}" is "Equals to" the value "{SavedValue:CumulativeObligation2}"
     Then I softly see value "{SavedValue:TotalCommitment1}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
+    #264206
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation1"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligation1}"
     And I refresh the page
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
     Then I softly see "Total Awarded amount across budget periods." shown as help text
@@ -5607,6 +5660,15 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Budget" sub tab
+    #264208
+    #264208
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation5"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligation5}"
+    #264204
+    And I save the field labeled "Total Commitment" as "TotalCommitment5"
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see value "{SavedValue:TotalCommitmentAward}" is "Equals to" the value "{SavedValue:TotalCommitment5}"
     #264209
     Then I softly can see page block "Budget Summary by Focus Area"
     #264219
@@ -5618,6 +5680,19 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligation6" from flex table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "{SavedValue:CumulativeObligationAward1}" is "Equals to" the value "{SavedValue:CumulativeObligation5}"
     Then I softly see value "{SavedValue:CumulativeObligationAward2}" is "Equals to" the value "{SavedValue:CumulativeObligation6}"
+    #264215
+    Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area2" in flex table with id "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" :
+      | Award Amount |
+      | $500.00      |
+    And I click on page navigation arrow "---subAwardStandAlone:-:sRBudgetCategoryTableId---" for table id "Next"
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" :
+      | Award Amount |
+      | $500.00      |
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5632,7 +5707,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
 
-  @264199 @264201 @264205 @264210 @264217 @264800 @VerifyPOusershouldabletoseeinbudgetsummarysectionNewObligationfieldshouldpopulateaszero&itshouldbereadonlyfieldonpendingactivation&ActivatedsubawardFANo @sprint-20-US-263426 @hitesh @Allocation
+  @264199 @264201 @264203 @264205 @264207 @264210 @264217 @264800 @VerifyPOusershouldabletoseeinbudgetsummarysectionNewObligationfieldshouldpopulateaszero&itshouldbereadonlyfieldonpendingactivation&ActivatedsubawardFANo @sprint-20-US-263426 @hitesh @Allocation
   Scenario: Verify PO user should able to see  in  budget summary section New Obligation field should populate as zero & it should be read  only field on pending activation & Activated subaward (FA No)
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PO user" of type "Directed"
     When I login to "As a Grantor" app as "PO" user
@@ -5644,6 +5719,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Budget" sub tab
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationAward"
+    And I save the field labeled "Total Commitment" as "TotalCommitmentAward"
+    Then I softly see field "Total Commitment" as "$1,000.00"
     And I save the value from row "1" for column name "Encumbrance" as "Encumbrance" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -5735,7 +5812,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "EGMS ID" as "AwardEGMSID1"
     And I save the field labeled "Grant ID" as "GrantEGMSID"
     When I navigate to "Budget" sub tab
-    #264800
+    #264207
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligation}"
@@ -5744,6 +5821,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "New Obligation" as "$0.00"
     #264210
     Then I softly do not see "Budget Summary by Focus Area" page block displayed
+    #264203
+    And I save the field labeled "Total Commitment" as "TotalCommitment1"
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see value "{SavedValue:TotalCommitmentAward}" is "Equals to" the value "{SavedValue:TotalCommitment}"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5755,7 +5836,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Budget" sub tab
     #264205
     Then I softly see field "Total Commitment" inside page block
-    And I save the field labeled "Total Commitment" as "TotalCommitment1"
+    And I save the field labeled "Total Commitment" as "TotalCommitment"
     Then I softly see field "Total Commitment" as "$1,000.00"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -5771,11 +5852,15 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "New Obligation" as "$0.00"
     #264205
     Then I softly see field "Total Commitment" inside page block
-    And I save the field labeled "Total Commitment" as "TotalCommitment"
+    And I save the field labeled "Total Commitment" as "TotalCommitment2"
     Then I softly see field "Total Commitment" as "$1,000.00"
     #264210
     Then I softly do not see "Budget Summary by Focus Area" page block displayed
-    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment1}"
+    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
+    #264800
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation1"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligation1}"
     Then I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5795,9 +5880,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #264217
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation1"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
-    And I save the field labeled "Total Commitment" as "TotalCommitment1"
+    And I save the field labeled "Total Commitment" as "TotalCommitment3"
     Then I softly see field "Total Commitment" as "$1,000.00"
-    #264800
+    #264203
+    Then I softly see value "{SavedValue:TotalCommitmentAward}" is "Equals to" the value "{SavedValue:TotalCommitment3}"
+    #264207
     Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligation1}"
     And I click on hyperlink containing value "{SavedValue:GrantEGMSID}"
     And I navigate to "Budget" sub tab
@@ -5831,9 +5918,13 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "New Obligation" as "$0.00"
     #264205
     Then I softly see field "Total Commitment" inside page block
-    And I save the field labeled "Total Commitment" as "TotalCommitment"
+    And I save the field labeled "Total Commitment" as "TotalCommitment4"
     Then I softly see field "Total Commitment" as "$1,000.00"
-    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment1}"
+    Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment4}"
+    #264800
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation2"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligation2}"
 
   @264211 @VerifywhenuseraddNewObligationiszero&SpentisalsoZeroFocusAreashouldnotbevisibleonthenewAwardiftheinitialAwardisfromFDM @sprint-20-US-263426 @hitesh @Allocation
   Scenario:Verify when user add  New Obligation is zero & Spent is also Zero, Focus Area should not be visible on the new Award if the initial Award is from FDM.
@@ -5879,6 +5970,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Grant ID" as "GrantEGMSID"
     And I navigate to "Budget" sub tab
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
     Then I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -5892,6 +5984,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Status" as "Activated"
     And I navigate to "Budget" sub tab
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
 
   @264212 @264214 @VerifywhentheinitialAwardisnotfromFDMthenthefocusareawithzeroNewObligationshouldbevisible @sprint-20-US-263426 @hitesh @Allocation
@@ -5982,6 +6075,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #264212
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
     Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -5995,6 +6089,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #264212
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -6010,6 +6105,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #264214
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
     Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -6023,4 +6119,5 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #264214
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
