@@ -5571,8 +5571,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     Then I softly see field "Cumulative Obligation" as "$2,700.00"
     And I refresh the page
-    And I wait for "3" seconds
-    And I select value inside table "---subAwardStandAlone:-:subAwardBudgetTableId---" is "All"
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
       | Award Amount |
       | $2,700.00    |
