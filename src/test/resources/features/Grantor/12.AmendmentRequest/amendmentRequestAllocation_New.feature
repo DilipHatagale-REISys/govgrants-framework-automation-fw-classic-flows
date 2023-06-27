@@ -5520,7 +5520,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | $2,700.00    |
     #265132
     Then I softly see field "Cumulative Obligation" as "$2,700.00"
-    And I select value inside table "---subAwardStandAlone:-:subAwardBudgetTableId---" is "All"
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
       | Award Amount |
       | $2,700.00    |
