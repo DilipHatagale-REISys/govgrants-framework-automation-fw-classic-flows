@@ -5570,6 +5570,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #265221
     When I navigate to "Budget" sub tab
     Then I softly see field "Cumulative Obligation" as "$2,700.00"
+    And I refresh the page
+    And I wait for "3" seconds
     And I select value inside table "---subAwardStandAlone:-:subAwardBudgetTableId---" is "All"
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
       | Award Amount |
@@ -5664,6 +5666,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Activated" and is "Green"
     #265221
     Then I softly see field "Cumulative Obligation" as "$2,700.00"
+    And I refresh the page
+    And I wait for "3" seconds
     And I select value inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---" is "All"
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" :
       | Award Amount |
