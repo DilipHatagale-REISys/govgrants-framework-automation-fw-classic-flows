@@ -5514,11 +5514,13 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
     Then I softly see value "$1,500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     And I refresh the page
+    And I select value inside table "---subAwardStandAlone:-:subAwardBudgetTableId---" is "All"
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
       | Award Amount |
       | $2,700.00    |
     #265132
     Then I softly see field "Cumulative Obligation" as "$2,700.00"
+    And I select value inside table "---subAwardStandAlone:-:subAwardBudgetTableId---" is "All"
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
       | Award Amount |
       | $2,700.00    |
@@ -5552,6 +5554,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on page navigation arrow "---subAwardStandAlone:-:sRBudgetCategoryTableId---" for table id "Next"
     Then I softly see value "$1,500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
     And I refresh the page
+    And I select value inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---" is "All"
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" :
       | Award Amount |
       | $2,700.00    |
@@ -5568,6 +5571,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #265221
     When I navigate to "Budget" sub tab
     Then I softly see field "Cumulative Obligation" as "$2,700.00"
+    And I select value inside table "---subAwardStandAlone:-:subAwardBudgetTableId---" is "All"
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
       | Award Amount |
       | $2,700.00    |
@@ -5586,13 +5590,13 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #265208
     When I save the value from row "1" for column name "New Obligation" as "newObligationAdAct13" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
     When I save the value from row "2" for column name "New Obligation" as "newObligationAdAct23" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
-    When I save the value from row "3" for column name "New Obligation" as "newObligationAdAct23" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    When I save the value from row "3" for column name "New Obligation" as "newObligationAdAct33" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$200.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$500.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$700.00" for title "New Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "{SavedValue:carryAmend1}" is "Equals to" the value "{SavedValue:newObligationAdAct13}"
     Then I softly see value "{SavedValue:carryAmend2}" is "Equals to" the value "{SavedValue:newObligationAdAct23}"
-    Then I softly see value "{SavedValue:carryAmend3}" is "Equals to" the value "{SavedValue:newObligationAdAct23}"
+    Then I softly see value "{SavedValue:carryAmend3}" is "Equals to" the value "{SavedValue:newObligationAdAct33}"
     And I save the field labeled "Grant ID" as "GrantId"
     And I click "{SavedValue:GrantId}" lookup link
     Then I softly see field "Status" as "Active"
@@ -5661,6 +5665,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Activated" and is "Green"
     #265221
     Then I softly see field "Cumulative Obligation" as "$2,700.00"
+    And I select value inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---" is "All"
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" :
       | Award Amount |
       | $2,700.00    |
