@@ -5422,12 +5422,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     And I save the field labeled "EGMS ID" as "AwardEGMSID1"
     And I save the field labeled "Grant ID" as "GrantEGMSID"
-    #264200
+    #264198
+    And I navigate to "Budget" sub tab
     Then I softly see field "New Obligation" inside page block
     Then I softly see field "New Obligation" as "$0.00"
     Then I softly see that "New Obligation" rendered in view mode only
     #264202
-    When I navigate to "Budget" sub tab
     And I save the field labeled "Total Commitment" as "TotalCommitment1"
     Then I softly see field "Total Commitment" as "$1,000.00"
     Then I softly see value "{SavedValue:TotalCommitmentAward}" is "Equals to" the value "{SavedValue:TotalCommitment1}"
@@ -5455,7 +5455,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     When I navigate to "Budget" sub tab
-    #264200
+    #264198
     Then I softly see field "New Obligation" inside page block
     Then I softly see field "New Obligation" as "$0.00"
     Then I softly see that "New Obligation" rendered in view mode only
@@ -5866,7 +5866,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #264203
     And I save the field labeled "Total Commitment" as "TotalCommitment1"
     Then I softly see field "Total Commitment" as "$1,000.00"
-    Then I softly see value "{SavedValue:TotalCommitmentAward}" is "Equals to" the value "{SavedValue:TotalCommitment}"
+    Then I softly see value "{SavedValue:TotalCommitmentAward}" is "Equals to" the value "{SavedValue:TotalCommitment1}"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
