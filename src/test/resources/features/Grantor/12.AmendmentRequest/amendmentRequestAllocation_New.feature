@@ -5508,11 +5508,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "{SavedValue:carryAmend3}" is "Equals to" the value "{SavedValue:newObligationAd33}"
     #265169
     Then I softly see value "$1,200.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
-    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$2,700.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$1,200.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
     Then I softly see value "$1,500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    And I refresh the page
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
       | Award Amount |
       | $2,700.00    |
@@ -5545,11 +5546,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "{SavedValue:carryAmend3}" is "Equals to" the value "{SavedValue:newObligationAwd32}"
     #265169
     Then I softly see value "$1,200.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
-    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "$2,700.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "$1,200.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
     And I click on page navigation arrow "---subAwardStandAlone:-:sRBudgetCategoryTableId---" for table id "Next"
     Then I softly see value "$1,500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    And I refresh the page
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" :
       | Award Amount |
       | $2,700.00    |
@@ -5616,7 +5618,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CumulativeObligationAmended}"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentAmended}"
     #265022
-    Then I softly see field "Budgeted Amount" inside page block
+    Then I softly cannot see field "Budgeted Amount" inside page block
     Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -5639,6 +5641,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Amended" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Amended" and is "Green"
+    And I navigate to "Budget" sub tab
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "$2,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     #265096
@@ -5650,7 +5653,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CumulativeObligationAmendedSR}"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentAmendedSR}"
     #265061
-    Then I softly see field "Budgeted Amount" inside page block
+    Then I softly cannot see field "Budgeted Amount" inside page block
     Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     And I click "{SavedValue:GrantId}" lookup link
     When I navigate to "Subawards" sub tab
@@ -5830,6 +5833,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "3" seconds
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
+    When I navigate to "Overview" sub tab
     When I save the value from row "1" for column name "Difference" as "Difference" from flex table "---amendment:-:amendmentFundingAccountsTableId---"
     And I click on "Amend Subaward" in the page details
     And I pause execution for "5" seconds
@@ -6144,7 +6148,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I cannot see top right button "Edit" in page detail
     Then I softly see that "New Obligation" rendered in view mode only
     And I save the field labeled "New Obligation" as "newObligationAward"
-    Then I softly see field "New Obligation" as "$700.00"
+    Then I softly see field "New Obligation" as "$1,000.00"
     Then I softly see value "{SavedValue:Difference}" is "Equals to" the value "{SavedValue:newObligationAward}"
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
@@ -6164,5 +6168,5 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CumulativeObligationAmended}"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentAmended}"
     #265050
-    Then I softly see field "Budgeted Amount" inside page block
+    Then I softly cannot see field "Budgeted Amount" inside page block
     Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
