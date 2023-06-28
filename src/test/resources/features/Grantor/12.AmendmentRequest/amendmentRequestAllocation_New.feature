@@ -6535,7 +6535,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Award Amount |
       | $2,700.00    |
 
-  @265602 @265603 @ValidateAdminusercanseeTotalCommitmentamountunderBudgetSummarysectiononActiveGrant&valuecopiedfromTotalcommitmentfieldfromtheversion2awardwhichisactiveFANO @sprint-20-US-263392 @vaibhav @Allocation @TBE
+  @265602 @265603 @ValidateAdminusercanseeTotalCommitmentamountunderBudgetSummarysectiononActiveGrant&valuecopiedfromTotalcommitmentfieldfromtheversion2awardwhichisactiveFANO @sprint-20-US-263392 @vaibhav @Allocation
   Scenario: Validate Admin user can see Total Commitment amount under Budget Summary section on Active Grant & value copied from Total commitment field from the version 2 award which is active FA NO
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation ADMIN user" of type "Competitive"
     When I login to "As a Grantor" app as "ADMIN" user
