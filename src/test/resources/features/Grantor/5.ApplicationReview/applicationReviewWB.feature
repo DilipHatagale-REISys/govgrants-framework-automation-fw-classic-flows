@@ -148,7 +148,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                            |
       | {SavedValue:Automation Runtime Announcement for Application} |
 
-  @79978 @79977 @79979 @verifingPromoteToNextAndFDM @keerti
+  @vai @79978 @79977 @79979 @verifingPromoteToNextAndFDM @keerti
   Scenario Outline: To validate system generated error message ,for user will not be able to Promote to Next step for application when the reviewer decision is still pending for the steps which are Mandatory of prescreen review review step in Application phase
   | To validate system generated error message ,for user will not be able to Promote to Next step for application when the reviewer decision is still pending for the steps which are Mandatory of SME review step in Application phase
   | To validate system generated error message ,for user will not be able to Promote to FDM for application when the reviewer decision is still pending for the steps which are Mandatory of management review review step in Application phase
@@ -188,7 +188,6 @@ Feature: Validate all scenarios in the Application Review without background
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I wait for "5" seconds
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I pause execution for "20" seconds
     Then I softly see the following messages in the page details contains:
       | Cannot promote <Announcement Name> because it does not meet the minimum review requirements: |
       | Pre-Screen has 0 out of 1 complete reviews                                                   |
@@ -4710,7 +4709,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
       | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended | 500                     |
     And I click on "Submit for Approval" in the page details
-    And I pause execution for "3" seconds
+    And I pause execution for "5" seconds
     And I softly see the following messages in the page details contains:
       | Responsibilities - At least one approver is required |
     Examples:
@@ -5958,7 +5957,8 @@ Feature: Validate all scenarios in the Application Review without background
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    And I pause execution for "5" seconds
+     And I refresh the page
+     And I pause execution for "5" seconds
     When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I pause execution for "5" seconds
     And I navigate to "Applications" tab
@@ -6183,7 +6183,8 @@ Feature: Validate all scenarios in the Application Review without background
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     And I pause execution for "5" seconds
     When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
-    And I pause execution for "5" seconds
+     And I refresh the page
+     And I pause execution for "5" seconds
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
