@@ -4710,7 +4710,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
       | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended | 500                     |
     And I click on "Submit for Approval" in the page details
-    And I pause execution for "20" seconds
+    And I pause execution for "3" seconds
     And I softly see the following messages in the page details contains:
       | Responsibilities - At least one approver is required |
     Examples:
