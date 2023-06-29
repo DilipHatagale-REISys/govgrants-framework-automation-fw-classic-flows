@@ -5521,7 +5521,8 @@ Feature: Validate all scenarios in the Application Review without background
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     And I pause execution for "5" seconds
     When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
-    And I pause execution for "2" seconds
+     And I refresh the page
+     And I pause execution for "5" seconds
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
@@ -5959,7 +5960,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     And I pause execution for "5" seconds
     When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
-    And I pause execution for "2" seconds
+    And I pause execution for "5" seconds
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
@@ -6182,7 +6183,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     And I pause execution for "5" seconds
     When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
-    And I pause execution for "2" seconds
+    And I pause execution for "5" seconds
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
