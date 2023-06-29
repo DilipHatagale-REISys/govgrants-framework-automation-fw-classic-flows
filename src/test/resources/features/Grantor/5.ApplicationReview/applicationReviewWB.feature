@@ -4710,6 +4710,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
       | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended | 500                     |
     And I click on "Submit for Approval" in the page details
+    And I pause execution for "20" seconds
     And I softly see the following messages in the page details contains:
       | Responsibilities - At least one approver is required |
     Examples:
@@ -6376,18 +6377,16 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
     When I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Negotiations" sub tab
-    When I clear the value from field "fieldApplicationSectionsForRevision__c"
-    When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I pause execution for "5" seconds
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I clear the value from field "fieldApplicationSectionsForRevision__c"
+     When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
+     When I click on "Save" in the page details
+     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
@@ -6421,18 +6420,16 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
     When I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Negotiations" sub tab
-    When I clear the value from field "fieldApplicationSectionsForRevision__c"
-    When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I pause execution for "5" seconds
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I clear the value from field "fieldApplicationSectionsForRevision__c"
+     When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
+     When I click on "Save" in the page details
+     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
@@ -6512,18 +6509,16 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
     And I click on "Edit" in the page details
     And I navigate to "Negotiations" sub tab
-    When I clear the value from field "fieldApplicationSectionsForRevision__c"
-    When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I pause execution for "5" seconds
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I clear the value from field "fieldApplicationSectionsForRevision__c"
+     When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
+     When I click on "Save" in the page details
+     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
@@ -6608,18 +6603,16 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
     When I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Negotiations" sub tab
-    When I clear the value from field "fieldApplicationSectionsForRevision__c"
-    When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I pause execution for "5" seconds
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I clear the value from field "fieldApplicationSectionsForRevision__c"
+     When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
+     When I click on "Save" in the page details
+     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
@@ -6839,7 +6832,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:appTableId---" panel
-    Then I softly see value "Pending" for title "Decision Status" inside table "---applicationReview:-:appTableId---"
+    Then I softly see value "Negotiation In-Progress" for title "Decision Status" inside table "---applicationReview:-:appTableId---"
     And I check "{SavedValue:Automation Runtime Announcement Application Review}" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly see the following messages in the page details contains:
@@ -7000,16 +6993,14 @@ Feature: Validate all scenarios in the Application Review without background
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I pause execution for "5" seconds
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    When I click on "Send to Subrecipient" in the page details
+     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -7096,18 +7087,16 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
     When I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Negotiations" sub tab
-    When I clear the value from field "fieldApplicationSectionsForRevision__c"
-    When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I pause execution for "5" seconds
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I clear the value from field "fieldApplicationSectionsForRevision__c"
+     When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
+     When I click on "Save" in the page details
+     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
@@ -7158,18 +7147,16 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
     When I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Negotiations" sub tab
-    When I clear the value from field "fieldApplicationSectionsForRevision__c"
-    When  I enter "Ed_Over" values from "Negotiations_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I pause execution for "5" seconds
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I clear the value from field "fieldApplicationSectionsForRevision__c"
+     When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
+     When I click on "Save" in the page details
+     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
@@ -7359,18 +7346,16 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
     When I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Negotiations" sub tab
-    When I clear the value from field "fieldApplicationSectionsForRevision__c"
-    When  I enter "Ed_Over" values from "Negotiations_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I pause execution for "5" seconds
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I clear the value from field "fieldApplicationSectionsForRevision__c"
+     When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
+     When I click on "Save" in the page details
+     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
@@ -7428,18 +7413,16 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
     When I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Negotiations" sub tab
-    When I clear the value from field "fieldApplicationSectionsForRevision__c"
-    When  I enter "Ed_Over" values from "Negotiations_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I pause execution for "5" seconds
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I clear the value from field "fieldApplicationSectionsForRevision__c"
+     When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
+     When I click on "Save" in the page details
+     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
@@ -7765,18 +7748,16 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
     When I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Negotiations" sub tab
-    When I clear the value from field "fieldApplicationSectionsForRevision__c"
-    When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I pause execution for "5" seconds
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I enter value "Checked" into field "AllowEdit__c"
-    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I clear the value from field "fieldApplicationSectionsForRevision__c"
+     When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
+     When I click on "Save" in the page details
+     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+     And I enter value "Checked" into field "AllowEdit__c"
+     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
