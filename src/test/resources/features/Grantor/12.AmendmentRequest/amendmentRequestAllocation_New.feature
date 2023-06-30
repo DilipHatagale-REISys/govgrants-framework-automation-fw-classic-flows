@@ -256,13 +256,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I pause execution for "5" seconds
     And I enter value "Automation Justification" into field "fieldJustification__c"
     And I click on "Save" in the page details
-    Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
-    When I edit the following rows inline in flex table with id "---amendment:-:AddLineItemForBudgetChangeTableId---" by clicking "Edit" :
-      | Title        | Narrative     | Award Amount |
-      | Extra Salary | The narrative | 2000         |
-    When I close "Add Line Items" modal by clicking the top right x button
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction  | 2000                 | 200        | 0              |
+    And I pause execution for "9" seconds
     When I click on "Submit to Grantor" in the page details
-    And I pause execution for "5" seconds
     Then I see the following messages in the page details contains:
       | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection. |
 
@@ -591,7 +589,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Budget" sub tab
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
-    Then I softly see field "Total Commitment" as "$2,000.00"
+    Then I softly see field "Total Commitment" as "$1,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitment"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -631,7 +629,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CurrentObligation}"
     #257458
     Then I softly see that "Current Commitment" rendered in view mode only
-    Then I softly see field "Current Commitment" as "$2,000.00"
+    Then I softly see field "Current Commitment" as "$1,000.00"
     And I save the field labeled "Current Commitment" as "CurrentCommitment"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:CurrentCommitment}"
     #257427
@@ -3293,7 +3291,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
-      | Construction    | 300              |
+      | Construction    | 300               |
     And I select value inside table "---paymentRequest:-:paymentRequestBudgetTableId---" is "5"
     And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
@@ -3309,11 +3307,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 500                  |
+      | {SavedValue:fundingAccount} | 500                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:EXE Username}    | Step 1        |
+      | Name                      | Reimbursement |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -3524,7 +3522,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I pause execution for "5" seconds
     #256911
     Then I see the following messages in the page details contains:
-      | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection.|
+      | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection. |
     And I pause execution for "5" seconds
     And I refresh the page
     Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
@@ -3710,7 +3708,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Submit to Grantor" in the page details
     And I pause execution for "5" seconds
     Then I see the following messages in the page details contains:
-      | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection.|
+      | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection. |
 
   @258303 @258282 @258306 @258327 @258297 @258237 @258238 @258369 @258243 @VerifySPIusercanseevalueforTotalCommitmentfieldsiscomingfromthelatestactiveawardandforLatestBPongrantFAisYes @sprint-19-US-255644 @hitesh @Allocation
   Scenario: Verify user should able to see Budget Summary by Focus Area Section, only if Focus area is Yes.
@@ -3733,18 +3731,18 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 450                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 450                  |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Indirect costs    | 50                   |
+      | Category Name  | Revised Award Amount |
+      | Indirect costs | 50                   |
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 450                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 450                  |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Indirect costs    | 50                   |
+      | Category Name  | Revised Award Amount |
+      | Indirect costs | 50                   |
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
     When I click on "Submit to Grantor" in the page details
@@ -3922,7 +3920,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
-      | Name                      | Award  |
+      | Name                     | Award  |
       | {SavedValue:PO Username} | Step 1 |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
@@ -3980,11 +3978,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 900                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 900                  |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Indirect costs    | 100                  |
+      | Category Name  | Revised Award Amount |
+      | Indirect costs | 100                  |
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
     When I click on "Submit to Grantor" in the page details
@@ -4172,11 +4170,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Current Commitment" as "$2,000.00"
     And I save the field labeled "Current Commitment" as "CurrentCommitment"
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 960                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 960                  |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Indirect costs    | 40                  |
+      | Category Name  | Revised Award Amount |
+      | Indirect costs | 40                   |
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
     When I click on "Submit to Grantor" in the page details
@@ -4259,11 +4257,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 900                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 900                  |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Indirect costs    | 100                   |
+      | Category Name  | Revised Award Amount |
+      | Indirect costs | 100                  |
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
     When I click on "Submit to Grantor" in the page details
@@ -4353,12 +4351,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
-      | Construction    | 300              |
+      | Construction    | 300               |
     And I select value inside table "---paymentRequest:-:paymentRequestBudgetTableId---" is "10"
     And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
-      | Budget Category  | Spent This Action |
-      | Construction     | 200               |
+      | Budget Category | Spent This Action |
+      | Construction    | 200               |
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -4369,11 +4367,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 500                  |
+      | {SavedValue:fundingAccount} | 500                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:EXE Username}    | Step 1        |
+      | Name                      | Reimbursement |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -4405,18 +4403,18 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 450                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 450                  |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Indirect costs    | 50                   |
+      | Category Name  | Revised Award Amount |
+      | Indirect costs | 50                   |
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 450                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 450                  |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Indirect costs    | 50                   |
+      | Category Name  | Revised Award Amount |
+      | Indirect costs | 50                   |
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I click on "Submit to Grantor" in the page details
     And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
@@ -4646,11 +4644,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 20                   |
+      | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:EXE Username}    | Step 1        |
+      | Name                      | Reimbursement |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I pause execution for "5" seconds
@@ -4678,18 +4676,18 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 450                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 450                  |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Indirect costs    | 50                   |
+      | Category Name  | Revised Award Amount |
+      | Indirect costs | 50                   |
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 450                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 450                  |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Indirect costs    | 50                   |
+      | Category Name  | Revised Award Amount |
+      | Indirect costs | 50                   |
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I click on "Submit to Grantor" in the page details
     And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
@@ -4700,7 +4698,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request |
+      | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 1            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
@@ -4781,7 +4779,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
-      | Construction    | 300              |
+      | Construction    | 300               |
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -4792,11 +4790,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 300                  |
+      | {SavedValue:fundingAccount} | 300                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:EXE Username}    | Step 1        |
+      | Name                      | Reimbursement |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I pause execution for "3" seconds
@@ -4824,11 +4822,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 900                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 900                  |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Indirect costs    | 100                  |
+      | Category Name  | Revised Award Amount |
+      | Indirect costs | 100                  |
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I click on "Submit to Grantor" in the page details
     And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
@@ -4882,8 +4880,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | {SavedValue:fundingAccount} | 300                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:EXE Username}    | Step 1       |
+      | Name                      | Reimbursement |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -4932,11 +4930,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 900                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 900                  |
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Indirect costs    | 100                  |
+      | Category Name  | Revised Award Amount |
+      | Indirect costs | 100                  |
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I click on "Submit to Grantor" in the page details
     And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
@@ -5010,7 +5008,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click "Associate" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name          | Announcement |
+      | Name           | Announcement |
       | Automation EXE | Step 1       |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
@@ -5117,7 +5115,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
-      | Construction    | 300              |
+      | Construction    | 300               |
     And I select value inside table "---paymentRequest:-:paymentRequestBudgetTableId---" is "10"
     And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
@@ -5133,11 +5131,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 500                  |
+      | {SavedValue:fundingAccount} | 500                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:EXE Username}    | Step 1        |
+      | Name                      | Reimbursement |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I pause execution for "3" seconds
@@ -5251,7 +5249,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
-      | Construction    | 300              |
+      | Construction    | 300               |
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -5262,11 +5260,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 300                  |
+      | {SavedValue:fundingAccount} | 300                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:EXE Username}    | Step 1        |
+      | Name                      | Reimbursement |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I pause execution for "3" seconds
@@ -5299,14 +5297,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #263830
     Then I softly see field "Current Obligation" as "$1,000.00"
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 2000                 |
+      | Category Name | Revised Award Amount |
+      | Construction  | 2000                 |
     When I refresh the page
     Then I softly see field "Budgeted Amount" as "$$2,000.00"
     And I click on "Submit to Grantor" in the page details
     And I pause execution for "5" seconds
     Then I see the following messages in the page details contains:
-      | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection.|
+      | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection. |
 
   @263828 @VerifywhenSPI/SPAtriedtogivemoreRevisedAwardamountthantheAwardAmountthenusershouldseetheValidationFAYes @sprint-20-US-263425 @hitesh @Allocation
   Scenario: Verify user should not  able to edit the  Budget Summary by Focus Area Section  not able to change(FA Yes)
@@ -5348,7 +5346,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click "Associate" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name          | Announcement |
+      | Name           | Announcement |
       | Automation EXE | Step 1       |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
@@ -5443,7 +5441,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
-      | Construction    | 300              |
+      | Construction    | 300               |
     And I select value inside table "---paymentRequest:-:paymentRequestBudgetTableId---" is "10"
     And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
@@ -5459,11 +5457,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 500                  |
+      | {SavedValue:fundingAccount} | 500                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:EXE Username}    | Step 1        |
+      | Name                      | Reimbursement |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I pause execution for "3" seconds
@@ -5501,7 +5499,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Submit to Grantor" in the page details
     And I pause execution for "5" seconds
     Then I see the following messages in the page details contains:
-      | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection.|
+      | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection. |
 
   @263829 @263831 @263788 @263790 @VerifywhenSPItriedtogivemorerevisedawardamountthantheAwardAmountthenusershouldseetheValidationFANo @sprint-20-US-263507 @hitesh @Allocation
   Scenario: Verify when SPI tried  to give more  revised award amount than the Award Amount  then user should see the Validation(FA No)
@@ -5549,8 +5547,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | {SavedValue:fundingAccount} | 300                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:EXE Username}    | Step 1       |
+      | Name                      | Reimbursement |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -5594,19 +5592,19 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Spent" rendered in view mode only
     Then I softly see field "Spent" as "$300.00"
     Then I see the following rows under the following headers in table with id "---amendment:-:budgetChangeTableId---" :
-      | Spent      |
-      | $300.00   |
+      | Spent   |
+      | $300.00 |
     When I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 1500                 |
+      | Category Name | Revised Award Amount |
+      | Construction  | 1500                 |
     And I refresh the page
     #263831
     Then I softly see field "Budgeted Amount" as "$1,500.00"
     And I click on "Submit to Grantor" in the page details
     And I pause execution for "5" seconds
     Then I see the following messages in the page details contains:
-      | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection.|
+      | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection. |
 
   @263782 @263783 @263787 @263791 @VerifySPISPAusershouldabletoseebudgetsummarysectionwithallfieldsFAYes @sprint-20-US-263507 @hitesh @Allocation
   Scenario: Verify SPI/SPA user should able to see budget summary section with all fields(FA Yes)
@@ -5634,7 +5632,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
-      | Construction    | 300              |
+      | Construction    | 300               |
     And I select value inside table "---paymentRequest:-:paymentRequestBudgetTableId---" is "10"
     And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
@@ -5650,11 +5648,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 500                  |
+      | {SavedValue:fundingAccount} | 500                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:EXE Username}    | Step 1        |
+      | Name                      | Reimbursement |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I pause execution for "3" seconds
@@ -5697,12 +5695,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 500                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 500                  |
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 500                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 500                  |
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I navigate to "Overview" sub tab
     Then I softly see field "Current Obligation" inside page block
@@ -5780,7 +5778,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click "Associate" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name          | Announcement |
+      | Name           | Announcement |
       | Automation EXE | Step 1       |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
@@ -5887,7 +5885,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
-      | Construction    | 300              |
+      | Construction    | 300               |
     And I select value inside table "---paymentRequest:-:paymentRequestBudgetTableId---" is "10"
     And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
@@ -5903,11 +5901,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 500                  |
+      | {SavedValue:fundingAccount} | 500                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:EXE Username}    | Step 1        |
+      | Name                      | Reimbursement |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I pause execution for "3" seconds
@@ -5934,7 +5932,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     When I edit the following rows inline in flex table with id "---amendment:-:AddLineItemForBudgetChangeTableId---" by clicking "Edit" :
       | Title        | Narrative     | Award Amount |
-      | Construction | The narrative | 500         |
+      | Construction | The narrative | 500          |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     Then I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
@@ -5951,7 +5949,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request |
+      | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 1            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
@@ -6051,7 +6049,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
-      | Construction    | 300              |
+      | Construction    | 300               |
     And I select value inside table "---paymentRequest:-:paymentRequestBudgetTableId---" is "10"
     And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
@@ -6067,11 +6065,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 500                  |
+      | {SavedValue:fundingAccount} | 500                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:EXE Username}    | Step 1        |
+      | Name                      | Reimbursement |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I pause execution for "3" seconds
@@ -6116,12 +6114,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 500                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 500                  |
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name     | Revised Award Amount |
-      | Construction      | 500                  |
+      | Category Name | Revised Award Amount |
+      | Construction  | 500                  |
     Then I softly see status in Progress-bar is "Created" and is "green"
     When I click on "Submit to Grantor" in the page details
     And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
@@ -6132,7 +6130,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request |
+      | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 1            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
@@ -6339,8 +6337,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | {SavedValue:fundingAccount} | 300                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:EXE Username}    | Step 1       |
+      | Name                      | Reimbursement |
+      | {SavedValue:EXE Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -6538,7 +6536,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request |
+      | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 1            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
@@ -6604,11 +6602,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 300                  |
+      | {SavedValue:fundingAccount} | 300                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                         | Reimbursement |
-      | {SavedValue:PO Username}    | Step 1        |
+      | Name                     | Reimbursement |
+      | {SavedValue:PO Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I pause execution for "3" seconds
@@ -10699,3 +10697,229 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$0.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+
+  @257296 @ValidatePMusercanseeCumulativeObligationamountisreadonlyfilediscomingfromthecumulativeObligationfieldinthelatestawardinclosedstateacrossallBPsongrant @sprint-21-US-263183 @vaibhav @Allocation
+  Scenario: Validate PM user can see Cumulative Obligation amount is read only filed is coming from the cumulative Obligation field in the latest award in closed state across all BPs on grant
+    Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "SECOND_FOCUS_AREA_BY_APPLICANT_FOCUS_AREA_RISK_ASS_NO-Automation PM user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "SECOND_BUDGET_CATEGORY"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}" and properties "Automation PM user"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside table
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Budget" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationAwd"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter values into fields
+      | Value | Field                     |
+      | 4000  | fieldRevisedCommitment__c |
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "SOWAMENDMENTREQUEST"
+    And I save the field labeled "Proposed Budget Period Start Date" as "PBPSD"
+    And I save the field labeled "Proposed Budget Period End Date" as "PBPED"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | Start Date         | End Date           | New Obligation |
+      | Automation Permanent Focus Area | {SavedValue:PBPSD} | {SavedValue:PBPED} | 1000           |
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                            | Start Date         | End Date           | New Obligation |
+      | Automation Permanent Focus Area2 | {SavedValue:PBPSD} | {SavedValue:PBPED} | 1000           |
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Title                       | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 2000                |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 1000                 | 100        | 0              |
+    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction  | 1000                 | 100        | 0              |
+    And I refresh the page
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Submit for Approval" in the page details
+    And I pause execution for "3" seconds
+    And I "Approve" in the approval decision
+    And I pause execution for "3" seconds
+    And I click on "Amend Subaward" in the page details
+    And I pause execution for "5" seconds
+    And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    When I click on "Activate" in the page details
+    Then I softly see field "Status" as "Activated"
+    When I navigate to "Budget" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationAwd1"
+    Then I softly see field "Cumulative Obligation" as "$2,000.00"
+    And I save the field labeled "Grant ID" as "GrantId"
+    And I click "{SavedValue:GrantId}" lookup link
+    Then I softly see field "Status" as "Active"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "closeoutID"
+    When I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    And I enter value "Automation Test justification" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name          | Closeout |
+      | Automation PM | Step 1   |
+    And I click on "Send To Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I click on "Edit" in the page details
+    And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    And I refresh the page
+    When I click on "Override" in the page details
+    When I click on "Submit for Approval" in the page details
+    When I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Completed" and is "green"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---closeout:-:grantsTableId---"
+    Then I softly see field "Status" as "Closed/Completed"
+    When I navigate to "Budget" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationClosedGrant"
+    Then I softly see field "Cumulative Obligation" as "$3,000.00"
+    Then I softly see addition of two fields "{SavedValue:CumulativeObligationAwd}" and "{SavedValue:CumulativeObligationAwd1}" is equal to "{SavedValue:CumulativeObligationClosedGrant}"
+    And I refresh the page
+    When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
+    Then I softly see "Total Awarded amount across budget periods" shown as help text
+
+  @254216 @ValidateusershouldnotseeBudgetedAmountfieldonawardinAmendedorPendingActivationFAYes @Sprint-23-US-273843 @vaibhav @Allocation
+  Scenario: Validate user should not see 'Budgeted Amount' field on award in Amended or Pending Activation (FA Yes)
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY-Automation EXE user" of type "Formula_By_Applicant"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 2000                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "FundingID"
+    And I refresh the page
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction  | 1500                 | 100        | 100            |
+    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction  | 1500                 | 100        | 100            |
+    And I refresh the page
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                     |
+      | 3000  | fieldRevisedCommitment__c |
+    And I click on "Save" in the page details
+    When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:FundingID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:FundingID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:FundingID}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    And I click on "View" icon for "{SavedValue:FundingID}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    And I click on "Amend Subaward" in the page details
+    And I pause execution for "10" seconds
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    And I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" inside page block detail
+    And I save the field labeled "EGMS ID" as "AwardEGMSID1"
+    When I click on "Activate" in the page details
+    Then I softly see field "Status" as "Activated"
+    And I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" inside page block detail
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
+    Then I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Amended" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I navigate to "Budget" sub tab
+    And I navigate to "Budget" sub tab
+    Then I softly do not see "Budgeted Amount" inside page block detail
