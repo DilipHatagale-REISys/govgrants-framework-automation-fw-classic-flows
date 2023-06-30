@@ -685,7 +685,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Negotiation Tab: Please select "Budget Tab: Budget Details" with "Budget Tab: Budget Summary by Focus Area" in the Application Sections for the Negotiation field. |
 
     Examples:
-      | Announcement Name                                     |
+      | Announcement Name                                        |
       | {SavedValue:Automation Runtime Competitive Announcement} |
 
   @227574 @CompAnnVerifyAdminusercanseethevalueBudgetTabFocusAreareplacedwithBudgetTabBudgetSummarybyFocusAreaintheApplicationsectionforNegotiation @sprint-13-US-224612 @komal @Allocation
@@ -705,12 +705,12 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I do not see multipicklist field "fieldApplicationSectionsForRevision__c" contains value "Budget: Focus Area" under list "Application Sections for Revision - Available"
 
     Examples:
-      | Announcement Name                                    |
+      | Announcement Name                            |
       | {SavedValue:Automation Runtime Announcement} |
 
   @219357 @234667 @CompetativeAnnVerifyasEXEuserIcanseeRecommendedBudgetfieldisvisiblewhenAppstatusisnegotiationinitiated @sprint-13-US-224612 @komal @Allocation
   Scenario Outline:Competative Ann as EXE user I can see "Recommended Budget" field is visible when App status is negotiation initiated
-    | Comp Ann>>Verify EXE when negotiation is initiated during FDM or from app layout then user should not get validation on UI on send to subrecipient button when the budgeted Amount is equal to the Recommended Budget |
+  | Comp Ann>>Verify EXE when negotiation is initiated during FDM or from app layout then user should not get validation on UI on send to subrecipient button when the budgeted Amount is equal to the Recommended Budget |
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     And I created approved FDM on application "<Announcement Name>"
@@ -735,7 +735,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see field "Recommended Budget" inside page block
     Examples:
       | Announcement Name                            | User |
-      | {SavedValue:Automation Runtime Announcement} | EXE   |
+      | {SavedValue:Automation Runtime Announcement} | EXE  |
 
   @227564 @CompAnnVerifyEXEusercaninlineedittheRecommendedBudgetfieldunderRecommendedApplicationsectionbeforeFDMapproval @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Comp Ann EXE user can inline edit the Recommended Budget field under Recommended Application section before FDM approval
@@ -890,7 +890,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | <Announcement Name> | 1000               | 1000                    | Yes                   | Recommended |
     Then I see the following rows under the following headers in table with id "flexGridFundingDecisionMemoApplications" :
       | Application Title   | Recommended Budget |
-      | <Announcement Name> | $1,000.00              |
+      | <Announcement Name> | $1,000.00          |
 
     Examples:
       | Announcement Name                            | User |
@@ -1091,8 +1091,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Negotiations Tab: The Budgeted Amount must be equal to the Recommended Amount in the application. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field before sending the application back for revision. |
 
     Examples:
-      | Announcement Name                            | User |
-      | {SavedValue:Automation Runtime Announcement} | ADMIN   |
+      | Announcement Name                            | User  |
+      | {SavedValue:Automation Runtime Announcement} | ADMIN |
 
   @234899 @CompAnnVerifyPOusershouldseevalidationonsendtosrbuttonwhennegotiationisinitiatedSMEreviewstepwhenuserselectonlybudgetsummarybyFocusAreasectionfornegotiation @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Comp Ann PO user should see validation on send to sr button when negotiation is initiated SME review step when user select only budget summary by Focus Area section for negotiation
@@ -1163,13 +1163,13 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Next Review Step" in the page details
     Then I see the sub-header is "SME Review" in the page details
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer                  |
-      | {SavedValue:FO Username}  |
-      | {SavedValue:PM Username}  |
+      | Reviewer                 |
+      | {SavedValue:FO Username} |
+      | {SavedValue:PM Username} |
     And I wait for "3" seconds
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
       | Reviewer                  |
-      | {SavedValue:EXE Username}  |
+      | {SavedValue:EXE Username} |
     When I expand nested table containing column value "<Application2>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "{SavedValue:PM Username}" in "---applicationReview:-:panelAppTableId---" panel
@@ -1280,8 +1280,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see that "{SavedValue:<User> Username}" has been added in flextable with Id "flexGridGrantorReviewStepRolesandResponsibilities"
     And I navigate to "Funding Decision Memo" sub tab
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title   | Recommended Budget | Total Commitment Amount | Recommend for Funding | Comments    |
-      | <Application2> | 1500               | 1500                    | Yes                   | Recommended |
+      | Application Title | Recommended Budget | Total Commitment Amount | Recommend for Funding | Comments    |
+      | <Application2>    | 1500               | 1500                    | Yes                   | Recommended |
     And I click on "Submit for Approval" in the page details
     And I wait for "3" seconds
     Then I softly see field "Status" as "Submitted for Approval"
@@ -1370,13 +1370,13 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Next Review Step" in the page details
     Then I see the sub-header is "SME Review" in the page details
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer                  |
-      | {SavedValue:FO Username}  |
-      | {SavedValue:PM Username}  |
+      | Reviewer                 |
+      | {SavedValue:FO Username} |
+      | {SavedValue:PM Username} |
     And I wait for "3" seconds
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
       | Reviewer                  |
-      | {SavedValue:EXE Username}  |
+      | {SavedValue:EXE Username} |
     When I expand nested table containing column value "<Application2>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "{SavedValue:PM Username}" in "---applicationReview:-:panelAppTableId---" panel
@@ -1444,7 +1444,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     And I click on "Next Review Step" in the page details
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer                  |
+      | Reviewer                 |
       | {SavedValue:FO Username} |
     And I click on "Assign" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application2>" in "---applicationReview:-:assignApplicationsTableId---" panel
@@ -1506,4 +1506,51 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
     Examples:
       | Announcement Name                            | Application2                     | User |
-      | {SavedValue:Automation Runtime Announcement} | Automation Runtime Application_2 | PO  |
+      | {SavedValue:Automation Runtime Announcement} | Automation Runtime Application_2 | PO   |
+
+  @113322 @ValidateApplicantscanfillinthedetailedbudgetonapplicationwhenfundingopportunityisextended @Sprint-23-US-273843 @vaibhav @Allocation
+  Scenario: Validate Applicants can fill in the detailed budget on application when funding opportunity is extended
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{AUTOEnvData:CompetitiveClosedAnnDetailBudgetYes}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "{AUTOEnvData:CompetitiveClosedAnnDetailBudgetYes}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Closed" and is "green"
+    And I click on "Extend Dates" in the page details
+    And I enter values into fields
+      | Value | Field                               |
+      | 1     | fieldProposedApplicationDueDate__c  |
+      | 1     | fieldProposedQSubmissionDeadline__c |
+      | 1     | fieldProposedAResponseDeadline__c   |
+    And I click modal button "Save and Continue"
+    And I click modal button "Confirm"
+    And I refresh the page
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{AUTOEnvData:CompetitiveClosedAnnDetailBudgetYes}" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "{AUTOEnvData:CompetitiveClosedAnnDetailBudgetYes}" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    And I navigate to "Financials" sub tab
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I navigate to "Budget" sub tab
+    When I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I expand nested table containing column value "BP01"
+    When I click on "Add Line Item Details" icon for "Construction" inside flex table with id "---applicationReview:-:budgetTableId---"
+    When I enter the following values into flex table with id "---applicationReview:-:addLineItemsModalTableId---" by clicking "New" :
+      | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 500          | 100        | 100            |
+    Then I softly can see row level action button "Edit" against "Extra Salary" in flex table with id "---applicationReview:-:addLineItemsModalTableId---"
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I refresh the page
+    When I expand nested table containing column value "BP01"
+    And I click on page navigation arrow "---applicationReview:-:budgetTableId---" for table id "Next"
+    When I click on "Add Line Item Details" icon for "Construction" inside flex table with id "---applicationReview:-:budgetTableId---"
+    When I enter the following values into flex table with id "---applicationReview:-:addLineItemsModalTableId---" by clicking "New" :
+      | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 500          | 50         | 50             |
+    Then I softly can see row level action button "Edit" against "Extra Salary" in flex table with id "---applicationReview:-:addLineItemsModalTableId---"
