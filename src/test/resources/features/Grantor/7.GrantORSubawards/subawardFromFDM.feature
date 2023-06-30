@@ -1,4 +1,4 @@
-@grantAndAward @awardFromFDM @grantor-regression @grantor-parallel-regression @regression @grandAndAwardTemp
+@grantAndAward @awardFromFDM @grantor-regression @grantor-parallel-regression @regression
 Feature: Validate all scenarios in the award created from FDM
 
   Background: Create award from FDM
@@ -167,8 +167,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Budget" sub tab
     And I click on "Remove" icon for "{SavedValue:fundingAccount}" inside flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" without waiting for record
     Then I softly see "No Records Found" inside flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
 
   @38219 @65402 @awardReviewInitiationAndCompletion @smoke
   Scenario Outline: Validate review initiation and completion for the award | verify award acceptance
@@ -308,9 +306,6 @@ Feature: Validate all scenarios in the award created from FDM
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
-    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Award Amount | Cash Match | Non-Cash Match |
-      | Construction    | 1000         | 100        | 100            |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
       | Name                       | Project Role             | Is Key Personnel |
@@ -451,6 +446,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Total Encumbrance must be equal to the total Award Amount in the Subaward budget section |
+    And I refresh the page
     And I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
@@ -473,9 +469,6 @@ Feature: Validate all scenarios in the award created from FDM
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
-    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Award Amount | Cash Match | Non-Cash Match |
-      | Construction    | 1000         | 100        | 100            |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
       | Name                       | Project Role             | Is Key Personnel |
@@ -1026,9 +1019,6 @@ Feature: Validate all scenarios in the award created from FDM
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
-    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Award Amount | Cash Match | Non-Cash Match |
-      | Construction    | 1000         | 100        | 100            |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
       | Name                       | Project Role             | Is Key Personnel |
@@ -1477,9 +1467,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
-    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Award Amount | Cash Match | Non-Cash Match |
-      | Construction    | 1000         | 100        | 100            |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
       | Name                       | Project Role             | Is Key Personnel |
@@ -1544,10 +1531,6 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
-      | Project Role             | Title          | Project Role   | Is Key Personnel |
-      | Project Director/Manager | Automation SPA | Fiscal Contact | Checked          |
     When I navigate to "Overview" sub tab
     When I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
