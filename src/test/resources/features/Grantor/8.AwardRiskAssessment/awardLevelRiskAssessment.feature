@@ -7210,6 +7210,41 @@ Feature: Validate all scenarios in the Risk Assessment
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "AwardEGMSID"
+   And I click on "Edit" in the page details
+   When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+   And I click on "Save" in the page details
+   And I navigate to "Budget" sub tab
+   When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+   When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+   When I close "Associate Funding Accounts" modal by clicking the top right x button
+   And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+     | Title                           | Start Date | End Date |
+     | Automation Permanent Focus Area | 0          | 3650     |
+   When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+     | Funding Account             | Encumbrance |
+     | {SavedValue:fundingAccount} | 1000        |
+   And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+     | Budget Category | Award Amount | Cash Match | Non-Cash Match |
+     | Construction    | 1000         | 100        | 100            |
+   When I navigate to "Performance" sub tab
+   And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+     | EGMS ID                  | Target |
+     | Automation Permanent KPI | 10     |
+   And I navigate to "Terms" sub tab
+   And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+   And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
+   When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+   And I click modal button "Save"
+   And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
+   And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
+   When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+   And I click modal button "Save"
+   When I navigate to "Overview" sub tab
+   And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+     | Name                       | Project Role             | Is Key Personnel |
+     | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
+   And I click on "Send to Subrecipient" in the page details
+   Then I softly see field "Status" as "Sent to Subrecipient"
     When I navigate to "Management" sub tab
     Then I softly see "No Records Found" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I navigate to "Home" tab
