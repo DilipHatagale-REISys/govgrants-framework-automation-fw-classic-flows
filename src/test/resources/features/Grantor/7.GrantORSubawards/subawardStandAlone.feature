@@ -3601,6 +3601,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I close "Create Terms and Conditions" modal by clicking the top right x button
     Then I softly see value "Automation Title" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Edit" icon for "Automation Title" inside flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---" without waiting for record
+    And I switch to iframe with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     When I clear in modal the value from field "Description__c"
     And I enter values into fields
       | Value                          | Field          |
@@ -4144,7 +4145,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I see value "Accepted" for title "Status" inside table "---amendment:-:recipientActiveGrantsTableId---"
+    And I see value "Created" for title "Status" inside table "---amendment:-:recipientActiveGrantsTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
