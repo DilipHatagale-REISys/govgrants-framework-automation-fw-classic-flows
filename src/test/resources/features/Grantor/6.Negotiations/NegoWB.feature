@@ -445,7 +445,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     Then I softly see field "Application Sections for Negotiation" as "Files: Forms"
 
-  @274714 @ValidateCompetitiveValidateusercansendtheApplicationforNegotiationpostFDMisapprovedwhenFAisno @Sprint-23-US-273843 @vaibhav @Allocation
+  @274714 @ValidateCompetitiveValidateusercansendtheApplicationforNegotiationpostFDMisapprovedwhenFAisno @Sprint-23-US-273843 @vaibhav @Allocation @TBE
   Scenario: Validate Competitive Validate user can send the Application for Negotiation post FDM is approved when FA is no
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION_YES_FOCUS_NO-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
