@@ -11232,8 +11232,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Spent" as "awardSpent"
     And I save the value from row "1" for column name "Spent" as "SpentAward" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     Then I softly see value "$500.00" for title "Spent" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
-    And I save the value from row "1" for column name "Encumbrance Balance" as "EncumbranceBalanceAward" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
-    Then I softly see value "$500.00" for title "Encumbrance Balance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I save the value from row "1" for column name "Encumbrance Balance" as "EncumbranceBalanceAward" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "$500.00" for title "Encumbrance Balance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
