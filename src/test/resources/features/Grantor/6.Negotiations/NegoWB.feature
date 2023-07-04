@@ -444,3 +444,48 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I softly see field "Application Sections for Negotiation" as "Files: Forms"
+
+  @274714 @ValidateCompetitiveValidateusercansendtheApplicationforNegotiationpostFDMisapprovedwhenFAisno @Sprint-23-US-273843 @vaibhav @Allocation
+  Scenario: Validate Competitive Validate user can send the Application for Negotiation post FDM is approved when FA is no
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION_YES_FOCUS_NO-Automation EXE user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    And I delete the record "{SavedValue:Automation Runtime FDM Announcement}" from the object "FDM"
+    Given I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "ApplicationSectionsForRevision__c"
+    And I navigate to "Negotiations" sub tab
+    And I enter value "7" into field "fieldNegotiationDueDate__c"
+    And I enter value "Budget Tab: Budget Summary by Focus Area" into field "ApplicationSectionsForRevision__c"
+    And I enter value "Negoatiation Initiated" into field "ExplanationOfRevisionsNeeded__c"
+    When I click on "Save" in the page details
+    And I wait for "9" seconds
+    When I click on "Send to Subrecipient" in the page details
+    And I softly see the following messages in the page details contains:
+      | Negotiation Tab: Please select "Budget Tab: Budget Details" with "Budget Tab: Budget Summary by Focus Area" in the Application Sections for the Negotiation field. |
+    And I wait for "3" seconds
+    When I click on "Edit" in the page details
+    When I enter "Negotiation_Edit_Budget" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    Then I see field "Status" as "Negotiation Initiated"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    Then I softly see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "---negotiation:-:homePendingTasks---"
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    When I expand nested table containing column value "BP01"
+    Then I softly see "Actions" in flex table header "---applicationReview:-:budgetTableId---"
+    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match |
+      | Construction  | 2000   | 100        | 100            |
+    When I expand nested table containing column value "BP01"
+    Then I softly see value "$2,000.00" for title "Budget" against the value "Construction" inside table "---applicationReview:-:budgetTableId---"

@@ -418,6 +418,8 @@ public class GrantorPayloads {
                 return updateFocusAreaForAnnouncement(json, "No");
             case "NEGOTIATION":
                 return negotiationYesForAnnouncement(json);
+            case "NEGOTIATION_YES_FOCUS_NO":
+                return negotiationYesFocusNoForAnnouncement(json);
             case "NEGOTIATION_NO":
                 return negotiationNoForAnnouncement(json);
             case "PRE_APP_YES_FOCUS_AREA_NO":
@@ -482,6 +484,16 @@ public class GrantorPayloads {
             default:
                 return json;
         }
+    }
+
+    private JsonObject negotiationYesFocusNoForAnnouncement(JsonObject json) {
+        JsonObject negotiation = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        negotiation.addProperty("IsNegotiationsAllowed", "Yes");
+        negotiation.addProperty("FocusAreaRequired", "no");
+        pre.add(negotiation);
+        json.add("Announcement", pre);
+        return json;
     }
 
     private JsonObject updatePreApplicationAsYesForAnnouncementWithIndOrg(JsonObject json) {

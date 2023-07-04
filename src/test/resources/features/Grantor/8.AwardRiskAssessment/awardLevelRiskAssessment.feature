@@ -7193,7 +7193,7 @@ Feature: Validate all scenarios in the Risk Assessment
       The EGMS Team
       """
 
-  @116331 @ValidateRiskAssessmentsarereadonlyforSRUser @Sprint-23-US-273843 @vaibhav @Allocation
+  @116331 @ValidateRiskAssessmentsarereadonlyforSRUser @Sprint-23-US-273843 @vaibhav @Allocation @BugLogged-346065 @wip
   Scenario: Validate Risk Assessments are read only for SR User
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -7331,14 +7331,14 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click "{SavedValue:AwardEGMSID}" lookup link
     When I navigate to "Management" sub tab
     Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
-    Then I softly see value "Submitted For Approval" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I softly see value "Submitted for Approval" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I click toggle button to select "Subaward Risk Assessments - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     Then I softly can see row level action button "View" against "{SavedValue:RAEGMSID}" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
-    Then I softly see value "Submitted For Approval" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+    Then I softly see value "Submitted for Approval" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     Then I softly cannot see row level action button "Edit" against "{SavedValue:RAEGMSID}" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     Then I softly cannot see row level action button "Delete" against "{SavedValue:RAEGMSID}" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Home" tab
