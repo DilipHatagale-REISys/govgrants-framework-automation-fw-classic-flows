@@ -11145,7 +11145,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationNew"
     Then I softly see value "{SavedValue:CumulativeObligationNew}" is "Less Than" the value "{SavedValue:CumulativeObligation}"
 
-  @276344 @ValidateFormulaByApplicantFAYesusercanseefocusareaswith0obligationonPeriodicrenewalamendmentwhenawardiscreatedfromdirectgrant @Sprint-24-US-275864 @vaibhav @Allocation @TBE
+  @276344 @ValidateFormulaByApplicantFAYesusercanseefocusareaswith0obligationonPeriodicrenewalamendmentwhenawardiscreatedfromdirectgrant @Sprint-24-US-275864 @vaibhav @Allocation
   Scenario: Validate Formula By Applicant FA Yes user can see focus areas with 0 obligation on Periodic renewal amendment when award is created from direct grant
     And I activated standalone subaward "Automation Runtime award" with properties "SECOND_FOCUS_AREA-Automation PM user" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "PM" user
@@ -11195,7 +11195,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details :
       | You can not select any other types of amendment requests along with Carry Forward request |
 
-  @270114 @270119 @270111 @270097 @ValidateBPCSRsidePOSPAusercannotseeBudgetedAmountclmunderBudgetSummarybyFAsectiononvAwardonBP02isinActivatedstatepostBPCARifFAYES @Sprint-21-US-266911 @vaibhav @Allocation @TBE
+  @270114 @270119 @270111 @270097 @ValidateBPCSRsidePOSPAusercannotseeBudgetedAmountclmunderBudgetSummarybyFAsectiononvAwardonBP02isinActivatedstatepostBPCARifFAYES @Sprint-21-US-266911 @vaibhav @Allocation
   Scenario: Validate BPC SR side PO SPA user can not see Budgeted Amount clm under Budget Summary by FA section on v1 Award on BP02 is in Activated state post BPC AR if FA YES
     And I activated standalone subaward "Automation Runtime Award" with properties "THREE_FOCUS_AREA_NO_BUDGET_CATEGORY_THIRD_FOCUS-Automation PO user" of type "Competitive"
     When I am on "SUBPORTAL" portal

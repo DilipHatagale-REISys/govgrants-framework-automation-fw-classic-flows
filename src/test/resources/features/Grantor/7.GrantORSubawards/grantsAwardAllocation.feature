@@ -23295,9 +23295,9 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see the following messages in the page details contains:
       | If the Focus Area Required is Yes, then the Advance Payment Allowed must be selected as No. |
 
-  @275291 @ValidatetheFunctionalityofMultipleFundingAccounts @Sprint-23-US-273843 @vaibhav @Allocation @TBE
+  @275291 @ValidatetheFunctionalityofMultipleFundingAccounts @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate the Functionality of Multiple Funding Accounts
-    When I login to "As a Grantor" app as "EXE" user
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -23361,7 +23361,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
       | Name                      | Award  |
-      | {SavedValue:EXE Username} | Step 1 |
+      | {SavedValue:PM Username} | Step 1 |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -23370,7 +23370,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I click on "Accept" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -23394,7 +23394,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I click on "Accept after Approval" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -23419,7 +23419,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
