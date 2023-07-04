@@ -11282,17 +11282,17 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly do not see field "Budgeted Amount" inside "Budget Summary" section
     #270119
     When I navigate to "Actuals" sub tab
-    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceActAwd" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
-    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
-    Then I softly see value "{SavedValue:EncumbranceActAwd}" is "Equals to" the value "{SavedValue:EncumbranceActAwdOld}"
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceActAwd" from flex table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
+    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
     And I save the field labeled "Grant ID" as "GrantId"
     And I click "{SavedValue:GrantId}" lookup link
     Then I navigate to "Subawards" sub tab
     And I click on "View" icon for "Amended" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     #270119
     When I navigate to "Actuals" sub tab
-    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceActAwdOld" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
-    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceActAwdOld" from flex table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
+    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
+    Then I softly see value "{SavedValue:EncumbranceActAwd}" is "Equals to" the value "{SavedValue:EncumbranceActAwdOld}"
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
