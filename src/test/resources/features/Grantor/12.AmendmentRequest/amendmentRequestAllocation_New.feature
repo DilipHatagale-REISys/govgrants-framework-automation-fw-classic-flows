@@ -11036,7 +11036,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount. |
 
   @269811 @269814 @269815 @269825 @269827 @269828 @KPCSRsideVerifyPMSPAusercanseeNewObligationfieldunderBudgetSummarysectiononversion2AwardisinActivatedstatepostKPCAR&shouldshow$0onversion2AwardfFAYES @sprint-21-US-266911 @hitesh @Allocation
-  Scenario: KPC(S/R side)>Verify PM/SPA user can see New Obligation field under Budget Summary section on version 2 Award is in Activated state post KPC AR & should show $0 on version 2 Award  if(FA=YES)
+  Scenario: KPC(S/R side)Verify PM/SPA user can see New Obligation field under Budget Summary section on version 2 Award is in Activated state post KPC AR & should show $0 on version 2 Award  if(FA=YES)
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -11221,7 +11221,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Budget" sub tab
     And I save the field labeled "Total Commitment" as "TotalCommitmentAward"
     Then I softly see field "Total Commitment" as "$1,000.00"
-    And I save the value from row "1" for column name "Encumbrance" as "Encumbrance" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAward" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     When I navigate to "Actuals" sub tab
     Then I softly see field "Spent" as "$500.00"
@@ -11265,6 +11265,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I pause execution for "3" seconds
     And I click on "Activate" in the page details
     When I navigate to "Budget" sub tab
+    #269811
     Then I softly see field "New Obligation" inside page block
     Then I softly see field "New Obligation" as "$0.00"
     #269814
@@ -11276,7 +11277,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #269827
     And I save the value from row "1" for column name "Encumbrance" as "Encumbrance1" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
-    Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:Encumbrance1}"
+    Then I softly see value "{SavedValue:EncumbranceAward}" is "Equals to" the value "{SavedValue:Encumbrance1}"
     #269828
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
       | Award Amount |
@@ -11301,8 +11302,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---" without waiting for record
     When I navigate to "Budget" sub tab
-    Then I softly see field "New Obligation" inside page block
-    Then I softly see field "New Obligation" as "$0.00"
+    #269814
+    Then I softly see field "Cumulative Obligation" inside page block
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
     When I navigate to "Actuals" sub tab
     #269825
     Then I softly see field "Spent" as "$500.00"
@@ -11317,9 +11319,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---" without waiting for record
     When I navigate to "Budget" sub tab
-    #269814
-    Then I softly see field "Cumulative Obligation" inside page block
-    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    #269811
+    Then I softly see field "New Obligation" inside page block
+    Then I softly see field "New Obligation" as "$0.00"
     #269815
     Then I softly see field "Total Commitment" as "$1,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitment2"
