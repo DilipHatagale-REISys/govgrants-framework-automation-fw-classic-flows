@@ -11708,7 +11708,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #269776
     Then I softly see "Budget Summary by Focus Area" page block displayed
     #269778
-    Then I softly do not see field "New Obligation" inside "Budget Summary" section
+    Then I softly see field "New Obligation" inside "Budget Summary" section
     Then I softly see field "New Obligation" as "$0.00"
     #269785
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
@@ -11717,7 +11717,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #269787
     And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligationFA1Awd" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
     And I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligationFA2Awd" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
-    And I save the value from row "3" for column name "Cumulative Obligation" as "CumulativeObligationFATotalAwd" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    And I save the value from row "3" for column name "Cumulative Obligation" as "CumulativeObligationFA3TotalAwd" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$1,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
@@ -11765,7 +11765,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     When I navigate to "Budget" sub tab
     #269778
-    Then I softly do not see field "New Obligation" inside "Budget Summary" section
+    Then I softly see field "New Obligation" inside "Budget Summary" section
     Then I softly see field "New Obligation" as "$0.00"
     #269779
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
@@ -11837,3 +11837,166 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     #269809
     Then I softly see "Budget Summary" page block displayed
+
+  @269647 @269648 @269590 @269610 @ValidateT&CGrantorsideAdminINDusercanseeCumulativeObligationfielunderPaymentSummarysectionofActualtabonGrantlayoutinActivestatepostTCARvaluecopiedfromCumOblifieldonversion1AwardonARrequestiscreatedFANO @Sprint-21-US-266911 @vaibhav @Allocation
+  Scenario: Validate T&C Grantor side Admin IND user can see Cumulative Obligation field under Payment Summary section of Actual tab on Grant layout in Active state post T&C AR & value copied from Cum Obli field on version 1 Award on AR request is created (FA=NO)
+    Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_SUB_ORG_IND-Automation ADMIN user" of type "Formula_By_Applicant"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "IND" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PayreqId"
+    And I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement |
+      | Extra Salary | The narrative | 500        | 1        | Feet        |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
+      | Funding Account             | Net Spent This Action |
+      | {SavedValue:fundingAccount} | 500                   |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                        | Reimbursement |
+      | {SavedValue:ADMIN Username} | Step 1        |
+    When I get the "EGMS ID"
+    When I click on "Submit for Approval" in the page details
+    And I wait for "3" seconds
+    When I "Approve" in the approval decision
+    And I wait for "3" seconds
+    When I click on "Mark As Paid" in the page details
+    And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
+    When I click modal button "Save"
+    When I close "{SavedValue:PayreqId}" modal by clicking the top right x button
+    Then I see status in Progress-bar is "Paid" and is "green"
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    #269647
+    When I navigate to "Actuals" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationPaySummAwd1"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    #269648
+    And I save the field labeled "Spent" as "SpentAwd1"
+    Then I softly see field "Spent" as "$500.00"
+    #269610
+    And I save the value from row "1" for column name "Spent" as "SpentPaySummary" from flex table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
+    Then I softly see value "$500.00" for title "Spent" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "TermsAndConditions_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                    | Field               |
+      | Automation Justification | fieldTncComments__c |
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "TermsCondId"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name             | Amendment Request |
+      | Automation ADMIN | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:TermsCondId}" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:TermsCondId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:TermsCondId}" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:TermsCondId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    And I click on "Amend Subaward" in the page details
+    And I wait for "5" seconds
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    And I save the field labeled "EGMS ID" as "ActivatedSubAwardId1"
+    #269590
+    When I navigate to "Actuals" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationPaySummAwd2"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    Then I softly see value "{SavedValue:CumulativeObligationPaySummAwd1}" is "Equals to" the value "{SavedValue:CumulativeObligationPaySummAwd2}"
+    #269610
+    And I save the value from row "1" for column name "Spent" as "SpentPaySummaryAwd" from flex table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
+    Then I softly see value "$500.00" for title "Spent" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
+    Then I softly see value "{SavedValue:SpentPaySummary}" is "Equals to" the value "{SavedValue:SpentPaySummaryAwd}"
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId1}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    #269590
+    When I navigate to "Actuals" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationPaySummAwd2Sr"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    Then I softly see value "{SavedValue:CumulativeObligationPaySummAwd1}" is "Equals to" the value "{SavedValue:CumulativeObligationPaySummAwd2Sr}"
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId1}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I click on "Activate" in the page details
+    Then I softly see field "Status" as "Activated"
+    And I save the field labeled "Grant ID" as "GrantId"
+    And I click "{SavedValue:GrantId}" lookup link
+    Then I softly see status in Progress-bar is "Active" and is "green"
+    #269647
+    When I navigate to "Actuals" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationPaySummGrant"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    Then I softly see value "{SavedValue:CumulativeObligationPaySummAwd1}" is "Equals to" the value "{SavedValue:CumulativeObligationPaySummGrant}"
+    #269648
+    And I save the field labeled "Spent" as "SpentGrant"
+    Then I softly see field "Spent" as "$500.00"
+    Then I softly see value "{SavedValue:SpentAwd1}" is "Equals to" the value "{SavedValue:SpentGrant}"
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Active" and is "green"
+    #269647
+    When I navigate to "Actuals" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationPaySummGrantSr"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    Then I softly see value "{SavedValue:CumulativeObligationPaySummAwd1}" is "Equals to" the value "{SavedValue:CumulativeObligationPaySummGrantSr}"
+    #269648
+    And I save the field labeled "Spent" as "SpentGrantSr"
+    Then I softly see field "Spent" as "$500.00"
+    Then I softly see value "{SavedValue:SpentAwd1}" is "Equals to" the value "{SavedValue:SpentGrantSr}"
