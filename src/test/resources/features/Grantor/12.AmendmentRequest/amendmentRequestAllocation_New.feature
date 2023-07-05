@@ -11195,7 +11195,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details :
       | You can not select any other types of amendment requests along with Carry Forward request |
 
-  @270114 @270119 @270111 @270097 @270089 @270090 @270094 @ValidateBPCSRsidePOSPAusercannotseeBudgetedAmountclmunderBudgetSummarybyFAsectiononvAwardonBP02isinActivatedstatepostBPCARifFAYES @Sprint-21-US-266911 @vaibhav @Allocation @TBE
+  @270114 @270119 @270111 @270097 @270089 @270090 @270094 @ValidateBPCSRsidePOSPAusercannotseeBudgetedAmountclmunderBudgetSummarybyFAsectiononvAwardonBP02isinActivatedstatepostBPCARifFAYES @Sprint-21-US-266911 @vaibhav @Allocation 
   Scenario: Validate BPC SR side PO SPA user can not see Budgeted Amount clm under Budget Summary by FA section on v1 Award on BP02 is in Activated state post BPC AR if FA YES
     And I activated standalone subaward "Automation Runtime Award" with properties "THREE_FOCUS_AREA_NO_BUDGET_CATEGORY_THIRD_FOCUS-Automation PO user" of type "Competitive"
     When I am on "SUBPORTAL" portal
@@ -11339,7 +11339,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #270111
     Then I softly do not see field "Budgeted Amount" inside "Budget Summary" section
 
-  @269869 @ValidateKPCSRsidePMSPIusercanseeBudgetacrosseachFAunderBudgetcategorysectionofBudgettabonGrantlayoutinClosedstatepostKPCARvaluecopiedfromBudgetacrosseachFAonAwardonwhichARrequestiscreatedFAYES @Sprint-21-US-266911 @vaibhav @Allocation @TBE
+  @269869 @ValidateKPCSRsidePMSPIusercanseeBudgetacrosseachFAunderBudgetcategorysectionofBudgettabonGrantlayoutinClosedstatepostKPCARvaluecopiedfromBudgetacrosseachFAonAwardonwhichARrequestiscreatedFAYES @Sprint-21-US-266911 @vaibhav @Allocation 
   Scenario: Validate KPC SR side PM SPI user can see Budget across each FA under Budget category section of Budget tab on Grant layout in Closed state post KPC AR & value copied from Budget across each FA on v1 Award on which AR request is created FA YES
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -11838,7 +11838,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #269809
     Then I softly see "Budget Summary" page block displayed
 
-  @269647 @269648 @269590 @269610 @ValidateT&CGrantorsideAdminINDusercanseeCumulativeObligationfielunderPaymentSummarysectionofActualtabonGrantlayoutinActivestatepostTCARvaluecopiedfromCumOblifieldonversion1AwardonARrequestiscreatedFANO @Sprint-21-US-266911 @vaibhav @Allocation
+  @269647 @269648 @269590 @269610 @ValidateT&CGrantorsideAdminINDusercanseeCumulativeObligationfielunderPaymentSummarysectionofActualtabonGrantlayoutinActivestatepostTCARvaluecopiedfromCumOblifieldonversion1AwardonARrequestiscreatedFANO @Sprint-21-US-266911 @vaibhav @Allocation @TBE
   Scenario: Validate T&C Grantor side Admin IND user can see Cumulative Obligation field under Payment Summary section of Actual tab on Grant layout in Active state post T&C AR & value copied from Cum Obli field on version 1 Award on AR request is created (FA=NO)
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_SUB_ORG_IND-Automation ADMIN user" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
