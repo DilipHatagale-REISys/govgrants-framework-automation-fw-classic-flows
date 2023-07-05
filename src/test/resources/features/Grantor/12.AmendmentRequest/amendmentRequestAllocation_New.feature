@@ -11359,10 +11359,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
     And I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
-    When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
+    And I select value inside table "---announcement:-:selectAnnouncementServiceArea1TableId---" is "All"
+    And I check "Automation Permanent Focus Area2" boxes in flex table with id "---announcement:-:selectAnnouncementServiceArea1TableId---"
+    When I click on top right button "Associate" in flex table with id "---announcement:-:selectAnnouncementServiceArea1TableId---"
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    And I select value inside table "---announcement:-:fundingAccTableId---" is "All"
+    And I check "{SavedValue:fundingAccount}" boxes in flex table with id "---announcement:-:fundingAccTableId---"
+    When I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
@@ -11373,7 +11377,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Associate" after selection of "Automation PM" in the table "---announcement:-:annoucementContactTableId---"
+    And I select value inside table "---announcement:-:annoucementContactTableId---" is "All"
+    And I check "Automation PM" boxes in flex table with id "---announcement:-:annoucementContactTableId---"
+    When I click on top right button "Associate" in flex table with id "---announcement:-:annoucementContactTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement |
