@@ -23448,4 +23448,4 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I wait for "7" seconds
     When I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details :
-      | Financial Tab - Total of Net Spent This Action for funding accounts should match Net Spent This Action |
+      | Financial Tab - Total of Net Spent This Action for funding accounts should match Net Spent This Action. |
