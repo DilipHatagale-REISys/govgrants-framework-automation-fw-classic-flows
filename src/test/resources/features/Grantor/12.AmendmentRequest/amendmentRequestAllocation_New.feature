@@ -11195,7 +11195,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details :
       | You can not select any other types of amendment requests along with Carry Forward request |
 
-  @270114 @270119 @270111 @270097 @270089 @270090 @270094 @ValidateBPCSRsidePOSPAusercannotseeBudgetedAmountclmunderBudgetSummarybyFAsectiononvAwardonBP02isinActivatedstatepostBPCARifFAYES @Sprint-21-US-266911 @vaibhav @Allocation 
+  @270114 @270119 @270111 @270097 @270089 @270090 @270094 @ValidateBPCSRsidePOSPAusercannotseeBudgetedAmountclmunderBudgetSummarybyFAsectiononvAwardonBP02isinActivatedstatepostBPCARifFAYES @Sprint-21-US-266911 @vaibhav @Allocation
   Scenario: Validate BPC SR side PO SPA user can not see Budgeted Amount clm under Budget Summary by FA section on v1 Award on BP02 is in Activated state post BPC AR if FA YES
     And I activated standalone subaward "Automation Runtime Award" with properties "THREE_FOCUS_AREA_NO_BUDGET_CATEGORY_THIRD_FOCUS-Automation PO user" of type "Competitive"
     When I am on "SUBPORTAL" portal
@@ -11339,7 +11339,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #270111
     Then I softly do not see field "Budgeted Amount" inside "Budget Summary" section
 
-  @269869 @ValidateKPCSRsidePMSPIusercanseeBudgetacrosseachFAunderBudgetcategorysectionofBudgettabonGrantlayoutinClosedstatepostKPCARvaluecopiedfromBudgetacrosseachFAonAwardonwhichARrequestiscreatedFAYES @Sprint-21-US-266911 @vaibhav @Allocation 
+  @269869 @ValidateKPCSRsidePMSPIusercanseeBudgetacrosseachFAunderBudgetcategorysectionofBudgettabonGrantlayoutinClosedstatepostKPCARvaluecopiedfromBudgetacrosseachFAonAwardonwhichARrequestiscreatedFAYES @Sprint-21-US-266911 @vaibhav @Allocation
   Scenario: Validate KPC SR side PM SPI user can see Budget across each FA under Budget category section of Budget tab on Grant layout in Closed state post KPC AR & value copied from Budget across each FA on v1 Award on which AR request is created FA YES
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -11400,7 +11400,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
     And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                           | Allocation Amount |
-      | Automation Permanent Focus Area | 1000              |
+      | Automation Permanent Focus Area | 500               |
+    And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
+      | Title                           | Allocation Amount |
+      | Automation Permanent Focus Area2 | 500               |
     And I wait for "5" seconds
     And I click on "Submit For Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
