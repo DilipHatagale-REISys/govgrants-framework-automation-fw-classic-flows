@@ -11251,11 +11251,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "Automation Justification" into field "fieldContactChangeDescription__c"
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "AmendmentId"
-    And I navigate to "Overview" sub tab
-    #When I click on top right button "Associate" in flex table with id "---amendment:-:RecipientKeyPersonalTableId---"
-    #And I perform quick search for "{SavedValue:SPA Username}" in "---amendment:-:RecipientKeyPersonalAssociateTableId---" panel
-    #When I click "Associate" after selection of "{SavedValue:SPA Username}" in the table "---amendment:-:RecipientKeyPersonalAssociateTableId---"
-    #When I close "Associate Contacts" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -11435,7 +11430,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation7"
     Then I softly see value "{SavedValue:CumulativeObligationAward2}" is "Equals to" the value "{SavedValue:CumulativeObligation7}"
 
-  @270091 @270092 @270093 @270095 @270096 @270098 @270099 @270100 @270101 @270102 @270104 @270105 @270120 @270121 @270122 @270122 @270123 @270124 @270125 @270126 @270128 @BPCSRsideVerifyPOSPIusercanseeNewObligationfieldunderBudgetSummarysectiononv1AwardonBP02isinPendingActivationstatepostBPCAR&shouldbezeroifFAYES @sprint-21-US-266911 @hitesh @Allocation
+  @270091 @270092 @270093 @270095 @270096 @270098 @270099 @270100 @270101 @270102 @270104 @270105 @270120 @270121 @270122 @270122 @270123 @270124 @270125 @270126 @270128 @270129 @270115 @BPCSRsideVerifyPOSPIusercanseeNewObligationfieldunderBudgetSummarysectiononv1AwardonBP02isinPendingActivationstatepostBPCAR&shouldbezeroifFAYES @sprint-21-US-266911 @hitesh @Allocation
   Scenario: BPC(S/R side)Verify PO/SPI user can see New Obligation field under Budget Summary section on v1 Award on BP02 is in Pending Activation state post BPC AR & should be zero if(FA=YES)
     And I activated standalone subaward "Automation Runtime award" with properties "THREE_FOCUS_AREA_NO_BUDGET_CATEGORY_THIRD_FOCUS_BuildUpYes-Automation PO user" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -11535,7 +11530,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "budgetPChangeId"
-    #And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
     When I click on "Edit" in the page details
     And I enter "SubRecipientBPC_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
@@ -11701,6 +11695,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     When I navigate to "Actuals" sub tab
+    #270116
+    Then I softly see field "Spent" as "$500.00"
+    And I save the field labeled "Spent" as "Spent"
+    Then I softly see value "{SavedValue:awardSpent}" is "Equals to" the value "{SavedValue:Spent}"
     #270120
     And I save the value from row "1" for column name "Spent" as "Spent" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     Then I softly see value "$500.00" for title "Spent" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
@@ -11713,6 +11711,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:paymentSummaryBudgetTableId---"
     And I click on page navigation arrow "---subAwardStandAlone:-:paymentSummaryBudgetTableId---" for table id "Next"
     Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:paymentSummaryBudgetTableId---"
+    #270115
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
+    Then I softly see value "{SavedValue:CumulativeObligationAward2}" is "Equals to" the value "{SavedValue:CumulativeObligation}"
     And I click on hyperlink containing value "{SavedValue:GrantEGMSID}"
     When I navigate to "Budget" sub tab
     #270123
@@ -11740,6 +11742,15 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---" :
       | Award Amount |
       | $500.00      |
+    When I navigate to "Actuals" sub tab
+    #270128
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
+    Then I softly see value "{SavedValue:CumulativeObligationAward2}" is "Equals to" the value "{SavedValue:CumulativeObligation}"
+    #270129
+    Then I softly see field "Spent" as "$500.00"
+    And I save the field labeled "Spent" as "Spent"
+    Then I softly see value "{SavedValue:awardSpent}" is "Equals to" the value "{SavedValue:Spent}"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -11753,6 +11764,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:paymentSummaryBudgetTableId---"
     And I click on page navigation arrow "---subAwardStandAlone:-:paymentSummaryBudgetTableId---" for table id "Next"
     Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:paymentSummaryBudgetTableId---"
+    #270115
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
+    Then I softly see value "{SavedValue:CumulativeObligationAward2}" is "Equals to" the value "{SavedValue:CumulativeObligation}"
     And I click on hyperlink containing value "{SavedValue:GrantEGMSID}"
     When I navigate to "Budget" sub tab
     #270124
@@ -11768,6 +11783,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---" :
       | Award Amount |
       | $500.00      |
+    When I navigate to "Actuals" sub tab
+    #270128
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
+    Then I softly see value "{SavedValue:CumulativeObligationAward2}" is "Equals to" the value "{SavedValue:CumulativeObligation}"
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -11776,6 +11796,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---" without waiting for record
+    When I navigate to "Actuals" sub tab
+    #270116
+    Then I softly see field "Spent" as "$500.00"
+    And I save the field labeled "Spent" as "Spent"
+    Then I softly see value "{SavedValue:awardSpent}" is "Equals to" the value "{SavedValue:Spent}"
     And I click on hyperlink containing value "{SavedValue:GrantEGMSID}"
     When I navigate to "Budget" sub tab
     #270123
@@ -11784,9 +11809,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
     Then I softly see value "{SavedValue:CumulativeObligationAward1}" is "Equals to" the value "{SavedValue:CumulativeObligation}"
     #270125
-    And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligation" from flex table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
-    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
+    And I save the value from row "1" for column name "Cumulative Obligation" as "CumulativeObligation" from flex table "---subAwardStandAlone:-:grantSubrecipientFocusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantSubrecipientFocusAreaTableId---"
     Then I softly see value "{SavedValue:CumulativeObligationFA1}" is "Equals to" the value "{SavedValue:CumulativeObligation}"
-    And I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligation" from flex table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
-    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
+    And I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligation" from flex table "---subAwardStandAlone:-:grantSubrecipientFocusAreaTableId---"
+    Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantSubrecipientFocusAreaTableId---"
     Then I softly see value "{SavedValue:CumulativeObligationFA2}" is "Equals to" the value "{SavedValue:CumulativeObligation}"
+    When I navigate to "Actuals" sub tab
+    #270129
+    Then I softly see field "Spent" as "$500.00"
+    And I save the field labeled "Spent" as "Spent"
+    Then I softly see value "{SavedValue:awardSpent}" is "Equals to" the value "{SavedValue:Spent}"
