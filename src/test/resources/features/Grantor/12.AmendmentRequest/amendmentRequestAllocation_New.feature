@@ -12043,7 +12043,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
   @269652 @ValidateTCGrantorsideAdminINDusercanseeBudgetacrossFAunderBudgetcategorysectionofBudgettabonGrantlayoutinClosedstatepostTCARvaluecopiedfromBudgetacrosseachFAonversion1AwardonwhichARrequestiscreatedFANO @Sprint-21-US-266911 @vaibhav @Allocation @TBE
   Scenario: Validate TC Grantor side Admin IND user can see Budget across FA under Budget category section of Budget tab on Grant layout in Closed state post T&C AR & value copied from Budget across each FA on version 1 Award on which AR request is created FA NO
-    Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_SUB_ORG_IND" of type "Formula_By_Applicant"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_SUB_ORG_IND" of type "Formula_By_Applicant_Focus_Area_No"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -12089,9 +12089,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     And I navigate to "Budget" sub tab
-    Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
-    And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
-    Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    Then I softly see value "$1,000.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     And I save the field labeled "Grant ID" as "GrantId"
     And I click "{SavedValue:GrantId}" lookup link
     Then I softly see field "Status" as "Active"
@@ -12166,7 +12164,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
   @269233 @269234 @269238 @269239 @269242 @269248 @269218 @269219 @269223 @269225 @268672 @269229 @269230 @269254 @269260 @269236 @ValidateSOWSRsidePOusecanseeEncumbranccolumnunderFundingaccountsectionofBudgettabonversion2AwardisinActivatedstatepostSOWCARvaluecopiedfromEncumbranceclmonversion1AwardonARrequestiscreatedFAYES @Sprint-21-US-266911 @vaibhav @Allocation @TBE
   Scenario: Validate SOW SR side PO user can see Encumbrance column under Funding account section of Budget tab on version 2 Award is in Activated state post SOWC AR & value copied from Encumbrance clm on version 1 Award on AR request is created FA YES
-    And I activated standalone subaward "Automation Runtime Award" with properties "THREE_FOCUS_AREA_NO_BUD_CAT_THIRD_FOCUS_BUILD_UP_IND_ORG-Automation PO user" of type "Directed"
+    And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_FOCUS_AREA_BUD_CAT_SUB_ORG_IND-Automation PO user" of type "Directed"
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "IND" user
     And I navigate to "Grants" tab
