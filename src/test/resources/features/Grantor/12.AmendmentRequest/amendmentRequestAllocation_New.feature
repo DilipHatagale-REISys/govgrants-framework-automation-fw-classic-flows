@@ -11649,4 +11649,3 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Spent" as "$500.00"
     And I save the field labeled "Spent" as "SpentSPA"
     Then I softly see value "{SavedValue:awardSpent}" is "Equals to" the value "{SavedValue:SpentSPA}"
-
