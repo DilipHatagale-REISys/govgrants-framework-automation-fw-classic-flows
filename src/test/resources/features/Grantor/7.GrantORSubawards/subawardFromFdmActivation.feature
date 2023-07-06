@@ -84,7 +84,7 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @66096 @defaultPackageAssociateWithSubaward1 @aashish
+  @660961 @defaultPackageAssociateWithSubaward1 @aashish
   Scenario: : To Verify that the Default package associated with subaward should be displayed correctly |
   To verify that Initiate Desk review button appear on site visit table of management tab of Award owner after Subaward is activated
     Given I navigate to "Grants" tab
@@ -95,11 +95,9 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "flexGridRelatedAwards1" without waiting for record
     And I get the "EGMS ID"
+    And I save the field labeled "Grant ID" as "GrantEGMSID"
     Then I softly see that "Subaward" is in "Activated" status
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    And I click on "View" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
+    And I click on hyperlink containing value "{SavedValue:GrantEGMSID}"
     And I navigate to "Files" sub tab
     Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
     Then I softly see value "Grantor Progress Report Forms" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
@@ -139,14 +137,14 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
       | {SavedValue:fundingAccount} | 1000                |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Award  |
-      | {SavedValue:PM Username} | Step 1 |
+      | Name                     | Amendment Request  |
+      | {SavedValue:PM Username} | Amendment Request  |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                      | Award  |
-      | {SavedValue:EXE Username} | Step 2 |
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Amendment Request |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Award  |
-      | {SavedValue:FO Username} | Step 3 |
+      | Name                     | Amendment Request  |
+      | {SavedValue:FO Username} | Amendment Request  |
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
