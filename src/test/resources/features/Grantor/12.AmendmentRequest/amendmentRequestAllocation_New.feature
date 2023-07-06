@@ -10829,7 +10829,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
     Then I softly see "Total Awarded amount across budget periods" shown as help text
 
-  @debug @254216 @ValidateusershouldnotseeBudgetedAmountfieldonawardinAmendedorPendingActivationFAYes @Sprint-23-US-273843 @vaibhav @Allocation
+  @254216 @ValidateusershouldnotseeBudgetedAmountfieldonawardinAmendedorPendingActivationFAYes @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate user should not see 'Budgeted Amount' field on award in Amended or Pending Activation (FA Yes)
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY-Automation EXE user" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "EXE" user
