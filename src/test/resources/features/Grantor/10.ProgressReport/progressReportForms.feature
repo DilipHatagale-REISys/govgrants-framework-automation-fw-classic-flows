@@ -4360,8 +4360,8 @@ Feature: Validate scenarios in Progress Report Forms
       | If "Other" option is selected in "14k", Justification in specify is required.                                                                |
       | If "Other" option is selected in "14l", Justification in specify is required.                                                                |
       | If \"Other\" is selected in \"Real Property Ownership Type\", Description is required.                                                       |
-      | Unit type is required, if amount entered in " 14d. Land Acreage or Square Units ".                                                           |
-      | Unit type is required, if amount entered in " 14e. Gross and Usable Square Footage/Meters ".                                                 |
+      | Unit type is required, if amount entered in "14d. Land Acreage or Square Units".                                                           |
+      | Unit type is required, if amount entered in "14e. Gross and Usable Square Footage/Meters".                                                 |
       | Values can only be entered against the Electric (KWh) or Electric (Btu) in section "14k"                                                     |
       | Values can only be entered against the Electric (KWh) or Electric (Btu) in section "14l"                                                     |
       | Please enter Zip code in the Zip + 4 codes format (e.g. 12345-1234) in the 'Zip / Postal code' field.                                        |
@@ -4372,16 +4372,16 @@ Feature: Validate scenarios in Progress Report Forms
       | The Usable Amount cannot be less than zero.                                                                                                  |
       | Federal Share cannot be less than zero.                                                                                                      |
       | Non Federal Share cannot be less than zero.                                                                                                  |
-      | Value in "Electric " in "14k" cannot be less than zero.                                                                                      |
-      | Value in "Btu "in "14k" cannot be less than zero.                                                                                            |
-      | Value in "Petroleum " in "14k" cannot be less than zero.                                                                                     |
-      | Value in "Natural Gas" in "14k"cannot be less than zero.                                                                                     |
-      | Value in "Other " in "14k" cannot be less than zero.                                                                                         |
-      | Value in "Electric " in "14l" cannot be less than zero.                                                                                      |
-      | Value in "Btu "in "14l" cannot be less than zero.                                                                                            |
-      | Value in "Petroleum " in "14l" cannot be less than zero.                                                                                     |
-      | Value in "Natural Gas" in "14l"cannot be less than zero.                                                                                     |
-      | Value in "Other " in "14l" cannot be less than zero.                                                                                         |
+      | Value in "Electric" in "14k" cannot be less than zero.                                                                                      |
+      | Value in "Btu" in "14k" cannot be less than zero.                                                                                            |
+      | Value in "Petroleum" in "14k" cannot be less than zero.                                                                                     |
+      | Value in "Natural Gas" in "14k" cannot be less than zero.                                                                                     |
+      | Value in "Other" in "14k" cannot be less than zero.                                                                                         |
+      | Value in "Electric" in "14l" cannot be less than zero.                                                                                      |
+      | Value in "Btu" in "14l" cannot be less than zero.                                                                                            |
+      | Value in "Petroleum" in "14l" cannot be less than zero.                                                                                     |
+      | Value in "Natural Gas" in "14l" cannot be less than zero.                                                                                     |
+      | Value in "Other" in "14l" cannot be less than zero.                                                                                         |
       | Adding file is required in "Files section" with classification "Environmental Compliance Requirements", if "Yes" option in "14h" is checked. |
       | Adding file is required in "Files section" with classification "NHPA", if "Yes" option in "14i" is checked.                                  |
     When I click on "Edit" in the page details
