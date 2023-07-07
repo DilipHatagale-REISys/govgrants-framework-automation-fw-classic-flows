@@ -4342,6 +4342,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the text containing "OMB Number: 4040-0016"
     Then I see the page contains text "Expiration Date: 02/28/2025"
     And I click on "Edit" in the page details
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     Then I softly see the following messages in the page details :
       | Federal Grant or Other Identifying Number Assigned by Federal Agency (#2 on cover page) is required to save. |
@@ -4350,6 +4351,7 @@ Feature: Validate scenarios in Progress Report Forms
       | State is required to save.                                                                                   |
       | ZIP / Postal Code is required to save.                                                                       |
     And I enter "SF429B_Form_incorrect_data" values from "ProgressReport_Field_Values.xlsx"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
@@ -4360,8 +4362,8 @@ Feature: Validate scenarios in Progress Report Forms
       | If "Other" option is selected in "14k", Justification in specify is required.                                                                |
       | If "Other" option is selected in "14l", Justification in specify is required.                                                                |
       | If \"Other\" is selected in \"Real Property Ownership Type\", Description is required.                                                       |
-      | Unit type is required, if amount entered in " 14d. Land Acreage or Square Units ".                                                           |
-      | Unit type is required, if amount entered in " 14e. Gross and Usable Square Footage/Meters ".                                                 |
+      | Unit type is required, if amount entered in "14d. Land Acreage or Square Units".                                                           |
+      | Unit type is required, if amount entered in "14e. Gross and Usable Square Footage/Meters".                                                 |
       | Values can only be entered against the Electric (KWh) or Electric (Btu) in section "14k"                                                     |
       | Values can only be entered against the Electric (KWh) or Electric (Btu) in section "14l"                                                     |
       | Please enter Zip code in the Zip + 4 codes format (e.g. 12345-1234) in the 'Zip / Postal code' field.                                        |
@@ -4372,21 +4374,22 @@ Feature: Validate scenarios in Progress Report Forms
       | The Usable Amount cannot be less than zero.                                                                                                  |
       | Federal Share cannot be less than zero.                                                                                                      |
       | Non Federal Share cannot be less than zero.                                                                                                  |
-      | Value in "Electric " in "14k" cannot be less than zero.                                                                                      |
-      | Value in "Btu "in "14k" cannot be less than zero.                                                                                            |
-      | Value in "Petroleum " in "14k" cannot be less than zero.                                                                                     |
-      | Value in "Natural Gas" in "14k"cannot be less than zero.                                                                                     |
-      | Value in "Other " in "14k" cannot be less than zero.                                                                                         |
-      | Value in "Electric " in "14l" cannot be less than zero.                                                                                      |
-      | Value in "Btu "in "14l" cannot be less than zero.                                                                                            |
-      | Value in "Petroleum " in "14l" cannot be less than zero.                                                                                     |
-      | Value in "Natural Gas" in "14l"cannot be less than zero.                                                                                     |
-      | Value in "Other " in "14l" cannot be less than zero.                                                                                         |
+      | Value in "Electric" in "14k" cannot be less than zero.                                                                                      |
+      | Value in "Btu" in "14k" cannot be less than zero.                                                                                            |
+      | Value in "Petroleum" in "14k" cannot be less than zero.                                                                                     |
+      | Value in "Natural Gas" in "14k" cannot be less than zero.                                                                                     |
+      | Value in "Other" in "14k" cannot be less than zero.                                                                                         |
+      | Value in "Electric" in "14l" cannot be less than zero.                                                                                      |
+      | Value in "Btu" in "14l" cannot be less than zero.                                                                                            |
+      | Value in "Petroleum" in "14l" cannot be less than zero.                                                                                     |
+      | Value in "Natural Gas" in "14l" cannot be less than zero.                                                                                     |
+      | Value in "Other" in "14l" cannot be less than zero.                                                                                         |
       | Adding file is required in "Files section" with classification "Environmental Compliance Requirements", if "Yes" option in "14h" is checked. |
       | Adding file is required in "Files section" with classification "NHPA", if "Yes" option in "14i" is checked.                                  |
     When I click on "Edit" in the page details
     And I enter value "200" into field "fieldFederalSharePercentage__c"
     And I enter value "300" into field "fieldNon_FederalSharePercentage__c"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
