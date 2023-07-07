@@ -4342,6 +4342,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the text containing "OMB Number: 4040-0016"
     Then I see the page contains text "Expiration Date: 02/28/2025"
     And I click on "Edit" in the page details
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     Then I softly see the following messages in the page details :
       | Federal Grant or Other Identifying Number Assigned by Federal Agency (#2 on cover page) is required to save. |
@@ -4350,6 +4351,7 @@ Feature: Validate scenarios in Progress Report Forms
       | State is required to save.                                                                                   |
       | ZIP / Postal Code is required to save.                                                                       |
     And I enter "SF429B_Form_incorrect_data" values from "ProgressReport_Field_Values.xlsx"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
@@ -4387,6 +4389,7 @@ Feature: Validate scenarios in Progress Report Forms
     When I click on "Edit" in the page details
     And I enter value "200" into field "fieldFederalSharePercentage__c"
     And I enter value "300" into field "fieldNon_FederalSharePercentage__c"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
