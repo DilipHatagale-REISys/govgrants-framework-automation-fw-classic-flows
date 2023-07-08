@@ -11739,7 +11739,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
       | Award Amount |
       | $500.00      |
-    And I select value inside table "---subAwardStandAlone:-:subAwardBudgetTableId---" is "5"
     And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
       | Award Amount |
@@ -11831,8 +11830,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | $500.00      |
     When I navigate to "Actuals" sub tab
     #270122
+    And I select value inside table "----subAwardStandAlone:-:paymentSummaryBudgetTableId---" is "5"
     Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:paymentSummaryBudgetTableId---"
-    And I select value inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---" is "5"
     And I click on page navigation arrow "---subAwardStandAlone:-:paymentSummaryBudgetTableId---" for table id "Next"
     Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:paymentSummaryBudgetTableId---"
     #270115
