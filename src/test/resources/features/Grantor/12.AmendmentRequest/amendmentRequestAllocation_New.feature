@@ -11739,7 +11739,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
       | Award Amount |
       | $500.00      |
-    And I select value inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---" is "5"
+    And I select value inside table "---subAwardStandAlone:-:subAwardBudgetTableId---" is "5"
     And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
       | Award Amount |
