@@ -11830,7 +11830,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | $500.00      |
     When I navigate to "Actuals" sub tab
     #270122
-    And I select value inside table "----subAwardStandAlone:-:paymentSummaryBudgetTableId---" is "5"
     Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:paymentSummaryBudgetTableId---"
     And I click on page navigation arrow "---subAwardStandAlone:-:paymentSummaryBudgetTableId---" for table id "Next"
     Then I softly see value "$500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:paymentSummaryBudgetTableId---"
