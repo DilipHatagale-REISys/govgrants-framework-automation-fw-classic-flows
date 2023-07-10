@@ -114,6 +114,9 @@ public class UsersAndURL implements UsersController {
             case "FD":
                 password = "Salesforce2028";
                 break;
+            case "ADMIN1":
+                password = "Salesforce2027";
+                break;
             default:
                 password = "Salesforce2026";
         }
@@ -147,7 +150,7 @@ public class UsersAndURL implements UsersController {
     private String getAUTOEnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
         username.put("ADMIN", "govgrantsautomation@yopmail.com");
-        username.put("ADMIN1", "shambhavi.admin@ggp.test8.automation");
+        username.put("ADMIN1", "admin1@yopmail.com.automation");
         username.put("EXE", "test@gmaildemo.com.atm.automation");
         username.put("PM", "donald_pm@ggp.test7.atm.automation");
         username.put("FO", "auto.fm@auto.com.atm.automation");
