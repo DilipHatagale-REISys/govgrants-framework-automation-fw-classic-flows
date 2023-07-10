@@ -43,7 +43,7 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @75517 @75519 @75521 @75518 @grantRelateLogsDetails
+  @75517 @75519 @75521 @75518 @grantRelateLogsDetails @temp
   Scenario Outline: To verify user able to search grant in grant section in Related log tab of announcement.
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel

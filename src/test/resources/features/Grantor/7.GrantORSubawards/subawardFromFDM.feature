@@ -722,7 +722,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @38222 @50994 @65418 @65420 @awardApprovalAndSendToRecipientAfterApproval @ErrorMessageForTargetFields
+  @38222 @50994 @65418 @65420 @awardApprovalAndSendToRecipientAfterApproval @ErrorMessageForTargetFields @temp
   Scenario Outline: Validate award approval and send to subrecipient after approval | validate submit for approval button displayed
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -1392,7 +1392,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                                       | Award Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @64791 @VerifyKeyPerformanceIndicatorsValue @keerti
+  @64791 @VerifyKeyPerformanceIndicatorsValue @keerti @temp
   Scenario Outline: Verify Key Performance Indicators (KPIs) value Performance tab Subaward overview is same as announcement Key Performance Indicators (KPIs) table setup Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -1415,7 +1415,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                                       | Award Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @64790 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti @buglogged127817
+  @64790 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti @buglogged127817 @temp
   Scenario Outline: Verify Objectives field value Performance tab Subaward overview is same as announcement Objectives table setup Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -1437,7 +1437,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                                       | Award Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @64722 @VerifyRelatedFocusAreasField @keerti
+  @64722 @VerifyRelatedFocusAreasField @keerti @temp
   Scenario Outline: Verify Related Focus Areas field value setup tab overview at announcement is same on grant which is created with application Overview Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
