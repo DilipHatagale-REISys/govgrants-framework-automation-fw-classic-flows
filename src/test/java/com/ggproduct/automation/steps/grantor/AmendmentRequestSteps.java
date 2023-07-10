@@ -1,8 +1,14 @@
 package com.ggproduct.automation.steps.grantor;
 
+import com.automation.rei.handlers.govgrants;
 import com.ggproduct.automation.pageobjects.grantor.AmendmentRequestPage;
+import com.testingblaze.actionsfactory.api.ByUsing;
+import com.testingblaze.register.I;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.springframework.context.annotation.Description;
 
 public class AmendmentRequestSteps  {
@@ -22,4 +28,28 @@ public class AmendmentRequestSteps  {
     public void getEndDate(String offset, String awardName) {
         amendmentRequestPage.updatedBudgetPeriodEndDate(offset, awardName);
     }
-}
+
+    @When("I click {string} after selection of {string} in the tables {string}")
+    public void iClickAfterSelectionOfInTheTables(String buttonName, String recordValue, String flexTableId) {
+            By entriesDropDown = ByUsing.xpath("//*[@id='" + flexTableId + "']//span[text()='Show' or text()='Records Per Page']/ancestor::div[1]//select");
+            WebElement entriesDD = I.amPerforming().getElementReference().of(entriesDropDown);
+
+            try {
+                entriesDD.click();
+                (new Select(entriesDD)).selectByVisibleText("All");
+            } catch (Exception var6) {
+                entriesDD.click();
+                (new Select(entriesDD)).selectByVisibleText("All");
+            }
+            By xpath=ByUsing.xpath("//span[text()='" + recordValue + "']/ancestor::tr/td//input[@aria-label='Select Record']");
+            WebElement entriesDX = I.amPerforming().getElementReference().of(xpath);
+            entriesDX.click();
+           By associateXpath=ByUsing.xpath("//div[@id='" + flexTableId + "']//button[text()='" + buttonName + "']");
+           WebElement associateButton = I.amPerforming().getElementReference().of(associateXpath);
+           associateButton.click();
+
+        }
+
+
+    }
+
