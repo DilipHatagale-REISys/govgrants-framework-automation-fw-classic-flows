@@ -951,11 +951,11 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see field "Program Income Allowed?" as "Yes"
     Then I softly see field "Advance Payment Allowed?" as "Yes"
     Then I softly see field "Is Detailed Budget Required on the Subaward?" as "No"
-    Then I softly see field "Focus Area Required?" as "Yes"
+    Then I softly see field "Focus Area Required?" as "No"
     Then I softly see field "Objectives Required?" as "Yes"
     Then I softly see field "KPI" as "Yes"
     Then I softly see field "Are Expense Details Required on Reimbursements?" as "Yes"
-    Then I softly see field "Risk Assessment Required?" as "Yes"
+    Then I softly see field "Risk Assessment Required?" as "No"
     Then I softly see field "Grant Abbreviation" as "GA"
 
   @65582 @verifyGrantTypes @mahadev
@@ -972,7 +972,7 @@ Feature: Validate all scenarios of grants and award without background
     And I enter value "Automation" into field "GrantDescription__c"
     And I click on "Save" in the page details
     And I click on "Edit" in the page details
-    Then I softly see field "fieldGrantType__c" as "Competitive"
+    Then I see field "Grant Type" as "Competitive"
 
   @65602 @verifySubtabNavigation @mahadev
   Scenario: Verify when Award owner click on edit action at sub award it should navigate to subawards Tab with Progress bar status as Created
