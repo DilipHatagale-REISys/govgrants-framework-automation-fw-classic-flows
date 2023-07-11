@@ -29,6 +29,10 @@ public class AmendmentRequestSteps {
         amendmentRequestPage.updatedBudgetPeriodEndDate(offset, awardName);
     }
 
+    @When("I click {string} after selection of {string} by showing entries {string} in flex table with id {string}")
+    public void iClickAfterSelectionOfInTheTables(String buttonName, String recordValue, String numberOfEntries, String flexTableId) {
+        amendmentRequestPage.clickAfterSelectionOfInTheTables(buttonName, recordValue, numberOfEntries, flexTableId);
+    }
 
 }
 
