@@ -1,4 +1,4 @@
-@grantsAwardAllocation @grantor-regression @grantor-parallel-regression @grantAndAward @regression f
+@grantsAwardAllocation @grantor-regression @grantor-parallel-regression @grantAndAward @regression
 Feature: Validate all scenarios of grants and award for Allocation
 
   @239510 @239514 @239519 @ValidatePMuserseesectionnameofBudgetPeriodDetailsshouldrenamewithBudgetSummarysectiononaward @sprint-15-US-237846 @vaibhav @Allocation
