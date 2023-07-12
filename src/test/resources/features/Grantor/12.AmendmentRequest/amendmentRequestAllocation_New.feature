@@ -13926,7 +13926,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation4"
     Then I softly do not see addition of two fields "{SavedValue:CumulativeObligationAmended}" and "{SavedValue:CumulativeObligationActivated}" is equal to "{SavedValue:CumulativeObligation4}"
 
-  @269563 @269627 @269628 @269644 @VerifyAdminINDusershouldnotseebelowfieldsonTerms&ConditionamendmentrequestifFANO @Sprint-21-US-266911 @hitesh @Allocation
+  @269627 @269628 @269644 @269626 @VerifyAdminINDusershouldnotseebelowfieldsonTerms&ConditionamendmentrequestifFANO @Sprint-21-US-266911 @hitesh @Allocation
   Scenario: Verify AdminIND user should not see below fields on Terms & Condition amendment request if (FA= NO)
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_SUB_ORG_IND" of type "Formula_By_Applicant_Focus_Area_No"
     When I login to "As a Grantor" app as "PM" user
@@ -13959,30 +13959,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Automation PM | Step 1            |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
-    When I navigate to "Overview" sub tab
-    #269563
-    Then I softly do not see "Budget Summary" page block displayed
-    Then I softly do not see "Budget Summary by Focus Area" page block displayed
-    Then I softly cannot see field "New Obligation" inside page block
-    Then I softly cannot see field "Cumulative Obligation" inside page block
-    Then I softly cannot see field "Current Commitment" inside page block
-    Then I softly cannot see field "Revised Commitment" inside page block
-    Then I softly cannot see field "Budgeted Amount" inside page block
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:TermsCondId}" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:TermsCondId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    Then I softly see field "Status" as "Sent to Subrecipient"
-    When I navigate to "Overview" sub tab
-    #269563
-    Then I softly do not see "Budget Summary" page block displayed
-    Then I softly do not see "Budget Summary by Focus Area" page block displayed
-    Then I softly cannot see field "New Obligation" inside page block
-    Then I softly cannot see field "Cumulative Obligation" inside page block
-    Then I softly cannot see field "Current Commitment" inside page block
-    Then I softly cannot see field "Revised Commitment" inside page block
-    Then I softly cannot see field "Budgeted Amount" inside page block
     And I click on "Acknowledge" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -14000,6 +13981,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     And I navigate to "Budget" sub tab
+    #269626
+    Then I softly see field "New Obligation" inside page block
+    Then I softly see field "New Obligation" as "$0.00"
     #269627
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
@@ -14023,6 +14007,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---" without waiting for record
     And I navigate to "Budget" sub tab
+    #269626
+    Then I softly see field "New Obligation" inside page block
+    Then I softly see field "New Obligation" as "$0.00"
     #269627
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"

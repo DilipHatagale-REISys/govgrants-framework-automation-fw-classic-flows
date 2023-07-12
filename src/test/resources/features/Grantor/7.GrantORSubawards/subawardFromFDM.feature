@@ -1435,16 +1435,15 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                                       | Award Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @64722 @VerifyRelatedFocusAreasField @keerti @temp
+  @debug @64722 @VerifyRelatedFocusAreasField @keerti @temp
   Scenario Outline: Verify Related Focus Areas field value setup tab overview at announcement is same on grant which is created with application Overview Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Overview" sub tab
-    When I perform quick search for "Automation Permanent Focus Area" in "AnnouncementServiceArea1" panel
-#    And I click on "View" icon for "Automation Permanent Focus Area" inside table
-#    And I save the field labeled "GAT Title" as "title"
-#    And I close modal by clicking the top right x button
+    And I click on "View" icon for "Automation Permanent Focus Area" inside table
+    And I save the field labeled "GAT Title" as "title"
+    And I close modal by clicking the top right x button
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"

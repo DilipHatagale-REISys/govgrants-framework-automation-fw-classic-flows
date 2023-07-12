@@ -635,6 +635,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "BudgetedAmount__c" not in edit mode
     And I click on top right button "Save" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
     #240308
+    Then I softly do not see "New Obligation" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel

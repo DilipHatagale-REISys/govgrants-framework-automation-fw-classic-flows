@@ -3424,7 +3424,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Automation Permanent Internal Program" in "Programs" panel
     And I click on "View" icon for "Automation Permanent Internal Program" inside table
     When I navigate to "Setup" sub tab
-    When I perform quick search for "Information Technology" in "ProgramKeyOutcomes" panel
     And I click on "View" icon for "Information Technology" inside table
     And I save the field labeled "Domain" as "Domain"
     And I navigate to "Grants" tab
