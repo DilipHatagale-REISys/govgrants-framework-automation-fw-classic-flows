@@ -1734,6 +1734,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | Name           | Award  |
       | Automation EXE | Step 1 |
     And I click on "Send to Subrecipient" in the page details
+    And I pause execution for "5" seconds
     Then I see field "Status" as "Sent to Subrecipient"
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
     And I navigate to "Home" tab
