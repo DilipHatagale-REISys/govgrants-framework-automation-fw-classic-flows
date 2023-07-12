@@ -479,11 +479,31 @@ public class GrantorPayloads {
                 return updateAnnouncementWithSecondFocusAreaRiskNo(json);
             case "SECOND_FOCUS_AREA_BY_APPL_RISK_ASS_NO":
                 return updateAnnouncementWithSecondFocusAreaByappRiskNo(json);
+            case "THREE_FOCUS_AREA_BY_APPL_RISK_ASS_NO":
+                return updateAnnouncementWithThreeFocusAreaByappRiskNo(json);
             case "SECOND_FOCUS_AREA_BY_APPLICANT_FOCUS_AREA_RISK_ASS_NO":
                 return updateAnnouncementWithSecondFocusAreaByappFocusAreaRiskNo(json);
             default:
                 return json;
         }
+    }
+
+    private JsonObject updateAnnouncementWithThreeFocusAreaByappRiskNo(JsonObject json) {
+        JsonArray serviceArea = new JsonArray();
+        JsonObject serviceAreaB = new JsonObject();
+        serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        serviceArea.add(serviceAreaB);
+        JsonObject serviceAreaC = new JsonObject();
+        serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Test Focus Area"));
+        serviceArea.add(serviceAreaC);
+        json.add("AnnouncementServiceArea", serviceArea);
+        JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre1 = new JsonArray();
+        jsonObject1.addProperty("Allocationlevel","By Applicant");
+        jsonObject1.addProperty("RiskAssessment_Required", "No");
+        pre1.add(jsonObject1);
+        json.add("Announcement", pre1);
+        return json;
     }
 
     private JsonObject negotiationYesFocusNoForAnnouncement(JsonObject json) {
@@ -1730,6 +1750,18 @@ public class GrantorPayloads {
         grant.addProperty("IsAdvancePermitted", "Yes");
         newA.add(grant);
         json.add("Grant", newA);
+        JsonArray buildUpItemsA = new JsonArray();
+        JsonObject buildUpItems = new JsonObject();
+        buildUpItems.addProperty("BudgetCategory", "Construction");
+        buildUpItems.addProperty("Title", "Construction");
+        buildUpItems.addProperty("Narrative", "Test Build-up");
+        buildUpItems.addProperty("AwardedBudget", 1000);
+        buildUpItems.addProperty("CashMatch", 100);
+        buildUpItems.addProperty("NonCashMatch", 100);
+        buildUpItems.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems.addProperty("ServiceAreaName", "Standard Focus Area");
+        buildUpItemsA.add(buildUpItems);
+        json.add("BuildUpItems", buildUpItemsA);
         return json;
     }
 
