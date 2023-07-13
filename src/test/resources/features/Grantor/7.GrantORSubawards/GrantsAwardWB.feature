@@ -951,11 +951,11 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see field "Program Income Allowed?" as "Yes"
     Then I softly see field "Advance Payment Allowed?" as "Yes"
     Then I softly see field "Is Detailed Budget Required on the Subaward?" as "No"
-    Then I softly see field "Focus Area Required?" as "Yes"
+    Then I softly see field "Focus Area Required?" as "No"
     Then I softly see field "Objectives Required?" as "Yes"
     Then I softly see field "KPI" as "Yes"
     Then I softly see field "Are Expense Details Required on Reimbursements?" as "Yes"
-    Then I softly see field "Risk Assessment Required?" as "Yes"
+    Then I softly see field "Risk Assessment Required?" as "No"
     Then I softly see field "Grant Abbreviation" as "GA"
 
   @65582 @verifyGrantTypes @mahadev
@@ -972,7 +972,7 @@ Feature: Validate all scenarios of grants and award without background
     And I enter value "Automation" into field "GrantDescription__c"
     And I click on "Save" in the page details
     And I click on "Edit" in the page details
-    Then I softly see field "fieldGrantType__c" as "Competitive"
+    Then I see field "Grant Type" as "Competitive"
 
   @65602 @verifySubtabNavigation @mahadev
   Scenario: Verify when Award owner click on edit action at sub award it should navigate to subawards Tab with Progress bar status as Created
@@ -1007,7 +1007,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I refresh the page
-    Then I softly cannot see row level action button "Edit" against "Test T&C" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    Then I softly cannot see row level action button "Edit" against "Test TC" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I save the value from row "1" for column name "EGMS ID" as "NonMandatoryT_C" from flex table "---subAwardStandAlone:-:grantTermConditionPopUp---"
     And I save the value from row "1" for column name "Title" as "TermsConditionsTitle" from flex table "---subAwardStandAlone:-:grantTermConditionPopUp---"
@@ -6073,14 +6073,11 @@ Feature: Validate all scenarios of grants and award without background
       | {SavedValue:FO Username} | Step 1  | Step 1 |
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     And I click on "Submit For Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal

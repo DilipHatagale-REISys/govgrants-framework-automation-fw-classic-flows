@@ -722,7 +722,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @38222 @50994 @65418 @65420 @awardApprovalAndSendToRecipientAfterApproval @ErrorMessageForTargetFields @temp
+  @38222 @50994 @65418 @65420 @awardApprovalAndSendToRecipientAfterApproval @ErrorMessageForTargetFields
   Scenario Outline: Validate award approval and send to subrecipient after approval | validate submit for approval button displayed
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -740,7 +740,7 @@ Feature: Validate all scenarios in the award created from FDM
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardFromFDM:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "SelectAwardGoals"
+    When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "SelectAwardGoals"
     Then I see that "Automation Permanent Objective2" has been added in flextable with Id "---subAwardFromFDM:-:objectivesTableId---"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                    | Target |
@@ -1392,13 +1392,12 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                                       | Award Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @64791 @VerifyKeyPerformanceIndicatorsValue @keerti @temp
+  @64791 @VerifyKeyPerformanceIndicatorsValue @keerti
   Scenario Outline: Verify Key Performance Indicators (KPIs) value Performance tab Subaward overview is same as announcement Key Performance Indicators (KPIs) table setup Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Setup" sub tab
-    When I perform quick search for "Information Technology" in "AnnouncementKeyOutcomes" panel
     And I click on "View" icon for "Information Technology" inside table
     And I save the field labeled "Domain" as "Domain"
     And I navigate to "Grants" tab
@@ -1415,13 +1414,12 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                                       | Award Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @64790 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti @buglogged127817 @temp
+  @64790 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti @buglogged127817
   Scenario Outline: Verify Objectives field value Performance tab Subaward overview is same as announcement Objectives table setup Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Setup" sub tab
-    When I perform quick search for "Automation Permanent Objective" in "---announcement:-:objectivesTableId---" panel
     When I save the value from row "1" for column name "EGMS ID" as "EGMSID" from flex table "---announcement:-:objectivesTableId---"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1437,16 +1435,15 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                                       | Award Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @64722 @VerifyRelatedFocusAreasField @keerti @temp
+  @64722 @VerifyRelatedFocusAreasField @keerti
   Scenario Outline: Verify Related Focus Areas field value setup tab overview at announcement is same on grant which is created with application Overview Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Overview" sub tab
-    When I perform quick search for "Automation Permanent Focus Area" in "AnnouncementServiceArea1" panel
-#    And I click on "View" icon for "Automation Permanent Focus Area" inside table
-#    And I save the field labeled "GAT Title" as "title"
-#    And I close modal by clicking the top right x button
+    And I click on "View" icon for "Automation Permanent Focus Area" inside table
+    And I save the field labeled "GAT Title" as "title"
+    And I close modal by clicking the top right x button
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"

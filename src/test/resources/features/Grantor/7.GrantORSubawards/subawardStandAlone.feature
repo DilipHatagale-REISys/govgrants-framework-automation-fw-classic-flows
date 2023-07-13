@@ -61,7 +61,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario Outline: Validate the association of Focus Area to Award
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
-    When I click "Associate" after selection of "<Focus Area>" in the table "---subAwardStandAlone:-:associateModalTableId---"
+    And I select value inside table "---subAwardStandAlone:-:associateModalTableId---" is "All"
+    And I check "<Focus Area>" boxes in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
@@ -255,7 +257,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @51147 @67814 @65491 @65415 @allSendToRecipientAndAcceptanceBySRBeforeApproval @smoke @jitendra @buglogged151483 @temp
+  @51147 @67814 @65491 @65415 @allSendToRecipientAndAcceptanceBySRBeforeApproval @smoke @jitendra @buglogged151483
   Scenario Outline: Validate the award send to recipient and acceptance by recipient before approval
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -455,7 +457,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @51142 @65492 @51143 @65798 @allSubmissionForApproval @allApproval @temp
+  @51142 @65492 @51143 @65798 @allSubmissionForApproval @allApproval
   Scenario Outline: Validate award submission for approval and approval of award | To verify that the status of the subaward in SR side from sent to subrecipient to Accepted
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -578,7 +580,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @66234 @66227 @FOReassignToOtherOrgUser @jitendra @temp
+  @66234 @66227 @FOReassignToOtherOrgUser @jitendra
   Scenario Outline: To verify that the "Bureau of child" org user is not able to see different org users drop-down list while forwarding for the approval process by PM user.
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -1431,7 +1433,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @66087 @UnableToActivateSubAwardIfRiskAssesmentApprovePMHasNotApprovedIt @jitendra @buglogged127848 @temp
+  @66087 @UnableToActivateSubAwardIfRiskAssesmentApprovePMHasNotApprovedIt @jitendra @buglogged127848
   Scenario Outline: To validate that if risk assessment record is not approved by the approver (PM Profile) Subaward (PM) is not able to Activate Subaward and validation error appears
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -1640,7 +1642,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @66883 @errorIfKPITargetValueNotEnterBeforeSendToApproval @jitendra @temp
+  @66883 @errorIfKPITargetValueNotEnterBeforeSendToApproval @jitendra
   Scenario Outline: To validate that if KPI value is not entered before approval it should give a validation error
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -1724,7 +1726,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @66659 @errorIfEnterGreaterValueThanFundingAccount @jitendra @temp
+  @66659 @errorIfEnterGreaterValueThanFundingAccount @jitendra
   Scenario Outline: To verify that validation message appears if subaward amount asked is more that Funding Account balance
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2974,7 +2976,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Remove" icon for "Automation Permanent Objective" inside flex table with id "---subAwardStandAlone:-:objectivesTableId---" without waiting for record
     Then I do not see value "Automation Permanent Objective" for title "Title" inside table "---subAwardStandAlone:-:objectivesTableId---"
 
-  @45756 @67969 @71182 @71431 @71437 @validateAwardRejectionByProgramApprover @mahadev @temp
+  @45756 @67969 @71182 @71431 @71437 @validateAwardRejectionByProgramApprover @mahadev
   Scenario Outline: Validate award Rejection by Program approver
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -3312,7 +3314,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @45739 @VarifyAwardRejectionByRecipientBeforeApproval @keerti @temp
+  @45739 @VarifyAwardRejectionByRecipientBeforeApproval @keerti
   Scenario Outline: Validate the rejection of award by recipient before approval
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -3422,7 +3424,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Automation Permanent Internal Program" in "Programs" panel
     And I click on "View" icon for "Automation Permanent Internal Program" inside table
     When I navigate to "Setup" sub tab
-    When I perform quick search for "Information Technology" in "ProgramKeyOutcomes" panel
     And I click on "View" icon for "Information Technology" inside table
     And I save the field labeled "Domain" as "Domain"
     And I navigate to "Grants" tab
@@ -3490,7 +3491,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly can see top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly can see top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
 
-  @65400  @validateAfterSendToSubreciepientSubreciepientCanViewRecord  @keerti @temp
+  @65400  @validateAfterSendToSubreciepientSubreciepientCanViewRecord  @keerti
   Scenario Outline: To verify that  after clicking on the "send to subreciepient button " from the award owner profile after creating subaward is visible to the Subreciepient.
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -4437,7 +4438,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @65957 @65816 @66029 @66036  @66034 @validatePendingTaskForEXEAndAddingReviewers  @mahadev @temp
+  @65957 @65816 @66029 @66036  @66034 @validatePendingTaskForEXEAndAddingReviewers  @mahadev
   Scenario Outline: validate adding approvers in risk assessment | validate status for risk assessment | Validate Pending Task for executive approver | To verify that the peer reviewers can be added
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -4700,7 +4701,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @66644   @verifyDraftGrantNotDisplayedAtSubportal  @mahadev @temp
+  @66644   @verifyDraftGrantNotDisplayedAtSubportal  @mahadev
   Scenario Outline: To verify that if Grant is in Draft state and" not sent to the Sub recipient " must not be visible to the Sub recipient(SPI User)
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -4715,7 +4716,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} |
 
-  @66931 @71193 @validateActivateButtonNotDisplayedAfterRejectedBYSPI  @mahadev @buglogged142226 @temp
+  @66931 @71193 @validateActivateButtonNotDisplayedAfterRejectedBYSPI  @mahadev @buglogged142226
   Scenario Outline: To Validate that after Subaward is rejected by the Recipient (SPI) user, activate Button do not appear on the Award owner (PM) profile
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -4816,7 +4817,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Grant Name                                   | Award Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @66881 @validateBPDateCannotBeLessThanProjectPeriodEndDate @mahadev @temp
+  @66881 @validateBPDateCannotBeLessThanProjectPeriodEndDate @mahadev
   Scenario Outline: To verify that the budget period end date is set ahead of the project period end date validation message must appear on clicking submit for approval button
     And I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
@@ -4950,7 +4951,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly cannot see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
 
-  @68606 @verifyUserCanSeeAwardInPendingTaskTable @aashish @temp
+  @68606 @verifyUserCanSeeAwardInPendingTaskTable @aashish
   Scenario Outline: Validate that after Subaward is Sent to the Subrecipient it appears in the Pending task of SPI/SPA user and on acceptance of subaward by SPI user it appears in the Completed task of all.
   | SPI and SPA user can see subrecipient in pendig tasks
     And I click on "Edit" in the page details
@@ -5238,7 +5239,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @68587 @verifySubrecepientCanEditAndSaveAward @smoke @aashish @temp
+  @68587 @verifySubrecepientCanEditAndSaveAward @smoke @aashish
   Scenario Outline: Validate that Subaward sent to the Subrecipient can be Edited and Viewed by all the member of the Same Org and the Changes made must be affected in the Subaward of all profile.
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -5709,7 +5710,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @141917 @VerifyUpdationOfInheritedApproverAtCloseoutFromAward-RnRFunctnality @monu @temp
+  @141917 @VerifyUpdationOfInheritedApproverAtCloseoutFromAward-RnRFunctnality @monu
   Scenario Outline: Verify the record owner can update the approver that are inherited from award program to closeout record
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -5827,7 +5828,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                                   | Grant Name                                   | Closeout Name                                |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @154937 @Verify3StepApprovalForSubAward-RnRFunctionality @monu @temp
+  @154937 @Verify3StepApprovalForSubAward-RnRFunctionality @monu
   Scenario Outline: Verify user is able to add on 3 step approver on subaward forward
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
