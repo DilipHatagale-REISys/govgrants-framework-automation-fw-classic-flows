@@ -80,8 +80,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 25     | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 25     |
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
