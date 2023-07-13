@@ -40,7 +40,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Back" in page detail
     When I click on "Validate" in the page details
-    And I wait for "2" seconds
+    And I wait for "8" seconds
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
 
@@ -115,6 +115,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Certify the Federal Financial Report (SF-425) by checking the Acknowledgment Box before submitting to Grantor. |
@@ -171,6 +172,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly can see top right button "Validate" in page detail
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Back" in page detail
+    And I wait for "7" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -269,7 +271,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
-    And I refresh the page
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -389,8 +391,10 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly can see top right button "Save" in page detail
     Then I softly can see top right button "Cancel" in page detail
     When I click on "Save" in the page details
+    And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -418,6 +422,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly can see top right button "Validate" in page detail
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Back" in page detail
+    And I wait for "6" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -630,6 +635,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly can see top right button "Validate" in page detail
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Back" in page detail
+    And I wait for "6" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | "Sum of Cumulative Federal Cash Disbursement" must be Equal to "10 b Cash Disbursement" in Transactions section of Federal Financial Report (SF-425). |
@@ -870,7 +876,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I click on top right button "New" in flex table with id "---progressReport:-:sf428SDetailIndividualTableId---"
     When I enter in modal "SF428S_Details_Individual" values from "ProgressReport_Field_Values.xlsx"
     And I click modal button "Save"
-    And I refresh the page
+    And I wait for "7" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -1426,7 +1432,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Back" in page detail
     When I click on "Validate" in the page details
-    And I wait for "6" seconds
+    And I wait for "8" seconds
     Then I softly see the following messages in the page details :
       | Adding file is required in "Files section" with classification "Supplemental Sheet SF-428S or recipient equivalent ", If "(i) Request Federal Agency disposition instructions" option in "Federally-owned Property" is checked. |
       | Adding file is required in "Files section" with classification "Supplemental Sheet SF-428S or recipient equivalent " or Add comment in "Comments Section", If "(ii) Other" option in "Federally-owned Property" is checked.     |
@@ -1492,6 +1498,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly can see top right button "Validate" in page detail
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Back" in page detail
+    And I wait for "6" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Project/Grant Period From date cannot be after Project/Grant Period To date                           |
@@ -1538,7 +1545,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly can see top right button "Validate" in page detail
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Back" in page detail
-    And I wait for "3" seconds
+    And I wait for "7" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -1579,6 +1586,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I upload attachment without random number "Attachment.pdf" of type "1. Supplemental Sheet SF-428S or recipient equivalent" from computer
     And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
     And I upload attachment without random number "Attachment.pdf" of type "2. Additional File for Comments" from computer
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Selecting at least one that apply in 'Report' is required. |
@@ -1681,7 +1689,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
-    And I wait for "11" seconds
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Selecting at least one that apply in 'Report' is required. |
@@ -2083,7 +2091,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
-    And I wait for "7" seconds
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Final (Award Closeout) Report (SF-428-B) is required to be submitted as it is selected in field 6 'Attachment'. |
@@ -2132,7 +2140,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
     When I click on "Validate" in the page details
-    And I wait for "2" seconds
+    And I wait for "9" seconds
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
     #Fill SF428-B Form
@@ -2155,7 +2163,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
     And I upload attachment without random number "Attachment.pdf" of type "2. Additional File for Comments" from computer
     And I refresh the page
-    And I wait for "3" seconds
+    And I wait for "7" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -2210,7 +2218,7 @@ Feature: Validate scenarios in Progress Report Forms
     When I enter in modal "SF428S_Details_Individual" values from "ProgressReport_Field_Values.xlsx"
     And I click modal button "Save"
     And I refresh the page
-    And I wait for "5" seconds
+    And I wait for "6" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -2276,8 +2284,8 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly can see top right button "Validate" in page detail
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Back" in page detail
-    When I click on "Validate" in the page details
     And I wait for "7" seconds
+    When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
     When I click on "Back" in the page details
@@ -2387,8 +2395,8 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
-    And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
     #Fill SF428-B Form
@@ -2411,7 +2419,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
     And I upload attachment without random number "Attachment.pdf" of type "2. Additional File for Comments" from computer
     And I refresh the page
-    And I wait for "3" seconds
+    And I wait for "7" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -2444,8 +2452,8 @@ Feature: Validate scenarios in Progress Report Forms
     And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
     And I upload attachment without random number "Attachment.pdf" of type "Other" from computer
     And I refresh the page
+    And I wait for "5" seconds
     When I click on "Validate" in the page details
-    And I wait for "7" seconds
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
     #Fill SF428-S
@@ -2703,7 +2711,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
-    And I wait for "5" seconds
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -2741,13 +2749,13 @@ Feature: Validate scenarios in Progress Report Forms
     And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
     And I upload attachment without random number "Attachment.pdf" of type "Other" from computer
     And I refresh the page
+    And I wait for "6" seconds
     When I click on "Validate" in the page details
-    And I wait for "4" seconds
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
     And I select "Tangible Personal Property Report - SF-428" from dropdown at forms
-    When I click on "Validate" in the page details
     And I wait for "7" seconds
+    When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Select the Annual Report (SF-428-A) as required form is filled. |
 
@@ -2832,8 +2840,8 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
-    And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
     #Fill SF428-B Form
@@ -2849,7 +2857,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
     And I upload attachment without random number "Attachment.pdf" of type "2. Additional File for Comments" from computer
     And I refresh the page
-    And I wait for "3" seconds
+    And I wait for "6" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -2885,6 +2893,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Select the Final (Award Closeout) Report (SF-428-B) as required form is filled. |
@@ -2930,7 +2939,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
-    And I wait for "7" seconds
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | SF-428S or equivalent document is required to be submitted as it is selected in field '7. Supplemental Sheet'. |
@@ -2952,7 +2961,7 @@ Feature: Validate scenarios in Progress Report Forms
     When I enter in modal "SF428S_Details_Individual" values from "ProgressReport_Field_Values.xlsx"
     And I click modal button "Save"
     And I refresh the page
-    And I wait for "5" seconds
+    And I wait for "7" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -3012,7 +3021,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
-    And I wait for "7" seconds
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | SF-428S or equivalent document is required to be submitted as it is selected in field '7. Supplemental Sheet'. |
@@ -3034,7 +3043,7 @@ Feature: Validate scenarios in Progress Report Forms
     When I enter in modal "SF428S_Details_Individual" values from "ProgressReport_Field_Values.xlsx"
     And I click modal button "Save"
     And I refresh the page
-    And I wait for "5" seconds
+    And I wait for "6" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
