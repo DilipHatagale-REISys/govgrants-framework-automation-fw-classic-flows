@@ -70,8 +70,7 @@ Feature: Validate all scenarios in Progress Report
     Then I softly see status in Progress-bar is "Sent Back to Subrecipient" and is "green"
     When I navigate to "History" sub tab
     Then I softly see value "Sent Back to Subrecipient" for title "New Value" inside table "History"
-    Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI3" user
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
