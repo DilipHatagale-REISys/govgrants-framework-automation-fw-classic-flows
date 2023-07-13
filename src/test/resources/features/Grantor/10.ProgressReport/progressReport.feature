@@ -27,7 +27,6 @@ Feature: Validate all scenarios in Progress Report
       | Performance Tab - Provide a value for Key Accomplishment for Progress Report before submitting to Grantor.  |
       | Performance Tab - Provide a value for Obstacles for Progress Report before submitting to Grantor.           |
       | Performance Tab - Provide a value for Plans for Progress Report before submitting to Grantor.               |
-      | Forms and Files Tab - Provide all the required data in the form before submitting to Grantor.               |
       | Performance tab - Please add some value in the Actual of the KPI table                                      |
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -54,7 +53,7 @@ Feature: Validate all scenarios in Progress Report
     When I click toggle button to select "Progress Reports - Submitted"
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:progressReportFlexTableId---" panel
     Then I softly see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:progressReportFlexTableId---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
@@ -86,7 +85,7 @@ Feature: Validate all scenarios in Progress Report
       | Automation Permanent KPI | 25     | 7             |
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
@@ -380,7 +379,7 @@ Feature: Validate all scenarios in Progress Report
     And I click "{SavedValue:SubawardID}" lookup link
     When I navigate to "Performance" sub tab
     Then I softly see value "{SavedValue:Record Id}" for title "EGMS ID" against the value "Submitted to Grantor" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
@@ -1949,6 +1948,7 @@ Feature: Validate all scenarios in Progress Report
   Scenario: Validate Objectives table at Performance Tab on Progress report should not be editable at Award owner end when Progress report status is Submitted to Grantor. | Validate SR User is able to take snapshot of the Progress report when it is submitted to Grantor on active subaward
   Validate SR User can View the Objectives associated at award on progress report.
     When I navigate to "Performance" sub tab
+    When I click on "EGMS ID" column header inside table with id "---progressReport:-:objectivesTableId---"
     And I save the value from row "1" for column name "EGMS ID" as "ObjectiveEGMSID" from flex table "---progressReport:-:objectivesTableId---"
     And I click on hyperlink containing value "{SavedValue:ObjectiveEGMSID}"
     And I navigate to "Overview" sub tab

@@ -10273,3 +10273,16 @@ Feature: Validate scenarios in Progress Report without background
     And I perform quick search for "{SavedValue:progID}" in "---riskassessment:-:completedTaskTableId---" panel
     Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---riskassessment:-:completedTaskTableId---"
     Then I softly see value "Review Progress Report" for title "Task Type" inside table "---riskassessment:-:completedTaskTableId---"
+
+
+  @vai
+  Scenario:
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I wait for "10" seconds
+    When I navigate to "Performance" sub tab
+    When I click on "EGMS ID" column header inside table with id "---progressReport:-:objectivesTableId---"
+    And I save the value from row "1" for column name "EGMS ID" as "ObjectiveEGMSID" from flex table "---progressReport:-:objectivesTableId---"
+    And I click on hyperlink containing value "{SavedValue:ObjectiveEGMSID}"
+    And I navigate to "Overview" sub tab
+    Then I softly see field "Title" as "Automation Permanent Objective"
