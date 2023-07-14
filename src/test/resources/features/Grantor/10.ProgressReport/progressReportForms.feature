@@ -2102,7 +2102,7 @@ Feature: Validate scenarios in Progress Report Forms
       | Disposition Report/Request (SF-428-C) is required to be submitted as it is selected in field 6 'Attachment'.    |
       | SF-428S or equivalent document is required to be submitted as it is selected in field '7. Supplemental Sheet'.  |
 
-  @281844
+  @281844-1 @ValidatethevalidationforfilltheSF428ABCSformbutnotcheckedfieldinSF428
   Scenario: Validate the validation for fill the SF428-A,B,C,S form but not checked field in SF 428
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
