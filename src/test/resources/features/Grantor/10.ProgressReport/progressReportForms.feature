@@ -4392,8 +4392,8 @@ Feature: Validate scenarios in Progress Report Forms
       | If "Other" option is selected in "14k", Justification in specify is required.                                                                |
       | If "Other" option is selected in "14l", Justification in specify is required.                                                                |
       | If \"Other\" is selected in \"Real Property Ownership Type\", Description is required.                                                       |
-      | Unit type is required, if amount entered in "14d. Land Acreage or Square Units".                                                           |
-      | Unit type is required, if amount entered in "14e. Gross and Usable Square Footage/Meters".                                                 |
+      | Unit type is required, if amount entered in "14d. Land Acreage or Square Units".                                                             |
+      | Unit type is required, if amount entered in "14e. Gross and Usable Square Footage/Meters".                                                   |
       | Values can only be entered against the Electric (KWh) or Electric (Btu) in section "14k"                                                     |
       | Values can only be entered against the Electric (KWh) or Electric (Btu) in section "14l"                                                     |
       | Please enter Zip code in the Zip + 4 codes format (e.g. 12345-1234) in the 'Zip / Postal code' field.                                        |
@@ -4404,16 +4404,16 @@ Feature: Validate scenarios in Progress Report Forms
       | The Usable Amount cannot be less than zero.                                                                                                  |
       | Federal Share cannot be less than zero.                                                                                                      |
       | Non Federal Share cannot be less than zero.                                                                                                  |
-      | Value in "Electric" in "14k" cannot be less than zero.                                                                                      |
+      | Value in "Electric" in "14k" cannot be less than zero.                                                                                       |
       | Value in "Btu" in "14k" cannot be less than zero.                                                                                            |
-      | Value in "Petroleum" in "14k" cannot be less than zero.                                                                                     |
-      | Value in "Natural Gas" in "14k" cannot be less than zero.                                                                                     |
-      | Value in "Other" in "14k" cannot be less than zero.                                                                                         |
-      | Value in "Electric" in "14l" cannot be less than zero.                                                                                      |
+      | Value in "Petroleum" in "14k" cannot be less than zero.                                                                                      |
+      | Value in "Natural Gas" in "14k" cannot be less than zero.                                                                                    |
+      | Value in "Other" in "14k" cannot be less than zero.                                                                                          |
+      | Value in "Electric" in "14l" cannot be less than zero.                                                                                       |
       | Value in "Btu" in "14l" cannot be less than zero.                                                                                            |
-      | Value in "Petroleum" in "14l" cannot be less than zero.                                                                                     |
-      | Value in "Natural Gas" in "14l" cannot be less than zero.                                                                                     |
-      | Value in "Other" in "14l" cannot be less than zero.                                                                                         |
+      | Value in "Petroleum" in "14l" cannot be less than zero.                                                                                      |
+      | Value in "Natural Gas" in "14l" cannot be less than zero.                                                                                    |
+      | Value in "Other" in "14l" cannot be less than zero.                                                                                          |
       | Adding file is required in "Files section" with classification "Environmental Compliance Requirements", if "Yes" option in "14h" is checked. |
       | Adding file is required in "Files section" with classification "NHPA", if "Yes" option in "14i" is checked.                                  |
     When I click on "Edit" in the page details
@@ -4828,7 +4828,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the following messages in the page details :
       | Certify the Real Property Status Report (Cover Page)-SF-429 by checking the Acknowledgment Box before submitting to Grantor. |
 
-  @288253 @288898 @ValidateSF271SPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonSF271form @sprint-1-US-282698 @vaibhav @Forms
+  @vai @288253 @288898 @ValidateSF271SPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonSF271form @sprint-1-US-282698 @vaibhav @Forms
   Scenario: Validate SF271 SPI user can able to save & validate form after entering correct & valid data on all fields present on SF271 form
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -4855,7 +4855,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I can see row level action button "Edit" against "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" in flex table with id "---progressReport:-:formTableId---"
     And I click on "View" icon for "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     Then I softly see the text containing "OMB Number: 4040–0011"
-    Then I see the page contains text "Expiration Date: 01/31/2025"
+    Then I softly see the text containing "Expiration Date: 01/31/2025"
     And I click on "Edit" in the page details
     And I enter "SF271_Form" values from "ProgressReport_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -4941,7 +4941,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I can see row level action button "Edit" against "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" in flex table with id "---progressReport:-:formTableId---"
     And I click on "View" icon for "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     Then I softly see the text containing "OMB Number: 4040–0011"
-    Then I see the page contains text "Expiration Date: 01/31/2025"
+    Then I softly see the text containing "Expiration Date: 01/31/2025"
     And I click on "Edit" in the page details
     And I wait for "3" seconds
     When I click on "Save" in the page details
@@ -5906,7 +5906,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I can see row level action button "Edit" against "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" in flex table with id "---progressReport:-:formTableId---"
     And I click on "View" icon for "Outlay Report and Request for Reimbursement for Construction Programs-SF-271" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     Then I softly see the text containing "OMB Number: 4040–0011"
-    Then I see the page contains text "Expiration Date: 01/31/2025"
+    Then I softly see the text containing "Expiration Date: 01/31/2025"
     And I click on "Edit" in the page details
     And I enter "SF271_Form" values from "ProgressReport_Field_Values.xlsx"
     And I enter value "1234" into field "fieldZipPostalCodeSF428__c"
