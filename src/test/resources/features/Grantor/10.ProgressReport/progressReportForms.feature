@@ -527,11 +527,13 @@ Feature: Validate scenarios in Progress Report Forms
     When I click on "Edit" in the page details
     #279764
     And I clear the value from field "fieldRecipientOrganizationNameSF428__c"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | 2. Recipient Organization (Box 3 on Page 1) is required to save. |
     And I enter value "{AUTOEnvData:StringOf60Chars}" into field "fieldRecipientOrganizationNameSF428__c"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     Then I softly see field "2. Recipient Organization (Box 3 on Page 1)" as "{AUTOEnvData:StringOf60Chars}"
     #279785
@@ -2068,9 +2070,9 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the text containing "OMB Number: 4040-0018"
     Then I see the page contains text "Expiration Date: 11/30/2024"
     When I click on "Edit" in the page details
-    And I wait for "2" seconds
+    And I wait for "4" seconds
     When I click on "Save" in the page details
-    And I wait for "2" seconds
+    And I wait for "3" seconds
     Then I softly see the following messages in the page details :
       | 1. Federal Agency and Organizational Element to Which Report is Submitted is required to save.    |
       | 2. Federal Grant or Other Identifying Number Assigned by Federal Agency is required to save.      |
@@ -2087,6 +2089,7 @@ Feature: Validate scenarios in Progress Report Forms
       | 9e. Date Report Submitted (MM/DD/YYYY) is required to save.                                       |
     And I enter "SF428_Form" values from "ProgressReport_Field_Values.xlsx"
     And I enter value "Yes" into field "fieldSupplementalSheet__c"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
@@ -2139,8 +2142,8 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
-    When I click on "Validate" in the page details
     And I wait for "9" seconds
+    When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
     #Fill SF428-B Form
@@ -2640,9 +2643,9 @@ Feature: Validate scenarios in Progress Report Forms
     And I upload attachment without random number "Attachment.pdf" of type "Other" from computer
     And I refresh the page
     And I click on "Edit" in the page details
-    And I wait for "2" seconds
+    And I wait for "3" seconds
     When I click on "Save" in the page details
-    And I wait for "2" seconds
+    And I wait for "3" seconds
     Then I softly see the following messages in the page details :
       | Federal Grant or Other Identifying Number Assigned by Federal Agency is required to save. |
       | 1. Report Type is required to save.                                                       |
@@ -2652,7 +2655,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I enter value "30 SEP" into field "fieldReportAsOf__c"
     And I enter value "Test" into field "fieldCommentsSF428__c"
     When I click on "Save" in the page details
-    And I wait for "2" seconds
+    And I wait for "3" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
     And I refresh the page
@@ -3108,17 +3111,18 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
     When I click on "Validate" in the page details
-    And I wait for "2" seconds
+    And I wait for "9" seconds
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
     And I select "Tangible Personal Property Report - SF-428" from dropdown at forms
     When I click on "Edit" in the page details
     When I enter value "Unchecked" into field "fieldDispositionReportRequestSF428C__c"
     When I click on "Save" in the page details
+    And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
     When I click on "Validate" in the page details
-    And I wait for "7" seconds
+    And I wait for "9" seconds
     Then I softly see the following messages in the page details :
       | Select the Disposition Report/Request (SF-428-C) as required form is filled. |
 
@@ -3148,7 +3152,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
-    And I wait for "8" seconds
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Adding file is required in "Files section" with classification "Supplemental Sheet SF-428S or recipient equivalent ", If "(i) Request Federal Agency disposition instructions" option in "Federally-owned Property" is checked. |
@@ -3209,7 +3213,7 @@ Feature: Validate scenarios in Progress Report Forms
     When I enter in modal "SF428S_Details_Individual" values from "ProgressReport_Field_Values.xlsx"
     And I click modal button "Save"
     And I refresh the page
-    And I wait for "5" seconds
+    And I wait for "7" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -4216,7 +4220,9 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the text containing "OMB Number: 4040-0016"
     Then I see the page contains text "Expiration Date: 02/28/2025"
     And I click on "Edit" in the page details
+    And I wait for "3" seconds
     When I click on "Save" in the page details
+    And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Federal Grant or Other Identifying Number Assigned by Federal Agency (#2 on cover page) is required to save. |
       | Street1 is required to save.                                                                                 |
@@ -4224,6 +4230,7 @@ Feature: Validate scenarios in Progress Report Forms
       | State is required to save.                                                                                   |
       | ZIP / Postal Code is required to save.                                                                       |
     And I enter "SF429A_Form_incorrect_data" values from "ProgressReport_Field_Values.xlsx"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
@@ -4365,6 +4372,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I click on "Edit" in the page details
     And I wait for "3" seconds
     When I click on "Save" in the page details
+    And I wait for "3" seconds
     Then I softly see the following messages in the page details :
       | Federal Grant or Other Identifying Number Assigned by Federal Agency (#2 on cover page) is required to save. |
       | Street1 is required to save.                                                                                 |
@@ -4374,7 +4382,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I enter "SF429B_Form_incorrect_data" values from "ProgressReport_Field_Values.xlsx"
     And I wait for "3" seconds
     When I click on "Save" in the page details
-    And I wait for "2" seconds
+    And I wait for "3" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
     And I wait for "9" seconds
@@ -4529,6 +4537,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I click on "Edit" in the page details
     And I wait for "6" seconds
     When I click on "Save" in the page details
+    And I wait for "3" seconds
     Then I softly see the following messages in the page details :
       | Federal Grant or Other Identifying Number Assigned by Federal Agency (#2 on cover page) is required to save. |
       | Street 1 is required to save.                                                                                |
@@ -4536,8 +4545,9 @@ Feature: Validate scenarios in Progress Report Forms
       | State is required to save.                                                                                   |
       | Zip Code is required to save.                                                                                |
     And I enter "SF429C_Form_incorrect_data" values from "ProgressReport_Field_Values.xlsx"
+    And I wait for "4" seconds
     When I click on "Save" in the page details
-    And I wait for "6" seconds
+    And I wait for "3" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
     And I wait for "9" seconds
@@ -6086,7 +6096,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I upload attachment without random number "Attachment.pdf" of type "14i. NHPA Description" from computer
     And I click on top right button "Add Files" in flex table with id "---progressReport:-:sf428cFormAttachmentTableId---"
     And I upload attachment without random number "Attachment.pdf" of type "14h. Environmental Compliance Requirements" from computer
-    And I wait for "7" seconds
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
@@ -6266,6 +6276,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I select "Tangible Personal Property Report - Final Report - SF-428-B" from dropdown at forms
     And I click on "Edit" in the page details
     And I enter value "12345" into field "fieldFederalGrantIdentifyingNumbe__c"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
@@ -6275,7 +6286,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I click on "Edit" in the page details
     And I enter "SF428A_Form" values from "ProgressReport_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I wait for "6" seconds
+    And I wait for "3" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
     #Fill SF428-S
