@@ -3235,6 +3235,7 @@ Feature: Validate scenarios in Progress Report Forms
     #298720
     When I click on "Edit" in the page details
     When I enter value "Unchecked" into field "fieldDispositionReportRequestSF428C__c"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
