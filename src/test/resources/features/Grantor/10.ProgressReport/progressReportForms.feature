@@ -3096,8 +3096,8 @@ Feature: Validate scenarios in Progress Report Forms
     And I click on "Save" in the page details
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
+    And I wait for "9" seconds
     When I click on "Validate" in the page details
-    And I wait for "7" seconds
     Then I softly see the following messages in the page details :
       | Disposition Report/Request (SF-428-C) is required to be submitted as it is selected in field 6 'Attachment'. |
     #Fill SF428-C Form
@@ -3111,8 +3111,8 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
-    When I click on "Validate" in the page details
     And I wait for "9" seconds
+    When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Form validated successfully. |
     And I select "Tangible Personal Property Report - SF-428" from dropdown at forms
@@ -3122,8 +3122,8 @@ Feature: Validate scenarios in Progress Report Forms
     And I wait for "2" seconds
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
-    When I click on "Validate" in the page details
     And I wait for "9" seconds
+    When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :
       | Select the Disposition Report/Request (SF-428-C) as required form is filled. |
 
