@@ -4544,7 +4544,7 @@ Feature: Validate scenarios in Progress Report Forms
       | State is required to save.                                                                                   |
       | Zip Code is required to save.                                                                                |
     And I enter "SF429C_Form_incorrect_data" values from "ProgressReport_Field_Values.xlsx"
-    And I wait for "4" seconds
+    And I wait for "6" seconds
     When I click on "Save" in the page details
     And I wait for "3" seconds
     Then I softly see the following messages in the page details :
