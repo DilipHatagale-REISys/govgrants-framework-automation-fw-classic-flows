@@ -2654,6 +2654,7 @@ Feature: Validate scenarios in Progress Report Forms
     And I enter value "(a) Individual (Reporting Federally-owned property for one award)" into field "fieldReportTypePiclikist__c"
     And I enter value "30 SEP" into field "fieldReportAsOf__c"
     And I enter value "Test" into field "fieldCommentsSF428__c"
+    And I wait for "5" seconds
     When I click on "Save" in the page details
     And I wait for "3" seconds
     Then I softly see the following messages in the page details :
