@@ -3993,11 +3993,6 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                    | Target |
       | Automation Permanent KPI | 10     |
-    And I navigate to "Responsibilities" sub tab
-    And I get the "EGMS ID"
-    When I enter the following values into flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "New" :
-      | Name             | Award  |
-      | Automation ADMIN | Step 1 |
     And I navigate to "Terms" sub tab
     When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
@@ -4009,6 +4004,11 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     #When I close "Edit Progress Report Schedule" modal by clicking the top right x button
+    And I navigate to "Responsibilities" sub tab
+    And I get the "EGMS ID"
+    When I enter the following values into flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "New" :
+      | Name             | Award  |
+      | Automation ADMIN | Step 1 |
     And I click on "Send to Subrecipient" in the page details
     Then I see field "Status" as "Sent to Subrecipient"
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
