@@ -5099,7 +5099,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Subaward {SavedValue:AwardEGMSID} has been sent back forrevisions by the Approver
+      Notification: Subaward {SavedValue:AwardEGMSID} has been sent back forrevisions by the Approver
       """
     Then I see the mail text is as follows :
       """

@@ -124,15 +124,15 @@ Feature: Validate all common scenarios in the  Announcement tab
   @34775 @announcementObjectiveAssociationFA
   Scenario: Validate the association of objective to the Announcement
     When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---announcement:-:goalsTableId---"
     Then I see that "Automation Permanent Objective2" has been added in flextable with Id "---announcement:-:objectivesTableId---"
 
   @52409 @announcementObjectiveDissociationFA
   Scenario: Validate the dissociation of objective to the Announcement
     When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---announcement:-:goalsTableId---"
     When I click on "Remove" icon for "Automation Permanent Objective2" inside flex table with id "---announcement:-:objectivesTableId---" without waiting for record
     Then I do not see value "Automation Permanent Objective2" for title "EGMS ID" inside table "---announcement:-:objectivesTableId---"
 
