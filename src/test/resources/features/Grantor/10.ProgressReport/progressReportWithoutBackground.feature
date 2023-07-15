@@ -248,7 +248,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---progressReport:-:pendingTaskTableId---"
 
-  @45733 @37232 @45744 @45738 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @jitendra @TBE
+ @vai @45733 @37232 @45744 @45738 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @jitendra @TBE
   Scenario Outline: Verify Reporting Period End Date is same as the Schedule End Date (Active award) | Validate User is not allowed to select schedule dates less than 120 days when frequency is Semi-Annually
   Verify if Schedule Start date field is not selected then it should not allow to create the schedule | Verify Reporting Period Start Date is same as the Schedule Start Date (Active)
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
@@ -286,13 +286,13 @@ Feature: Validate scenarios in Progress Report without background
     When I enter "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     And I click on "View" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
-    And I save the field labeled "Reporting Period End Date" as "ReportingPeriodEndDate"
+    And I save the field labeled "Reporting Period Start Date" as "ReportingPeriodStartDate"
     When I close "Progress Report Schedule" modal by clicking the top right x button
     #When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I refresh the page
     And I expand nested table containing column value "Progress Report"
     And I get the value from row "1" for column name "Reporting Period Start Date" in flex table "---progressreport:-:progressReportsTaskScheduleId---"
-    Then I softly see value "{SavedValue:lastValueFromTableForCol}" is "Equals to" the value "{SavedValue:ReportingPeriodEndDate}"
+    Then I softly see value "{SavedValue:lastValueFromTableForCol}" is "Equals to" the value "{SavedValue:ReportingPeriodStartDate}"
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
     When I enter "NoScheduleStartDateError" values from "Errors.xlsx"
@@ -1165,6 +1165,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
     And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
+    And I wait for "3" seconds
     Then I see the following messages in the page details contains:
       | Attachment saved successfully |
     Examples:
@@ -5605,7 +5606,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:grantorGrantProgressReportTableId---" without waiting for record
     When I navigate to "Performance" sub tab
     Then I softly see field "Remaining Budget" as "$1,000.00"
-    Then I softly see field "Awarded Budget" as "$1,000.00"
+    Then I softly see field "Current Obligation" as "$1,000.00"
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -9127,8 +9128,8 @@ Feature: Validate scenarios in Progress Report without background
     And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
-    Then I softly see value "Step 1" for title "Progress Report" against the value "Automation PM1" inside table "---progressReport:-:approversTableId---"
-    Then I softly see value "NA" for title "Progress Report" against the value "Automation PM" inside table "---progressReport:-:approversTableId---"
+    Then I softly see value "Step 1" for title "Progress Report" against the value "Automation PM" inside table "---progressReport:-:approversTableId---"
+    Then I softly see value "NA" for title "Progress Report" against the value "Automation PM1" inside table "---progressReport:-:approversTableId---"
 
   @229667 @ValidateprogressreportisApprovedstate&userchangedOwnershiptonewownerofPRreport @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate progress report is Approved state & user changed Ownership to new owner of PR report

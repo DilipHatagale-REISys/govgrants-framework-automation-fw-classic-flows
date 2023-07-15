@@ -4828,7 +4828,7 @@ Feature: Validate scenarios in Progress Report Forms
     Then I softly see the following messages in the page details :
       | Certify the Real Property Status Report (Cover Page)-SF-429 by checking the Acknowledgment Box before submitting to Grantor. |
 
-  @vai @288253 @288898 @ValidateSF271SPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonSF271form @sprint-1-US-282698 @vaibhav @Forms
+  @288253 @288898 @ValidateSF271SPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonSF271form @sprint-1-US-282698 @vaibhav @Forms
   Scenario: Validate SF271 SPI user can able to save & validate form after entering correct & valid data on all fields present on SF271 form
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
