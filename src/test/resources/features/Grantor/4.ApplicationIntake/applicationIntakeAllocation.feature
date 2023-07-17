@@ -3221,6 +3221,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Save" in the page details
     When I click on "Back" in the page details
     And I get the "EGMS ID"
+    And I wait for "4" seconds
     When I click on "Submit Application" in the page details
     Then I softly see the following messages in the page details contains:
       | Budget Tab- The Budgeted Amount is not matching the Allocation Amount for following Focus Areas {Automation Permanent Focus Area} |
