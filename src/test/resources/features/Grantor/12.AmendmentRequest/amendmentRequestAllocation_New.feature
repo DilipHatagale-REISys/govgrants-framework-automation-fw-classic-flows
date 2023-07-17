@@ -13639,7 +13639,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
   @274171 @ValidateFormulaBudgetperiodchangeFANOusercanapprovetheamendmentwithenteringBudgetperioddatesmorethanBPEndDateandLessthanPPEndDateinbudgetperiodsection @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate Formula Budget period change FA NO user can approve the amendment with entering Budget period dates more than BP End Date and Less than PP End Date in budget period section
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO_BUILDUP_YES_PROJECT_END_DATE-Automation PO user" of type "Formula_By_Applicant_Focus_Area_No"
-    When I login to "As a Grantor" app as "dynamicUser" user
+    When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"

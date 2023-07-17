@@ -3073,6 +3073,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click modal button "Save and Continue"
     When I navigate to "Overview" sub tab
     And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
+    When I navigate to "Overview" sub tab
+    When I enter value "Individuals" into field "fieldEligibleApplicantTypes__c"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
@@ -3272,6 +3274,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click modal button "Save and Continue"
     When I navigate to "Overview" sub tab
     And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
+    When I navigate to "Overview" sub tab
+    When I enter value "Individuals" into field "fieldEligibleApplicantTypes__c"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
