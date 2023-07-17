@@ -7193,7 +7193,7 @@ Feature: Validate all scenarios in the Risk Assessment
       The EGMS Team
       """
 
-  @vai @116331 @ValidateRiskAssessmentsarereadonlyforSRUser @Sprint-23-US-273843 @vaibhav @Allocation
+  @116331 @ValidateRiskAssessmentsarereadonlyforSRUser @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate Risk Assessments are read only for SR User
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -7312,7 +7312,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I wait for "4" seconds
     When I click toggle button to select "Subaward Risk Assessment - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I softly do not see "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     And I wait for "5" seconds
@@ -7361,7 +7361,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I wait for "4" seconds
     When I click toggle button to select "Subaward Risk Assessment - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I softly do not see "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     And I wait for "5" seconds
@@ -7402,7 +7402,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I wait for "5" seconds
     When I click toggle button to select "Subaward Risk Assessment - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I softly do not see "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     And I wait for "3" seconds
@@ -7505,7 +7505,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I wait for "3" seconds
     When I click toggle button to select "Subaward Risk Assessment - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I softly do not see "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
@@ -7554,7 +7554,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I wait for "3" seconds
     When I click toggle button to select "Subaward Risk Assessment - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I softly see "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     Then I softly see value "Active" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
@@ -7625,10 +7625,10 @@ Feature: Validate all scenarios in the Risk Assessment
     And I wait for "3" seconds
     When I click toggle button to select "Subaward Risk Assessment - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I softly see "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     Then I softly see value "Expired" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     And I perform quick search for "{SavedValue:RAEGMSID1}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I softly see "{SavedValue:RAEGMSID1}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I softly see value "{SavedValue:RAEGMSID1}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     Then I softly see value "Active" for title "Status" against the value "{SavedValue:RAEGMSID1}" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
