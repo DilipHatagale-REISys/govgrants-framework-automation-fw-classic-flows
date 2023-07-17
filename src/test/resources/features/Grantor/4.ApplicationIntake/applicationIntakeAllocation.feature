@@ -3060,7 +3060,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @274170 @ValidateFormulaPMusercanupdateallocationonparticularFAonApplicantunderApplicantsectiononAnnouncementbeforesubmittingapplication&seeupdatedAllocationAmountonsameApplication&seevalidationFAYES&AllocationTypeByApplicant @Sprint-23-US-273843 @vaibhav @Allocation
+  @274170 @ValidateFormulaPMusercanupdateallocationonparticularFAonApplicantunderApplicantsectiononAnnouncementbeforesubmittingapplication&seeupdatedAllocationAmountonsameApplication&seevalidationFAYES&AllocationTypeByApplicant @Sprint-23-US-273843 @vaibhav @Allocation @vaiAllocation
   Scenario: Validate Formula PM user can update allocation on particular FA on Applicant under Applicant section on Announcement before submitting application & see updated Allocation Amount on same Application & see validation FA YES Allocation Type By Applicant
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -3106,20 +3106,19 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I enter value "Justified" into field "Justification__c"
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-    And I click on top right button "Add Organization" in flex table with id "---announcement:-:addOrganizationByAppFocusAreaTableId---"
+    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---announcement:-:formulaAddInviteApplicantTableId---" panel
-    Then I softly see value "SAN DIEGO ELECTRICAL TRAINING TRUST" for title "Organization" inside table "---announcement:-:formulaAddInviteApplicantTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:formulaAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
-    When I navigate to "Overview" sub tab
-    And I click on top right button "Add Organization" in flex table with id "---announcement:-:addOrganizationByAppFocusAreaTableId---"
+    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
+    And I perform quick search for "Automation IND" in "---announcement:-:formulaAddInviteApplicantTableId---" panel
     When I click "Add" after selection of "Automation IND" in the table "---announcement:-:formulaAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
-    And I expand nested table containing column value "Automation IND"
-    And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
-      | Title                           | Allocation Amount |
-      | Automation Permanent Focus Area | 1000              |
+    When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
+      | Applicant Organization | Allocated Amount |
+      | Automation IND         | 1000             |
+    And I refresh the page
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
@@ -3194,10 +3193,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:formulaAnnouncementTableId---" panel
     When I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     When I navigate to "Overview" sub tab
-    And I expand nested table containing column value "Automation IND"
-    And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
-      | Title                            | Allocation Amount |
-      | Automation Permanent Focus Area  | 2000              |
+    When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
+      | Applicant Organization | Allocated Amount |
+      | Automation IND         | 2000             |
     And I refresh the page
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Applications" tab
@@ -3226,7 +3224,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I wait for "4" seconds
     When I click on "Submit Application" in the page details
     Then I softly see the following messages in the page details contains:
-      | Budget Tab- The Budgeted Amount is not matching the Allocation Amount for following Focus Areas {Automation Permanent Focus Area} |
+      | Budget Tab: The Budgeted Amount must be equal to the Allocation Amount. |
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -3258,10 +3256,14 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see value "$0" for title "Budgeted Amount" against the value "Automation Permanent Focus Area2" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     Then I softly see value "$0" for title "Allocation Amount" against the value "Automation Permanent Focus Area" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     Then I softly see value "$0" for title "Allocation Amount" against the value "Automation Permanent Focus Area2" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
+    And I wait for "5" seconds
     When I click on "Submit Application" in the page details
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I softly see the following messages in the page details contains:
+      | Budget Tab - Provide the match (Cash Match/Non-Cash Match) details to submit this application. |
+      | Budget Tab - The Subrecipient Match should not be less than the given value.                   |
+      | Budget Tab - Enter budget details before submitting an Application to the Grantor.             |
 
-  @274172 @ValidatePMusercanupdateallocationonparticularApplicantacrossFAunderApplicantsectiononAnnouncementaftersubmittingapplicationseeupdatedAllocationAmountonsameApplicationFAYES&AllocationTypeByApplicant @Sprint-23-US-273843 @vaibhav @Allocation
+  @274172 @ValidatePMusercanupdateallocationonparticularApplicantacrossFAunderApplicantsectiononAnnouncementaftersubmittingapplicationseeupdatedAllocationAmountonsameApplicationFAYES&AllocationTypeByApplicant @Sprint-23-US-273843 @vaibhav @Allocation @vaiAllocation
   Scenario: Validate PM user can update allocation on particular Applicant across FA under Applicant section on Announcement after submitting application & see updated Allocation Amount on same Application FA YES & Allocation TypeBy Applicant
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -3317,12 +3319,16 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click "Add" after selection of "Automation IND" in the table "---announcement:-:formulaAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
-    And I expand nested table containing column value "Automation IND"
+    And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
     And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                            | Allocation Amount |
       | Automation Permanent Focus Area  | 500               |
       | Title                            | Allocation Amount |
       | Automation Permanent Focus Area2 | 500               |
+    And I expand nested table containing column value "Automation IND"
+    And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
+      | Title                           | Allocation Amount |
+      | Automation Permanent Focus Area | 1000              |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
@@ -3362,12 +3368,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 500    | 100        | 100            |
-    When I expand nested table containing column value "BP01"
-    And I click on page navigation arrow "---applicationReview:-:budgetTableId---" for table id "Next"
-    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 500    | 100        | 100            |
+      | Construction  | 1000   | 100        | 100            |
     And I refresh the page
     When I navigate to "Overview" sub tab
     When I click on "Edit" icon for "{SavedValue:IND Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
@@ -3390,7 +3391,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Submit Application" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
     Then I softly see field "Budgeted Amount" as "$1,000.00"
-    Then I softly see field "Allocation Amount" as "$1,000.00"
+    Then I softly see field "Allocation Amount" as "$1,000"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
@@ -3408,12 +3409,12 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 0      | 0          | 0              |
+      | Construction  | 500    | 100        | 100            |
     When I expand nested table containing column value "BP01"
     And I click on page navigation arrow "---applicationReview:-:budgetTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 0      | 0          | 0              |
+      | Construction  | 500    | 100        | 100            |
     And I refresh the page
     When I navigate to "Overview" sub tab
     When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
@@ -3435,8 +3436,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I get the "EGMS ID"
     When I click on "Submit Application" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
-    Then I softly see field "Budgeted Amount" as "$0.00"
-    Then I softly see field "Allocation Amount" as "$0"
+    Then I softly see field "Budgeted Amount" as "$1,000.00"
+    Then I softly see field "Allocation Amount" as "$1,000"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -3448,8 +3449,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                            | Allocation Amount |
       | Automation Permanent Focus Area  | 2000              |
-      | Title                            | Allocation Amount |
-      | Automation Permanent Focus Area2 | 0                 |
     And I refresh the page
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Applications" tab
@@ -3458,11 +3457,11 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I perform quick search for "{SavedValue:AppId}" in "---applicationIntake:-:recipientApplications---" panel
     When I click on "View" icon for "{SavedValue:AppId}" inside flex table with id "---applicationIntake:-:recipientApplications---"
     And I navigate to "Budget" sub tab
-    Then I softly see field "Budgeted Amount" as "$0.00"
-    Then I softly see field "Allocation Amount" as "$0"
+    Then I softly see field "Budgeted Amount" as "$1,000.00"
+    Then I softly see field "Allocation Amount" as "$2,000"
     Then I softly see value "$1,000" for title "Budgeted Amount" against the value "Automation Permanent Focus Area" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     Then I softly see value "$0" for title "Budgeted Amount" against the value "Automation Permanent Focus Area2" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
-    Then I softly see value "$1,000" for title "Allocation Amount" against the value "Automation Permanent Focus Area" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
+    Then I softly see value "$2,000" for title "Allocation Amount" against the value "Automation Permanent Focus Area" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     Then I softly see value "$0" for title "Allocation Amount" against the value "Automation Permanent Focus Area2" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Applications" tab
@@ -3471,9 +3470,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I perform quick search for "{SavedValue:AppId1}" in "---applicationIntake:-:recipientApplications---" panel
     When I click on "View" icon for "{SavedValue:AppId1}" inside flex table with id "---applicationIntake:-:recipientApplications---"
     And I navigate to "Budget" sub tab
-    Then I softly see field "Budgeted Amount" as "$0.00"
-    Then I softly see field "Allocation Amount" as "$0"
-    Then I softly see value "$0" for title "Budgeted Amount" against the value "Automation Permanent Focus Area" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
+    Then I softly see field "Budgeted Amount" as "$1,000.00"
+    Then I softly see field "Allocation Amount" as "$1,000"
+    Then I softly see value "$1000" for title "Budgeted Amount" against the value "Automation Permanent Focus Area" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     Then I softly see value "$0" for title "Budgeted Amount" against the value "Automation Permanent Focus Area2" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
-    Then I softly see value "$0" for title "Allocation Amount" against the value "Automation Permanent Focus Area" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
+    Then I softly see value "$1000" for title "Allocation Amount" against the value "Automation Permanent Focus Area" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     Then I softly see value "$0" for title "Allocation Amount" against the value "Automation Permanent Focus Area2" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
