@@ -13577,3 +13577,114 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Spent" as "SpentPaySummAwd2SR"
     Then I softly see field "Spent" as "$500.00"
     Then I softly see value "{SavedValue:SpentPaySummAwd1}" is "Equals to" the value "{SavedValue:SpentPaySummAwd2SR}"
+
+  @269642 @ValidateTCGrantorsideAdminINDusercanseeCumulativeObligationfieldunderBudgetSummarysectionofBudgettabonGrantlayoutinActivestatepostTCARvaluecopiedfromCumobligationfieldonversion1AwardonARrequestiscreatedFANO @Sprint-21-US-266911 @vaibhav @Allocation
+    Scenario: Validate T&C Grantor side Admin IND user can see Cumulative Obligation field under Budget Summary section of Budget tab on Grant layout in Active state post T&C AR & value copied from Cum obligation field on version 1 Award on AR request is created FA NO
+    Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_SUB_ORG_IND" of type "Formula_By_Applicant_Focus_Area_No"
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationAwd1"
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "TermsAndConditions_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                    | Field               |
+      | Automation Justification | fieldTncComments__c |
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "TermsCondId"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name          | Amendment Request |
+      | Automation ADMIN | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:TermsCondId}" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:TermsCondId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:TermsCondId}" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:TermsCondId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    And I click on "Amend Subaward" in the page details
+    And I wait for "5" seconds
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    And I save the field labeled "EGMS ID" as "ActivatedSubAwardId1"
+    When I click on "Activate" in the page details
+    Then I softly see field "Status" as "Activated"
+    And I save the field labeled "Grant ID" as "GrantId"
+    And I click "{SavedValue:GrantId}" lookup link
+    Then I softly see field "Status" as "Active"
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationGrant"
+    Then I softly see value "{SavedValue:CumulativeObligationAwd1}" is "Equals to" the value "{SavedValue:CumulativeObligationGrant}"
+
+  @274171 @ValidateFormulaBudgetperiodchangeFANOusercanapprovetheamendmentwithenteringBudgetperioddatesmorethanBPEndDateandLessthanPPEndDateinbudgetperiodsection @Sprint-23-US-273843 @vaibhav @Allocation
+  Scenario: Validate Formula Budget period change FA NO user can approve the amendment with entering Budget period dates more than BP End Date and Less than PP End Date in budget period section
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO_BUILDUP_YES_PROJECT_END_DATE-Automation PO user" of type "Formula_By_Applicant_Focus_Area_No"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I wait for "3" seconds
+    When I click on "Save" in the page details
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Amendment Award}"
+    When I click on "Edit" in the page details
+    And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "3800" into field "fieldNewBudgetPeriodEndDate__c"
+    When I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate1"
+    Then I softly see value "{SavedValue:updatedBudgetPeriodDate}" is "less than" the value "{SavedValue:updatedBudgetPeriodDate1}"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate1} |
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 1            |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Approved" and is "green"

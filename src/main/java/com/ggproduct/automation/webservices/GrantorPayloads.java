@@ -1150,6 +1150,8 @@ public class GrantorPayloads {
                 return noObjectives(json);
             case "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO":
                 return advancePermissibleYesnofocusarea(json);
+            case "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO_BUILDUP_YES_PROJECT_END_DATE":
+                return advancePermissibleYesnofocusareaBuildUpYes(json);
             case "ADVANCE_YES_FOCUS_NO_PROGRAM_ANTICIPATED_NO":
                 return advancePermissibleYesnofocusareaProgramAnticipatedNo(json);
             case "AMENDMENT_REQUEST_ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO":
@@ -1183,6 +1185,33 @@ public class GrantorPayloads {
             default:
                 return json;
         }
+    }
+
+    private JsonObject advancePermissibleYesnofocusareaBuildUpYes(JsonObject json) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+        grant.addProperty("FocusAreaRequired", "No");
+        grant.addProperty("IsAdvancePermitted", "Yes");
+        grant.addProperty("IsBuildUpFunctionality", "Yes");
+        grant.addProperty("ProjectPeriodEndDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(4000, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        newA.add(grant);
+        json.add("Grant", newA);
+        JsonArray buildUpItemsA = new JsonArray();
+        JsonObject buildUpItems = new JsonObject();
+        buildUpItems.addProperty("BudgetCategory", "Construction");
+        buildUpItems.addProperty("Title", "Construction");
+        buildUpItems.addProperty("Narrative", "Test Build-up");
+        buildUpItems.addProperty("AwardedBudget", 1000);
+        buildUpItems.addProperty("CashMatch", 100);
+        buildUpItems.addProperty("NonCashMatch", 100);
+        buildUpItems.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems.addProperty("ServiceAreaName", "Standard Focus Area");
+        buildUpItemsA.add(buildUpItems);
+        json.add("BuildUpItems", buildUpItemsA);
+
+        return json;
     }
 
     private JsonObject createAwarForThreeFocusAreaandBudgetCategoryBuildUpYes(JsonObject json) {

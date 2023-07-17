@@ -23523,3 +23523,35 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see value "{SavedValue:CumulativeObligationFA1}" is "Equals to" the value "{SavedValue:CumulativeObligationFA1Grant}"
     Then I softly see value "{SavedValue:CumulativeObligationFA2}" is "Equals to" the value "{SavedValue:CumulativeObligationFA2Grant}"
     Then I softly see value "{SavedValue:CumulativeObligationFATotal}" is "Equals to" the value "{SavedValue:CumulativeObligationFATotalGrant}"
+
+  @274096 @ValidateFANoasPOasreviewerIshouldabletoedittheTotalCommitmentfieldinsentforreviewstatesofawardifalloweditaccesisYesforreviewer @Sprint-23-US-273843 @vaibhav @Allocation
+  Scenario: Validate FA No Verify as PO as reviewer I should able to edit the "Total Commitment" field in sent for review states of award if allow edit access is 'Yes' for reviewer
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition_ByApp_Focus_No" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I navigate to "Budget" sub tab
+    Then I see status in Progress-bar is "Created" and is "green"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
+      | Reviewer Name | Role             | Description            | Due Date | Allow Record Editing |
+      | Automation PO | Program Reviewer | Automation Description | 5        | Yes                  |
+    And I click on "Send for Review" icon for "Program Reviewer" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
+    Then I softly see that "Sent for Review" has been added in flextable with Id "---subAwardFromFDM:-:peerReviewersTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Budget" sub tab
+    Then I can see top right button "Edit" in page detail
+    And I click on "Edit" in the page details
+    Then I softly see fields "fieldTotalCommitment__c" is in edit mode
