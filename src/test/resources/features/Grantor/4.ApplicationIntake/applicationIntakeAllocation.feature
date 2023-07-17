@@ -3323,7 +3323,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                            | Allocation Amount |
       | Automation Permanent Focus Area  | 500               |
-      | Title                            | Allocation Amount |
       | Automation Permanent Focus Area2 | 500               |
     And I refresh the page
     And I expand nested table containing column value "Automation IND"
