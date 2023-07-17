@@ -3069,7 +3069,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
     And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
-    When I enter "Creation_Formula_ByApp_FocusYes" values from "Announcement_Field_Values.xlsx"
+    When I enter "Creation_Formula_ByApplicant" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I navigate to "Overview" sub tab
     And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
@@ -3085,7 +3085,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | {SavedValue:fundingAccount} | 5000            |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     When I refresh the page
@@ -3325,6 +3325,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Automation Permanent Focus Area  | 500               |
       | Title                            | Allocation Amount |
       | Automation Permanent Focus Area2 | 500               |
+    And I refresh the page
     And I expand nested table containing column value "Automation IND"
     And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                           | Allocation Amount |
@@ -3447,8 +3448,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I expand nested table containing column value "Automation IND"
     And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
-      | Title                            | Allocation Amount |
-      | Automation Permanent Focus Area  | 2000              |
+      | Title                           | Allocation Amount |
+      | Automation Permanent Focus Area | 2000              |
     And I refresh the page
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Applications" tab
