@@ -7193,7 +7193,7 @@ Feature: Validate all scenarios in the Risk Assessment
       The EGMS Team
       """
 
-  @116331 @ValidateRiskAssessmentsarereadonlyforSRUser @Sprint-23-US-273843 @vaibhav @Allocation @BugLogged-346065 @wip
+ @vai @116331 @ValidateRiskAssessmentsarereadonlyforSRUser @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate Risk Assessments are read only for SR User
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -7347,8 +7347,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "Automation IND" inside flex table with id "---home:-:indActiveAccountId---" without waiting for record
     And I navigate to "Risk Assessment" sub tab
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
-    Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:organizationprofileviewTableId---"
-    Then I softly see value "Submitted For Approval" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---riskassessment:-:organizationprofileviewTableId---"
+    Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:organizationprofileviewTableId---"
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
@@ -7486,8 +7485,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "Automation IND" inside flex table with id "---home:-:indActiveAccountId---" without waiting for record
     And I navigate to "Risk Assessment" sub tab
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
-    Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:organizationprofileviewTableId---"
-    Then I softly see value "Submitted For Approval" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---riskassessment:-:organizationprofileviewTableId---"
+    Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:organizationprofileviewTableId---"
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
