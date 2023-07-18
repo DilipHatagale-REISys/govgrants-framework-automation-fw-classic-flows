@@ -23646,14 +23646,14 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitment"
     Then I softly see field "Total Commitment" as "$1,000.00"
-    And I save the field labeled "Match this Budget Period" as "RequiredMatchAmount"
-    Then I softly see field "Match this Budget Period" as "$400.00"
+    And I save the field labeled "Required Match Amount" as "RequiredMatchAmount"
+    Then I softly see field "Required Match Amount" as "$400.00"
     And I save the field labeled "Grant ID" as "GrantId"
     And I click "{SavedValue:GrantId}" lookup link
     Then I softly see field "Status" as "Active"
     And I navigate to "Budget" sub tab
     Then I softly see field "Estimated Program Income For Project Period" inside page block
-    Then I softly see field "Match this Budget Period" inside page block
+    Then I softly see field "Required Match Amount" inside page block
     Then I softly see field "Estimated Funding" inside page block
     Then I softly see field "Cumulative Obligation" inside page block
     Then I softly see field "Total Commitment" inside page block
@@ -23661,8 +23661,8 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitmentGrant"
     Then I softly see field "Total Commitment" as "$1,000.00"
-    And I save the field labeled "Match this Budget Period" as "RequiredMatchAmountGrant"
-    Then I softly see field "Match this Budget Period" as "$400.00"
+    And I save the field labeled "Required Match Amount" as "RequiredMatchAmountGrant"
+    Then I softly see field "Required Match Amount" as "$400.00"
     Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CumulativeObligationGrant}"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentGrant}"
     Then I softly see value "{SavedValue:RequiredMatchAmount}" is "Equals to" the value "{SavedValue:RequiredMatchAmountGrant}"
