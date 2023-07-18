@@ -23556,7 +23556,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Completed" and is "green"
-    Given I login to "As a Grantor" app as "Auditor" user
+    When I re-login to "As a Grantor" app as "Auditor" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
