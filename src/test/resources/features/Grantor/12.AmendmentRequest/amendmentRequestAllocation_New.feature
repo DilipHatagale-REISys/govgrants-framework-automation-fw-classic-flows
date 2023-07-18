@@ -14025,7 +14025,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitment"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentAward}"
 
-  @254208 @VerifyvalidationisdisplayedtouseronSenttosubrecipientwhenuserhasnotenteredanyvalueinNewObligationcolumnofBudgetSummarybyFocusAreasection @sprint-18-US-241042 @hitesh @Allocation
+  @254208 @VerifyvalidationisdisplayedtouseronSenttosubrecipientwhenuserhasnotenteredanyvalueinNewObligationcolumnofBudgetSummarybyFocusAreasection @sprint-18-US-242373 @hitesh
   Scenario: Verify validation is displayed to user on Sent to subrecipient when user has not entered any value in New Obligation column of Budget Summary by Focus Area section
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SECOND_FOCUS_AREA_BUD_CAT_SUB_ORG_IND-Automation EXE user" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "EXE" user
@@ -14056,7 +14056,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Please specify the New Obligation planned through this amendment request. |
 
-  @254218 @VerifyuserseecorrectvaluesinFocusareaStartDateEndDateCurrentobligationSpentNewObligationRevisedObligationBudgetedAmountcolumnsareonamendmentwhicharecopiedoverfromlatestawardFANo @sprint-18-US-241042 @hitesh @Allocation
+  @254218 @VerifyuserseecorrectvaluesinFocusareaStartDateEndDateCurrentobligationSpentNewObligationRevisedObligationBudgetedAmountcolumnsareonamendmentwhicharecopiedoverfromlatestawardFANo @sprint-18-US-242373 @hitesh @Allocation
   Scenario: Verify user see correct values in Focus area,Start Date,End Date,Current obligation,Spent,New Obligation, Revised Obligation,Budgeted Amount columns are on amendment which are copied over from latest award(FA No)
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Formula_By_Applicant_Focus_Area"
     And I am on "SUBPORTAL" portal

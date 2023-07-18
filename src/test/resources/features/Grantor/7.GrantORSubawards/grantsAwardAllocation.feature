@@ -23557,6 +23557,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Completed" and is "green"
     When I re-login to "As a Grantor" app as "Auditor" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
     And I click toggle button to select "Grants - All"
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---closeout:-:grantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---closeout:-:grantsTableId---"
