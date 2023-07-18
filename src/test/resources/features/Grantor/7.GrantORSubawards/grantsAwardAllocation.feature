@@ -23661,7 +23661,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitmentGrant"
     Then I softly see field "Total Commitment" as "$1,000.00"
-    And I save the field labeled "Match this Budget Period" as "RequiredMatchAmountGrant"
+    And I save the field labeled "Required Match Amount" as "RequiredMatchAmountGrant"
     Then I softly see field "Match this Budget Period" as "$400.00"
     Then I softly see value "{SavedValue:CumulativeObligation}" is "Equals to" the value "{SavedValue:CumulativeObligationGrant}"
     Then I softly see value "{SavedValue:TotalCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentGrant}"
