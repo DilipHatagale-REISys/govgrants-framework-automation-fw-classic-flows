@@ -2004,9 +2004,10 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     And I save the field labeled "Announcement EGMS ID" as "AnnouncementEGMSID"
     And I click "{SavedValue:AnnouncementEGMSID}" lookup link
     And I navigate to "Overview" sub tab
-    When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
-      | Applicants                          | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 5000             |
+    And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
+      | Title                           | Allocation Amount |
+      | Automation Permanent Focus Area | 5000              |
     Then I softly see the following messages in the page details contains:
       | "Allocation Amount" update is not allowed for organization, As Application's FDM is under approval. |
 
