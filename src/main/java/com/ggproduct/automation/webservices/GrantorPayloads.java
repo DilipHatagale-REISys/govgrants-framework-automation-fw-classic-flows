@@ -31,6 +31,8 @@ public class GrantorPayloads {
                 break;
             case "BUDGETCATEGORY":
                 break;
+            case "BUDGETCATEGORY_NO_FOCUSAREA":
+                return updateBudgetCategorNoFocusAreas(defaultJson);
             case "SECOND_BUDGET_CATEGORY":
                 return updateBudgetCategoryForTwoFocusAreas(defaultJson);
             case "FIRST_BUDGET_CATEGORY":
@@ -67,6 +69,22 @@ public class GrantorPayloads {
         budgetCategory2.add("OtherLeverageOptional", JsonNull.INSTANCE);
         budgetCategory2.addProperty("ServiceAreaTitle", "Automation Permanent Focus Area2");
         budgetCategoryArray.add(budgetCategory2);
+        json.add("BudgetCategory", budgetCategoryArray);
+        return json;
+    }
+
+    private JsonObject updateBudgetCategorNoFocusAreas(JsonObject json) {
+        JsonArray budgetCategoryArray = new JsonArray();
+        JsonObject budgetCategory2 = json.getAsJsonArray("BudgetCategory").get(0).getAsJsonObject();
+
+        JsonObject budgetCategory1 = new JsonObject();
+        budgetCategory1.addProperty("BudgetCategory", "Construction");
+        budgetCategory1.addProperty("BudgetRequest", 1000);
+        budgetCategory1.addProperty("CashMatch", 100);
+        budgetCategory1.add("NonCashMatch", JsonNull.INSTANCE);
+        budgetCategory1.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        budgetCategory1.addProperty("ServiceAreaTitle", "Standard Focus Area");
+        budgetCategoryArray.add(budgetCategory1);
         json.add("BudgetCategory", budgetCategoryArray);
         return json;
     }
@@ -449,6 +467,8 @@ public class GrantorPayloads {
                 return subMatchYesRequiredMatch10RiskYesExpenseYesAdvacnceYesAnnouncement(json);
             case "BY_APPLICANT_NEGOTIATION_NO":
                 return byApplicantNegotiationNo(json);
+            case "BY_APPLICANT_FOCUS_AREA_NO_NEGOTIATION_NO":
+                return byApplicantFocusAreaNoNegotiationsNo(json);
             case "BY_APPLICANT_FOCUS_AREA_NEGOTIATION_NO":
                 return byApplicantFocusAreaNegotiationsNo(json);
             case "BY_APPLICANT_FOCUS_AREA_NEGOTIATION_YES":
@@ -767,6 +787,17 @@ public class GrantorPayloads {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray nego = new JsonArray();
         jsonObject.addProperty("Allocationlevel","By Applicant");
+        jsonObject.addProperty("IsNegotiationsAllowed","No");
+        nego.add(jsonObject);
+        json.add("Announcement",nego);
+        return json;
+    }
+
+    private JsonObject byApplicantFocusAreaNoNegotiationsNo(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray nego = new JsonArray();
+        jsonObject.addProperty("Allocationlevel","By Applicant");
+        jsonObject.addProperty("FocusAreaRequired","No");
         jsonObject.addProperty("IsNegotiationsAllowed","No");
         nego.add(jsonObject);
         json.add("Announcement",nego);
