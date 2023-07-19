@@ -23719,7 +23719,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | Automation Permanent Focus Area2 | 0          | 3650     | 1000           |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
-      | {SavedValue:fundingAccount} | 1000        |
+      | {SavedValue:fundingAccount} | 2000        |
     And I click in table hyperlink containing value "{SavedValue:fundingAccount}"
     And I save the field labeled "Appropriation Amount" as "AppropriationAmount"
     And I save the field labeled "Pre-Encumbrance" as "PreEncumbrance"
@@ -23791,7 +23791,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    Then I softly see status in Progress-bar is "Rejected" and is "green"
+   Then I softly see status in Progress-bar is "Rejected" and is "Red"
     And I navigate to "Budget" sub tab
     And I click in table hyperlink containing value "{SavedValue:fundingAccount}"
     And I save the field labeled "Appropriation Amount" as "AppropriationAmount1"
