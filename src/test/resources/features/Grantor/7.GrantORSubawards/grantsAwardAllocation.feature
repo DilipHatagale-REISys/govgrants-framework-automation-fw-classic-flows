@@ -23775,6 +23775,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I click on "View" icon for "{SavedValue:AwardEGMSID}" inside table with wait for record
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I wait for "5" seconds
     And I click on "Submit for Approval" in the page details
     Then I see field "Status" as "Submitted for Approval"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
