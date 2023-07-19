@@ -35,6 +35,8 @@ public class GrantorPayloads {
                 return updateBudgetCategoryForTwoFocusAreas(defaultJson);
             case "FIRST_BUDGET_CATEGORY":
                 return updateBudgetCategoryForFirstFocusAreas(defaultJson);
+            case "FIRST_BUDGET_CATEGORY_NO_FOCUS_AREA":
+                return updateBudgetCategoryForFirstFocusAreasNoFocusArea(defaultJson);
             case "TWO_BUD_CAT_FIFTEEN_HUNDRED_AMT":
                 return updateBudgetCategoryForTwoFocusAreasFifteenHundredAmt(defaultJson);
             case "KYECONTACTS":
@@ -44,6 +46,22 @@ public class GrantorPayloads {
             default:
                 return defaultJson;
         }
+        return defaultJson;
+    }
+
+    private JsonObject updateBudgetCategoryForFirstFocusAreasNoFocusArea(JsonObject defaultJson) {
+        JsonArray budgetCategoryArray = new JsonArray();
+        JsonObject budgetCategory2 = defaultJson.getAsJsonArray("BudgetCategory").get(0).getAsJsonObject();
+
+        JsonObject budgetCategory1 = new JsonObject();
+        budgetCategory1.addProperty("BudgetCategory", "Construction");
+        budgetCategory1.addProperty("BudgetRequest", 1000);
+        budgetCategory1.addProperty("CashMatch", 100);
+        budgetCategory1.add("NonCashMatch", JsonNull.INSTANCE);
+        budgetCategory1.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        budgetCategory1.addProperty("ServiceAreaTitle", "Standard Focus Area");
+        budgetCategoryArray.add(budgetCategory1);
+        defaultJson.add("BudgetCategory", budgetCategoryArray);
         return defaultJson;
     }
 

@@ -14287,7 +14287,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
   @276332 @ValidateDirectGrantCompetitiveFAYesBalanceisnotdeductedfromFundingaccountwhenFundingchangeamendmentisrejectedfromapproval @Sprint-24-US-275864 @vaibhav @Allocation @TBE
   Scenario: Validate Direct Grant Competitive FA Yes Balance is not deducted from Funding account when Funding change amendment is rejected from approval
-    And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Competitive"
+    And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_FOCUS_AREA_BUD_CAT_SUB_ORG_IND" of type "Competitive"
     When I login to "As a Grantor" app as "FO" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -14359,7 +14359,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "{SavedValue:FundingID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Reject" in the approval decision
     Then I softly see field "Status" as "Rejected"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
