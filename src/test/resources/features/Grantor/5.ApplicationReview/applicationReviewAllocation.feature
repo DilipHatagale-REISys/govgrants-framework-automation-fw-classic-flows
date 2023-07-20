@@ -2347,6 +2347,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     Then I softly see field "Status" as "Submitted for Approval"
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
+    And I navigate to "Funding Decision Memo" sub tab
     And I click on "Create Subaward" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
     Then I softly see the following messages in the page details contains:
       | The Budgeted Amount must be equal to the Allocation Amount in the application for each focus area. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field and send the application back for revision to the subrecipient. |
@@ -2495,6 +2496,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
+    And I wait for "2" seconds
     Then I softly see the following messages in the page details contains:
       | The Budgeted amount must be equal to the Allocation amount for the following Application IDs. Please send these applications back for revision. |
 
@@ -2503,7 +2505,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @274809 @ValidateUsercancompletenegotiationfromreviewstepwhenAnntypeisformulaandallocationlevelisbyapplicant @Sprint-23-US-273843 @vaibhav @Allocation @Execution
-  Scenario: Validate User can complete negotiation from review step when Ann type is formula and allocation level is by applicant
+  Scenario Outline: Validate User can complete negotiation from review step when Ann type is formula and allocation level is by applicant
     And I published "Formula" type announcement having name "Automation Runtime Announcement Application Review" and properties "BY_APPLICANT_FOCUS_AREA_NO_RISKASSESSMENT_NO"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "FIRST_BUDGET_CATEGORY_NO_FOCUS_AREA"
     When I login to "As a Grantor" app as "PM" user
@@ -2560,8 +2562,12 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     Then I see the sub-header is "Pre-Screen Review" in the page details
     Then I softly see field "Status" as "In Progress"
 
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
   @274248 @ValidateFDMdefaultTotalCommitmentAmountispopulatedfromallocationAmountcolumninrecommendedapplicationsectionFANo @Sprint-23-US-273843 @vaibhav @Allocation @Execution
-  Scenario: Validate FDM default Total Commitment Amount is populated from allocation Amount column in recommended application section FA No
+  Scenario Outline: Validate FDM default Total Commitment Amount is populated from allocation Amount column in recommended application section FA No
     And I published "Formula" type announcement having name "Automation Runtime Announcement Application Review" and properties "BY_APPLICANT_FOCUS_NO_NEGOTIATION_NO"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "FIRST_BUDGET_CATEGORY_NO_FOCUS_AREA"
     When I login to "As a Grantor" app as "PM" user
@@ -2706,3 +2712,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
     Then I softly see value "$1,000.00" for title "Total Commitment Amount" inside table "---grantor_tableId:-:RecommendedApplicationTableId---"
+
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
