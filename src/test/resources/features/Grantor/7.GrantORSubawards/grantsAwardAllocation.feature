@@ -23683,7 +23683,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see value "$0.00" for title "New Obligation" against the value "Test Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$0.00" for title "Cumulative Obligation" against the value "Test Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
 
- @vai @276331 @ValidateDirectGrantByapplicantandFABalanceisnotdeductedfromFundingaccountwhensubawardisrejectedfromapprovalprocess @Sprint-24-US-275864 @vaibhav @Allocation
+  @276331 @ValidateDirectGrantByapplicantandFABalanceisnotdeductedfromFundingaccountwhensubawardisrejectedfromapprovalprocess @Sprint-24-US-275864 @vaibhav @Allocation
   Scenario: Validate Direct Grant By applicant and FA Balance is not deducted from Funding account when subaward is rejected from approval process
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -23914,6 +23914,6 @@ Feature: Validate all scenarios of grants and award for Allocation
 
     Examples:
       | User  | UserName              |
-#      | PM    | Automation PM user    |
-#      | EXE   | Automation EXE user   |
+      | PM    | Automation PM user    |
+      | EXE   | Automation EXE user   |
       | ADMIN | Automation ADMIN user |
