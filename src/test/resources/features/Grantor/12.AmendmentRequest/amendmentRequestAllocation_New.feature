@@ -14331,7 +14331,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
   @319874 @VerifyusercannotseebudgetsummarybyfocusareasectiononfundingchangeamendmentrequestFANo @Sprint-9-US-318292 @hitesh
   Scenario:VerifyINDusercanbudgetedamountgetupdatedafterremovefocusareawhenbudgetassociatedwiththatfocusarea&alsoeasilyremoveFAshavingzerodollarbudgetassociatedwiththatFAonApplicationlayout
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_YES_WITH_IND_ORG"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "SECOND_FOCUS_AREA_APPLICANT_IND_ORGPRE_PRE_APPLICATION"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "IND" user
     When I navigate to "Opportunities" tab
@@ -14383,6 +14383,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Status" as "Created"
     And I navigate to "Budget" sub tab
     Then I softly see field "Budgeted Amount" as "$1,000.00"
+    Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     Then I softly see value "$1,000" for title "Budgeted Amount" against the value "Automation Permanent Focus Area" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     And I click on "Remove" icon for "Automation Permanent Focus Area" inside flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---" without waiting for record
     Then I softly do not see value "Automation Permanent Focus Area" for title "Title" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
