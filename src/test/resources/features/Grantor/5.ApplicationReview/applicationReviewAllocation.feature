@@ -2723,7 +2723,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @274259 @ValidateFormulaIfannouncementowneristransferredtheeditaccessofTotalcommitmentAmountfieldwillbewithnewowner @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @274259 @ValidateFormulaIfannouncementowneristransferredtheeditaccessofTotalcommitmentAmountfieldwillbewithnewowner @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario Outline: Validate Formula If announcement owner is transferred, the edit access of "Total commitment Amount" field will be with new owner
     And I published "Formula" type announcement having name "Automation Runtime Announcement Application Review" and properties "BY_APPLICANT_FOCUS_AREA_NO"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "FIRST_BUDGET_CATEGORY_NO_FOCUS_AREA"
@@ -3111,7 +3111,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     And I softly see the following messages in the page details contains:
-      | Negotiations Tab: The Budgeted Amount must be equal to the Allocation Amount in the application. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field before sending the application back for revision. |
+      | Negotiations Tab - The Budgeted Amount must be equal to the Allocation Amount in the application. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field before sending the application back for revision. |
 
     Examples:
       | Announcement Name                                    |
