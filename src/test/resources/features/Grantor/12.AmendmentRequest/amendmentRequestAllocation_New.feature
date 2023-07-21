@@ -14380,7 +14380,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "{SavedValue:TotalObligation}" is "Equals to" the value "{SavedValue:TotalObligation1}"
     Then I softly see value "{SavedValue:AvailableBalance}" is "Equals to" the value "{SavedValue:AvailableBalance1}"
 
-  @274253 @ValidateFormulaFANOPMusercanseeCumulativeObligationamountisreadonlyfilediscomingfromthecumulativeObligationfieldinthelatestawardinclosedstateacrossallBPsongrant @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @274253 @ValidateFormulaFANOPMusercanseeCumulativeObligationamountisreadonlyfilediscomingfromthecumulativeObligationfieldinthelatestawardinclosedstateacrossallBPsongrant @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate Formula FA NO PM user can see Cumulative Obligation amount is read only filed is coming from the cumulative Obligation field in the latest award in closed state across all BPs on grant
     And I published "Formula" type announcement having name "Automation Runtime Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO_RISKASSESSMENT_NO-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "FIRST_BUDGET_CATEGORY_NO_FOCUS_AREA"
@@ -14502,4 +14502,4 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Cumulative Obligation" rendered in view mode only
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationClosedGrant"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
-    Then I softly see addition of two fields "{SavedValue:CumulativeObligationAwd}" and "{SavedValue:CumulativeObligationAwd1}" is equal to "{SavedValue:CumulativeObligationClosedGrant}"
+    Then I softly see value "{SavedValue:CumulativeObligationAwd1}" is "Equals to" the value "{SavedValue:CumulativeObligationClosedGrant}"

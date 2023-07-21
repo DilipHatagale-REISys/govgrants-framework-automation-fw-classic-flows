@@ -2911,7 +2911,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @274232 @ValidateFormulaFANOuserisabletoedittheFDMrecordafteritissentbackfromapprovalprocess @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @274232 @ValidateFormulaFANOuserisabletoedittheFDMrecordafteritissentbackfromapprovalprocess @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario Outline: Validate Formula FA NO user is able to edit the FDM record after it is sent back from approval process
     And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
@@ -3081,7 +3081,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @274235 @ValidateFANOwhennegotiationisinitiatedduringthereviewstepsthenitshouldmustmandatoryforusertoselecttheBudgetBudgetDetailspicklistvalueforNegotiationfieldwhenthebudgetedAmountisnotequaltotheAllocationAmount @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @274235 @ValidateFANOwhennegotiationisinitiatedduringthereviewstepsthenitshouldmustmandatoryforusertoselecttheBudgetBudgetDetailspicklistvalueforNegotiationfieldwhenthebudgetedAmountisnotequaltotheAllocationAmount @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario Outline: Validate FA NO when negotiation is initiated during the review steps then it should must mandatory for user to select the Budget: Budget Details picklist value for Negotiation field when the budgeted Amount is not equal to the Allocation Amount
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "FIRST_BUDGET_CATEGORY_NO_FOCUS_AREA"

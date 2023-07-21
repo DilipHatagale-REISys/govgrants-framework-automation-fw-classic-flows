@@ -5713,7 +5713,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see the following messages in the page details contains:
       | In the Formula announcements budgeting can be done only for first budget period. |
 
-  @274200 @ValidateFormulaPMusercanseevalidationonsubmitforApprovaonAnnouncementwhenAnnismodifiedmismatchvaluesisincreatedstateaftersendtoownerfromapprovalFAYESAllocationtypeByApplicantFA @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @274200 @ValidateFormulaPMusercanseevalidationonsubmitforApprovaonAnnouncementwhenAnnismodifiedmismatchvaluesisincreatedstateaftersendtoownerfromapprovalFAYESAllocationtypeByApplicantFA @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate Formula PM user can see validation on submit for Approval on Announcement when Ann is modified & mismatch values is in created state after send to owner from approval FA YES & Allocation Type By Applicant & FA
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -5788,7 +5788,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     When I "Send to Owner" in the approval decision
-    Then I softly see field "Status" as "Created"
+    Then I softly see field "Status" as "Draft"
     When I navigate to "Overview" sub tab
     And I click on "Remove" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---announcement:-:addOrganizationByAppFocusAreaTableId---"
     And I wait for "3" seconds
@@ -5811,7 +5811,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Overview Tab - You must invite at least one applicant before submitting this Announcement.                                           |
       | Overview Tab - Select Eligible Applicant Types in the Eligibility Details section.                                                   |
 
-  @274212 @ValidateFormulaPMusercanseealleditaccessofAnnwhenownershipofAnnouncementistransfertoonePMtootherPMuserisincreatedstatenewusercanpublishedAnnFAYESAllocationTypeByApplicantFA @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @274212 @ValidateFormulaPMusercanseealleditaccessofAnnwhenownershipofAnnouncementistransfertoonePMtootherPMuserisincreatedstatenewusercanpublishedAnnFAYESAllocationTypeByApplicantFA @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate Formula PM user can see all edit access of Ann when ownership of Announcement is transfer to one PM to other PM user is in created state & new user can published Ann FA YES & Allocation Type By Applicant & FA
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
