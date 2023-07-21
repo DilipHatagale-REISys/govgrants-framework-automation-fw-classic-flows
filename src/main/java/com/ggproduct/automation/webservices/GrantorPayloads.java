@@ -554,14 +554,18 @@ public class GrantorPayloads {
     }
 
     private JsonObject invitedIndUserOrganizationSecondFocusAreaPreApplicationYes(JsonObject json) {
-        JsonObject pre_application = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonObject jsonObject = json.getAsJsonArray("InvitedApplicant").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
-        pre_application.addProperty("PreApplicationNeeded", "Yes");
-        pre.add(pre_application);
-        pre_application.addProperty("Organization", ProjectWebServices.getIdOf("Account", "Automation IND"));
-        pre.add(pre_application);
+        jsonObject.addProperty("Organization", ProjectWebServices.getIdOf("Account", "Automation IND"));
+        jsonObject.addProperty("AllocatedAmount", 1000);
+        pre.add(jsonObject);
         json.add("InvitedApplicant", pre);
-        json.add("Announcement", pre);
+        JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre1 = new JsonArray();
+        jsonObject1.addProperty("PreApplicationNeeded", "Yes");
+        jsonObject1.addProperty("FocusAreaRequired", "Yes");
+        pre1.add(jsonObject1);
+        json.add("Announcement", pre1);
         JsonArray serviceArea = new JsonArray();
         JsonObject serviceAreaB = new JsonObject();
         serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
