@@ -493,7 +493,7 @@ public class GrantorPayloads {
                 return invitedIndUserOrganizationbyApplicantFocusArea(json);
             case "INVITED_APPLICANT_IND_ORGPRE_PRE_APPLICATION_NEGOTIATION":
                 return invitedIndUserOrganizationPreApplicationAndNegotiationAsYes(json);
-            case "SECOND_FOCUS_AREA_APPLICANT_IND_ORGPRE_PRE_APPLICATION":
+            case "SECOND_FOCUS_AREA_APPLICANT_IND_ORG_PRE_APPLICATION":
                 return invitedIndUserOrganizationSecondFocusAreaPreApplicationYes(json);
             case "SECOND_FOCUS_AREA":
                 return updateAnnouncementWithSecondFocusArea(json);
@@ -554,13 +554,14 @@ public class GrantorPayloads {
     }
 
     private JsonObject invitedIndUserOrganizationSecondFocusAreaPreApplicationYes(JsonObject json) {
-        JsonObject jsonObject = json.getAsJsonArray("InvitedApplicant").get(0).getAsJsonObject();
+        JsonObject pre_application = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
-        jsonObject.addProperty("Organization", ProjectWebServices.getIdOf("Account", "Automation IND"));
-        jsonObject.addProperty("AllocatedAmount", 1000);
-        jsonObject.addProperty("PreApplicationNeeded", "Yes");
-        pre.add(jsonObject);
+        pre_application.addProperty("PreApplicationNeeded", "Yes");
+        pre.add(pre_application);
+        pre_application.addProperty("Organization", ProjectWebServices.getIdOf("Account", "Automation IND"));
+        pre.add(pre_application);
         json.add("InvitedApplicant", pre);
+        json.add("Announcement", pre);
         JsonArray serviceArea = new JsonArray();
         JsonObject serviceAreaB = new JsonObject();
         serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));

@@ -14331,7 +14331,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
   @319874 @VerifyusercannotseebudgetsummarybyfocusareasectiononfundingchangeamendmentrequestFANo @Sprint-9-US-318292 @hitesh
   Scenario:VerifyINDusercanbudgetedamountgetupdatedafterremovefocusareawhenbudgetassociatedwiththatfocusarea&alsoeasilyremoveFAshavingzerodollarbudgetassociatedwiththatFAonApplicationlayout
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "SECOND_FOCUS_AREA_APPLICANT_IND_ORGPRE_PRE_APPLICATION"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "SECOND_FOCUS_AREA_APPLICANT_IND_ORG_PRE_APPLICATION"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "IND" user
     When I navigate to "Opportunities" tab
@@ -14537,7 +14537,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I refresh the page
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 3000                 | 300        | 0              |
+      | Construction    | 1000                 | 100        | 0              |
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
@@ -14548,7 +14548,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "{SavedValue:CFAmendmentId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
-      | {SavedValue:fundingAccount} | 3000                |
+      | {SavedValue:fundingAccount} | 1000                |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
