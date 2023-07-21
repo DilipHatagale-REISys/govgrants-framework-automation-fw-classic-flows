@@ -1611,7 +1611,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see field "Budgeted Amount" as "$1,000.00"
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     Then I softly see value "$1,000" for title "Budgeted Amount" against the value "Automation Permanent Focus Area" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
-    And I click on "Remove" icon for "Automation Permanent Focus Area" inside flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---" without waiting for record
+    And I click on "Remove Focus Area" icon for "Automation Permanent Focus Area" inside flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---" without waiting for record
     Then I softly do not see value "Automation Permanent Focus Area" for title "Title" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     And I refresh the page
     Then I softly see value "$0.00" for title "Budgeted Amount" against the value "Automation Permanent Focus Area" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
