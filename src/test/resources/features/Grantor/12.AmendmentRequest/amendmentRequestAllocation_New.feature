@@ -14449,7 +14449,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Pending Activation" and is "green"
     And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
     And I click on "Activate" in the page details
-    When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
     When I navigate to "Budget" sub tab
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationAwd1"
