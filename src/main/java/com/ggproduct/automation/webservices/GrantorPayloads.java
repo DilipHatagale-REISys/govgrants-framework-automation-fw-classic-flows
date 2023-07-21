@@ -493,6 +493,8 @@ public class GrantorPayloads {
                 return invitedIndUserOrganizationbyApplicantFocusArea(json);
             case "INVITED_APPLICANT_IND_ORGPRE_PRE_APPLICATION_NEGOTIATION":
                 return invitedIndUserOrganizationPreApplicationAndNegotiationAsYes(json);
+            case "SECOND_FOCUS_AREA_APPLICANT_IND_ORG_PRE_APPLICATION":
+                return invitedIndUserOrganizationSecondFocusAreaPreApplicationYes(json);
             case "SECOND_FOCUS_AREA":
                 return updateAnnouncementWithSecondFocusArea(json);
             case "SECOND_FOCUS_AREA_RISK_ASS_NO":
@@ -543,6 +545,27 @@ public class GrantorPayloads {
     }
 
     private JsonObject updateAnnouncementWithSecondFocusArea(JsonObject json) {
+        JsonArray serviceArea = new JsonArray();
+        JsonObject serviceAreaB = new JsonObject();
+        serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        serviceArea.add(serviceAreaB);
+        json.add("AnnouncementServiceArea", serviceArea);
+        return json;
+    }
+
+    private JsonObject invitedIndUserOrganizationSecondFocusAreaPreApplicationYes(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("InvitedApplicant").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("Organization", ProjectWebServices.getIdOf("Account", "Automation IND"));
+        jsonObject.addProperty("AllocatedAmount", 1000);
+        pre.add(jsonObject);
+        json.add("InvitedApplicant", pre);
+        JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre1 = new JsonArray();
+        jsonObject1.addProperty("PreApplicationNeeded", "Yes");
+        jsonObject1.addProperty("FocusAreaRequired", "Yes");
+        pre1.add(jsonObject1);
+        json.add("Announcement", pre1);
         JsonArray serviceArea = new JsonArray();
         JsonObject serviceAreaB = new JsonObject();
         serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
