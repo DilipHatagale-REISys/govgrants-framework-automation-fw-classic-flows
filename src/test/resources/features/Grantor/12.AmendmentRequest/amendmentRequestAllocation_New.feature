@@ -14422,6 +14422,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Completed" and is "green"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
+    Then I softly see status in Progress-bar is "Closed" and is "Green"
     When I navigate to "Budget" sub tab
     Then I softly see field "Total Commitment" as "$1,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitment"
@@ -14494,10 +14500,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    Then I softly see value "$300.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
-    And I save the value from row "1" for column name "Spent" as "SpentAW1" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
-    Then I softly see value "$200.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
-    And I save the value from row "2" for column name "Spent" as "SpentAW2" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "$300.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    And I save the value from row "1" for column name "Spent" as "SpentAW1" from flex table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$200.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    And I save the value from row "2" for column name "Spent" as "SpentAW2" from flex table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
     Then I softly see field "Spent" as "$500.00"
     And I save the field labeled "Spent" as "awardSpent"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
