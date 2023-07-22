@@ -14345,7 +14345,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Budget" sub tab
     Then I softly see field "Total Commitment" as "$1,000.00"
     And I save the field labeled "Total Commitment" as "TotalCommitment"
-    When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - All"
@@ -14428,7 +14428,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitment"
     Then I softly see value "{SavedValue:TotalCommitment1}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
 
-  @debug @264193 @VerifySpentvalueshouldbeCalculatedagainsteachfocusareaFAareaYes @sprint-20-US-263426 @hitesh @Allocation
+  @debug @263958 @VerifySpentvalueshouldbeCalculatedagainsteachfocusareaFAareaYes @sprint-20-US-263426 @hitesh @Allocation
   Scenario: Verify Spent value should be  Calculated against each focus area(FA area Yes)
     And I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
@@ -14499,7 +14499,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the value from row "1" for column name "Spent" as "SpentAW1" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     Then I softly see value "$200.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     And I save the value from row "2" for column name "Spent" as "SpentAW2" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
-    Then I softly see value "$500.00" for title "Spent" against the value "Grand Total" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     And I save the value from row "3" for column name "Spent" as "SpentAW3" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
