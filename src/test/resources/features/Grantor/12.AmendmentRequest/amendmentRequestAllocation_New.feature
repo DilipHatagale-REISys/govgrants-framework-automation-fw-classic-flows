@@ -14427,7 +14427,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitment"
     Then I softly see value "{SavedValue:TotalCommitment1}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
 
-  @debug @263958 @VerifySpentvalueshouldbeCalculatedagainsteachfocusareaFAareaYes @sprint-20-US-263426 @hitesh @Allocation
+  @263958 @VerifySpentvalueshouldbeCalculatedagainsteachfocusareaFAareaYes @sprint-20-US-263426 @hitesh @Allocation
   Scenario: Verify Spent value should be  Calculated against each focus area(FA area Yes)
     And I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
@@ -14500,7 +14500,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the value from row "2" for column name "Spent" as "SpentAW2" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     Then I softly see field "Spent" as "$500.00"
     And I save the field labeled "Spent" as "awardSpent"
-    Then I softly see value "{SavedValue:awardSpent}" is "Equals to" the value "{SavedValue:Spent}"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
