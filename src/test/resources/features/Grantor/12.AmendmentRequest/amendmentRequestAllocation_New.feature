@@ -15160,7 +15160,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
-      | Extra Salary | The narrative | 500        | 1        | Feet        | 10                |
+      | Extra Salary | The narrative | 500        | 1        | Feet        | 0                 |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
@@ -15172,7 +15172,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 510                   |
+      | {SavedValue:fundingAccount} | 500                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
       | Name                      | Reimbursement |
@@ -15270,7 +15270,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "SubRecipientCF_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter value "Automation Justification" into field "fieldPurposeRTA__c"
-    And I enter value "1000" into field "fieldRequestedChangeInBudget__c"
+    And I enter value "500" into field "fieldRequestedChangeInBudget__c"
     And I wait for "5" seconds
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "CFAmendmentId"
@@ -15278,11 +15278,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Carry Forward |
-      | Construction    | 1000          |
+      | Construction    | 500           |
     And I refresh the page
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 3000                 | 300        | 0              |
+      | Construction    | 3500                 | 350        | 0              |
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
@@ -15298,7 +15298,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Edit" in the page details
     When I enter values into fields
       | Value | Field                     |
-      | 500   | fieldRevisedObligation__c |
+      | 200   | fieldRevisedObligation__c |
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
