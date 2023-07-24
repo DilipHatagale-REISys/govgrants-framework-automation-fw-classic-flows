@@ -14747,20 +14747,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
-    And I pause execution for "7" seconds
-    And I navigate to "Setup" sub tab
-    When I enter the following values into flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "New" :
-      | Step Order | Step Name       | Description |
-      | 4          | Automation Test | Testing     |
-    And I expand nested table containing column value "Automation Test"
-    When I enter the following values into flex table with id "---announcement:-:annReviewFormsTableId---" by clicking "New" :
-      | Form Name       |
-      | Automation Test |
-    And I click on "Review Form" icon for "Automation Test" inside flex table with id "---announcement:-:annReviewFormsTableId---" without waiting for record
-    When I enter the following values into flex table with id "---applicationReview:-:reviewPanelCategoriesTableId---" by clicking "New" :
-      | Section Order | Section Header  |
-      | 1             | Automation Test |
-    And I close "Review Form" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
