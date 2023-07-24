@@ -3606,7 +3606,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 5000             |
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Funding Decision Memo" inside flex table with id "---announcement:-:FDMAnnouncementReviewStepsTblId---"
-    Then I softly see value "$5,000.00" for title "Allocation Amount" inside table "---grantor_tableId:-:RecommendedApplicationTableId---"
+    Then I softly see value "$5,000" for title "Allocation Amount" inside table "---grantor_tableId:-:RecommendedApplicationTableId---"
 
     Examples:
       | Announcement Name                                               | Application Name                                                |
