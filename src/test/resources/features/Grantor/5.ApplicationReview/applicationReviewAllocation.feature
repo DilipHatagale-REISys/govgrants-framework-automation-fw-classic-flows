@@ -3278,7 +3278,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @274230 @ValidateFormulaFANoPOuserseevalidationwhenthebudgetedamountnotequaltotheAllocationamountUsertrytocreateawardfromFDMorfromtheApplication @Sprint-23-US-273843 @vaibhav @Allocation @TBE
+  @274230 @ValidateFormulaFANoPOuserseevalidationwhenthebudgetedamountnotequaltotheAllocationamountUsertrytocreateawardfromFDMorfromtheApplication @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario Outline: Validate Formula FA No PO user see the validation when the budgeted amount not equal to the Allocation amount & User try to create award from FDM or from the Application
     And I published "Formula" type announcement having name "Automation Runtime Announcement Application Review" and properties "BY_APPLICANT_FOCUS_AREA_NO-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "FIRST_BUDGET_CATEGORY_NO_FOCUS_AREA"
@@ -3453,7 +3453,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @274231 @ValidateFormulaFANoifPMtheallocationamountisupdatedfromtheannouncementthenitisupdatedontheAllocationamountcolumnofFDMaswell @Sprint-23-US-273843 @vaibhav @Allocation @TBE
+  @274231 @ValidateFormulaFANoifPMtheallocationamountisupdatedfromtheannouncementthenitisupdatedontheAllocationamountcolumnofFDMaswell @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario Outline: Validate Formula FA No if PM the allocation amount is updated from the announcement then it is updated on the Allocation amount column of FDM as well
     And I published "Formula" type announcement having name "Automation Runtime Announcement Application Review" and properties "BY_APPLICANT_FOCUS_AREA_NO"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "FIRST_BUDGET_CATEGORY_NO_FOCUS_AREA"
