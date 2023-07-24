@@ -14939,7 +14939,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
   @268415 @VerifyCumulativeobligationandBalancevalueshouldnotupdatedonexitingpaymentrequestwhichisincreatedstatewhennewawardisactivatedafterBudgetredirectionamendmentrequest @sprint-21-US-265880 @hitesh
   Scenario: Verify Cumulative obligation and Balance value should not updated on exiting payment request which is in created state when new award is activated after Budget redirection amendment request
     And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_FOCUS_AREA_BUD_CAT_SUB_ORG_IND-Automation PM user" of type "Formula_By_Applicant_Focus_Area"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
