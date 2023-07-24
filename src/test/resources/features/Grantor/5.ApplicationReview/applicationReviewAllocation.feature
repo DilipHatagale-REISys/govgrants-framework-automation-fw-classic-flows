@@ -3443,7 +3443,9 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     And I navigate to "Funding Decision Memo" sub tab
+    And I wait for "5" seconds
     And I click on "Create Subaward" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
+    And I wait for "3" seconds
     Then I softly see the following messages in the page details contains:
       | The Budgeted Amount must be equal to the Allocation Amount in the application for each focus area. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field and send the application back for revision to the subrecipient. |
 
