@@ -15037,7 +15037,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
   @265696 @VerifyINDusercancarryforwardtheamountfromonefocusareatoanotherfocusareaFANo @sprint-20-US-248356 @hitesh @Allocation
   Scenario:Verify IND user can carryforward the amount from one focus area to another focus area (FA is No)
-    And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_FOCUS_AREA_BUD_CAT_SUB_ORG_IND-Automation PM user" of type "Formula_By_Applicant_Focus_Area"
+    And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_FOCUS_AREA_BUD_CAT_SUB_ORG_IND-Automation PM user" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -15130,11 +15130,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I refresh the page
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 1200                 | 120        | 0              |
-    And I click on page navigation arrow "---progressReport:-:budgetChangeTableId---" for table id "Next"
-    And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
-      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 1500                 | 150        | 0              |
+      | Construction    | 1700                 | 170        | 0              |
     And I refresh the page
     And I wait for "5" seconds
     And I click on "Submit to Grantor" in the page details
