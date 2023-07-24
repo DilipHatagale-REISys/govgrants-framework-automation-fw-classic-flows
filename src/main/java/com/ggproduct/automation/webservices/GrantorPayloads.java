@@ -250,7 +250,7 @@ public class GrantorPayloads {
         FDM.addProperty("SubawardAbbreviation", "AWD");
         FDM.addProperty("RecommendedForAward", "Yes");
         FDM.addProperty("RecommendedAmount", 1000);
-        FDM.addProperty("TotalCommitmentAmount",1000);
+        FDM.addProperty("TotalCommitmentAmount", 1000);
         FDMArray.add(FDM);
 
         parent.add("FDM", FDMArray);
@@ -513,11 +513,11 @@ public class GrantorPayloads {
     private JsonObject byApplicantFocusNoNegotiationNo(JsonObject json) {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray nego = new JsonArray();
-        jsonObject.addProperty("Allocationlevel","By Applicant");
+        jsonObject.addProperty("Allocationlevel", "By Applicant");
         jsonObject.addProperty("FocusAreaRequired", "No");
-        jsonObject.addProperty("IsNegotiationsAllowed","No");
+        jsonObject.addProperty("IsNegotiationsAllowed", "No");
         nego.add(jsonObject);
-        json.add("Announcement",nego);
+        json.add("Announcement", nego);
         return json;
 
     }
@@ -553,7 +553,7 @@ public class GrantorPayloads {
         json.add("AnnouncementServiceArea", serviceArea);
         JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre1 = new JsonArray();
-        jsonObject1.addProperty("Allocationlevel","By Applicant");
+        jsonObject1.addProperty("Allocationlevel", "By Applicant");
         jsonObject1.addProperty("RiskAssessment_Required", "No");
         pre1.add(jsonObject1);
         json.add("Announcement", pre1);
@@ -613,7 +613,7 @@ public class GrantorPayloads {
         json.add("AnnouncementServiceArea", serviceArea);
         JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre1 = new JsonArray();
-        jsonObject1.addProperty("Allocationlevel","By Applicant");
+        jsonObject1.addProperty("Allocationlevel", "By Applicant");
         jsonObject1.addProperty("RiskAssessment_Required", "No");
         pre1.add(jsonObject1);
         json.add("Announcement", pre1);
@@ -644,7 +644,7 @@ public class GrantorPayloads {
         json.add("InvitedApplicant", pre);
         JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre1 = new JsonArray();
-        jsonObject1.addProperty("Allocationlevel","N/A");
+        jsonObject1.addProperty("Allocationlevel", "N/A");
         pre1.add(jsonObject1);
         json.add("Announcement", pre1);
         return json;
@@ -674,7 +674,7 @@ public class GrantorPayloads {
         json.add("InvitedApplicant", pre);
         JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre1 = new JsonArray();
-        jsonObject1.addProperty("Allocationlevel","By Applicant");
+        jsonObject1.addProperty("Allocationlevel", "By Applicant");
         pre1.add(jsonObject1);
         json.add("Announcement", pre1);
         return json;
@@ -752,41 +752,41 @@ public class GrantorPayloads {
     private JsonObject byApplicantRiskAssessmentNo(JsonObject json) {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
-        jsonObject.addProperty("Allocationlevel","By Applicant");
-        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        jsonObject.addProperty("Allocationlevel", "By Applicant");
+        jsonObject.addProperty("IsNegotiationsAllowed", "Yes");
         jsonObject.addProperty("RiskAssessment_Required", "No");
         pre.add(jsonObject);
-        json.add("Announcement",pre);
+        json.add("Announcement", pre);
         return json;
     }
 
     private JsonObject byApplicantFocusAreaRiskAssessmentNo(JsonObject json) {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
-        jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
-        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        jsonObject.addProperty("Allocationlevel", "By Applicant and Focus Area");
+        jsonObject.addProperty("IsNegotiationsAllowed", "Yes");
         jsonObject.addProperty("RiskAssessment_Required", "No");
         pre.add(jsonObject);
-        json.add("Announcement",pre);
+        json.add("Announcement", pre);
         return json;
     }
 
     private JsonObject byApplicantFocusAreaNegotiationsYes(JsonObject json) {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
-        jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
-        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        jsonObject.addProperty("Allocationlevel", "By Applicant and Focus Area");
+        jsonObject.addProperty("IsNegotiationsAllowed", "Yes");
         pre.add(jsonObject);
-        json.add("Announcement",pre);
+        json.add("Announcement", pre);
         return json;
     }
 
     private void updateAnnouncementOwner(JsonObject json, String user) {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray annOwner = new JsonArray();
-        jsonObject.addProperty("OwnerId",ProjectWebServices.getIdOf("User",user));
+        jsonObject.addProperty("OwnerId", ProjectWebServices.getIdOf("User", user));
         annOwner.add(jsonObject);
-        json.add("Announcement",annOwner);
+        json.add("Announcement", annOwner);
     }
 
     private JsonObject byApplicantFocusAreaNo(JsonObject json) {
@@ -811,10 +811,10 @@ public class GrantorPayloads {
     private JsonObject byApplicantFocusAreaNegotiationsNo(JsonObject json) {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
-        jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
-        jsonObject.addProperty("IsNegotiationsAllowed","No");
+        jsonObject.addProperty("Allocationlevel", "By Applicant and Focus Area");
+        jsonObject.addProperty("IsNegotiationsAllowed", "No");
         pre.add(jsonObject);
-        json.add("Announcement",pre);
+        json.add("Announcement", pre);
         return json;
     }
 
@@ -830,20 +830,20 @@ public class GrantorPayloads {
     private JsonObject byApplicantFocusAreaNegotiationYes(JsonObject json) {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
-        jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
-        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        jsonObject.addProperty("Allocationlevel", "By Applicant and Focus Area");
+        jsonObject.addProperty("IsNegotiationsAllowed", "Yes");
         pre.add(jsonObject);
-        json.add("Announcement",pre);
+        json.add("Announcement", pre);
         return json;
     }
 
     private JsonObject byApplicantNegotiationNo(JsonObject json) {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray nego = new JsonArray();
-        jsonObject.addProperty("Allocationlevel","By Applicant");
-        jsonObject.addProperty("IsNegotiationsAllowed","No");
+        jsonObject.addProperty("Allocationlevel", "By Applicant");
+        jsonObject.addProperty("IsNegotiationsAllowed", "No");
         nego.add(jsonObject);
-        json.add("Announcement",nego);
+        json.add("Announcement", nego);
         return json;
     }
 
@@ -860,11 +860,11 @@ public class GrantorPayloads {
     private JsonObject updatePreApplicationAndNegotiationAsYesAndFocusAreaNoForAnnouncement(JsonObject json) {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
-        jsonObject.addProperty("PreApplicationNeeded","Yes");
-        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
-        jsonObject.addProperty("FocusAreaRequired","No");
+        jsonObject.addProperty("PreApplicationNeeded", "Yes");
+        jsonObject.addProperty("IsNegotiationsAllowed", "Yes");
+        jsonObject.addProperty("FocusAreaRequired", "No");
         pre.add(jsonObject);
-        json.add("Announcement",pre);
+        json.add("Announcement", pre);
         return json;
     }
 
@@ -1142,8 +1142,8 @@ public class GrantorPayloads {
                 updateAwardOwner(json, user);
             }
         }
-                return json;
-        }
+        return json;
+    }
 
     /**
      * @param grantName
@@ -1156,7 +1156,8 @@ public class GrantorPayloads {
     public JsonObject payloadForCreateStandaloneAward(String grantName, String filter, String... Type) {
         String user = "";
         JsonObject json;
-        if (Type.length > 0) {
+        boolean Typeflag = Type.length > 0;
+        if (Typeflag) {
             json = defaultPayloadCreateStandaloneAward(grantName, Type[0]);
         } else {
             json = defaultPayloadCreateStandaloneAward(grantName);
@@ -1217,7 +1218,10 @@ public class GrantorPayloads {
             case "SECOND_FOCUS_AREA":
                 return createAwarForSecondFocusArea(json);
             case "SECOND_FOCUS_AREA_BUDGET_CATEGORY":
-                return createAwarForSecondFocusAreaandBudgetCategory(json);
+                if (Typeflag)
+                    return createAwarForSecondFocusAreaandBudgetCategory(json, Type[0]);
+                else
+                    return createAwarForSecondFocusAreaandBudgetCategory(json);
             case "THREE_FOCUS_AREA_NO_BUDGET_CATEGORY_THIRD_FOCUS":
                 return createAwarForThreeFocusAreaandBudgetCategory(json);
             case "THREE_FOCUS_AREA_NO_BUDGET_CATEGORY_THIRD_FOCUS_BuildUpYes":
@@ -1330,6 +1334,7 @@ public class GrantorPayloads {
 
         return json;
     }
+
     private JsonObject createAwarForThreeFocusAreaandBudgetCategoryBuildUpYesIndOrg(JsonObject json) {
         JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
         JsonArray newA = new JsonArray();
@@ -1520,7 +1525,7 @@ public class GrantorPayloads {
     }
 
     private JsonObject createAwarForSecondFocusAreaTotalCommitment(JsonObject json) {
-        JsonObject award  = json.getAsJsonArray("Award").get(0).getAsJsonObject();
+        JsonObject award = json.getAsJsonArray("Award").get(0).getAsJsonObject();
         JsonArray newA = new JsonArray();
         award.addProperty("TotalCommitment", "2000");
         newA.add(award);
@@ -1604,7 +1609,7 @@ public class GrantorPayloads {
     }
 
     private JsonObject createAwarForSecondFocusAreaBudCatTotalCommitment(JsonObject json) {
-        JsonObject award  = json.getAsJsonArray("Award").get(0).getAsJsonObject();
+        JsonObject award = json.getAsJsonArray("Award").get(0).getAsJsonObject();
         JsonArray newA = new JsonArray();
         award.addProperty("TotalCommitment", "2000");
         newA.add(award);
@@ -1686,7 +1691,7 @@ public class GrantorPayloads {
         JsonArray newA = new JsonArray();
         grant.addProperty("FocusAreaRequired", "No");
         grant.addProperty("IsAdvancePermitted", "Yes");
-        if(EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO") ) {
+        if (EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO")) {
             grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));
         }
         newA.add(grant);
@@ -1707,7 +1712,7 @@ public class GrantorPayloads {
     }
 
     private JsonObject createAwarForSecondFocusAreaandBudgetCategorySubrecipientIndProfile(JsonObject json) {
-        if(EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO") ) {
+        if (EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO")) {
             JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
             JsonArray newA = new JsonArray();
             grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));
@@ -1761,7 +1766,7 @@ public class GrantorPayloads {
         return json;
     }
 
-    private JsonObject createAwarForSecondFocusAreaandBudgetCategory(JsonObject json) {
+    private JsonObject createAwarForSecondFocusAreaandBudgetCategory(JsonObject json, String... Type) {
         JsonArray awardServiceAreaArray = new JsonArray();
         JsonObject awardServiceAreaA = new JsonObject();
         awardServiceAreaA.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area"));
@@ -1771,7 +1776,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1780,6 +1784,15 @@ public class GrantorPayloads {
         awardServiceAreaB.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        if (Type.length > 0) {
+            if (Type[0].contains("Formula")) {
+                if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                    awardServiceAreaA.addProperty("NewObligationPay", "500");
+                    awardServiceAreaB.addProperty("NewObligationPay", "500");
+                }
+            }
+        }
+        awardServiceAreaArray.add(awardServiceAreaA);
         awardServiceAreaArray.add(awardServiceAreaB);
         json.add("AwardServiceArea", awardServiceAreaArray);
 
@@ -1811,7 +1824,7 @@ public class GrantorPayloads {
 
     private JsonObject createAwarForIndUser(JsonObject json) {
 
-        if(EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO") ) {
+        if (EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO")) {
             JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
             JsonArray newA = new JsonArray();
             grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));
@@ -2182,6 +2195,11 @@ public class GrantorPayloads {
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         awardServiceAreaArray.add(awardServiceArea);
+        if (Type[0].contains("Formula")) {
+            if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                awardServiceArea.addProperty("NewObligationPay", "1000");
+            }
+        }
         parent.add("AwardServiceArea", awardServiceAreaArray);
 
         JsonObject kpiGoalsObjectives = new JsonObject();
