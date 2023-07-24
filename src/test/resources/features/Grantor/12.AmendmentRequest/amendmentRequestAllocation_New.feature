@@ -14734,7 +14734,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name           | Announcement |
@@ -14853,9 +14853,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:formulaAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
-    Then I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
-      | Applicant Organization              | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
+      | Title                           | Allocation Amount |
+      | Automation Permanent Focus Area | 1000              |
+    And I wait for "5" seconds
     And I wait for "5" seconds
     And I click on "Submit For Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
@@ -14933,7 +14935,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     And I navigate to "Overview" sub tab
     Then I softly see value "Reviewed" for title "Application Status" inside table "---announcement:-:formulaInvitedApplicatsTableId---"
-    And I pause execution for "500" seconds
 
   @268415 @VerifyCumulativeobligationandBalancevalueshouldnotupdatedonexitingpaymentrequestwhichisincreatedstatewhennewawardisactivatedafterBudgetredirectionamendmentrequest @sprint-21-US-265880 @hitesh
   Scenario: Verify Cumulative obligation and Balance value should not updated on exiting payment request which is in created state when new award is activated after Budget redirection amendment request
@@ -15307,7 +15308,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | {SavedValue:PO Username} | Step 1            |
     When I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount for the following focus areas - (Automation Permanent Focus Area) |
+      | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount. |
 
   @274134 @VerifySPIusercaninitiateandapprovedbudgetredirectionamendmentondirectedtypegrant @sprint-23-US-263305 @hitesh @Allocation
   Scenario: Verify SPI user can initiate and approved budget redirection amendment on directed type grant
@@ -15338,8 +15339,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 1            |
-    And I click on "Submit for Approval" in the page details
-    And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
