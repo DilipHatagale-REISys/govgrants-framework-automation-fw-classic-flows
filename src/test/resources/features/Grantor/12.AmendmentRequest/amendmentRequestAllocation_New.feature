@@ -15110,7 +15110,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     And I navigate to "Funding Decision Memo" sub tab
-    When I check "<Application Name>" boxes in flex table with id "flexGridFundingDecisionMemoApplications"
+    When I check "<Announcement Name>" boxes in flex table with id "flexGridFundingDecisionMemoApplications"
     When I click on top right button "Notify Selected Applicants" in flex table with id "flexGridFundingDecisionMemoApplications"
     And I checkout to yopmail with mailid "automationspi30@yopmail.com"
     And I pause execution for "10" seconds
