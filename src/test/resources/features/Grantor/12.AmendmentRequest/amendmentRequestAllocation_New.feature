@@ -15210,7 +15210,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Formula Announcements"
     And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
-    And I enter "FormulaAnn_AdminUser" values from "Announcement_Field_Values.xlsx"
+    And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
     When I enter "CreationFormula_ByApp_focusNo" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -15285,7 +15285,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
   @326961 @VerifyPMusershouldnotabletoupdatetheallocationamountonAnnifnegotiationisNoonAnnonceapplicationispromotetoFDMrecord @sprint-20-US-320518 @hitesh
   Scenario Outline:Verify PM user should not able to update the allocation amount on Ann  if negotiation is No on Ann once application is promote to FDM record
-    Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO_NEGOTIATION_NO-Automation PM user"
+    Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_NEGOTIATION_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     When I login to "As a Grantor" app as "PM" user
     When I navigate to "Applications" tab
