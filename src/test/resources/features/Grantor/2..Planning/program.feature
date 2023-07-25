@@ -354,7 +354,7 @@ Feature: Validate all scenarios for program
       | Environment    | 30                 |
       | Permits        | 40                 |
     And I close "Review Form" modal by clicking the top right x button
-    And I pause execution for "5" seconds
+    And I pause execution for "9" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
@@ -371,6 +371,7 @@ Feature: Validate all scenarios for program
       | Environment    | 30                 |
       | Permits        | 40                 |
     And I close "Review Form" modal by clicking the top right x button
+    And I pause execution for "9" seconds
     Then I softly see the following messages in the page details contains:
       | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Schedule section because it is weighted.     |
       | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Environment section because it is weighted.  |
@@ -544,7 +545,7 @@ Feature: Validate all scenarios for program
   Scenario Outline: Associate contact on program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     And I refresh the page
     Then I see that "<Contact>" has been added in flextable with Id "---program:-:contactsTableId---"
     Examples:
@@ -555,7 +556,7 @@ Feature: Validate all scenarios for program
   Scenario Outline: Verify user is able to delete associated contact
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     And I refresh the page
     Then I softly see that "<Contact>" has been added in flextable with Id "---program:-:contactsTableId---"
     And I click on "Remove" icon for "<Contact>" inside flex table with id "---program:-:contactsTableId---" without waiting for record
@@ -654,17 +655,15 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     And I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
@@ -931,7 +930,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
-      | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%. It is currently 40%. |
+      | Setup Tab - Management Review - Management Review: At least one section must be added to this form. |
 
   @34750 @106291 @110156 @110141 @submittingProgramForApproval @monu
   Scenario: Validate the submission of Program for Approval
@@ -940,17 +939,15 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     And I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
@@ -988,18 +985,15 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
     When I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
@@ -1041,18 +1035,15 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
     When I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
@@ -1089,17 +1080,14 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
     When I click "Associate" after selection of "<Focus Area>" in the table "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
@@ -1147,10 +1135,9 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
     When I click "Associate" after selection of "<Focus Area>" in the table "---program:-:associateFocusAreaTableId---"
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
@@ -1171,7 +1158,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
@@ -1181,14 +1168,11 @@ Feature: Validate all scenarios for program
       | {SavedValue:EXE Username} | Step 2  |
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
     When I click "Associate" after selection of "<Focus Area>" in the table "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -1231,7 +1215,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1286,7 +1270,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1324,7 +1308,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1366,7 +1350,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1412,7 +1396,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1452,7 +1436,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1519,7 +1503,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1627,7 +1611,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1707,7 +1691,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1764,7 +1748,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1817,7 +1801,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1880,7 +1864,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1947,7 +1931,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1978,7 +1962,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2038,7 +2022,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2072,7 +2056,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2118,7 +2102,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2163,7 +2147,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2210,7 +2194,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -2240,7 +2224,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2303,7 +2287,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2361,7 +2345,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2404,7 +2388,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2434,7 +2418,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2476,7 +2460,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2504,7 +2488,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2532,7 +2516,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2562,7 +2546,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2594,7 +2578,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2631,7 +2615,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2668,7 +2652,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2704,7 +2688,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2741,7 +2725,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -2779,7 +2763,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2823,7 +2807,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2897,7 +2881,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2981,7 +2965,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3076,7 +3060,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3155,7 +3139,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3215,7 +3199,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3254,7 +3238,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3357,7 +3341,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3486,7 +3470,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3563,7 +3547,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -3612,7 +3596,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -3659,7 +3643,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -3712,7 +3696,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3754,7 +3738,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3826,7 +3810,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3885,7 +3869,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3916,7 +3900,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3942,7 +3926,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3985,7 +3969,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4040,7 +4024,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4078,7 +4062,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4111,7 +4095,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4151,7 +4135,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4211,7 +4195,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4269,7 +4253,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4332,7 +4316,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4373,7 +4357,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4423,7 +4407,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4449,7 +4433,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4477,7 +4461,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4525,7 +4509,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4552,7 +4536,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4589,7 +4573,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4647,7 +4631,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4683,7 +4667,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -4855,7 +4839,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4925,7 +4909,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
@@ -4935,14 +4919,11 @@ Feature: Validate all scenarios for program
       | {SavedValue:EXE Username} | Step 2  |
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
     When I click "Associate" after selection of "<Focus Area>" in the table "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -4999,17 +4980,14 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
     When I click "Associate" after selection of "<Focus Area>" in the table "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
@@ -5057,18 +5035,16 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
     #When I close "Associate Objectives" modal by clicking the top right x button
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     And I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
@@ -5189,6 +5165,7 @@ Feature: Validate all scenarios for program
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                      | Program |
       | {SavedValue:EXE Username} | Step 2  |
+    And I wait for "9" seconds
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
       | {SavedValue:FO Username} | Step 3  |
@@ -5216,18 +5193,15 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
     When I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
@@ -5255,18 +5229,15 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
     When I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
@@ -5295,6 +5266,7 @@ Feature: Validate all scenarios for program
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
       | {SavedValue:FO Username} | Step 3  |
+    And I wait for "9" seconds
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
       | {SavedValue:FD Username} | Step 4  |

@@ -7551,7 +7551,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
-    And I wait for "3" seconds
+    And I wait for "120" seconds
     When I click toggle button to select "Subaward Risk Assessment - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"

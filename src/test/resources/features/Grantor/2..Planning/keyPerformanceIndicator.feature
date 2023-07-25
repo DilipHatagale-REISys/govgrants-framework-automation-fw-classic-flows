@@ -221,8 +221,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     And I click on "Save" in the page details
     When I navigate to "Related Log" sub tab
     And I click on top right button "Associate" in flex table with id "---strategicplan:-:ObjectivesKPITableId---"
-    When I perform quick search for "{SavedValue:KPINAME}" in "---strategicplan:-:ListOfActiveKPITableId---" panel
-    When I click "Add" after selection of "{SavedValue:KPINAME}" in the table "---strategicplan:-:ListOfActiveKPITableId---"
+    When I click "Add" after selection of "{SavedValue:KPINAME}" by showing entries "All" in flex table with id "---strategicplan:-:ListOfActiveKPITableId---"
     Then I softly see that "{SavedValue:KPINAME}" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel

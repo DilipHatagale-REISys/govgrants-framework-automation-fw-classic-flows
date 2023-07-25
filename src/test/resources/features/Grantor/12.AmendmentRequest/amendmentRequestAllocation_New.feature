@@ -14522,7 +14522,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     Then I softly see value "{SavedValue:CumulativeObligationAwd1}" is "Equals to" the value "{SavedValue:CumulativeObligationClosedGrant}"
 
-  @vai @276452 @276453 @ValidateFormulaByApplicantFocusAreFAYesusercansee$valueonAwardafterFundingChangeamendmentrequestisapprovedonActiveaward @Sprint-24-US-275864 @vaibhav @Allocation
+  @276452 @276453 @ValidateFormulaByApplicantFocusAreFAYesusercansee$valueonAwardafterFundingChangeamendmentrequestisapprovedonActiveaward @Sprint-24-US-275864 @vaibhav @Allocation
   Scenario: Validate Formula By Applicant & Focus Area FA Yes user can see $ value on Award after Funding Change amendment request is approved on Active award
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user

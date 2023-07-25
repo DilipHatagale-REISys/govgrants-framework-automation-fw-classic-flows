@@ -162,7 +162,6 @@ Feature: Validate all scenarios in Focus Area
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---focusarea:-:GrantsSubAwardsTableIdFocusArea---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
     And I navigate to "Budget" sub tab
-    When I perform quick search for "Automation Permanent Focus Area" in "---focusarea:-:SubAwardFocusAreaTableId---" panel
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
 
   @106615 @VerifyCorrespondingAnnouncement @monu
@@ -224,6 +223,7 @@ Feature: Validate all scenarios in Focus Area
       | {SavedValue:PM Username} |
     Then I see the following messages in the page details contains:
       | Saved Successfully! |
+    And I expand nested table containing column value "Pre-Screen Review"
     Then I softly see value "{SavedValue:PM Username}" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
     And I click on "Delete" icon for "{SavedValue:PM Username}" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     Then I softly do not see value "{SavedValue:PM Username}" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
