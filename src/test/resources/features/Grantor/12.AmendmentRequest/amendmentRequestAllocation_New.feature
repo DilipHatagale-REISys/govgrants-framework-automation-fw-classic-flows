@@ -15066,7 +15066,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount for the following focus areas - (Automation Permanent Focus Area) |
 
-  @274123 @VerifyPOusernotifytoSRuserforcompletednegotiation @sprint-23-US-273843 @hitesh
+  @hit @274123 @VerifyPOusernotifytoSRuserforcompletednegotiation @sprint-23-US-273843 @hitesh
   Scenario Outline:Verify PO user notify to S\R user for completed negotiation.
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "NEGOTIATION-Automation PO user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -15203,7 +15203,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I pause execution for "10" seconds
     When I click on "Activate" in the page details
 
-  @326929 @ValidateAdminusershouldabletoseethetwocolumnsinApprovedstateforFormulaAnnouncementwhenAllocationisbyApplicants @sprint-10-US-320518 @hitesh
+  @hit @326929 @ValidateAdminusershouldabletoseethetwocolumnsinApprovedstateforFormulaAnnouncementwhenAllocationisbyApplicants @sprint-10-US-320518 @hitesh
   Scenario: Verify external user should not see opportunity those external org are added eligible criteria but not invited on formula type of announcement
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -15234,7 +15234,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Associate" after selection of "Automation ADMIN1" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "Automation PM" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name              | Announcement |
@@ -15283,7 +15283,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I perform quick search for "{SavedValue:AnnEGMSID}" in "---preApplication:-:qualifiedOpprtunitesTableId---" panel
     Then I softly do not see value "{SavedValue:AnnEGMSID}" for title "Opportunity Name" inside table "---preApplication:-:qualifiedOpprtunitesTableId---"
 
-  @326961 @VerifyPMusershouldnotabletoupdatetheallocationamountonAnnifnegotiationisNoonAnnonceapplicationispromotetoFDMrecord @sprint-20-US-320518 @hitesh
+  @hit @326961 @VerifyPMusershouldnotabletoupdatetheallocationamountonAnnifnegotiationisNoonAnnonceapplicationispromotetoFDMrecord @sprint-20-US-320518 @hitesh
   Scenario Outline:Verify PM user should not able to update the allocation amount on Ann  if negotiation is No on Ann once application is promote to FDM record
     Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_NEGOTIATION_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -15438,7 +15438,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @314166 @VerifyPMusershouldseevalidationonSubmitApprovalbuttonwhenCarryforAmountfieldonBudgetSummarysectionisnotequaltototalofCarryforwardAmountacrossallFAfrombudgetchangesectiononCarryforwardAR @sprint-20-US-308117 @hitesh @Allocation
+  @hit @314166 @VerifyPMusershouldseevalidationonSubmitApprovalbuttonwhenCarryforAmountfieldonBudgetSummarysectionisnotequaltototalofCarryforwardAmountacrossallFAfrombudgetchangesectiononCarryforwardAR @sprint-20-US-308117 @hitesh @Allocation
   Scenario: Verify PM user should see validation on Submit for Approval button when Carry for Amount field on Budget Summary section is not equal to total of Carry forward Amount across all FA from budget change section on Carry forward AR
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA_RISK_ASS_NO"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "TWO_BUD_CAT_FIFTEEN_HUNDRED_AMT"
@@ -15525,6 +15525,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
       | Construction    | 1000              |
+    And I pause execution for "5" seconds
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
