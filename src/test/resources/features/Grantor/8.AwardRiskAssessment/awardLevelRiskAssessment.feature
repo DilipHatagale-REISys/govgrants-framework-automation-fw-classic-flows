@@ -7285,7 +7285,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see value "Created" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---riskassessment:-:organizationprofileviewTableId---"
     And I logout
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "20" seconds
+    And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -7379,7 +7379,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see field "Status" as "Created"
     And I logout
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "20" seconds
+    And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """

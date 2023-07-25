@@ -3432,10 +3432,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I wait for "2" seconds
     When I expand nested table containing column value "BP01"
     And I click on page navigation arrow "---applicationReview:-:budgetTableId---" for table id "Next"
-    When I click on "Add Line Item Details" icon for "Indirect Charges" inside flex table with id "---applicationReview:-:budgetTableId---"
+    When I click on "Add Line Item Details" icon for "Indirect costs" inside flex table with id "---applicationReview:-:budgetTableId---"
     When I enter the following values into flex table with id "---applicationReview:-:addLineItemsModalTableId---" by clicking "New" :
-      | Title            | Narrative     | Award Budget | Cash Match | Non-Cash Match |
-      | Indirect Charges | The narrative | 500          | 50         | 0              |
+      | Title          | Narrative     | Award Budget | Cash Match | Non-Cash Match |
+      | Indirect costs | The narrative | 500          | 50         | 0              |
     When I close "Add Line Items" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
@@ -14506,7 +14506,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     Then I softly see value "{SavedValue:CumulativeObligationAwd1}" is "Equals to" the value "{SavedValue:CumulativeObligationClosedGrant}"
 
- @vai @276452 @276453 @ValidateFormulaByApplicantFocusAreFAYesusercansee$valueonAwardafterFundingChangeamendmentrequestisapprovedonActiveaward @Sprint-24-US-275864 @vaibhav @Allocation
+  @vai @276452 @276453 @ValidateFormulaByApplicantFocusAreFAYesusercansee$valueonAwardafterFundingChangeamendmentrequestisapprovedonActiveaward @Sprint-24-US-275864 @vaibhav @Allocation
   Scenario: Validate Formula By Applicant & Focus Area FA Yes user can see $ value on Award after Funding Change amendment request is approved on Active award
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
