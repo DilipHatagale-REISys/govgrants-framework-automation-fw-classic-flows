@@ -15440,10 +15440,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
   @314166 @VerifyPMusershouldseevalidationonSubmitApprovalbuttonwhenCarryforAmountfieldonBudgetSummarysectionisnotequaltototalofCarryforwardAmountacrossallFAfrombudgetchangesectiononCarryforwardAR @sprint-20-US-308117 @hitesh @Allocation
   Scenario: Verify PM user should see validation on Submit for Approval button when Carry for Amount field on Budget Summary section is not equal to total of Carry forward Amount across all FA from budget change section on Carry forward AR
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA_RISK_ASS_NO"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA_RISK_ASS_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
     And I created approved FDM on application "{SavedValue:Automation Runtime Announcement}"
-    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties "Automation PM user"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties
     And I activate award from FDM having application name "{SavedValue:Automation Runtime Announcement}"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
