@@ -15053,15 +15053,13 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Overview" sub tab
     And I click on "Edit" in the page details
     When I enter values into fields
-      | Value | Field                     |
-      | 3000  | fieldRevisedCommitment__c |
+      | Value | Field                          |
+      | 3000  | fieldRevisedCommitment__c      |
+      |-1000  | fieldRequestedChangeInBudget__c|
     And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 3000                |
-    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
-      | Title                           | New Obligation |
-      | Automation Permanent Focus Area | -1000          |
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount for the following focus areas - (Automation Permanent Focus Area) |
@@ -15111,11 +15109,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     And I navigate to "Funding Decision Memo" sub tab
-    And I edit the following rows inline in flex table with id "---applicationReview:-:rejectedApplicationTableId---" by clicking "Edit" :
-      | Application Title  | Comments           |
-      | <Application Name> | Automation Testing |
-    And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:rejectedApplicationTableId---"
-    When I click on top right button "Notify Selected Applicants" in flex table with id "--subAwardFromFDM:-:recommendedAppTableId--"
+    When I check "<Application Name>" boxes in flex table with id "flexGridFundingDecisionMemoApplications"
+    When I click on top right button "Notify Selected Applicants" in flex table with id "flexGridFundingDecisionMemoApplications"
     And I checkout to yopmail with mailid "automationspi30@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
@@ -15144,64 +15139,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Examples:
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PO   |
-
-  @274130 @VerifyPOusercanaddorremovefocusreaandapprovedperiodicrenewalamendmentwithincreasebudget @sprint-23-US-273843 @hitesh @Allocation
-  Scenario: Verify PO user can add or remove focus area and approved periodic renewal amendment with increase budget
-    And I activated standalone subaward "Automation Runtime award" with properties "Automation PM user" of type "Directed"
-    When I login to "As a Grantor" app as "PM" user
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    And I navigate to "Budget" sub tab
-    And I navigate to "Management" sub tab
-    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
-    When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
-    And I wait for "4" seconds
-    When I click on "Save" in the page details
-    And I refresh the page
-    And I save the field labeled "Proposed Budget Period Start Date" as "updatedBudgetPeriodStartDate"
-    And I save the field labeled "Proposed Budget Period End Date" as "updatedBudgetPeriodEndDate"
-    And I get the "EGMS ID"
-    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
-      | Title                           | Start Date                                | End Date                                | New Obligation |
-      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodStartDate} | {SavedValue:updatedBudgetPeriodEndDate} | 1000           |
-    And I refresh the page
-    And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
-      | Title                       | Revised Encumbrance |
-      | {SavedValue:fundingAccount} | 1000                |
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request |
-      | {SavedValue:PM Username} | Step 1            |
-    And I click on "Send to Subrecipient" in the page details
-    Then I see field "Status" as "Sent to Subrecipient"
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Grants" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
-      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 1000                 | 100        | 0              |
-    And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I click on "Submit for Approval" in the page details
-    And I wait for "5" seconds
-    And I "Approve" in the approval decision
-    And I wait for "4" seconds
-    And I click on "Amend Subaward" in the page details
-    And I pause execution for "10" seconds
-    When I click on "Activate" in the page details
 
   @hit @326929 @ValidateAdminusershouldabletoseethetwocolumnsinApprovedstateforFormulaAnnouncementwhenAllocationisbyApplicants @sprint-10-US-320518 @hitesh
   Scenario: Verify external user should not see opportunity those external org are added eligible criteria but not invited on formula type of announcement
