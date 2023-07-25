@@ -10523,9 +10523,9 @@ Feature: Validate all scenarios of grants and award without background
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
     And I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
-    When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area2" by showing entries "All" in flex table with id "---announcement:-:selectAnnouncementServiceArea1TableId---"
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
-    When I click "Associate" after selection of "Test Focus Area" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
+    When I click "Associate" after selection of "Test Focus Area" by showing entries "All" in flex table with id "---announcement:-:selectAnnouncementServiceArea1TableId---"
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"

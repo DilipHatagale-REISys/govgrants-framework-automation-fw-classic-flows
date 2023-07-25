@@ -5628,95 +5628,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | IND  |
 
-  @274025 @VerifyuserseethevalidationwhenthebudgetedAmountisnotequaltotheAllocationamountwhenusertriedtopromotetheapplicationtothenextstepfromSMEreviewstep @sprint-23-US-273843 @hitesh
-  Scenario Outline: FA No Verify user see the validation when the budgeted Amount is not equal to the Allocation amount when user tried to promote the application to the next step from SME review step.
-    When I login to "As a Grantor" app as "EXE" user
-    And I navigate to "Announcements" tab
-    When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Formula Announcements"
-    And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
-    And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
-    And I click modal button "Continue"
-    When I enter "CreationFormula_ByApp_focusNo" values from "Announcement_Field_Values.xlsx"
-    And I enter in modal value "Yes" into field "IsNegotiationsAllowed__c"
-    And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I save the field labeled "Announcement Name" as "Automation Runtime Formula Announcement"
-    When I click on "Edit" in the page details
-    And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I navigate to "Financials" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
-    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
-    When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
-    When I refresh the page
-    When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
-    When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---announcement:-:goalsTableId---"
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name           | Announcement |
-      | Automation EXE | Step 1       |
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c"
-    When I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
-      | Budget Period Name | Start Date | End Date |
-      | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
-    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
-    And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---announcement:-:formulaAddInviteApplicantTableId---" panel
-    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Add Organizations" modal by clicking the top right x button
-    And I wait for "5" seconds
-    When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
-      | Applicant Organization              | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
-    And I click on "Submit For Approval" in the page details
-    And I pause execution for "5" seconds
-    Then I softly see field "Status" as "Submitted for Approval"
-    And I "Approve" in the approval decision
-    And I pause execution for "5" seconds
-    Then I softly see field "Status" as "Approved"
-    And I click on "Publish" in the page details
-    Then I softly see status in Progress-bar is "Published" and is "green"
-    When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
-      | Applicants                          | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    When I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
-    When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
-    And I navigate to "Related Log" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
-    And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I softly see the following messages in the page details contains:
-      | The Budgeted amount must be equal to the Allocation amount for the following Application IDs. Please send these applications back for revision |
-
-    Examples:
-      | Announcement Name                                    |
-      | {SavedValue:Automation Runtime Formula Announcement} |
-
   @2740251 @VerifyuserseethevalidationwhenthebudgetedAmountisnotequaltotheAllocationamountwhenusertriedtopromotetheapplicationtothenextstepfromSMEreviewstep @sprint-23-US-273843 @hitesh
   Scenario Outline: FA No Verify user see the validation when the budgeted Amount is not equal to the Allocation amount when user tried to promote the application to the next step from SME review step.
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
-    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
+    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "BUDGETCATEGORY_NO_FOCUSAREA"
     When I login to "As a Grantor" app as "PM" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -5744,6 +5659,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:EXE Username} |
       | {SavedValue:FO Username}  |
       | {SavedValue:PM Username}  |
+    And I wait for "5" seconds
     When I expand nested table containing column value "<Announcement Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "{SavedValue:PM Username}" in "---applicationReview:-:panelAppTableId---" panel
