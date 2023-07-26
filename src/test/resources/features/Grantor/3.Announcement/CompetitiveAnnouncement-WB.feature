@@ -1616,3 +1616,83 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I refresh the page
     Then I softly see value "$0.00" for title "Budgeted Amount" against the value "Automation Permanent Focus Area" inside table "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     Then I softly see field "Budgeted Amount" as "$0.00"
+
+  @274123 @VerifyPOusernotifytoSRuserforcompletednegotiation @sprint-23-US-273843 @hitesh
+  Scenario Outline:Verify PO user notify to S\R user for completed negotiation.
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "NEGOTIATION-Automation PO user"
+    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
+    And I created approved FDM on application "<Announcement Name>"
+    And I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I navigate to "Negotiations" sub tab
+    And I enter value "7" into field "fieldNegotiationDueDate__c"
+    And I enter value "Negoatiation Initiated" into field "ExplanationOfRevisionsNeeded__c"
+    And I enter value "Budget: Budget Details" into field "ApplicationSectionsForRevision__c"
+    When I click on "Save" in the page details
+    And I pause execution for "5" seconds
+    When I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    And I enter values into fields
+      | Value                              | Field                |
+      | Automation Negotiation Iniatiation | ApplicantResponse__c |
+    When I click on "Save" in the page details
+    And I pause execution for "5" seconds
+    When I click on "Submit to Grantor" in the page details
+    Then I softly cannot see top right button "Edit" in page detail
+    When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:phasePendingTasksTableId---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:phasePendingTasksTableId---"
+    Then I softly can see top right button "Complete Negotiation" in page detail
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    And I navigate to "Funding Decision Memo" sub tab
+    When I check "<Announcement Name>" boxes in flex table with id "flexGridFundingDecisionMemoApplications"
+    When I click on top right button "Notify Selected Applicants" in flex table with id "flexGridFundingDecisionMemoApplications"
+    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+  """
+  Sandbox: Notification: Application #{SavedValue:Automation Runtime Announcement} Update:Selected for Funding
+  """
+    Then I see the mail text is as follows :
+  """
+Hello Automation SPI3,
+
+
+
+This email is to inform you that Application #{SavedValue:Automation Runtime Announcement} for Funding Opportunity #{SavedValue:Automation Runtime Announcement} has been recommended for funding.
+
+Recommended Amount: $1,000.00
+
+Comment By Grantor:
+
+For more details needed at this time, refer to the contact(s) listed on the Funding Opportunity.
+
+Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com , if you have any questions or need assistance with this task.
+
+
+
+Thank you.
+
+The EGMS Team
+  """
+    Examples:
+      | Announcement Name                            | User |
+      | {SavedValue:Automation Runtime Announcement} | PO   |
