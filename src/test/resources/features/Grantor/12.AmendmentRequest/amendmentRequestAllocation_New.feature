@@ -3673,7 +3673,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on page navigation arrow "---applicationReview:-:budgetTableId---" for table id "Next"
     When I click on "Add Line Item Details" icon for "Indirect costs" inside flex table with id "---applicationReview:-:budgetTableId---"
     When I enter the following values into flex table with id "---applicationReview:-:addLineItemsModalTableId---" by clicking "New" :
-      | Title            | Narrative     | Award Budget | Cash Match | Non-Cash Match |
+      | Title          | Narrative     | Award Budget | Cash Match | Non-Cash Match |
       | Indirect costs | The narrative | 500          | 50         | 0              |
     When I close "Add Line Items" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
@@ -3723,10 +3723,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Construction | The narrative | 5000         |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
-    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     Then I click on "Add Line Items" icon for "Indirect costs" inside flex table with id "---amendment:-:budgetChangeTableId---"
     When I edit the following rows inline in flex table with id "---amendment:-:AddLineItemForBudgetChangeTableId---" by clicking "Edit" :
-      | Title            | Narrative     | Award Amount |
+      | Title          | Narrative     | Award Amount |
       | Indirect costs | The narrative | 500          |
     When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
@@ -10968,7 +10967,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement |
-      | Extra Salary | The narrative | 1000        | 1        | Feet        |
+      | Extra Salary | The narrative | 1000       | 1        | Feet        |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
