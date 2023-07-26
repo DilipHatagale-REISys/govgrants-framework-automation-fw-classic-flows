@@ -1677,7 +1677,7 @@ Hello Automation SPI3,
 
 
 
-This email is to inform you that Application #{SavedValue:Automation Runtime Announcement} for Funding Opportunity #Automation Runtime Announcement90861 has been recommended for funding.
+This email is to inform you that Application #{SavedValue:Automation Runtime Announcement} for Funding Opportunity #{SavedValue:Automation Runtime Announcement} has been recommended for funding.
 
 Recommended Amount: $1,000.00
 
