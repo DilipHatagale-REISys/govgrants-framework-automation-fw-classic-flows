@@ -15303,8 +15303,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Revised Commitment" as "RevisedCommitment"
     Then I softly see addition of two fields "{SavedValue:NewObligation}" and "{SavedValue:CumulativeObligation}" is equal to "{SavedValue:RevisedCommitment}"
     And I click on "Submit for Approval" in the page details
-    And I pause execution for "3" seconds
-    And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Submitted For Approval" and is "green"
 
   @314029 @VerifyPMusercannotseevalidationonSubmitforApprovalbuttonwhenRevisedCommitmentisequaltoadditionofCumulativeObligationonGrant&newObligationonPeriodicRenewalamendmentrequestFANo @sprint-8-US-308117 @hitesh @Allocation
   Scenario: Verify PM user cannot see validation on Submit for Approval button when Revised Commitment is equal to addition of Cumulative Obligation on Grant & new Obligation on Periodic Renewal amendment request (FA=No)
@@ -15371,5 +15370,4 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Revised Commitment" as "RevisedCommitment"
     Then I softly see addition of two fields "{SavedValue:NewObligation}" and "{SavedValue:CumulativeObligation}" is equal to "{SavedValue:RevisedCommitment}"
     And I click on "Submit for Approval" in the page details
-    And I pause execution for "3" seconds
-    And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Submitted For Approval" and is "green"
