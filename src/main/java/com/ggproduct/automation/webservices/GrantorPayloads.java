@@ -469,6 +469,8 @@ public class GrantorPayloads {
                 return byApplicantNegotiationNo(json);
             case "BY_APPLICANT_FOCUS_AREA_NO_NEGOTIATION_NO":
                 return byApplicantFocusAreaNoNegotiationsNo(json);
+            case "BY_APPLICANT_FOCUS_AREA_NO_NEGOTIATION_YES":
+                return byApplicantFocusAreaNoNegotiationsYes(json);
             case "BY_APPLICANT_FOCUS_AREA_NEGOTIATION_NO":
                 return byApplicantFocusAreaNegotiationsNo(json);
             case "BY_APPLICANT_FOCUS_AREA_NEGOTIATION_YES":
@@ -822,6 +824,17 @@ public class GrantorPayloads {
         jsonObject.addProperty("Allocationlevel","By Applicant");
         jsonObject.addProperty("FocusAreaRequired","No");
         jsonObject.addProperty("IsNegotiationsAllowed","No");
+        nego.add(jsonObject);
+        json.add("Announcement",nego);
+        return json;
+    }
+
+    private JsonObject byApplicantFocusAreaNoNegotiationsYes(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray nego = new JsonArray();
+        jsonObject.addProperty("Allocationlevel","By Applicant");
+        jsonObject.addProperty("FocusAreaRequired","No");
+        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
         nego.add(jsonObject);
         json.add("Announcement",nego);
         return json;
