@@ -15683,7 +15683,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Cumulative Obligation" rendered in view mode only
     Then I softly see that "Total Commitment" rendered in view mode only
 
-  @Hitesh @313745 @VerifyPMusershouldnotseeerrorwhenFDMissubmittedforapproval&itisgetApprovedifRecommendedBudgetAmountisnotequaltoBudgetedAmountforNonRecommendedsectiononFDM
+  @Hitesh @313745 @VerifyPMusershouldnotseeerrorwhenFDMissubmittedforapproval&itisgetApprovedifRecommendedBudgetAmountisnotequaltoBudgetedAmountforNonRecommendedsectiononFDM @sprint-10-US-320518 @hitesh
   Scenario Outline:Verify PM user should not see error when FDM is submitted for approval & it is get Approved if Recommended Budget Amount is not equal to Budgeted Amount for Non-Recommended section on FDM
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION_YES_FOCUS_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "BUDGETCATEGORY_NO_FOCUSAREA"
@@ -15844,15 +15844,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title                                | Recommended Budget | Recommend for Funding | Comments    |
       | {SavedValue:Automation Runtime FDM Announcement} | 0                  | No                    | Recommended |
-    And I edit the following rows inline in flex table with id "---applicationReview:-:rejectedApplicationTableId---" by clicking "Edit" :
-      | Application Title                                | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
-      | {SavedValue:Automation Runtime FDM Announcement} | 500                | Yes                   | Recommended | 400                     |
+    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fdmNonRecommendedTableId---" by clicking "Edit" :
+      | Application Title                                | Recommended Budget | Recommend for Funding | Comments        |
+      | {SavedValue:Automation Runtime FDM Announcement} | 500                | Yes                   | Non Recommended |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
       | Name                      | FDM    |
       | {SavedValue:EXE Username} | Step 1 |
     And I click on "Submit for Approval" in the page details
-    And I pause execution for "5000" seconds
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
 
     Examples:
@@ -16034,10 +16033,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @Hitesh @326970 @VerifyPMusershouldnotabletoupdatetheallocationamountonAnnifnegotiationisNoonAnnandFDMrecordissummitedforapproval @sprint-10-US-320518 @hitesh
-  Scenario Outline:Verify PM user should not able to update the allocation amount on Ann  if negotiation is No on Ann and FDM record is summited for approval
+  @Hitesh @274129 @VerifyPMusercanseevalidationoncustomizedreviewstepwhenAllocationamountischangedonAnnouncementFAYES&AllocationtypeByApplicant&FA @VerifyPMusershouldnotabletoupdatetheallocationamountonAnnifnegotiationisNoonAnnandFDMrecordissummitedforapproval @sprint-10-US-320518 @hitesh
+  Scenario Outline: Verify PM user can see validation on customized review step when Allocation amount is changed on Announcement(FA=YES & Allocation type=By Applicant & FA
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "SECOND_FOCUS_AREA_BY_APPLICANT_FOCUS_AREA_RISK_ASS_NO-Automation PM user"
-    And I initiated an application review for application "{SavedValue:Automation Runtime Formula Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "SECOND_BUDGET_CATEGORY"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Formula Announcement}" on announcement "{SavedValue:Automation Runtime Formula Announcement}" with properties "SECOND_BUDGET_CATEGORY"
     When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -16188,3 +16187,57 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Examples:
       | User  | Announcement Name                                    |
       | PM    | {SavedValue:Automation Runtime Formula Announcement} |
+
+  @313662 @VerifyPMusercanseethevalueBudgetTabFocusAreareplacedwithBudgetTabBudgetSummarybyFocusAreaintheApplicationsectionforNegotiationonFDMFANO @sprint-8-US-308117 @hitesh
+  Scenario Outline: Verify PM user can see the value "Budget Tab: Focus Area" replaced with "Budget Tab: Budget Summary by Focus Area" in the Application section for Negotiation on FDM (FA= NO)
+    Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION_YES_FOCUS_NO-Automation PM user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "BUDGETCATEGORY_NO_FOCUSAREA"
+    And I created approved FDM on application "{SavedValue:SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I navigate to "Negotiations" sub tab
+    Then I see multipicklist field "fieldApplicationSectionsForRevision__c" contains value "Budget Tab: Budget Summary by Focus Area" under list "Application Sections for Revision - Available"
+    Then I do not see multipicklist field "fieldApplicationSectionsForRevision__c" contains value "Budget: Focus Area" under list "Application Sections for Revision - Available"
+
+    Examples:
+      | Announcement Name                            |
+      | {SavedValue:Automation Runtime FDM Announcement} |
+
+  @274139 @VerifyPOusercaninitiateandapprovedcombinationofamendmentrequestsBudgetredirectionSOWKeypersonalchange @sprint-23-US-273843 @hitesh
+  Scenario: Verify PO user can initiate and approved combination of amendment requests (Budget redirection +SOW+ Key personal change)
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Formula_By_Applicant_Focus_Area"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Grants" tab
+    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---amendment:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
+    Given I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:recipientAwardAmendmentRequestTableId---"
+    When I enter "Subrecipient_BRedirec_SOW_KPC" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Subrecipient_BD_KP_SOW_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I click on "Submit to Grantor" in the page details
+    And I save the field labeled "EGMS ID" as "BDSOWKPID"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:BDSOWKPID}" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:BDSOWKPID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
+    When I click on "Submit for Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I wait for "4" seconds
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
