@@ -39,6 +39,8 @@ public class GrantorPayloads {
                 return updateBudgetCategoryForFirstFocusAreasNoFocusArea(defaultJson);
             case "TWO_BUD_CAT_FIFTEEN_HUNDRED_AMT":
                 return updateBudgetCategoryForTwoFocusAreasFifteenHundredAmt(defaultJson);
+            case "SECOND_BUDGET_CAT_DETAILS_BUD_YES":
+                return updateBudgetCategoryForTwoFocusAreasDetailsBudgetYes(defaultJson);
             case "KYECONTACTS":
                 break;
             case "KEYOUTCOME":
@@ -46,6 +48,33 @@ public class GrantorPayloads {
             default:
                 return defaultJson;
         }
+        return defaultJson;
+    }
+
+    private JsonObject updateBudgetCategoryForTwoFocusAreasDetailsBudgetYes(JsonObject defaultJson) {
+        JsonArray budgetCategoryArray = new JsonArray();
+//        JsonObject budgetCategory2 = defaultJson.getAsJsonArray("BudgetCategory").get(0).getAsJsonObject();
+
+        JsonObject budgetCategory1 = new JsonObject();
+        budgetCategory1.addProperty("Title", "Construction");
+        budgetCategory1.addProperty("Narrative", "Construction");
+        budgetCategory1.addProperty("BudgetRequest", 500);
+        budgetCategory1.addProperty("CashMatch", 100);
+        budgetCategory1.add("NonCashMatch", JsonNull.INSTANCE);
+        budgetCategory1.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        budgetCategory1.addProperty("ServiceAreaTitle", "Automation Permanent Focus Area");
+        budgetCategoryArray.add(budgetCategory1);
+
+        JsonObject budgetCategory2 = new JsonObject();
+        budgetCategory2.addProperty("Title", "Construction");
+        budgetCategory2.addProperty("Narrative", "Construction");
+        budgetCategory2.addProperty("BudgetRequest", 500);
+        budgetCategory2.addProperty("CashMatch", 100);
+        budgetCategory2.add("NonCashMatch", JsonNull.INSTANCE);
+        budgetCategory2.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        budgetCategory2.addProperty("ServiceAreaTitle", "Automation Permanent Focus Area2");
+        budgetCategoryArray.add(budgetCategory2);
+        defaultJson.add("BuildUpItems", budgetCategoryArray);
         return defaultJson;
     }
 
@@ -505,9 +534,26 @@ public class GrantorPayloads {
                 return updateAnnouncementWithSecondFocusAreaByappFocusAreaRiskNo(json);
             case "THREE_FOCUS_BY_APP_FOCUS_AREA_RISK_NO_PROGRAM_INCOME_NO_SUB_MATCH_NO":
                 return updateAnnouncementWithSecondFocusAreaByappFocusAreaRiskNoNOIncomeSubMatchNo(json);
+            case "SECOND_FOCUS_AREA_DETAILS_BUDGET_YES_RISK_NO":
+                return updateAnnouncementWithSecondFocusAreaDetailBudgetYes(json);
             default:
                 return json;
         }
+    }
+
+    private JsonObject updateAnnouncementWithSecondFocusAreaDetailBudgetYes(JsonObject json) {
+        JsonArray serviceArea = new JsonArray();
+        JsonObject serviceAreaB = new JsonObject();
+        serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        serviceArea.add(serviceAreaB);
+        json.add("AnnouncementServiceArea", serviceArea);
+        JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre1 = new JsonArray();
+        jsonObject1.addProperty("RiskAssessment_Required", "No");
+        jsonObject1.addProperty("DetailedBudgetingRequired", "Yes");
+        pre1.add(jsonObject1);
+        json.add("Announcement", pre1);
+        return json;
     }
 
     private JsonObject byApplicantFocusNoNegotiationNo(JsonObject json) {
