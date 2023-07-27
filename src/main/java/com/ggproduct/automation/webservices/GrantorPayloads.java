@@ -603,6 +603,12 @@ public class GrantorPayloads {
         jsonObject1.addProperty("RiskAssessment_Required", "No");
         pre1.add(jsonObject1);
         json.add("Announcement", pre1);
+        JsonObject invApp = new JsonObject();
+        JsonArray invAppA = new JsonArray();
+        invApp.addProperty("Organization", ProjectWebServices.getIdOf("Account", "SAN DIEGO ELECTRICAL TRAINING TRUST"));
+        invApp.addProperty("AllocatedAmount", 500);
+        invAppA.add(invApp);
+        json.add("InvitedApplicant", invAppA);
         return json;
     }
 
