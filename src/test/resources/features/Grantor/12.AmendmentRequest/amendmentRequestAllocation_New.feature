@@ -15683,7 +15683,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Cumulative Obligation" rendered in view mode only
     Then I softly see that "Total Commitment" rendered in view mode only
 
-  @Hitesh @313745 @VerifyPMusershouldnotseeerrorwhenFDMissubmittedforapproval&itisgetApprovedifRecommendedBudgetAmountisnotequaltoBudgetedAmountforNonRecommendedsectiononFDM @sprint-10-US-320518 @hitesh
+  @313745 @VerifyPMusershouldnotseeerrorwhenFDMissubmittedforapproval&itisgetApprovedifRecommendedBudgetAmountisnotequaltoBudgetedAmountforNonRecommendedsectiononFDM @sprint-10-US-320518 @hitesh
   Scenario Outline:Verify PM user should not see error when FDM is submitted for approval & it is get Approved if Recommended Budget Amount is not equal to Budgeted Amount for Non-Recommended section on FDM
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION_YES_FOCUS_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "BUDGETCATEGORY_NO_FOCUSAREA"
@@ -15847,10 +15847,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fdmNonRecommendedTableId---" by clicking "Edit" :
       | Application Title                                | Recommended Budget | Recommend for Funding | Comments        |
       | {SavedValue:Automation Runtime FDM Announcement} | 500                | Yes                   | Non Recommended |
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
-      | Name                      | FDM    |
-      | {SavedValue:EXE Username} | Step 1 |
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
 
@@ -15858,7 +15854,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @Hitesh @326970 @VerifyPMusershouldnotabletoupdatetheallocationamountonAnnifnegotiationisNoonAnnandFDMrecordissummitedforapproval @sprint-10-US-320518 @hitesh
+  @326970 @VerifyPMusershouldnotabletoupdatetheallocationamountonAnnifnegotiationisNoonAnnandFDMrecordissummitedforapproval @sprint-10-US-320518 @hitesh
   Scenario Outline:Verify PM user should not able to update the allocation amount on Ann  if negotiation is No on Ann and FDM record is summited for approval
     Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO_NEGOTIATION_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "BUDGETCATEGORY_NO_FOCUSAREA"
@@ -16014,20 +16010,25 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
       | Name                        | FDM    |
-      | {SavedValue:PM Username} | Step 1 |
+      | {SavedValue:PM Username}    | Step 1 |
     And I navigate to "Funding Decision Memo" sub tab
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title                                | Recommend for Funding | Comments    | Total Commitment Amount |
       | {SavedValue:Automation Runtime FDM Announcement} | Yes                   | Recommended | 3000                    |
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
-    And I navigate to "Overview" sub tab
+    When I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Formula Announcements"
+    When I perform quick search for "<Announcement Name>" in "---announcement:-:formulaAnnouncementTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+    When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
-      | Applicant Organization              | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 5000             |
+      | Applicants                          | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
     And I pause execution for "5" seconds
     Then I see the following messages in the page details contains:
-      | "Allocation Amount" update is not allowed for organization, As Application is Promoted to FDM.|
+      |"Allocation Amount" update is not allowed for organization, As Application is Promoted to FDM|
 
     Examples:
       | Announcement Name                                | Application Name                                 |
