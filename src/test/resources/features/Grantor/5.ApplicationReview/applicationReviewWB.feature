@@ -18741,6 +18741,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    When I navigate to "Overview" sub tab
     And I save the field labeled "Announcement Name" as "Automation Runtime FDM Announcement"
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
