@@ -18813,7 +18813,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     And I click on "Publish" in the page details
     Then I softly see field "Status" as "Published"
-    When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    When I initiated an application review for application "{SavedValue:AnnEGMSID}" on announcement "{SavedValue:AnnEGMSID}" with properties "default"
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -18987,6 +18987,6 @@ Feature: Validate all scenarios in the Application Review without background
       | The Budgeted amount must be equal to the Allocation amount for the following Application IDs. Please send these applications back for revision. |
 
     Examples:
-      | Announcement Name                                | Application Name                                 |
-      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
+      | Announcement Name      | Application Name       |
+      | {SavedValue:AnnEGMSID} | {SavedValue:AnnEGMSID} |
 
