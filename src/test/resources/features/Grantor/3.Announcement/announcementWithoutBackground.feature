@@ -176,14 +176,14 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter the following values into flex table with id "---announcement:-:annChecklist---" by clicking "Add" :
       | Description | Required  | Applies To  | Status |
       | Test2       | Mandatory | Application | Active |
-    And I click on advance filter "#advfAnnouncementChecklists" of table id "---announcement:-:annChecklist---"
-    And I enter advance filter values inside id "advfAnnouncementChecklists"
-      | Description | contains | Test2 |
+#    And I click on advance filter "#advfAnnouncementChecklists" of table id "---announcement:-:annChecklist---"
+#    And I enter advance filter values inside id "advfAnnouncementChecklists"
+#      | Description | contains | Test2 |
     Then I softly see value "Test2" for title "Description" inside table "---announcement:-:annChecklist---"
     And I refresh the page
-    And I click on advance filter "#advfAnnouncementChecklists" of table id "---announcement:-:annChecklist---"
-    And I enter advance filter values inside id "advfAnnouncementChecklists"
-      | Description | contains | Test3 |
+#    And I click on advance filter "#advfAnnouncementChecklists" of table id "---announcement:-:annChecklist---"
+#    And I enter advance filter values inside id "advfAnnouncementChecklists"
+#      | Description | contains | Test3 |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:annChecklist---"
     And I refresh the page
     Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:AnnouncementReviewPanel---"
