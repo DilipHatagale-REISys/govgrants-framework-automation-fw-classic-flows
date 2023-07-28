@@ -1260,9 +1260,9 @@ Feature: Payment Request Forms scenarios
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
-    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
-    And I perform quick search for "Record Id" in "---deskreview:-:monitoringTabDeskReviewTableId---" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabDeskReviewTableId---"
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I navigate to "Reports and Outcomes" sub tab
