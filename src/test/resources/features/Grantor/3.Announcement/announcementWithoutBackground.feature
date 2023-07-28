@@ -1857,7 +1857,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                  | Target |
       | Automation Permanent KPI | 10     |
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1961,7 +1961,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                  | Target |
       | Automation Permanent KPI | 10     |
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -3568,7 +3568,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                  | Target |
       | Automation Permanent KPI | 10     |
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -5921,7 +5921,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter value "Automation Test" into field "fieldApplicantResponse__c"
     When I click on "Save" in the page details
     When I click on "Submit to Grantor" in the page details
-    Then I softly see field "Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
+    Then I softly see field "Status" as "Negotiation Submitted"
+    #Then I softly see field "Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I published "Competitive" type announcement having name "Automation Runtime Competitive Announcement" and properties "NEGOTIATION"
     And I initiated an application review for application "{SavedValue:Automation Runtime Competitive Announcement}" on announcement "{SavedValue:Automation Runtime Competitive Announcement}" with properties "default"

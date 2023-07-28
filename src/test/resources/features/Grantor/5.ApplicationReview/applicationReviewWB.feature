@@ -18986,9 +18986,9 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "View" icon for "Automation Test" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
-    And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
+    And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly see the following messages in the page details contains:
-      | The Budgeted amount must be equal to the Allocation amount for the following Application IDs. Please send these applications back for revision. |
+      | The Budgeted amount for each focus area must be equal to the Allocation amount for that focus area in the following Application IDs. Please send these applications back for revision.|
 
     Examples:
       | Announcement Name                                | Application Name                                 |

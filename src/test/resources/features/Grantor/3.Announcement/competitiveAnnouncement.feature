@@ -160,7 +160,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
     And I save the value from row "1" for column name "Name" as "searchedItem" from flex table "---announcement:-:businessFormlistTableId---"
-    And I perform quick search for "{SavedValue:searchedItem}" in "---announcement:-:businessFormlistTableId---" panel
+    #And I perform quick search for "{SavedValue:searchedItem}" in "---announcement:-:businessFormlistTableId---" panel
     Then I softly see value "{SavedValue:searchedItem}" for title "Name" inside table "---announcement:-:businessFormlistTableId---"
     And I pause execution for "5" seconds
     And I refresh the page
@@ -322,7 +322,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I refresh the page
     Then I softly see value "Automation test description02" for title "Description" inside table "---announcement:-:annChecklist---"
     When I click on "Delete" icon for "Automation test description02" inside flex table with id "---announcement:-:annChecklist---" without waiting for record
-    And I perform quick search for "Automation test description02" in "---announcement:-:annChecklist---" panel
+    #And I perform quick search for "Automation test description02" in "---announcement:-:annChecklist---" panel
     Then I softly do not see value "Automation test description02" for title "Description" inside table "---announcement:-:annChecklist---"
     And I navigate to "Setup" sub tab
     When I click on "Preview" icon for "Organization Desk Review" inside flex table with id "---announcement:-:businessFormlistTableId---" without waiting for record
@@ -408,7 +408,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I perform quick search for "Automation Permanent KPI" in "---announcement:-:kpiflextableid---" panel
+    #And I perform quick search for "Automation Permanent KPI" in "---announcement:-:kpiflextableid---" panel
     Then I softly see value "Automation Permanent KPI" for title "Title" inside table "---announcement:-:kpiflextableid---"
     When I click on advance filter "#advfAnnouncementKeyOutcomes" of table id "---announcement:-:kpiflextableid---"
     When I enter advance filter values inside id "advfAnnouncementKeyOutcomes"
