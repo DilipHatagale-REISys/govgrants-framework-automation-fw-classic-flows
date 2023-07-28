@@ -18955,6 +18955,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    And I pause execution for "3" seconds
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     Then I softly see that "Sent for Review" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"

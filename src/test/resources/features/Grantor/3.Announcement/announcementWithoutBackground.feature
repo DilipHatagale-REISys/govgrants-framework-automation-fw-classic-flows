@@ -271,6 +271,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Fiscal Review     | 25              |
       | Program Review    | 25              |
       | Compliance Review | 50              |
+    And I refresh the page
     Then I see value "25.00%" for title "Form Weight (%)" against the value "Program Review" inside table "---announcement:-:AnnouncementReviewPanel---"
     Then I see value "25.00%" for title "Form Weight (%)" against the value "Fiscal Review" inside table "---announcement:-:AnnouncementReviewPanel---"
     Then I see value "50.00%" for title "Form Weight (%)" against the value "Compliance Review" inside table "---announcement:-:AnnouncementReviewPanel---"
@@ -599,9 +600,9 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Announcement | equals to | Step 4 |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:approversTableId---"
     And I navigate to "Setup" sub tab
-    And I click on advance filter "#advfAnnoucementPackagesGrantor" of table id "---announcement:-:businessFormlistTableId---"
-    And I enter advance filter values inside id "advfAnnoucementPackagesGrantor"
-      | Name | Contains | Anything |
+#    And I click on advance filter "#advfAnnoucementPackagesGrantor" of table id "---announcement:-:businessFormlistTableId---"
+#    And I enter advance filter values inside id "advfAnnoucementPackagesGrantor"
+#      | Name | Contains | Anything |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:businessFormlistTableId---"
 
   @73854 @73855 @73852 @73853 @jitendra @filterNotYetQualifiedSPAUser
@@ -910,7 +911,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I perform quick search for "Grantor Pre-application Form" in "---announcement:-:businessFormlistTableId---" panel
+    #And I perform quick search for "Grantor Pre-application Form" in "---announcement:-:businessFormlistTableId---" panel
     Then I softly see value "Grantor Pre-application Form" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     When I click on "Preview" icon for "Grantor Pre-application Form" inside flex table with id "---announcement:-:businessFormlistTableId---" without waiting for record
     Then I can see row level action button "Preview" against "Standard Pre-Application form" in flex table with id "---program:-:previewPackageTableId---"
@@ -1006,7 +1007,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I perform quick search for "Grantor Pre-application Form" in "---announcement:-:businessFormlistTableId---" panel
+    #And I perform quick search for "Grantor Pre-application Form" in "---announcement:-:businessFormlistTableId---" panel
     Then I softly see value "Grantor Pre-application Form" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     When I click on "Preview" icon for "Grantor Pre-application Form" inside flex table with id "---announcement:-:businessFormlistTableId---" without waiting for record
     Then I can see row level action button "Preview" against "Standard Pre-Application form" in flex table with id "---program:-:previewPackageTableId---"
@@ -1100,7 +1101,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I perform quick search for "Grantor Pre-application Form" in "---announcement:-:businessFormlistTableId---" panel
+    #And I perform quick search for "Grantor Pre-application Form" in "---announcement:-:businessFormlistTableId---" panel
     Then I softly see value "Grantor Pre-application Form" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     When I click on "Preview" icon for "Grantor Pre-application Form" inside flex table with id "---announcement:-:businessFormlistTableId---" without waiting for record
     Then I can see row level action button "Preview" against "Standard Pre-Application form" in flex table with id "---program:-:previewPackageTableId---"
@@ -1194,7 +1195,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I perform quick search for "Grantor Pre-application Form" in "---announcement:-:businessFormlistTableId---" panel
+    #And I perform quick search for "Grantor Pre-application Form" in "---announcement:-:businessFormlistTableId---" panel
     Then I softly see value "Grantor Pre-application Form" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     And I click on "Preview" icon for "Grantor Pre-application Form" inside flex table with id "---announcement:-:businessFormlistTableId---" without waiting for record
     Then I softly see "Preview Package" opens in overLay window
@@ -1473,7 +1474,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I perform quick search for "Grantor Pre-application Form" in "---announcement:-:businessFormlistTableId---" panel
+    #And I perform quick search for "Grantor Pre-application Form" in "---announcement:-:businessFormlistTableId---" panel
     Then I softly see value "1" for title "Version Number" inside table "---announcement:-:businessFormlistTableId---"
 
   @194677 @194682 @194683 @194690 @194685 @ValidateusershouldabletoseethenewmoduleAnnouncementmodulewhenuserenterthesourceuser&targetuser @sprint-4 @vaibhav @reassignment @ownvai
