@@ -53,13 +53,13 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Then I softly see the following messages in the page details :
-      | Financial Tab - Enter the Estimated Funding Amount.                                    |
-      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates.                                                                   |
-      | Financial Tab - Enter at least one Budget Period. |
-      | Overview Tab - Enter the Description.                                                                     |
-      | Overview Tab - You must invite at least one applicant before submitting this Announcement.                                                                                 |
-      | Overview Tab - Provide the Application Due Date.                            |
-      | Overview Tab - Select Eligible Applicant Types in the Eligibility Details section.                                                                      |
+      | Financial Tab - Enter the Estimated Funding Amount.                                                                   |
+      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
+      | Financial Tab - Enter at least one Budget Period.                                                                     |
+      | Overview Tab - Enter the Description.                                                                                 |
+      | Overview Tab - You must invite at least one applicant before submitting this Announcement.                            |
+      | Overview Tab - Provide the Application Due Date.                                                                      |
+      | Overview Tab - Select Eligible Applicant Types in the Eligibility Details section.                                    |
       | Responsibilities - At least one approver is required                                                                  |
     When I click on "Edit" in the page details
     And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
@@ -212,8 +212,8 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate the attachment for an Announcement
     Given I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---announcement:-:AnnouncementAttachmentTableId---"
-   And I pause execution for "5" seconds
-   And I switch to iframe with id "---announcement:-:iframeIdAddFiles---"
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---announcement:-:iframeIdAddFiles---"
     And I upload attachment "Attachment.pdf" of type "Funding Opportunity Announcement" from computer
     Then I softly see "Funding Opportunity Announcement" has been added in "Announcement Files" flex table
 
