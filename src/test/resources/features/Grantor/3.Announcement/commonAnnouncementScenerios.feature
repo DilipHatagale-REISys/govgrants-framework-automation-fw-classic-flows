@@ -68,7 +68,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Overview" sub tab
     Then I softly see field "Description" as "Automation test description"
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
     Then I softly see value "{SavedValue:EXE Username}" for title "Name" inside table "---announcement:-:contactTableId---"
     And I refresh the page
     Then I softly see value "{SavedValue:EXE Username}" for title "Name" inside table "---announcement:-:contactTableId---"
@@ -117,7 +117,7 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate the association of Focus Area to Announcement
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
-    When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area2" by showing entries "All" in flex table with id "---announcement:-:selectAnnouncementServiceArea1TableId---"
     Then I see that "Automation Permanent Focus Area2" has been added in flextable with Id "---announcement:-:AnnouncementServiceArea1TableId---"
 
   @34775 @announcementObjectiveAssociationFA

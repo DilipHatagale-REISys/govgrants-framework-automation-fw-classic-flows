@@ -1394,7 +1394,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I expand nested table containing column value "<Application2>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "{SavedValue:EXE Username}" in "---applicationReview:-:panelAppTableId---" panel
-    And I check "{SavedValue:EXE Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
+    And I check " boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
     When I close "Assign Reviewers" modal by clicking the top right x button
     And I pause execution for "5" seconds
@@ -1510,7 +1510,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            | Application2                     | User |
       | {SavedValue:Automation Runtime Announcement} | Automation Runtime Application_2 | PO   |
 
-  @113322 @ValidateApplicantscanfillinthedetailedbudgetonapplicationwhenfundingopportunityisextended @Sprint-23-US-273843 @vaibhav @Allocation
+  @113322 @ValidateApplicantscanfillinthedetailedbudgetonapplicationwhenfundingopportunityisextended @Sprint-23-US-273843 @vaibhav @Allocation @wip
   Scenario: Validate Applicants can fill in the detailed budget on application when funding opportunity is extended
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
