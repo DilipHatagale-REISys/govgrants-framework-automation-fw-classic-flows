@@ -23934,10 +23934,11 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see value "$0.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
     Then I softly see value "$0.00" for title "Spent" against the value "Total" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
     And I expand nested table containing column value "BP01"
-    And I select value inside table "---subAwardStandAlone:-:subrecipientGrantActualSummaryBudgetTableId---" is "All"
-    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subrecipientGrantActualSummaryBudgetTableId---" :
-      | Spent |
-      | $0.00 |
+    And I select value inside table "---subAwardStandAlone:-:grantsPaymentSummaryBudgetTableId---" is "All"
+    And I wait for "3" seconds
+    Then I see the following rows under the following columns in table with id "---subAwardStandAlone:-:grantsPaymentSummaryBudgetTableId---" :
+      | Budget Category | Spent |
+      | Total           | $0.00 |
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
@@ -24020,8 +24021,8 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see value "$500.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
     Then I softly see value "$1,000.00" for title "Spent" against the value "Total" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
     And I expand nested table containing column value "BP01"
-    And I select value inside table "---subAwardStandAlone:-:subrecipientGrantActualSummaryBudgetTableId---" is "All"
-    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subrecipientGrantActualSummaryBudgetTableId---" :
+    And I select value inside table "---subAwardStandAlone:-:paymentSummaryFocusAreaTableid---" is "All"
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:paymentSummaryFocusAreaTableid---" :
       | Spent     |
       | $1,000.00 |
     #272423
@@ -24128,7 +24129,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I click on "Mark As Paid" in the page details
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
-    When I close "{SavedValue:PayreqId}" modal by clicking the top right x button
+    When I close "{SavedValue:PayreqId1}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "green"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
