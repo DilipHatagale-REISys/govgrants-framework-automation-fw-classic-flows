@@ -169,7 +169,7 @@ Feature: Validate all scenarios for program
     Then I can see top right button "Undo" in page detail
     #279332
     When I click on "Undo" in the page details
-    Then I softly see field "Status" as "Submit for Approval"
+    Then I softly see field "Status" as "Submitted for Approval"
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Reject | Forward | Send back |
 
