@@ -15047,6 +15047,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
+    When I navigate to "Overview" sub tab
     Then I softly see field "New Obligation" inside page block
     Then I softly see field "Revised Obligation" inside page block
     Then I softly see "Current Commitment" inside page block detail
@@ -15060,6 +15061,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     Then I softly see field "Status" as "Sent to Subrecipient"
+    When I navigate to "Overview" sub tab
     Then I softly see field "New Obligation" inside page block
     Then I softly see field "Revised Obligation" inside page block
     Then I softly see "Current Commitment" inside page block detail
