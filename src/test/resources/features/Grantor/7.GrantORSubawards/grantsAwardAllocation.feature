@@ -23934,8 +23934,8 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see value "$0.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
     Then I softly see value "$0.00" for title "Spent" against the value "Total" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
     And I expand nested table containing column value "BP01"
-    And I select value inside table "---subAwardStandAlone:-:grantsPaymentSummaryBudgetTableId---" is "All"
-    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:grantsPaymentSummaryBudgetTableId---" :
+    And I select value inside table "---subAwardStandAlone:-:subrecipientGrantActualSummaryBudgetTableId---" is "All"
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subrecipientGrantActualSummaryBudgetTableId---" :
       | Spent |
       | $0.00 |
     When I navigate to "Subawards" sub tab
@@ -24020,8 +24020,8 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see value "$500.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
     Then I softly see value "$1,000.00" for title "Spent" against the value "Total" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
     And I expand nested table containing column value "BP01"
-    And I select value inside table "---subAwardStandAlone:-:grantsPaymentSummaryBudgetTableId---" is "All"
-    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:grantsPaymentSummaryBudgetTableId---" :
+    And I select value inside table "---subAwardStandAlone:-:subrecipientGrantActualSummaryBudgetTableId---" is "All"
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subrecipientGrantActualSummaryBudgetTableId---" :
       | Spent     |
       | $1,000.00 |
     #272423
@@ -24065,6 +24065,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"

@@ -3754,7 +3754,7 @@ Feature: Validate all scenarios in Closeout
     And I click toggle button to select "Closeouts - All"
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:CloseoutTableId---" panel
     And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
-    Then I softly see status in Progress-bar is "Created" and is "green"
+    Then I softly see field "Status" as "Created"
     And I navigate to "Overview" sub tab
     Then I softly see field "Spent" as "$1,000.00"
     Then I softly see value "$500.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---closeout:-:subrecipientBudgetSummaryFocusAreaTableId---"
