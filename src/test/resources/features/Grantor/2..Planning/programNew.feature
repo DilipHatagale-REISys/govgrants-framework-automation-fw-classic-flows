@@ -105,10 +105,9 @@ Feature: Validate all scenarios for program
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
     #279349
-    When I click on "Undo" in the page details
-    And I pause execution for "5" seconds
-    Then I softly see the following messages in the page details contains:
-      | WARNING: This action will reopen the approval decision made earlier. Do you want to proceed ? |
+    And I click on "Undo" in the page details without processing
+    Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed ?" is displayed
+    And I click "Yes" on modal confirmation box
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:completedTaskTableId---" panel
     Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:ProgramEGMSID}" inside table "---program:-:completedTaskTableId---"
@@ -172,7 +171,7 @@ Feature: Validate all scenarios for program
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Reject | Forward | Send back |
     And I navigate to "History" sub tab
-    And I see "{SavedValue:PO Username}" against "Submitted for approval." in approval history
+    And I see "Pending" against "Step : Re-approval (Pending for first approval)" in approval history
     Then I softly see value "Internal Program - submit for approval.pdf" for title "File Name" inside table "---program:-:snapshotHistoryTableId---"
 
   @279308 @VerifyFDasstep3approvercanseeundobuttonafterapprovedtheinternalprogram @sprint-25-US-295138 @hitesh
