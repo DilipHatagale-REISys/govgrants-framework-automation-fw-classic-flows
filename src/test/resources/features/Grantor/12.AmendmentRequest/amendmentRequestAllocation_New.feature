@@ -15163,6 +15163,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "($200.00)" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:projectAreasTableId---"
     Then I softly see value "($200.00)" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
     Then I softly see value "($400.00)" for title "New Obligation" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
+    And I save the value from row "1" for column name "Difference" as "DifferenceAmend" from flex table "---amendment:-:amendmentFundingAccountsTableId---"
     And I click on "Amend Subaward" in the page details
     And I pause execution for "10" seconds
     And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
@@ -15170,9 +15171,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     Then I softly see field "New Obligation" as "($400.00)"
     And I save the field labeled "New Obligation" as "NewObligationPendAwd"
-    And I save the value from row "1" for column name "Difference" as "DifferencePendAwd" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
-    Then I softly see value "($400.00)" for title "Difference" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
-    Then I softly see value "{SavedValue:DifferencePendAwd}" is "Equals to" the value "{SavedValue:NewObligationPendAwd}"
+    Then I softly see value "{SavedValue:DifferenceAmend}" is "Equals to" the value "{SavedValue:NewObligationPendAwd}"
     #271687,271727
     And I save the value from row "1" for column name "Encumbrance" as "Encumbrance" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I softly see value "$600.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
@@ -15249,9 +15248,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     Then I softly see field "New Obligation" as "($400.00)"
     And I save the field labeled "New Obligation" as "NewObligationActAwd"
-    And I save the value from row "1" for column name "Difference" as "DifferenceActAwd" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
-    Then I softly see value "($400.00)" for title "Difference" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
-    Then I softly see value "{SavedValue:DifferenceActAwd}" is "Equals to" the value "{SavedValue:NewObligationActAwd}"
+    Then I softly see value "{SavedValue:DifferenceAmend}" is "Equals to" the value "{SavedValue:NewObligationActAwd}"
     #271796
     And I save the value from row "1" for column name "Encumbrance" as "EncumbranceActAwd" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I softly see value "$600.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
@@ -15300,7 +15297,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     Then I softly see field "New Obligation" as "($400.00)"
     And I save the field labeled "New Obligation" as "NewObligationActAwdSr"
-    Then I softly see value "{SavedValue:DifferenceActAwd}" is "Equals to" the value "{SavedValue:NewObligationActAwdSr}"
+    Then I softly see value "{SavedValue:DifferenceAmend}" is "Equals to" the value "{SavedValue:NewObligationActAwdSr}"
     #271796
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationActAwd2Sr"
     Then I softly see value "{SavedValue:EncumbranceActAwd}" is "Equals to" the value "{SavedValue:CumulativeObligationActAwd2Sr}"
