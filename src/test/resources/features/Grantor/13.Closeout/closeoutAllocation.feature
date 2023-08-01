@@ -3577,7 +3577,7 @@ Feature: Validate all scenarios in Closeout
     And I click on submit review
     Then I softly see that "Submitted" has been added in flextable with Id "---closeout:-:closeoutPeerReviewTableId---"
 
-  @272149 @ValidatePMuserseecorrectspentamountshouldupdateoncloseoutrequest @Sprint-22-US-270869 @vaibhav @Allocation @TBE
+  @272149 @ValidatePMuserseecorrectspentamountshouldupdateoncloseoutrequest @Sprint-22-US-270869 @vaibhav @Allocation
   Scenario: Validate PM user see correct spent amount should update on closeout request
     And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -3669,7 +3669,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "$1,000.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$1,000.00" for title "Spent" against the value "Total" inside table "---closeout:-:closeoutFundingAccountsTableId---"
 
-  @272433 @ValidateSPIuserseecorrectspentamountshouldupdateoncloseoutrequest @Sprint-22-US-270869 @vaibhav @Allocation @TBE
+  @272433 @ValidateSPIuserseecorrectspentamountshouldupdateoncloseoutrequest @Sprint-22-US-270869 @vaibhav @Allocation
   Scenario: Validate SPI user see correct spent amount should update on closeout request
     And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant_Focus_Area"
     Given I login to "As a Grantor" app as "PM" user

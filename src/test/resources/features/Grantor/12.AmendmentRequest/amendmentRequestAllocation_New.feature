@@ -15069,3 +15069,243 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Budgeted Amount" inside page block
     Then I softly see "Revised Commitment" inside page block detail
     Then I softly see "Spent" inside page block detail
+
+  @271686 @271687 @271698 @271719 @271727 @271808 @271795 @271796 @271797 @271828 @271832 @ValidatePMusercanseeNewObligationfieldunderBudgetSummarysectiononversion2AwardisinPendingActivationstatepostARRollupfromtheNewObligationcolumninbudgetsummarybyfocusareasectionifFAYES @Sprint-22-US-270855 @vaibhav @Allocation
+  Scenario: Validate PM user can see New Obligation field under Budget Summary section on version 2 Award is in Pending Activation state post AR & Roll up from the New Obligation Column in budget summary by focus area section if FA YES
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SECOND_FOCUS_AREA_BUD_CAT_BUILDUP_YES" of type "Formula_By_Applicant_Focus_Area"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I navigate to "Budget" sub tab
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationAwd1"
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "BPC_SOW_FC_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "bpcFcScopeId"
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Amendment Award}"
+    When I click on "Edit" in the page details
+    And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
+    And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+    When I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             | New Obligation |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} | -200           |
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                            | End Date                             | New Obligation |
+      | Automation Permanent Focus Area2 | {SavedValue:updatedBudgetPeriodDate} | -200           |
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent to Subrecipient"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
+      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
+      | Extra Salary | The narrative | 300          | 30         | 30             |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
+      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
+      | Extra Salary | The narrative | 300          | 30         | 30             |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I refresh the page
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                     |
+      | 1000  | fieldRevisedCommitment__c |
+    And I click on "Save" in the page details
+    When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 600                |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I pause execution for "3" seconds
+    And I "Approve" in the approval decision
+    And I pause execution for "3" seconds
+    #271698
+    When I navigate to "Overview" sub tab
+    And I save the field labeled "Revised Commitment" as "RevisedCommitment"
+    Then I softly see field "Revised Commitment" as "$1,000.00"
+    #271719
+    When I save the value from row "1" for column name "New Obligation" as "newObligationAmend13" from flex table "---amendment:-:projectAreasTableId---"
+    When I save the value from row "2" for column name "New Obligation" as "newObligationAmend23" from flex table "---amendment:-:projectAreasTableId---"
+    When I save the value from row "3" for column name "New Obligation" as "newObligationAmend33" from flex table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "($200.00)" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "($200.00)" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "($400.00)" for title "New Obligation" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
+    And I click on "Amend Subaward" in the page details
+    And I pause execution for "10" seconds
+    And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    When I navigate to "Budget" sub tab
+    Then I softly see field "New Obligation" as "($400.00)"
+    And I save the field labeled "New Obligation" as "NewObligationPendAwd"
+    And I save the value from row "1" for column name "Difference" as "DifferencePendAwd" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see value "($400.00)" for title "Difference" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see value "{SavedValue:DifferencePendAwd}" is "Equals to" the value "{SavedValue:NewObligationPendAwd}"
+    #271687,271727
+    And I save the value from row "1" for column name "Encumbrance" as "Encumbrance" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see value "$600.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
+    Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligation}"
+    Then I see field "Cumulative Obligation" as "$600.00"
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
+      | Award Amount |
+      | $600.00      |
+    #271698
+    And I save the field labeled "Total Commitment" as "TotalCommitment"
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see value "{SavedValue:RevisedCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment}"
+    #271719
+    When I save the value from row "1" for column name "New Obligation" as "newObligationAdAct13" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    When I save the value from row "2" for column name "New Obligation" as "newObligationAdAct23" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    When I save the value from row "3" for column name "New Obligation" as "newObligationAdAct33" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "($200.00)" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "($200.00)" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "($400.00)" for title "New Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "{SavedValue:newObligationAmend13}" is "Equals to" the value "{SavedValue:newObligationAdAct13}"
+    Then I softly see value "{SavedValue:newObligationAmend23}" is "Equals to" the value "{SavedValue:newObligationAdAct23}"
+    Then I softly see value "{SavedValue:newObligationAmend33}" is "Equals to" the value "{SavedValue:newObligationAdAct33}"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    When I navigate to "Budget" sub tab
+    Then I softly see field "New Obligation" as "($400.00)"
+    #271687, 271727
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationSR"
+    Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligationSR}"
+    Then I softly see field "Cumulative Obligation" as "$600.00"
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" :
+      | Award Amount |
+      | $600.00      |
+    #271698
+    And I save the field labeled "Total Commitment" as "TotalCommitmentSR"
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see value "{SavedValue:RevisedCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentSR}"
+    #271719
+    When I save the value from row "1" for column name "New Obligation" as "newObligationAdActSR1" from flex table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    When I save the value from row "2" for column name "New Obligation" as "newObligationAdActSR2" from flex table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    When I save the value from row "3" for column name "New Obligation" as "newObligationAdActSR3" from flex table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "($200.00)" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "($200.00)" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "($400.00)" for title "New Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "{SavedValue:newObligationAmend13}" is "Equals to" the value "{SavedValue:newObligationAdActSR1}"
+    Then I softly see value "{SavedValue:newObligationAmend23}" is "Equals to" the value "{SavedValue:newObligationAdActSR2}"
+    Then I softly see value "{SavedValue:newObligationAmend33}" is "Equals to" the value "{SavedValue:newObligationAdActSR3}"
+    And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I click on "Activate" in the page details
+    Then I softly see field "Status" as "Activated"
+    When I navigate to "Actuals" sub tab
+    #271808
+    Then I softly see field "Cumulative Obligation" as "$600.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationActAwd"
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAward2" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "$600.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "{SavedValue:CumulativeObligationActAwd}" is "Equals to" the value "{SavedValue:EncumbranceAward2}"
+    #271795
+    When I navigate to "Budget" sub tab
+    Then I softly see field "New Obligation" as "($400.00)"
+    And I save the field labeled "New Obligation" as "NewObligationActAwd"
+    And I save the value from row "1" for column name "Difference" as "DifferenceActAwd" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see value "($400.00)" for title "Difference" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see value "{SavedValue:DifferenceActAwd}" is "Equals to" the value "{SavedValue:NewObligationActAwd}"
+    #271796
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceActAwd" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see value "$600.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationActAwd2"
+    Then I softly see value "{SavedValue:EncumbranceActAwd}" is "Equals to" the value "{SavedValue:CumulativeObligationActAwd2}"
+    Then I see field "Cumulative Obligation" as "$600.00"
+    #271797
+    And I save the field labeled "Total Commitment" as "TotalCommitmentActAwd"
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see value "{SavedValue:RevisedCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentActAwd}"
+    And I save the field labeled "Grant ID" as "GrantId"
+    And I click "{SavedValue:GrantId}" lookup link
+    When I navigate to "Budget" sub tab
+    #271828
+    Then I softly see field "Cumulative Obligation" as "$1,600.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationGrant"
+    Then I softly see addition of two fields "{SavedValue:CumulativeObligationAwd1}" and "{SavedValue:CumulativeObligationActAwd}" is equal to "{SavedValue:CumulativeObligationGrant}"
+    #271832
+    And I save the field labeled "Total Commitment" as "TotalCommitmentGrant"
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see value "{SavedValue:TotalCommitmentActAwd}" is "Equals to" the value "{SavedValue:TotalCommitmentGrant}"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    #271828
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Cumulative Obligation" as "$1,600.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationGrantSr"
+    Then I softly see addition of two fields "{SavedValue:CumulativeObligationAwd1}" and "{SavedValue:CumulativeObligationActAwd}" is equal to "{SavedValue:CumulativeObligationGrantSr}"
+    #271832
+    And I save the field labeled "Total Commitment" as "TotalCommitmentGrantSr"
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see value "{SavedValue:TotalCommitmentActAwd}" is "Equals to" the value "{SavedValue:TotalCommitmentGrantSr}"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    Then I softly see field "Status" as "Activated"
+    When I navigate to "Actuals" sub tab
+    #271808
+    Then I softly see field "Cumulative Obligation" as "$600.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationActAwdSR"
+    Then I softly see value "{SavedValue:CumulativeObligationActAwdSR}" is "Equals to" the value "{SavedValue:EncumbranceAward2}"
+    #271795
+    When I navigate to "Budget" sub tab
+    Then I softly see field "New Obligation" as "($400.00)"
+    And I save the field labeled "New Obligation" as "NewObligationActAwdSr"
+    Then I softly see value "{SavedValue:DifferenceActAwd}" is "Equals to" the value "{SavedValue:NewObligationActAwdSr}"
+    #271796
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationActAwd2Sr"
+    Then I softly see value "{SavedValue:EncumbranceActAwd}" is "Equals to" the value "{SavedValue:CumulativeObligationActAwd2Sr}"
+    Then I see field "Cumulative Obligation" as "$600.00"
+    #271797
+    And I save the field labeled "Total Commitment" as "TotalCommitmentActAwdSr"
+    Then I softly see field "Total Commitment" as "$1,000.00"
+    Then I softly see value "{SavedValue:RevisedCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentActAwdSr}"

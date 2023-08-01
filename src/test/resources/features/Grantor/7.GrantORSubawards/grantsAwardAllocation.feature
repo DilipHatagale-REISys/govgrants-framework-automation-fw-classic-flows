@@ -23918,7 +23918,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | EXE   | Automation EXE user   |
       | ADMIN | Automation ADMIN user |
 
-  @272114 @272423 @ValidatePMusershouldseeupdatedspentamountonawardandgrantunderactualtabifpaymentrequestisinpaidstate @Sprint-22-US-270869 @vaibhav @Allocation @TBE
+  @272114 @272423 @ValidatePMusershouldseeupdatedspentamountonawardandgrantunderactualtabifpaymentrequestisinpaidstate @Sprint-22-US-270869 @vaibhav @Allocation
   Scenario: Validate PM user should see updated spent amount on award and grant under actual tab if payment request is in paid state
     And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Directed"
     And I am on "SUBPORTAL" portal
@@ -24052,7 +24052,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | Spent     |
       | $1,000.00 |
 
-  @272148 @Validatecorrectspentamountshouldgetupdatedonpaymentrequestwhichcreatedpreviouslyanditisincreatedstate @Sprint-22-US-270869 @vaibhav @Allocation @TBE
+  @272148 @Validatecorrectspentamountshouldgetupdatedonpaymentrequestwhichcreatedpreviouslyanditisincreatedstate @Sprint-22-US-270869 @vaibhav @Allocation
   Scenario: Validate correct spent amount should get updated on payment request which created previously and it is in created state
     And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Competitive"
     And I am on "SUBPORTAL" portal
