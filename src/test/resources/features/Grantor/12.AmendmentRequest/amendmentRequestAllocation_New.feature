@@ -15120,15 +15120,15 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
-    And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
-      | Extra Salary | The narrative | 300          | 30         | 30             |
+    When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Award Amount |
+      | Extra Salary | The narrative | 300         |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
-    And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
-      | Extra Salary | The narrative | 300          | 30         | 30             |
+    When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Award Amount |
+      | Extra Salary | The narrative | 300         |
     When I close "Add Line Items" modal by clicking the top right x button
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
