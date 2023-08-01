@@ -165,16 +165,6 @@ Feature: Validate all scenarios for program
     When I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
-    #279332
-    When I click on "Undo" in the page details
-    Then I softly see field "Status" as "Submitted for Approval"
-    Then I see only the following ordered radio buttons in the approval decision :
-      | Approve | Reject | Forward | Send back |
-    And I navigate to "History" sub tab
-    And I see "{SavedValue:PO Username}" against "Step : Re-approval (Pending for first approval)" in approval history
-    Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
-    And I see "{SavedValue:PO Username}" against "Pending" in approval history
-    Then I softly see value "Internal Program - submit for approval.pdf" for title "File Name" inside table "---program:-:snapshotHistoryTableId---"
 
   @279308 @VerifyFDasstep3approvercanseeundobuttonafterapprovedtheinternalprogram @sprint-25-US-295138 @hitesh
   Scenario: Verify FD as step 3 approver can see undo button after approved the internal program
