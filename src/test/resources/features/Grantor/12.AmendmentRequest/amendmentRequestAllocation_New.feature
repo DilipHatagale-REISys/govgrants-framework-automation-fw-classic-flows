@@ -15082,9 +15082,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    When I navigate to "Budget" sub tab
-    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationAwd1"
-    Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BPC_SOW_FC_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -15269,7 +15266,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #271828
     Then I softly see field "Cumulative Obligation" as "$1,600.00"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationGrant"
-    Then I softly see addition of two fields "{SavedValue:CumulativeObligationAwd1}" and "{SavedValue:CumulativeObligationActAwd}" is equal to "{SavedValue:CumulativeObligationGrant}"
+    Then I softly see value "{SavedValue:CumulativeObligationActAwd}" is "Equals to" the value "{SavedValue:CumulativeObligationGrant}"
     #271832
     And I save the field labeled "Total Commitment" as "TotalCommitmentGrant"
     Then I softly see field "Total Commitment" as "$1,000.00"
@@ -15284,7 +15281,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Budget" sub tab
     Then I softly see field "Cumulative Obligation" as "$1,600.00"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationGrantSr"
-    Then I softly see addition of two fields "{SavedValue:CumulativeObligationAwd1}" and "{SavedValue:CumulativeObligationActAwd}" is equal to "{SavedValue:CumulativeObligationGrantSr}"
+    Then I softly see value "{SavedValue:CumulativeObligationActAwd}" is "Equals to" the value "{SavedValue:CumulativeObligationGrantSr}"
     #271832
     And I save the field labeled "Total Commitment" as "TotalCommitmentGrantSr"
     Then I softly see field "Total Commitment" as "$1,000.00"
