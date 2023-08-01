@@ -115,7 +115,7 @@ Feature: Validate all scenarios for program
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
     Then I softly see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:pendingTaskTableId---"
 
-  @279305 @279332 @VerifyPOasstep2approvercanseeundobuttonafterapprovedtheinternalprogram @sprint-25-US-295138 @hitesh
+  @279305 @VerifyPOasstep2approvercanseeundobuttonafterapprovedtheinternalprogram @sprint-25-US-295138 @hitesh
   Scenario: Verify PO as step 2 approver can see undo button after approved the internal program
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
