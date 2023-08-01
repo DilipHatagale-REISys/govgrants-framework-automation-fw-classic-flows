@@ -106,7 +106,7 @@ Feature: Validate all scenarios for program
     Then I can see top right button "Undo" in page detail
     #279349
     And I click on "Undo" in the page details without processing
-    Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed ?" is displayed
+    Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     And I click "Yes" on modal confirmation box
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:completedTaskTableId---" panel
@@ -115,7 +115,7 @@ Feature: Validate all scenarios for program
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
     Then I softly see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:pendingTaskTableId---"
 
-  @debug @279305 @279332 @VerifyPOasstep2approvercanseeundobuttonafterapprovedtheinternalprogram @sprint-25-US-295138 @hitesh
+  @279305 @279332 @VerifyPOasstep2approvercanseeundobuttonafterapprovedtheinternalprogram @sprint-25-US-295138 @hitesh
   Scenario: Verify PO as step 2 approver can see undo button after approved the internal program
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -171,7 +171,11 @@ Feature: Validate all scenarios for program
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Reject | Forward | Send back |
     And I navigate to "History" sub tab
-    And I see "Pending" against "Step : Re-approval (Pending for first approval)" in approval history
+    Then I softly see column "Date" inside row "1" at position "1" contains text "Step : Re-approval (Pending for first approval)"
+    Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
+    Then I softly see column "Date" inside row "1" at position "1" contains text "Step : Re-approval (Pending for first approval)"
+    And I see "{SavedValue:PO Username}" against "Pending" in approval history
+    And I see "{SavedValue:PO Username}" against "Step : Re-approval (Pending for first approval)" in approval history
     Then I softly see value "Internal Program - submit for approval.pdf" for title "File Name" inside table "---program:-:snapshotHistoryTableId---"
 
   @279308 @VerifyFDasstep3approvercanseeundobuttonafterapprovedtheinternalprogram @sprint-25-US-295138 @hitesh
