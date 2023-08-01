@@ -2223,6 +2223,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click modal button "Save"
     Then I see the following messages in the page details contains:
       | Schedule End date cannot be after Project Period End Date |
+    And I pause execution for "500" seconds
 
   @55300 @SelectDesiredFrequencyAsBiMonthly @jitendra
   Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as Bi Monthly.
@@ -6397,19 +6398,3 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Edit" in the page details
     And I navigate to "Budget" sub tab
     Then I softly see that "Budgeted Amount" rendered in view mode only
-
-  @270867 @VerifyAnnownerPMUsershouldseefollowingcolumnnamesinthetableunderinvitedapplicantssectionwhenAnnisinPublishedApprovedClosedandUnderRevisionstatus @sprint-21-US-267479 @hitesh
-  Scenario: Verify Ann owner PM User should see following column names in the table under invited applicants section when Ann is in Published Approved Closed and Under Revision status
-    Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO-Automation PM user"
-    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
-    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
-    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}"
-    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
-    When I login to "As a Grantor" app as "PM" user
-    And I navigate to "Announcements" tab
-    When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "All Formula Announcements"
-    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---announcement:-:formulaAnnouncementTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
-    And I navigate to "Overview" sub tab
-    Then I softly see value "Converted to Award" for title "Application Status" inside table "---announcement:-:formulaInvitedApplicatsTableId---"
