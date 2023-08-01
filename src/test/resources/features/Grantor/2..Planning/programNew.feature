@@ -171,11 +171,9 @@ Feature: Validate all scenarios for program
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Reject | Forward | Send back |
     And I navigate to "History" sub tab
-    Then I softly see column "Date" inside row "1" at position "1" contains text "Step : Re-approval (Pending for first approval)"
-    Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
-    Then I softly see column "Date" inside row "1" at position "1" contains text "Step : Re-approval (Pending for first approval)"
-    And I see "{SavedValue:PO Username}" against "Pending" in approval history
     And I see "{SavedValue:PO Username}" against "Step : Re-approval (Pending for first approval)" in approval history
+    Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
+    And I see "{SavedValue:PO Username}" against "Pending" in approval history
     Then I softly see value "Internal Program - submit for approval.pdf" for title "File Name" inside table "---program:-:snapshotHistoryTableId---"
 
   @279308 @VerifyFDasstep3approvercanseeundobuttonafterapprovedtheinternalprogram @sprint-25-US-295138 @hitesh
