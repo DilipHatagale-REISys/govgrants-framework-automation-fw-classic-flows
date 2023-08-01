@@ -119,7 +119,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Associate" after selection of "{SavedValue:ADMIN Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:ADMIN Username}" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name             | Announcement |
@@ -216,9 +216,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly see the following messages in the page details :
       | Record removed successfully. |
 
-  @219619 @219614 @INDSPIUserVerifyforDirectedannouncementinbudgetsummarysectionSubawardfloor&Subawardcellingfieldshouldbedisplay @sprint-11-US-204998 @komal @Allocation
-  Scenario Outline: IND SPI User for Directed announcement in budget summary section Subaward floor & Subaward celling field should be display.
-    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
+  @219619 @INDUserVerifyforDirectedannouncementinbudgetsummarysectionSubawardfloor&Subawardcellingfieldshouldbedisplay @sprint-11-US-204998 @komal @Allocation
+  Scenario Outline: IND User for Directed announcement in budget summary section Subaward floor & Subaward celling field should be display.
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "INVITED_APPLICANT_IND_ORG"
     When I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "<User>" user
     And I navigate to "Opportunities" tab
@@ -246,11 +246,10 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly see field "Subaward Ceiling" inside page block
     Examples:
       | User |
-      | SPI3 |
       | IND  |
 
-  @226489 @219617 @219612 @INDSPASPIUserVerifyforCompetitiveannouncementinbudgetsummarysectionSubawardfloor&Subawardcellingfieldshouldbedisplay @sprint-11-US-204998 @komal @Allocation
-  Scenario Outline: IND SPA SPI User for Competitive announcement in budget summary section Subaward floor & Subaward celling field should be display.
+  @219614 @SPIUserVerifyforDirectedannouncementinbudgetsummarysectionSubawardfloor&Subawardcellingfieldshouldbedisplay @sprint-11-US-204998 @komal @Allocation
+  Scenario Outline: SPI User for Directed announcement in budget summary section Subaward floor & Subaward celling field should be display.
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     When I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "<User>" user
@@ -279,9 +278,72 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly see field "Subaward Ceiling" inside page block
     Examples:
       | User |
-      | IND  |
+      | SPI3 |
+
+  @219617 @219612 @SPASPIUserVerifyforCompetitiveannouncementinbudgetsummarysectionSubawardfloor&Subawardcellingfieldshouldbedisplay @sprint-11-US-204998 @komal @Allocation
+  Scenario Outline: SPA SPI User for Competitive announcement in budget summary section Subaward floor & Subaward celling field should be display.
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
+    When I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "<User>" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    And I navigate to "Financials" sub tab
+    Then I softly can see page block "Budget Summary"
+    Then I softly cannot see page block "Financial Details"
+    Then I softly see field "Subaward Floor" inside page block
+    Then I softly see field "Subaward Ceiling" inside page block
+    When I click on "Qualify" in the page details
+    And I navigate to "Financials" sub tab
+    Then I softly can see page block "Budget Summary"
+    Then I softly cannot see page block "Financial Details"
+    Then I softly see field "Subaward Floor" inside page block
+    Then I softly see field "Subaward Ceiling" inside page block
+    When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationIntake:-:qualifiedTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---applicationIntake:-:qualifiedTableId---" without waiting for record
+    And I navigate to "Financials" sub tab
+    Then I softly can see page block "Budget Summary"
+    Then I softly cannot see page block "Financial Details"
+    Then I softly see field "Subaward Floor" inside page block
+    Then I softly see field "Subaward Ceiling" inside page block
+    Examples:
+      | User |
       | SPA  |
       | SPI3 |
+
+  @226489 @INDSPASPIUserVerifyforCompetitiveannouncementinbudgetsummarysectionSubawardfloor&Subawardcellingfieldshouldbedisplay @sprint-11-US-204998 @komal @Allocation
+  Scenario Outline: IND User for Competitive announcement in budget summary section Subaward floor & Subaward celling field should be display.
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "INVITED_APPLICANT_IND_ORG"
+    When I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "<User>" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    And I navigate to "Financials" sub tab
+    Then I softly can see page block "Budget Summary"
+    Then I softly cannot see page block "Financial Details"
+    Then I softly see field "Subaward Floor" inside page block
+    Then I softly see field "Subaward Ceiling" inside page block
+    When I click on "Qualify" in the page details
+    And I navigate to "Financials" sub tab
+    Then I softly can see page block "Budget Summary"
+    Then I softly cannot see page block "Financial Details"
+    Then I softly see field "Subaward Floor" inside page block
+    Then I softly see field "Subaward Ceiling" inside page block
+    When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationIntake:-:qualifiedTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---applicationIntake:-:qualifiedTableId---" without waiting for record
+    And I navigate to "Financials" sub tab
+    Then I softly can see page block "Budget Summary"
+    Then I softly cannot see page block "Financial Details"
+    Then I softly see field "Subaward Floor" inside page block
+    Then I softly see field "Subaward Ceiling" inside page block
+    Examples:
+      | User |
+      | IND  |
 
   @238301 @237744 @VerifyvalidationmessageisdisplayedtoPMuserwhenenteredrecommendedbudgetisGreaterOrlessthantheBudgetedAmountonFDMrecordwhichiscreatedfromDirectedannouncement @sprint-14-US-224179 @komal @Allocation
   Scenario Outline: Verify validation message is displayed to PM user when entered recommended budget is greater than the Budgeted Amount on FDM record which is created from Directed announcement
@@ -1234,7 +1296,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
@@ -1584,7 +1646,6 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Funding Decision Memo" in the page details
     Then I softly see field "Status" as "Created"
-
     And I click on "Edit" in the page details
     When I enter values into fields
       | Value                       | Field                 |
