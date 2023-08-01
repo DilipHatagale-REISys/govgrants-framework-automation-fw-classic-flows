@@ -15264,7 +15264,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click "{SavedValue:GrantId}" lookup link
     When I navigate to "Budget" sub tab
     #271828
-    Then I softly see field "Cumulative Obligation" as "$1,600.00"
+    Then I softly see field "Cumulative Obligation" as "$600.00"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationGrant"
     Then I softly see value "{SavedValue:CumulativeObligationActAwd}" is "Equals to" the value "{SavedValue:CumulativeObligationGrant}"
     #271832
@@ -15279,7 +15279,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     #271828
     And I navigate to "Budget" sub tab
-    Then I softly see field "Cumulative Obligation" as "$1,600.00"
+    Then I softly see field "Cumulative Obligation" as "$600.00"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationGrantSr"
     Then I softly see value "{SavedValue:CumulativeObligationActAwd}" is "Equals to" the value "{SavedValue:CumulativeObligationGrantSr}"
     #271832
