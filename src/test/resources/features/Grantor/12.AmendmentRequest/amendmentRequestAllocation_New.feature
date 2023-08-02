@@ -15408,7 +15408,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Award Amount |
       | $600.00      |
 
-  @vai @272171 @272172 @272167 @272168 @272169 @272215 @272216 @272217 @272225 @272233 @272235 @272236 @272238 @272219 @272223 @ValidatePOusercanseeNewObligationcolumnacrosseachFAunderBudgetSummarybyFAsectiononversion2AwardisinPendingActivationstatepostAR&valueshouldsee$0ifFAYES @Sprint-22-US-270855 @vaibhav @Allocation @TBE
+  @272171 @272172 @272167 @272168 @272169 @272215 @272216 @272217 @272225 @272233 @272235 @272236 @272238 @272219 @272223 @ValidatePOusercanseeNewObligationcolumnacrosseachFAunderBudgetSummarybyFAsectiononversion2AwardisinPendingActivationstatepostAR&valueshouldsee$0ifFAYES @Sprint-22-US-270855 @vaibhav @Allocation @TBE
   Scenario: Validate PO user can see New Obligation column across each FA under Budget Summary by FA section on version 2 Award is in Pending Activation state post AR & value should see $0 if FA YES
     Given I activated standalone subaward "Automation Runtime Award" with properties "SECOND_BUD_CAT_SECOND_FOCUS_BUILD_UP_IND_ORG-Automation PO user" of type "Formula_By_Applicant"
     When I am on "SUBPORTAL" portal
@@ -15496,6 +15496,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
+    And I wait for "2" seconds
     Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     And I click on parallel menu button in flex table title "Subaward budget"
@@ -15527,7 +15528,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #272171
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "$0.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
-    Then I softly see value "$0.00" for title "New Obligation" against the value "Grand Total" inside table "---focusarea:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "$0.00" for title "New Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     #272172
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
