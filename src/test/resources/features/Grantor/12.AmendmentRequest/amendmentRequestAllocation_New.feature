@@ -15250,7 +15250,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I save the value from row "3" for column name "Cumulative Obligation" as "cumulativeObligationPaySumm33" from flex table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
     Then I softly see value "$300.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
     Then I softly see value "$300.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
-    Then I softly see value "$600.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$600.00" for title "Cumulative Obligation" against the value "Total" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
     #271795
     When I navigate to "Budget" sub tab
     Then I softly see field "New Obligation" as "($400.00)"
@@ -15321,7 +15321,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I save the value from row "3" for column name "Cumulative Obligation" as "cumulativeObligationPaySummGrant33" from flex table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
     Then I softly see value "$300.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
     Then I softly see value "$300.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
-    Then I softly see value "$600.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
+    Then I softly see value "$600.00" for title "Cumulative Obligation" against the value "Total" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
     Then I softly see value "{SavedValue:cumulativeObligationPaySumm13}" is "Equals to" the value "{SavedValue:cumulativeObligationPaySummGrant13}"
     Then I softly see value "{SavedValue:cumulativeObligationPaySumm23}" is "Equals to" the value "{SavedValue:cumulativeObligationPaySummGrant23}"
     Then I softly see value "{SavedValue:cumulativeObligationPaySumm33}" is "Equals to" the value "{SavedValue:cumulativeObligationPaySummGrant33}"
@@ -15357,7 +15357,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I save the value from row "3" for column name "Cumulative Obligation" as "cumulativeObligationPaySummGrantSr33" from flex table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
     Then I softly see value "$300.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
     Then I softly see value "$300.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
-    Then I softly see value "$600.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
+    Then I softly see value "$600.00" for title "Cumulative Obligation" against the value "Total" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
     Then I softly see value "{SavedValue:cumulativeObligationPaySumm13}" is "Equals to" the value "{SavedValue:cumulativeObligationPaySummGrantSr13}"
     Then I softly see value "{SavedValue:cumulativeObligationPaySumm23}" is "Equals to" the value "{SavedValue:cumulativeObligationPaySummGrantSr23}"
     Then I softly see value "{SavedValue:cumulativeObligationPaySumm33}" is "Equals to" the value "{SavedValue:cumulativeObligationPaySummGrantSr33}"
@@ -15606,6 +15606,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Grant ID" as "GrantId"
     And I click "{SavedValue:GrantId}" lookup link
     Then I softly see field "Status" as "Active"
+    When I navigate to "Actuals" sub tab
     #272238
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationActAwdPaySummGrant"
