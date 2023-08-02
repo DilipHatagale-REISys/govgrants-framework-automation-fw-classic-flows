@@ -15446,12 +15446,15 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Title        | Narrative     | Award Amount |
       | Construction | The Narrative | 50          |
     When I close "Add Line Items" modal by clicking the top right x button
+    And I wait for "3" seconds
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
+    And I wait for "3" seconds
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
       | Title        | Award Amount |
       | Construction | 450          |
     When I close "Add Line Items" modal by clicking the top right x button
+    And I wait for "3" seconds
     When I click on "Add Line Items" icon for "Indirect costs" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Award Amount |
@@ -15500,7 +15503,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
-    And I wait for "2" seconds
+    And I wait for "5" seconds
     Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
     And I click on parallel menu button in flex table title "Subaward budget"
