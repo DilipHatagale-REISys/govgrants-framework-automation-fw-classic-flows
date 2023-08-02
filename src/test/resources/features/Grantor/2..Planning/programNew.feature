@@ -704,11 +704,11 @@ Feature: Validate all scenarios for program
     When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-      | Name                      | Program |
-      | {SavedValue:PO Username} | Step 1  |
+      | Name                         | Program |
+      | {SavedValue:ADMIN Username}  | Step 1  |
     And I pause execution for "5" seconds
     And I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
@@ -791,7 +791,8 @@ Feature: Validate all scenarios for program
     When I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
-    And I click on "Undo" in the page details without processing
+    And I click on "Undo" in the page details
+    #And I click on "Undo" in the page details without processing
     And I "Send Back" in the approval decision
     Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
