@@ -959,9 +959,6 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Name                       | Program |
-      | {SavedValue:EXE Username}  | Step 1  |
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Name                        | Program |
       | {SavedValue:EXE1 Username}  | Step 2  |
     And I pause execution for "5" seconds
@@ -1023,27 +1020,26 @@ Feature: Validate all scenarios for program
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Home" tab
-    Then I see "Ownership" inside "Reassign" is displayed
-    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
-    And I select value "Automation PM" into field "s2id_autogen1"
-    And I select value "Automation PM1" into field "s2id_autogen3"
-    And I Click on "Start" icon for "Automation PM" without tableid
-    And I pause execution for "3" seconds
-    And I Click on "Reassign Records" icon for "Program" without tableid
-    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:adminOwnerReplaceTableId---" panel
-    When I check "{SavedValue:ProgramEGMSID}" boxes in flex table with id "---program:-:adminOwnerReplaceTableId---"
-    When I click table top right button "Transfer Ownership" in flex table with id "---program:-:adminOwnerReplaceTableId---"
-    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
-    And I click "Yes" on modal confirmation box
-    And I pause execution for "30" seconds
-    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:adminTargetOwnerReplaceTableId" panel
-    Then I see value "{SavedValue:ProgramEGMSID}" for title "Program ID" inside table "---program:-:adminTargetOwnerReplaceTableId---"
-    And I save the value from row "1" for column name "Owner" as "OwnerName1" from flex table "---program:-:adminTargetOwnerReplaceTableId---"
-    Then I see value "{SavedValue:OwnerName1}" for title "Owner" inside table "---program:-:adminTargetOwnerReplaceTableId---"
-    And I pause execution for "2" seconds
-    And I close the tab
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
+    When I reassign task to "Automation PO1"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
+    When I check "{SavedValue:ProgramEGMSID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    Then I can see top right button "Undo" in page detail
+    When I navigate to "Responsibilities" sub tab
+    Then I softly see value "{SavedValue:PO1 Username}" for title "Name" inside table "---program:-:approverTableId---"
+    And I navigate to "History" sub tab
+    Then I softly see value "Approved" for title "New Value" inside table "---program:-:historyTableId---"
+    Then I softly see value "Submitted for Approval" for title "Old Value" inside table "---program:-:historyTableId---"
+    Then I softly see value "Automation PO1" for title "Changed By" inside table "---program:-:historyTableId---"
 
   @279467 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-295138 @hitesh
   Scenario: Verify notification email should generate to new owner of program after click on Undo button
