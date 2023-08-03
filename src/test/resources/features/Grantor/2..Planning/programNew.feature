@@ -877,7 +877,7 @@ Feature: Validate all scenarios for program
     Then I softly see field "Status" as "Being Amended"
     Then I cannot see top right button "Undo" in page detail
 
-  @279435 @Verifystep2approvercansenttoownertheprogramafterclickonUndobuttonandupdatetheapproveronprogramsoUndowilldisplaytoupdatedapproverafterapprovedtheprogram @sprint-25-US-295138 @hitesh @Undo
+  @hitesh121 @279435 @Verifystep2approvercansenttoownertheprogramafterclickonUndobuttonandupdatetheapproveronprogramsoUndowilldisplaytoupdatedapproverafterapprovedtheprogram @sprint-25-US-295138 @hitesh @Undo
   Scenario:Verify step 2 approver can sent to owner the program after click on Undo button and update the approver on program so Undo will display to updated approver after approved the program
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -1050,7 +1050,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Submitted for Approval" for title "Old Value" inside table "---program:-:historyTableId---"
     Then I softly see value "Automation PO1" for title "Changed By" inside table "---program:-:historyTableId---"
 
-  @279467 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-295138 @hitesh
+  @hitesh121 @279467 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-295138 @hitesh
   Scenario: Verify notification email should generate to new owner of program after click on Undo button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -1112,7 +1112,6 @@ Feature: Validate all scenarios for program
     When I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
     And I click on "Undo" in the page details
-    And I click on "Submit For Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     Then I refresh the page
@@ -1149,7 +1148,7 @@ Feature: Validate all scenarios for program
   """
   Hello,
 
- The record(s) below have been reassigned from [Automation EXE] to [Automation EXE1] successfully. Please find the details below:
+ The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
 
   EGMS ID Assigned By Module Name
   {SavedValue:ProgramEGMSID} Automation ADMIN Site Visit /Desk Review
