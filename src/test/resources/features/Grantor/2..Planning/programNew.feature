@@ -298,107 +298,103 @@ Feature: Validate all scenarios for program
     When I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
-    And I click on "Undo" in the page details without processing
+    And I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
   """
-  Notification: Owner Reassignment Report
+  Notification: Request to Approve {SavedValue:ProgramEGMSID}
   """
     Then I see the mail text is as follows :
   """
   Hello,
 
- The record(s) below have been reassigned from [Automation EXE] to [Automation EXE1] successfully. Please find the details below:
+   This email is to notify you that Program #{SavedValue:ProgramEGMSID} has been created and is waiting for your approval.
 
-  EGMS ID Assigned By Module Name
-  {SavedValue:SitevVisitId} Automation ADMIN Site Visit /Desk Review
+    Program Details:
+    Program ID: {SavedValue:ProgramEGMSID}
+    Program Name: {SavedValue:Automation Runtime Internal Program}
 
-  Because these records have been reassigned, the original reviewer may have only view access to the record.
+    Log in to EGMS and click here to start reviewing the Program.
 
-  Log in to EGMS and click on EGMS IDs to access the assigned record.
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-  Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
-
-  Thank you,
-  The EGMS Team
+    Thank you.
+    The EGMS Team
   """
     And I checkout to yopmail with mailid "automationpo@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
   """
-  Notification: Owner Reassignment Report
+  Notification: Request to Approve {SavedValue:ProgramEGMSID}
   """
     Then I see the mail text is as follows :
   """
   Hello,
 
- The record(s) below have been reassigned from [Automation EXE] to [Automation EXE1] successfully. Please find the details below:
+   This email is to notify you that Program #{SavedValue:ProgramEGMSID} has been created and is waiting for your approval.
 
-  EGMS ID Assigned By Module Name
-  {SavedValue:SitevVisitId} Automation ADMIN Site Visit /Desk Review
+    Program Details:
+    Program ID: {SavedValue:ProgramEGMSID}
+    Program Name: {SavedValue:Automation Runtime Internal Program}
 
-  Because these records have been reassigned, the original reviewer may have only view access to the record.
+    Log in to EGMS and click here to start reviewing the Program.
 
-  Log in to EGMS and click on EGMS IDs to access the assigned record.
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-  Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
-
-  Thank you,
-  The EGMS Team
+    Thank you.
+    The EGMS Team
   """
     And I checkout to yopmail with mailid "fo.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
   """
-  Notification: Owner Reassignment Report
+   Notification: Request to Approve {SavedValue:ProgramEGMSID}
   """
     Then I see the mail text is as follows :
   """
   Hello,
 
- The record(s) below have been reassigned from [Automation EXE] to [Automation EXE1] successfully. Please find the details below:
+   This email is to notify you that Program #{SavedValue:ProgramEGMSID} has been created and is waiting for your approval.
 
-  EGMS ID Assigned By Module Name
-  {SavedValue:SitevVisitId} Automation ADMIN Site Visit /Desk Review
+    Program Details:
+    Program ID: {SavedValue:ProgramEGMSID}
+    Program Name: {SavedValue:Automation Runtime Internal Program}
 
-  Because these records have been reassigned, the original reviewer may have only view access to the record.
+    Log in to EGMS and click here to start reviewing the Program.
 
-  Log in to EGMS and click on EGMS IDs to access the assigned record.
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-  Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
-
-  Thank you,
-  The EGMS Team
+    Thank you.
+    The EGMS Team
   """
     And I checkout to yopmail with mailid "automationfd@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
   """
-  Notification: Owner Reassignment Report
+  Notification: Request to Approve {SavedValue:ProgramEGMSID}
   """
     Then I see the mail text is as follows :
   """
   Hello,
 
- The record(s) below have been reassigned from [Automation EXE] to [Automation EXE1] successfully. Please find the details below:
+   This email is to notify you that Program #{SavedValue:ProgramEGMSID} has been created and is waiting for your approval.
 
-  EGMS ID Assigned By Module Name
-  {SavedValue:SitevVisitId} Automation ADMIN Site Visit /Desk Review
+    Program Details:
+    Program ID: {SavedValue:ProgramEGMSID}
+    Program Name: {SavedValue:Automation Runtime Internal Program}
 
-  Because these records have been reassigned, the original reviewer may have only view access to the record.
+    Log in to EGMS and click here to start reviewing the Program.
 
-  Log in to EGMS and click on EGMS IDs to access the assigned record.
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-  Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
-
-  Thank you,
-  The EGMS Team
+    Thank you.
+    The EGMS Team
   """
 
   @279345 @279359 @VerifyAdminusercanseeUndoandActivatebuttonafterapprovedtheprogramifprogramownerandapproverissame @sprint-25-US-295138 @hitesh @Undo
@@ -1344,7 +1340,7 @@ Feature: Validate all scenarios for program
     And I navigate to "Planning" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
-    And I click on "" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     And I checkout to yopmail with mailid "automationpo@yopmail.com"
     Then I refresh the page
@@ -1382,6 +1378,95 @@ Feature: Validate all scenarios for program
     And I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:completedTaskTableId---" panel
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:completedTaskTableId---" without waiting for record
     Then I softly see value "Completed" for title "Status" against the value "{SavedValue:ProgramEGMSID}" inside table "---program:-:completedTaskTableId---"
+
+  @hitesh121 @279308 @VerifyFDasstep3approvercanseeundobuttonafterapprovedtheinternalprogram @sprint-25-US-295138 @hitesh @Undo
+  Scenario: Verify FD as step 3 approver can see undo button after approved the internal program
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    Then I cannot see top right button "Undo" in page detail
+    When I navigate to "Overview" sub tab
+    When I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:PM Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
+    When I navigate to "Setup" sub tab
+    When I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
+    When I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
+    When I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PO Username} | Step 2  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:FO Username} | Step 3  |
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    Then I can see top right button "Undo" in page detail
+    And I click on "Undo" in the page details
+    And I "Send Back" in the approval decision
+    Then I softly see field "Status" as "Created"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
+      | Name                        | Program |
+      | {SavedValue:PO Username}    | NA      |
+    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
+      | Name                        | Program |
+      | {SavedValue:FO Username}    | NA      |
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    And I click on "Undo" in the page details
+    When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:completedTaskTableId---" panel
+    Then I softly see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:completedTaskTableId---"
 
 
 
