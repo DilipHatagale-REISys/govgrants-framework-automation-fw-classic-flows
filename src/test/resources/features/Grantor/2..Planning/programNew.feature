@@ -716,7 +716,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Internal Programs - All"
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
-    Then I softly see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:pendingTaskTableId---"
+    Then I softly see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:programsTableId---"
 
   @279468 @VerifyAuditorprofileusershouldnotseeUndobuttononprogram @sprint-25-US-295138 @hitesh @Undo
   Scenario:  Verify Auditor profile user should not see Undo button on program
