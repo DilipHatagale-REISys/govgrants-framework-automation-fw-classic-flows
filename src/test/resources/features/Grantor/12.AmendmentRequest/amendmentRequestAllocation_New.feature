@@ -15915,7 +15915,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
     And I refresh the page
-    Then I softly see field "New Obligation" as "$2,000.00"
+    Then I softly see field "New Obligation" as "$2,000.50"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
@@ -15923,7 +15923,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     When I navigate to "Overview" sub tab
-    Then I softly see field "New Obligation" as "$2,000.00"
+    Then I softly see field "New Obligation" as "$2,000.50"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -15952,7 +15952,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Edit" in the page details
     When I enter values into fields
       | Value | Field                     |
-      | 3000  | fieldRevisedCommitment__c |
+      | 4000  | fieldRevisedCommitment__c |
     And I click on "Save" in the page details
     Then I softly see field "New Obligation" as "$2,000.50"
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :

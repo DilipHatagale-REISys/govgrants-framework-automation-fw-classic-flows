@@ -3754,7 +3754,6 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
-    And I wait for "2" seconds
     Then I softly see the following messages in the page details contains:
       | The Budgeted amount must be equal to the Allocation amount for the following Application IDs. Please send these applications back for revision. |
     When I click on "Request Negotiation" icon for "<Application Name>" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
@@ -3790,7 +3789,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Negotiation Request Status" as "Complete" in "Negotiation Request Details" pageblock
     When I click on "Back to Current Review Step" in the page details
-    Then I softly see value "Resubmitted" for title "Decision Status" against the value "{SavedValue:AppEGMSID}" inside table "---applicationReview:-:reSubmittedAppTableId---"
+    Then I softly see value "Resubmitted" for title "Decision Status" against the value "<Application Name>" inside table "---applicationReview:-:reSubmittedAppTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     And I click on "Next Review Step" in the page details
