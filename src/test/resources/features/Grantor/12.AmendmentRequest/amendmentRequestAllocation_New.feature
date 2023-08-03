@@ -3532,7 +3532,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Construction | The narrative | 5000         |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
-    Then I click on "Add Line Items" icon for "Indirect Charges" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    Then I click on "Add Line Items" icon for "Indirect costs" inside flex table with id "---amendment:-:budgetChangeTableId---"
     When I edit the following rows inline in flex table with id "---amendment:-:AddLineItemForBudgetChangeTableId---" by clicking "Edit" :
       | Title          | Narrative     | Award Amount |
       | Indirect costs | The narrative | 500          |
@@ -15962,7 +15962,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     Then I softly see field "New Obligation" as "$2,000.50"
 
-  @319951 @319929 @ValidateCompAnnINDusercanseevalidationonsavebuttonwhenbudgetedamountgobelowremainingbudgetwhilechangingtheCFamountonBudgetgridonCarryForwardAR @Sprint-9-US-320518 @vaibhav @Allocation
+  @319951 @ValidateCompAnnINDusercanseevalidationonsavebuttonwhenbudgetedamountgobelowremainingbudgetwhilechangingtheCFamountonBudgetgridonCarryForwardAR @Sprint-9-US-320518 @vaibhav @Allocation
   Scenario: Validate Comp Ann IND user can see validation on save button when budgeted amount go below remaining budget while changing the CF amount on Budget grid on Carry Forward AR
     And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_BUD_CAT_SECOND_FOCUS_BUILD_UP_IND_ORG" of type "Competitive"
     Given I login to "As a Grantor" app as "PM" user
@@ -16004,13 +16004,17 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction    | 1000                 | 100        | 0              |
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
+      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
+      | Extra Salary | The narrative | 1000         | 100        | 0              |
+    When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
-    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
-      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
-      | Construction  | 1000                 | 100        | 0              |
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
+      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
+      | Extra Salary | The narrative | 1000         | 100        | 0              |
+    When I close "Add Line Items" modal by clicking the top right x button
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
