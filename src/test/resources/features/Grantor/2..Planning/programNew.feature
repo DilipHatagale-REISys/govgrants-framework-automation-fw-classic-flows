@@ -961,8 +961,14 @@ Feature: Validate all scenarios for program
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Name                        | Program |
       | {SavedValue:PO Username}    | NA      |
+    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
+      | Name                        | Program |
+      | {SavedValue:FO Username}    | NA      |
+    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
+      | Name                        | Program |
+      | {SavedValue:FD Username}    | NA      |
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-      | Name                     | Program |
+      | Name                       | Program |
       | {SavedValue:EXE1 Username} | Step 2  |
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
