@@ -2223,7 +2223,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click modal button "Save"
     Then I see the following messages in the page details contains:
       | Schedule End date cannot be after Project Period End Date |
-    And I pause execution for "500" seconds
 
   @55300 @SelectDesiredFrequencyAsBiMonthly @jitendra
   Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as Bi Monthly.
