@@ -960,16 +960,16 @@ Feature: Validate all scenarios for program
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Name                      | Program |
-      | {SavedValue:PO Username}  | Step 1  |
+      | {SavedValue:FD Username}  | Step 1  |
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Name                      | Program |
-      | {SavedValue:EXE Username} | Step 2  |
+      | {SavedValue:PO Username} | Step 2  |
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Name                     | Program |
       | {SavedValue:FO Username} | Step 3  |
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Name                     | Program |
-      | {SavedValue:FD Username} | Step 4  |
+      | {SavedValue:EXE Username} | Step 4  |
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
