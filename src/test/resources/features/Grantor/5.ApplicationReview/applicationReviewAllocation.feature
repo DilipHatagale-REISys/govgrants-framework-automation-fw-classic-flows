@@ -3612,7 +3612,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @274131 @ValidateFormulaPMusercandonegotiationonManagementreviewsteppromoteApptonextstepwhenAllocationamountisnotequaltobudgetedamountFAYESAllocationtypeByApplicantFA @Sprint-23-US-273843 @vaibhav @Allocation
+  @274131 @ValidateFormulaPMusercandonegotiationonManagementreviewsteppromoteApptonextstepwhenAllocationamountisnotequaltobudgetedamountFAYESAllocationtypeByApplicantFA @Sprint-23-US-273843 @vaibhav @Allocation @TBE
   Scenario Outline: Validate Formula PM user can do negotiation on Management review step & promote App to next step when Allocation amount is not equal to budgeted amount FA YES Allocation type By Applicant FA
     And I published "Formula" type announcement having name "Automation Runtime Announcement Application Review" and properties "BY_APPLICANT_FOCUS_AREA_RISK_ASSESSMENT_NO"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
