@@ -1329,7 +1329,7 @@ Feature: Validate all scenarios for program
     And I navigate to "Planning" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
-    Then I softly see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:programsTableId---"
+    Then I softly see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:pendingTaskTableId---"
     And I navigate to "Home" tab
     When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
     When I reassign task to "Automation FO1"
@@ -1356,7 +1356,7 @@ Feature: Validate all scenarios for program
      This email is to notify you that Program #{SavedValue:ProgramEGMSID} has been created and is waiting for your approval.
 
      Program Details:
-     Program ID: PG-TAO modified-2124
+     Program ID: {SavedValue:ProgramEGMSID}
      Program Name: {SavedValue:Automation Runtime Internal Program}
 
      Log in to EGMS and click here to start reviewing the Program.
@@ -1532,7 +1532,7 @@ Feature: Validate all scenarios for program
     Then I can see top right button "Undo" in page detail
     And I click on "Undo" in the page details
     And I navigate to "History" sub tab
-    And I see "{SavedValue:FO Username}" against "Step 3" in approval history
+    And I see "{SavedValue:FO Username}" against "Re-approval (Pending for first approval)" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
     Then I softly see snapshot with name containing "Internal Program - submit for approval.pdf" as name
     And I click on hyperlink containing value "Internal Program - submit for approval.pdf"
@@ -1594,7 +1594,7 @@ Feature: Validate all scenarios for program
     And I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     And I navigate to "History" sub tab
-    And I see "{SavedValue:PO Username}" against "Step 2" in approval history
+    And I see "{SavedValue:PO Username}" against "Re-approval (Pending for first approval)" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
     Then I softly see snapshot with name containing "Internal Program - submit for approval.pdf" as name
 
