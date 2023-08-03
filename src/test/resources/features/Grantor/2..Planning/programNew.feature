@@ -959,17 +959,11 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Name                      | Program |
-      | {SavedValue:FD Username}  | Step 1  |
+      | Name                       | Program |
+      | {SavedValue:EXE Username}  | Step 1  |
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Name                      | Program |
-      | {SavedValue:PO Username} | Step 2  |
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Name                     | Program |
-      | {SavedValue:FO Username} | Step 3  |
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Name                     | Program |
-      | {SavedValue:EXE Username} | Step 4  |
+      | Name                        | Program |
+      | {SavedValue:EXE1 Username}  | Step 2  |
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -979,6 +973,13 @@ Feature: Validate all scenarios for program
     And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    Then I can see top right button "Undo" in page detail
 
   @279457 @VerifyPOapprovershouldseeUndobuttonafterapprovaltaskownershipreassigntohim @sprint-25-US-295138 @hitesh
   Scenario:Verify PO approver should see Undo button after approval task ownership reassign to him
