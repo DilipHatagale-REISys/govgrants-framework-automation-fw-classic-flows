@@ -303,7 +303,11 @@ Feature: Validate all scenarios for program
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
-    Then I do not see the mail text is as follows :
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}.
+      """
+    Then I see the mail text is as follows :
   """
   Hello,
 
@@ -323,7 +327,11 @@ Feature: Validate all scenarios for program
     And I checkout to yopmail with mailid "automationpo@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
-    Then I do not see the mail text is as follows :
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}.
+      """
+    Then I see the mail text is as follows :
   """
   Hello,
 
@@ -367,7 +375,11 @@ Feature: Validate all scenarios for program
     And I checkout to yopmail with mailid "automationfd@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
-    Then I do not see the mail text is as follows :
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}.
+      """
+    Then I see the mail text is as follows :
   """
   Hello,
 
@@ -1602,3 +1614,78 @@ Feature: Validate all scenarios for program
     And I see "{SavedValue:PO Username}" against "Re-approval (Pending for first approval)" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
     Then I softly see snapshot with name containing "Internal Program - submit for approval.pdf" as name
+
+  @279503 @VerifyEXEasstep1approvercanseeundobuttonafterapprovedtheExternalprogram @sprint-3-US-291914 @hitesh @Undo
+  Scenario:  Verify EXE as step 1 approver can see undo button after approved the External program
+    When I login to "As a Grantor" app as "PM1" user
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click on top right button "New" in flex table with id "---program:-:ExternalNGOProgramTableId---"
+    When I enter "NGOCreation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    And I enter "NGOEdit" values from "Program_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    When I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
+    When I click "Associate" after selection of "NGO Contact" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 1  |
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    Then I can see top right button "Undo" in page detail
+
+  @279503 @VerifyEXEasstep1approvercanseeundobuttonafterapprovedtheExternalprogram @sprint-3-US-291914 @hitesh @Undo
+  Scenario:  Verify EXE as step 1 approver can see undo button after approved the External program
+    When I login to "As a Grantor" app as "PM1" user
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click on top right button "New" in flex table with id "---program:-:ExternalNGOProgramTableId---"
+    When I enter "NGOCreation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    And I enter "NGOEdit" values from "Program_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    When I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
+    When I click "Associate" after selection of "NGO Contact" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PO Username} | Step 2  |
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    Then I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    Then I can see top right button "Undo" in page detail
