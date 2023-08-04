@@ -226,7 +226,7 @@ Feature: Validate all scenarios for program
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
 
-  @hitesh121 @279314 @279321 @279415 @VerifyFOasstep4approvercanseeundobuttonafterapprovedtheinternalprogram @sprint-25-US-295138 @hitesh @Undo
+  @279314 @279321 @279415 @VerifyFOasstep4approvercanseeundobuttonafterapprovedtheinternalprogram @sprint-25-US-295138 @hitesh @Undo @wip @buglogged-356843
   Scenario:Verify FO as step 4 approver can see undo button after approved the internal program
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -1160,7 +1160,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Submitted for Approval" for title "Old Value" inside table "---program:-:historyTableId---"
     Then I softly see value "Automation PO1" for title "Changed By" inside table "---program:-:historyTableId---"
 
-  @hitesh121 @279467 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-295138 @hitesh
+  @279467 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-295138 @hitesh @wip @buglogged-356843
   Scenario: Verify notification email should generate to new owner of program after click on Undo button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -1602,5 +1602,3 @@ Feature: Validate all scenarios for program
     And I see "{SavedValue:PO Username}" against "Re-approval (Pending for first approval)" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
     Then I softly see snapshot with name containing "Internal Program - submit for approval.pdf" as name
-
-
