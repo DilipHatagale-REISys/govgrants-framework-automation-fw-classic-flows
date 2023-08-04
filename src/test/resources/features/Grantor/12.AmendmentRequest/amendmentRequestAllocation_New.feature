@@ -3458,6 +3458,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "Prior Award Amount" in flex table header "---amendment:-:grantorBudgetChangeTableId---"
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:grantorBudgetChangeTableId---" for table id "Next"
+    And I click on page navigation arrow "---amendment:-:grantorBudgetChangeTableId---" for table id "Next"
     Then I click on "Add Line Items" icon for "Indirect costs" inside flex table with id "---amendment:-:grantorBudgetChangeTableId---"
     Then I softly see "Award Amount" in flex table header "---amendment:-:grantorBudgetChangeTableId---"
     Then I softly see "Prior Award Amount" in flex table header "---amendment:-:grantorBudgetChangeTableId---"
@@ -15745,7 +15746,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     Then I softly see field "New Obligation" as "$2,000.50"
 
-  @319951 @ValidateCompAnnINDusercanseevalidationonsavebuttonwhenbudgetedamountgobelowremainingbudgetwhilechangingtheCFamountonBudgetgridonCarryForwardAR @Sprint-9-US-320518 @vaibhav @Allocation @TBE
+  @319951 @ValidateCompAnnINDusercanseevalidationonsavebuttonwhenbudgetedamountgobelowremainingbudgetwhilechangingtheCFamountonBudgetgridonCarryForwardAR @Sprint-9-US-320518 @vaibhav @Allocation
   Scenario: Validate Comp Ann IND user can see validation on save button when budgeted amount go below remaining budget while changing the CF amount on Budget grid on Carry Forward AR
     And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_BUD_CAT_SECOND_FOCUS_BUILD_UP_IND_ORG" of type "Competitive"
     Given I login to "As a Grantor" app as "PM" user
