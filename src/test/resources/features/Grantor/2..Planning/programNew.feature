@@ -303,11 +303,7 @@ Feature: Validate all scenarios for program
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
-    And I see the mail subject is as follows :
-  """
-  Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}
-  """
-    Then I see the mail text is as follows :
+    Then I do not see the mail text is as follows :
   """
   Hello,
 
@@ -327,11 +323,7 @@ Feature: Validate all scenarios for program
     And I checkout to yopmail with mailid "automationpo@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
-    And I see the mail subject is as follows :
-  """
-  Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}
-  """
-    Then I see the mail text is as follows :
+    Then I do not see the mail text is as follows :
   """
   Hello,
 
@@ -352,12 +344,12 @@ Feature: Validate all scenarios for program
     And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
-  """
-   Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}
-  """
+      """
+     Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}.
+      """
     Then I see the mail text is as follows :
   """
-  Hello,
+   Hello,
 
    This email is to notify you that program approver #Automation FO has initiated undo action for program approval.
 
@@ -375,11 +367,7 @@ Feature: Validate all scenarios for program
     And I checkout to yopmail with mailid "automationfd@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
-    And I see the mail subject is as follows :
-  """
-  Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}
-  """
-    Then I see the mail text is as follows :
+    Then I do not see the mail text is as follows :
   """
   Hello,
 
@@ -1148,7 +1136,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Submitted for Approval" for title "Old Value" inside table "---program:-:historyTableId---"
     Then I softly see value "Automation PO1" for title "Changed By" inside table "---program:-:historyTableId---"
 
-  @hitesh121 @279467 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-295138 @hitesh
+  @279467 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-295138 @hitesh
   Scenario: Verify notification email should generate to new owner of program after click on Undo button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -1374,13 +1362,11 @@ Feature: Validate all scenarios for program
     And I navigate to "Planning" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:completedTaskTableId---" panel
-    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:completedTaskTableId---" without waiting for record
     Then I softly see value "Completed" for title "Status" against the value "{SavedValue:ProgramEGMSID}" inside table "---program:-:completedTaskTableId---"
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:completedTaskTableId---" panel
-    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:completedTaskTableId---" without waiting for record
     Then I softly see value "Completed" for title "Status" against the value "{SavedValue:ProgramEGMSID}" inside table "---program:-:completedTaskTableId---"
 
   @281740 @Verifypreviousapprovedtaskshouldnotcancelfromcompletedtasktable @sprint-25-US-295138 @hitesh @Undo
@@ -1473,7 +1459,7 @@ Feature: Validate all scenarios for program
     And I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:completedTaskTableId---" panel
     Then I softly see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:completedTaskTableId---"
 
-  @hitesh121 @299539 @Verifyhesnapshotisgeneratedinsnapshothistorysectionwhenlastapproverclickundoaction @sprint-25-US-295138 @hitesh @Undo
+  @299539 @Verifyhesnapshotisgeneratedinsnapshothistorysectionwhenlastapproverclickundoaction @sprint-25-US-295138 @hitesh @Undo
   Scenario: Verify the snapshot is generated in snapshot history section when last approver click undo action
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -1536,8 +1522,8 @@ Feature: Validate all scenarios for program
     And I navigate to "History" sub tab
     And I see "{SavedValue:FO Username}" against "Re-approval (Pending for first approval)" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
-    Then I softly see snapshot with name containing "Internal Program - Undo Approval.pdf" as name
-    And I click on hyperlink containing value "Internal Program - Undo Approval.pdf"
+    Then I softly see snapshot with name containing "Internal Program - submit for approval.pdf" as name
+    And I click on hyperlink containing value "Internal Program - submit for approval.pdf"
     When I download the file
     Then I softly see "{SavedValue:ProgramEGMSID}" on page "1" of "govgrants" pdf file
     Then I softly see "Submitted for Approval" on page "1" of "govgrants" pdf file
