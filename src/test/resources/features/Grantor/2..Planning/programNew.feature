@@ -1237,7 +1237,11 @@ Feature: Validate all scenarios for program
     Then I softly see field "Status" as "Submitted for Approval"
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     Then I refresh the page
-    Then I do not see the mail text is as follows :
+    And I see the mail subject is as follows :
+    """
+   Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}.
+    """
+    Then I see the mail text is as follows :
       """
       Hello,
 
