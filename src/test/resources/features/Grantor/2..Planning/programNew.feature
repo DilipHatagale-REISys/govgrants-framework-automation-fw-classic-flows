@@ -1148,7 +1148,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Submitted for Approval" for title "Old Value" inside table "---program:-:historyTableId---"
     Then I softly see value "Automation PO1" for title "Changed By" inside table "---program:-:historyTableId---"
 
-  @279467 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-295138 @hitesh
+  @hitesh121 @279467 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-295138 @hitesh
   Scenario: Verify notification email should generate to new owner of program after click on Undo button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -1342,7 +1342,9 @@ Feature: Validate all scenarios for program
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
+    Then I can see top right button "Undo" in page detail
     And I pause execution for "5" seconds
+    And I logout
     And I checkout to yopmail with mailid "automationpo@yopmail.com"
     Then I refresh the page
     And I see the mail subject is as follows :
@@ -1367,8 +1369,8 @@ Feature: Validate all scenarios for program
      The EGMS Team
       """
     Then I refresh the page
-    Given I am on "INTERNAL" portal
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I am on "INTERNAL" portal
+    When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:completedTaskTableId---" panel
@@ -1471,7 +1473,7 @@ Feature: Validate all scenarios for program
     And I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:completedTaskTableId---" panel
     Then I softly see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:completedTaskTableId---"
 
-  @299539 @Verifyhesnapshotisgeneratedinsnapshothistorysectionwhenlastapproverclickundoaction @sprint-25-US-295138 @hitesh @Undo
+  @hitesh121 @299539 @Verifyhesnapshotisgeneratedinsnapshothistorysectionwhenlastapproverclickundoaction @sprint-25-US-295138 @hitesh @Undo
   Scenario: Verify the snapshot is generated in snapshot history section when last approver click undo action
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -1534,8 +1536,8 @@ Feature: Validate all scenarios for program
     And I navigate to "History" sub tab
     And I see "{SavedValue:FO Username}" against "Re-approval (Pending for first approval)" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
-    Then I softly see snapshot with name containing "Internal Program - submit for approval.pdf" as name
-    And I click on hyperlink containing value "Internal Program - submit for approval.pdf"
+    Then I softly see snapshot with name containing "Internal Program - Undo Approval.pdf" as name
+    And I click on hyperlink containing value "Internal Program - Undo Approval.pdf"
     When I download the file
     Then I softly see "{SavedValue:ProgramEGMSID}" on page "1" of "govgrants" pdf file
     Then I softly see "Submitted for Approval" on page "1" of "govgrants" pdf file
