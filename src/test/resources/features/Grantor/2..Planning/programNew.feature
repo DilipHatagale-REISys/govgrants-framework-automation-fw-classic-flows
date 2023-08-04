@@ -1229,44 +1229,41 @@ Feature: Validate all scenarios for program
       """
       Hello,
 
-     The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+      This email is to notify you that program approver #Automation PM has initiated undo action for program approval.
 
-      EGMS ID Assigned By Module Name
-      {SavedValue:ProgramEGMSID}	Automation ADMIN	Program
+      Program Details:
+      Program ID: {SavedValue:ProgramEGMSID}
+      Program Name: {SavedValue:Automation Runtime Internal Program}
 
-    Because these records have been reassigned, the original reviewer may have only view access to the record.
+      Log in to EGMS and click here to start reviewing the details.
 
-    Log in to EGMS and click on EGMS IDs to access the assigned record.
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
-
-    Thank you,
-    The EGMS Team
+     Thank you.
+     The EGMS Team
       """
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
     Then I refresh the page
     And I see the mail subject is as follows :
-  """
-  Notification: Owner Reassignment Report
-  """
+    """
+   Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}.
+    """
     Then I see the mail text is as follows :
+    """
+      Hello,
 
-  """
-  Hello,
+      This email is to notify you that program approver #Automation PM1 has initiated undo action for program approval.
 
- The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+      Program Details:
+      Program ID: {SavedValue:ProgramEGMSID}
+      Program Name: {SavedValue:Automation Runtime Internal Program}
 
-  EGMS ID Assigned By Module Name
-  {SavedValue:ProgramEGMSID}	Automation ADMIN	Program
+      Log in to EGMS and click here to start reviewing the details.
 
-  Because these records have been reassigned, the original reviewer may have only view access to the record.
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-  Log in to EGMS and click on EGMS IDs to access the assigned record.
-
-  Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
-
-  Thank you,
-  The EGMS Team
+     Thank you.
+     The EGMS Team
       """
 
   @279491 @VerifyreassignapprovershouldseeUndobuttonafterforwardedapproverchangeapprovaltaskownership @sprint-25-US-295138 @hitesh @Undo
