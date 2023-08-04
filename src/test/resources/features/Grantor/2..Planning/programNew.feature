@@ -1333,7 +1333,7 @@ Feature: Validate all scenarios for program
     Then I can see top right button "Undo" in page detail
     And I pause execution for "5" seconds
     And I logout
-    And I checkout to yopmail with mailid "automationpo@yopmail.com"
+    And I checkout to yopmail with mailid "fo.automation@yopmail.com"
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1522,8 +1522,8 @@ Feature: Validate all scenarios for program
     And I navigate to "History" sub tab
     And I see "{SavedValue:FO Username}" against "Re-approval (Pending for first approval)" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
-    Then I softly see snapshot with name containing "Internal Program - submit for approval.pdf" as name
-    And I click on hyperlink containing value "Internal Program - submit for approval.pdf"
+    Then I softly see snapshot with name containing "Internal Program - Undo Approval.pdf" as name
+    And I click on hyperlink containing value "Internal Program - Undo Approval.pdf"
     When I download the file
     Then I softly see "{SavedValue:ProgramEGMSID}" on page "1" of "govgrants" pdf file
     Then I softly see "Submitted for Approval" on page "1" of "govgrants" pdf file
