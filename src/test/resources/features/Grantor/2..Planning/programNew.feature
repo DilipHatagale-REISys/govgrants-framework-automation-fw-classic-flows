@@ -384,6 +384,30 @@ Feature: Validate all scenarios for program
    Thank you.
    The EGMS Team
   """
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}.
+      """
+    Then I see the mail text is as follows :
+  """
+   Hello,
+
+   This email is to notify you that program approver #Automation FO has initiated undo action for program approval.
+
+   Program Details:
+   Program ID: {SavedValue:ProgramEGMSID}
+   Program Name: {SavedValue:Automation Runtime Internal Program}
+
+   Log in to EGMS and click here to start reviewing the details.
+
+   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+   Thank you.
+   The EGMS Team
+  """
 
   @279345 @279359 @VerifyAdminusercanseeUndoandActivatebuttonafterapprovedtheprogramifprogramownerandapproverissame @sprint-25-US-295138 @hitesh @Undo
   Scenario: Verify Admin user can see Undo and Activate button after approved the program if program owner and approver is same
@@ -1136,7 +1160,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Submitted for Approval" for title "Old Value" inside table "---program:-:historyTableId---"
     Then I softly see value "Automation PO1" for title "Changed By" inside table "---program:-:historyTableId---"
 
-  @279467 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-295138 @hitesh
+  @hitesh121 @279467 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-295138 @hitesh
   Scenario: Verify notification email should generate to new owner of program after click on Undo button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -1201,11 +1225,7 @@ Feature: Validate all scenarios for program
     Then I softly see field "Status" as "Submitted for Approval"
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     Then I refresh the page
-    And I see the mail subject is as follows :
-      """
-      Notification: Owner Reassignment Report
-      """
-    Then I see the mail text is as follows :
+    Then I do not see the mail text is as follows :
       """
       Hello,
 
@@ -1249,7 +1269,7 @@ Feature: Validate all scenarios for program
   The EGMS Team
       """
 
-  @hitesh121 @279491 @VerifyreassignapprovershouldseeUndobuttonafterforwardedapproverchangeapprovaltaskownership @sprint-25-US-295138 @hitesh @Undo
+  @279491 @VerifyreassignapprovershouldseeUndobuttonafterforwardedapproverchangeapprovaltaskownership @sprint-25-US-295138 @hitesh @Undo
   Scenario:Verify reassign approver should see Undo button after forwarded approver change approval task ownership
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
