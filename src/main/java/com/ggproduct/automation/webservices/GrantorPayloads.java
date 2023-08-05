@@ -1528,7 +1528,6 @@ public class GrantorPayloads {
         awardServiceAreaB.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaB);
         JsonObject awardServiceAreaC = new JsonObject();
         awardServiceAreaC.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Test Focus Area"));
         awardServiceAreaC.addProperty("GATStartDate",
@@ -1593,7 +1592,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1602,7 +1600,6 @@ public class GrantorPayloads {
         awardServiceAreaB.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaB);
         JsonObject awardServiceAreaC = new JsonObject();
         awardServiceAreaC.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Test Focus Area"));
         awardServiceAreaC.addProperty("GATStartDate",
@@ -1660,7 +1657,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1669,7 +1665,6 @@ public class GrantorPayloads {
         awardServiceAreaB.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaB);
         JsonObject awardServiceAreaC = new JsonObject();
         awardServiceAreaC.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Test Focus Area"));
         awardServiceAreaC.addProperty("GATStartDate",
@@ -1739,7 +1734,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1748,7 +1742,6 @@ public class GrantorPayloads {
         awardServiceAreaB.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaB);
         JsonObject awardServiceAreaC = new JsonObject();
         awardServiceAreaC.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Test Focus Area"));
         awardServiceAreaC.addProperty("GATStartDate",
@@ -1812,7 +1805,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1851,7 +1843,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1914,7 +1905,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1971,7 +1961,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -2036,7 +2025,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -2093,7 +2081,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
