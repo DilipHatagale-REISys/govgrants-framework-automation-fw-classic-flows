@@ -30,9 +30,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario Outline: Associate a Key Contact
     And I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---"
-    When I perform quick search for "<Contact>" in "---subAwardStandAlone:-:keyContactsTableId---" panel
-    When I click "Associate" after selection of "<Contact>" in the table "---subAwardStandAlone:-:keyContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    And I select value inside table "---subAwardStandAlone:-:keyContactsTableId---" is "All"
+    And I check "<Contact>" boxes in flex table with id "---subAwardStandAlone:-:keyContactsTableId---"
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:keyContactsTableId---"
     And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name                       | Project Role             | Is Key Personnel |
@@ -61,7 +61,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario Outline: Validate the association of Focus Area to Award
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
-    When I click "Associate" after selection of "<Focus Area>" in the table "---subAwardStandAlone:-:associateModalTableId---"
+    And I select value inside table "---subAwardStandAlone:-:associateModalTableId---" is "All"
+    And I check "<Focus Area>" boxes in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:associateModalTableId---"
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
@@ -3422,7 +3424,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Automation Permanent Internal Program" in "Programs" panel
     And I click on "View" icon for "Automation Permanent Internal Program" inside table
     When I navigate to "Setup" sub tab
-    When I perform quick search for "Information Technology" in "ProgramKeyOutcomes" panel
     And I click on "View" icon for "Information Technology" inside table
     And I save the field labeled "Domain" as "Domain"
     And I navigate to "Grants" tab
@@ -6374,3 +6375,41 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Examples:
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
+
+  @349938 @VerifyPMusershouldseeBudgetedamountreadonlycolumnincreatedSenttoSrbeforeaapproval @sprint-15-US @hitesh
+  Scenario: Verify PM user should see 'Budgeted amount' read only column in created, Sent to S/r before a approval
+    Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "SECOND_FOCUS_AREA_BY_APPL_RISK_ASS_NO-Automation PM user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "SECOND_BUDGET_CATEGORY"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - All"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    When I click on "Edit" in the page details
+    And I navigate to "Budget" sub tab
+    Then I softly see that "Budgeted Amount" rendered in view mode only
+    And I click on "Save" in the page details
+    And I click on "Send to Subrecipient" in the page details
+    When I click on "Edit" in the page details
+    And I navigate to "Budget" sub tab
+    Then I softly see that "Budgeted Amount" rendered in view mode only
+
+  @270867 @VerifyAnnownerPMUsershouldseefollowingcolumnnamesinthetableunderinvitedapplicantssectionwhenAnnisinPublishedApprovedClosedandUnderRevisionstatus @sprint-21-US-267479 @hitesh
+  Scenario: Verify Ann owner PM User should see following column names in the table under invited applicants section when Ann is in Published Approved Closed and Under Revision status
+    Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO-Automation PM user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Formula Announcements"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---announcement:-:formulaAnnouncementTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    Then I softly see value "Converted to Award" for title "Application Status" inside table "---announcement:-:formulaInvitedApplicatsTableId---"

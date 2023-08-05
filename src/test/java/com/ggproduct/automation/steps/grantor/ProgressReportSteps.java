@@ -109,12 +109,18 @@ public class ProgressReportSteps {
     }
 
     @Description("To make Addition of two saved values")
-    @Then("^I (see|softly see) addition of two fields \"([^\"]*)\" and \"([^\"]*)\" is equal to \"([^\"]*)\"$")
+    @Then("^I (see|softly see|softly do not see|do not see) addition of two fields \"([^\"]*)\" and \"([^\"]*)\" is equal to \"([^\"]*)\"$")
     public void iSeeAdditionValueValue(String usage, String savedValue1, String savedValue2, String expectedValue) {
-        if (usage.contains("softly")) {
+        if (usage.equalsIgnoreCase("softly see")) {
             I.amPerforming().assertionsTo().assertThat(progressReportPage.addTwoFieldValues(savedValue1, savedValue2, expectedValue)).isTrue();
-        } else {
+        } else if (usage.equalsIgnoreCase("see")) {
             Assert.assertTrue(progressReportPage.addTwoFieldValues(savedValue1, savedValue2, expectedValue));
+        }
+        else if (usage.equalsIgnoreCase("softly do not see")) {
+            I.amPerforming().assertionsTo().assertThat(progressReportPage.addTwoFieldValues(savedValue1, savedValue2, expectedValue)).isFalse();
+        }
+        else if (usage.equalsIgnoreCase("do not see")) {
+            Assert.assertFalse(progressReportPage.addTwoFieldValues(savedValue1, savedValue2, expectedValue));
         }
     }
 
