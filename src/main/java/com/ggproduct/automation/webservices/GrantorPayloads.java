@@ -37,8 +37,12 @@ public class GrantorPayloads {
                 return updateBudgetCategoryForTwoFocusAreas(defaultJson);
             case "FIRST_BUDGET_CATEGORY":
                 return updateBudgetCategoryForFirstFocusAreas(defaultJson);
+            case "FIRST_BUDGET_CATEGORY_NO_FOCUS_AREA":
+                return updateBudgetCategoryForFirstFocusAreasNoFocusArea(defaultJson);
             case "TWO_BUD_CAT_FIFTEEN_HUNDRED_AMT":
                 return updateBudgetCategoryForTwoFocusAreasFifteenHundredAmt(defaultJson);
+            case "SECOND_BUDGET_CAT_DETAILS_BUD_YES":
+                return updateBudgetCategoryForTwoFocusAreasDetailsBudgetYes(defaultJson);
             case "KYECONTACTS":
                 break;
             case "KEYOUTCOME":
@@ -46,6 +50,49 @@ public class GrantorPayloads {
             default:
                 return defaultJson;
         }
+        return defaultJson;
+    }
+
+    private JsonObject updateBudgetCategoryForTwoFocusAreasDetailsBudgetYes(JsonObject defaultJson) {
+        JsonArray budgetCategoryArray = new JsonArray();
+//        JsonObject budgetCategory2 = defaultJson.getAsJsonArray("BudgetCategory").get(0).getAsJsonObject();
+
+        JsonObject budgetCategory1 = new JsonObject();
+        budgetCategory1.addProperty("Title", "Construction");
+        budgetCategory1.addProperty("Narrative", "Construction");
+        budgetCategory1.addProperty("BudgetRequest", 500);
+        budgetCategory1.addProperty("CashMatch", 100);
+        budgetCategory1.add("NonCashMatch", JsonNull.INSTANCE);
+        budgetCategory1.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        budgetCategory1.addProperty("ServiceAreaTitle", "Automation Permanent Focus Area");
+        budgetCategoryArray.add(budgetCategory1);
+
+        JsonObject budgetCategory2 = new JsonObject();
+        budgetCategory2.addProperty("Title", "Construction");
+        budgetCategory2.addProperty("Narrative", "Construction");
+        budgetCategory2.addProperty("BudgetRequest", 500);
+        budgetCategory2.addProperty("CashMatch", 100);
+        budgetCategory2.add("NonCashMatch", JsonNull.INSTANCE);
+        budgetCategory2.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        budgetCategory2.addProperty("ServiceAreaTitle", "Automation Permanent Focus Area2");
+        budgetCategoryArray.add(budgetCategory2);
+        defaultJson.add("BuildUpItems", budgetCategoryArray);
+        return defaultJson;
+    }
+
+    private JsonObject updateBudgetCategoryForFirstFocusAreasNoFocusArea(JsonObject defaultJson) {
+        JsonArray budgetCategoryArray = new JsonArray();
+        JsonObject budgetCategory2 = defaultJson.getAsJsonArray("BudgetCategory").get(0).getAsJsonObject();
+
+        JsonObject budgetCategory1 = new JsonObject();
+        budgetCategory1.addProperty("BudgetCategory", "Construction");
+        budgetCategory1.addProperty("BudgetRequest", 1000);
+        budgetCategory1.addProperty("CashMatch", 100);
+        budgetCategory1.add("NonCashMatch", JsonNull.INSTANCE);
+        budgetCategory1.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        budgetCategory1.addProperty("ServiceAreaTitle", "Standard Focus Area");
+        budgetCategoryArray.add(budgetCategory1);
+        defaultJson.add("BudgetCategory", budgetCategoryArray);
         return defaultJson;
     }
 
@@ -467,6 +514,8 @@ public class GrantorPayloads {
                 return subMatchYesRequiredMatch10RiskYesExpenseYesAdvacnceYesAnnouncement(json);
             case "BY_APPLICANT_NEGOTIATION_NO":
                 return byApplicantNegotiationNo(json);
+            case "BY_APPLICANT_FOCUS_NO_NEGOTIATION_NO":
+                return byApplicantFocusNoNegotiationNo(json);
             case "BY_APPLICANT_FOCUS_AREA_NO_NEGOTIATION_NO":
                 return byApplicantFocusAreaNoNegotiationsNo(json);
             case "BY_APPLICANT_FOCUS_AREA_NO_NEGOTIATION_YES":
@@ -503,11 +552,100 @@ public class GrantorPayloads {
                 return updateAnnouncementWithSecondFocusAreaRiskNo(json);
             case "SECOND_FOCUS_AREA_BY_APPL_RISK_ASS_NO":
                 return updateAnnouncementWithSecondFocusAreaByappRiskNo(json);
+            case "SECOND_FOCUS_AREA_BY_APPL_NEGO_NO_RISK_ASS_NO":
+                return updateAnnouncementWithSecondFocusAreaByappRiskNoNegoNo(json);
+            case "THREE_FOCUS_AREA_BY_APPL_RISK_ASS_NO":
+                return updateAnnouncementWithThreeFocusAreaByappRiskNo(json);
             case "SECOND_FOCUS_AREA_BY_APPLICANT_FOCUS_AREA_RISK_ASS_NO":
                 return updateAnnouncementWithSecondFocusAreaByappFocusAreaRiskNo(json);
+            case "THREE_FOCUS_BY_APP_FOCUS_AREA_RISK_NO_PROGRAM_INCOME_NO_SUB_MATCH_NO":
+                return updateAnnouncementWithSecondFocusAreaByappFocusAreaRiskNoNOIncomeSubMatchNo(json);
+            case "SECOND_FOCUS_AREA_DETAILS_BUDGET_YES_RISK_NO":
+                return updateAnnouncementWithSecondFocusAreaDetailBudgetYes(json);
             default:
                 return json;
         }
+    }
+
+    private JsonObject updateAnnouncementWithSecondFocusAreaByappRiskNoNegoNo(JsonObject json) {
+        JsonArray serviceArea = new JsonArray();
+        JsonObject serviceAreaB = new JsonObject();
+        serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        serviceArea.add(serviceAreaB);
+        json.add("AnnouncementServiceArea", serviceArea);
+        JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre1 = new JsonArray();
+        jsonObject1.addProperty("Allocationlevel", "By Applicant");
+        jsonObject1.addProperty("RiskAssessment_Required", "No");
+        jsonObject1.addProperty("IsNegotiationsAllowed", "No");
+        pre1.add(jsonObject1);
+        json.add("Announcement", pre1);
+        return json;
+    }
+
+    private JsonObject updateAnnouncementWithSecondFocusAreaDetailBudgetYes(JsonObject json) {
+        JsonArray serviceArea = new JsonArray();
+        JsonObject serviceAreaB = new JsonObject();
+        serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        serviceArea.add(serviceAreaB);
+        json.add("AnnouncementServiceArea", serviceArea);
+        JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre1 = new JsonArray();
+        jsonObject1.addProperty("RiskAssessment_Required", "No");
+        jsonObject1.addProperty("DetailedBudgetingRequired", "Yes");
+        pre1.add(jsonObject1);
+        json.add("Announcement", pre1);
+        return json;
+    }
+
+    private JsonObject byApplicantFocusNoNegotiationNo(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray nego = new JsonArray();
+        jsonObject.addProperty("Allocationlevel", "By Applicant");
+        jsonObject.addProperty("FocusAreaRequired", "No");
+        jsonObject.addProperty("IsNegotiationsAllowed", "No");
+        nego.add(jsonObject);
+        json.add("Announcement", nego);
+        return json;
+
+    }
+
+    private JsonObject updateAnnouncementWithSecondFocusAreaByappFocusAreaRiskNoNOIncomeSubMatchNo(JsonObject json) {
+        JsonArray serviceArea = new JsonArray();
+        JsonObject serviceAreaB = new JsonObject();
+        serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        serviceArea.add(serviceAreaB);
+        JsonObject serviceAreaC = new JsonObject();
+        serviceAreaC.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Test Focus Area"));
+        serviceArea.add(serviceAreaC);
+        json.add("AnnouncementServiceArea", serviceArea);
+        JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre1 = new JsonArray();
+        jsonObject1.addProperty("Allocationlevel", "By Applicant and Focus Area");
+        jsonObject1.addProperty("RiskAssessment_Required", "No");
+        jsonObject1.addProperty("IsProgramIncomeAnticipated", "No");
+        jsonObject1.addProperty("IsMatchRequired", "No");
+        pre1.add(jsonObject1);
+        json.add("Announcement", pre1);
+        return json;
+    }
+
+    private JsonObject updateAnnouncementWithThreeFocusAreaByappRiskNo(JsonObject json) {
+        JsonArray serviceArea = new JsonArray();
+        JsonObject serviceAreaB = new JsonObject();
+        serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        serviceArea.add(serviceAreaB);
+        JsonObject serviceAreaC = new JsonObject();
+        serviceAreaC.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Test Focus Area"));
+        serviceArea.add(serviceAreaC);
+        json.add("AnnouncementServiceArea", serviceArea);
+        JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre1 = new JsonArray();
+        jsonObject1.addProperty("Allocationlevel", "By Applicant");
+        jsonObject1.addProperty("RiskAssessment_Required", "No");
+        pre1.add(jsonObject1);
+        json.add("Announcement", pre1);
+        return json;
     }
 
     private JsonObject negotiationYesFocusNoForAnnouncement(JsonObject json) {
@@ -1155,7 +1293,8 @@ public class GrantorPayloads {
     public JsonObject payloadForCreateStandaloneAward(String grantName, String filter, String... Type) {
         String user = "";
         JsonObject json;
-        if (Type.length > 0) {
+        boolean Typeflag = Type.length > 0;
+        if (Typeflag) {
             json = defaultPayloadCreateStandaloneAward(grantName, Type[0]);
         } else {
             json = defaultPayloadCreateStandaloneAward(grantName);
@@ -1203,6 +1342,8 @@ public class GrantorPayloads {
                 return noObjectives(json);
             case "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO":
                 return advancePermissibleYesnofocusarea(json);
+            case "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO_BUILDUP_YES_PROJECT_END_DATE":
+                return advancePermissibleYesnofocusareaBuildUpYes(json);
             case "ADVANCE_YES_FOCUS_NO_PROGRAM_ANTICIPATED_NO":
                 return advancePermissibleYesnofocusareaProgramAnticipatedNo(json);
             case "AMENDMENT_REQUEST_ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO":
@@ -1212,25 +1353,60 @@ public class GrantorPayloads {
             case "SUBRECIPIENT_ORG_IND_USER":
                 return createAwarForIndUser(json);
             case "SECOND_FOCUS_AREA":
-                return createAwarForSecondFocusArea(json);
+                if (Typeflag)
+                return createAwarForSecondFocusArea(json, Type[0]);
+                else
+                    return createAwarForSecondFocusArea(json);
             case "SECOND_FOCUS_AREA_BUDGET_CATEGORY":
-                return createAwarForSecondFocusAreaandBudgetCategory(json);
+                if (Typeflag)
+                    return createAwarForSecondFocusAreaandBudgetCategory(json, Type[0]);
+                else
+                    return createAwarForSecondFocusAreaandBudgetCategory(json);
             case "THREE_FOCUS_AREA_NO_BUDGET_CATEGORY_THIRD_FOCUS":
-                return createAwarForThreeFocusAreaandBudgetCategory(json);
+                if (Typeflag)
+                    return createAwarForThreeFocusAreaandBudgetCategory(json, Type[0]);
+                else
+                    return createAwarForThreeFocusAreaandBudgetCategory(json);
             case "THREE_FOCUS_AREA_NO_BUDGET_CATEGORY_THIRD_FOCUS_BuildUpYes":
-                return createAwarForThreeFocusAreaandBudgetCategoryBuildUpYes(json);
+                if (Typeflag)
+                    return createAwarForThreeFocusAreaandBudgetCategoryBuildUpYes(json, Type[0]);
+                else
+                    return createAwarForThreeFocusAreaandBudgetCategoryBuildUpYes(json);
             case "THREE_FOCUS_AREA_NO_BUD_CAT_THIRD_FOCUS_BUILD_UP_IND_ORG":
-                return createAwarForThreeFocusAreaandBudgetCategoryBuildUpYesIndOrg(json);
+                if (Typeflag)
+                    return createAwarForThreeFocusAreaandBudgetCategoryBuildUpYesIndOrg(json, Type[0]);
+                else
+                    return createAwarForThreeFocusAreaandBudgetCategoryBuildUpYesIndOrg(json);
+            case "SECOND_BUD_CAT_SECOND_FOCUS_BUILD_UP_IND_ORG":
+                if (Typeflag)
+                    return createAwarForSecondFocusAreaandBudgetCategoryBuildUpYesIndOrg(json, Type[0]);
+                else
+                    return createAwarForSecondFocusAreaandBudgetCategoryBuildUpYesIndOrg(json);
             case "THREE_FOCUS_AREA_BUDGET_CATEGORY":
-                return createAwarForThreeFocusAreaWithBudgetCategory(json);
+                if (Typeflag)
+                    return createAwarForThreeFocusAreaWithBudgetCategory(json, Type[0]);
+                else
+                    return createAwarForThreeFocusAreaWithBudgetCategory(json);
             case "SECOND_FOCUS_AREA_BUD_CAT_BUILDUP_YES":
-                return createAwarForSecondFocusAreaandBudgetCategoryBuildUpYes(json);
+                if (Typeflag)
+                    return createAwarForSecondFocusAreaandBudgetCategoryBuildUpYes(json, Type[0]);
+                else
+                    return createAwarForSecondFocusAreaandBudgetCategoryBuildUpYes(json);
             case "SECOND_FOCUS_TOTAL_COMMIT_TWO_THOUSAND":
-                return createAwarForSecondFocusAreaTotalCommitment(json);
+                if (Typeflag)
+                    return createAwarForSecondFocusAreaTotalCommitment(json, Type[0]);
+                else
+                    return createAwarForSecondFocusAreaTotalCommitment(json);
             case "SECOND_FOCUS_BUD_CAT_TOTAL_COMM":
-                return createAwarForSecondFocusAreaBudCatTotalCommitment(json);
+                if (Typeflag)
+                    return createAwarForSecondFocusAreaBudCatTotalCommitment(json, Type[0]);
+                else
+                    return createAwarForSecondFocusAreaBudCatTotalCommitment(json);
             case "SECOND_FOCUS_AREA_BUD_CAT_SUB_ORG_IND":
-                return createAwarForSecondFocusAreaandBudgetCategorySubrecipientIndProfile(json);
+                if (Typeflag)
+                    return createAwarForSecondFocusAreaandBudgetCategorySubrecipientIndProfile(json, Type[0]);
+                else
+                    return createAwarForSecondFocusAreaandBudgetCategorySubrecipientIndProfile(json);
             case "USER":
                 return createStandaloneAwardUsingUser(json, user);
             default:
@@ -1238,69 +1414,7 @@ public class GrantorPayloads {
         }
     }
 
-    private JsonObject createAwarForThreeFocusAreaandBudgetCategoryBuildUpYes(JsonObject json) {
-        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
-        JsonArray newA = new JsonArray();
-        grant.addProperty("IsBuildUpFunctionality", "Yes");
-        newA.add(grant);
-        json.add("Grant", newA);
-
-        JsonArray awardServiceAreaArray = new JsonArray();
-        JsonObject awardServiceAreaA = new JsonObject();
-        awardServiceAreaA.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area"));
-        awardServiceAreaA.addProperty("GATStartDate",
-                I.amPerforming()
-                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaA.addProperty("GATEndDate",
-                I.amPerforming()
-                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
-        JsonObject awardServiceAreaB = new JsonObject();
-        awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
-        awardServiceAreaB.addProperty("GATStartDate",
-                I.amPerforming()
-                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaB.addProperty("GATEndDate",
-                I.amPerforming()
-                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaB);
-        JsonObject awardServiceAreaC = new JsonObject();
-        awardServiceAreaC.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Test Focus Area"));
-        awardServiceAreaC.addProperty("GATStartDate",
-                I.amPerforming()
-                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaC.addProperty("GATEndDate",
-                I.amPerforming()
-                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaC);
-        json.add("AwardServiceArea", awardServiceAreaArray);
-
-        JsonArray buildUpItemsA = new JsonArray();
-        JsonObject buildUpItems = new JsonObject();
-        buildUpItems.addProperty("BudgetCategory", "Construction");
-        buildUpItems.addProperty("Title", "Construction");
-        buildUpItems.addProperty("Narrative", "Test Build-up");
-        buildUpItems.addProperty("AwardedBudget", 500);
-        buildUpItems.addProperty("CashMatch", 100);
-        buildUpItems.addProperty("NonCashMatch", 100);
-        buildUpItems.add("OtherLeverageOptional", JsonNull.INSTANCE);
-        buildUpItems.addProperty("ServiceAreaName", "Automation Permanent Focus Area");
-        buildUpItemsA.add(buildUpItems);
-        JsonObject buildUpItems2 = new JsonObject();
-        buildUpItems2.addProperty("BudgetCategory", "Construction");
-        buildUpItems2.addProperty("Title", "Construction");
-        buildUpItems2.addProperty("Narrative", "Test Build-up");
-        buildUpItems2.addProperty("AwardedBudget", 500);
-        buildUpItems2.addProperty("CashMatch", 100);
-        buildUpItems2.addProperty("NonCashMatch", 100);
-        buildUpItems2.add("OtherLeverageOptional", JsonNull.INSTANCE);
-        buildUpItems2.addProperty("ServiceAreaName", "Automation Permanent Focus Area2");
-        buildUpItemsA.add(buildUpItems2);
-        json.add("BuildUpItems", buildUpItemsA);
-
-        return json;
-    }
-    private JsonObject createAwarForThreeFocusAreaandBudgetCategoryBuildUpYesIndOrg(JsonObject json) {
+    private JsonObject createAwarForSecondFocusAreaandBudgetCategoryBuildUpYesIndOrg(JsonObject json, String... Type) {
         JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
         JsonArray newA = new JsonArray();
         grant.addProperty("IsBuildUpFunctionality", "Yes");
@@ -1317,7 +1431,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1326,7 +1439,95 @@ public class GrantorPayloads {
         awardServiceAreaB.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        if (Type.length > 0) {
+            if (Type[0].contains("Formula")) {
+                if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                    awardServiceAreaA.addProperty("NewObligationPay", "500");
+                    awardServiceAreaB.addProperty("NewObligationPay", "500");
+                }
+            }
+        }
+        awardServiceAreaArray.add(awardServiceAreaA);
         awardServiceAreaArray.add(awardServiceAreaB);
+        json.add("AwardServiceArea", awardServiceAreaArray);
+
+        JsonArray buildUpItemsA = new JsonArray();
+        JsonObject buildUpItems = new JsonObject();
+        buildUpItems.addProperty("BudgetCategory", "Construction");
+        buildUpItems.addProperty("Title", "Construction");
+        buildUpItems.addProperty("Narrative", "Test Build-up");
+        buildUpItems.addProperty("AwardedBudget", 500);
+        buildUpItems.addProperty("CashMatch", 100);
+        buildUpItems.addProperty("NonCashMatch", 100);
+        buildUpItems.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems.addProperty("ServiceAreaName", "Automation Permanent Focus Area");
+        buildUpItemsA.add(buildUpItems);
+        JsonObject buildUpItems2 = new JsonObject();
+        buildUpItems2.addProperty("BudgetCategory", "Construction");
+        buildUpItems2.addProperty("Title", "Construction");
+        buildUpItems2.addProperty("Narrative", "Test Build-up");
+        buildUpItems2.addProperty("AwardedBudget", 500);
+        buildUpItems2.addProperty("CashMatch", 100);
+        buildUpItems2.addProperty("NonCashMatch", 100);
+        buildUpItems2.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems2.addProperty("ServiceAreaName", "Automation Permanent Focus Area2");
+        buildUpItemsA.add(buildUpItems2);
+        json.add("BuildUpItems", buildUpItemsA);
+
+        return json;
+    }
+
+    private JsonObject advancePermissibleYesnofocusareaBuildUpYes(JsonObject json) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+        grant.addProperty("FocusAreaRequired", "No");
+        grant.addProperty("IsAdvancePermitted", "Yes");
+        grant.addProperty("IsBuildUpFunctionality", "Yes");
+        grant.addProperty("ProjectPeriodEndDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(4000, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        newA.add(grant);
+        json.add("Grant", newA);
+        JsonArray buildUpItemsA = new JsonArray();
+        JsonObject buildUpItems = new JsonObject();
+        buildUpItems.addProperty("BudgetCategory", "Construction");
+        buildUpItems.addProperty("Title", "Construction");
+        buildUpItems.addProperty("Narrative", "Test Build-up");
+        buildUpItems.addProperty("AwardedBudget", 1000);
+        buildUpItems.addProperty("CashMatch", 100);
+        buildUpItems.addProperty("NonCashMatch", 100);
+        buildUpItems.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems.addProperty("ServiceAreaName", "Standard Focus Area");
+        buildUpItemsA.add(buildUpItems);
+        json.add("BuildUpItems", buildUpItemsA);
+
+        return json;
+    }
+
+    private JsonObject createAwarForThreeFocusAreaandBudgetCategoryBuildUpYes(JsonObject json, String... Type) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+        grant.addProperty("IsBuildUpFunctionality", "Yes");
+        newA.add(grant);
+        json.add("Grant", newA);
+
+        JsonArray awardServiceAreaArray = new JsonArray();
+        JsonObject awardServiceAreaA = new JsonObject();
+        awardServiceAreaA.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area"));
+        awardServiceAreaA.addProperty("GATStartDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceAreaA.addProperty("GATEndDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        JsonObject awardServiceAreaB = new JsonObject();
+        awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        awardServiceAreaB.addProperty("GATStartDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceAreaB.addProperty("GATEndDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         JsonObject awardServiceAreaC = new JsonObject();
         awardServiceAreaC.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Test Focus Area"));
         awardServiceAreaC.addProperty("GATStartDate",
@@ -1335,6 +1536,16 @@ public class GrantorPayloads {
         awardServiceAreaC.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        if (Type.length > 0) {
+            if (Type[0].contains("Formula")) {
+                if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                    awardServiceAreaA.addProperty("NewObligationPay", "500");
+                    awardServiceAreaB.addProperty("NewObligationPay", "500");
+                }
+            }
+        }
+        awardServiceAreaArray.add(awardServiceAreaA);
+        awardServiceAreaArray.add(awardServiceAreaB);
         awardServiceAreaArray.add(awardServiceAreaC);
         json.add("AwardServiceArea", awardServiceAreaArray);
 
@@ -1364,7 +1575,14 @@ public class GrantorPayloads {
         return json;
     }
 
-    private JsonObject createAwarForThreeFocusAreaWithBudgetCategory(JsonObject json) {
+    private JsonObject createAwarForThreeFocusAreaandBudgetCategoryBuildUpYesIndOrg(JsonObject json, String... Type) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+        grant.addProperty("IsBuildUpFunctionality", "Yes");
+        grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));
+        newA.add(grant);
+        json.add("Grant", newA);
+
         JsonArray awardServiceAreaArray = new JsonArray();
         JsonObject awardServiceAreaA = new JsonObject();
         awardServiceAreaA.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area"));
@@ -1374,7 +1592,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1383,7 +1600,6 @@ public class GrantorPayloads {
         awardServiceAreaB.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaB);
         JsonObject awardServiceAreaC = new JsonObject();
         awardServiceAreaC.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Test Focus Area"));
         awardServiceAreaC.addProperty("GATStartDate",
@@ -1392,6 +1608,82 @@ public class GrantorPayloads {
         awardServiceAreaC.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        if (Type.length > 0) {
+            if (Type[0].contains("Formula")) {
+                if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                    awardServiceAreaA.addProperty("NewObligationPay", "500");
+                    awardServiceAreaB.addProperty("NewObligationPay", "500");
+                }
+            }
+        }
+        awardServiceAreaArray.add(awardServiceAreaA);
+        awardServiceAreaArray.add(awardServiceAreaB);
+        awardServiceAreaArray.add(awardServiceAreaC);
+        json.add("AwardServiceArea", awardServiceAreaArray);
+
+        JsonArray buildUpItemsA = new JsonArray();
+        JsonObject buildUpItems = new JsonObject();
+        buildUpItems.addProperty("BudgetCategory", "Construction");
+        buildUpItems.addProperty("Title", "Construction");
+        buildUpItems.addProperty("Narrative", "Test Build-up");
+        buildUpItems.addProperty("AwardedBudget", 500);
+        buildUpItems.addProperty("CashMatch", 100);
+        buildUpItems.addProperty("NonCashMatch", 100);
+        buildUpItems.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems.addProperty("ServiceAreaName", "Automation Permanent Focus Area");
+        buildUpItemsA.add(buildUpItems);
+        JsonObject buildUpItems2 = new JsonObject();
+        buildUpItems2.addProperty("BudgetCategory", "Construction");
+        buildUpItems2.addProperty("Title", "Construction");
+        buildUpItems2.addProperty("Narrative", "Test Build-up");
+        buildUpItems2.addProperty("AwardedBudget", 500);
+        buildUpItems2.addProperty("CashMatch", 100);
+        buildUpItems2.addProperty("NonCashMatch", 100);
+        buildUpItems2.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems2.addProperty("ServiceAreaName", "Automation Permanent Focus Area2");
+        buildUpItemsA.add(buildUpItems2);
+        json.add("BuildUpItems", buildUpItemsA);
+
+        return json;
+    }
+
+    private JsonObject createAwarForThreeFocusAreaWithBudgetCategory(JsonObject json, String... Type) {
+        JsonArray awardServiceAreaArray = new JsonArray();
+        JsonObject awardServiceAreaA = new JsonObject();
+        awardServiceAreaA.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area"));
+        awardServiceAreaA.addProperty("GATStartDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceAreaA.addProperty("GATEndDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        JsonObject awardServiceAreaB = new JsonObject();
+        awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        awardServiceAreaB.addProperty("GATStartDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceAreaB.addProperty("GATEndDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        JsonObject awardServiceAreaC = new JsonObject();
+        awardServiceAreaC.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Test Focus Area"));
+        awardServiceAreaC.addProperty("GATStartDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceAreaC.addProperty("GATEndDate",
+                I.amPerforming()
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        if (Type.length > 0) {
+            if (Type[0].contains("Formula")) {
+                if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                    awardServiceAreaA.addProperty("NewObligationPay", "500");
+                    awardServiceAreaB.addProperty("NewObligationPay", "500");
+                    awardServiceAreaC.addProperty("NewObligationPay", "500");
+                }
+            }
+        }
+        awardServiceAreaArray.add(awardServiceAreaA);
+        awardServiceAreaArray.add(awardServiceAreaB);
         awardServiceAreaArray.add(awardServiceAreaC);
         json.add("AwardServiceArea", awardServiceAreaArray);
 
@@ -1432,7 +1724,7 @@ public class GrantorPayloads {
         return json;
     }
 
-    private JsonObject createAwarForThreeFocusAreaandBudgetCategory(JsonObject json) {
+    private JsonObject createAwarForThreeFocusAreaandBudgetCategory(JsonObject json, String... Type) {
         JsonArray awardServiceAreaArray = new JsonArray();
         JsonObject awardServiceAreaA = new JsonObject();
         awardServiceAreaA.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area"));
@@ -1442,7 +1734,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1451,7 +1742,6 @@ public class GrantorPayloads {
         awardServiceAreaB.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaB);
         JsonObject awardServiceAreaC = new JsonObject();
         awardServiceAreaC.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Test Focus Area"));
         awardServiceAreaC.addProperty("GATStartDate",
@@ -1460,6 +1750,16 @@ public class GrantorPayloads {
         awardServiceAreaC.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        if (Type.length > 0) {
+            if (Type[0].contains("Formula")) {
+                if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                    awardServiceAreaA.addProperty("NewObligationPay", "500");
+                    awardServiceAreaB.addProperty("NewObligationPay", "500");
+                }
+            }
+        }
+        awardServiceAreaArray.add(awardServiceAreaA);
+        awardServiceAreaArray.add(awardServiceAreaB);
         awardServiceAreaArray.add(awardServiceAreaC);
         json.add("AwardServiceArea", awardServiceAreaArray);
 
@@ -1489,8 +1789,8 @@ public class GrantorPayloads {
         return json;
     }
 
-    private JsonObject createAwarForSecondFocusAreaTotalCommitment(JsonObject json) {
-        JsonObject award  = json.getAsJsonArray("Award").get(0).getAsJsonObject();
+    private JsonObject createAwarForSecondFocusAreaTotalCommitment(JsonObject json, String... Type) {
+        JsonObject award = json.getAsJsonArray("Award").get(0).getAsJsonObject();
         JsonArray newA = new JsonArray();
         award.addProperty("TotalCommitment", "2000");
         newA.add(award);
@@ -1505,7 +1805,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1514,12 +1813,21 @@ public class GrantorPayloads {
         awardServiceAreaB.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        if (Type.length > 0) {
+            if (Type[0].contains("Formula")) {
+                if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                    awardServiceAreaA.addProperty("NewObligationPay", "500");
+                    awardServiceAreaB.addProperty("NewObligationPay", "500");
+                }
+            }
+        }
+        awardServiceAreaArray.add(awardServiceAreaA);
         awardServiceAreaArray.add(awardServiceAreaB);
         json.add("AwardServiceArea", awardServiceAreaArray);
         return json;
     }
 
-    private JsonObject createAwarForSecondFocusAreaandBudgetCategoryBuildUpYes(JsonObject json) {
+    private JsonObject createAwarForSecondFocusAreaandBudgetCategoryBuildUpYes(JsonObject json, String... Type) {
         JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
         JsonArray newA = new JsonArray();
         grant.addProperty("IsBuildUpFunctionality", "Yes");
@@ -1535,7 +1843,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1544,6 +1851,15 @@ public class GrantorPayloads {
         awardServiceAreaB.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        if (Type.length > 0) {
+            if (Type[0].contains("Formula")) {
+                if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                    awardServiceAreaA.addProperty("NewObligationPay", "500");
+                    awardServiceAreaB.addProperty("NewObligationPay", "500");
+                }
+            }
+        }
+        awardServiceAreaArray.add(awardServiceAreaA);
         awardServiceAreaArray.add(awardServiceAreaB);
         json.add("AwardServiceArea", awardServiceAreaArray);
 
@@ -1573,8 +1889,8 @@ public class GrantorPayloads {
         return json;
     }
 
-    private JsonObject createAwarForSecondFocusAreaBudCatTotalCommitment(JsonObject json) {
-        JsonObject award  = json.getAsJsonArray("Award").get(0).getAsJsonObject();
+    private JsonObject createAwarForSecondFocusAreaBudCatTotalCommitment(JsonObject json, String... Type) {
+        JsonObject award = json.getAsJsonArray("Award").get(0).getAsJsonObject();
         JsonArray newA = new JsonArray();
         award.addProperty("TotalCommitment", "2000");
         newA.add(award);
@@ -1589,7 +1905,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1598,6 +1913,15 @@ public class GrantorPayloads {
         awardServiceAreaB.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        if (Type.length > 0) {
+            if (Type[0].contains("Formula")) {
+                if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                    awardServiceAreaA.addProperty("NewObligationPay", "500");
+                    awardServiceAreaB.addProperty("NewObligationPay", "500");
+                }
+            }
+        }
+        awardServiceAreaArray.add(awardServiceAreaA);
         awardServiceAreaArray.add(awardServiceAreaB);
         json.add("AwardServiceArea", awardServiceAreaArray);
 
@@ -1627,7 +1951,7 @@ public class GrantorPayloads {
         return json;
     }
 
-    private JsonObject createAwarForSecondFocusArea(JsonObject json) {
+    private JsonObject createAwarForSecondFocusArea(JsonObject json, String... Type) {
         JsonArray awardServiceAreaArray = new JsonArray();
         JsonObject awardServiceAreaA = new JsonObject();
         awardServiceAreaA.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area"));
@@ -1637,7 +1961,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1646,6 +1969,15 @@ public class GrantorPayloads {
         awardServiceAreaB.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        if (Type.length > 0) {
+            if (Type[0].contains("Formula")) {
+                if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                    awardServiceAreaA.addProperty("NewObligationPay", "500");
+                    awardServiceAreaB.addProperty("NewObligationPay", "500");
+                }
+            }
+        }
+        awardServiceAreaArray.add(awardServiceAreaA);
         awardServiceAreaArray.add(awardServiceAreaB);
         json.add("AwardServiceArea", awardServiceAreaArray);
         return json;
@@ -1656,7 +1988,7 @@ public class GrantorPayloads {
         JsonArray newA = new JsonArray();
         grant.addProperty("FocusAreaRequired", "No");
         grant.addProperty("IsAdvancePermitted", "Yes");
-        if(EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO") ) {
+        if (EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO")) {
             grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));
         }
         newA.add(grant);
@@ -1676,8 +2008,8 @@ public class GrantorPayloads {
         return json;
     }
 
-    private JsonObject createAwarForSecondFocusAreaandBudgetCategorySubrecipientIndProfile(JsonObject json) {
-        if(EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO") ) {
+    private JsonObject createAwarForSecondFocusAreaandBudgetCategorySubrecipientIndProfile(JsonObject json, String... Type) {
+        if (EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO")) {
             JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
             JsonArray newA = new JsonArray();
             grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));
@@ -1693,7 +2025,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1702,6 +2033,15 @@ public class GrantorPayloads {
         awardServiceAreaB.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        if (Type.length > 0) {
+            if (Type[0].contains("Formula")) {
+                if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                    awardServiceAreaA.addProperty("NewObligationPay", "500");
+                    awardServiceAreaB.addProperty("NewObligationPay", "500");
+                }
+            }
+        }
+        awardServiceAreaArray.add(awardServiceAreaA);
         awardServiceAreaArray.add(awardServiceAreaB);
         json.add("AwardServiceArea", awardServiceAreaArray);
 
@@ -1731,7 +2071,7 @@ public class GrantorPayloads {
         return json;
     }
 
-    private JsonObject createAwarForSecondFocusAreaandBudgetCategory(JsonObject json) {
+    private JsonObject createAwarForSecondFocusAreaandBudgetCategory(JsonObject json, String... Type) {
         JsonArray awardServiceAreaArray = new JsonArray();
         JsonObject awardServiceAreaA = new JsonObject();
         awardServiceAreaA.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area"));
@@ -1741,7 +2081,6 @@ public class GrantorPayloads {
         awardServiceAreaA.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        awardServiceAreaArray.add(awardServiceAreaA);
         JsonObject awardServiceAreaB = new JsonObject();
         awardServiceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
         awardServiceAreaB.addProperty("GATStartDate",
@@ -1750,6 +2089,15 @@ public class GrantorPayloads {
         awardServiceAreaB.addProperty("GATEndDate",
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        if (Type.length > 0) {
+            if (Type[0].contains("Formula")) {
+                if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                    awardServiceAreaA.addProperty("NewObligationPay", "500");
+                    awardServiceAreaB.addProperty("NewObligationPay", "500");
+                }
+            }
+        }
+        awardServiceAreaArray.add(awardServiceAreaA);
         awardServiceAreaArray.add(awardServiceAreaB);
         json.add("AwardServiceArea", awardServiceAreaArray);
 
@@ -1781,7 +2129,7 @@ public class GrantorPayloads {
 
     private JsonObject createAwarForIndUser(JsonObject json) {
 
-        if(EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO") ) {
+        if (EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO")) {
             JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
             JsonArray newA = new JsonArray();
             grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));
@@ -1803,6 +2151,18 @@ public class GrantorPayloads {
         grant.addProperty("IsAdvancePermitted", "Yes");
         newA.add(grant);
         json.add("Grant", newA);
+        JsonArray buildUpItemsA = new JsonArray();
+        JsonObject buildUpItems = new JsonObject();
+        buildUpItems.addProperty("BudgetCategory", "Construction");
+        buildUpItems.addProperty("Title", "Construction");
+        buildUpItems.addProperty("Narrative", "Test Build-up");
+        buildUpItems.addProperty("AwardedBudget", 1000);
+        buildUpItems.addProperty("CashMatch", 100);
+        buildUpItems.addProperty("NonCashMatch", 100);
+        buildUpItems.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems.addProperty("ServiceAreaName", "Standard Focus Area");
+        buildUpItemsA.add(buildUpItems);
+        json.add("BuildUpItems", buildUpItemsA);
         return json;
     }
 
@@ -2140,6 +2500,11 @@ public class GrantorPayloads {
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         awardServiceAreaArray.add(awardServiceArea);
+        if (Type[0].contains("Formula")) {
+            if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                awardServiceArea.addProperty("NewObligationPay", "1000");
+            }
+        }
         parent.add("AwardServiceArea", awardServiceAreaArray);
 
         JsonObject kpiGoalsObjectives = new JsonObject();
