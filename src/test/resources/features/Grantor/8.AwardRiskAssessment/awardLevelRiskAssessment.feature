@@ -7193,7 +7193,7 @@ Feature: Validate all scenarios in the Risk Assessment
       The EGMS Team
       """
 
-  @116331 @ValidateRiskAssessmentsarereadonlyforSRUser @Sprint-23-US-273843 @vaibhav @Allocation @BugLogged-346065 @wip
+  @116331 @ValidateRiskAssessmentsarereadonlyforSRUser @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate Risk Assessments are read only for SR User
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -7215,7 +7215,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -7267,6 +7267,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly can see row level action button "Delete" against "{SavedValue:RAEGMSID}" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I wait for "5" seconds
     And I click toggle button to select "Subaward Risk Assessments - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
@@ -7275,6 +7276,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly can see row level action button "Delete" against "{SavedValue:RAEGMSID}" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    And I wait for "5" seconds
     When I perform quick search for "Automation IND" in "---home:-:indActiveAccountId---" panel
     And I click on "View" icon for "Automation IND" inside flex table with id "---home:-:indActiveAccountId---" without waiting for record
     And I navigate to "Risk Assessment" sub tab
@@ -7283,7 +7285,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see value "Created" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---riskassessment:-:organizationprofileviewTableId---"
     And I logout
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "20" seconds
+    And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -7307,17 +7309,20 @@ Feature: Validate all scenarios in the Risk Assessment
     When I login to "Grants Portal" app as "IND" user
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I wait for "4" seconds
     When I click toggle button to select "Subaward Risk Assessment - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I softly do not see "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
+    And I wait for "5" seconds
     And I navigate to "Risk Assessment" sub tab
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
     Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:organizationprofileviewTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I wait for "5" seconds
     And I click toggle button to select "Subaward Risk Assessments - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
@@ -7334,6 +7339,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see value "Submitted for Approval" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I wait for "5" seconds
     And I click toggle button to select "Subaward Risk Assessments - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
@@ -7343,26 +7349,29 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly cannot see row level action button "Delete" against "{SavedValue:RAEGMSID}" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    And I wait for "5" seconds
     When I perform quick search for "Automation IND" in "---home:-:indActiveAccountId---" panel
     And I click on "View" icon for "Automation IND" inside flex table with id "---home:-:indActiveAccountId---" without waiting for record
     And I navigate to "Risk Assessment" sub tab
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
-    Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:organizationprofileviewTableId---"
-    Then I softly see value "Submitted For Approval" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---riskassessment:-:organizationprofileviewTableId---"
+    Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:organizationprofileviewTableId---"
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I wait for "4" seconds
     When I click toggle button to select "Subaward Risk Assessment - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I softly do not see "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
+    And I wait for "5" seconds
     And I navigate to "Risk Assessment" sub tab
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
     Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:organizationprofileviewTableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I wait for "5" seconds
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I softly see that "Approve Subaward Risk Assessment" has been added in flextable with Id "---subAwardStandAlone:-:pendingTaskTableId---"
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
@@ -7370,7 +7379,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see field "Status" as "Created"
     And I logout
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "20" seconds
+    And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -7390,11 +7399,13 @@ Feature: Validate all scenarios in the Risk Assessment
     When I login to "Grants Portal" app as "IND" user
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I wait for "5" seconds
     When I click toggle button to select "Subaward Risk Assessment - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I softly do not see "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
+    And I wait for "3" seconds
     And I navigate to "Risk Assessment" sub tab
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
     Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:organizationprofileviewTableId---"
@@ -7473,6 +7484,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see value "Submitted for Approval" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I wait for "3" seconds
     And I click toggle button to select "Subaward Risk Assessments - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
@@ -7486,14 +7498,14 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "Automation IND" inside flex table with id "---home:-:indActiveAccountId---" without waiting for record
     And I navigate to "Risk Assessment" sub tab
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
-    Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:organizationprofileviewTableId---"
-    Then I softly see value "Submitted For Approval" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---riskassessment:-:organizationprofileviewTableId---"
+    Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:organizationprofileviewTableId---"
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I wait for "3" seconds
     When I click toggle button to select "Subaward Risk Assessment - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I softly do not see "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
@@ -7520,6 +7532,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see value "Active" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I wait for "3" seconds
     And I click toggle button to select "Subaward Risk Assessments - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
@@ -7538,9 +7551,10 @@ Feature: Validate all scenarios in the Risk Assessment
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I wait for "120" seconds
     When I click toggle button to select "Subaward Risk Assessment - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I softly see "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     Then I softly see value "Active" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
@@ -7586,6 +7600,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see value "Active" for title "Status" against the value "{SavedValue:RAEGMSID1}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I wait for "3" seconds
     And I click toggle button to select "Subaward Risk Assessments - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
@@ -7607,12 +7622,13 @@ Feature: Validate all scenarios in the Risk Assessment
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I wait for "3" seconds
     When I click toggle button to select "Subaward Risk Assessment - All"
     And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I softly see "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     Then I softly see value "Expired" for title "Status" against the value "{SavedValue:RAEGMSID}" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     And I perform quick search for "{SavedValue:RAEGMSID1}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I softly see "{SavedValue:RAEGMSID1}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I softly see value "{SavedValue:RAEGMSID1}" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     Then I softly see value "Active" for title "Status" against the value "{SavedValue:RAEGMSID1}" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel

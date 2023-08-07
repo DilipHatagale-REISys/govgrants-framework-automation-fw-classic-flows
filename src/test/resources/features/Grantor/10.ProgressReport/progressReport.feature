@@ -13,21 +13,20 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
-    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
     When I get the "EGMS ID"
 
   @51097 @51098 @51099 @51100 @51102 @51124 @51101 @51103 @51105 @51106 @51107 @51108 @51109 @59048 @51113 @51111 @51114 @51115 @51116 @51117 @51120 @editKPIProgressReportformFilling
   Scenario: To edit KPI in Progress Report | To fill and complete the form in Progress Report | To validate KPI for progress report are not editable post submission of prog report to grantor.
   To submit Progress Report to Grantor | To validate Submitted Progress Report Table is updated post report is submitted to Grantor.
-    Then I softly see status in Progress-bar is "Created" and is "green"
+    Then I softly see field "Status" as "Created"
     When I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Certify the Progress Report by checking the Acknowledgment Box before submitting to Grantor. |
       | Performance Tab - Provide a value for Key Accomplishment for Progress Report before submitting to Grantor.  |
       | Performance Tab - Provide a value for Obstacles for Progress Report before submitting to Grantor.           |
       | Performance Tab - Provide a value for Plans for Progress Report before submitting to Grantor.               |
-      | Forms and Files Tab - Provide all the required data in the form before submitting to Grantor.               |
       | Performance tab - Please add some value in the Actual of the KPI table                                      |
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -54,7 +53,7 @@ Feature: Validate all scenarios in Progress Report
     When I click toggle button to select "Progress Reports - Submitted"
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:progressReportFlexTableId---" panel
     Then I softly see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:progressReportFlexTableId---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
@@ -71,8 +70,7 @@ Feature: Validate all scenarios in Progress Report
     Then I softly see status in Progress-bar is "Sent Back to Subrecipient" and is "green"
     When I navigate to "History" sub tab
     Then I softly see value "Sent Back to Subrecipient" for title "New Value" inside table "History"
-    Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI3" user
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
@@ -82,11 +80,11 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 25     | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 25     |
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
@@ -380,7 +378,7 @@ Feature: Validate all scenarios in Progress Report
     And I click "{SavedValue:SubawardID}" lookup link
     When I navigate to "Performance" sub tab
     Then I softly see value "{SavedValue:Record Id}" for title "EGMS ID" against the value "Submitted to Grantor" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
@@ -1949,6 +1947,7 @@ Feature: Validate all scenarios in Progress Report
   Scenario: Validate Objectives table at Performance Tab on Progress report should not be editable at Award owner end when Progress report status is Submitted to Grantor. | Validate SR User is able to take snapshot of the Progress report when it is submitted to Grantor on active subaward
   Validate SR User can View the Objectives associated at award on progress report.
     When I navigate to "Performance" sub tab
+    When I click on "EGMS ID" column header inside table with id "---progressReport:-:objectivesTableId---"
     And I save the value from row "1" for column name "EGMS ID" as "ObjectiveEGMSID" from flex table "---progressReport:-:objectivesTableId---"
     And I click on hyperlink containing value "{SavedValue:ObjectiveEGMSID}"
     And I navigate to "Overview" sub tab

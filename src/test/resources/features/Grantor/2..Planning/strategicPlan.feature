@@ -146,8 +146,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     When I navigate to "Related Log" sub tab
     And I click on top right button "Associate" in flex table with id "---strategicplan:-:ObjectivesKPITableId---"
-    When I perform quick search for "Automation Permanent KPI" in "---strategicplan:-:ListOfActiveKPITableId---" panel
-    When I click "Add" after selection of "Automation Permanent KPI" in the table "---strategicplan:-:ListOfActiveKPITableId---"
+    When I click "Add" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---strategicplan:-:ListOfActiveKPITableId---"
     Then I see that "Automation Permanent KPI" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
 
     #marking as notFunctional as we can not activate multiple strategic plan for one organization

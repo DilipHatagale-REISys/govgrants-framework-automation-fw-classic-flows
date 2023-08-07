@@ -33,6 +33,4 @@ public class AmendmentRequestSteps {
     public void iClickAfterSelectionOfInTheTables(String buttonName, String recordValue, String numberOfEntries, String flexTableId) {
         amendmentRequestPage.clickAfterSelectionOfInTheTables(buttonName, recordValue, numberOfEntries, flexTableId);
     }
-
 }
-
