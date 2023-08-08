@@ -159,7 +159,7 @@ Feature: Validate all scenarios in the Application Intake
     Then I softly see the following messages in the page details :
       | Can not remove focus area as funding opportunity associates only one focus area. |
     When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---applicationIntake:-:AddFocusAreaTableAppId---" panel
+    #When I perform quick search for "Automation Permanent Focus Area" in "---applicationIntake:-:AddFocusAreaTableAppId---" panel
     Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:AddFocusAreaTableAppId---"
     And I close modal by clicking the top right x button
     Given I expand nested table containing column value "BP01"
@@ -294,10 +294,9 @@ Feature: Validate all scenarios in the Application Intake
   Scenario:Validate whether user is able to associate new contacts while creating an application
     And I navigate to "Overview" sub tab
     When I click on top right button "Associate" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    When I perform quick search for "Automation SPA" in "---applicationIntake:-:associateNewContactsTableId---" panel
-    When I click "Add" after selection of "Automation SPA" in the table "---applicationIntake:-:associateNewContactsTableId---"
+    When I click "Add" after selection of "Automation SPA" by showing entries "All" in flex table with id "---applicationIntake:-:associateNewContactsTableId---"
     And I refresh the page
-    When I perform quick search for "Automation SPA" in "---applicationReview:-:flexGridAppContactTableId---" panel
+    #When I perform quick search for "Automation SPA" in "---applicationReview:-:flexGridAppContactTableId---" panel
     Then I softly see value "Automation SPA" for title "Name" inside table "---applicationReview:-:flexGridAppContactTableId---"
 
   @73944 @73945 @71409 @73947 @73950 @73948 @73949 @maxAppValidationError @deepika

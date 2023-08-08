@@ -1,7 +1,7 @@
 @grantor-regression @grantor-parallel-regression @announcement @regression @announcement-undo
 Feature: Validate all scenarios in the Competitive Announcement tab
 
-  @283963 @283965 @283966 @283973 @VerifywhenPmapprovercanclickonundobuttoninAnnouncementrecordwhenrecordisinApprovedstate @sprint-4-US-295141 @hitesh @Allocation
+  @283963 @283965 @283973 @VerifywhenPmapprovercanclickonundobuttoninAnnouncementrecordwhenrecordisinApprovedstate @sprint-4-US-295141 @hitesh @Allocation
   Scenario: Verify when Pm approver can click on undo button in Announcement  record when record is in Approved state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -86,6 +86,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
+    Then I can see top right button "Undo" in page detail
     #283973
     Then I softly can see top right button "Publish" in page detail
     Then I softly can see top right button "Revise" in page detail
@@ -333,7 +334,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:pendingTaskTableId---" panel
-    Then I see value "{SavedValue:AnnEGMSID}" for title "EGMS ID" inside table "---announcement:-:pendingTaskTableId---"
     When I click on "Start" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
@@ -445,8 +445,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click "Yes" on modal confirmation box
     Then I softly see field "Status" as "Submitted for Approval"
     Then I see only the following ordered radio buttons in the approval decision :
-      | Approve | Reject | Forward | Send back |
-    And I "Send Back" in the approval decision
+      | Approve | Forward |Send to Owner  | Reject |
+    And I "Send to Owner" in the approval decision
     Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
 

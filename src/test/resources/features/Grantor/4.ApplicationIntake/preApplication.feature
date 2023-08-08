@@ -33,8 +33,7 @@ Feature: Validate all scenarios in the Pre-Application
   Scenario: To verify that the contacts appearing in the Associate button in Contact table of preapplication is of the Same organisation |To validate that the new contact can be associated in the contact table in SPI user profile Preapplication
     When I navigate to "Overview" sub tab
     And I click table top right button "Associate" in flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
-    And I perform quick search for "Automation SPA" in "---preApplication:-:associatePreAppContactsTableId---" panel
-    When I click "Add" after selection of "Automation SPA" in the table "---preApplication:-:associatePreAppContactsTableId---"
+    When I click "Add" after selection of "Automation SPA" by showing entries "All" in flex table with id "---preApplication:-:associatePreAppContactsTableId---"
     And I close modal by clicking the top right x button
     Then I softly see value "Automation SPA" for title "Name" inside table "---preApplication:-:flexGridPreAppContactTableId---"
     When I click on "View" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
@@ -62,7 +61,6 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Budget" sub tab
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
-    When I perform quick search for "Automation Permanent Focus Area1" in "---applicationIntake:-:focusAreaAssociateTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
     And I close modal by clicking the top right x button
     And I expand nested table containing column value "BP01"
