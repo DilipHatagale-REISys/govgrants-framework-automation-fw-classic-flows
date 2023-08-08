@@ -1,7 +1,7 @@
 @grantor-regression @grantor-parallel-regression @announcement @regression @announcement-undo
 Feature: Validate all scenarios in the Competitive Announcement tab
 
-  @283963 @283965 @283966 @VerifywhenPmapprovercanclickonundobuttoninAnnouncementrecordwhenrecordisinApprovedstate @sprint-4-US-295141 @hitesh @Allocation
+  @283963 @283965 @283966 @283973 @VerifywhenPmapprovercanclickonundobuttoninAnnouncementrecordwhenrecordisinApprovedstate @sprint-4-US-295141 @hitesh @Allocation
   Scenario: Verify when Pm approver can click on undo button in Announcement  record when record is in Approved state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -325,9 +325,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I navigate to "Home" tab
     When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
     When I reassign task to "Automation PM1"
-    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
-    When I check "{SavedValue:ProgramEGMSID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    When I perform quick search for "{SavedValue:AnnEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
+    When I check "{SavedValue:AnnEGMSID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I pause execution for "30" seconds
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -354,7 +355,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @283970 @VerifythatwhenEXEapproverSendbacktheAnnouncementrecordExewillnotseeUNDObutton @sprint-4-US-295141 @hitesh @Allocation
   Scenario: Verify that when EXE approver Send back the Announcement record , Exe will not see UNDO button
-    When I login to "As a Grantor" app as "EXE" user
+    When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
@@ -395,8 +396,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Name                      | Announcement |
       | {SavedValue:PO Username}  | Step 2       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                         | Announcement |
-      | {SavedValue:ADMIN Username}  | Step 3       |
+      | Name                      | Announcement |
+      | {SavedValue:FO Username}  | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                       | Announcement |
       | {SavedValue:EXE Username}  | Step 4       |
@@ -424,7 +425,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
     Then I cannot see top right button "Undo" in page detail
-    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
