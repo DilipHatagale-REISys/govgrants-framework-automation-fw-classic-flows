@@ -200,7 +200,6 @@ Feature: Pre-Application scenarios without background
     And I save the field labeled "Subaward Floor" as "subawardfloor1"
     And I save the field labeled "Subaward Ceiling" as "subawardcieling1"
     And I save the field labeled "Match Required?" as "matchrequired"
-    And I save the field containing "Match Required?" as "No"
     When I navigate to "Forms and Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
@@ -209,6 +208,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
+    And I pause execution for "5" seconds
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Associate at least one active key contact with the pre-application.                                                                                  |
       | Budget Tab - Budgeted Amount must be greater than or equal to the Subaward Floor Amount. Adjust the Budgeted Amount in the Budget period section on the Budget tab. |
@@ -222,6 +222,7 @@ Feature: Pre-Application scenarios without background
     And I enter value "Checked" into field "Agreement5__c"
     And I click on "Save" in the page details
     When I click on "Submit to Grantor" in the page details
+    And I pause execution for "5" seconds
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Associate at least one active key contact with the pre-application.                                                                                  |
       | Budget Tab - Budgeted Amount must be greater than or equal to the Subaward Floor Amount. Adjust the Budgeted Amount in the Budget period section on the Budget tab. |
