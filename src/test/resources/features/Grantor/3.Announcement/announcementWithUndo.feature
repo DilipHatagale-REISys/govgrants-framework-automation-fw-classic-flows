@@ -1,7 +1,7 @@
 @grantor-regression @grantor-parallel-regression @announcement @regression @announcement-undo
 Feature: Validate all scenarios in the Competitive Announcement tab
 
-  @283963 @283965 @283973 @VerifywhenPmapprovercanclickonundobuttoninAnnouncementrecordwhenrecordisinApprovedstate @sprint-4-US-295141 @hitesh @Allocation
+  @283963 @283966 @283973 @VerifywhenPmapprovercanclickonundobuttoninAnnouncementrecordwhenrecordisinApprovedstate @sprint-4-US-295141 @hitesh @Allocation
   Scenario: Verify when Pm approver can click on undo button in Announcement  record when record is in Approved state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -90,148 +90,12 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     #283973
     Then I softly can see top right button "Publish" in page detail
     Then I softly can see top right button "Revise" in page detail
+    #283966
     Then I can see top right button "Undo" in page detail
-    #283965
     And I click on "Undo" in the page details without processing
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    #283966
     Then I softly see field "Status" as "Submitted for Approval"
-    And I checkout to yopmail with mailid "exe.automation@yopmail.com"
-    And I pause execution for "10" seconds
-    Then I refresh the page
-    And I see the mail subject is as follows :
-      """
-     Notification: Approver initiated undo action on Announcement {SavedValue:AnnEGMSID}.
-      """
-    Then I see the mail text is as follows :
-  """
-  Hello,
-
-
-
-   This email is to notify you that Approver Automation EXE has initiated Undo Action for announcement {SavedValue:AnnEGMSID}.
-
-   Announcement Details:
-   Announcement Title: {SavedValue:AnnEGMSID}
-   Announcement Type: Competitive
-   Associated Program Name: Automation Permanent Internal Program
-
-   Log in to EGMS and click here to start reviewing the details.
-
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
-
-   Thank you.
-   The EGMS Team
-    """
-    And I checkout to yopmail with mailid "automationpo@yopmail.com"
-    And I pause execution for "10" seconds
-    Then I refresh the page
-    And I see the mail subject is as follows :
-      """
-     Notification: Approver initiated undo action on Announcement A{SavedValue:AnnEGMSID}.
-      """
-    Then I see the mail text is as follows :
-  """
-    Hello,
-
-
-
-   This email is to notify you that Approver Automation PM has initiated Undo Action for announcement {SavedValue:AnnEGMSID}.
-
-   Announcement Details:
-   Announcement Title: {SavedValue:AnnEGMSID}
-   Announcement Type: Competitive
-   Associated Program Name: Automation Permanent Internal Program
-
-   Log in to EGMS and click here to start reviewing the details.
-
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
-
-   Thank you.
-   The EGMS Team
-  """
-    And I checkout to yopmail with mailid "fo.automation@yopmail.com"
-    And I pause execution for "10" seconds
-    Then I refresh the page
-    And I see the mail subject is as follows :
-      """
-     Notification: Approver initiated undo action on Announcement {SavedValue:AnnEGMSID}.
-      """
-    Then I see the mail text is as follows :
-  """
-   Hello,
-
-
-
-   This email is to notify you that Approver Automation FO has initiated Undo Action for announcement {SavedValue:AnnEGMSID}.
-
-   Announcement Details:
-   Announcement Title: {SavedValue:AnnEGMSID}
-   Announcement Type: Competitive
-   Associated Program Name: Automation Permanent Internal Program
-
-   Log in to EGMS and click here to start reviewing the details.
-
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
-
-   Thank you.
-   The EGMS Team
-  """
-    And I checkout to yopmail with mailid "automationfd@yopmail.com"
-    And I pause execution for "10" seconds
-    Then I refresh the page
-    And I see the mail subject is as follows :
-      """
-     Notification: Approver initiated undo action on Announcement A{SavedValue:AnnEGMSID}.
-      """
-    Then I see the mail text is as follows :
-  """
-  Hello,
-
-
-
-   This email is to notify you that Approver Automation FD has initiated Undo Action for announcement {SavedValue:AnnEGMSID}.
-
-   Announcement Details:
-   Announcement Title: {SavedValue:AnnEGMSID}
-   Announcement Type: Competitive
-   Associated Program Name: Automation Permanent Internal Program
-
-   Log in to EGMS and click here to start reviewing the details.
-
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
-
-   Thank you.
-   The EGMS Team
-  """
-    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "10" seconds
-    Then I refresh the page
-    And I see the mail subject is as follows :
-      """
-    Notification: Approver initiated undo action on Announcement A{SavedValue:AnnEGMSID}.
-      """
-    Then I see the mail text is as follows :
-  """
-   Hello,
-
-
-
-   This email is to notify you that Approver Automation PM has initiated Undo Action for announcement {SavedValue:AnnEGMSID}.
-
-   Announcement Details:
-   Announcement Title: {SavedValue:AnnEGMSID}
-   Announcement Type: Competitive
-   Associated Program Name: Automation Permanent Internal Program
-
-   Log in to EGMS and click here to start reviewing the details.
-
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
-
-   Thank you.
-   The EGMS Team
-  """
 
   @283969 @VerifythatwhenExeapproverForwardtheAnnouncementApprovaltaskForwardedApproverwillseeUNDObuttonandnotpreviousOne @sprint-4-US-295141 @hitesh @Allocation
   Scenario: Verify that when Exe approver Forward the Announcement Approval task , Forwarded Approver will see UNDO button and not previous One

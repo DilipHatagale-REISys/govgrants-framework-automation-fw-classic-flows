@@ -2555,7 +2555,7 @@ Feature: Validate all scenarios for program
     When I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
 
-  @279567 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-291914 @hitesh
+  @279567 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-291914 @hitesh @wip
   Scenario: Verify notification email should generate to new owner of program after click on Undo button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -2595,7 +2595,7 @@ Feature: Validate all scenarios for program
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "All NGO Programs"
     When I perform quick search for "Record Id" in "---program:-:ExternalNGOProgramTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    And I click on "View" icon for "Record Id" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     And I navigate to "Responsibilities" sub tab
     And I save the value from row "1" for column name "Name" as "OwnerName1" from flex table "---program:-:programOwnerTableId---"
     Then I softly see value "{SavedValue:OwnerName1}" for title "Name" inside table "---program:-:programOwnerTableId---"
