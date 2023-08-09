@@ -641,6 +641,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Edit" in the page details
     Then I softly see that "New Obligation" rendered in view mode only
     And I click on "Save" in the page details
+    And I wait for "3" seconds
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                           | New Obligation |
       | Automation Permanent Focus Area | 500            |
@@ -1389,7 +1390,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount for the following focus areas - (Automation Permanent Focus Area) |
 
-  @249159 @ValidatePMusercaneeBudgetedAmountcolumnvalueRollupfromthebudgetgridsRevisedAwardAmountcolumn @sprint-18-US-225787 @vaibhav @Allocation @TBE
+  @249159 @ValidatePMusercaneeBudgetedAmountcolumnvalueRollupfromthebudgetgridsRevisedAwardAmountcolumn @sprint-18-US-225787 @vaibhav @Allocation
   Scenario: Validate PM user can see Budgeted Amount column value Roll up from the budget grid's Revised Award Amount column.
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -4618,7 +4619,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | IND  | SUBRECIPIENT_ORG_IND_USER |
       | SPI3 | default                   |
 
-  @253369 @253374 @253386 @253397 @253389 @253457 @253458 @253405 @ValidateNewObligationfieldshouldgetcopiedfromthedifferencecolumninthefundingAccountsectionfromtheAmendmentrequestFAYes @sprint-18-US-250639 @vaibhav @Allocation @TBE
+  @253369 @253374 @253386 @253397 @253389 @253457 @253458 @253405 @ValidateNewObligationfieldshouldgetcopiedfromthedifferencecolumninthefundingAccountsectionfromtheAmendmentrequestFAYes @sprint-18-US-250639 @vaibhav @Allocation
   Scenario Outline: Validate New Obligation field should get copied from the difference column in the funding Account section from the Amendment request. (FA Yes)
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "<Properties>-Automation EXE user" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "EXE" user
@@ -11760,7 +11761,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -12307,7 +12308,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Overview Tab - The Budgeted Amount must be equal to the New Obligation for following Focus Areas - (Automation Permanent Focus Area, Automation Permanent Focus Area2) |
-      | Overview Tab - The New Obligation ($4000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($0.0)                                           |
+      | Overview Tab - The New Obligation ($4000.00) must be equal to the total of Revised Encumbrance in the Funding Account ($0.00)                                           |
 
   @256611 @256629 @ValidatevalidationisdisplayedtoPMuserwhenuserenterRevisedCommitmentlessthanNewobligationincurrentARcumulativeobligationinGrant @sprint-19-US-241142 @vaibhav @Allocation
   Scenario: Validate validation is displayed to PM user when user enter Revised Commitment less than New obligation in current AR cumulative obligation in Grant
@@ -15157,7 +15158,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}" and properties "Automation EXE user"
     And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
-    When I login to "As a Grantor" app as "EXE" user
+    When I login to "As a Grantor" app as "EXE1" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -16433,7 +16434,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Save" in the page details
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Revised Commitment should be equal to or greater than the total of Cummulative Obligation $10000.00 across all budget periods. |
+      | Overview Tab - Revised Commitment should be equal to or greater than the total of Cummulative Obligation $11000.00 across all budget periods. |
 
   @257057 @VerifyvalidationisnotdisplayedtoFDuseronsubmitforapprovalwhenuserenterRevisedCommitmentequaltoNewobligationincurrentARcumulativeobligationinGrantWhenFANo @sprint-19-US-229281 @hitesh @Allocation
   Scenario: Verify validation is not displayed to FD user on submit for approval when user enter Revised Commitment equal to New obligation in current AR cumulative obligation in Grant When FA No
@@ -16890,7 +16891,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @257728 @ValidateBudgetedAmountshouldberolledfromtherevisedawardamountcolumnfrombudgetedgridFAYes @sprint-19-US-242374 @vaibhav @Allocation @TBE
+  @257728 @ValidateBudgetedAmountshouldberolledfromtherevisedawardamountcolumnfrombudgetedgridFAYes @sprint-19-US-242374 @vaibhav @Allocation
   Scenario: Validate Budgeted Amount should be rolled from the revised award amount column from budgeted grid(FA=Yes)
     And I activated standalone subaward "Automation Runtime award" with properties "THREE_FOCUS_AREA_NO_BUDGET_CATEGORY_THIRD_FOCUS-Automation EXE user" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "EXE1" user
@@ -17470,7 +17471,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I edit the following rows inline in flex table with id "---amendment:-:grantorCarryForwardFocusAreaTableId---" by clicking "Edit" :
       | Title                           | Carry Forward Amount |
       | Automation Permanent Focus Area | 100                  |
-    And I wait for "7" seconds
+    And I wait for "9" seconds
     When I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Carry Forward Amount in the budget period section must be equal to the Carry Forward amount on the Budget Summary by Focus Area Section for the Following Focus areas - (Automation Permanent Focus Area) |
@@ -18964,7 +18965,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$2,000.00" for title "Budgeted Amount" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     Then I softly see value "$5,000.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:subrecipientProjectAreasTableId---"
 
-  @257350 @257436 @257439 @257466 @257473 @257564 @257565 @257567 @257571 @257573 @257486 @257478 @257494 @257497 @257511 @VerifyFOusershouldseeNewObligation&CumulativeObligationreadonlycolumnandshouldnotseeBudgetedAmountreadonlycolumninPendingActivationandActivatedstateofAward @sprint-19-US-250550 @hitesh @Allocation @TBE
+  @257350 @257436 @257439 @257466 @257473 @257564 @257565 @257567 @257571 @257573 @257486 @257478 @257494 @257497 @257511 @VerifyFOusershouldseeNewObligation&CumulativeObligationreadonlycolumnandshouldnotseeBudgetedAmountreadonlycolumninPendingActivationandActivatedstateofAward @sprint-19-US-250550 @hitesh @Allocation
   Scenario: Verify FO user should see 'New Obligation & Cumulative Obligation' read only column and should not see 'Budgeted Amount' read only column  in  Pending Activation and Activated state of Award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -20706,7 +20707,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitment2"
     Then I softly see value "{SavedValue:TotalCommitment4}" is "Equals to" the value "{SavedValue:TotalCommitment2}"
 
-  @257985 @257982 @VerifyAdminuserwillseeCumilativeObligationfieldontheBudgetSummarybyFocusAreasectionOnNewAwardInActiveStateandRolluptheAwardAmountforeachfocusareafromtheawardbudgetgrid @sprint-19-US-255648 @hitesh @Allocation @TBE
+  @257985 @257982 @VerifyAdminuserwillseeCumilativeObligationfieldontheBudgetSummarybyFocusAreasectionOnNewAwardInActiveStateandRolluptheAwardAmountforeachfocusareafromtheawardbudgetgrid @sprint-19-US-255648 @hitesh @Allocation
   Scenario: Verify Admin user will see Cumilative Obligation field on the Budget Summary by Focus Area section On New Award In Active State and Roll up the Award Amount for each focus area from the award budget grid.
     Given I published "Formula" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA_BY_APPLICANT_FOCUS_AREA_RISK_ASS_NO-Automation ADMIN user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
@@ -22677,7 +22678,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Budgeted Amount" as "BudgetedAmount"
     Then I softly see value "{SavedValue:RevisedObligation}" is "Equals to" the value "{SavedValue:BudgetedAmount}"
 
-  @264313 @264334 @264339 @264299 @264326 @264327 @264330 @264333 @264224 @264349 @264352 @ValidatePMuserseeRevisedobligationamountshouldbegreaterthanspentamountFAisyes @sprint-20-US-248355 @vaibhav @Allocation @TBE
+  @264313 @264334 @264339 @264299 @264326 @264327 @264330 @264333 @264224 @264349 @264352 @ValidatePMuserseeRevisedobligationamountshouldbegreaterthanspentamountFAisyes @sprint-20-US-248355 @vaibhav @Allocation
   Scenario: Validate PM user see Revised obligation amount should be greater than spent amount FA is yes
     Given I published "Formula" type announcement having name "Automation Runtime Announcement" and properties "THREE_FOCUS_AREA_BY_APPL_RISK_ASS_NO-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
@@ -23322,6 +23323,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "Actions" in flex table header "---progressReport:-:budgetChangeTableId---"
     Then I softly can see row level action button "Edit" against "Construction" in flex table with id "---progressReport:-:budgetChangeTableId---"
     And I refresh the page
+    And I click on parallel menu button in flex table title "Budget Change"
+    And I select "Reset Table" from parallel lines dropdown of "Budget Change"
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction    | 1200                 | 120        | 0              |
@@ -23484,14 +23487,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
-      | Extra Salary | The narrative | 1000         | 100        | 0              |
+      | Title        | Narrative    | Award Amount | Cash Match | Non Cash Match |
+      | Construction | Construction | 1000         | 100        | 0              |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
-      | Extra Salary | The narrative | 1000         | 100        | 0              |
+      | Title        | Narrative    | Award Amount | Cash Match | Non Cash Match |
+      | Construction | Construction | 1000         | 100        | 0              |
     When I close "Add Line Items" modal by clicking the top right x button
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
@@ -23593,8 +23596,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
-      | Extra Salary | The narrative | 1700         | 170        | 0              |
+      | Title        | Narrative    | Award Amount | Cash Match | Non Cash Match |
+      | Construction | Construction | 1700         | 170        | 0              |
     When I close "Add Line Items" modal by clicking the top right x button
     And I refresh the page
     #265693
@@ -23611,14 +23614,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I select "Reset Table" from parallel lines dropdown of "Budget Change"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     Then I softly cannot see top right button "New" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
-    Then I cannot see row level action button "Edit" against "Extra Salary" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
-    Then I cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
+    Then I cannot see row level action button "Edit" against "Construction" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
+    Then I cannot see row level action button "Delete" against "Construction" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     Then I softly cannot see top right button "New" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
-    Then I cannot see row level action button "Edit" against "Extra Salary" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
-    Then I cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
+    Then I cannot see row level action button "Edit" against "Construction" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
+    Then I cannot see row level action button "Delete" against "Construction" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
     When I close "Add Line Items" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -23647,14 +23650,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I select "Reset Table" from parallel lines dropdown of "Budget Change"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
-      | Extra Salary | The narrative | 1200         | 120        | 0              |
+      | Title        | Narrative    | Award Amount | Cash Match | Non Cash Match |
+      | Construction | Construction | 1200         | 120        | 0              |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
-      | Extra Salary | The narrative | 1500         | 150        | 0              |
+      | Title        | Narrative    | Award Amount | Cash Match | Non Cash Match |
+      | Construction | Construction | 1500         | 150        | 0              |
     When I close "Add Line Items" modal by clicking the top right x button
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
@@ -24207,14 +24210,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
-      | Extra Salary | The narrative | 1000         | 100        | 0              |
+      | Title        | Narrative    | Award Amount | Cash Match | Non Cash Match |
+      | Construction | Construction | 1000         | 100        | 0              |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
-      | Extra Salary | The narrative | 1000         | 100        | 0              |
+      | Title        | Narrative    | Award Amount | Cash Match | Non Cash Match |
+      | Construction | Construction | 1000         | 100        | 0              |
     When I close "Add Line Items" modal by clicking the top right x button
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
@@ -24260,14 +24263,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I refresh the page
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
-      | Extra Salary | The narrative | 1500         | 150        | 0              |
+      | Title        | Narrative    | Award Amount | Cash Match | Non Cash Match |
+      | Construction | Construction | 1500         | 150        | 0              |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        | Narrative     | Award Amount | Cash Match | Non Cash Match |
-      | Extra Salary | The narrative | 1500         | 150        | 0              |
+      | Title        | Narrative    | Award Amount | Cash Match | Non Cash Match |
+      | Construction | Construction | 1500         | 150        | 0              |
     When I close "Add Line Items" modal by clicking the top right x button
     And I refresh the page
     And I click on "Submit to Grantor" in the page details

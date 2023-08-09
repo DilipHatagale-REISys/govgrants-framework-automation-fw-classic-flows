@@ -39,7 +39,7 @@ Feature: Validate all scenarios in Payment Request
     When I close "Add Line Items" modal by clicking the top right x button
     Then I see value "$20.00" for title "Spent This Action" against the value "Construction" inside table "---paymentRequest:-:paymentRequestBudgetTableId---"
 
-  @51069 @51070 @pRSubmitToGrantorAndEnterFAAmountInPR @TBE1
+  @51069 @51070 @pRSubmitToGrantorAndEnterFAAmountInPR 
   Scenario Outline: Submit Reimbursement Payment Request to Grantor | Enter Funding Account amount in Reimbursement Payment Request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -414,7 +414,7 @@ Feature: Validate all scenarios in Payment Request
       | Award Name                            |
       | {SavedValue:Automation Runtime Award} |
 
-  @53980 @captureConfirmationMessageAfterApprovingAdvancePR @mahadev @TBE1
+  @53980 @captureConfirmationMessageAfterApprovingAdvancePR @mahadev 
   Scenario: Capture confirmation message after approving advance payment request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1320,7 +1320,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Delete" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
     Then I do not see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:paymentRequestTableId---"
 
-  @54647 @validatePendingTaskAdvancePRFOUser @mahadev @TBE1
+  @54647 @validatePendingTaskAdvancePRFOUser @mahadev 
   Scenario: Validate task is getting created for fiscal user after submitting advance payment request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1581,7 +1581,7 @@ Feature: Validate all scenarios in Payment Request
       Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Submitted
       """
 
-  @55630 @validateAdvancePRSendBackToSubReceipientEmailNotification @jitendra @TBE1
+  @55630 @validateAdvancePRSendBackToSubReceipientEmailNotification @jitendra 
   Scenario: Verify that on Send Back to subrecipient , user is able to check email(Advance)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1609,12 +1609,12 @@ Feature: Validate all scenarios in Payment Request
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I click on "Send Back to Subrecipient" in the page details
-    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
     And I pause execution for "180" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
      """
-     Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Sent Back for Revisions
+     Sandbox: Notification: Payment Request {SavedValue:PaymentId} has been SentBack
      """
 
   @55628 @approvalOfAdvancePaymentRequestEmailNotification @jitendra 
@@ -1708,7 +1708,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
      """
-     Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Approved
+     Sandbox: Notification: Payment Request {SavedValue:PaymentId} has beenApproved
      """
     Examples:
       | Award Name                            | Grant Name                            |
@@ -1862,7 +1862,7 @@ Feature: Validate all scenarios in Payment Request
       Sandbox: Notification: Payment Request {SavedValue:PaymentId} has beenApproved
       """
 
-  @55634 @sendToOwnerEmailNotificationAdvance @jitendra @TBE1
+  @55634 @sendToOwnerEmailNotificationAdvance @jitendra 
   Scenario: Verify that on Send to Owner , user is able to check  email notifications Payment Request (Advance)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1909,7 +1909,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Sent Back
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} has been SentBack
       """
 
   @55638 @sendToOwnerPREmailNotificationReimbursement @jitendra 
@@ -1958,7 +1958,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Sent Back
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} has been SentBack
       """
     Examples:
       | Award Name                            | Grant Name                            |
@@ -2063,7 +2063,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Payment Request {SavedValue:PaymentId} for {SavedValue:SubawardId}has been Rejected
+      Sandbox: Notification: Payment Request #{SavedValue:PaymentId} has beenRejected.
       """
     Examples:
       | Award Name                            | Grant Name                            |
@@ -2113,11 +2113,11 @@ Feature: Validate all scenarios in Payment Request
     And I "Disapprove" in the approval decision
     And I pause execution for "5" seconds
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "5" seconds
+    And I pause execution for "120" seconds
     And I refresh the page
     Then I see the mail subject is as follows :
       """
-      Sandbox: Notification: Payment Request {SavedValue:PaymentId} for {SavedValue:SubawardId}has been Rejected
+      Sandbox: Notification: Payment Request #{SavedValue:PaymentId} has beenRejected.
       """
 
   @55404 @advancePRSentBackToOwner @jitendra 
@@ -2514,7 +2514,7 @@ Feature: Validate all scenarios in Payment Request
       | {SavedValue:FD Username} | Step 4  |
     Then I softly see "Saved Successfully!" inside flex table with id "---paymentRequest:-:approversTableId---"
 
-  @148783 @Verify1StepApprovalForAdvancePaymentRequest-RnRFuntionality @monu @TBE1
+  @148783 @Verify1StepApprovalForAdvancePaymentRequest-RnRFuntionality @monu 
   Scenario Outline:Verify user can add one step approver for advance payment request and approve it
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
