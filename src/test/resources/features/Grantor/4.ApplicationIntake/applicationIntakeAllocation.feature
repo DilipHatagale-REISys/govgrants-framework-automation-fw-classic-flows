@@ -1690,7 +1690,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     #219342
     Then I softly do not see "Budget Summary by Focus Area" page block displayed
 
-  @219363 @219366 @CompetativeAnnVerifyasPMuserIcanseeRecommendedforawardcolumnisvisiblewhenAppstatusisnegotiationCompleted @sprint-10-US-203669 @komal @Allocation @hiteshTemp
+  @219363 @219366 @CompetativeAnnVerifyasPMuserIcanseeRecommendedforawardcolumnisvisiblewhenAppstatusisnegotiationCompleted @sprint-10-US-203669 @komal @Allocation
   Scenario: Competitive Ann_ Verify as PM user I can see Recommended budget field is visible when App status is negotiation completed
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANTNT"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -1959,7 +1959,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly cannot see page block "Focus Area"
     Then I softly cannot see page block "Budget Summary by Focus Area"
 
-  @219096 @219100 @219080 @219108 @PreapplicationVerifyasSPIusershouldseeBudgetedAmountsectioninsteadofRequestedAmountsectionunderOverviewsubtabofpreapplicationforCompetitiveAnnouncement @sprint-09-US-208978 @komal @Allocation @hiteshTemp
+  @219096 @219100 @219080 @219108 @PreapplicationVerifyasSPIusershouldseeBudgetedAmountsectioninsteadofRequestedAmountsectionunderOverviewsubtabofpreapplicationforCompetitiveAnnouncement @sprint-09-US-208978 @komal @Allocation
   Scenario: Competitive Ann>> Verify as PM user should not see 'Focus Area' section under Budget subtab of pre-application even if setting as Allocation level is 'NA' & Focus Area is 'YES'
   | Pre-application>>Verify as SPI user should see Budget Summary section on top level under Budget subtab of pre-application for Competitive Announcement|
   | Pre-application>>Verify as SPI user should not see both Sub award floor & sub award ceiling field under Opportunity overview section for Competitive Announcement |
@@ -2919,7 +2919,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I softly see the following messages in the page details contains:
       | Budget Tab - Budgeted Amount must be greater than or equal to the Subaward Floor Amount. Adjust the Budgeted Amount in the Budget period section on the Budget tab. |
 
-  @227868 @227871 @VerifySPIUserresubmittheapplicationafternegotiationFromFDMcheckwhentheBudgetedamountmustbeequaltotheAllocationAmount @sprint-13-US-224692 @komal @Allocation @hiteshTemp
+  @227868 @227871 @VerifySPIUserresubmittheapplicationafternegotiationFromFDMcheckwhentheBudgetedamountmustbeequaltotheAllocationAmount @sprint-13-US-224692 @komal @Allocation
   Scenario Outline:  Verify SPI User  resubmit the application after negotiation (From FDM), check when the Budgeted amount must be equal to the Allocation Amount
   |  Verify SPI User  resubmit the application after negotiation (From FDM), check when the Budgeted amount must be equal to the Allocation Amount |
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "<AllocationLevel>"
@@ -2961,7 +2961,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:Automation Runtime Formula Announcement} | BY_APPLICANT               |
       | {SavedValue:Automation Runtime Formula Announcement} | BY_APPLICANT_FOCUS_AREA_NO |
 
-  @227872 @VerifywhenSPIuserresubmittheapplicationafternegotiationfromFDMcheckFocusareasbudgetedtotalmustbeequaltoAllocationamountforthatfocusareainbudgetsummarysection @sprint-13-US-224692 @komal @Allocation @hiteshTemp
+  @227872 @VerifywhenSPIuserresubmittheapplicationafternegotiationfromFDMcheckFocusareasbudgetedtotalmustbeequaltoAllocationamountforthatfocusareainbudgetsummarysection @sprint-13-US-224692 @komal @Allocation
   Scenario Outline: Verify when SPI user  resubmit the application after negotiation(from FDM) check Focus area's budgeted total, must be equal to Allocation amount for that focus area in budget summary section
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
