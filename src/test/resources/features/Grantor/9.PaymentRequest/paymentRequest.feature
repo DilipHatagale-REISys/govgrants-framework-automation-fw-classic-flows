@@ -1809,7 +1809,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Payment Request {SavedValue:PaymentId} for {SavedValue:SubawardId}has been Forwarded
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} for {SavedValue:SubawardId} hasbeen Submitted for Approval
       """
 
   @55632 @approvalOfPREmailNotificationAdvance @jitendra 
