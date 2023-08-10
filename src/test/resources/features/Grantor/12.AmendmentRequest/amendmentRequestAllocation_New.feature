@@ -772,7 +772,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$1,000.00" for title "Budgeted Amount" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
     Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
       | Revised Award Amount |
-      | $1,000.00             |
+      | $1,000.00            |
     #257446
     And I click on "Edit" in the page details
     Then I softly see that "Current Obligation" rendered in view mode only
@@ -2175,7 +2175,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     Then I softly can see row level action button "Edit" against "Construction" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        |  Award Amount | Cash Match | Non Cash Match |
+      | Title        | Award Amount | Cash Match | Non Cash Match |
       | Construction | 1200         | 120        | 0              |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
@@ -2256,15 +2256,15 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     Then I softly can see row level action button "Edit" against "Construction" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        |  Award Amount | Cash Match | Non Cash Match |
-      | Construction |  1300         | 130        | 0              |
+      | Title        | Award Amount | Cash Match | Non Cash Match |
+      | Construction | 1300         | 130        | 0              |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     Then I softly can see row level action button "Edit" against "Construction" in flex table with id "---amendment:-:amendmentLineItemsTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        |  Award Amount | Cash Match | Non Cash Match |
-      | Construction |  1600         | 160        | 0              |
+      | Title        | Award Amount | Cash Match | Non Cash Match |
+      | Construction | 1600         | 160        | 0              |
     When I close "Add Line Items" modal by clicking the top right x button
     And I refresh the page
     And I click on parallel menu button in flex table title "Budget Change"
@@ -3522,8 +3522,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Title        | Narrative     | Award Amount |
       | Construction | The narrative | 5000         |
     When I close "Add Line Items" modal by clicking the top right x button
-   And I pause execution for "5" seconds
-   When I click on "Submit to Grantor" in the page details
+    And I pause execution for "5" seconds
+    When I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details contains:
       | Overview Tab - The Budgeted Amount cannot be increased or decreased during a Budget Redirection. |
 
@@ -11189,7 +11189,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 500                  |
+      | {SavedValue:fundingAccount} | 500                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
       | Name                     | Reimbursement |
@@ -11268,8 +11268,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Title                            | End Date                             |
       | Automation Permanent Focus Area2 | {SavedValue:updatedBudgetPeriodDate} |
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
-      | Title                           | End Date                             |
-      | Test Focus Area                 | {SavedValue:updatedBudgetPeriodDate} |
+      | Title           | End Date                             |
+      | Test Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
@@ -15128,7 +15128,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
+      | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
@@ -15179,7 +15179,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "{SavedValue:BDSOWKPID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
+      | Name                     | Amendment Request |
       | {SavedValue:PO Username} | Step 1            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
@@ -15222,7 +15222,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | {SavedValue:fundingAccount} | 2000                |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                        | Amendment Request |
+      | Name                     | Amendment Request |
       | {SavedValue:PO Username} | Step 1            |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
@@ -18002,14 +18002,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        |  Award Amount |
-      | Construction |  1000         |
+      | Title        | Award Amount |
+      | Construction | 1000         |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
-      | Title        |  Award Amount |
-      | Construction |  1000         |
+      | Title        | Award Amount |
+      | Construction | 1000         |
     When I close "Add Line Items" modal by clicking the top right x button
     And I refresh the page
     And I click on "Submit to Grantor" in the page details
@@ -18049,3 +18049,168 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Construction    | 800           |
     Then I softly see the following messages in the page details contains:
       | You cannot carry forward more than the remaining budget |
+
+  @272246 @272247 @272248 @272251 @272252 @ValidateEXEusercanseeNewObligationfieldunderBudgetSummarysectiononversion2AwardisinPendingActivationstatepostAR&copiedfromdifferencecolumninfundingAccountsectiononARifFAYES
+  Scenario: Validate EXE user can see New Obligation field under Budget Summary section on version 2 Award is in Pending Activation state post AR & copied from difference column in funding Account section on AR if FA YES
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY-Automation EXE user" of type "Competitive"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Funding_Terms_creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 2000                        | fieldRequestedChangeInBudget__c    |
+    When I enter values into fields
+      | Value                    | Field               |
+      | Automation Justification | fieldTncComments__c |
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "FundTermsID"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 1            |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
+      | Title        | Award Amount |
+      | Construction | 1500         |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on page navigation arrow "---amendment:-:budgetChangeTableId---" for table id "Next"
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    And I edit the following rows inline in flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "Edit" :
+      | Title        | Award Amount |
+      | Construction | 1500         |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I refresh the page
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                     |
+      | 4000  | fieldRevisedCommitment__c |
+    And I click on "Save" in the page details
+    When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I pause execution for "3" seconds
+    And I "Approve" in the approval decision
+    When I navigate to "Overview" sub tab
+    And I save the value from row "1" for column name "Difference" as "DifferenceAmend" from flex table "---amendment:-:amendmentFundingAccountsTableId---"
+    #272248
+    And I save the field labeled "Revised Commitment" as "RevisedCommitment"
+    Then I softly see field "Revised Commitment" as "$4,000.00"
+    #272251
+    When I save the value from row "1" for column name "New Obligation" as "newObligationAmend13" from flex table "---amendment:-:projectAreasTableId---"
+    When I save the value from row "2" for column name "New Obligation" as "newObligationAmend23" from flex table "---amendment:-:projectAreasTableId---"
+    When I save the value from row "3" for column name "New Obligation" as "newObligationAmend33" from flex table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "$1,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "$1,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "$2,000.00" for title "New Obligation" against the value "Grand Total" inside table "---amendment:-:projectAreasTableId---"
+    And I click on "Amend Subaward" in the page details
+    And I pause execution for "10" seconds
+    And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    When I navigate to "Budget" sub tab
+    Then I softly see field "New Obligation" as "$2,000.00"
+    And I save the field labeled "New Obligation" as "NewObligationPendAwd"
+    Then I softly see value "{SavedValue:DifferenceAmend}" is "Equals to" the value "{SavedValue:NewObligationPendAwd}"
+    #272247
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbrancePedAct" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see value "$3,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationPendAct"
+    Then I softly see value "{SavedValue:EncumbrancePedAct}" is "Equals to" the value "{SavedValue:CumulativeObligationPendAct}"
+    Then I see field "Cumulative Obligation" as "$3,000.00"
+    #272248
+    And I save the field labeled "Total Commitment" as "TotalCommitment"
+    Then I softly see field "Total Commitment" as "$4,000.00"
+    Then I softly see value "{SavedValue:RevisedCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment}"
+    #272251
+    When I save the value from row "1" for column name "New Obligation" as "newObligationPendAct13" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    When I save the value from row "2" for column name "New Obligation" as "newObligationPendAct23" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    When I save the value from row "3" for column name "New Obligation" as "newObligationPendAct33" from flex table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$1,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$1,000.00" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$2,000.00" for title "New Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "{SavedValue:newObligationAmend13}" is "Equals to" the value "{SavedValue:newObligationPendAct13}"
+    Then I softly see value "{SavedValue:newObligationAmend23}" is "Equals to" the value "{SavedValue:newObligationPendAct23}"
+    Then I softly see value "{SavedValue:newObligationAmend33}" is "Equals to" the value "{SavedValue:newObligationPendAct33}"
+    #272252
+    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$1,500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
+    Then I softly see value "$1,500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    And I select value inside table "---subAwardStandAlone:-:subAwardBudgetTableId---" is "All"
+    And I wait for "4" seconds
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
+      | Award Amount |
+      | $3,000.00    |
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    When I navigate to "Budget" sub tab
+    #272246
+    Then I softly see field "New Obligation" as "$2,000.00"
+    And I save the field labeled "New Obligation" as "NewObligationPendAwdSR"
+    Then I softly see value "{SavedValue:DifferenceAmend}" is "Equals to" the value "{SavedValue:NewObligationPendAwdSR}"
+    #272247
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationSR"
+    Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligationSR}"
+    Then I softly see field "Cumulative Obligation" as "$3,000.00"
+    #272248
+    And I save the field labeled "Total Commitment" as "TotalCommitmentSR"
+    Then I softly see field "Total Commitment" as "$4,000.00"
+    Then I softly see value "{SavedValue:RevisedCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentSR}"
+    #272251
+    When I save the value from row "1" for column name "New Obligation" as "newObligationPendActSR1" from flex table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    When I save the value from row "2" for column name "New Obligation" as "newObligationPendActSR2" from flex table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    When I save the value from row "3" for column name "New Obligation" as "newObligationPendActSR3" from flex table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "($200.00)" for title "New Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "($200.00)" for title "New Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "($400.00)" for title "New Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "{SavedValue:newObligationAmend13}" is "Equals to" the value "{SavedValue:newObligationPendActSR1}"
+    Then I softly see value "{SavedValue:newObligationAmend23}" is "Equals to" the value "{SavedValue:newObligationPendActSR2}"
+    Then I softly see value "{SavedValue:newObligationAmend33}" is "Equals to" the value "{SavedValue:newObligationPendActSR3}"
+    #272252
+    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "$1,500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "$3,000.00" for title "Cumulative Obligation" against the value "Grand Total" inside table "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
+    Then I softly see value "$1,500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    And I click on page navigation arrow "---subAwardStandAlone:-:sRBudgetCategoryTableId---" for table id "Next"
+    Then I softly see value "$1,500.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    And I select value inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---" is "All"
+    And I wait for "4" seconds
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" :
+      | Award Amount |
+      | $3,000.00    |

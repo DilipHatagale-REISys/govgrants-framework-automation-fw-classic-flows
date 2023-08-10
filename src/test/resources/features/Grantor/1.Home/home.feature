@@ -663,7 +663,6 @@ Feature: Validate all scenarios in the home tab
     When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "GrantorFocusAreaFilesgrid"
     When I navigate to "Home" tab
     And I click on "My_Workspace_File"
-    And I select value inside table "WorkSpaceFilesFlexToggle" is "All"
     Then I see value "{SavedValue:AttachedFile}" for title "Title" inside table "WorkSpaceFilesFlexToggle"
 
   @62102 @pageBlockSections @deepika

@@ -339,7 +339,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "PaymentRequestEdition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I get the "EGMS ID"
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
