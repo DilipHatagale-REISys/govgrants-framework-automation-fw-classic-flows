@@ -1,7 +1,7 @@
 @applicationIntakeAllocation @grantor-regression @grantor-parallel-regression @app @regression @ApplicationExecution-reg
 Feature: Validate all scenarios in the Formula Announcement tab
 
-  @219696 @ValidateSPIUseruserabletoseetheBudgetsummarysectionitshouldbevisibleatthetopofBudgetTabnotincludingnoncashmatchcashmatchotherleverage @sprint-11-US-203038 @vaibhav @Allocation @hiteshTemp
+  @219696 @ValidateSPIUseruserabletoseetheBudgetsummarysectionitshouldbevisibleatthetopofBudgetTabnotincludingnoncashmatchcashmatchotherleverage @sprint-11-US-203038 @vaibhav @Allocation 
   Scenario: Validate SPI User user able to see the Budget summary section it should be visible at the top of Budget Tab(not including noncash match/cash match, other leverage)
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     Given I am on "SUBPORTAL" portal
@@ -170,7 +170,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly can see page block "Budget Summary"
     Then I softly cannot see page block "Budget Summary by Focus Area"
 
-  @219716 @ValidateSPAUseriffocusareaisYesforformulaannouncementthenBudgetSummarybyFocusAreasectionshoulddisplayinbudgettabatS/Rside @sprint-11-US-203038 @vaibhav @Allocation @hiteshTemp
+  @219716 @ValidateSPAUseriffocusareaisYesforformulaannouncementthenBudgetSummarybyFocusAreasectionshoulddisplayinbudgettabatS/Rside @sprint-11-US-203038 @vaibhav @Allocation 
   Scenario: Validate SPA User if focus area is Yes for formula announcement then "Budget Summary by Focus Area" section should display in budget tab at S/R side
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -251,7 +251,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly can see page block "Budget Summary"
     Then I softly can see page block "Budget Summary by Focus Area"
 
-  @219842 @ValidateSPAUserWhenfocusareaisYesforformulaannouncementtheninBudgetSummarybyfocusaresectionbelowcolumns&ActionshouldbedisplayatS/Rside @sprint-11-US-203038 @vaibhav @Allocation  @hiteshTemp
+  @219842 @ValidateSPAUserWhenfocusareaisYesforformulaannouncementtheninBudgetSummarybyfocusaresectionbelowcolumns&ActionshouldbedisplayatS/Rside @sprint-11-US-203038 @vaibhav @Allocation  
   Scenario: Validate SPA User When focus area is Yes for formula announcement then in Budget Summary by focus area section below columns & Action should be display at S/R side
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -380,7 +380,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     Then I softly can see row level action button "Remove Focus Area" against "Automation Permanent Focus Area" in flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
 
-  @219896 @ValidateINDUserifusercreateformulaannouncementwithfocusareayesthenBudgetsummarysection&BudgetSummarybyFocusAreabothsectionshouldbedisplayinbudgettab @sprint-11-US-203038 @vaibhav @Allocation @hiteshTemp
+  @219896 @ValidateINDUserifusercreateformulaannouncementwithfocusareayesthenBudgetsummarysection&BudgetSummarybyFocusAreabothsectionshouldbedisplayinbudgettab @sprint-11-US-203038 @vaibhav @Allocation 
   Scenario: Validate IND User if user create formula announcement with focus area yes then Budget summary section & Budget Summary by Focus Area both section should be display in budget tab
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -2190,7 +2190,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
-  @222478 @VerifyINDusercannoteditBudgetTabBudgetSummarybyFocusAreasectioninnegotiationacceptstateforpreapp @sprint-10-US-221062 @komal @Allocation @hiteshTemp
+  @222478 @VerifyINDusercannoteditBudgetTabBudgetSummarybyFocusAreasectioninnegotiationacceptstateforpreapp @sprint-10-US-221062 @komal @Allocation 
   Scenario: Verify IND user can not edit "Budget Tab: Budget Summary by Focus Area" section in negotiation accept state for pre-app
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -3000,7 +3000,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @227874 @VerifywhenINDuserresubmittheapplicationafternegotiationfromApplicationcheckFocusareasbudgetedtotalmustbeequaltoAllocationamountforthatfocusareainbudgetsummarysection&usershouldabletocreatethesubaward @sprint-13-US-224692 @komal @Allocation @hiteshTemp
+  @227874 @VerifywhenINDuserresubmittheapplicationafternegotiationfromApplicationcheckFocusareasbudgetedtotalmustbeequaltoAllocationamountforthatfocusareainbudgetsummarysection&usershouldabletocreatethesubaward @sprint-13-US-224692 @komal @Allocation 
   Scenario Outline:  Verify when IND user  resubmit the application after negotiation(from Application) check Focus area's budgeted total, must be equal to Allocation amount for that focus area in budget summary section  & user should able to create the subaward
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
