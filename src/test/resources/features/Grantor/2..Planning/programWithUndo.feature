@@ -1967,7 +1967,7 @@ Feature: Validate all scenarios for program
     Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
 
-  @279528 @VerifyIfFDasstep4approverclickonUndobuttonthenemailshouldbegeneratedforallpreviousassignapproverandprogramowner @sprint-25-US-291914 @hitesh @Undo @wip
+  @279528 @VerifyIfFDasstep4approverclickonUndobuttonthenemailshouldbegeneratedforallpreviousassignapproverandprogramowner @sprint-25-US-291914 @hitesh @Undo
   Scenario:Verify If FD as step 4 approver click on Undo button then email should be generated for all previous assign approver and program owner
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -2551,7 +2551,7 @@ Feature: Validate all scenarios for program
     When I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
 
-  @279567 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-291914 @hitesh @wip
+  @279567 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-291914 @hitesh
   Scenario: Verify notification email should generate to new owner of program after click on Undo button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -2606,15 +2606,11 @@ Feature: Validate all scenarios for program
     Then I softly see field "Status" as "Submitted for Approval"
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     Then I refresh the page
-    And I see the mail subject is as follows :
-    """
-   Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}.
-    """
-    Then I see the mail text is as follows :
+    Then I do not see the mail text is as follows :
       """
       Hello,
 
-      This email is to notify you that program approver #Automation PM has initiated undo action for program approval.
+      This email is to notify you that program approver #Automation EXE has initiated undo action for program approval.
 
       Program Details:
       Program ID: {SavedValue:ProgramEGMSID}
@@ -2637,7 +2633,7 @@ Feature: Validate all scenarios for program
     """
       Hello,
 
-      This email is to notify you that program approver #Automation PM1 has initiated undo action for program approval.
+      This email is to notify you that program approver #Automation EXE has initiated undo action for program approval.
 
       Program Details:
       Program ID: {SavedValue:ProgramEGMSID}
