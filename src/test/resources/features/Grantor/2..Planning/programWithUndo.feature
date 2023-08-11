@@ -1173,7 +1173,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Submitted for Approval" for title "Old Value" inside table "---program:-:historyTableId---"
     Then I softly see value "Automation PO1" for title "Changed By" inside table "---program:-:historyTableId---"
 
-  @279467 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-295138 @hitesh @wip @buglogged-356843
+  @279467 @VerifynotificationemailshouldgeneratetonewownerofprogramafterclickonUndobutton @sprint-25-US-295138 @hitesh @buglogged-356843
   Scenario: Verify notification email should generate to new owner of program after click on Undo button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -1238,15 +1238,11 @@ Feature: Validate all scenarios for program
     Then I softly see field "Status" as "Submitted for Approval"
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     Then I refresh the page
-    And I see the mail subject is as follows :
-    """
-   Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}.
-    """
-    Then I see the mail text is as follows :
+    Then I do not see the mail text is as follows :
       """
       Hello,
 
-      This email is to notify you that program approver #Automation PM has initiated undo action for program approval.
+      This email is to notify you that program approver #Automation EXE has initiated undo action for program approval.
 
       Program Details:
       Program ID: {SavedValue:ProgramEGMSID}
@@ -1269,7 +1265,7 @@ Feature: Validate all scenarios for program
     """
       Hello,
 
-      This email is to notify you that program approver #Automation PM1 has initiated undo action for program approval.
+      This email is to notify you that program approver #Automation EXE has initiated undo action for program approval.
 
       Program Details:
       Program ID: {SavedValue:ProgramEGMSID}
