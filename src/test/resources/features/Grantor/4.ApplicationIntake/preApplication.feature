@@ -68,7 +68,8 @@ Feature: Validate all scenarios in the Pre-Application
     When I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 1000       | 5000           | 100            |
-   Then I softly see value "$5,000.00" for title "Budget" against the value "Construction" inside table "---preApplication:-:SubRecipientBudgetPeriodTableId---"
+    And I expand nested table containing column value "BP01"
+    Then I softly see value "$5,000.00" for title "Budget" against the value "Construction" inside table "---preApplication:-:SubRecipientBudgetPeriodTableId---"
     Then I softly see value "$1,000.00" for title "Cash Match" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
     Then I softly see value "$5,000.00" for title "Non-Cash Match" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
     Then I softly see value "$100.00" for title "Other Leverage" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
