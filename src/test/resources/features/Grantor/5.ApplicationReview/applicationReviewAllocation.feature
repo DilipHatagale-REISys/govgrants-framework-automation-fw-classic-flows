@@ -1,4 +1,4 @@
-@applicationReviewAllocation @grantor-regression @grantor-parallel-regression @applicationReview @app @regression @applicationReviewTBE
+@applicationReviewWithouBg @applicationReviewAllocation @grantor-regression @grantor-parallel-regression @applicationReview @app @regression @applicationReviewTBE
 Feature: Validate all scenarios in the Application Review with Allocation Feature
 
 
