@@ -1194,9 +1194,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I navigate to "History" sub tab
-    #Then I softly see value "Subaward_Send_to_Subrecipient.pdf" for title "File Name" against the value "Subaward_Send_to_Subrecipient.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "Subaward_Send_to_Subrecipient.pdf" for title "File Name" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:PM Username}" for title "Taken By" against the value "Subaward_Send_to_Subrecipient.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+    And I wait for "60" seconds
+    Then I softly see value "Subaward Send_to_Subrecipient.pdf" for title "File Name" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+    Then I softly see value "{SavedValue:PM Username}" for title "Taken By" against the value "Subaward Send_to_Subrecipient.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel

@@ -1371,6 +1371,8 @@ public class GrantorPayloads {
                 return createAwarForAmendmentRequestAdvanceYesFocusNo(json);
             case "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_SUB_ORG_IND":
                 return advancePermissibleYesnofocusareaSubrecipientInd(json);
+            case "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_BUILDUP_YES":
+                return advancePermissibleYesnofocusareaDetailsBuildUpYes(json);
             case "SUBRECIPIENT_ORG_IND_USER":
                 return createAwarForIndUser(json);
             case "SECOND_FOCUS_AREA":
@@ -1433,6 +1435,30 @@ public class GrantorPayloads {
             default:
                 return json;
         }
+    }
+
+    private JsonObject advancePermissibleYesnofocusareaDetailsBuildUpYes(JsonObject json) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+        grant.addProperty("FocusAreaRequired", "No");
+        grant.addProperty("IsAdvancePermitted", "Yes");
+        grant.addProperty("IsBuildUpFunctionality", "Yes");
+        newA.add(grant);
+        json.add("Grant", newA);
+        JsonArray buildUpItemsA = new JsonArray();
+        JsonObject buildUpItems = new JsonObject();
+        buildUpItems.addProperty("BudgetCategory", "Construction");
+        buildUpItems.addProperty("Title", "Construction");
+        buildUpItems.addProperty("Narrative", "Test Build-up");
+        buildUpItems.addProperty("AwardedBudget", 1000);
+        buildUpItems.addProperty("CashMatch", 100);
+        buildUpItems.addProperty("NonCashMatch", 100);
+        buildUpItems.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems.addProperty("ServiceAreaName", "Standard Focus Area");
+        buildUpItemsA.add(buildUpItems);
+        json.add("BuildUpItems", buildUpItemsA);
+
+        return json;
     }
 
     private JsonObject createAwarForSecondFocusAreaandBudgetCategoryBuildUpYesIndOrg(JsonObject json, String... Type) {
