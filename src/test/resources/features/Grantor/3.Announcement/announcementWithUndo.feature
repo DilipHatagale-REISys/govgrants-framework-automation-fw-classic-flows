@@ -583,23 +583,23 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click "Yes" on modal confirmation box
     Then I softly see field "Status" as "Submitted for Approval"
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
-    Then I softly see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
+    When I perform quick search for "Record Id" in "---announcement:-:announcementCompletedTaskTable---" panel
+    Then I softly see value "Cancelled" for title "Status" against the value "Record Id" inside table "---announcement:-:announcementCompletedTaskTable---"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
-    Then I softly see value "Completed" for title "Status" against the value "Record Id" inside table "PhaseCompletedTasks"
+    When I perform quick search for "Record Id" in "---announcement:-:announcementCompletedTaskTable---" panel
+    Then I softly see value "Completed" for title "Status" against the value "Record Id" inside table "---announcement:-:announcementCompletedTaskTable---"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
-    Then I softly see value "Completed" for title "Status" against the value "Record Id" inside table "PhaseCompletedTasks"
+    When I perform quick search for "Record Id" in "---announcement:-:announcementCompletedTaskTable---" panel
+    Then I softly see value "Completed" for title "Status" against the value "Record Id" inside table "---announcement:-:announcementCompletedTaskTable---"
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
-    Then I softly see value "Completed" for title "Status" against the value "Record Id" inside table "PhaseCompletedTasks"
+    When I perform quick search for "Record Id" in "---announcement:-:announcementCompletedTaskTable---" panel
+    Then I softly see value "Completed" for title "Status" against the value "Record Id" inside table "---announcement:-:announcementCompletedTaskTable---"
 
   @285570 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnissenttoreviewState @sprint-4-US-295141 @hitesh @Allocation
   Scenario: Verify that Owner of Ann will not see Undo button when Ann is sent to review State
