@@ -584,7 +584,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see field "Status" as "Submitted for Approval"
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
-    Then I softly see value "Cancelled" for title "Status" against the value "Record Id" inside table "PhaseCompletedTasks"
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
@@ -677,18 +677,45 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
     When I navigate to "Responsibilities" sub tab
-    When I click on "Enter Review" icon for "{SavedValue:PM Username}" inside flex table with id "---program:-:peerReviewTableId---" without waiting for record
-    And I enter values into fields
-      | Value       | Field             |
-      | Cannot Rate | Rating__c         |
-      | Passed      | ReviewComments__c |
-    When I click modal button "Save"
-    And I click on submit review
-    When I login to "As a Grantor" app as "PO" user
+    When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
+      | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | {SavedValue:PM Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I refresh the page
+    And I click on "Send for Review" icon for "{SavedValue:PM Username}" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---" without waiting for record
+    Then I softly see value "Sent for Review" for title "Status" inside table "---announcement:-:flexGridApproverRolesTableId---"
+    Then I softly see field "Status" as "Submitted for Review"
+    Then I softly see status in Progress-bar is "Submitted for Review" and is "green"
+    And I get the "EGMS ID"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" with wait for record
+    When I click toggle button to select "Draft Directed Announcements"
+    And I perform quick search for "Record id" in "---announcement:-:annoucementTableId---" panel
+    And I click on "View" icon for "Record id" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
+    Then I cannot see top right button "Undo" in page detail
+    And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Announcements" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record id" in "---announcement:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Responsibilities" tab
+    When I click on "Enter Review" icon for "{SavedValue:FO Username}" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---" without waiting for record
+    And I enter values into fields
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
+    When I click modal button "Save"
+    When I click on submit review
+    Then I softly see value "Submitted" for title "Status" inside table "---announcement:-:flexGridApproverRolesTableId---"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "Draft Directed Announcements"
+    And I perform quick search for "Record id" in "---announcement:-:annoucementTableId---" panel
+    And I click on "View" icon for "Record id" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
+    And I click on "Complete Review" in the page details
+    Then I softly see field "Status" as "Reviewed"
+    Then I softly see status in Progress-bar is "Reviewed" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
 
