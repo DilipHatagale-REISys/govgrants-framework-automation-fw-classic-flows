@@ -18746,3 +18746,4 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #272599
     Then I softly see "Spent" inside page block detail
     Then I softly see field "Spent" as "$0.00"
+    

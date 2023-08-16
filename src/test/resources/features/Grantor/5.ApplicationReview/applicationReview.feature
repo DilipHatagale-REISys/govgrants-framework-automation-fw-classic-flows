@@ -294,8 +294,8 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended | 500                     |
     Then I softly see that "Recommended" has been added in flextable with Id "flexGridFundingDecisionMemoApplications"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
@@ -1562,11 +1562,8 @@ Feature: Validate all scenarios in the Application Review
     Then I softly see "Review Panel Categories" inside flex table with id "---applicationReview:-:reviewPanelCategoriesTableId---"
     And I close "Review Form" modal by clicking the top right x button
     #79200
-    And I click on "Delete" icon for "Pre-Screen" inside flex table with id "---applicationReview:-:reviewStepFormId---" without waiting for record
-    #as page getting refresh message also getting disappear
-   # Then I softly see the following messages in the page details contains:
-    #  | Record deleted successfully. |
-    Then I softly see "No records found" inside flex table with id "---applicationReview:-:reviewStepFormId---"
+    Then I softly cannot see row level action button "Delete" against "Pre-Screen" in flex table with id "---applicationReview:-:reviewStepFormId---"
+
     Examples:
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
