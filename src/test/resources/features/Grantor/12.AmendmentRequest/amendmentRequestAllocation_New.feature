@@ -18763,9 +18763,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     And I pause execution for "3" seconds
     And I "Approve" in the approval decision
-    When I navigate to "Overview" sub tab
-    Then I softly see field "Spent" as "$500.00"
-    And I save the field labeled "Spent" as "Spent"
     And I click on "Amend Subaward" in the page details
     And I pause execution for "10" seconds
     And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
@@ -18775,7 +18772,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "Spent" inside page block detail
     Then I softly see field "Spent" as "$500.00"
     And I save the field labeled "Spent" as "SpentPendAwd"
-    Then I softly see value "{SavedValue:Spent}" is "Equals to" the value "{SavedValue:SpentPendAwd}"
+    Then I softly see value "{SavedValue:SpentAwd1}" is "Equals to" the value "{SavedValue:SpentPendAwd}"
     #272570
     And I save the value from row "1" for column name "Spent" as "fundingSpentAward" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     Then I softly see value "$500.00" for title "Spent" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
@@ -18798,7 +18795,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "Spent" inside page block detail
     Then I softly see field "Spent" as "$500.00"
     And I save the field labeled "Spent" as "SpentPendAwdSR"
-    Then I softly see value "{SavedValue:Spent}" is "Equals to" the value "{SavedValue:SpentPendAwdSR}"
+    Then I softly see value "{SavedValue:SpentAwd1}" is "Equals to" the value "{SavedValue:SpentPendAwdSR}"
     And I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18820,7 +18817,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "Spent" inside page block detail
     Then I softly see field "Spent" as "$500.00"
     And I save the field labeled "Spent" as "SpentActAwd"
-    Then I softly see value "{SavedValue:Spent}" is "Equals to" the value "{SavedValue:SpentActAwd}"
+    Then I softly see value "{SavedValue:SpentAwd1}" is "Equals to" the value "{SavedValue:SpentActAwd}"
     And I save the field labeled "Grant ID" as "GrantId"
     And I click "{SavedValue:GrantId}" lookup link
     When I navigate to "Actuals" sub tab
@@ -18847,4 +18844,4 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see "Spent" inside page block detail
     Then I softly see field "Spent" as "$500.00"
     And I save the field labeled "Spent" as "SpentActAwdSR"
-    Then I softly see value "{SavedValue:Spent}" is "Equals to" the value "{SavedValue:SpentActAwdSR}"
+    Then I softly see value "{SavedValue:SpentAwd1}" is "Equals to" the value "{SavedValue:SpentActAwdSR}"
