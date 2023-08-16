@@ -68,7 +68,8 @@ Feature: Validate all scenarios in the Pre-Application
     When I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 1000       | 5000           | 100            |
-   Then I softly see value "$5,000.00" for title "Budget" against the value "Construction" inside table "---preApplication:-:SubRecipientBudgetPeriodTableId---"
+    And I expand nested table containing column value "BP01"
+    Then I softly see value "$5,000.00" for title "Budget" against the value "Construction" inside table "---preApplication:-:SubRecipientBudgetPeriodTableId---"
     Then I softly see value "$1,000.00" for title "Cash Match" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
     Then I softly see value "$5,000.00" for title "Non-Cash Match" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
     Then I softly see value "$100.00" for title "Other Leverage" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
@@ -77,7 +78,7 @@ Feature: Validate all scenarios in the Pre-Application
   Scenario: Validate the attachment checklist of the PreApplication
     When I navigate to "Forms and Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload attachment "Attachment.pdf" of type "Other" from computer
+    And I upload attachment without random number "Attachment.pdf" of type "Other" from computer
     Then I see "Other" has been added in "Supporting Documents Checklist" flex table
 
   @70466 @53160 @70467 @submitPreApplication @smoke @deepika
@@ -96,6 +97,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
+    Given I expand nested table containing column value "BP01"
     Then I softly see value "$10,150.00" for title "Total Project Cost" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
@@ -132,7 +134,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "Save" in the page details
     And I click on "Back" in the page details
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload attachment "Attachment.pdf" of type "Other" from computer
+    And I upload attachment without random number "Attachment.pdf" of type "Other" from computer
     And I click on "Submit to Grantor" in the page details
     Given I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI3" user

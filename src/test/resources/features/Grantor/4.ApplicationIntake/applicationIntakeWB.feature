@@ -156,6 +156,7 @@ Feature: Application Intake scenarios without background
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
+    Given I expand nested table containing column value "BP01"
     Then I softly see value "$1,300.00" for title "Total Project Cost" against the value "Construction" inside table "---applicationIntake:-:budgetPeriodTableId---"
 
   @70460 @70461 @goalsAndObjectivesInApplication @deepika
@@ -816,7 +817,7 @@ Feature: Application Intake scenarios without background
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-    When I perform quick search for "Automation Permanent Focus Area" in "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---" panel
+    #When I perform quick search for "Automation Permanent Focus Area" in "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---" panel
     Then I softly see that "Automation Permanent Focus Area" has been added in flextable with Id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -867,7 +868,7 @@ Feature: Application Intake scenarios without background
     When I click on "Save" in the page details
     And I navigate to "Proposal" sub tab
     And I save the value from row "1" for column name "Title" as "SavedTitle" from flex table "---applicationIntake:-:goalsAndObjectivesTableId---"
-    And I perform quick search for "{SavedValue:SavedTitle}" in "---applicationIntake:-:goalsAndObjectivesTableId---" panel
+    #And I perform quick search for "{SavedValue:SavedTitle}" in "---applicationIntake:-:goalsAndObjectivesTableId---" panel
     Then I softly see value "{SavedValue:SavedTitle}" for title "Title" inside table "---applicationIntake:-:goalsAndObjectivesTableId---"
 
   @73753 @announcementInApprovedStatusWillNotBeAOppurtunity @deepika
@@ -1097,6 +1098,7 @@ Feature: Application Intake scenarios without background
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 0          | 0              | 0              |
+    Given I expand nested table containing column value "BP01"
     Then I softly see value "$1,000.00" for title "Budget" against the value "Construction" inside table "---applicationIntake:-:budgetPeriodTableId---"
 
   @34322 @zeroBudgetRequestedAmount @deepika
@@ -1139,6 +1141,7 @@ Feature: Application Intake scenarios without background
       | Name                       | Project Role             | Is Key Contact |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
+    And I pause execution for "5" seconds
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Budgeted Amount should be greater than or equal to the Subaward Floor Amount. Adjust the Budgeted Amount in the Budget period section. |
       | Budget Tab - Provide the match (Cash Match/Non-Cash Match) details to submit this application.                                                                |
@@ -1164,7 +1167,7 @@ Feature: Application Intake scenarios without background
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---applicationIntake:-:applicationContactsTableId---"
-    When I click "Add" after selection of "Automation SPA" in the table "---applicationIntake:-:applicationAssociateTableId---"
+    When I click "Add" after selection of "Automation SPA" by showing entries "All" in flex table with id "---applicationIntake:-:applicationContactsTableId---"
     And I refresh the page
     Then I see that "<Contact>" has been added in flextable with Id "---applicationIntake:-:applicationContactsTableId---"
     Given I am on "SUBPORTAL" portal
