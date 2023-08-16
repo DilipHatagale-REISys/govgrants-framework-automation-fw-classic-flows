@@ -601,7 +601,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I perform quick search for "Record Id" in "---announcement:-:announcementCompletedTaskTable---" panel
     Then I softly see value "Completed" for title "Status" against the value "{SavedValue:AnnEGMSID}" inside table "---announcement:-:announcementCompletedTaskTable---"
 
-  @285570 @283974 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnissenttoreviewState @sprint-4-US-295141 @hitesh @Allocation
+  @285570 @285574 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnissenttoreviewState @sprint-4-US-295141 @hitesh @Allocation
   Scenario: Verify that Owner of Ann will not see Undo button when Ann is sent to review State
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
