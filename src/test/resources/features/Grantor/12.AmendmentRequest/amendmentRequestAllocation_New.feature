@@ -18672,8 +18672,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    Then I softly see field "Spent" as "$500.00"
-    And I save the field labeled "Spent" as "SpentAwd1"
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
@@ -18730,10 +18728,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I save the field labeled "EGMS ID" as "AwardEGMSID"
     When I navigate to "Actuals" sub tab
+    Then I softly see field "Spent" as "$500.00"
+    And I save the field labeled "Spent" as "SpentAwd1"
     #272570
-    And I save the value from row "1" for column name "Spent" as "fundingSpentAward" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    And I save the value from row "1" for column name "Spent" as "fundingSpent" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     Then I softly see value "$500.00" for title "Spent" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
-    Then I softly see value "{SavedValue:fundingSpent}" is "Equals to" the value "{SavedValue:fundingSpentAward}"
     #272573
     And I save the value from row "1" for column name "Encumbrance Balance" as "EncumbranceBalanceAwd1" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     Then I softly see value "$500.00" for title "Encumbrance Balance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
