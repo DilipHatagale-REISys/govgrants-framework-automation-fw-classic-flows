@@ -18375,7 +18375,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationActAwdSR"
     Then I softly see value "{SavedValue:CumulativeObligationActAwdSR}" is "Equals to" the value "{SavedValue:EncumbranceAward2}"
 
-  @272546 @272548 @272550 @272582 @272584 @272596 @272598 @272607 @272608 @272610 @272545 @272609 @272601 @ValidateAdminusercanseeNewObligationfieldunderBudgetSummarysectiononversion2AwardisinPendingActivationstatepostAR&valueshouldbe$0ifFANO @Sprint-22-US-270855 @vaibhav @Allocation
+  @272546 @272548 @272550 @272582 @272584 @272596 @272598 @272607 @272608 @272610 @272545 @272609 @272601 @272602 @272605 @272606 @272597 @272540 @272556 @272559 @272562 @272568 @272577 @272580 @ValidateAdminusercanseeNewObligationfieldunderBudgetSummarysectiononversion2AwardisinPendingActivationstatepostAR&valueshouldbe$0ifFANO @Sprint-22-US-270855 @vaibhav @Allocation
   Scenario: Validate Admin user can see New Obligation field under Budget Summary section on version 2 Award is in Pending Activation state post AR & value should be $0 FA NO
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_BUILDUP_YES-Automation ADMIN user" of type "Directed"
     When I login to "As a Grantor" app as "ADMIN" user
@@ -18389,6 +18389,23 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I navigate to "Budget" sub tab
+    #272559
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAwd1" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    #272562
+    And I select value inside table "---subAwardStandAlone:-:subAwardBudgetTableId---" is "All"
+    And I wait for "4" seconds
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
+      | Award Amount |
+      | $1,000.00    |
+    When I navigate to "Actuals" sub tab
+    #272568
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAwd1PaySumm" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    #272605
+    And I save the value from row "1" for column name "Balance" as "RemainingEncumbrance" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "{SavedValue:RemainingEncumbrance}" is "Equals to" the value "{SavedValue:EncumbranceBalance}"
     And I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "Scope&BudgetPeriod_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -18411,11 +18428,18 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Automation ADMIN | Step 1            |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
+    Then I see field "Status" as "Sent to Subrecipient"
+    When I navigate to "Overview" sub tab
+    #272540
+    Then I softly do not see "Budget Summary by Focus Area" page block displayed
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    Then I softly see field "Status" as "Sent to Subrecipient"
+    #272540
+    Then I softly do not see "Budget Summary by Focus Area" page block displayed
     When I click on "Acknowledge" in the page details
     When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -18427,17 +18451,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I pause execution for "3" seconds
     And I "Approve" in the approval decision
     When I navigate to "Overview" sub tab
-    #272546
-    And I save the value from row "1" for column name "Difference" as "DifferenceAmend" from flex table "---amendment:-:amendmentFundingAccountsTableId---"
     #272550
     And I save the field labeled "Revised Commitment" as "RevisedCommitment"
     Then I softly see field "Revised Commitment" as "$1,000.00"
-    #272601
-    And I select value inside table "---amendment:-:grantorBudgetChangeTableId---" is "All"
-    And I wait for "4" seconds
-    Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
-      | Revised Award Amount |
-      | $1,000.00            |
     And I click on "Amend Subaward" in the page details
     And I pause execution for "10" seconds
     And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
@@ -18447,18 +18463,37 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly do not see "Budget Summary by Focus Area" page block displayed
     #272546
     Then I softly see field "New Obligation" as "$0.00"
-    And I save the field labeled "New Obligation" as "NewObligationPendAwd"
-    Then I softly see value "{SavedValue:DifferenceAmend}" is "Equals to" the value "{SavedValue:NewObligationPendAwd}"
     #272550
     And I save the value from row "1" for column name "Encumbrance" as "EncumbrancePedAct" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationPendAct"
     Then I softly see value "{SavedValue:EncumbrancePedAct}" is "Equals to" the value "{SavedValue:CumulativeObligationPendAct}"
     Then I see field "Cumulative Obligation" as "$1,000.00"
+    #272559
+    Then I softly see value "{SavedValue:EncumbrancePedAct}" is "Equals to" the value "{SavedValue:EncumbranceAwd1}"
     #272248
     And I save the field labeled "Total Commitment" as "TotalCommitment"
     Then I softly see field "Total Commitment" as "$1,000.00"
     Then I softly see value "{SavedValue:RevisedCommitment}" is "Equals to" the value "{SavedValue:TotalCommitment}"
+    #272562
+    And I select value inside table "---subAwardStandAlone:-:subAwardBudgetTableId---" is "All"
+    And I wait for "4" seconds
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
+      | Award Amount |
+      | $1,000.00    |
+    When I navigate to "Actuals" sub tab
+    #272556
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationPendAwdPaySumm"
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbrancePendPaySumm" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "{SavedValue:CumulativeObligationPendAwdPaySumm}" is "Equals to" the value "{SavedValue:EncumbrancePendPaySumm}"
+    #272568
+    Then I softly see value "{SavedValue:EncumbranceAwd1PaySumm}" is "Equals to" the value "{SavedValue:EncumbrancePendPaySumm}"
+    #272577
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:paymentSummaryBudgetTableId---" :
+      | Award Amount |
+      | $1,000.00    |
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18473,8 +18508,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly do not see "Budget Summary by Focus Area" page block displayed
     #272546
     Then I softly see field "New Obligation" as "$0.00"
-    And I save the field labeled "New Obligation" as "NewObligationPendAwdSR"
-    Then I softly see value "{SavedValue:DifferenceAmend}" is "Equals to" the value "{SavedValue:NewObligationPendAwdSR}"
     #272548
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationSR"
     Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligationSR}"
@@ -18483,6 +18516,19 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitmentSR"
     Then I softly see field "Total Commitment" as "$1,000.00"
     Then I softly see value "{SavedValue:RevisedCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentSR}"
+    #272562
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" :
+      | Award Amount |
+      | $1,000.00    |
+    When I navigate to "Actuals" sub tab
+    #272556
+    Then I softly see field "Cumulative Obligation" as "$1,000.00"
+    And I save the field labeled "Cumulative Obligation" as "CumulativeObligationPendAwdPaySummSR"
+    Then I softly see value "{SavedValue:CumulativeObligationPendAwdPaySummSR}" is "Equals to" the value "{SavedValue:EncumbrancePendPaySumm}"
+    #272577
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:paymentSummaryBudgetTableId---" :
+      | Award Amount |
+      | $1,000.00    |
     And I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18498,8 +18544,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #272582
     When I navigate to "Budget" sub tab
     Then I softly see field "New Obligation" as "$0.00"
-    And I save the field labeled "New Obligation" as "NewObligationActAwd"
-    Then I softly see value "{SavedValue:DifferenceAmend}" is "Equals to" the value "{SavedValue:NewObligationActAwd}"
+    #272597
+    Then I softly cannot see field "Budgeted Amount" inside page block
+    #272580
+    Then I softly see "Budget Summary" page block displayed
     #272584
     And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAwdAct" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
@@ -18511,7 +18559,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Total Commitment" as "$1,000.00"
     Then I softly see value "{SavedValue:RevisedCommitment}" is "Equals to" the value "{SavedValue:TotalCommitmentAwd}"
     #272609, 272601
-    And I select value inside table "---subAwardStandAlone:-:subAwardBudgetTableId---" is "All"
     And I wait for "4" seconds
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
       | Award Amount |
@@ -18523,6 +18570,15 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAward2" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     Then I softly see value "{SavedValue:CumulativeObligationActAwd}" is "Equals to" the value "{SavedValue:EncumbranceAward2}"
+    #272602
+    Then I softly see value "{SavedValue:EncumbranceAwd1PaySumm}" is "Equals to" the value "{SavedValue:EncumbranceAward2}"
+    #272605
+    And I save the value from row "1" for column name "Balance" as "EncumbranceBalance" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "{SavedValue:RemainingEncumbrance}" is "Equals to" the value "{SavedValue:EncumbranceBalance}"
+    #272606
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:paymentSummaryBudgetTableId---" :
+      | Award Amount |
+      | $1,000.00    |
     And I save the field labeled "Grant ID" as "GrantId"
     And I click "{SavedValue:GrantId}" lookup link
     When I navigate to "Budget" sub tab
@@ -18577,8 +18633,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #272582
     When I navigate to "Budget" sub tab
     Then I softly see field "New Obligation" as "$0.00"
-    And I save the field labeled "New Obligation" as "NewObligationActAwdSr"
-    Then I softly see value "{SavedValue:DifferenceAmend}" is "Equals to" the value "{SavedValue:NewObligationActAwdSr}"
+    #272597
+    Then I softly cannot see field "Budgeted Amount" inside page block
+    #272580
+    Then I softly see "Budget Summary" page block displayed
     #272584
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationAwdActSR"
     Then I softly see value "{SavedValue:EncumbranceAwdAct}" is "Equals to" the value "{SavedValue:CumulativeObligationAwdActSR}"
@@ -18596,8 +18654,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationActAwdSR"
     Then I softly see value "{SavedValue:CumulativeObligationActAwdSR}" is "Equals to" the value "{SavedValue:EncumbranceAward2}"
+    #272606
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:paymentSummaryBudgetTableId---" :
+      | Award Amount |
+      | $1,000.00    |
 
-  @272611 @272599 @272600 @ValidateAdminusercanseeSpentfieldunderPaymentSummarysectionofActualtabonGrantlayoutisinActivestatepostAR&valuecopiedfromSpentfieldunderBudgetsummaryfieldonversion2AwardFANO @Sprint-22-US-270855 @vaibhav @Allocation
+  @272611 @272599 @272600 @272557 @272570 @272573 @ValidateAdminusercanseeSpentfieldunderPaymentSummarysectionofActualtabonGrantlayoutisinActivestatepostAR&valuecopiedfromSpentfieldunderBudgetsummaryfieldonversion2AwardFANO @Sprint-22-US-270855 @vaibhav @Allocation
   Scenario: Validate Admin user can see Spent field under Payment Summary section of Actual tab on Grant layout is in Active state post AR & value copied from Spent field under Budget summary field on version 2 Award FA NO
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_BUILDUP_YES-Automation ADMIN user" of type "Directed"
     And I am on "SUBPORTAL" portal
@@ -18667,6 +18729,18 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Actuals" sub tab
+    #272570
+    And I save the value from row "1" for column name "Spent" as "fundingSpentAward" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "$500.00" for title "Spent" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "{SavedValue:fundingSpent}" is "Equals to" the value "{SavedValue:fundingSpentAward}"
+    #272573
+    And I save the value from row "1" for column name "Encumbrance Balance" as "EncumbranceBalanceAwd1" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "$500.00" for title "Encumbrance Balance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    #272600
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAward1" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "{SavedValue:EncumbranceAward1}" is "Equals to" the value "{SavedValue:EncumbranceAward2}"
     And I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "Scope&BudgetPeriod_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -18705,28 +18779,69 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I pause execution for "3" seconds
     And I "Approve" in the approval decision
     When I navigate to "Overview" sub tab
-    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAmend" from flex table "---amendment:-:amendmentFundingAccountsTableId---"
-    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---amendment:-:amendmentFundingAccountsTableId---"
+    Then I softly see field "Spent" as "$500.00"
+    And I save the field labeled "Spent" as "Spent"
     And I click on "Amend Subaward" in the page details
     And I pause execution for "10" seconds
     And I save the field labeled "EGMS ID" as "ActivatedSubAwardId"
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    When I navigate to "Actuals" sub tab
+    #272557
+    Then I softly see "Spent" inside page block detail
+    Then I softly see field "Spent" as "$500.00"
+    And I save the field labeled "Spent" as "SpentPendAwd"
+    Then I softly see value "{SavedValue:Spent}" is "Equals to" the value "{SavedValue:SpentPendAwd}"
+    #272570
+    And I save the value from row "1" for column name "Spent" as "fundingSpentAward" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "$500.00" for title "Spent" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "{SavedValue:fundingSpent}" is "Equals to" the value "{SavedValue:fundingSpentAward}"
+    #272573
+    And I save the value from row "1" for column name "Encumbrance Balance" as "EncumbranceBalanceAwd2" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "$500.00" for title "Encumbrance Balance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "{SavedValue:EncumbranceBalanceAwd1}" is "Equals to" the value "{SavedValue:EncumbranceBalanceAwd2}"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    When I navigate to "Actuals" sub tab
+    #272557
+    Then I softly see "Spent" inside page block detail
+    Then I softly see field "Spent" as "$500.00"
+    And I save the field labeled "Spent" as "SpentPendAwdSR"
+    Then I softly see value "{SavedValue:Spent}" is "Equals to" the value "{SavedValue:SpentPendAwdSR}"
+    And I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on parallel menu button in flex table title "Subawards"
+    And I select "Reset Table" from parallel lines dropdown of "Subawards"
+    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
-    #272600
-    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAward" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
-    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
-    Then I softly see value "{SavedValue:EncumbranceAmend}" is "Equals to" the value "{SavedValue:EncumbranceAward}"
     When I navigate to "Actuals" sub tab
+    #272600
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAward2" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    Then I softly see value "{SavedValue:EncumbranceAward1}" is "Equals to" the value "{SavedValue:EncumbranceAward2}"
     #272599
     Then I softly see "Spent" inside page block detail
-    Then I softly see field "Spent" as "$0.00"
+    Then I softly see field "Spent" as "$500.00"
+    And I save the field labeled "Spent" as "SpentActAwd"
+    Then I softly see value "{SavedValue:Spent}" is "Equals to" the value "{SavedValue:SpentActAwd}"
     And I save the field labeled "Grant ID" as "GrantId"
     And I click "{SavedValue:GrantId}" lookup link
     When I navigate to "Actuals" sub tab
     Then I softly see field "Spent" as "$500.00"
     And I save the field labeled "Spent" as "SpentGrant"
-    Then I softly see value "{SavedValue:SpentAwd1}" is "Equals to" the value "{SavedValue:SpentGrant}"
+    Then I softly see value "{SavedValue:SpentActAwd}" is "Equals to" the value "{SavedValue:SpentGrant}"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18736,7 +18851,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Actuals" sub tab
     Then I softly see field "Spent" as "$500.00"
     And I save the field labeled "Spent" as "SpentGrantSR"
-    Then I softly see value "{SavedValue:SpentAwd1}" is "Equals to" the value "{SavedValue:SpentGrantSR}"
+    Then I softly see value "{SavedValue:SpentActAwd}" is "Equals to" the value "{SavedValue:SpentGrantSR}"
     When I navigate to "Subawards" sub tab
     And I click on parallel menu button in flex table title "Subawards"
     And I select "Reset Table" from parallel lines dropdown of "Subawards"
@@ -18745,5 +18860,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Actuals" sub tab
     #272599
     Then I softly see "Spent" inside page block detail
-    Then I softly see field "Spent" as "$0.00"
-    
+    Then I softly see field "Spent" as "$500.00"
+    And I save the field labeled "Spent" as "SpentActAwdSR"
+    Then I softly see value "{SavedValue:Spent}" is "Equals to" the value "{SavedValue:SpentActAwdSR}"
