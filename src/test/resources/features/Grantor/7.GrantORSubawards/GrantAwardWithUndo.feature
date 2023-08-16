@@ -336,7 +336,7 @@ Feature: Validate all scenarios of grants and award with undo
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    Then I cannot see top right button "Undo" in page detail
+    Then I can see top right button "Undo" in page detail
 
   @286408 @VerifyEXEasstep4approvercanseeundobuttonafterapprovedtheaward @sprint-1-US-295145 @hitesh @Undo
   Scenario:Verify EXE as step 4 approver can see undo button after approved the award
