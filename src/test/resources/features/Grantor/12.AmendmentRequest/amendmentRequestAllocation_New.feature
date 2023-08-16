@@ -18375,7 +18375,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationActAwdSR"
     Then I softly see value "{SavedValue:CumulativeObligationActAwdSR}" is "Equals to" the value "{SavedValue:EncumbranceAward2}"
 
-  @272546 @272548 @272550 @272582 @272584 @272596 @272598 @272607 @272608 @272610 @272545 @272609 @272601 @272602 @272605 @272606 @272597 @272540 @272556 @272559 @272562 @272568 @272577 @272580 @ValidateAdminusercanseeNewObligationfieldunderBudgetSummarysectiononversion2AwardisinPendingActivationstatepostAR&valueshouldbe$0ifFANO @Sprint-22-US-270855 @vaibhav @Allocation
+  @272546 @272548 @272550 @272582 @272584 @272596 @272598 @272607 @272608 @272610 @272545 @272609 @272601 @272602 @272605 @272606 @272597 @272540 @272556 @272559 @272562 @272568 @272577 @272580 @ValidateAdminusercanseeNewObligationfieldunderBudgetSummarysectiononversion2AwardisinPendingActivationstatepostAR&valueshouldbe$0ifFANO @Sprint-22-US-270855 @vaibhav @Allocation @vai
   Scenario: Validate Admin user can see New Obligation field under Budget Summary section on version 2 Award is in Pending Activation state post AR & value should be $0 FA NO
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_BUILDUP_YES-Automation ADMIN user" of type "Directed"
     When I login to "As a Grantor" app as "ADMIN" user
@@ -18410,18 +18410,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "Scope&BudgetPeriod_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I save the field labeled "EGMS ID" as "budgetPC&ScopeId"
-    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Amendment Award}"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
     And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
-    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
-      | Title                           | End Date                             |
-      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    And I save the field labeled "EGMS ID" as "budgetPC&ScopeId"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name             | Amendment Request |
@@ -18659,7 +18653,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Award Amount |
       | $1,000.00    |
 
-  @272611 @272599 @272600 @272557 @272570 @272573 @ValidateAdminusercanseeSpentfieldunderPaymentSummarysectionofActualtabonGrantlayoutisinActivestatepostAR&valuecopiedfromSpentfieldunderBudgetsummaryfieldonversion2AwardFANO @Sprint-22-US-270855 @vaibhav @Allocation
+  @272611 @272599 @272600 @272557 @272570 @272573 @ValidateAdminusercanseeSpentfieldunderPaymentSummarysectionofActualtabonGrantlayoutisinActivestatepostAR&valuecopiedfromSpentfieldunderBudgetsummaryfieldonversion2AwardFANO @Sprint-22-US-270855 @vaibhav @Allocation @vai
   Scenario: Validate Admin user can see Spent field under Payment Summary section of Actual tab on Grant layout is in Active state post AR & value copied from Spent field under Budget summary field on version 2 Award FA NO
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_BUILDUP_YES-Automation ADMIN user" of type "Directed"
     And I am on "SUBPORTAL" portal
@@ -18744,18 +18738,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "Scope&BudgetPeriod_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I save the field labeled "EGMS ID" as "budgetPC&ScopeId"
-    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Amendment Award}"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
     And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
-    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
-      | Title                           | End Date                             |
-      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    And I save the field labeled "EGMS ID" as "budgetPC&ScopeId"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name             | Amendment Request |
