@@ -311,7 +311,7 @@ Feature: Validate all scenarios of grants and award with undo
       | {SavedValue:PO Username}  | Step 2 |
     When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
       | Name                      | Award  |
-      | {SavedValue:PO Username}  | Step 3 |
+      | {SavedValue:FO Username}  | Step 3 |
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
