@@ -179,11 +179,11 @@ Feature: Validate all scenarios of grants and award with undo
     And I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     Then I see only the following ordered radio buttons in the approval decision :
-      | Approve | Forward |Send to Owner  | Reject |
+      | Approve | Reject | Send back  | Forward |
     And I navigate to "History" sub tab
     And I see "{SavedValue:EXE Username}" against "Re-approval (Pending for first approval)" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
-    Then I softly see snapshot with name containing "Internal Program - submit for approval.pdf" as name
+    Then I softly see snapshot with name containing "Award - Undo Approval.pdf" as name
 
   @286399 @286409 @VerifyPOasstep2approvercanseeundobuttonafterapprovedtheaward @sprint-1-US-295145 @hitesh @Undo
   Scenario:Verify PO as step 2 approver can see undo button after approved the award
@@ -512,7 +512,7 @@ Feature: Validate all scenarios of grants and award with undo
     And I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "Green"
     Then I can see top right button "Undo" in page detail
-    Then I can see top right button "Sent to Subrecipient" in page detail
+    Then I can see top right button "Send to Subrecipient" in page detail
 
   @286420 @VerifyEXEasstep1approverifIclickonUndobuttonthenapprovedawardtaskgotincancelledfromcompletedtasktableofapprover @sprint-1-US-295145 @hitesh @Undo
   Scenario:Verify EXE as step 1 approver if I click on Undo button then approved award  task got in cancelled from completed task table of approver
@@ -583,7 +583,6 @@ Feature: Validate all scenarios of grants and award with undo
     And I click on "Undo" in the page details without processing
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    #And I navigate to "Grants" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:completeTaskTableId---" panel
     Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:AwardEGMSID}" inside table "---subAwardStandAlone:-:completeTaskTableId---"
@@ -670,7 +669,6 @@ Feature: Validate all scenarios of grants and award with undo
     And I click on "Undo" in the page details without processing
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    #And I navigate to "Grants" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:completeTaskTableId---" panel
     Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:AwardEGMSID}" inside table "---subAwardStandAlone:-:completeTaskTableId---"
