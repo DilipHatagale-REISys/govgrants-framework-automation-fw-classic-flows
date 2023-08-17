@@ -110,7 +110,7 @@ Feature: Validate all scenarios of grants and award with undo
     Then I cannot see top right button "Undo" in page detail
 
   @286395 @286411 @VerifyEXEasstep1approvercanseeundobuttonafterapprovedtheaward @sprint-1-US-295145 @hitesh @Undo
-  Scenario:Verify EXE as step 1 approver can see undo button after approved the award
+  Scenario: Verify EXE as step 1 approver can see undo button after approved the award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
