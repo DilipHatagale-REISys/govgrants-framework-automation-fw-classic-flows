@@ -183,7 +183,7 @@ Feature: Validate all scenarios of grants and award with undo
     And I navigate to "History" sub tab
     And I see "{SavedValue:EXE Username}" against "Re-approval (Pending for first approval)" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
-    Then I softly see snapshot with name containing "Award - Undo Approval.pdf" as name
+    Then I softly see snapshot with name containing "Subaward_Submit_for_Approval.pdf" as name
 
   @286399 @286409 @VerifyPOasstep2approvercanseeundobuttonafterapprovedtheaward @sprint-1-US-295145 @hitesh @Undo
   Scenario:Verify PO as step 2 approver can see undo button after approved the award
