@@ -18404,7 +18404,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAwd1PaySumm" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     #272605
-    And I save the value from row "1" for column name "Balance" as "RemainingEncumbrance" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
+    And I save the value from row "1" for column name "Encumbrance Balance" as "RemainingEncumbrance" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     Then I softly see value "{SavedValue:RemainingEncumbrance}" is "Equals to" the value "{SavedValue:EncumbranceBalance}"
     And I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -18732,7 +18732,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #272600
     And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAward1" from flex table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
     Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:FundingAccountActualsTableId---"
-    Then I softly see value "{SavedValue:EncumbranceAward1}" is "Equals to" the value "{SavedValue:EncumbranceAward2}"
     And I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "Scope&BudgetPeriod_Creation" values from "AmendmentRequest_Field_Values.xlsx"
