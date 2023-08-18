@@ -1200,7 +1200,7 @@ Feature: Validate all scenarios of grants and award with undo
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardFromFDM:-:grantsTableId---" panel
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     When I navigate to "Subawards" sub tab
-    When I click on "View" icon for "{SavedValue:AmendmentId}" inside table with wait for record
+    When I click on "View" icon for "Pending Activation" inside table with wait for record
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     Then I cannot see top right button "Undo" in page detail
 
@@ -1312,11 +1312,3 @@ Feature: Validate all scenarios of grants and award with undo
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Activated" and is "Green"
     Then I cannot see top right button "Undo" in page detail
-
-
-
-
-
-
-
-
