@@ -901,7 +901,7 @@ Feature: Validate all scenarios of grants and award with undo
     Then I softly see status in Progress-bar is "Closed" and is "Green"
     Then I cannot see top right button "Undo" in page detail
 
-  @286470 @VerifyFDuserasstep3approvershouldnotseeUndobuttoninAmendedstatestateofaward @sprint-1-US-295145 @hitesh @Undo
+  @286470 @VerifyFDuserasstep3approvershouldnotseeUndobuttoninAmendedstatestateofaward @sprint-1-US-295145 @hitesh @Undo @hiteshapi
   Scenario: Verify FD user as step 3 approver should not see Undo button in Amended state state of award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -1313,7 +1313,7 @@ Feature: Validate all scenarios of grants and award with undo
     Then I softly see status in Progress-bar is "Activated" and is "Green"
     Then I cannot see top right button "Undo" in page detail
 
-  @286491 @VerifyEXEasstep1approverseewarningmessageafterclickonUndobuttononaward @sprint-1-US-295145 @hitesh @Undo
+  @286491 @VerifyEXEasstep1approverseewarningmessageafterclickonUndobuttononaward @sprint-1-US-295145 @hitesh @Undo @hiteshapi
   Scenario: Verify EXE as step 1 approver see warning message after click on Undo button on award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -1394,7 +1394,7 @@ Feature: Validate all scenarios of grants and award with undo
     And I click "No" on modal confirmation box
     Then I see status in Progress-bar is "Approved" and is "Green"
 
-  @286505 @VerifyAuditorprofileusershouldnotseeUndobuttononaward @sprint-1-US-295145 @hitesh @Undo
+  @286505 @VerifyAuditorprofileusershouldnotseeUndobuttononaward @sprint-1-US-295145 @hitesh @Undo @hiteshapi
   Scenario: Verify Auditor profile user should not see Undo button on award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
