@@ -1390,7 +1390,7 @@ Feature: Validate all scenarios of grants and award with undo
     Then I see status in Progress-bar is "Approved" and is "Green"
 
   @286505 @VerifyAuditorprofileusershouldnotseeUndobuttononaward @sprint-1-US-295145 @hitesh @Undo
-  Scenario: Verify Auditor profile user should not see Undo button on award
+  Scenario: Verify Auditor profile user should not see Undo button on award.
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
