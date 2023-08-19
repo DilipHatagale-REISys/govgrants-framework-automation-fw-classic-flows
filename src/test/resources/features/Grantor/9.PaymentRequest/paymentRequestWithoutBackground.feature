@@ -1,4 +1,4 @@
-@grantor-regression @grantor-parallel-regression @paymentRequest @regression
+@paymentRequestWB @grantor-regression @grantor-parallel-regression @paymentRequest @regression
 Feature: Payment Request scenarios without background
 
   @53910 @ValidateAdvancePaymentRequestButton @mahadev @smoke
