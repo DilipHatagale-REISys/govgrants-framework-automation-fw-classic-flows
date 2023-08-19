@@ -18137,7 +18137,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I "Approve" in the approval decision
     When I navigate to "Overview" sub tab
     And I save the value from row "1" for column name "Difference" as "DifferenceAmend" from flex table "---amendment:-:amendmentFundingAccountsTableId---"
-    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAmend" from flex table "---amendment:-:amendmentFundingAccountsTableId---"
+    And I save the value from row "1" for column name "Revised Encumbrance" as "EncumbranceAmend" from flex table "---amendment:-:amendmentFundingAccountsTableId---"
     #272248
     And I save the field labeled "Revised Commitment" as "RevisedCommitment"
     Then I softly see field "Revised Commitment" as "$4,000.00"
@@ -18223,7 +18223,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "{SavedValue:DifferenceAmend}" is "Equals to" the value "{SavedValue:NewObligationPendAwdSR}"
     #272247
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationSR"
-    Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligationSR}"
+    Then I softly see value "{SavedValue:EncumbranceAmend}" is "Equals to" the value "{SavedValue:CumulativeObligationSR}"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
     #272248
     And I save the field labeled "Total Commitment" as "TotalCommitmentSR"
