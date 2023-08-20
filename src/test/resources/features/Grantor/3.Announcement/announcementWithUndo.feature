@@ -1,4 +1,4 @@
-@grantor-regression @grantor-parallel-regression @announcement @regression @announcement-undo
+@grantor-regression @grantor-parallel-regression @announcement @regression @announcement-undo @announcementTemp
 Feature: Validate all scenarios in the Competitive Announcement tab
 
   @283963 @283966 @283973 @283965 @VerifywhenPmapprovercanclickonundobuttoninAnnouncementrecordwhenrecordisinApprovedstate @sprint-4-US-295141 @hitesh @Undo
