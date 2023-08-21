@@ -1853,6 +1853,21 @@ Feature: Validate all scenarios of grants and award with undo
     Then I softly do not see value "{SavedValue:AwardEGMSID}" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:completeTaskTableId---" panel
+    Then I softly do not see value "{SavedValue:AwardEGMSID}" for title "EGMS ID" inside table "---subAwardStandAlone:-:completeTaskTableId---"
+    When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    Then I cannot see top right button "Undo" in page detail
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    Then I softly do not see value "{SavedValue:AwardEGMSID}" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:completeTaskTableId---" panel
     Then I softly see value "{SavedValue:AwardEGMSID}" for title "EGMS ID" inside table "---subAwardStandAlone:-:completeTaskTableId---"
 
   @286536 @VerifyreassignapprovershouldseeUndobuttonafterforwardedapproverchangeapprovaltaskownership @sprint-1-US-295145 @hitesh @Undo @hiteshtemp1
@@ -2342,18 +2357,17 @@ Feature: Validate all scenarios of grants and award with undo
     And I click on "Menu" in the page details
     And I select "Download As PDF" from dropdown
     And I download the file
-    Then I softly see "Capability" on page "1" of "govgrants" pdf file
-    Then I softly see "Approach" on page "1" of "govgrants" pdf file
-    Then I softly see "Impact" on page "2" of "govgrants" pdf file
-    Then I softly see "Section Weight (%)" on page "1" of "govgrants" pdf file
-    Then I softly see "Section Header" on page "1" of "govgrants" pdf file
-    Then I softly see "Section Order" on page "1" of "govgrants" pdf file
-    Then I softly see "Review Questions" on page "1" of "govgrants" pdf file
-    Then I softly see "Question" on page "1" of "govgrants" pdf file
-    Then I softly see "Order" on page "1" of "govgrants" pdf file
-    Then I softly see "Question Type" on page "1" of "govgrants" pdf file
-    Then I softly see "Max" on page "1" of "govgrants" pdf file
-    Then I softly see "Score" on page "1" of "govgrants" pdf file
+    Then I softly see "{SavedValue:AwardEGMSID}" on page "1" of "govgrants" pdf file
+    Then I softly see "{SavedValue:GrantEGMSID}" on page "1" of "govgrants" pdf file
+    Then I softly see following details in "govgrants" pdf file:
+      | Detail                    | Page Number |
+      | {SavedValue:AwardEGMSID}  | 1           |
+      | {SavedValue:GrantEGMSID}  | 1           |
+      | Rejected                  | 1           |
+      | Created by                | 2           |
+      | {SavedValue:PM Username}  | 2           |
+      | Last Modified by          | 2           |
+      | {SavedValue:FO Username}  | 2           |
     And I switch to parent tab
     And I navigate to "History" sub tab
     Then I softly see snapshot with name containing "Subaward_Submit_for_Approval.pdf" as name
