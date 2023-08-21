@@ -2342,6 +2342,19 @@ Feature: Validate all scenarios of grants and award with undo
     And I click on "Menu" in the page details
     And I select "Download As PDF" from dropdown
     And I download the file
+    Then I softly see "Capability" on page "1" of "govgrants" pdf file
+    Then I softly see "Approach" on page "1" of "govgrants" pdf file
+    Then I softly see "Impact" on page "2" of "govgrants" pdf file
+    Then I softly see "Section Weight (%)" on page "1" of "govgrants" pdf file
+    Then I softly see "Section Header" on page "1" of "govgrants" pdf file
+    Then I softly see "Section Order" on page "1" of "govgrants" pdf file
+    Then I softly see "Review Questions" on page "1" of "govgrants" pdf file
+    Then I softly see "Question" on page "1" of "govgrants" pdf file
+    Then I softly see "Order" on page "1" of "govgrants" pdf file
+    Then I softly see "Question Type" on page "1" of "govgrants" pdf file
+    Then I softly see "Max" on page "1" of "govgrants" pdf file
+    Then I softly see "Score" on page "1" of "govgrants" pdf file
+    And I switch to parent tab
     And I navigate to "History" sub tab
     Then I softly see snapshot with name containing "Subaward_Submit_for_Approval.pdf" as name
 
