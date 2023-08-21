@@ -128,7 +128,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @279023 @VerifythatwhenExeapproverForwardthedeskreviewApprovaltaskForwardedApproverwillseeUNDObuttonandnotpreviousOne @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
+  @279023 @VerifythatwhenExeapproverForwardthedeskreviewApprovaltaskForwardedApproverwillseeUNDObuttonandnotpreviousOne @sprint-25-US-297269 @hitesh @Undo
   Scenario: Verify that when Exe approver Forward the desk review Approval task , Forwarded Approver will see UNDO button and not previous One.
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -256,7 +256,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
 
-  @279025 @VerifythatwhenEXEapproverForwardthedeskreviewApprovaltaskoriginalApproverwillnotseeUNDObutton @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
+  @279025 @VerifythatwhenEXEapproverForwardthedeskreviewApprovaltaskoriginalApproverwillnotseeUNDObutton @sprint-25-US-297269 @hitesh @Undo
   Scenario: Verify that when EXE approver Forward the desk review Approval task , original  Approver will not see UNDO button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -766,7 +766,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
-    And I perform quick search for "{Record Id" in "---deskreview:-:monitoringTabDeskReviewTableId---" panel
+    And I perform quick search for "Record Id" in "---deskreview:-:monitoringTabDeskReviewTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabDeskReviewTableId---"
       #279030
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
@@ -783,7 +783,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     #279031
     Then I cannot see top right button "Undo" in page detail
 
-  @279032 @VerifythatwhenEXEuserclickonUNDObuttoninDeskreviewrecordAWarningmessagewithYesandNooptionwillappearvalidatetheTextofwarningmessage @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
+  @279032 @VerifythatwhenEXEuserclickonUNDObuttoninDeskreviewrecordAWarningmessagewithYesandNooptionwillappearvalidatetheTextofwarningmessage @sprint-25-US-297269 @hitesh @Undo
   Scenario: Verify that when EXE user click on UNDO button in Desk review record A Warning message with Yes and No option will appear ,validate the Text of warning message
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -847,7 +847,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     And I click "No" on modal confirmation box
     Then I softly see status in Progress-bar is "Approved" and is "green"
 
-  @279034 @VerifythatafterEXEuserclickonUndobuttonAllthetablesofdeskreviewwillnotgetaffected @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
+  @279034 @VerifythatafterEXEuserclickonUndobuttonAllthetablesofdeskreviewwillnotgetaffected @sprint-25-US-297269 @hitesh @Undo
   Scenario: Verify that after EXE user click on Undo button All the tables of desk review will not get affected
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
