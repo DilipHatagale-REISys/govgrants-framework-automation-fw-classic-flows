@@ -1588,7 +1588,7 @@ Feature: Validate all scenarios of grants and award with undo
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    Then I cannot see top right button "Undo" in page detail
+    Then I can see top right button "Undo" in page detail
     And I click on "Undo" in the page details
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:completeTaskTableId---" panel
@@ -2344,7 +2344,6 @@ Feature: Validate all scenarios of grants and award with undo
     And I click on "Menu" in the page details
     And I select "Download As PDF" from dropdown
     And I download the file
-    And I pause execution for "500" seconds
     And I navigate to "History" sub tab
     Then I softly see snapshot with name containing "Subaward_Submit_for_Approval.pdf" as name
 
