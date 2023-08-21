@@ -115,7 +115,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I can see top right button "Undo" in page detail
@@ -313,7 +313,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     Then I softly see field "Status" as "Submitted for Approval"
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
@@ -874,6 +874,7 @@ Feature: Validate all scenarios in Desk Review with Undo
       | Name                       | Desk Review |
       | {SavedValue:EXE Username}  | Step 1      |
     When I get the "EGMS ID"
+    And I pause execution for "500" seconds
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---deskreview:-:deskReviewContactsTableId---"
@@ -910,10 +911,19 @@ Feature: Validate all scenarios in Desk Review with Undo
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I softly see field "Status" as "Submitted for Approval"
     When I navigate to "Overview" sub tab
+    Then I softly can see top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    Then I softly can see top right button "Associate" in flex table with id "---deskreview:-:reviewersFlexTableId---"
     Then I softly cannot see row level action button "Edit" against "{SavedValue:EXE Username}" in flex table with id "---deskreview:-:deskReviewContactsTableId---"
     Then I softly cannot see row level action button "Edit" against "{SavedValue:SPI3 Username}" in flex table with id "---deskreview:-:deskReviewContactsTableId---"
     Given I navigate to "Responsibilities" sub tab
+    Then I softly can see top right button "New" in flex table with id "---deskreview:-:reviewersFlexTableId---"
+    Then I softly can see top right button "New" in flex table with id "---deskreview:-:approverDeskReviewTableId---"
     Then I softly cannot see row level action button "Edit" against "{SavedValue:EXE Username}" in flex table with id "---deskreview:-:approverDeskReviewTableId---"
     And I navigate to "Reports and Outcomes" sub tab
     Then I softly cannot see row level action button "Edit" against "General Review Form" in flex table with id "---deskreview:-:reportsTableId---"
+    Then I softly cannot see top right button "New" in flex table with id "---deskreview:-:correctiveTableId---"
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---deskreview:-:deskReviewsFilesTableId---"
+
+
 
