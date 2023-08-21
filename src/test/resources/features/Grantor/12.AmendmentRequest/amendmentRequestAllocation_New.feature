@@ -19147,6 +19147,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
     And I click on page navigation arrow "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---" for table id "Next"
     Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
+    And I click on page navigation arrow "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---" for table id "Next"
     Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
     When I navigate to "Actuals" sub tab
     #272239
@@ -19177,6 +19178,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
     And I click on page navigation arrow "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---" for table id "Next"
     Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
+    And I click on page navigation arrow "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---" for table id "Next"
     Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
     When I navigate to "Actuals" sub tab
     #273064
@@ -19208,6 +19210,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on page navigation arrow "---subAwardStandAlone:-:sRBudgetCategoryTableId---" for table id "Next"
     Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
     Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    And I click on parallel menu button in flex table title "Subaward budget"
+    And I select "Reset Table" from parallel lines dropdown of "Subaward budget"
     And I select value inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---" is "All"
     And I wait for "4" seconds
     Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" :

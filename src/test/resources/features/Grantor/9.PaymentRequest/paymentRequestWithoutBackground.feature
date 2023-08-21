@@ -201,7 +201,7 @@ Feature: Payment Request scenarios without background
     And I click toggle button to select "Grants - Active"
     And I perform quick search for "{SavedValue:Automation Runtime award}" in "GrantorActiveGrantsgrid" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "GrantorActiveGrantsgrid" without waiting for record
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
       | Description | Required  | Applies To            | Status |
       | Automation  | Mandatory | Reimbursement Request | Active |
@@ -225,7 +225,7 @@ Feature: Payment Request scenarios without background
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |
     When I close "Add Line Items" modal by clicking the top right x button
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     Then I see that "Automation" has been added in flextable with Id "---paymentRequest:-:checklistTableId---"
     Examples:
       | Award Name                            | Grant Name                            |
@@ -254,7 +254,7 @@ Feature: Payment Request scenarios without background
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |
     When I close "Add Line Items" modal by clicking the top right x button
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     Then I see "No Records Found" inside flex table with id "---paymentRequest:-:checklistTableId---"
     Examples:
       | Award Name                            | Grant Name                            |
@@ -278,7 +278,7 @@ Feature: Payment Request scenarios without background
     And I click modal button "Save and Continue"
     When I enter "No Program Income_Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
     And I upload attachment "Announcement_Field_Values.xlsx" of type "Invoice" from computer
     When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
@@ -302,7 +302,7 @@ Feature: Payment Request scenarios without background
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     Then I see "No Records Found" inside flex table with id "---paymentRequest:-:checklistTableId---"
     Examples:
       | Award Name                            |
@@ -317,7 +317,7 @@ Feature: Payment Request scenarios without background
     And I click toggle button to select "Grants - Active"
     And I perform quick search for "{SavedValue:Automation Runtime award}" in "GrantorActiveGrantsgrid" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "GrantorActiveGrantsgrid" without waiting for record
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
       | Description | Required  | Applies To      | Status |
       | Automation  | Mandatory | Advance Request | Active |
@@ -336,7 +336,7 @@ Feature: Payment Request scenarios without background
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     Then I see that "Automation" has been added in flextable with Id "---paymentRequest:-:checklistTableId---"
@@ -395,7 +395,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
@@ -417,7 +417,7 @@ Feature: Payment Request scenarios without background
     And I click toggle button to select "Grants - Active"
     And I perform quick search for "{SavedValue:Automation Runtime award}" in "GrantorActiveGrantsgrid" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "GrantorActiveGrantsgrid" without waiting for record
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
       | Description | Required  | Applies To      | Status |
       | Automation  | Mandatory | Advance Request | Active |
@@ -440,7 +440,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
@@ -509,7 +509,7 @@ Feature: Payment Request scenarios without background
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
     When I get the "EGMS ID"
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
@@ -575,7 +575,7 @@ Feature: Payment Request scenarios without background
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
     When I get the "EGMS ID"
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
@@ -865,7 +865,7 @@ Feature: Payment Request scenarios without background
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
     And I upload attachment "Announcement_Field_Values.xlsx" of type "Invoice" from computer
     When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
@@ -1227,7 +1227,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @152650 @VerifyInheritedApproverAt-ReimbursementPaymentRequestFromAward-RnRFunctionality @monu
+  @152650 @VerifyInheritedApproverAt-ReimbursementPaymentRequestFromAward-RnRFunctionality @monu @TBE1
   Scenario Outline: Validate Approvers are getting inherited from award record to reimbursement payment request
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     When I am on "INTERNAL" portal
@@ -1424,7 +1424,7 @@ Feature: Payment Request scenarios without background
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
 
-  @148788 @ValidateApproversaregettinginheritedfromawardrecordtoadvancepaymentrequest @vaibhav
+  @148788 @ValidateApproversaregettinginheritedfromawardrecordtoadvancepaymentrequest @vaibhav @TBE1
   Scenario Outline: Validate Approvers are getting inherited from award record to advance payment request
     And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1458,7 +1458,7 @@ Feature: Payment Request scenarios without background
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
     When I get the "EGMS ID"
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Submit to Grantor" in the page details
@@ -1591,7 +1591,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     # there is no add files button
@@ -1683,7 +1683,7 @@ Feature: Payment Request scenarios without background
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -1858,7 +1858,7 @@ Feature: Payment Request scenarios without background
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -2066,7 +2066,7 @@ Feature: Payment Request scenarios without background
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -2165,7 +2165,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -2548,7 +2548,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -2681,7 +2681,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "Review Payment Request" for title "Task Type" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197279 @ValidateEXEcanseeReviewPaymentRequesttasksforschedulereimbursementpaymentisgeneratedonreassignmytaskspageforEXEuser @sprint-4 @vaibhav @reassignment
+  @197279 @ValidateEXEcanseeReviewPaymentRequesttasksforschedulereimbursementpaymentisgeneratedonreassignmytaskspageforEXEuser @sprint-4 @vaibhav @reassignment @TBE1
   Scenario: Validate EXE can see Review Payment Request tasks for schedule reimbursement payment is generated on reassign my tasks page for EXE user
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -2703,7 +2703,7 @@ Feature: Payment Request scenarios without background
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -2812,7 +2812,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "Review Payment Request" for title "Task Type" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197280 @ValidatePOcanseeReviewPaymentRequesttasksforschedulereimbursementpaymentisgeneratedonreassignmytaskspageforEXEuser @sprint-4 @vaibhav @reassignment
+  @197280 @ValidatePOcanseeReviewPaymentRequesttasksforschedulereimbursementpaymentisgeneratedonreassignmytaskspageforEXEuser @sprint-4 @vaibhav @reassignment @TBE1
   Scenario: Validate PO can see Review Payment Request tasks for schedule reimbursement payment is generated on reassign my tasks page for EXE user
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -2834,7 +2834,7 @@ Feature: Payment Request scenarios without background
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -2988,7 +2988,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197291 @ValidateEXEusercanreassignschedulereimbursementpaymentrequestownershiptaskstootherEXEuser @sprint-4 @vaibhav @reassignment
+  @197291 @ValidateEXEusercanreassignschedulereimbursementpaymentrequestownershiptaskstootherEXEuser @sprint-4 @vaibhav @reassignment @TBE1
   Scenario: Validate EXE user can reassign schedule reimbursement payment request ownership tasks to other EXE user
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -3010,7 +3010,7 @@ Feature: Payment Request scenarios without background
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -3147,7 +3147,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -3227,7 +3227,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -3264,7 +3264,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -3349,7 +3349,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -3417,10 +3417,10 @@ Feature: Payment Request scenarios without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
@@ -3530,7 +3530,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -3668,7 +3668,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -3694,7 +3694,7 @@ Feature: Payment Request scenarios without background
     Then I softly can see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
     Then I can see top right button "New" in flex table with id "---paymentRequest:-:approversTableId---"
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     Then I can see top right button "Add Files" in flex table with id "---paymentRequest:-:advanceFilesTableId---"
     And I navigate to "Collab" sub tab
     Then I can see top right button "Send Email" in flex table with id "---paymentRequest:-:reimburseCollabMessages---"
@@ -3981,7 +3981,7 @@ Feature: Payment Request scenarios without background
     Then I softly can see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
     Then I can see top right button "New" in flex table with id "---paymentRequest:-:payapproversTableId---"
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     Then I can see top right button "Add Files" in flex table with id "---paymentRequest:-:reimburseFilesTableId---"
 
   @198604 @Validatecheckeffectsongrantafterpaymentrequestownershipreassigntonewuser @sprint-4 @vaibhav @reassignment @ownvai
@@ -4057,7 +4057,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -4082,7 +4082,7 @@ Feature: Payment Request scenarios without background
     Then I softly can see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
     Then I can see top right button "New" in flex table with id "---paymentRequest:-:approversTableId---"
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     Then I can see top right button "Add Files" in flex table with id "---paymentRequest:-:advanceFilesTableId---"
     And I navigate to "Collab" sub tab
     Then I can see top right button "Send Email" in flex table with id "---paymentRequest:-:reimburseCollabMessages---"
@@ -4134,7 +4134,7 @@ Feature: Payment Request scenarios without background
     Then I softly can see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
     Then I can see top right button "New" in flex table with id "---paymentRequest:-:payapproversTableId---"
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     Then I can see top right button "Add Files" in flex table with id "---paymentRequest:-:reimburseFilesTableId---"
     Then I can see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     And I navigate to "Collab" sub tab
@@ -4200,7 +4200,7 @@ Feature: Payment Request scenarios without background
     Then I softly cannot see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
     Then I cannot see top right button "New" in flex table with id "---paymentRequest:-:payapproversTableId---"
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add Files" in flex table with id "---paymentRequest:-:reimburseFilesTableId---"
     Then I can see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     And I navigate to "Collab" sub tab
@@ -4331,7 +4331,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -4368,7 +4368,7 @@ Feature: Payment Request scenarios without background
     Then I softly can see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
     Then I can see top right button "New" in flex table with id "---paymentRequest:-:approversTableId---"
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     Then I can see top right button "Add Files" in flex table with id "---paymentRequest:-:advanceFilesTableId---"
     Then I can see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
     And I navigate to "Collab" sub tab
@@ -4433,7 +4433,7 @@ Feature: Payment Request scenarios without background
     Then I softly can see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
     Then I can see top right button "New" in flex table with id "---paymentRequest:-:payapproversTableId---"
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     Then I can see top right button "Add Files" in flex table with id "---paymentRequest:-:reimburseFilesTableId---"
     Then I can see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     And I navigate to "Collab" sub tab
@@ -4658,7 +4658,7 @@ Feature: Payment Request scenarios without background
     Then I softly can see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
     Then I can see top right button "New" in flex table with id "---paymentRequest:-:payapproversTableId---"
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     Then I can see top right button "Add Files" in flex table with id "---paymentRequest:-:reimburseFilesTableId---"
     Then I can see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     And I navigate to "Collab" sub tab
@@ -5191,7 +5191,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -5364,7 +5364,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -5413,7 +5413,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -5601,7 +5601,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -5668,7 +5668,7 @@ Feature: Payment Request scenarios without background
 
   @223289 @ValidatePaymentRequestModuleeusershouldabletoreassignthetasktonewuserofmorethan10records&1emailshouldbetriggeredforallrecords @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Payment Request Module user should able to reassign the task to new user of more than 10 records & 1 email should be triggered for all records
-    And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
+    And I activated standalone subaward "Automation Runtime Bulk award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -6008,7 +6008,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -6055,7 +6055,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -6122,7 +6122,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -6169,7 +6169,7 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -6275,7 +6275,7 @@ Feature: Payment Request scenarios without background
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -6494,7 +6494,7 @@ Feature: Payment Request scenarios without background
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -6667,7 +6667,7 @@ Feature: Payment Request scenarios without background
 
   @223500 @ValidatePaymentRequestModuleaftertransferringthemorethan10or10recordtonewownerthenallfuturetaskaccessvisibletonewowner @sprint-11-US-217998 @vaibhav @reassignment
   Scenario: Validate Payment Request Module after transferring the more than 10 or 10 record to new owner then all future task access visible to new owner
-    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
+    And I activated standalone subaward "Automation Runtime Bulk award" with properties "default" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -7104,7 +7104,7 @@ Feature: Payment Request scenarios without background
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
     When I get the "EGMS ID"
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Submit to Grantor" in the page details
