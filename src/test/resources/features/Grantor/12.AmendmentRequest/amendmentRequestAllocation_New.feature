@@ -18927,7 +18927,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Spent" as "SpentActAwdSR"
     Then I softly see value "{SavedValue:SpentAwd1}" is "Equals to" the value "{SavedValue:SpentActAwdSR}"
 
-  @273064 @272224 @272226 @ValidatePOusercanseefollowingclmsunderPaymentSummarybyFAsectionofActualtabonGrantlayoutinActivestatepostARifFAYES @Sprint-22-US-270855 @vaibhav @Allocation
+  @273064 @272224 @272226 @272237 @272227 @272228 @272229 @272230 @272231 @ValidatePOusercanseefollowingclmsunderPaymentSummarybyFAsectionofActualtabonGrantlayoutinActivestatepostARifFAYES @Sprint-22-US-270855 @vaibhav @Allocation
   Scenario: Validate PO user can see  following clms under Payment Summary by FA section of Actual tab on Grant layout in Active state post AR if(FA=YES)
     Given I activated standalone subaward "Automation Runtime Award" with properties "SECOND_BUD_CAT_SECOND_FOCUS_BUILD_UP_IND_ORG-Automation PO user" of type "Formula_By_Applicant"
     When I am on "SUBPORTAL" portal
@@ -18991,6 +18991,19 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click modal button "Save"
     When I close "{SavedValue:PayreqId}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "green"
+    And I save the field labeled "EGMS ID" as "SubawardId"
+    And I click "{SavedValue:SubawardId}" lookup link
+    When I navigate to "Budget" sub tab
+    #272227
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAwd1" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    #272229
+    When I navigate to "Actuals" sub tab
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAwdPaySumm1" from flex table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
+    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
+    #272231
+    And I save the value from row "1" for column name "Encumbrance Balance" as "EncumbranceBalanceAwd1" from flex table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
+    Then I softly see value "$500.00" for title "Encumbrance Balance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -19052,6 +19065,15 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
     And I navigate to "Overview" sub tab
+    #272228
+    Then I softly see value "$450.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:grantorBudgetChangeTableId---"
+    Then I softly see value "$50.00" for title "Revised Award Amount" against the value "Indirect costs" inside table "---amendment:-:grantorBudgetChangeTableId---"
+    And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
+    Then I softly see value "$450.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:grantorBudgetChangeTableId---"
+    Then I softly see value "$50.00" for title "Revised Award Amount" against the value "Indirect costs" inside table "---amendment:-:grantorBudgetChangeTableId---"
+    Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
+      | Revised Award Amount |
+      | $1,000.00            |
     And I wait for "4" seconds
     And I click on "Amend Subaward" in the page details
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
@@ -19079,14 +19101,49 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #272224
     And I navigate to "Budget" sub tab
     Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:focusAreaTableId---"
+    #272237, 272228
+    Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    And I click on page navigation arrow "---subAwardStandAlone:-:subAwardBudgetTableId---" for table id "Next"
+    Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    And I select value inside table "---subAwardStandAlone:-:subAwardBudgetTableId---" is "All"
+    And I wait for "4" seconds
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" :
+      | Award Amount |
+      | $1,000.00    |
+    #272227
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAwd2" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see value "{SavedValue:EncumbranceAwd1}" is "Equals to" the value "{SavedValue:EncumbranceAwd2}"
     When I navigate to "Actuals" sub tab
     #272239, 272226
     Then I softly see field "Spent" inside page block
     Then I softly see field "Spent" as "$500.00"
     And I save the field labeled "Spent" as "SpentAwd2"
+    #272229
+    And I save the value from row "1" for column name "Encumbrance" as "EncumbranceAwdPaySumm2" from flex table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
+    Then I softly see value "$1,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
+    Then I softly see value "{SavedValue:EncumbranceAwdPaySumm1}" is "Equals to" the value "{SavedValue:EncumbranceAwdPaySumm2}"
+    #272230
+    Then I softly see value "$250.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$250.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    #272231
+    And I save the value from row "1" for column name "Encumbrance Balance" as "EncumbranceBalanceAwd2" from flex table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
+    Then I softly see value "$500.00" for title "Encumbrance Balance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:awardActualsTabFundingAccountTableId---"
+    Then I softly see value "{SavedValue:EncumbranceBalanceAwd1}" is "Equals to" the value "{SavedValue:EncumbranceBalanceAwd2}"
     And I save the field labeled "Grant ID" as "GrantId"
     And I click "{SavedValue:GrantId}" lookup link
     Then I softly see field "Status" as "Active"
+    When I navigate to "Budget" sub tab
+    #272237
+    And I expand nested table containing column value "BP01"
+    Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
+    Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
+    And I click on page navigation arrow "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---" for table id "Next"
+    Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
+    Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
     When I navigate to "Actuals" sub tab
     #272239
     Then I softly see field "Spent" as "$500.00"
@@ -19108,8 +19165,15 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click toggle button to select "Grants - All"
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
-    And I navigate to "Budget" sub tab
     Then I softly see field "Status" as "Active"
+    And I navigate to "Budget" sub tab
+    #272237
+    And I expand nested table containing column value "BP01"
+    Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
+    Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
+    And I click on page navigation arrow "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---" for table id "Next"
+    Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
+    Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
     When I navigate to "Actuals" sub tab
     #273064
     Then I softly see value "$500.00" for title "Cumulative Obligation" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:grantActualsTabFocusAreaTableId---"
@@ -19134,3 +19198,19 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #272226
     Then I softly see field "Spent" inside page block
     Then I softly see field "Spent" as "$500.00"
+    #272228
+    Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    And I click on page navigation arrow "---subAwardStandAlone:-:sRBudgetCategoryTableId---" for table id "Next"
+    Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    And I select value inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---" is "All"
+    And I wait for "4" seconds
+    Then I see the following rows under the following headers in table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" :
+      | Award Amount |
+      | $1,000.00    |
+    When I navigate to "Actuals" sub tab
+    #272230
+    Then I softly see value "$250.00" for title "Spent" against the value "Automation Permanent Focus Area" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$250.00" for title "Spent" against the value "Automation Permanent Focus Area2" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
+    Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---subAwardStandAlone:-:awardPaymentSummaryFocusAreaTableId---"
