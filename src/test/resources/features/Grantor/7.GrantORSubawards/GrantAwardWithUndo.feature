@@ -1474,7 +1474,7 @@ Feature: Validate all scenarios of grants and award with undo
     Then I see status in Progress-bar is "Approved" and is "Green"
     Then I cannot see top right button "Undo" in page detail
 
-  @286508 @Verifypreviousapprovedtaskshouldnotcancelfromcompletedtasktableafterclickonundobutton @sprint-1-US-295145 @hitesh @Undo @hiteshtemp1
+  @286508 @Verifypreviousapprovedtaskshouldnotcancelfromcompletedtasktableafterclickonundobutton @sprint-1-US-295145 @hitesh @Undo
   Scenario: Verify previous approved task should not cancel from completed task table after click on undo button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -1594,7 +1594,7 @@ Feature: Validate all scenarios of grants and award with undo
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:completeTaskTableId---" panel
     Then I softly see value "Completed" for title "Status" against the value "{SavedValue:AwardEGMSID}" inside table "---subAwardStandAlone:-:completeTaskTableId---"
 
-  @286517 @Verifystep4approvercansenttoownertheawardafterclickonUndobuttonandupdatetheapproveronawardsoUndowilldisplaytoupdatedapproverafterapprovedtheaward @sprint-1-US-295145 @hitesh @Undo @hiteshtemp1
+  @286517 @Verifystep4approvercansenttoownertheawardafterclickonUndobuttonandupdatetheapproveronawardsoUndowilldisplaytoupdatedapproverafterapprovedtheaward @sprint-1-US-295145 @hitesh @Undo
   Scenario: Verify step 4 approver can sent to owner the award after click on Undo button and update the approver on award so Undo will display to updated approver after approved the award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -1739,7 +1739,7 @@ Feature: Validate all scenarios of grants and award with undo
     Then I see status in Progress-bar is "Approved" and is "Green"
     Then I can see top right button "Undo" in page detail
 
-  @286529 @VerifyPOapprovershouldseeUndobuttonafterapprovaltaskownershipreassigntohim @sprint-1-US-295145 @hitesh @Undo @hiteshtemp1
+  @286529 @VerifyPOapprovershouldseeUndobuttonafterapprovaltaskownershipreassigntohim @sprint-1-US-295145 @hitesh @Undo
   Scenario: Verify PO approver should see Undo button after approval task ownership reassign to him
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -1870,7 +1870,7 @@ Feature: Validate all scenarios of grants and award with undo
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:completeTaskTableId---" panel
     Then I softly see value "{SavedValue:AwardEGMSID}" for title "EGMS ID" inside table "---subAwardStandAlone:-:completeTaskTableId---"
 
-  @286536 @VerifyreassignapprovershouldseeUndobuttonafterforwardedapproverchangeapprovaltaskownership @sprint-1-US-295145 @hitesh @Undo @hiteshtemp1
+  @286536 @VerifyreassignapprovershouldseeUndobuttonafterforwardedapproverchangeapprovaltaskownership @sprint-1-US-295145 @hitesh @Undo
   Scenario: Verify reassign approver should see Undo button after forwarded approver change approval task ownership
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -1965,7 +1965,7 @@ Feature: Validate all scenarios of grants and award with undo
     Then I see status in Progress-bar is "Approved" and is "Green"
     Then I can see top right button "Undo" in page detail
 
-  @286539 @VerifynotificationemailshouldgeneratetonewownerofawardafterclickonUndobutton @sprint-1-US-295145 @hitesh @Undo @hiteshtemp1
+  @286539 @VerifynotificationemailshouldgeneratetonewownerofawardafterclickonUndobutton @sprint-1-US-295145 @hitesh @Undo
   Scenario: Verify notification email should generate to new owner of award after click on Undo button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -2104,7 +2104,7 @@ Feature: Validate all scenarios of grants and award with undo
      The EGMS Team
       """
 
-  @286542 @VerifyGrantstatusshouldbeDraftifgrantownerclickonUndobuttononawardapprover @sprint-1-US-295145 @hitesh @Undo @hiteshtemp1
+  @286542 @VerifyGrantstatusshouldbeDraftifgrantownerclickonUndobuttononawardapprover @sprint-1-US-295145 @hitesh @Undo
   Scenario: Verify Grant status should be 'Draft' if grant owner click on Undo button on award approver
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -2174,7 +2174,7 @@ Feature: Validate all scenarios of grants and award with undo
     When I click "{SavedValue:GrantEGMSID}" lookup link
     Then I softly see field "Status" as "Draft"
 
-  @290052 @VerifyforwardedapprovershouldseeUndobuttonafterreassignapproverchangeapprovaltaskownership @sprint-1-US-295145 @hitesh @Undo @hiteshtemp1
+  @290052 @VerifyforwardedapprovershouldseeUndobuttonafterreassignapproverchangeapprovaltaskownership @sprint-1-US-295145 @hitesh @Undo
   Scenario: Verify forwarded approver should see Undo button after reassign approver change approval task ownership
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -2268,7 +2268,7 @@ Feature: Validate all scenarios of grants and award with undo
     Then I see status in Progress-bar is "Approved" and is "Green"
     Then I can see top right button "Undo" in page detail
 
-  @286507 @VerifyuserseealltablesdisplaycorrectlyindownloadedPDFforawardinrejectedstate @sprint-1-US-295145 @hitesh @Undo @hiteshtemp1
+  @286507 @VerifyuserseealltablesdisplaycorrectlyindownloadedPDFforawardinrejectedstate @sprint-1-US-295145 @hitesh @Undo
   Scenario: Verify user see all tables display correctly in downloaded PDF for award in rejected state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
