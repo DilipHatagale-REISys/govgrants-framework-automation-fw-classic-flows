@@ -19178,7 +19178,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
     And I click on page navigation arrow "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---" for table id "Next"
     Then I softly see value "$450.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
-    And I click on page navigation arrow "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---" for table id "Next"
+    And I click on page navigation arrow "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---" for table id "Next"
     Then I softly see value "$50.00" for title "Award Amount" against the value "Indirect costs" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
     When I navigate to "Actuals" sub tab
     #273064
