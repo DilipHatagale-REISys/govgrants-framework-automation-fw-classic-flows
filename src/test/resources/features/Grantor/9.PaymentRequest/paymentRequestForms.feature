@@ -416,16 +416,13 @@ Feature: Payment Request Forms scenarios
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
     When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
-    When I perform quick search for "Standard Pre-Application Form" in "---program:-:formsPackagesFormsTableId---" panel
+    And I select value inside table "---program:-:formsPackagesFormsTableId---" is "All"
     Then I softly see value "Standard Pre-Application Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
     Then I softly see value "Pre-Application Report" for title "Report Type" inside table "---program:-:formsPackagesFormsTableId---"
-    When I perform quick search for "Program Application Form" in "---program:-:formsPackagesFormsTableId---" panel
     Then I softly see value "Program Application Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
     Then I softly see value "Application Report" for title "Report Type" inside table "---program:-:formsPackagesFormsTableId---"
-    When I perform quick search for "Standard Assurances Form" in "---program:-:formsPackagesFormsTableId---" panel
     Then I softly see value "Standard Assurances Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
     Then I softly see value "Application Report" for title "Report Type" inside table "---program:-:formsPackagesFormsTableId---"
-    When I perform quick search for "Desk" in "---program:-:formsPackagesFormsTableId---" panel
     Then I softly see value "Program Review Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
     Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" inside table "---program:-:formsPackagesFormsTableId---"
     Then I softly see value "General Review Form" for title "Form Name" inside table "---program:-:formsPackagesFormsTableId---"
