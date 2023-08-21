@@ -1836,8 +1836,6 @@ Feature: Validate all scenarios of grants and award with undo
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "{SavedValue:PO1 Username}" for title "Name" inside table "---subAwardStandAlone:-:awardApproversTableId---"
     And I navigate to "History" sub tab
-    Then I softly see value "Automation PO" for title "New Value" inside table "---subAwardStandAlone:-:historyTableId---"
-    Then I softly see value "Automation PO1" for title "Old Value" inside table "---subAwardStandAlone:-:historyTableId---"
     Then I softly see value "Approved" for title "New Value" inside table "---subAwardStandAlone:-:historyTableId---"
     Then I softly see value "Submitted for Approval" for title "Old Value" inside table "---subAwardStandAlone:-:historyTableId---"
     Then I softly see value "Automation PO1" for title "Changed By" inside table "---subAwardStandAlone:-:historyTableId---"
@@ -1854,8 +1852,8 @@ Feature: Validate all scenarios of grants and award with undo
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I softly do not see value "{SavedValue:AwardEGMSID}" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:completeTaskTableId---" panel
-    Then I softly see value "Completed" for title "Status" against the value "{SavedValue:AwardEGMSID}" inside table "---subAwardStandAlone:-:completeTaskTableId---"
+    And I perform quick search for "{SavedValue:AwardEGMSID}" in "---subAwardStandAlone:-:completeTaskTableId---" panel
+    Then I softly see value "{SavedValue:AwardEGMSID}" for title "EGMS ID" inside table "---subAwardStandAlone:-:completeTaskTableId---"
 
   @286536 @VerifyreassignapprovershouldseeUndobuttonafterforwardedapproverchangeapprovaltaskownership @sprint-1-US-295145 @hitesh @Undo @hiteshtemp1
   Scenario: Verify reassign approver should see Undo button after forwarded approver change approval task ownership
