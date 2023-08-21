@@ -19202,6 +19202,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #272224
     Then I softly do not see "Budgeted Amount" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
     #272226
+    When I navigate to "Actuals" sub tab
     Then I softly see field "Spent" inside page block
     Then I softly see field "Spent" as "$500.00"
     #272228
