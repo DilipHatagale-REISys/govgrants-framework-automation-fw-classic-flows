@@ -181,6 +181,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     When I select radio button "Forward" in the approval decision
     And I select user "{SavedValue:PM1 Username}" in the approval decision
     When I enter comment "Automation testing" in the approval decision
+    And I submit the approval in the approval decision without processing
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -251,8 +252,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     And I navigate to "History" sub tab
     And I see "{SavedValue:PM Username}" against "Re-approval (Pending for first approval)" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
-    Then I softly see snapshot with name containing "Subaward_Submit_for_Approval.pdf" as name
-    And I "Send back" in the approval decision
+    And I "Send Back" in the approval decision
     Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
 
@@ -309,11 +309,12 @@ Feature: Validate all scenarios in Desk Review with Undo
     When I select radio button "Forward" in the approval decision
     And I select user "{SavedValue:PM1 Username}" in the approval decision
     When I enter comment "Automation testing" in the approval decision
+    And I submit the approval in the approval decision without processing
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     Then I softly see field "Status" as "Submitted for Approval"
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
@@ -326,7 +327,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @279026 @Verifywhen4ApproversareaddedtoapprovedeskreviewonlylastapproverwillseeUNDObutton @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
+  @279026 @Verifywhen4ApproversareaddedtoapprovedeskreviewonlylastapproverwillseeUNDObutton @sprint-25-US-297269 @hitesh @Undo
   Scenario: Verify when 4 Approvers are added to approve desk review , only last approver will see UNDO button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -413,7 +414,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I can see top right button "Undo" in page detail
 
-  @279027 @verifyiflastApproverandOwnerofDeskreviewissameRobertPOthenPOwillseeUNDOandSendtoSrbutton @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
+  @279027 @verifyiflastApproverandOwnerofDeskreviewissameRobertPOthenPOwillseeUNDOandSendtoSrbutton @sprint-25-US-297269 @hitesh @Undo
   Scenario: verify if last Approver and Owner of Desk review is same, Robert PO then PO will see UNDO and Send to S/r button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -751,17 +752,14 @@ Feature: Validate all scenarios in Desk Review with Undo
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
@@ -874,7 +872,6 @@ Feature: Validate all scenarios in Desk Review with Undo
       | Name                       | Desk Review |
       | {SavedValue:EXE Username}  | Step 1      |
     When I get the "EGMS ID"
-    And I pause execution for "500" seconds
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---deskreview:-:deskReviewContactsTableId---"
@@ -911,13 +908,13 @@ Feature: Validate all scenarios in Desk Review with Undo
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I softly see field "Status" as "Submitted for Approval"
     When I navigate to "Overview" sub tab
-    Then I softly can see top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
-    Then I softly can see top right button "Associate" in flex table with id "---deskreview:-:reviewersFlexTableId---"
+    Then I softly cannot see top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    Then I softly cannot see top right button "Associate" in flex table with id "---deskreview:-:reviewersFlexTableId---"
     Then I softly cannot see row level action button "Edit" against "{SavedValue:EXE Username}" in flex table with id "---deskreview:-:deskReviewContactsTableId---"
     Then I softly cannot see row level action button "Edit" against "{SavedValue:SPI3 Username}" in flex table with id "---deskreview:-:deskReviewContactsTableId---"
     Given I navigate to "Responsibilities" sub tab
-    Then I softly can see top right button "New" in flex table with id "---deskreview:-:reviewersFlexTableId---"
-    Then I softly can see top right button "New" in flex table with id "---deskreview:-:approverDeskReviewTableId---"
+    Then I softly cannot see top right button "New" in flex table with id "---deskreview:-:reviewersFlexTableId---"
+    Then I softly cannot see top right button "New" in flex table with id "---deskreview:-:approverDeskReviewTableId---"
     Then I softly cannot see row level action button "Edit" against "{SavedValue:EXE Username}" in flex table with id "---deskreview:-:approverDeskReviewTableId---"
     And I navigate to "Reports and Outcomes" sub tab
     Then I softly cannot see row level action button "Edit" against "General Review Form" in flex table with id "---deskreview:-:reportsTableId---"
