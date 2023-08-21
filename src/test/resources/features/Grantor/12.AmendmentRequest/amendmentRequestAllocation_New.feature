@@ -18991,7 +18991,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I click modal button "Save"
     When I close "{SavedValue:PayreqId}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "green"
-    And I save the field labeled "EGMS ID" as "SubawardId"
+    And I save the field labeled "Subaward" as "SubawardId"
     And I click "{SavedValue:SubawardId}" lookup link
     When I navigate to "Budget" sub tab
     #272227
