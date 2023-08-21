@@ -128,7 +128,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @279023 @VerifythatwhenExeapproverForwardthedeskreviewApprovaltaskForwardedApproverwillseeUNDObuttonandnotpreviousOne @sprint-25-US-297269 @hitesh @Undo
+  @279023 @VerifythatwhenExeapproverForwardthedeskreviewApprovaltaskForwardedApproverwillseeUNDObuttonandnotpreviousOne @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
   Scenario: Verify that when Exe approver Forward the desk review Approval task , Forwarded Approver will see UNDO button and not previous One.
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -198,7 +198,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @279024 @VerifythatwhenpmapproverSendbacktheDeskreviewrecordpmwillnotseeUNDObutton @sprint-25-US-297269 @hitesh @Undo
+  @279024 @VerifythatwhenpmapproverSendbacktheDeskreviewrecordpmwillnotseeUNDObutton @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
   Scenario: Verify that when pm approver Send back the Desk review record, pm will not see UNDO button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -256,7 +256,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
 
-  @279025 @VerifythatwhenEXEapproverForwardthedeskreviewApprovaltaskoriginalApproverwillnotseeUNDObutton @sprint-25-US-297269 @hitesh @Undo
+  @279025 @VerifythatwhenEXEapproverForwardthedeskreviewApprovaltaskoriginalApproverwillnotseeUNDObutton @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
   Scenario: Verify that when EXE approver Forward the desk review Approval task , original  Approver will not see UNDO button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -326,7 +326,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @279026 @Verifywhen4ApproversareaddedtoapprovedeskreviewonlylastapproverwillseeUNDObutton @sprint-25-US-297269 @hitesh @Undo
+  @279026 @Verifywhen4ApproversareaddedtoapprovedeskreviewonlylastapproverwillseeUNDObutton @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
   Scenario: Verify when 4 Approvers are added to approve desk review , only last approver will see UNDO button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -413,7 +413,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I can see top right button "Undo" in page detail
 
-  @279027 @verifyiflastApproverandOwnerofDeskreviewissameRobertPOthenPOwillseeUNDOandSendtoSrbutton @sprint-25-US-297269 @hitesh @Undo
+  @279027 @verifyiflastApproverandOwnerofDeskreviewissameRobertPOthenPOwillseeUNDOandSendtoSrbutton @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
   Scenario: verify if last Approver and Owner of Desk review is same, Robert PO then PO will see UNDO and Send to S/r button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -501,7 +501,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I can see top right button "Send to Subrecipient" in page detail
     Then I can see top right button "Undo" in page detail
 
-  @279028 @279033 @verifyiflastApproverandOwnerofDeskreviewissameRobertPOthenPOwillseeUNDOandSendtoSrbutton @sprint-25-US-297269 @hitesh @Undo
+  @279028 @279033 @verifyiflastApproverandOwnerofDeskreviewissameRobertPOthenPOwillseeUNDOandSendtoSrbutton @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
   Scenario: verify if last Approver and Owner of Desk review is same, Robert PO then PO will see UNDO and Send to S/r button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -689,7 +689,7 @@ Feature: Validate all scenarios in Desk Review with Undo
    Thank you.
    The EGMS Team
   """
-  @279029 @279030 @279031 @VerifythatAdminapproveruserwillnotseeUNDObuttoninSendtoSrstateofdeskreviewrecord @sprint-25-US-297269 @hitesh @Undo
+  @279029 @279030 @279031 @VerifythatAdminapproveruserwillnotseeUNDObuttoninSendtoSrstateofdeskreviewrecord @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
   Scenario: Verify that Admin approver user will not see UNDO button in Send to S/r state ofdesk review record
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -785,7 +785,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     #279031
     Then I cannot see top right button "Undo" in page detail
 
-  @279032 @VerifythatwhenEXEuserclickonUNDObuttoninDeskreviewrecordAWarningmessagewithYesandNooptionwillappearvalidatetheTextofwarningmessage @sprint-25-US-297269 @hitesh @Undo
+  @279032 @VerifythatwhenEXEuserclickonUNDObuttoninDeskreviewrecordAWarningmessagewithYesandNooptionwillappearvalidatetheTextofwarningmessage @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
   Scenario: Verify that when EXE user click on UNDO button in Desk review record A Warning message with Yes and No option will appear ,validate the Text of warning message
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -848,6 +848,82 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     And I click "No" on modal confirmation box
     Then I softly see status in Progress-bar is "Approved" and is "green"
+
+  @279034 @VerifythatafterEXEuserclickonUndobuttonAllthetablesofdeskreviewwillnotgetaffected @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
+  Scenario: Verify that after EXE user click on Undo button All the tables of desk review will not get affected
+    Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
+    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalActiveGrants---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
+    Given I navigate to "Management" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "---deskreview:-:managementInitiateDRtableid---"
+    And I enter "Creation" values from "DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "DeskReview_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "DeskReview"
+    Given I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                       | Desk Review |
+      | {SavedValue:EXE Username}  | Step 1      |
+    When I get the "EGMS ID"
+    And I pause execution for "500" seconds
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I click on "Notify" in the page details
+    Given I click on "Conduct" in the page details
+    And I navigate to "Reports and Outcomes" sub tab
+    When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I click on "Submit for Approval" in the page details
+    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Approved" and is "green"
+    Then I can see top right button "Undo" in page detail
+    And I click on "Undo" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I navigate to "Overview" sub tab
+    Then I softly can see top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    Then I softly can see top right button "Associate" in flex table with id "---deskreview:-:reviewersFlexTableId---"
+    Then I softly cannot see row level action button "Edit" against "{SavedValue:EXE Username}" in flex table with id "---deskreview:-:deskReviewContactsTableId---"
+    Then I softly cannot see row level action button "Edit" against "{SavedValue:SPI3 Username}" in flex table with id "---deskreview:-:deskReviewContactsTableId---"
+    Given I navigate to "Responsibilities" sub tab
+    Then I softly can see top right button "New" in flex table with id "---deskreview:-:reviewersFlexTableId---"
+    Then I softly can see top right button "New" in flex table with id "---deskreview:-:approverDeskReviewTableId---"
+    Then I softly cannot see row level action button "Edit" against "{SavedValue:EXE Username}" in flex table with id "---deskreview:-:approverDeskReviewTableId---"
+    And I navigate to "Reports and Outcomes" sub tab
+    Then I softly cannot see row level action button "Edit" against "General Review Form" in flex table with id "---deskreview:-:reportsTableId---"
+    Then I softly cannot see top right button "New" in flex table with id "---deskreview:-:correctiveTableId---"
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---deskreview:-:deskReviewsFilesTableId---"
 
 
 
