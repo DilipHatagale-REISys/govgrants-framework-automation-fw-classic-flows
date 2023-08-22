@@ -1209,6 +1209,7 @@ public class GrantorPayloads {
         ann.addProperty("IsAdvancePermitted", "No");
         ann.addProperty("IsNegotiationsAllowed", "Yes");
         ann.addProperty("EligibleApplicantTypes", "04;05");
+        ann.addProperty("DetailedBudgetingRequired", "No");
         ann.addProperty("AwardFloor", 1000);
         ann.addProperty("AwardCeiling", 10000);
         ann.addProperty("EstimatedFundingAmount", 10000);
