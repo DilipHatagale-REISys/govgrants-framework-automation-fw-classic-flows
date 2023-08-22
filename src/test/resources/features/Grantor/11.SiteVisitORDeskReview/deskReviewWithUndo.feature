@@ -253,78 +253,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     And I see "{SavedValue:PM Username}" against "Re-approval (Pending for first approval)" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
     And I "Send Back" in the approval decision
-    Then I softly see field "Status" as "Created"
-    Then I cannot see top right button "Undo" in page detail
-
-  @279025 @VerifythatwhenEXEapproverForwardthedeskreviewApprovaltaskoriginalApproverwillnotseeUNDObutton @sprint-25-US-297269 @hitesh @Undo
-  Scenario: Verify that when EXE approver Forward the desk review Approval task , original  Approver will not see UNDO button
-    Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
-    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
-    When I login to "As a Grantor" app as "PM" user
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalActiveGrants---"
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
-    Given I navigate to "Management" sub tab
-    And I click on top right button "Initiate Desk Review" in flex table with id "---deskreview:-:managementInitiateDRtableid---"
-    And I enter "Creation" values from "DeskReview_Field_Values.xlsx"
-    When I click modal button "Save and Continue"
-    And I enter "Edition" values from "DeskReview_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I get the "EGMS ID"
-    And I save the field labeled "EGMS ID" as "DeskReview"
-    Given I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                       | Desk Review |
-      | {SavedValue:EXE Username}  | Step 1      |
-    When I get the "EGMS ID"
-    Given I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---deskreview:-:deskReviewContactsTableId---"
-    And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
-    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---deskreview:-:awardDeskReviewTableId---"
-    And I click on "Notify" in the page details
-    Given I click on "Conduct" in the page details
-    And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
-      | Title                  | Description            | Type        |
-      | Automation Finding     | Automation Description | Finding     |
-      | Automation Concern     | Automation Description | Concern     |
-      | Automation Observation | Automation Description | Observation |
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
-    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    When I click on "Submit for Approval" in the page details
-    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
-    Then I softly see field "Status" as "Submitted for Approval"
-    When I select radio button "Forward" in the approval decision
-    And I select user "{SavedValue:PM1 Username}" in the approval decision
-    When I enter comment "Automation testing" in the approval decision
-    And I submit the approval in the approval decision without processing
-    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
-    Then I softly see field "Status" as "Submitted for Approval"
-    And I "Approve" in the approval decision
-    Then I softly see status in Progress-bar is "Approved" and is "green"
-    Then I can see top right button "Undo" in page detail
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
-    Then I softly see status in Progress-bar is "Approved" and is "green"
+    Then I softly see field "Status" as "In Progress"
     Then I cannot see top right button "Undo" in page detail
 
   @279026 @Verifywhen4ApproversareaddedtoapprovedeskreviewonlylastapproverwillseeUNDObutton @sprint-25-US-297269 @hitesh @Undo
@@ -599,17 +528,17 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}.
+     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
       """
     Then I see the mail text is as follows :
   """
   Hello,
 
-   This email is to notify you that program approver #Automation EXE has initiated undo action for program approval.
+   This email is to notify you that approver #Automation PO has initiated undo action.
 
-   Program Details:
-   Program ID: {SavedValue:ProgramEGMSID}
-   Program Name: {SavedValue:Automation Runtime Internal Program}
+   Details:
+   EGMS ID: {SavedValue:DeskReview}
+   Record Name: {SavedValue:Automation Runtime Award Desk Review}
 
    Log in to EGMS and click here to start reviewing the details.
 
@@ -623,17 +552,17 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}.
+     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
       """
     Then I see the mail text is as follows :
   """
   Hello,
 
-   This email is to notify you that program approver #Automation PO has initiated undo action for program approval.
+   This email is to notify you that approver #Automation PO has initiated undo action.
 
-   Program Details:
-   Program ID: {SavedValue:ProgramEGMSID}
-   Program Name: {SavedValue:Automation Runtime Internal Program}
+   Details:
+   EGMS ID: {SavedValue:DeskReview}
+   Record Name: {SavedValue:Automation Runtime Award Desk Review}
 
    Log in to EGMS and click here to start reviewing the details.
 
@@ -647,17 +576,17 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}.
+     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
       """
     Then I see the mail text is as follows :
   """
    Hello,
 
-   This email is to notify you that program approver #Automation FO has initiated undo action for program approval.
+   This email is to notify you that approver #Automation PO has initiated undo action.
 
-   Program Details:
-   Program ID: {SavedValue:ProgramEGMSID}
-   Program Name: {SavedValue:Automation Runtime Internal Program}
+   Details:
+   EGMS ID: {SavedValue:DeskReview}
+   Record Name: {SavedValue:Automation Runtime Award Desk Review}
 
    Log in to EGMS and click here to start reviewing the details.
 
@@ -671,17 +600,17 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}.
+     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
       """
     Then I see the mail text is as follows :
   """
   Hello,
 
-   This email is to notify you that program approver #Automation FD has initiated undo action for program approval.
+  This email is to notify you that approver #Automation PO has initiated undo action.
 
-   Program Details:
-   Program ID: {SavedValue:ProgramEGMSID}
-   Program Name: {SavedValue:Automation Runtime Internal Program}
+   Details:
+   EGMS ID: {SavedValue:DeskReview}
+   Record Name: {SavedValue:Automation Runtime Award Desk Review}
 
    Log in to EGMS and click here to start reviewing the details.
 

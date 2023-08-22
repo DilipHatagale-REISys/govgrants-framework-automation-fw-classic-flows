@@ -1979,6 +1979,7 @@ Feature: Validate all scenarios of grants and award with undo
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I save the field labeled "Grant ID" as "GrantEGMSID"
     And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I save the field labeled "Subaward Title" as "Automation Runtime award"
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -2067,11 +2068,14 @@ Feature: Validate all scenarios of grants and award with undo
       """
       Hello,
 
-      This email is to notify you that program approver #Automation EXE has initiated undo action for program approval.
+      This email is to notify you that approver #Automation EXE has initiated undo action.
 
-      Program Details:
-      Program ID: {SavedValue:ProgramEGMSID}
-      Program Name: {SavedValue:Automation Runtime Internal Program}
+      Subaward Details:
+
+       Subaward Title: {SavedValue:Automation Runtime award}
+       Subaward Type: Initial
+       Subaward Number: {SavedValue:AwardEGMSID}
+       Grant : {SavedValue:GrantEGMSID}
 
       Log in to EGMS and click here to start reviewing the details.
 
@@ -2084,17 +2088,18 @@ Feature: Validate all scenarios of grants and award with undo
     Then I refresh the page
     And I see the mail subject is as follows :
     """
-   Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}.
+   Notification: Approver has initiated Undo Action on Program #{SavedValue:AwardEGMSID}.
     """
     Then I see the mail text is as follows :
     """
       Hello,
 
-      This email is to notify you that program approver #Automation EXE has initiated undo action for program approval.
+      This email is to notify you that approver #Automation EXE has initiated undo action.
 
-      Program Details:
-      Program ID: {SavedValue:ProgramEGMSID}
-      Program Name: {SavedValue:Automation Runtime Internal Program}
+       Subaward Title: {SavedValue:Automation Runtime award}
+       Subaward Type: Initial
+       Subaward Number: {SavedValue:AwardEGMSID}
+       Grant : {SavedValue:GrantEGMSID}
 
       Log in to EGMS and click here to start reviewing the details.
 
