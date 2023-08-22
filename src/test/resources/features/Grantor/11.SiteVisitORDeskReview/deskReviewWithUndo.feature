@@ -199,7 +199,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @279024 @VerifythatwhenpmapproverSendbacktheDeskreviewrecordpmwillnotseeUNDObutton @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
+  @279024 @VerifythatwhenpmapproverSendbacktheDeskreviewrecordpmwillnotseeUNDObutton @sprint-25-US-297269 @hitesh @Undo
   Scenario: Verify that when pm approver Send back the Desk review record, pm will not see UNDO button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -502,7 +502,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I can see top right button "Send to Subrecipient" in page detail
     Then I can see top right button "Undo" in page detail
 
-  @279028 @279033 @verifyiflastApproverandOwnerofDeskreviewissameRobertPOthenPOwillseeUNDOandSendtoSrbutton @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
+  @279028 @279033 @verifyiflastApproverandOwnerofDeskreviewissameRobertPOthenPOwillseeUNDOandSendtoSrbutton @sprint-25-US-297269 @hitesh @Undo
   Scenario: verify if last Approver and Owner of Desk review is same, Robert PO then PO will see UNDO and Send to S/r button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -690,7 +690,7 @@ Feature: Validate all scenarios in Desk Review with Undo
    Thank you.
    The EGMS Team
   """
-  @279029 @279030 @279031 @VerifythatAdminapproveruserwillnotseeUNDObuttoninSendtoSrstateofdeskreviewrecord @sprint-25-US-297269 @hitesh @Undo @hiteshTemp2
+  @279029 @279030 @279031 @VerifythatAdminapproveruserwillnotseeUNDObuttoninSendtoSrstateofdeskreviewrecord @sprint-25-US-297269 @hitesh @Undo
   Scenario: Verify that Admin approver user will not see UNDO button in Send to S/r state ofdesk review record
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
