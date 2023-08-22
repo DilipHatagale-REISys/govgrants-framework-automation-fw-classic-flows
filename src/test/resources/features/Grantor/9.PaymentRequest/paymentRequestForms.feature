@@ -1,7 +1,7 @@
 @paymntRequestForms @grantor-parallel-regression @paymentRequest @regression
 Feature: Payment Request Forms scenarios
 
-  @308590 @308685 @ValidateSPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonform @sprint-1-US-282692 @vaibhav @Forms @TBE
+  @308590 @308685 @ValidateSPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonform @sprint-1-US-282692 @vaibhav @Forms
   Scenario: Validate SPI user can able to save & validate form after entering correct & valid data on all fields present on form
     And I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Award}" from the object "Payment Request"
@@ -94,7 +94,7 @@ Feature: Payment Request Forms scenarios
     When I close "{SavedValue:PayreqId1}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "green"
 
-  @287170 @308690 @ValidateSPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonform @sprint-2-US-288254 @vaibhav @Forms @TBE
+  @287170 @308690 @ValidateSPIusercanabletosavevalidateformafterenteringcorrectvaliddataonallfieldspresentonform @sprint-2-US-288254 @vaibhav @Forms
   Scenario: Validate SPI user can able to save & validate form after entering correct & valid data on all fields present on form
     And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -190,7 +190,7 @@ Feature: Payment Request Forms scenarios
     When I close "{SavedValue:PayreqId}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "green"
 
-  @307326 @ValidateSF270SPIusercanabletoSaveallfieldsbutvalidationisgeneratedonvalidatebuttonafterenteringincorrectdatainallfieldspresentonSF270form @sprint-1-US-282692 @vaibhav @Forms @TBE
+  @307326 @ValidateSF270SPIusercanabletoSaveallfieldsbutvalidationisgeneratedonvalidatebuttonafterenteringincorrectdatainallfieldspresentonSF270form @sprint-1-US-282692 @vaibhav @Forms
   Scenario: Validate SF270 SPI user can able to save all fields but validation is generated on validate button after entering incorrect data in all fields present on SF270 form
     And I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Award}" from the object "Payment Request"
@@ -277,7 +277,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see the following messages in the page details :
       | From date and To date cannot be same in Period Covered By This Request section. |
 
-  @287171 @ValidateAdvSPIusercanabletosaveallfieldsbutvalidationisgeneratedonvalidatebuttonafterenteringincorrectdatainallfieldspresentonSF270form @sprint-2-US-288254 @vaibhav @Forms @TBE
+  @287171 @ValidateAdvSPIusercanabletosaveallfieldsbutvalidationisgeneratedonvalidatebuttonafterenteringincorrectdatainallfieldspresentonSF270form @sprint-2-US-288254 @vaibhav @Forms
   Scenario: Validate Adv SPI user can able to save all fields but validation is generated on validate button after entering incorrect data in all fields present on SF270 form
     And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -412,7 +412,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "Payment Request" for title "Package Type" inside table "---program:-:packagesFormsTableId---"
     Then I softly see "Cross" symbol in flex table with id "---program:-:packagesFormsTableId---"
 
-  @293600 @ValidatePMusercanseeReportTypeonformsforSiteVisitOrganizationDeskReviewPreapplicationApplicationonFormssectionofFormsPackagessectionundersetupofPlanningmodule @sprint-3-US-288713 @vaibhav @Forms @TBE
+  @293600 @ValidatePMusercanseeReportTypeonformsforSiteVisitOrganizationDeskReviewPreapplicationApplicationonFormssectionofFormsPackagessectionundersetupofPlanningmodule @sprint-3-US-288713 @vaibhav @Forms
   Scenario: Validate PM user can see Report Type on forms for Site Visit Organization Desk Review Pre-application Application on Forms section of Forms & Packages section under setup of Planning module
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -558,7 +558,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "Program Review Form" for title "Form Name" inside table "---program:-:packagesTableId---"
     Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Program Review Form" inside table "---program:-:packagesTableId---"
 
-  @293613 @ValidateEXEusercanseeReportTypeclmonSiteVisitformswhenuserclickonviewicononGrantorSiteVisitFormsunderBusinessFormssectiononsetuptabofAnnouncement @sprint-3-US-288713 @vaibhav @Forms @TBE
+  @293613 @ValidateEXEusercanseeReportTypeclmonSiteVisitformswhenuserclickonviewicononGrantorSiteVisitFormsunderBusinessFormssectiononsetuptabofAnnouncement @sprint-3-US-288713 @vaibhav @Forms
   Scenario: Validate EXE user can see Report Type clm on Site Visit forms  when user click on view icon on Grantor Site Visit Forms under Business Forms section on setup tab of Announcement
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -625,7 +625,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" against the value "Program Review Form" inside table "---program:-:previewPackageTableId---"
     Then I delete the record "{SavedValue:announcementName}" from the object "announcement"
 
-  @293617 @293620 @ValidatePOusecanseeReportTypeclmonOrganizationDeskReviewformswhenuserclickonviewicononOrganizationDeskReviewFormsunderBusinessFormssectiononsetuptabofAnnouncement @sprint-3-US-288713 @vaibhav @Forms @TBE
+  @293617 @293620 @ValidatePOusecanseeReportTypeclmonOrganizationDeskReviewformswhenuserclickonviewicononOrganizationDeskReviewFormsunderBusinessFormssectiononsetuptabofAnnouncement @sprint-3-US-288713 @vaibhav @Forms
   Scenario: Validate PO user can see Report Type clm on Organization Desk Review forms when user click on view icon on Organization Desk Review Forms under Business Forms section on setup tab of Announcement
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -699,7 +699,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "Application Report" for title "Report Type" against the value "Standard Assurances Form" inside table "---program:-:previewPackageTableId---"
     Then I delete the record "{SavedValue:announcementName}" from the object "announcement"
 
-  @293619 @ValidatePMusercanseeReportTypeclmonPreapplicationformswhenuserclickonviewicononGrantorPreapplicationFormsunderBusinessFormssectiononsetuptabofAnnouncement @sprint-3-US-288713 @vaibhav @Forms @TBE
+  @293619 @ValidatePMusercanseeReportTypeclmonPreapplicationformswhenuserclickonviewicononGrantorPreapplicationFormsunderBusinessFormssectiononsetuptabofAnnouncement @sprint-3-US-288713 @vaibhav @Forms
   Scenario: validate PM user can see Report Type clm on Pre-application forms when user click on view icon on Grantor Pre-application Forms under Business Forms section on setup tab of Announcement
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -761,7 +761,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "Pre-Application Report" for title "Report Type" against the value "Standard Pre-Application form" inside table "---program:-:previewPackageTableId---"
     Then I delete the record "{SavedValue:announcementName}" from the object "announcement"
 
-  @293621 @ValidateEXEandSPIusercanseeReportTypeclmonSiteVisitformswhenuserclickonviewicononGrantorSiteVisitFormsunderDefaultPackagessectiononFilestabofGrant @sprint-3-US-288713 @vaibhav @Forms @TBE
+  @293621 @ValidateEXEandSPIusercanseeReportTypeclmonSiteVisitformswhenuserclickonviewicononGrantorSiteVisitFormsunderDefaultPackagessectiononFilestabofGrant @sprint-3-US-288713 @vaibhav @Forms
   Scenario: Validate EXE and SPI user can see Report Type clm on Site Visit forms when user click on view icon on Grantor Site Visit Forms under Default Packages section on Files tab of Grant
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -882,7 +882,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "Program Review Form" for title "Form Name" inside table "---program:-:previewPackageTableId---"
     Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" inside table "---program:-:previewPackageTableId---"
 
-  @293623 @ValidatePOandSPAusercanseeReportTypeclmonOrganizationDeskReviewformswhenuserclickonviewicononOrganizationDeskReviewFormsunderBusinessFormssectiononFilestabofGrant @sprint-3-US-288713 @vaibhav @Forms @TBE
+  @293623 @ValidatePOandSPAusercanseeReportTypeclmonOrganizationDeskReviewformswhenuserclickonviewicononOrganizationDeskReviewFormsunderBusinessFormssectiononFilestabofGrant @sprint-3-US-288713 @vaibhav @Forms
   Scenario: Validate PO and SPA user can see Report Type clm on Organization Desk Review forms when user click on view icon on Organization Desk Review Forms under Business Forms section on Files tab of Grant
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -1179,7 +1179,7 @@ Feature: Payment Request Forms scenarios
     Then I softly see value "General Review Form" for title "Form Name" inside table "---sitevisits:-:reportsTableId---"
     Then I softly see value "Site Visit/Desk Review Report" for title "Report Type" inside table "---sitevisits:-:reportsTableId---"
 
-  @293633 @ValidateFDandINDusercanseeReportTypeclmonDeskReviewFormunderAllFormssectiononReports&OutcomestabofDeskreview @sprint-3-US-288713 @vaibhav @Forms @TBE
+  @293633 @ValidateFDandINDusercanseeReportTypeclmonDeskReviewFormunderAllFormssectiononReports&OutcomestabofDeskreview @sprint-3-US-288713 @vaibhav @Forms
   Scenario: Validate FD and IND user can see Report Type clm on Desk Review Form under All Forms section on Reports & Outcomes tab of Desk review
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "SUBRECIPIENT_ORG_IND_USER-Automation PM user" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "SUBRECIPIENT_ORG_IND_USER-Automation PM user" of type "Competitive"
