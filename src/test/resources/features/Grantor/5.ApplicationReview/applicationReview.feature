@@ -100,7 +100,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @51062 @75229 @51063 @51064 @51061 @51060 @51059 @51058 @64948 @51057 @51056 @64949 @51054 @51055 @51053 @51052 @buglogged125748
+  @51062 @75229 @51063 @51064 @51061 @51060 @51059 @51058 @64948 @51057 @51056 @64949 @51054 @51055 @51053 @51052 @buglogged125748 @TBE1
   Scenario Outline: Enter Due in Days for all review forms in Management review
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -302,8 +302,9 @@ Feature: Validate all scenarios in the Application Review
       | Name                      | FDM    |
       | {SavedValue:EXE Username} | Step 1 |
     Then I softly see that "{SavedValue:EXE Username}" has been added in flextable with Id "flexGridGrantorReviewStepRolesandResponsibilities"
+    And I wait for "9" seconds
     And I click on "Submit for Approval" in the page details
-    Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
+    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     And I get the "EGMS ID"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -349,7 +350,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @65083  @verifyValidationMessageOnSendForReview @mahadev
+  @65083  @verifyValidationMessageOnSendForReview @mahadev @TBE1
   Scenario Outline: Verify Validation message is shown if application is not selected for submitting the review process
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -374,10 +375,10 @@ Feature: Validate all scenarios in the Application Review
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    And I pause execution for "9" seconds
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
-    And I pause execution for "5" seconds
     Then I see the following messages in the page details :
-      | Please select the reviews to send. |
+      | Please select the reviews to send.      |
     Examples:
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
@@ -743,7 +744,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @79202 @deleteReviewersInSMERview @keerti
+  @79202 @deleteReviewersInSMERview @keerti @TBE1
   Scenario Outline:  To verify that,user able to delete Reviewers in SME review step in related log tab of Appliction phase
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -1132,7 +1133,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @79960 @79961 @verifyingCompletedTaskForPrescreenManagementReview @keerti
+  @79960 @79961 @verifyingCompletedTaskForPrescreenManagementReview @keerti @TBE1
   Scenario Outline: To verify the tasks will be displayed on completed tasks for the reviewer, when reviewer submit Reviews form successfully,for prescreen review step in  Application phase
   | To verify the tasks will be displayed on completed tasks for the reviewer, when reviewer submit Reviews form successfully,for management review step in  Application phase
     And I login to "As a Grantor" app as "dynamicUser" user
@@ -1539,7 +1540,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @79199 @79200 @ValidatingUserClickReviewFormInPreScreenReviewStepForm @meenakshi
+  @79199 @79200 @ValidatingUserClickReviewFormInPreScreenReviewStepForm @meenakshi @TBE1
   Scenario Outline: To verify user able to click "Review Form" Icon in forms section of related log tab in prescreening review step of Application phase
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -2063,7 +2064,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @80060 @verifyErrorMessageForSubAwardAbbreviation @monu
+  @80060 @verifyErrorMessageForSubAwardAbbreviation @monu @TBE1
   Scenario Outline: validate user should be able to get error message while clicking on submit for approval button if sub award abbreviation fiels is empty
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -2242,6 +2243,7 @@ Feature: Validate all scenarios in the Application Review
     When I enter the following values into flex table with id "---subAwardFromFDM:-:fdmApproverTableId---" by clicking "New" :
       | Name                     | FDM    |
       | {SavedValue:PM Username} | Step 1 |
+    And I wait for "9" seconds
     And I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details :
       | Subaward Abbreviation is required to save under Funding Decision Memo. |
@@ -2250,7 +2252,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @80257 @verifyRemovalOfFundingAccountFromApplicationPhase @monu
+  @80257 @verifyRemovalOfFundingAccountFromApplicationPhase @monu @TBE1
   Scenario Outline: validate user is able to remove funding account from funding Account section
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -2437,7 +2439,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "Funding Decision Memo" in the page details
     Then I softly see field "Status" as "Created"
     When I click on "Remove" icon for "---AUTOEnvData:-:fundingAccount---" inside flex table with id "---grantor_tableId:-:FundingAccountTableId---"
-    And I perform quick search for "---AUTOEnvData:-:fundingAccount---" in "---grantor_tableId:-:FundingAccountTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---grantor_tableId:-:FundingAccountTableId---"
 
     Examples:
@@ -2615,7 +2616,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @38850 @80052 @80053 @verifyModificationOfPre-EncumbranceAFDM @monu
+  @38850 @80052 @80053 @verifyModificationOfPre-EncumbranceAFDM @monu @TBE1
   Scenario Outline: validate user is able to modify pre-encumbrance at FDM page
     And I reviewed the application "<Application Name>"
     And I login to "As a Grantor" app as "dynamicUser" user
@@ -3037,7 +3038,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @80151 @79745 @80152 @79981 @79672 @79673 @79962 @80153 @79743 @80150 @79979 @79982 @79751 @79961 @79963 @ValidatingErrorMessagePreScreenReviewStepForm @meenakshi
+  @80151 @79745 @80152 @79981 @79672 @79673 @79962 @80153 @79743 @80150 @79979 @79982 @79751 @79961 @79963 @ValidatingErrorMessagePreScreenReviewStepForm @meenakshi @TBE1
   Scenario Outline: To validate system generated error message, When Announcement Owner assigning application to the reviewer who has submitted the application in application phase of prescreening review step
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -3076,6 +3077,7 @@ Feature: Validate all scenarios in the Application Review
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    And I wait for "9" seconds
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     #79745
@@ -3107,6 +3109,7 @@ Feature: Validate all scenarios in the Application Review
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
       | Reviewer                   |
       | {SavedValue:SPI3 Username} |
+    And I wait for "5" seconds
     And I click on "Assign" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
@@ -3222,6 +3225,7 @@ Feature: Validate all scenarios in the Application Review
       | Reviewer                   |
       | {SavedValue:SPI3 Username} |
     Then I softly see that "{SavedValue:SPI3 Username}" has been added in flextable with Id "---applicationReview:-:reviewersTableId---"
+    And I wait for "5" seconds
     And I click on "Assign" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
@@ -3240,19 +3244,21 @@ Feature: Validate all scenarios in the Application Review
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     Then I softly see value "<Application Name>" for title "Application Title" inside table "---applicationReview:-:appreviewsTableId---"
     Then I softly see value "{SavedValue:EXE Username}" for title "Assigned To" inside table "---applicationReview:-:appreviewsTableId---"
+    And I wait for "7" seconds
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     #79743
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     Then I softly see the following messages in the page details contains:
       | Record(s) successfully sent to Reviewer. |
     #80150
+    And I wait for "9" seconds
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly see the following messages in the page details contains:
       | Please select one or more Pending Application(s) before you proceed with the operation. |
     #79979
     When I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
-    And I wait for "5" seconds
+    And I wait for "8" seconds
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly see the following messages in the page details contains:
       | Cannot promote <Announcement Name> because it does not meet the minimum review requirements: |
