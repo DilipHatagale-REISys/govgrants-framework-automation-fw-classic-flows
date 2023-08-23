@@ -850,6 +850,3 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I softly cannot see top right button "New" in flex table with id "---deskreview:-:correctiveTableId---"
     When I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add Files" in flex table with id "---deskreview:-:deskReviewsFilesTableId---"
-
-
-
