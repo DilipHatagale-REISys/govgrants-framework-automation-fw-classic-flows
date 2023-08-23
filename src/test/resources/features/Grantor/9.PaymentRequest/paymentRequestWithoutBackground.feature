@@ -1448,8 +1448,7 @@ Feature: Payment Request scenarios without background
       | Name                     | Award  | Advance |
       | {SavedValue:PM Username} | Step 1 | Step 1  |
     And I refresh the page
-    And I am on "SUBPORTAL" portal
-    And I login to "Grants Portal" app as "SPI3" user
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
