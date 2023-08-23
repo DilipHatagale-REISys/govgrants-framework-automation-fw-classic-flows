@@ -732,7 +732,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     #219357
     And I refresh the page
     When I navigate to "Budget" sub tab
-    Then I softly see field "Recommended Budget" inside page block
+    Then I softly donot see field "Recommended Budget" inside page block
     Examples:
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | EXE  |

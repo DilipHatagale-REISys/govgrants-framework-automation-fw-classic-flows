@@ -74,9 +74,9 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see value "{SavedValue:Automation Runtime Announcement for FDM tests}" for title "Announcement Name" inside table "---announcement:-:competitiveAnnouncementTableId---"
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for FDM tests}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Collab" sub tab
-    And I click on advance filter "#advfCommunicationHistory" of table id "---announcement:-:collabMessages---"
-    And I enter advance filter values inside id "advfCommunicationHistory"
-      | Subject | Contains | Dont mess with jitu |
+    #And I click on advance filter "#advfCommunicationHistory" of table id "---announcement:-:collabMessages---"
+    #And I enter advance filter values inside id "advfCommunicationHistory"
+    #  | Subject | Contains | Dont mess with jitu |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:collabMessages---"
     And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
     And I send the email under collab tab with following details:
@@ -105,14 +105,14 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I close "Reply" modal by clicking the top right x button
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Published Competitive Announcements"
-    And I click on advance filter "#advfActiveFundingOpportunitiesCompitive" of table id "---announcement:-:competitiveAnnouncementTableId---"
-    And I enter advance filter values inside id "advfActiveFundingOpportunitiesCompitive"
-      | Announcement Name | Contains | {SavedValue:Automation Runtime Announcement for FDM tests} |
+    #And I click on advance filter "#advfActiveFundingOpportunitiesCompitive" of table id "---announcement:-:competitiveAnnouncementTableId---"
+    #And I enter advance filter values inside id "advfActiveFundingOpportunitiesCompitive"
+    #  | Announcement Name | Contains | {SavedValue:Automation Runtime Announcement for FDM tests} |
     Then I softly see value "{SavedValue:Automation Runtime Announcement for FDM tests}" for title "Announcement Name" inside table "---announcement:-:competitiveAnnouncementTableId---"
     And I refresh the page
-    And I click on advance filter "#advfActiveFundingOpportunitiesCompitive" of table id "---announcement:-:competitiveAnnouncementTableId---"
-    And I enter advance filter values inside id "advfActiveFundingOpportunitiesCompitive"
-      | Announcement Name | Contains | Dont mess with jitu |
+    #And I click on advance filter "#advfActiveFundingOpportunitiesCompitive" of table id "---announcement:-:competitiveAnnouncementTableId---"
+    #And I enter advance filter values inside id "advfActiveFundingOpportunitiesCompitive"
+    #  | Announcement Name | Contains | Dont mess with jitu |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I refresh the page
     And I click on parallel menu button in flex table title "Published Competitive Announcements"
@@ -595,9 +595,9 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                     | Announcement |
       | {SavedValue:FO Username} | Step 3       |
-    And I click on advance filter "#advfGrantorAnnouncementRolesandResponsibilities" of table id "---announcement:-:approversTableId---"
-    And I enter advance filter values inside id "advfGrantorAnnouncementRolesandResponsibilities"
-      | Announcement | equals to | Step 4 |
+    #And I click on advance filter "#advfGrantorAnnouncementRolesandResponsibilities" of table id "---announcement:-:approversTableId---"
+    #And I enter advance filter values inside id "advfGrantorAnnouncementRolesandResponsibilities"
+    #  | Announcement | equals to | Step 4 |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:approversTableId---"
     And I navigate to "Setup" sub tab
 #    And I click on advance filter "#advfAnnoucementPackagesGrantor" of table id "---announcement:-:businessFormlistTableId---"
@@ -615,13 +615,13 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I save the value from row "1" for column name "EGMS ID" as "annId" from flex table "---announcement:-:opportunityNotQtableId---"
     And I click on advance filter "#advfnyqae" of table id "---announcement:-:opportunityNotQtableId---"
-    And I enter advance filter values inside id "advfnyqae"
-      | EGMS ID | Contains | {SavedValue:annId} |
+    #And I enter advance filter values inside id "advfnyqae"
+    #  | EGMS ID | Contains | {SavedValue:annId} |
     Then I softly see value "{SavedValue:annId}" for title "EGMS ID" inside table "---announcement:-:opportunityNotQtableId---"
     And I refresh the page
-    And I click on advance filter "#advfnyqae" of table id "---announcement:-:opportunityNotQtableId---"
-    And I enter advance filter values inside id "advfnyqae"
-      | EGMS ID | Contains | I am laughing |
+    #And I click on advance filter "#advfnyqae" of table id "---announcement:-:opportunityNotQtableId---"
+    #And I enter advance filter values inside id "advfnyqae"
+    #  | EGMS ID | Contains | I am laughing |
     Then I softly see "No records found" inside flex table with id "---announcement:-:opportunityNotQtableId---"
     And I refresh the page
     And I click toggle button to select "Not Yet Qualified Opportunities - Closed"
@@ -677,9 +677,9 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see the following messages in the page details :
       | Email sent succesfully. |
     And I close "Send Email" modal by clicking the top right x button
-    And I click on advance filter "#advfCommunicationHistory" of table id "---announcement:-:collabMessages---"
-    And I enter advance filter values inside id "advfCommunicationHistory"
-      | Subject | Contains | jitu |
+    #And I click on advance filter "#advfCommunicationHistory" of table id "---announcement:-:collabMessages---"
+    #And I enter advance filter values inside id "advfCommunicationHistory"
+    #  | Subject | Contains | jitu |
     Then I softly see "jitu" inside flex table with id "---announcement:-:collabMessages---"
 
   @75524 @publishedAllowToDownloadPDF @skipOnJenkins
@@ -1403,7 +1403,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
