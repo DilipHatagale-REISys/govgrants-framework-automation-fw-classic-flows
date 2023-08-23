@@ -24273,3 +24273,21 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     And I navigate to "Financials" sub tab
     Then I softly see field "Subaward Spent" as "$1,000.00
+
+  @354313 @ValidateDirectedthatPMuserdonnotseeBudgetSummaryByFocusAreasectionifAllocationSettingissetasByapplicantandFAisNO @sprint-16-US-238128 @vaibhav @Allocation
+  Scenario: Validate Directed that PM user don not see Budget Summary By Focus Area section if Allocation Setting is set as By applicant and FA is NO
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition_ByApp_Focus_No" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I navigate to "Budget" sub tab
+    Then I see status in Progress-bar is "Created" and is "green"
+    Then I softly do not see "Budget Summary by Focus Area" page block displayed
