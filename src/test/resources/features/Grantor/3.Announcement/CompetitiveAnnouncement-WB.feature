@@ -311,6 +311,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title   | Recommended Budget | Total Commitment Amount | Recommend for Funding | Comments    |
       | <Announcement Name> | 500                | 1000                    | Yes                   | Recommended |
+    And I pause execution for "9" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Funding Decision Memo Tab - Recommended budget must be equal to the Budgeted Amount. |
@@ -709,7 +710,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            |
       | {SavedValue:Automation Runtime Announcement} |
 
-  @219357 @234667 @CompetativeAnnVerifyasEXEuserIcanseeRecommendedBudgetfieldisvisiblewhenAppstatusisnegotiationinitiated @sprint-13-US-224612 @komal @Allocation @Temphitesh
+  @219357 @234667 @CompetativeAnnVerifyasEXEuserIcanseeRecommendedBudgetfieldisvisiblewhenAppstatusisnegotiationinitiated @sprint-13-US-224612 @komal @Allocation 
   Scenario Outline:Competative Ann as EXE user I can see "Recommended Budget" field is visible when App status is negotiation initiated
   | Comp Ann>>Verify EXE when negotiation is initiated during FDM or from app layout then user should not get validation on UI on send to subrecipient button when the budgeted Amount is equal to the Recommended Budget |
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-Automation EXE user"
@@ -738,7 +739,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | EXE  |
 
-  @227564 @CompAnnVerifyEXEusercaninlineedittheRecommendedBudgetfieldunderRecommendedApplicationsectionbeforeFDMapproval @sprint-13-US-224612 @komal @Allocation @Temphitesh
+  @227564 @CompAnnVerifyEXEusercaninlineedittheRecommendedBudgetfieldunderRecommendedApplicationsectionbeforeFDMapproval @sprint-13-US-224612 @komal @Allocation 
   Scenario Outline: Comp Ann EXE user can inline edit the Recommended Budget field under Recommended Application section before FDM approval
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "NEGOTIATION_NO-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -925,7 +926,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PO   |
 
-  @227723 @CompAnnVerifyAdminwhennegotiationisinitiatedduringFDMorfromapplayoutthenusershouldgetvalidationonUIonsendtosubrecipientbuttonwhenthebudgetedAmountisnotequaltotheRecommendedBudget @sprint-13-US-224612 @komal @Allocation @Temphitesh
+  @227723 @CompAnnVerifyAdminwhennegotiationisinitiatedduringFDMorfromapplayoutthenusershouldgetvalidationonUIonsendtosubrecipientbuttonwhenthebudgetedAmountisnotequaltotheRecommendedBudget @sprint-13-US-224612 @komal @Allocation 
   Scenario Outline: Comp Ann Admin when negotiation is initiated during FDM or from app layout then user should get validation on UI on send to subrecipient button when the budgeted Amount is not equal to the Recommended Budget
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-Automation ADMIN user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"

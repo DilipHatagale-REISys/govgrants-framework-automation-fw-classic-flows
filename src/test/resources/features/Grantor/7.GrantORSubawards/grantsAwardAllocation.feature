@@ -1493,7 +1493,6 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                            | Allocation Amount |
       | Automation Permanent Focus Area2 | 1000              |
-    And I refresh the page
     And I click on "Submit For Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I "Approve" in the approval decision

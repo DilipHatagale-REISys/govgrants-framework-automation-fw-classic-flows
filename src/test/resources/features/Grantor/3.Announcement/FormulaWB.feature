@@ -82,7 +82,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter "Creation_Formula_ByApp_FocusYes" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I navigate to "Overview" sub tab
-    And I pause execution for "100" seconds
     When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     When I enter value "State Governments" into field "fieldEligibleApplicantTypes__c"
     And I click on "Save" in the page details

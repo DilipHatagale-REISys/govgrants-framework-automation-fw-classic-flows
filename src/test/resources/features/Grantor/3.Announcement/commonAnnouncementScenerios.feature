@@ -167,7 +167,7 @@ Feature: Validate all common scenarios in the  Announcement tab
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 20       | No                   |
     Then I see that "{SavedValue:FO Username}" has been added in flextable with Id "---announcement:-:reviewersTableId---"
 
-  @52412 @announcementReviewerInitiationFA @aa @Temphitesh
+  @52412 @announcementReviewerInitiationFA @aa 
   Scenario: Validate the Reviewer initiation for the Announcement
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
@@ -208,7 +208,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I click on "Complete Review" in the page details
     Then I see status in Progress-bar is "Reviewed" and is "green"
 
-  @35003 @announcementAddAttachmentFA @Temphitesh
+  @35003 @announcementAddAttachmentFA 
   Scenario: Validate the attachment for an Announcement
     Given I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---announcement:-:AnnouncementAttachmentTableId---"
