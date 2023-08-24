@@ -272,6 +272,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Program Review    | 25              |
       | Compliance Review | 50              |
     And I refresh the page
+    And I expand nested table containing column value "SME Review"
     Then I see value "25.00%" for title "Form Weight (%)" against the value "Program Review" inside table "---announcement:-:AnnouncementReviewPanel---"
     Then I see value "25.00%" for title "Form Weight (%)" against the value "Fiscal Review" inside table "---announcement:-:AnnouncementReviewPanel---"
     Then I see value "50.00%" for title "Form Weight (%)" against the value "Compliance Review" inside table "---announcement:-:AnnouncementReviewPanel---"
@@ -603,6 +604,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
 #    And I click on advance filter "#advfAnnoucementPackagesGrantor" of table id "---announcement:-:businessFormlistTableId---"
 #    And I enter advance filter values inside id "advfAnnoucementPackagesGrantor"
 #      | Name | Contains | Anything |
+    And I pause execution for "50" seconds
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:businessFormlistTableId---"
 
   @73854 @73855 @73852 @73853 @jitendra @filterNotYetQualifiedSPAUser

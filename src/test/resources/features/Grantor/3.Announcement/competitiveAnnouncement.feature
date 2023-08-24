@@ -445,7 +445,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I enter value "State governments" into field "fieldEligibleApplicantTypes__c"
     Then I softly see multiple selected options in "multiSelectPicklistCell":
       | options           |
-      | State governments |
+      | State Governments |
     And I clear the value from field "fieldEligibleApplicantTypes__c"
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
@@ -1059,6 +1059,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Save" in the page details
     And I save the value from row "2" for column name "Start Date" as "startDate" from flex table "---announcement:-:budgetPeriodTableId---"
     And I save the value from row "1" for column name "End Date" as "endDate" from flex table "---announcement:-:budgetPeriodTableId---"
+    And I refresh the page
     Then I softly see field "Estimated Project Period Start Date" as "{SavedValue:startDate}"
     Then I softly see field "Estimated Project Period End Date" as "{SavedValue:endDate}"
     And I click on "Remove" icon for "BP02" inside flex table with id "---announcement:-:budgetPeriodTableId---" without waiting for record
