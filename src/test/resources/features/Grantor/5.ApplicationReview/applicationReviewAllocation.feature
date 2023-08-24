@@ -1368,6 +1368,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
       | {SavedValue:EXE Username} | Step 1 |
     And I wait for "10" seconds
     And I click on "Submit for Approval" in the page details
+    And I wait for "3" seconds
     Then I softly see the following messages in the page details contains:
       | Funding Decision Memo Tab - The "Total Commitment Amount" must be greater than or equal to the Allocation Amount. |
     And I navigate to "Funding Decision Memo" sub tab
@@ -3069,6 +3070,8 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     And I "Send Back" in the approval decision
+    And I wait for "3" seconds
+    And I refresh the page
     Then I softly see field "Status" as "Created"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
