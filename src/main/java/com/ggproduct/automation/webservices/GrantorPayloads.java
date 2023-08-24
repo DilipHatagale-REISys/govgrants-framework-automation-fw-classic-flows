@@ -3,8 +3,8 @@ package com.ggproduct.automation.webservices;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
-import com.testingblaze.register.EnvironmentFactory;
-import com.testingblaze.register.I;
+import com.helperPackage.register.EnvironmentFactory;
+import com.helperPackage.register.I;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;

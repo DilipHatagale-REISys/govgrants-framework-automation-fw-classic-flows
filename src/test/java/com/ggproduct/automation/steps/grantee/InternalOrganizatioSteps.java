@@ -1,7 +1,7 @@
 package com.ggproduct.automation.steps.grantee;
 
 import com.ggproduct.automation.pageobjects.grantee.InternalOrganizationPage;
-import com.testingblaze.register.I;
+import com.helperPackage.register.I;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

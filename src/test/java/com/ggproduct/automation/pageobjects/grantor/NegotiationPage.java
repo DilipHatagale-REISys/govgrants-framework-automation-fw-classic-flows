@@ -1,8 +1,8 @@
 package com.ggproduct.automation.pageobjects.grantor;
 
 import com.ggproduct.automation.projectmanager.GrantorProjectManager;
-import com.testingblaze.objects.Elements;
-import com.testingblaze.register.I;
+import com.helperPackage.objects.Elements;
+import com.helperPackage.register.I;
 import org.openqa.selenium.By;
 
 import java.util.List;

@@ -2,9 +2,9 @@ package com.ggproduct.automation.webservices;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.testingblaze.controller.TestSetupController;
-import com.testingblaze.register.EnvironmentFactory;
-import com.testingblaze.register.I;
+import com.helperPackage.controller.TestSetupController;
+import com.helperPackage.register.EnvironmentFactory;
+import com.helperPackage.register.I;
 import io.restassured.response.Response;
 
 import java.net.URLEncoder;

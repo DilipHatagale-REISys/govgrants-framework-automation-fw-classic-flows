@@ -1,10 +1,10 @@
 package com.ggproduct.automation.steps.grantor;
 
-import com.automation.rei.handlers.govgrants;
+import com.helperPackage.handlers.govgrants;
 import com.ggproduct.automation.projectmanager.GrantorProjectManager;
 import com.ggproduct.automation.webservices.GrantorWebServices;
-import com.testingblaze.objects.Elements;
-import com.testingblaze.register.I;
+import com.helperPackage.objects.Elements;
+import com.helperPackage.register.I;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -12,7 +12,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.springframework.context.annotation.Description;
 
 import javax.mail.MessagingException;

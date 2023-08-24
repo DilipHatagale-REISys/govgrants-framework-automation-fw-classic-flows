@@ -1,10 +1,10 @@
 package com.ggproduct.automation.usersUrl;
 
 
-import com.testingblaze.controller.UsersController;
-import com.testingblaze.misclib.Properties_Logs;
-import com.testingblaze.register.EnvironmentFactory;
-import com.testingblaze.register.I;
+import com.helperPackage.controller.UsersController;
+import com.helperPackage.misclib.Properties_Logs;
+import com.helperPackage.register.EnvironmentFactory;
+import com.helperPackage.register.I;
 
 import java.io.IOException;
 import java.util.HashMap;
