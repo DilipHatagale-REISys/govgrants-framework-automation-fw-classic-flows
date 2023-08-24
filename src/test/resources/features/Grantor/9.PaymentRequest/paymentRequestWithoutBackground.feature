@@ -311,6 +311,7 @@ Feature: Payment Request scenarios without background
     And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Forms and Files" sub tab
     Then I softly do not see value "Inactive" for title "Status" against the value "Automation Testing" inside table "---paymentRequest:-:checklistTableId---"
