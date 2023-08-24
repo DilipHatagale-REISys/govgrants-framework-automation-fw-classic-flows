@@ -5930,7 +5930,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @244028 @ValidateDirectAdminusershouldseevalidationmessageshouldbedisplayiftheTotalEncumbrancevaluenotequaltototalawardamoundintheawardgridonawardwhilesubmittheawardforapproval @sprint-16-US-226122 @vaibhav @Allocation
+  @244028 @ValidateDirectAdminusershouldseevalidationmessageshouldbedisplayiftheTotalEncumbrancevaluenotequaltototalawardamoundintheawardgridonawardwhilesubmittheawardforapproval @sprint-16-US-226122 @vaibhav @Allocation @hiteshTemp
   Scenario Outline: Validate Direct Admin user should see validation message should be display if the Total Encumbrance value not equal to total award amount in the award grid on award while submit the award for approval
     Given I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation ADMIN user"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -6683,10 +6683,10 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "{AUTOEnvData:IndCompetitiveClosedAward}" in "---progressReport:-:recipientActiveGrantId---" panel
-    And I click on "View" icon for "{AUTOEnvData:IndCompetitiveClosedAward}" inside table
+    When I perform quick search for "{AUTOEnvData:IndCompetitiveClosedAward}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{AUTOEnvData:IndCompetitiveClosedAward}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{AUTOEnvData:IndCompetitiveClosedAward}" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---" without waiting for record
+    And I click on "View" icon for "{AUTOEnvData:IndCompetitiveClosedAward}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     Then I softly see that "Subaward" is in "Closed" status
     When I navigate to "Budget" sub tab
     Then I softly cannot see field "Budget Period End Date" inside page block
@@ -6872,7 +6872,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I navigate to "Budget" sub tab
     Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
 
-  @244336 @244349 @ValidateDirectAnnINDusershouldseefollowingreadonlyfieldsunderBudgetSummarysectioninCreatedSendtoSubrecipientbeforeApprovalSentforReviewReviewedStatus @sprint-16-US-226926 @vaibhav @Allocation
+  @244336 @244349 @ValidateDirectAnnINDusershouldseefollowingreadonlyfieldsunderBudgetSummarysectioninCreatedSendtoSubrecipientbeforeApprovalSentforReviewReviewedStatus @sprint-16-US-226926 @vaibhav @Allocation @hiteshTemp
   Scenario: Validate Direct Ann IND user should see following read only fields under Budget Summary section in Created, Send to Subrecipient before Approval, Sent for Review, Reviewed Status
     Given I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation ADMIN user"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default-Automation IND user"
@@ -7406,16 +7406,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Budget" sub tab
-    #244161
-    Then I softly see "Budget Summary" page block displayed
-    Then I softly do not see "Budget Period Details" page block displayed
-    #244166
-    And I re-login to "Grants Portal" app as "<User>" user on "SUBPORTAL" portal
-    When I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    And I navigate to "Budget" sub tab
+    #244161  #244166
     Then I softly see "Budget Summary" page block displayed
     Then I softly do not see "Budget Period Details" page block displayed
 
@@ -8635,7 +8626,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I enter "<AllocationType>" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
     And I enter "Grant_Edition_ByApp_Focus_No" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
@@ -8682,8 +8673,8 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click modal button "Save"
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name                       | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
+      | Name        | Project Role             | Is Key Personnel |
+      | <Contacts> | Project Director/Manager  | Checked          |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
       | Name                     | Award  |
@@ -8739,9 +8730,9 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see that "Total Commitment" rendered in view mode only
 
     Examples:
-      | User |
-      | SPI3 |
-      | IND  |
+      | User |AllocationType     | Contacts                  |
+      | SPI3 |GrantFields1       |{SavedValue:SPI3 Username} |
+      | IND  |GrantFieldsIndUser |{SavedValue:IND Username}  |
 
   @243697 @243704 @243863 @243952 @ValidateUsershouldnoteditthenewobligationvalueinRejectedState @sprint-16-US-237985 @vaibhav @Allocation
   Scenario: Validate User should not edit the new obligation value in Rejected State
@@ -11970,20 +11961,20 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "{AUTOEnvData:ClosedAwardByAppDetailBudget}" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "{AUTOEnvData:ClosedAwardByAppDetailBudget}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I perform quick search for "<Records>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Records>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{AUTOEnvData:ClosedAwardByAppDetailBudget}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I click on "View" icon for "<Records>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     And I navigate to "Budget" sub tab
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
     Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:addLinesBudgetCategoryTableId---"
-    Then I softly cannot see row level action button "Edit" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
-    Then I softly cannot see row level action button "Delete" against "Extra Salary" in flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
+    Then I softly cannot see row level action button "Edit" against "Construction" in flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
+    Then I softly cannot see row level action button "Delete" against "Construction" in flex table with id "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
 
     Examples:
-      | User | AllocationType     | Contacts                   |
-      | SPI3 | GrantFields1       | {SavedValue:SPI3 Username} |
-      | IND  | GrantFieldsIndUser | {SavedValue:IND Username}  |
+      | User | AllocationType     | Contacts                   | Records                                       |
+      | SPI3 | GrantFields1       | {SavedValue:SPI3 Username} | {AUTOEnvData:ClosedAwardByAppDetailBudget}    |
+      | IND  | GrantFieldsIndUser | {SavedValue:IND Username}  | {AUTOEnvData:ClosedIndAwardByAppDetailBudget} |
 
   @244368 @244369 @ValidateSPIusershouldabletoacceptawardafterapprovalwithsettingofsubrecipientmatchisYesongrant @sprint-16-US-238299 @vaibhav @Allocation
   Scenario Outline: Validate SPI user should able to accept award after approval with setting of subrecipient match % is 'Yes' on grant
@@ -14382,7 +14373,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     #244198
     Then I softly see "Cumulative Obligation" in flex table header "---subAwardStandAlone:-:subrecipientFocusAreaTableId---"
 
-  @244137 @244170 @ValidateSPIusershouldnotseeBudgetedAmountfieldonawardinclosestate @sprint-16-US-239751 @vaibhav @Allocation
+  @244137 @244170 @ValidateSPIusershouldnotseeBudgetedAmountfieldonawardinclosestate @sprint-16-US-239751 @vaibhav @Allocation @hiteshTemp
   Scenario: Validate SPI user should not see 'Budgeted Amount' field on award in close state
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
@@ -16534,7 +16525,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | SPI3 | GrantFields1       | {SavedValue:SPI3 Username} |
       | IND  | GrantFieldsIndUser | {SavedValue:IND Username}  |
 
-  @249968 @ValidateCompAnnPOusershouldseeBudgetPeriodTittlecolumnrenamedasBudgetPeriodNumberunderGrantBudgetsectionofBudgettabonGrantlayout @sprint-17-US-246018 @vaibhav @Allocation
+  @249968 @ValidateCompAnnPOusershouldseeBudgetPeriodTittlecolumnrenamedasBudgetPeriodNumberunderGrantBudgetsectionofBudgettabonGrantlayout @sprint-17-US-246018 @vaibhav @Allocation @hiteshTemp
   Scenario: Validate Comp Ann PO user should see Budget Period Tittle column renamed as Budget Period Number under Grant Budget section of Budget tab on Grant layout
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -16636,7 +16627,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | Grant_Edition1         |
       | Grant_Edition_Directed |
 
-  @248577 @ValidateCompAnnINDusershouldnotseebudgetsummabyfocusareasectiononGrantunderbudgettabisinDraftStatewhenselectAllocationTypeisNA&FocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246037 @vaibhav @Allocation @hiteshTemp
+  @248577 @ValidateCompAnnINDusershouldnotseebudgetsummabyfocusareasectiononGrantunderbudgettabisinDraftStatewhenselectAllocationTypeisNA&FocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246037 @vaibhav @Allocation 
   Scenario: Validate Comp Ann IND user should not see 'budget summary by focus area' section on Grant under budget tab is in Draft State when select Allocation Type is NA & Focus Area is 'YES' while creating Direct Grant
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -16773,7 +16764,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Status" as "Draft"
     And I navigate to "Budget" sub tab
     Then I softly do not see field "Estimated Funding" inside "Budget Summary" section
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Directed"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "SUBRECIPIENT_ORG_IND_USER-Automation PM user" of type "Directed"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -18533,7 +18524,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "Accept" in the page details
     Then I softly see field "Status" as "Accepted"
 
-  @243640 @ValidateDirectedonceownershipistransferredalltheeditaccessofallocationfieldsshouldalsomovetonewowner @sprint-16-US-238128 @vaibhav @Allocation @hiteshTemp
+  @243640 @ValidateDirectedonceownershipistransferredalltheeditaccessofallocationfieldsshouldalsomovetonewowner @sprint-16-US-238128 @vaibhav @Allocation
   Scenario: Validate Directed once ownership is transferred, all the edit access of allocation fields should also move to new owner
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -24295,48 +24286,3 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I see status in Progress-bar is "Created" and is "green"
     Then I softly do not see "Budget Summary by Focus Area" page block displayed
-
-  @111111 @VerifyPMusercannotseeaFocusareawithzerovalueforNewObligationandCumulativeObligationcolumnontheawardcreatedfromFDM @sprint-23-US-273843 @hitesh
-  Scenario: Verify PM user can not see a Focus area with zero value for New Obligation and Cumulative Obligation column on the award created from FDM
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation ADMIN user" of type "Formula_By_Applicant"
-#    When I login to "As a Grantor" app as "ADMIN" user
-#    And I navigate to "Grants" tab
-#    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-#    And I click toggle button to select "Grants - Active"
-#    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---closeout:-:grantsTableId---" panel
-#    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---closeout:-:grantsTableId---"
-#    When I navigate to "Requests" sub tab
-#    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-#    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
-#    And I click modal button "Save and Continue"
-#    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
-#    And I get the "EGMS ID"
-#    And I save the field labeled "EGMS ID" as "closeoutID"
-#    When I click on "Save" in the page details
-#    And I click on "Edit" in the page details
-#    And I enter value "Automation Test justification" into field "fieldJustification__c"
-#    When I click on "Save" in the page details
-#    When I navigate to "Responsibilities" sub tab
-#    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
-#      | Name             | Closeout |
-#      | Automation PM | Step 1   |
-#    And I click on "Send To Subrecipient" in the page details
-#    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-#    When I navigate to "Closeout" tab
-#    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-#    When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
-#    And I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
-#    When I click on "Edit" in the page details
-#    And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
-#    When I click on "Save" in the page details
-#    And I click on "Acknowledge" in the page details
-#    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-#    When I navigate to "Closeout" tab
-#    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-#    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
-#    When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
-#    And I refresh the page
-#    When I click on "Override" in the page details
-#    When I click on "Submit for Approval" in the page details
-#    When I "Approve" in the approval decision
-#    Then I softly see status in Progress-bar is "Completed" and is "green"
