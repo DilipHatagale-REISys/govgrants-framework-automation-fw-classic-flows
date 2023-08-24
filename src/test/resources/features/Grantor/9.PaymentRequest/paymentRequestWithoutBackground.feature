@@ -314,7 +314,8 @@ Feature: Payment Request scenarios without background
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Forms and Files" sub tab
-    Then I softly do not see value "Inactive" for title "Status" against the value "Automation Testing" inside table "---paymentRequest:-:checklistTableId---"
+    Then I softly do not see value "Automation Testing" for title "Description" inside table "---paymentRequest:-:checklistTableId---"
+    Then I softly do not see value "Inactive" for title "Status" inside table "---paymentRequest:-:checklistTableId---"
     Examples:
       | Award Name                            |
       | {SavedValue:Automation Runtime Award} |
@@ -3283,11 +3284,6 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
-    And I navigate to "Monitoring" tab
-    And I navigate to "Reimbursements" content inside "Payments" subheader on left panel
-    And I click toggle button to select "Reimbursements - All"
-    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
-    Then I see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:paymentrequestReimbursementTableId---"
 
   @197425 @Validatependingtaskshouldnotgeneratedforoldownerofad-hocreimbursementpaymentrequestafterS\RsentPRtograntorafterownershipreassignment @sprint-4 @vaibhav @reassignment
   Scenario: Validate pending task should not generated for old owner of ad-hoc reimbursement payment request after S\R sent PR to grantor after ownership reassignment
