@@ -1,0 +1,6 @@
+Given/When/And 
+
+I see status in Progress-bar is "Status" and is "Color(Green/Red)"
+I see that "RecordName(Program/Announcement...)" is in "StatusOfTheRecord" status
+I see the following options in dropdown field:
+|FieldApiName|DropdownValue1|DropdownValue2|DropdownValue3|

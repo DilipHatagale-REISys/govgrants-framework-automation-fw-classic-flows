@@ -1,0 +1,97 @@
+Given/When/And 
+
+/******* Flex Table ***********/
+I perform quick search for "SearchTerm" for the parent value "UniqueParentCoulmnValue" on grid "GridDivId"
+I see that "UniqueColumnValue" has been added in flextable with Id "FlexTableDivId"
+
+/******* Input Field(s)  ***********/
+I complete filling in the Review form
+I enter a review as "PeerReviewRating(Passed/Failed)"
+
+/******** Page/ Record Detail level *************/
+I click "ButtonValueOnConfirmationBox" on the confirmation dialog box
+I enter "CommentsToBeEntered" for comments and click "ButtonValueOnConfirmationBox"
+I fill in the "ApproverName" for the Approver details
+
+I choose the file "FileName" to upload for "Checklist/Attachment" of type "AttachmentType"
+/******** Modal **********/
+I click "FlexTableTopButtonName" after selection of "UniqueColumnValuesSeperatedByComma" in the table "FlexTableDivId"
+
+
+/****** Product Generic Consolidated Steps ***********/
+I complete the fields from the sheet "SheetName" in excel "ExcelFileName"
+	| Actions 		  | Step 1 | Step 2 |
+	| Edition Buttons | Edit   | Save   |
+I select "NumberOfApprovers(1/2/3)" approvers "ApproverNamesSeperatedByComma"
+	| Actions 	  | Step 1   	  | Step 2 | Step 3 			 |
+	| Subtab	  | SubTabName	  | 	   |		    		 |
+	| Approver 1 | flextablDivId | Edit   | Unique Column Value |
+	| Approver 2 | flextablDivId | Edit   | Unique Column Value |
+"NumberOfApprovers(1/2/3)" Approvers "ApproversUserNameSeperatedByComma" approve the record "RecordName"
+	| Actions 	 | Step 1 	 	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | App Name  	 | TabName 		 | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
+I add an attachment checklist to upload the file "FileName(Template)"
+	| Actions 			   | Step 1 	   		    | Step 2	     | Step 3 	  |
+    | Inline Column Title  | Description       	  	| Required  	 | Applies To |
+    | Inline values 	   | Automation Description | Mandatory	     | Award	  |
+	| Checklist Navigation | tabName		      	|   		   	 |			  |
+	| Checklist FlexTable  | flexTableDivId 		| Add	   		 |   		  |
+	| Upload Modal  	   | Upload Template 		| Not Applicable | 			  |
+	| Upload file     	   | Checklist 				| Record		 |			  |
+I upload "NumberOfFiles" checklist document "DocumentNameSepratedByComma"
+	| Actions 	 | Step 1 		  | Step 2		 | Step 3 	      |
+	| Navigation | subTab Name 	  | 			 |				  |
+	| FlexTable  | flexTableDivId | Attach 	 	 | Not Applicable |
+	| Upload	 | Checklist 	  | Record		 |				  |
+I add an attachment "FileName"
+	| Actions 			    | Step 1 	  | Step 2	 		| Step 3    	 |
+    | Attachment Navigation | subtab Name | Add				| FlextableDivId |
+    | Attachment Details    | Attachment  | Attachment Type |				 |
+I assign, initiate a reviewer from sheet "SheetName" in excel "ExcelName"
+	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
+	| Reviewer Navigation | Subtab Name		      | 					  |			|
+	| FlexTable 		  | New				      | FlexTableDivId		  | Save    |
+	| Send Review		  | Send for Review       | Created 			  |			|
+Review is completed as user "ReviewerUserName" for the record "RecordName"
+	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
+	| Reviewer Navigation | App Name	        | Tab Name		 					  | Pending Tasks 		  | My Tasks 	    |
+	| FlexTable 		  | PhasePendingTasks   | Start								  | FlexTable Div Id	  | Enter Review    | 
+	| Enter Review		  | Sent for Review	    | Passed	  						  |	 Save		  		  | Submit Review   |
+I create a post award record from sheet "SheetName" in excel "ExcelName"
+	| Actions 	 | Step 1 	   		   | Step 2    			    |
+	| Navigation | SubTab Name		   | 			 		    |	
+	| FlexTable  | Button Name		   | FlexTableDivId			|
+	| Creation   | Save And Close	   | Cancel				 	| 
+I associate "NumberOfAssociations" records "RecordsToAssociateSeperatedByComma"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  			| Step 4 | Step 5  				 |
+    | Associate 1 | Overview | Associate | FlexTableDivId			   	| Add	 | FlexTableDivIdInModal |
+    | Associate 2 | Setup	 | Associate | FlexTableDivId			 	| Add    | FlexTableDivIdInModal |
+I fill in the form "StandardFormName" from sheet "SheetName" in excel "ExcelFileName"
+	| Actions 	  | Step 1   		 	 | Step 2		  |
+	| Navigation  | SubTab Name			 | 			 	  |
+	| FlexTable   | Edit				 | FlexTableDivId |
+	| Form Button | Save				 | Back 		  |
+	| Validation  | Validate			 | FlexTableDivId |
+I complete "NumberOfReviewForms" review form as "ReviewrsUsernameSperatedByComma"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | App Name		| Tab Name	 		| Pending Tasks | My Tasks |
+	| FlexTable  | UniqueValue  | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+I login and view the record "RecordName" as "UserName"
+	| Actions 			  | Step 1 	  | Step 2	 	   | Step 3  	 		  | Step 4 		    	  |
+	| Owner Navigation 	  | App Name  | Tab Name 	   | Left Pane Link   	  | Left Pane Subheader   |
+	| Complete Review 	  | Toggle to | FlexTableDivId | View 		  		  | Complete Review		  |
+I login and view the "AwardState(Active/Draft)" award "AwardEGMSId" with name "AwardName" as User "UserName"
+	| Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
+    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
+User "UserLevel" receives the task for "RecordName"
+| Actions     | Step 1            | Step 2   |  Step 3   |
+| Navigation  | Tab Name          | app name | SUBPORTAL |
+| Left Panel  | Pending Tasks     | My Tasks | 		     |
+| FlexTable   | PhasePendingTasks | Start    |           |
+
+	
