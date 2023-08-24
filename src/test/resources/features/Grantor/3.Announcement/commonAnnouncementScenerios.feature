@@ -267,6 +267,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I pause execution for "2" seconds
     #And I collapse nested table containing column value "Permits"
     When I close "Review Form" modal by clicking the top right x button
+    And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -293,6 +294,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I pause execution for "2" seconds
     #And I collapse nested table containing column value "Program Income"
     When I close "Review Form" modal by clicking the top right x button
+    And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |

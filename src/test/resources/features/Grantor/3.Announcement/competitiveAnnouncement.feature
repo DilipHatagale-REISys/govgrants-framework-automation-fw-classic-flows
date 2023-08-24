@@ -186,8 +186,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     #And I click on "Remove" icon for "BP02" inside flex table with id "---announcement:-:budgetPeriodTableId---"
     And I click on "Remove" icon for "BP01" inside flex table with id "---announcement:-:budgetPeriodTableId---"
     Then I softly do not see value "BP01" for title "Budget Period Name" inside table "---announcement:-:budgetPeriodTableId---"
-    And I click on "Remove" icon for "Travel" inside flex table with id "---announcement:-:announcementBudgetCategory---" without waiting for record
-    Then I softly do not see value "Travel" for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
+    And I click on "Remove" icon for "Construction " inside flex table with id "---announcement:-:announcementBudgetCategory---" without waiting for record
+    Then I softly do not see value "Construction " for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
     And I enter value "2000" into field "---announcement:-:subawardfloor---"
     And I enter value "3000" into field "---announcement:-:subawardceiling---"
     And I click on "Save" in the page details
