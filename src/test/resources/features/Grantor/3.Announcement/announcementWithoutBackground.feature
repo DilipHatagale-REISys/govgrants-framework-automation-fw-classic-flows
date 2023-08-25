@@ -448,10 +448,12 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%. It is currently 80%. |
     And I pause execution for "3" seconds
     And I refresh the page
+    And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Name      | Form Weight (%) |
       | Program Review | 70              |
     And I pause execution for "3" seconds
+    And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Weight (%) | Form Name           |
       | 70.00%          | Program Review Form |
