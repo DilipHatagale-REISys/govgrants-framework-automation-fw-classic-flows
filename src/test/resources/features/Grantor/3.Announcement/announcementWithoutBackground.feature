@@ -401,6 +401,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Program Income | 0                  |
     And I pause execution for "2" seconds
     And I close modal by clicking the top right x button
+    And I pause execution for "3" seconds
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 60.00%.                                   |
@@ -5648,7 +5649,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
