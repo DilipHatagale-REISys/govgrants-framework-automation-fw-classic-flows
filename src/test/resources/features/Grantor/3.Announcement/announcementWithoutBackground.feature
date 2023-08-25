@@ -473,6 +473,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Question Order | Question             | Max Score |
       | 1              | Review form question | 50        |
     And I pause execution for "3" seconds
+    And I expand nested table containing column value "1"
     Then I softly see value "Review form question" for title "Question" inside table "---announcement:-:reviewPanelQuestionsTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "Edit" :
       | Question Order | Question                    | Type | Max Score |

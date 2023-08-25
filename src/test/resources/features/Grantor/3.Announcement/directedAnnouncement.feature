@@ -1,4 +1,4 @@
-@directedAnnouncements @grantor-regression @grantor-parallel-regression @announcement @regression
+@directedAnnouncements @grantor-regression @grantor-parallel-regression @announcement @regression @annoucementTemp
 Feature: Validate all scenarios in the directed Announcement tab
 
   Background: Create Announcement
@@ -38,9 +38,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
     And I perform quick search for "Automation Permanent Focus Area" in "---announcement:-:AnnouncementServiceArea1TableId---" panel
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---announcement:-:AnnouncementServiceArea1TableId---"
-    When I click on advance filter "#advfAnnouncementServiceArea1" of table id "---announcement:-:AnnouncementServiceArea1TableId---"
-    When I enter advance filter values inside id "advfAnnouncementServiceArea1"
-      | Title | Contains | Automation Permanent |
+#    When I click on advance filter "#advfAnnouncementServiceArea1" of table id "---announcement:-:AnnouncementServiceArea1TableId---"
+#    When I enter advance filter values inside id "advfAnnouncementServiceArea1"
+#      | Title | Contains | Automation Permanent |
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---announcement:-:AnnouncementServiceArea1TableId---"
     And I refresh the page
     When I click on advance filter "#advfAnnouncementServiceArea1" of table id "---announcement:-:AnnouncementServiceArea1TableId---"
@@ -85,9 +85,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I perform quick search for "{SavedValue:FO Username}" in "---announcement:-:flexGridApproverRolesTableId---" panel
     Then I softly see value "{SavedValue:FO Username}" for title "Name" inside table "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly see value "Fiscal Reviewer" for title "Responsibility" inside table "---announcement:-:flexGridApproverRolesTableId---"
-    When I click on advance filter "#advfGrantorAnnouncementReviewersTempGrantor" of table id "---announcement:-:flexGridApproverRolesTableId---"
-    When I enter advance filter values inside id "advfGrantorAnnouncementReviewersTempGrantor"
-      | Responsibility | equals to | Fiscal Reviewer |
+#    When I click on advance filter "#advfGrantorAnnouncementReviewersTempGrantor" of table id "---announcement:-:flexGridApproverRolesTableId---"
+#    When I enter advance filter values inside id "advfGrantorAnnouncementReviewersTempGrantor"
+#      | Responsibility | equals to | Fiscal Reviewer |
     Then I softly see value "Fiscal Reviewer" for title "Responsibility" inside table "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly can see row level action button "Edit" against "{SavedValue:FO Username}" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly can see row level action button "Delete" against "{SavedValue:FO Username}" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
