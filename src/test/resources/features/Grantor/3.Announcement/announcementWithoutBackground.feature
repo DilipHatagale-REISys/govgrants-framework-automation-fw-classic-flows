@@ -376,7 +376,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Section Weight (%) | Section Header |
       | 10%                | Program Income |
     And I pause execution for "3" seconds
-    And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Budget         | 50                 |
