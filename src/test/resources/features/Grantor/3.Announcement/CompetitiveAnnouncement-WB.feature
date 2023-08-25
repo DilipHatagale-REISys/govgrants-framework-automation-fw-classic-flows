@@ -1136,7 +1136,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            |
       | {SavedValue:Automation Runtime Announcement} |
 
-  @235268 @CompAnnVerifyEXEcanseethevalidationfor1appwhenthebudgetedAmountisnotequaltotheRecommendedBudgetwhenuserclickonsendtosubrecipientbuttonevenifRecommendedBudget&budgetedamountissameforotherapponsameFDM @sprint-13-US-224612 @komal @Allocation @Temphitesh
+  @235268 @CompAnnVerifyEXEcanseethevalidationfor1appwhenthebudgetedAmountisnotequaltotheRecommendedBudgetwhenuserclickonsendtosubrecipientbuttonevenifRecommendedBudget&budgetedamountissameforotherapponsameFDM @sprint-13-US-224612 @komal @Allocation
   Scenario Outline:Comp Ann EXE can see the validation for 1 app when the budgeted Amount is not equal to the Recommended Budget when user click on send to subrecipient button even if  Recommended Budget & budgeted amount is same for other app on same FDM
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"

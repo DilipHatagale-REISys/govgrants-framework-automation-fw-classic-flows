@@ -217,7 +217,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I upload attachment "Attachment.pdf" of type "Funding Opportunity Announcement" from computer
     Then I softly see "Funding Opportunity Announcement" has been added in "Announcement Files" flex table
 
-  @52414 @reviewStepsBeforeSubmitForApprovalFA @Temphitesh
+  @52414 @reviewStepsBeforeSubmitForApprovalFA
   Scenario: Validate the Review steps of Announcement before submit for Approval
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
