@@ -351,9 +351,9 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Program Review | 70              |
     And I pause execution for "3" seconds
     And I expand nested table containing column value "SME Review"
-    And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
-      | Form Weight (%) | Form Name           |
-      | 70.00%          | Program Review Form |
+    When I enter the following values into flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "New" :
+      | Form Name           | Form Weight (%) | Minimum Number of Reviews per Application | Required? |
+      | Program Review Form | 70.00%          | 1                                         | checked   |
     And I pause execution for "2" seconds
     Then I softly see value "Program Review Form" for title "Form Name" inside table "---announcement:-:AnnouncementReviewPanel---"
     And I pause execution for "3" seconds
