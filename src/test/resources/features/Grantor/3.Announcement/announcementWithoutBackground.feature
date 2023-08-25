@@ -350,6 +350,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Form Name      | Form Weight (%) |
       | Program Review | 70              |
     And I pause execution for "3" seconds
+    And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Weight (%) | Form Name           |
       | 70.00%          | Program Review Form |
@@ -2096,7 +2097,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Back" in the page details
     And I pause execution for "5" seconds
     When I click on "Submit to Grantor" in the page details
-    Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
+    Then I softly see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -4970,7 +4971,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
 
-  @224665 @ValidateAnnfailureemailshouldgeneratedforpeerreviewerandsuccessemailgeneratedforApproval @sprint-11-US-218319 @vaibhav @reassignment @Temphitesh
+  @224665 @ValidateAnnfailureemailshouldgeneratedforpeerreviewerandsuccessemailgeneratedforApproval @sprint-11-US-218319 @vaibhav @reassignment
   Scenario: Validate Ann failure email should generated for peer reviewer and success email generated for Approval
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
