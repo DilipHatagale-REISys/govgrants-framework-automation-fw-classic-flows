@@ -352,8 +352,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I pause execution for "3" seconds
     And I expand nested table containing column value "SME Review"
     When I enter the following values into flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "New" :
-      | Form Name           | Form Weight (%) | Minimum Number of Reviews per Application | Required? |
-      | Program Review Form | 70.00%          | 1                                         | checked   |
+      | Step Order| Step Name           | Description |Step Weight (%) |
+      | 4         | Program Review Form | Test        |70.00%          |
     And I pause execution for "2" seconds
     Then I softly see value "Program Review Form" for title "Form Name" inside table "---announcement:-:AnnouncementReviewPanel---"
     And I pause execution for "3" seconds
