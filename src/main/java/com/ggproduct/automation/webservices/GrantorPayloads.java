@@ -562,9 +562,30 @@ public class GrantorPayloads {
                 return updateAnnouncementWithSecondFocusAreaByappFocusAreaRiskNoNOIncomeSubMatchNo(json);
             case "SECOND_FOCUS_AREA_DETAILS_BUDGET_YES_RISK_NO":
                 return updateAnnouncementWithSecondFocusAreaDetailBudgetYes(json);
+            case "THREE_FOCUS_BY_APP_DETAILS_BUDGET_YES_RISK_NO":
+                return updateAnnouncementWithThreeFocusAreaByappDetailsYesRiskNo(json);
             default:
                 return json;
         }
+    }
+
+    private JsonObject updateAnnouncementWithThreeFocusAreaByappDetailsYesRiskNo(JsonObject json) {
+        JsonArray serviceArea = new JsonArray();
+        JsonObject serviceAreaB = new JsonObject();
+        serviceAreaB.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Automation Permanent Focus Area2"));
+        serviceArea.add(serviceAreaB);
+        JsonObject serviceAreaC = new JsonObject();
+        serviceAreaC.addProperty("ServiceArea", ProjectWebServices.getIdOf("ServiceArea__c", "Test Focus Area"));
+        serviceArea.add(serviceAreaC);
+        json.add("AnnouncementServiceArea", serviceArea);
+        JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre1 = new JsonArray();
+        jsonObject1.addProperty("Allocationlevel", "By Applicant");
+        jsonObject1.addProperty("RiskAssessment_Required", "No");
+        jsonObject1.addProperty("DetailedBudgetingRequired", "Yes");
+        pre1.add(jsonObject1);
+        json.add("Announcement", pre1);
+        return json;
     }
 
     private JsonObject updateAnnouncementWithSecondFocusAreaByappRiskNoNegoNo(JsonObject json) {
@@ -1351,6 +1372,8 @@ public class GrantorPayloads {
                 return createAwarForAmendmentRequestAdvanceYesFocusNo(json);
             case "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_SUB_ORG_IND":
                 return advancePermissibleYesnofocusareaSubrecipientInd(json);
+            case "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_BUILDUP_YES":
+                return advancePermissibleYesnofocusareaDetailsBuildUpYes(json);
             case "SUBRECIPIENT_ORG_IND_USER":
                 return createAwarForIndUser(json);
             case "SECOND_FOCUS_AREA":
@@ -1413,6 +1436,30 @@ public class GrantorPayloads {
             default:
                 return json;
         }
+    }
+
+    private JsonObject advancePermissibleYesnofocusareaDetailsBuildUpYes(JsonObject json) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+        grant.addProperty("FocusAreaRequired", "No");
+        grant.addProperty("IsAdvancePermitted", "Yes");
+        grant.addProperty("IsBuildUpFunctionality", "Yes");
+        newA.add(grant);
+        json.add("Grant", newA);
+        JsonArray buildUpItemsA = new JsonArray();
+        JsonObject buildUpItems = new JsonObject();
+        buildUpItems.addProperty("BudgetCategory", "Construction");
+        buildUpItems.addProperty("Title", "Construction");
+        buildUpItems.addProperty("Narrative", "Test Build-up");
+        buildUpItems.addProperty("AwardedBudget", 1000);
+        buildUpItems.addProperty("CashMatch", 100);
+        buildUpItems.addProperty("NonCashMatch", 100);
+        buildUpItems.add("OtherLeverageOptional", JsonNull.INSTANCE);
+        buildUpItems.addProperty("ServiceAreaName", "Standard Focus Area");
+        buildUpItemsA.add(buildUpItems);
+        json.add("BuildUpItems", buildUpItemsA);
+
+        return json;
     }
 
     private JsonObject createAwarForSecondFocusAreaandBudgetCategoryBuildUpYesIndOrg(JsonObject json, String... Type) {
@@ -1687,6 +1734,14 @@ public class GrantorPayloads {
         awardServiceAreaArray.add(awardServiceAreaB);
         awardServiceAreaArray.add(awardServiceAreaC);
         json.add("AwardServiceArea", awardServiceAreaArray);
+
+        JsonObject awardFundingAccount = new JsonObject();
+        JsonArray awardFundingAccountArray = new JsonArray();
+        awardFundingAccount.addProperty("FundingAccount", ProjectWebServices.getIdOf("FundingAccount__c", I.amPerforming().propertiesFileOperationsTo()
+                .getValue("fundingAccount")));
+        awardFundingAccount.addProperty("PreEncumbranceAmount", "1500");
+        awardFundingAccountArray.add(awardFundingAccount);
+        json.add("AwardFundingAccount", awardFundingAccountArray);
 
         JsonArray buildUpItemsA = new JsonArray();
         JsonObject buildUpItems = new JsonObject();

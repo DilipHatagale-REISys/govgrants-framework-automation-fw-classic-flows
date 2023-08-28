@@ -1,4 +1,4 @@
-@applicationReviewAllocation @grantor-regression @grantor-parallel-regression @applicationReview @app @regression @applicationReviewTBE
+@applicationReviewWithouBg @applicationReviewAllocation @grantor-regression @grantor-parallel-regression @applicationReview @app @regression @applicationReviewTBE
 Feature: Validate all scenarios in the Application Review with Allocation Feature
 
 
@@ -349,6 +349,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
       | Name                      | FDM    |
       | {SavedValue:EXE Username} | Step 1 |
+    And I wait for "9" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Funding Decision Memo Tab - The "Total Commitment Amount" must be greater than or equal to Recommended Budget |
@@ -520,8 +521,8 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
       | Automation ADMIN1 | Step 1 |
     And I navigate to "Funding Decision Memo" sub tab
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended | 500                     |
+      | Application Title                                | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
+      | {SavedValue:Automation Runtime FDM Announcement} | 500                | Yes                   | Recommended | 500                     |
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I navigate to "Funding Decision Memo" sub tab
@@ -729,7 +730,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
   @241132 @241135 @241140 @241147 @ValidateadminusercaneditTotalCommitmentAmountwhenuserclickontherowleveleditbuttonofapplication @sprint-15-US-238637 @vaibhav @Allocation
   Scenario Outline: Validate admin user can edit Total Commitment Amount when user click on the row level edit button of application
     Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO-Automation ADMIN user"
-    When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "BUDGETCATEGORY_NO_FOCUSAREA"
     And I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -1207,6 +1208,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
       | Name                      | FDM    |
       | {SavedValue:EXE Username} | Step 1 |
+    And I wait for "9" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Funding Decision Memo Tab - The "Total Commitment Amount" must be greater than or equal to the Allocation Amount. |
@@ -1359,12 +1361,14 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title                                | Recommend for Funding | Comments    | Total Commitment Amount |
-      | {SavedValue:Automation Runtime FDM Announcement} | Yes                   | Recommended | 400                     |
+      | {SavedValue:Automation Runtime FDM Announcement} | Yes                   | Recommended | 200                     |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
       | Name                      | FDM    |
       | {SavedValue:EXE Username} | Step 1 |
+    And I wait for "10" seconds
     And I click on "Submit for Approval" in the page details
+    And I wait for "3" seconds
     Then I softly see the following messages in the page details contains:
       | Funding Decision Memo Tab - The "Total Commitment Amount" must be greater than or equal to the Allocation Amount. |
     And I navigate to "Funding Decision Memo" sub tab
@@ -3066,6 +3070,8 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     And I "Send Back" in the approval decision
+    And I wait for "3" seconds
+    And I refresh the page
     Then I softly see field "Status" as "Created"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
@@ -3264,12 +3270,12 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title                                               | Recommend for Funding | Comments    | Total Commitment Amount |
-      | {SavedValue:Automation Runtime Announcement Application Review} | Yes                   | Recommended | 400                     |
+      | {SavedValue:Automation Runtime Announcement Application Review} | Yes                   | Recommended | 200                     |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
       | Name                      | FDM    |
       | {SavedValue:EXE Username} | Step 1 |
-    And I wait for "9" seconds
+    And I wait for "10" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Funding Decision Memo Tab - The "Total Commitment Amount" must be greater than or equal to the Allocation Amount. |
@@ -3443,9 +3449,8 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     And I navigate to "Funding Decision Memo" sub tab
-    And I wait for "5" seconds
+    And I wait for "9" seconds
     And I click on "Create Subaward" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
-    And I wait for "3" seconds
     Then I softly see the following messages in the page details contains:
       | The Budgeted Amount must be equal to the Allocation Amount in the application for each focus area. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field and send the application back for revision to the subrecipient. |
 
