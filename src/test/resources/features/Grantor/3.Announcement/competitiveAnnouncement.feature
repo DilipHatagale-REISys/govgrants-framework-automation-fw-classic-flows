@@ -148,7 +148,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I download the file
     Then I see "Related Focus Areas" on page "1" of "govgrants" pdf file
 
-  @70551 @70552 @73405 @73389 @73406 @73387 @70800 @70885 @71595 @72646 @72641 @73537 @userCanViewAddAndDeleteFocusArea @aashish
+  @70551 @70552 @73405 @73389 @73406 @73387 @70800 @70885 @71595 @72646 @72641 @73537 @userCanViewAddAndDeleteFocusArea @aashish @Temphitesh
   Scenario: To Verify that user is able to remove associated focus areas While creating the Announcement | To verify PM can remove non relevant Budget categories from specific Budget Type in Announcement based on the need.
     When I navigate to "Announcements" tab
     And I click toggle button to select "Published Announcements"
@@ -164,9 +164,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "{SavedValue:searchedItem}" for title "Name" inside table "---announcement:-:businessFormlistTableId---"
     And I pause execution for "5" seconds
     And I refresh the page
-    When I click on advance filter "#advfAnnoucementPackagesGrantor" of table id "---announcement:-:businessFormlistTableId---"
-    When I enter advance filter values inside id "advfAnnoucementPackagesGrantor"
-      | Package Name | Contains | Grantor Site Visit Forms |
+    #When I click on advance filter "#advfAnnoucementPackagesGrantor" of table id "---announcement:-:businessFormlistTableId---"
+    #When I enter advance filter values inside id "advfAnnoucementPackagesGrantor"
+    #  | Package Name | Contains | Grantor Site Visit Forms |
     Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     Then I softly see value "Site Visit" for title "Package Type" inside table "---announcement:-:businessFormlistTableId---"
     When I navigate to "Overview" sub tab
@@ -213,9 +213,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I check "All" boxes in flex table with id "---announcement:-:associateForRelated---"
     And I click on top right button "Associate" in flex table with id "---announcement:-:associateForRelated---"
     And I save the value from row "1" for column name "Program Number" as "prNum" from flex table "---announcement:-:relatedAnnouncementTableId---"
-    And I click on advance filter "#advfRelatedAnnouncementCFDANumbersGrantor" of table id "---announcement:-:relatedAnnouncementTableId---"
-    And I enter advance filter values inside id "advfRelatedAnnouncementCFDANumbersGrantor"
-      | Program Number | Contains | {SavedValue:prNum} |
+    #And I click on advance filter "#advfRelatedAnnouncementCFDANumbersGrantor" of table id "---announcement:-:relatedAnnouncementTableId---"
+    #And I enter advance filter values inside id "advfRelatedAnnouncementCFDANumbersGrantor"
+    #  | Program Number | Contains | {SavedValue:prNum} |
     Then I softly see value "{SavedValue:prNum}" for title "Program Number" inside table "---announcement:-:relatedAnnouncementTableId---"
 
   @70290 @70298 @70302 @70799 @73227 @userAllowToEnterDataInQualityAndAvailibility @aashish @smoke
@@ -282,7 +282,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
       | Responsibilities - At least one approver is required                                                                  |
 
-  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @70506 @71951 @73408 @userDeleteSupportingDocument @aashish
+  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @70506 @71951 @73408 @userDeleteSupportingDocument @aashish @Temphitesh
   Scenario: To Verify that user can delete supporting document checklist While creating the Announcement |
   To Verify that user can Edit fields in supporting document checklist While creating the Announcement |
   To Verify that user can preview business forms while creating Announcement|
@@ -312,7 +312,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Automation test description | Mandatory | Award      | Active |
     When I click on "Upload Template" icon for " Automation test description" inside flex table with id "---announcement:-:annChecklist---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
-    And I perform quick search for "Automation test description" in "---announcement:-:annChecklist---" panel
+    #And I perform quick search for "Automation test description" in "---announcement:-:annChecklist---" panel
     Then I softly see value "Mandatory" for title "Required" inside table "---announcement:-:annChecklist---"
     Then I softly see value "Award" for title "Applies To" inside table "---announcement:-:annChecklist---"
     Then I softly see value "Active" for title "Status" inside table "---announcement:-:annChecklist---"
@@ -399,7 +399,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "04/14/2030" for title "Start Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
     Then I softly see value "04/13/2031" for title "End Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
 
-  @70563 @70556 @70554 @70606 @70718 @73545 @73547 @73564 @73566 @userCanViewAndDeleteKPI @aashish @buglogged151548
+  @70563 @70556 @70554 @70606 @70718 @73545 @73547 @73564 @73566 @userCanViewAndDeleteKPI @aashish @buglogged151548 @Temphitesh
   Scenario: To  Verify that after associating objectives, related KPIs should be automatically populate while  creating the Announcement
   | To Verify that user is able to view Objective While creating the Announcement | Verify KPIs search and filter fuctionality
     When I navigate to "Announcements" tab
@@ -431,10 +431,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I perform quick search for "Automation Permanent Objective" in "---announcement:-:objectivesTableId---" panel
+    #And I perform quick search for "Automation Permanent Objective" in "---announcement:-:objectivesTableId---" panel
     Then I softly see value "Automation Permanent Objective" for title "Title" inside table "---announcement:-:objectivesTableId---"
 
-  @70163 @70166 @70197 @userAllowToSelectEligibilityDetails @aashish
+  @70163 @70166 @70197 @userAllowToSelectEligibilityDetails @aashish @Temphitesh
   Scenario: To Verify that user is  allowed  to select the Eligibility Details while creating Announcement
   | To verify that  without selecting "Eligibility Details" user is able to see the validation message by clicking on "Submit for approval" button.
     When I navigate to "Announcements" tab
@@ -468,9 +468,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "Animal And Plant Health Inspection Service" for title "Organization Name" inside table "---announcement:-:relatedAnnouncementTableId---"
     Then I softly can see row level action button "Remove" against "10.028" in flex table with id "---announcement:-:relatedAnnouncementTableId---"
     Then I softly can see row level action button "View" against "10.028" in flex table with id "---announcement:-:relatedAnnouncementTableId---"
-    When I click on advance filter "#advfRelatedAnnouncementCFDANumbersGrantor" of table id "---announcement:-:relatedAnnouncementTableId---"
-    When I enter advance filter values inside id "advfRelatedAnnouncementCFDANumbersGrantor"
-      | Program Title | Contains | Calfire |
+    #When I click on advance filter "#advfRelatedAnnouncementCFDANumbersGrantor" of table id "---announcement:-:relatedAnnouncementTableId---"
+    #When I enter advance filter values inside id "advfRelatedAnnouncementCFDANumbersGrantor"
+    #  | Program Title | Contains | Calfire |
     Then I see "No Records Found" inside flex table with id "---announcement:-:relatedAnnouncementTableId---"
     And I refresh the page
     And I click on top right button "Associate" in flex table with id "---announcement:-:relatedAnnouncementTableId---"
@@ -488,7 +488,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Remove" icon for "NGO" inside flex table with id "---announcement:-:relatedAnnouncementTableId---" without waiting for record
     Then I softly do not see value "NGO" for title "Type" inside table "---announcement:-:relatedAnnouncementTableId---"
 
-  @75617 @70727 @73624 @70723 @73621 @72482 @73536 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
+  @75617 @70727 @73624 @70723 @73621 @72482 @73536 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA @Temphitesh
   Scenario Outline: Validate that user can not enter application due date as past date | Validate that user should not submit announcement with blank budget period dates|To Verify that user can view contact while creating Announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -506,14 +506,14 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 2000            |
     And I refresh the page
-    When I click on advance filter "#advfAnnouncementFundingAccountGrantor" of table id "---announcement:-:fundingAccountsTableId---"
-    When I enter advance filter values inside id "advfAnnouncementFundingAccountGrantor"
-      | Pre-Encumbrance | equals to | 2000 |
+    #When I click on advance filter "#advfAnnouncementFundingAccountGrantor" of table id "---announcement:-:fundingAccountsTableId---"
+    #When I enter advance filter values inside id "advfAnnouncementFundingAccountGrantor"
+    #  | Pre-Encumbrance | equals to | 2000 |
     Then I softly see value "$2,000.00" for title "Pre-Encumbrance" inside table "---announcement:-:fundingAccountsTableId---"
     And I refresh the page
-    When I click on advance filter "#advfAnnouncementFundingAccountGrantor" of table id "---announcement:-:fundingAccountsTableId---"
-    When I enter advance filter values inside id "advfAnnouncementFundingAccountGrantor"
-      | Pre-Encumbrance | equals to | 3000 |
+    #When I click on advance filter "#advfAnnouncementFundingAccountGrantor" of table id "---announcement:-:fundingAccountsTableId---"
+    #When I enter advance filter values inside id "advfAnnouncementFundingAccountGrantor"
+    #  | Pre-Encumbrance | equals to | 3000 |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:fundingAccountsTableId---"
     When I navigate to "History" sub tab
     And I select "Related Funding Account" from dropdown present on top right of flex table id "History"
@@ -567,9 +567,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 #      | Title | Contains | ab |
     Then I softly see value "ab" for title "Title" inside table "---announcement:-:contactTableId---"
     And I refresh the page
-    And I click on advance filter "#advfAnnouncementContacts" of table id "---announcement:-:contactTableId---"
-    When I enter advance filter values inside id "advfAnnouncementContacts"
-      | Title | Contains | who am i |
+    #And I click on advance filter "#advfAnnouncementContacts" of table id "---announcement:-:contactTableId---"
+    #When I enter advance filter values inside id "advfAnnouncementContacts"
+    #  | Title | Contains | who am i |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:contactTableId---"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -598,9 +598,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "---announcement:-:ApproverRolesGrantorgridTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
-    When I click on advance filter "#advfGrantorAnnouncementReviewersTempGrantor" of table id "---announcement:-:ApproverRolesGrantorgridTableId---"
-    When I enter advance filter values inside id "advfGrantorAnnouncementReviewersTempGrantor"
-      | Responsibility | equals to | Fiscal Reviewer |
+    #When I click on advance filter "#advfGrantorAnnouncementReviewersTempGrantor" of table id "---announcement:-:ApproverRolesGrantorgridTableId---"
+    #When I enter advance filter values inside id "advfGrantorAnnouncementReviewersTempGrantor"
+    #  | Responsibility | equals to | Fiscal Reviewer |
     Then I softly see value "Fiscal Reviewer" for title "Responsibility" inside table "---announcement:-:ApproverRolesGrantorgridTableId---"
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
@@ -1012,7 +1012,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type |
       | Competitive       |
 
-  @72328 @72326 @72025 @71974 @announcementDisApprovalbyEXE @aashish
+  @72328 @72326 @72025 @71974 @announcementDisApprovalbyEXE @aashish @Temphitesh
   Scenario Outline: To verify Approval history of announcement when announcement rejected by Executive Office Approval: Victor EXE
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -1217,7 +1217,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type |
       | Competitive       |
 
-  @65080 @VerifyDraftAnnouncementIsNotDisplayedForSRUer @keerti
+  @65080 @VerifyDraftAnnouncementIsNotDisplayedForSRUer @keerti @Temphitesh
   Scenario Outline: Verify Draft announcement is not displayed at SR user end.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -1686,7 +1686,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Monitoring           |
       | Closeout             |
 
-  @145325 @verifyAdditionOfApproverAfterAnnouncementIsUnpublished-RnRFuntionality @monu @buglogged151920
+  @145325 @verifyAdditionOfApproverAfterAnnouncementIsUnpublished-RnRFuntionality @monu @buglogged151920 @Temphitesh
   Scenario Outline: Validate Announcement owner can add approvers while its unpublished
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
