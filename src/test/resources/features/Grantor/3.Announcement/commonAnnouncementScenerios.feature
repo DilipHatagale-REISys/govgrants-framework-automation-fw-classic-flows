@@ -167,7 +167,7 @@ Feature: Validate all common scenarios in the  Announcement tab
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 20       | No                   |
     Then I see that "{SavedValue:FO Username}" has been added in flextable with Id "---announcement:-:reviewersTableId---"
 
-  @52412 @announcementReviewerInitiationFA @aa @Temphitesh
+  @52412 @announcementReviewerInitiationFA @aa 
   Scenario: Validate the Reviewer initiation for the Announcement
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
@@ -208,7 +208,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I click on "Complete Review" in the page details
     Then I see status in Progress-bar is "Reviewed" and is "green"
 
-  @35003 @announcementAddAttachmentFA @Temphitesh
+  @35003 @announcementAddAttachmentFA 
   Scenario: Validate the attachment for an Announcement
     Given I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---announcement:-:AnnouncementAttachmentTableId---"
@@ -217,7 +217,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I upload attachment "Attachment.pdf" of type "Funding Opportunity Announcement" from computer
     Then I softly see "Funding Opportunity Announcement" has been added in "Announcement Files" flex table
 
-  @52414 @reviewStepsBeforeSubmitForApprovalFA @Temphitesh
+  @52414 @reviewStepsBeforeSubmitForApprovalFA
   Scenario: Validate the Review steps of Announcement before submit for Approval
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -267,6 +267,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I pause execution for "2" seconds
     #And I collapse nested table containing column value "Permits"
     When I close "Review Form" modal by clicking the top right x button
+    And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -293,6 +294,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I pause execution for "2" seconds
     #And I collapse nested table containing column value "Program Income"
     When I close "Review Form" modal by clicking the top right x button
+    And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
