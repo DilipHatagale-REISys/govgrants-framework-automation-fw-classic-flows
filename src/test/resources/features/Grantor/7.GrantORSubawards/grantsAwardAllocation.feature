@@ -1464,7 +1464,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Total Encumbrance must be equal to the total Award Amount in the Subaward budget section |
 
-  @240355 @ValidatePMuserseecorrectNewobligationandCumulativeobligationamountshoulddisplaycorrectlyforeachfocusareafromawardbudgetgrid @sprint-15-US-237846 @vaibhav @Allocation @hiteshTemp
+  @240355 @ValidatePMuserseecorrectNewobligationandCumulativeobligationamountshoulddisplaycorrectlyforeachfocusareafromawardbudgetgrid @sprint-15-US-237846 @vaibhav @Allocation
   Scenario Outline: Validate PM user see correct 'New obligation' and 'Cumulative obligation' amount should display correctly for each focus area from award budget grid
     Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_RISK_ASSESSMENT_NO"
     When I login to "As a Grantor" app as "PM" user
@@ -16528,7 +16528,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | SPI3 | GrantFields1       | {SavedValue:SPI3 Username} |
       | IND  | GrantFieldsIndUser | {SavedValue:IND Username}  |
 
-  @249968 @ValidateCompAnnPOusershouldseeBudgetPeriodTittlecolumnrenamedasBudgetPeriodNumberunderGrantBudgetsectionofBudgettabonGrantlayout @sprint-17-US-246018 @vaibhav @Allocation @hiteshTemp
+  @249968 @ValidateCompAnnPOusershouldseeBudgetPeriodTittlecolumnrenamedasBudgetPeriodNumberunderGrantBudgetsectionofBudgettabonGrantlayout @sprint-17-US-246018 @vaibhav @Allocation
   Scenario: Validate Comp Ann PO user should see Budget Period Tittle column renamed as Budget Period Number under Grant Budget section of Budget tab on Grant layout
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
