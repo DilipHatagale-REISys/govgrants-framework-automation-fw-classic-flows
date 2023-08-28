@@ -1,4 +1,4 @@
-@amendmentAllocationNew @amendmentRequests @grantor-regression @parallel-regression @regression
+@amendmentAllocationNew @amendmentRequests @grantor-regression @regression
 Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
   @257885 @VerifySPIusercanseeCurrentobligationcolumnvaluewillbecopiedfromthecumulativeobligationfromtheFocusareaoftheawardFAisYes @sprint-19-US-249863 @hitesh @Allocation
