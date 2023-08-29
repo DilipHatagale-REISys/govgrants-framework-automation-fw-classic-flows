@@ -84,7 +84,7 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     And I click "Yes" on modal confirmation box
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
-    And I navigate to "Home" tab
+    And I navigate to "Monitoring" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:homeCompletedTaskTableId---" panel
     Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:DeskReview}" inside table "---deskreview:-:homeCompletedTaskTableId---"
@@ -98,8 +98,87 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I softly see value "Approved" for title "Old Value" inside table "History"
     Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
     Then I softly see snapshot with name containing "Site_Visit_Submit_For_Approval.pdf" as name
-    And I click on hyperlink containing value "Site_Visit_Submit_For_Approval.pdf"
-    And I switch to parent tab
+    And I click on hyperlink containing value "Desk Review - Accept And Close"
+    When I download the file
+    Then I softly see "{SavedValue:EGMSID}" on page "1" of "govgrants" pdf file
+    And I checkout to yopmail with mailid "automationfd@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+      """
+    Then I see the mail text is as follows :
+  """
+  Hello,
+
+   This email is to notify you that approver #Automation FD has initiated undo action.
+
+   Details:
+   EGMS ID: {SavedValue:DeskReview}
+   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+
+   Log in to EGMS and click here to start reviewing the details.
+
+   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+   Thank you.
+   The EGMS Team
+    """
+    Then I refresh the page
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+      """
+    Then I see the mail text is as follows :
+  """
+  Hello,
+
+   This email is to notify you that approver #Automation FD has initiated undo action.
+
+   Details:
+   EGMS ID: {SavedValue:DeskReview}
+   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+
+   Log in to EGMS and click here to start reviewing the details.
+
+   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+   Thank you.
+   The EGMS Team
+    """
+    Then I refresh the page
+    And I am on "INTERNAL" portal
+    When I login to "As a Grantor" app as "FD" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:DeskReviewID}" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
+    Then I see only the following ordered radio buttons in the approval decision :
+      | Approve | Send back | Forward |
+    And I submit the approval in the approval decision without processing
+    And I pause execution for "3" seconds
+    Then I see the following messages in the page details contains:
+      | Please select appropriate action before submitting. |
+    When I select radio button "Send back" in the approval decision
+    And I submit the approval in the approval decision
+    Then I can see the message "Comments are Required." in the approval decision
+    When I "Send to Owner" in the approval decision
+    And I pause execution for "3" seconds
+    Then I softly see the following messages in the page details contains:
+      | Successfully sent to Owner. It may take few minutes to process record |
+    Then I softly see status in Progress-bar is "In Progress" and is "green"
+    And I am on "INTERNAL" portal
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:DeskReviewID}" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    Then I softly see status in Progress-bar is "In Progress" and is "green"
 
 
 
