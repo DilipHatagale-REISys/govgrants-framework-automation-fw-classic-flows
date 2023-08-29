@@ -1347,7 +1347,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                       | Desk Review |
-      | {SavedValue:EXer Username} | Step 1      |
+      | {SavedValue:EXE Username} | Step 1      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
