@@ -361,7 +361,7 @@ Feature: Validate all scenarios in the Site Visit with Undo
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    And I click on "View" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Send back | Forward |
