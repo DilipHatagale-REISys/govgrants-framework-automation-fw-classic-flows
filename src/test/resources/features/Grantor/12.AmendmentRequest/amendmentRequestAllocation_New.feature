@@ -19692,11 +19692,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on page navigation arrow "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---" for table id "Next"
     Then I softly see value "$300.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:subrecipientGrantBudgetTableId---"
     When I navigate to "Actuals" sub tab
-    When I navigate to "Subawards" sub tab
     #271842
     And I save the field labeled "Spent" as "SpentAwdGrantSR"
     Then I softly see field "Spent" as "$500.00"
     Then I softly see value "{SavedValue:SpentAwd2}" is "Equals to" the value "{SavedValue:SpentAwdGrantSR}"
+    When I navigate to "Subawards" sub tab
     And I click on parallel menu button in flex table title "Subawards"
     And I select "Reset Table" from parallel lines dropdown of "Subawards"
     And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
