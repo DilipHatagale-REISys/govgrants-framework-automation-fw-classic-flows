@@ -179,6 +179,32 @@ Feature: Validate all scenarios in the Site Visit with Undo
     When I perform quick search for "{SavedValue:DeskReviewID}" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     And I click on "Start" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     Then I softly see status in Progress-bar is "In Progress" and is "green"
-
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---sitevisits:-:reviewersFlexTableId---" by clicking "New" :
+      | Reviewer Name            | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | {SavedValue:EXE Username} | Fiscal Reviewer | Review Financial details | 10       | Yes                   |
+    And I click on "Send for Review" icon for "{SavedValue:EXE Username}" inside table
+    Then I softly see field "Status" as "Submitted for Review"
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "{SavedValue:DeskReviewID}" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    Then I softly see field "Status" as "Submitted for Review"
+    Then I cannot see top right button "Undo" in page detail
+    And I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:SitevVisitId}" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I navigate to "Responsibilities" tab
+    When I click on "Enter Review" icon for "{SavedValue:EXE Username}" inside flex table with id "---deskreview:-:reviewersFlexTableId---"
+    And I enter values into fields
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
+    When I click modal button "Save"
+    And I click on submit review
+    When I close "Site Visit Reviewers" modal by clicking the top right x button
 
 

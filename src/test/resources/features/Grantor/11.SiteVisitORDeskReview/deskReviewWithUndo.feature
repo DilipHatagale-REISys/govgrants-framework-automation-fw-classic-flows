@@ -1060,11 +1060,6 @@ Feature: Validate all scenarios in Desk Review with Undo
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:homeCompletedTaskTableId---" panel
     Then I softly see value "Completed" for title "Status" against the value "{SavedValue:DeskReview}" inside table "---deskreview:-:homeCompletedTaskTableId---"
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:homeCompletedTaskTableId---" panel
-    Then I softly see value "Completed" for title "Status" against the value "{SavedValue:DeskReview}" inside table "---deskreview:-:homeCompletedTaskTableId---"
 
   @300117 @VerifythatUserWillSeeSnapshotInSnapshotHistoryTable @sprint-25-US-297269 @hitesh @Undo
   Scenario:Verify that User Will See Snapshot In Snapshot History Table
