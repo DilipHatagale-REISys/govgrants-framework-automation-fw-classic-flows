@@ -364,11 +364,10 @@ Feature: Validate all scenarios in the Site Visit with Undo
     And I click on "View" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     Then I see only the following ordered radio buttons in the approval decision :
-      | Approve | Send back | Forward |
+      | Approve | Send Back | Forward |
     And I submit the approval in the approval decision without processing
-    And I pause execution for "3" seconds
     Then I see the following messages in the page details contains:
-      | Please select appropriate action before submitting. |
+      | Please select appropriate action before submitting.|
     When I select radio button "Send back" in the approval decision
     And I submit the approval in the approval decision
     Then I can see the message "Comments are Required." in the approval decision
