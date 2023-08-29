@@ -206,5 +206,34 @@ Feature: Validate all scenarios in the Site Visit with Undo
     When I click modal button "Save"
     And I click on submit review
     When I close "Site Visit Reviewers" modal by clicking the top right x button
-
-
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "{SavedValue:DeskReviewID}" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    Then I softly see field "Status" as "Submitted for Review"
+    And I click on "Complete Review" in the page details
+    Then I softly see field "Status" as "Reviewed"
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "{SavedValue:DeskReviewID}" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    Then I softly see field "Status" as "Reviewed"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "{SavedValue:DeskReviewID}" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    Then I softly see field "Status" as "Reviewed"
+    And I click on "Submit for Approval" in the page details
+    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "{SavedValue:DeskReviewID}" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
+    Then I cannot see top right button "Undo" in page detail
