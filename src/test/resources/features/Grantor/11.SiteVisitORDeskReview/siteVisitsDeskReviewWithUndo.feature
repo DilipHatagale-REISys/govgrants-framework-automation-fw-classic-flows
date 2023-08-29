@@ -273,15 +273,15 @@ Feature: Validate all scenarios in the Site Visit with Undo
     And I click on "Notify" in the page details
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
-    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
