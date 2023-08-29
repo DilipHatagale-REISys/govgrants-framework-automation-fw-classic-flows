@@ -371,7 +371,7 @@ Feature: Validate all scenarios in the Site Visit with Undo
     When I select radio button "Send back" in the approval decision
     And I submit the approval in the approval decision
     Then I can see the message "Comments are Required." in the approval decision
-    When I "Send back" in the approval decision
+    When I "Send Back" in the approval decision
     And I pause execution for "3" seconds
     Then I softly see the following messages in the page details contains:
       | Successfully sent to Owner. It may take few minutes to process record |
@@ -410,7 +410,7 @@ Feature: Validate all scenarios in the Site Visit with Undo
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    And I click on "View" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly see status in Progress-bar is "Notified" and is "Green"
     When I click on "Conduct" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
