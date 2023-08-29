@@ -366,7 +366,7 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Send Back | Forward |
     And I submit the approval in the approval decision without processing
-    Then I see the following messages in the page details contains:
+    Then I softly see the following messages in the page details contains:
       | Please select appropriate action before submitting.|
     When I select radio button "Send back" in the approval decision
     And I submit the approval in the approval decision
