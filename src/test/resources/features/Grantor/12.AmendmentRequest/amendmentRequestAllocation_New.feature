@@ -19358,7 +19358,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
   Scenario: Validate PM user cannot see Budgeted Amount clm under Budget Summary by FA section on version 2 Award is in Activated state post AR if (FA = YES)
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SECOND_FOCUS_AREA_BUD_CAT_BUILDUP_YES" of type "Formula_By_Applicant_Focus_Area"
     When I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "IND" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
