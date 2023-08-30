@@ -934,11 +934,12 @@ Feature: Validate all scenarios in the Site Visit with Undo
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     And I navigate to "History" sub tab
-    Then I softly see value "Automation FD1" for title "New Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
-    Then I softly see value "Automation FD" for title "Old Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
+    And I see "{SavedValue:FD1 Username}" against "Step 1" in approval history
+    And I see "{SavedValue:FD1 Username}" against "Approved" in approval history
+    Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Approved"
     Given I navigate to "Responsibilities" sub tab
-    Then I softly see value "Step 1" for title "Desk Review" against the value "Automation FD1" inside table "---deskreview:-:approverDeskReviewTableId---"
-    Then I softly see value "NA" for title "Desk Review" against the value "Automation FD" inside table "---deskreview:-:approverDeskReviewTableId---"
+    Then I softly see value "Step 1" for title "Site Visit" against the value "Automation FD1" inside table "---sitevisits:-:approverSiteVisitTableId---"
+    Then I softly see value "NA" for title "Site Visit" against the value "Automation FD" inside table "---sitevisits:-:approverSiteVisitTableId---"
     Then I can see top right button "Undo" in page detail
     And I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
