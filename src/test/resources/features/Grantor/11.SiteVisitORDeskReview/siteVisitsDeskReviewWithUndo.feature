@@ -929,11 +929,10 @@ Feature: Validate all scenarios in the Site Visit with Undo
 #    Then I softly see status in Progress-bar is "Approved" and is "green"
 #    Then I cannot see top right button "Undo" in page detail
 #    When I re-login to "As a Grantor" app as "FD1" user on "INTERNAL" portal
-    When I login to "As a Grantor" app as "FD1" user
-    And I navigate to "Monitoring" tab
-    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "SV-2942" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "View" icon for "SV-2942" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+#    And I navigate to "Monitoring" tab
+#    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+#    When I perform quick search for "SV-2942" in "---sitevisits:-:manageSiteVisitTableId---" panel
+#    And I click on "View" icon for "SV-2942" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
 #    And I navigate to "History" sub tab
 #    Then I softly see value "Automation FD1" for title "New Value" inside table "---sitevisits:-:siteVisitHistoryTableId---"
 #    Then I softly see value "Automation FD" for title "Old Value" inside table "---sitevisits:-:siteVisitHistoryTableId---"
