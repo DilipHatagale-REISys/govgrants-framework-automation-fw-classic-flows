@@ -1028,7 +1028,6 @@ Feature: Validate all scenarios in the Site Visit with Undo
     And I submit the approval in the approval decision
     Then I can see the message "Comments are Required." in the approval decision
     When I "Send Back" in the approval decision
-    And I pause execution for "3" seconds
     Then I softly see the following messages in the page details contains:
       | Successfully sent to Owner. It may take few minutes to process record |
     Then I softly see field "Status" as "In Progress"
