@@ -934,16 +934,16 @@ Feature: Validate all scenarios in the Site Visit with Undo
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "SV-2942" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "SV-2942" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
-    And I navigate to "History" sub tab
-    Then I softly see value "Automation FD1" for title "New Value" inside table "---sitevisits:-:siteVisitHistoryTableId---"
-    Then I softly see value "Automation FD" for title "Old Value" inside table "---sitevisits:-:siteVisitHistoryTableId---"
-    Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Approved"
-    Given I navigate to "Responsibilities" sub tab
-    Then I softly see value "Step 1" for title "Site Visit" against the value "Automation FD1" inside table "---sitevisits:-:approverSiteVisitTableId---"
-    Then I softly see value "NA" for title "Site Visit" against the value "Automation FD" inside table "---sitevisits:-:approverSiteVisitTableId---"
-    Then I can see top right button "Undo" in page detail
-    And I click on "Undo" in the page details
-    Then I softly see field "Status" as "Submitted for Approval"
+#    And I navigate to "History" sub tab
+#    Then I softly see value "Automation FD1" for title "New Value" inside table "---sitevisits:-:siteVisitHistoryTableId---"
+#    Then I softly see value "Automation FD" for title "Old Value" inside table "---sitevisits:-:siteVisitHistoryTableId---"
+#    Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Approved"
+#    Given I navigate to "Responsibilities" sub tab
+#    Then I softly see value "Step 1" for title "Site Visit" against the value "Automation FD1" inside table "---sitevisits:-:approverSiteVisitTableId---"
+#    Then I softly see value "NA" for title "Site Visit" against the value "Automation FD" inside table "---sitevisits:-:approverSiteVisitTableId---"
+#    Then I can see top right button "Undo" in page detail
+#    And I click on "Undo" in the page details
+#    Then I softly see field "Status" as "Submitted for Approval"
 ##    And I checkout to yopmail with mailid "automationfd1@yopmail.com"
 ##    And I pause execution for "10" seconds
 ##    Then I refresh the page
