@@ -19775,7 +19775,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Budget Category | Spent This Action |
       | Construction    | 250               |
     And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
-    And I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---"
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" by clicking "Edit" :
       | Budget Category | Spent This Action |
       | Construction    | 250               |
@@ -19846,7 +19845,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
     Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area2" in flex table with id "---amendment:-:projectAreasTableId---"
 
-  @315674 @Validateusershouldnotabletoeditanyfieldinbudgetsummary&budgetsummarybyfocusareasectionwhenAmendmentisinsendbacktosubrecpientstateFANo @Sprint-08-US-306600 @vaibhav @Allocation @TBE
+  @315674 @Validateusershouldnotabletoeditanyfieldinbudgetsummary&budgetsummarybyfocusareasectionwhenAmendmentisinsendbacktosubrecpientstateFANo @Sprint-08-US-306600 @vaibhav @Allocation
   Scenario: Validate user should not able to edit any field in budget summary & budget summary by focus area section when Amendment is in send back to subrecpient state FA No
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "FOCUS_AREA_NO_DETAILS_YES-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "FOCUS_NO_BUDGET_CAT_DETAILS_BUD_YES"
@@ -20101,6 +20100,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Total Commitment" rendered in view mode only
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I navigate to "Budget" sub tab
     #315677
     Then I see status in Progress-bar is "Closed" and is "Green"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
@@ -20116,6 +20116,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on parallel menu button in flex table title "Subawards"
     And I select "Reset Table" from parallel lines dropdown of "Subawards"
     And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    When I navigate to "Budget" sub tab
     #315677
     Then I softly see field "Status" as "Closed"
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
@@ -20261,7 +20262,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I close "{SavedValue:PayreqId}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "green"
     And I save the field labeled "Subaward" as "SubawardId"
-    When I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -20293,7 +20294,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount. |
 
-  @276447 @ValidateFormulaByApplicant&FocusAreaFAYesusercanseefocusareaswith0obligationonFundingChangeamendmentwhenawardiscreatedfromdirectgrant @Sprint-23-US-275864 @vaibhav @Allocation @TBE
+  @276447 @ValidateFormulaByApplicant&FocusAreaFAYesusercanseefocusareaswith0obligationonFundingChangeamendmentwhenawardiscreatedfromdirectgrant @Sprint-23-US-275864 @vaibhav @Allocation
   Scenario: Validate Formula By Applicant Focus Area FA Yes user can see focus areas with 0 obligation on Funding Change amendment when award is created from direct grant
     Given I activated standalone subaward "Automation Runtime Award" with properties "THREE_FOCUS_AREA_NO_BUDGET_CATEGORY_THIRD_FOCUS" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user

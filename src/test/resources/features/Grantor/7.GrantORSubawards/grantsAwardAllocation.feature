@@ -24287,7 +24287,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I see status in Progress-bar is "Created" and is "green"
     Then I softly do not see "Budget Summary by Focus Area" page block displayed
 
-  @276538 @ValidateCompetitiveFAYesusercanseefocusareaswith0obligationonactiveSubawardwhenawardiscreatedfromdirectgrant @Sprint-23-US-275864 @vaibhav @Allocation @TBE
+  @276538 @ValidateCompetitiveFAYesusercanseefocusareaswith0obligationonactiveSubawardwhenawardiscreatedfromdirectgrant @Sprint-23-US-275864 @vaibhav @Allocation
   Scenario: Validate Competitive FA Yes user can see focus areas with 0 obligation on active Subaward when award is created from direct grant
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "THREE_FOCUS_AREA_NO_BUDGET_CATEGORY_THIRD_FOCUS-Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
@@ -24304,7 +24304,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see value "$0.00" for title "New Obligation" against the value "Test Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
     Then I softly see value "$0.00" for title "Cumulative Obligation" against the value "Test Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @276336 @ValidateFormulaByApplicantFAYesusercanseefocusareaswith0obligationonactivesubawardwhenawardiscreatedfromdirectgrant @Sprint-23-US-275864 @vaibhav @Allocation @TBE
+  @276336 @ValidateFormulaByApplicantFAYesusercanseefocusareaswith0obligationonactivesubawardwhenawardiscreatedfromdirectgrant @Sprint-23-US-275864 @vaibhav @Allocation
   Scenario: Validate Formula By Applicant FAYes user can see focus areas with 0 obligation on active subaward when award is created from direct grant
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "THREE_FOCUS_AREA_NO_BUDGET_CATEGORY_THIRD_FOCUS-Automation EXE user" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "EXE" user
