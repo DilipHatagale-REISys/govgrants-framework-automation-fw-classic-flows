@@ -19822,6 +19822,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "Subrecipient_BRedirection" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter value "Automation Justification" into field "fieldJustification__c"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I click on "Submit to Grantor" in the page details
@@ -19840,6 +19841,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Current Commitment" rendered in view mode only
     Then I softly see that "Budget Redirection Threshold" rendered in view mode only
     Then I softly see that "Subrecipient Match (%)" rendered in view mode only
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     Then I softly do not see "Actions" in flex table header "---amendment:-:projectAreasTableId---"
     Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
@@ -20110,8 +20112,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
     And I click on parallel menu button in flex table title "Subawards"
     And I select "Reset Table" from parallel lines dropdown of "Subawards"
@@ -20177,6 +20179,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 500   | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -20189,6 +20192,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 0     | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I wait for "9" seconds
     And I click on "Submit for Approval" in the page details
@@ -20199,6 +20203,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 4100  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
@@ -20279,10 +20284,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Automation Test Description | fieldFundingChangeJustification__c |
       | -2000                       | fieldRequestedChangeInBudget__c    |
       | 3000                        | fieldRevisedCommitment__c          |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
-    When I click on top right button "Associate" in flex table with id "---amendment:-:projectAreasTableId---"
-    When I click "Associate" after selection of "Automation Permanent Focus Area2" by showing entries "All" in flex table with id "---amendment:-:focusAreaTableId---"
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
