@@ -1013,8 +1013,7 @@ Feature: Validate all scenarios in the Site Visit with Undo
 ##   The EGMS Team
 ##    """
 ##    Then I refresh the page
-#    And I am on "INTERNAL" portal
-#    When I login to "As a Grantor" app as "FD1" user
+    And I am on "INTERNAL" portal
     When I login to "As a Grantor" app as "FD1" user
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
