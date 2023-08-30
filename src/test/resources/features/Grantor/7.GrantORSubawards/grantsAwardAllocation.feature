@@ -8673,8 +8673,8 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click modal button "Save"
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name        | Project Role             | Is Key Personnel |
-      | <Contacts> | Project Director/Manager  | Checked          |
+      | Name       | Project Role             | Is Key Personnel |
+      | <Contacts> | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
       | Name                     | Award  |
@@ -8730,9 +8730,9 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see that "Total Commitment" rendered in view mode only
 
     Examples:
-      | User |AllocationType     | Contacts                  |
-      | SPI3 |GrantFields1       |{SavedValue:SPI3 Username} |
-      | IND  |GrantFieldsIndUser |{SavedValue:IND Username}  |
+      | User | AllocationType     | Contacts                   |
+      | SPI3 | GrantFields1       | {SavedValue:SPI3 Username} |
+      | IND  | GrantFieldsIndUser | {SavedValue:IND Username}  |
 
   @243697 @243704 @243863 @243952 @ValidateUsershouldnoteditthenewobligationvalueinRejectedState @sprint-16-US-237985 @vaibhav @Allocation
   Scenario: Validate User should not edit the new obligation value in Rejected State
@@ -16627,7 +16627,7 @@ Feature: Validate all scenarios of grants and award for Allocation
       | Grant_Edition1         |
       | Grant_Edition_Directed |
 
-  @248577 @ValidateCompAnnINDusershouldnotseebudgetsummabyfocusareasectiononGrantunderbudgettabisinDraftStatewhenselectAllocationTypeisNA&FocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246037 @vaibhav @Allocation 
+  @248577 @ValidateCompAnnINDusershouldnotseebudgetsummabyfocusareasectiononGrantunderbudgettabisinDraftStatewhenselectAllocationTypeisNA&FocusAreaisYESwhilecreatingDirectGrant @sprint-17-US-246037 @vaibhav @Allocation
   Scenario: Validate Comp Ann IND user should not see 'budget summary by focus area' section on Grant under budget tab is in Draft State when select Allocation Type is NA & Focus Area is 'YES' while creating Direct Grant
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -17329,9 +17329,9 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly do not see field "Remaining Budget" inside "Budget Summary" section
 
     Examples:
-      | User  | User1 | Creation            | Approver                    | Contacts                 |
-      | ADMIN | IND   | GrantFieldsIndUser1 | {SavedValue:ADMIN Username} |{SavedValue:IND Username} |
-      | EXE   | SPI3  | GrantFields1        | {SavedValue:EXE Username}   |{SavedValue:SPI3 Username}|
+      | User  | User1 | Creation            | Approver                    | Contacts                   |
+      | ADMIN | IND   | GrantFieldsIndUser1 | {SavedValue:ADMIN Username} | {SavedValue:IND Username}  |
+      | EXE   | SPI3  | GrantFields1        | {SavedValue:EXE Username}   | {SavedValue:SPI3 Username} |
 
   @248348 @248384 @ValidateSPISPAUsertheEstimatedfundingfieldFANo @sprint-17-US-245897 @vaibhav @Allocation
   Scenario: Validate SPISPA User the Estimated funding field FA No
@@ -24286,3 +24286,37 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Budget" sub tab
     Then I see status in Progress-bar is "Created" and is "green"
     Then I softly do not see "Budget Summary by Focus Area" page block displayed
+
+  @276538 @ValidateCompetitiveFAYesusercanseefocusareaswith0obligationonactiveSubawardwhenawardiscreatedfromdirectgrant @Sprint-23-US-275864 @vaibhav @Allocation @TBE
+  Scenario: Validate Competitive FA Yes user can see focus areas with 0 obligation on active Subaward when award is created from direct grant
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "THREE_FOCUS_AREA_NO_BUDGET_CATEGORY_THIRD_FOCUS-Automation EXE user" of type "Competitive"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    Then I softly see field "Status" as "Activated"
+    And I navigate to "Budget" sub tab
+    Then I softly see value "Test Focus Area" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$0.00" for title "New Obligation" against the value "Test Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$0.00" for title "Cumulative Obligation" against the value "Test Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+
+  @276336 @ValidateFormulaByApplicantFAYesusercanseefocusareaswith0obligationonactivesubawardwhenawardiscreatedfromdirectgrant @Sprint-23-US-275864 @vaibhav @Allocation @TBE
+  Scenario: Validate Formula By Applicant FAYes user can see focus areas with 0 obligation on active subaward when award is created from direct grant
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "THREE_FOCUS_AREA_NO_BUDGET_CATEGORY_THIRD_FOCUS-Automation EXE user" of type "Formula_By_Applicant"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    Then I softly see field "Status" as "Activated"
+    And I navigate to "Budget" sub tab
+    Then I softly see value "Test Focus Area" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$0.00" for title "New Obligation" against the value "Test Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I softly see value "$0.00" for title "Cumulative Obligation" against the value "Test Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
