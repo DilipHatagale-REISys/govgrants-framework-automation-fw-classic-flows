@@ -101,7 +101,7 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I softly see snapshot with name containing "Site_Visit_Submit_For_Approval.pdf" as name
     And I click on hyperlink containing value "Site_Visit_Submit_For_Approval.pdf"
     When I download the file
-    Then I softly see "{SavedValue:EGMSID}" on page "1" of "govgrants" pdf file
+    Then I softly see "{SavedValue:SitevVisitId}" on page "1" of "govgrants" pdf file
     And I checkout to yopmail with mailid "automationfd@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
