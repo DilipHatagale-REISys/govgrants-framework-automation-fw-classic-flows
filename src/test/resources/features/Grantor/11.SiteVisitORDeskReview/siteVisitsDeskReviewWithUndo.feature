@@ -935,7 +935,8 @@ Feature: Validate all scenarios in the Site Visit with Undo
     When I perform quick search for "SV-2942" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "SV-2942" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     And I navigate to "History" sub tab
-    And I see "{SavedValue:FD1 Username}" against "Approved" in approval history
+    Then I softly see value "Automation FD1" for title "New Value" inside table "---sitevisits:-:siteVisitHistoryTableId---"
+    Then I softly see value "Automation FD" for title "Old Value" inside table "---sitevisits:-:siteVisitHistoryTableId---"
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Approved"
     Given I navigate to "Responsibilities" sub tab
     Then I softly see value "Step 1" for title "Site Visit" against the value "Automation FD1" inside table "---sitevisits:-:approverSiteVisitTableId---"
