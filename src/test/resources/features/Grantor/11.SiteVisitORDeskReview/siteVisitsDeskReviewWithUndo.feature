@@ -651,8 +651,8 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I softly see status in Progress-bar is "In Progress" and is "green"
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Name                        | Program |
-      | {SavedValue:EXE Username}   | NA      |
+      | Name                        | Site Visit |
+      | {SavedValue:EXE Username}   | NA         |
     When I enter the following values into flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
       | {SavedValue:PO Username}  | Step 2     |
