@@ -645,9 +645,9 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    When I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly see status in Progress-bar is "In Progress" and is "green"
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -720,7 +720,7 @@ Feature: Validate all scenarios in the Site Visit with Undo
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     #299565
     And I navigate to "History" sub tab
-    Then I softly see snapshot with name containing "Site_Visit_Submit_For_Approval.pdf" as name
+    Then I softly see snapshot with name containing "Site Visit - Undo Approval.pdf" as name
     Then I softly see value "{SavedValue:EXE Username}" for title "Taken By" against the value "Site_Visit_Submit_For_Approval.pdf" inside table "---sitevisits:-:snapshotHistoryTableId"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Home" tab
