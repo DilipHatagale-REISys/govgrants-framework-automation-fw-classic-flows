@@ -631,7 +631,7 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @281024 @VerifyEXEuserstep2asLaststepapprovercanseeUNDObuttonwhenApprovedtheSiteVisit&abletoSendbackapprovaldecisionafterclickonUNDO&abletoaddstep3approvalinSiteVisit @sprint-5-US-295139 @hitesh @Undo @sitevisitTemp
+  @281024 @VerifyEXEuserstep2asLaststepapprovercanseeUNDObuttonwhenApprovedtheSiteVisit&abletoSendbackapprovaldecisionafterclickonUNDO&abletoaddstep3approvalinSiteVisit @sprint-5-US-295139 @hitesh @Undo
   Scenario: Verify EXE user(step 2) as Last step approver can see UNDO button when Approved the Site Visit & able to Send back approval decision after click on UNDO & able to add step 3 approval in Site Visit
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -1021,7 +1021,22 @@ Feature: Validate all scenarios in the Site Visit with Undo
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
-    Then I can see top right button "Submit to Grantor" in page detail
+    When I navigate to "Reports and Outcomes" sub tab
+    And I expand nested table containing column value "Automation Observation"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    When I collapse nested table containing column value "Automation Observation"
+    And I expand nested table containing column value "Automation Concern"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    When I collapse nested table containing column value "Automation Concern"
+    And I expand nested table containing column value "Automation Finding"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     Then I cannot see top right button "Undo" in page detail
