@@ -547,6 +547,7 @@ Feature: Validate all scenarios in Negotiations
     And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:homePendingTasks---"
     And I navigate to "Negotiations" sub tab
+    When I click on "Edit" in the page details
     Then I see textarea field "fieldApplicantResponse__c" is editable
     When I enter value "Automation Test" into field "fieldApplicantResponse__c"
     When I click on "Save" in the page details
