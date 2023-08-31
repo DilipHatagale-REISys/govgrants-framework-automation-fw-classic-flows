@@ -3578,7 +3578,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Budget" sub tab
     Then I softly see field "Allocation Amount" as "$5,000"
 
- @vai @276440 @ValidateFormulaByapplicantFocusAreaFAYESsubrecipientusercandownloadpdfforNotyetQualifiedopportunity @Sprint-23-US-275864 @vaibhav @Allocation
+  @276440 @ValidateFormulaByapplicantFocusAreaFAYESsubrecipientusercandownloadpdfforNotyetQualifiedopportunity @Sprint-23-US-275864 @vaibhav @Allocation
   Scenario: Validate Formula By applicant & Focus Area FA YES subrecipient user can download pdf for Not yet Qualified opportunity
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     Given I am on "SUBPORTAL" portal
@@ -3587,10 +3587,13 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    And I save the field labeled "EGMS ID" as "annEgmsId"
     And I click on "Menu" in the page details
     And I select "Download as PDF" from dropdown
     And I download the file
-    Then I softly see "{SavedValue:Automation Runtime Formula Announcement}" on page "1" of "govgrants" pdf file
+    Then I softly see following details in "govgrants" pdf file:
+      | Detail                 | Page Number |
+      | {SavedValue:annEgmsId} | 1           |
     Then I softly see "Published" on page "1" of "govgrants" pdf file
     Then I softly see "Opportunity Specific Settings" on page "1" of "govgrants" pdf file
     Then I softly see "Federal/NGO Programs" on page "2" of "govgrants" pdf file
@@ -3600,9 +3603,81 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see "Budget Categories" on page "4" of "govgrants" pdf file
     Then I softly see "Focus Areas" on page "5" of "govgrants" pdf file
     Then I softly see "Goals and Objectives" on page "5" of "govgrants" pdf file
-    Then I softly see "Key Performance Indicators (KPIs)s" on page "5" of "govgrants" pdf file
+    Then I softly see "Key Performance Indicators (KPIs)" on page "5" of "govgrants" pdf file
     Then I softly see "Opportunity Files" on page "5" of "govgrants" pdf file
-    Then I softly see "Notes" on page "6" of "govgrants" pdf file
+    Then I softly see "Notes" on page "5" of "govgrants" pdf file
+
+  @276406 @ValidateFormulaByapplicantFANosubrecipientusercandownloadpdfforQualifiedopportunity @Sprint-23-US-275864 @vaibhav @Allocation
+  Scenario: Validate Formula By applicant FA No subrecipient user can download pdf for Qualified opportunity
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    And I save the field labeled "EGMS ID" as "annEgmsId"
+    When I click on "Qualify" in the page details
+    Then I softly see field "Status" as "Qualified"
+    And I click on "Menu" in the page details
+    And I select "Download as PDF" from dropdown
+    And I download the file
+    Then I softly see following details in "govgrants" pdf file:
+      | Detail                 | Page Number |
+      | {SavedValue:annEgmsId} | 1           |
+    Then I softly see "Published" on page "1" of "govgrants" pdf file
+    Then I softly see "Opportunity Specific Settings" on page "1" of "govgrants" pdf file
+    Then I softly see "Federal/NGO Programs" on page "2" of "govgrants" pdf file
+    Then I softly see "Contacts" on page "2" of "govgrants" pdf file
+    Then I softly see "Budget Summary" on page "3" of "govgrants" pdf file
+    Then I softly see "Budget Period Details" on page "3" of "govgrants" pdf file
+    Then I softly see "Budget Categories" on page "4" of "govgrants" pdf file
+    Then I softly see "Goals and Objectives" on page "5" of "govgrants" pdf file
+    Then I softly see "Key Performance Indicators (KPIs)" on page "5" of "govgrants" pdf file
+    Then I softly see "Opportunity Files" on page "5" of "govgrants" pdf file
+    Then I softly see "Notes" on page "5" of "govgrants" pdf file
+
+  @276407 @ValidateCheckfieldsandDownloadasPDFforOppConvertedtoapplication @Sprint-23-US-275864 @vaibhav @Allocation
+  Scenario: Validate Check fields and Download as PDF for Opp Converted to application
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    And I save the field labeled "EGMS ID" as "annEgmsId"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    And I wait for "3" seconds
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "appEgmsId"
+    And I navigate to "Opportunities" tab
+    When I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationIntake:-:convertedToApplicationTableID---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---" without waiting for record
+    Then I softly see field "Status" as "Converted to Application"
+    And I click on "Menu" in the page details
+    And I select "Download as PDF" from dropdown
+    And I download the file
+    Then I softly see following details in "govgrants" pdf file:
+      | Detail                 | Page Number |
+      | {SavedValue:annEgmsId} | 1           |
+    Then I softly see following details in "govgrants" pdf file:
+      | Detail                   | Page Number |
+      | Converted to Application | 1           |
+    Then I softly see "Opportunity Specific Settings" on page "1" of "govgrants" pdf file
+    Then I softly see "Federal/NGO Programs" on page "2" of "govgrants" pdf file
+    Then I softly see "Contacts" on page "2" of "govgrants" pdf file
+    Then I softly see "Budget Summary" on page "3" of "govgrants" pdf file
+    Then I softly see "Budget Period Details" on page "3" of "govgrants" pdf file
+    Then I softly see "Budget Categories" on page "4" of "govgrants" pdf file
+    Then I softly see "Focus Areas" on page "5" of "govgrants" pdf file
+    Then I softly see "Goals and Objectives" on page "5" of "govgrants" pdf file
+    Then I softly see "Key Performance Indicators (KPIs)" on page "5" of "govgrants" pdf file
+    Then I softly see "Opportunity Files" on page "5" of "govgrants" pdf file
+    Then I softly see "Notes" on page "5" of "govgrants" pdf file
 
   @274151 @VerifywhenSPIuserresubmittheapplicationafternegotiationfromFDMcheckFocusareasbudgetedtotalmustbeequaltoAllocationamountforthatfocusareainbudgetsummarysection @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario Outline: Verify when SPI user  resubmit the application after negotiation(from FDM) check Focus area's budgeted total, must be equal to Allocation amount for that focus area in budget summary section
