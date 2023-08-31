@@ -531,22 +531,22 @@ Feature: Validate all scenarios in Desk Review with Undo
      Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
       """
     Then I see the mail text is as follows :
-  """
-  Hello,
+     """
+     Hello,
 
-   This email is to notify you that approver #Automation PO has initiated undo action.
+     This email is to notify you that approver #Automation PO has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+     Details:
+     EGMS ID: {SavedValue:DeskReview}
+     Record Name: {SavedValue:Automation Runtime Award Desk Review}
 
-   Log in to EGMS and click here to start reviewing the details.
+     Log in to EGMS and click here to start reviewing the details.
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+     Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-   Thank you.
-   The EGMS Team
-    """
+     Thank you.
+     The EGMS Team
+     """
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
@@ -555,22 +555,22 @@ Feature: Validate all scenarios in Desk Review with Undo
      Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
       """
     Then I see the mail text is as follows :
-  """
-  Hello,
+      """
+     Hello,
 
-   This email is to notify you that approver #Automation PO has initiated undo action.
+     This email is to notify you that approver #Automation PO has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+     Details:
+     EGMS ID: {SavedValue:DeskReview}
+     Record Name: {SavedValue:Automation Runtime Award Desk Review}
 
-   Log in to EGMS and click here to start reviewing the details.
+     Log in to EGMS and click here to start reviewing the details.
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+     Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-   Thank you.
-   The EGMS Team
-  """
+     Thank you.
+     The EGMS Team
+     """
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
@@ -603,22 +603,22 @@ Feature: Validate all scenarios in Desk Review with Undo
      Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
       """
     Then I see the mail text is as follows :
-  """
-  Hello,
+      """
+    Hello,
 
-  This email is to notify you that approver #Automation PO has initiated undo action.
+    This email is to notify you that approver #Automation PO has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Details:
+    EGMS ID: {SavedValue:DeskReview}
+    Record Name: {SavedValue:Automation Runtime Award Desk Review}
 
-   Log in to EGMS and click here to start reviewing the details.
+    Log in to EGMS and click here to start reviewing the details.
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-   Thank you.
-   The EGMS Team
-  """
+    Thank you.
+    The EGMS Team
+    """
   @279029 @279030 @279031 @VerifythatAdminapproveruserwillnotseeUNDObuttoninSendtoSrstateofdeskreviewrecord @sprint-25-US-297269 @hitesh @Undo
   Scenario: Verify that Admin approver user will not see UNDO button in Send to S/r state ofdesk review record
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -1315,21 +1315,21 @@ Feature: Validate all scenarios in Desk Review with Undo
      Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
       """
     Then I see the mail text is as follows :
-  """
-  Hello,
+     """
+     Hello,
 
-   This email is to notify you that approver #Automation EXE1 has initiated undo action.
+     This email is to notify you that approver #Automation EXE1 has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+     Details:
+     EGMS ID: {SavedValue:DeskReview}
+     Record Name: {SavedValue:Automation Runtime Award Desk Review}
 
-   Log in to EGMS and click here to start reviewing the details.
+     Log in to EGMS and click here to start reviewing the details.
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+     Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-   Thank you.
-   The EGMS Team
+    Thank you.
+    The EGMS Team
     """
     Then I refresh the page
     And I am on "INTERNAL" portal
@@ -1657,19 +1657,23 @@ Feature: Validate all scenarios in Desk Review with Undo
     And I checkout to yopmail with mailid "fo.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
-    Then I do not see the mail text is as follows :
-  """
-  Hello,
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+      """
+    Then I see the mail text is as follows :
+     """
+    Hello,
 
-   This email is to notify you that approver #Automation FO has initiated undo action.
+    This email is to notify you that approver #Automation FO has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Details:
+    EGMS ID: {SavedValue:DeskReview}
+    Record Name: {SavedValue:Automation Runtime Award Desk Review}
 
-   Log in to EGMS and click here to start reviewing the details.
+    Log in to EGMS and click here to start reviewing the details.
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
    Thank you.
    The EGMS Team
@@ -1749,21 +1753,21 @@ Feature: Validate all scenarios in Desk Review with Undo
      Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
       """
     Then I see the mail text is as follows :
-  """
-  Hello,
+      """
+    Hello,
 
-   This email is to notify you that approver #Automation EXE1 has initiated undo action.
+    This email is to notify you that approver #Automation EXE1 has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Details:
+    EGMS ID: {SavedValue:DeskReview}
+    Record Name: {SavedValue:Automation Runtime Award Desk Review}
 
-   Log in to EGMS and click here to start reviewing the details.
+    Log in to EGMS and click here to start reviewing the details.
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-   Thank you.
-   The EGMS Team
+    Thank you.
+    The EGMS Team
     """
     Then I refresh the page
     And I am on "INTERNAL" portal
