@@ -1413,6 +1413,7 @@ Feature: Validate all scenarios in Desk Review with Undo
    Thank you.
    The EGMS Team
     """
+    Then I refresh the page
     And I am on "INTERNAL" portal
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Monitoring" tab
