@@ -493,7 +493,7 @@ Feature: Validate all scenarios in Negotiations
 
   @189567 @ValidatethesubrecipientshouldbeabletoprovideNegotiationSummarycommentsintheNegotiationstabbeforeresubmittingpreapplicationtothegrantorinNegotiationDetailsunderNegotiationTab @TBE
   Scenario: Validate the subrecipient should be able to provide Negotiation  Summary comments in the Negotiations tab before re-submitting  pre-application to the grantor in Negotiation Details under Negotiation Tab
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "default"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
