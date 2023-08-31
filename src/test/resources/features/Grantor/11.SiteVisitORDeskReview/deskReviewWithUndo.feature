@@ -1235,9 +1235,8 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I softly see value "Force Closed" for title "Status" against the value "{SavedValue:DeskReview}" inside table "---closeout:-:PendingSiteVisitDeskReviewTableId---"
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
-    And I save the field labeled "EGMS ID" as "DeskReviewId"
+    When I perform quick search for "{SavedValue:DeskReview}" in "---deskreview:-:deskReviewGridViewTableId---" panel
+    And I click on "View" icon for "{SavedValue:DeskReview}" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I softly see field "Status" as "Force Closed"
     Then I cannot see top right button "Undo" in page detail
 
