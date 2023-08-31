@@ -24322,7 +24322,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see value "$0.00" for title "Cumulative Obligation" against the value "Test Focus Area" inside table "---subAwardStandAlone:-:focusAreaTableId---"
 
   @116309 @ValidateDirectedValidateAwardActivationfailurewhenInternalUserselectsRiskAssessmentasYESontheGrant @Sprint-23-US-273843 @vaibhav @Allocation @TBE
-  Scenario: Validate Directed Award Activation failure when Internal User selects Risk Assessment as YES on the Grant
+  Scenario Outline: Validate Directed Award Activation failure when Internal User selects Risk Assessment as YES on the Grant
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel

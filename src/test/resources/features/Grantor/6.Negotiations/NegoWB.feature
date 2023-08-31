@@ -551,4 +551,3 @@ Feature: Validate all scenarios in Negotiations
     When I enter value "Automation Test" into field "fieldApplicantResponse__c"
     When I click on "Save" in the page details
     Then I softly see field "Details" as "Automation Test"
-
