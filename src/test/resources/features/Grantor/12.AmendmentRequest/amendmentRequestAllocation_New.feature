@@ -19747,7 +19747,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on page navigation arrow "---subAwardStandAlone:-:paymentSummaryBudgetTableId---" for table id "Next"
     Then I softly see value "$300.00" for title "Award Amount" against the value "Construction" inside table "---subAwardStandAlone:-:paymentSummaryBudgetTableId---"
 
-  @315667 @Validateusershouldnotabletoeditanyfieldinbudgetsummary&budgetsummarybyfocusareasectionwhenAmendmentisinsendbacktosubrecpientstateFAYes @Sprint-08-US-306600 @vaibhav @Allocation @TBE
+  @315667 @Validateusershouldnotabletoeditanyfieldinbudgetsummary&budgetsummarybyfocusareasectionwhenAmendmentisinsendbacktosubrecpientstateFAYes @Sprint-08-US-306600 @vaibhav @Allocation
   Scenario: Validate user should not able to edit any field in budget summary & budget summary by focus area section when Amendment is in send back to subrecpient state FA Yes
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA_DETAILS_BUDGET_YES_RISK_NO-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CAT_DETAILS_BUD_YES"
@@ -19937,7 +19937,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Budget Redirection Threshold" rendered in view mode only
     Then I softly see that "Subrecipient Match (%)" rendered in view mode only
 
-  @315675 @315677 @ValidateBudgetsummarysectionCumulativeObligation&TotalCommitmentvalueshouldbereadonlyonClosedgrantFANo @Sprint-08-US-306600 @vaibhav @Allocation @TBE
+  @315675 @315677 @ValidateBudgetsummarysectionCumulativeObligation&TotalCommitmentvalueshouldbereadonlyonClosedgrantFANo @Sprint-08-US-306600 @vaibhav @Allocation
   Scenario: Validate Budget summary section Cumulative Obligation & Total Commitment value should be read only on Closed grant (FA No)
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_BUILDUP_YES-Automation PO user" of type "Directed"
     And I am on "SUBPORTAL" portal
@@ -20125,7 +20125,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Cumulative Obligation" as "CumulativeObligationClosedAwdSR"
     Then I softly see value "{SavedValue:CumulativeObligationClosedAwdSR}" is "Equals to" the value "{SavedValue:EncumbranceAwd1}"
 
-  @315901 @315912 @ValidatevalidationisnotdisplayedtouserwhenuserenterRevisedCommitmentgreaterthanNewobligationincurrentARcumulativeobligationonGrantFAYES @Sprint-08-US-306600 @vaibhav @Allocation @TBE
+  @315901 @315912 @ValidatevalidationisnotdisplayedtouserwhenuserenterRevisedCommitmentgreaterthanNewobligationincurrentARcumulativeobligationonGrantFAYES @Sprint-08-US-306600 @vaibhav @Allocation
   Scenario: Validate validation is not displayed to user when user enter Revised Commitment greater than New obligation in current AR cumulative obligation on Grant FA YES
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY-Automation EXE user" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "EXE" user
@@ -20208,7 +20208,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @315918 @ValidatevalidationisdisplayedtoPMuseronclickofSendtoSubrecipientorSendtosubrecipientwhentherevisedObligationamountislessthanthespentamountofthatparticularfocusarea @Sprint-08-US-306600 @vaibhav @Allocation @TBE
+  @315918 @ValidatevalidationisdisplayedtoPMuseronclickofSendtoSubrecipientorSendtosubrecipientwhentherevisedObligationamountislessthanthespentamountofthatparticularfocusarea @Sprint-08-US-306600 @vaibhav @Allocation
   Scenario: Validate validation is displayed to PM user on click of Send to Subrecipient or Send back to subrecipient when the revised Obligation amount is less than the spent amount of that particular focus area
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY-Automation EXE user" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal

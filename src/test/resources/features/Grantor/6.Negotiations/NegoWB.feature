@@ -490,3 +490,65 @@ Feature: Validate all scenarios in Negotiations
       | Construction  | 2000   | 100        | 100            |
     When I expand nested table containing column value "BP01"
     Then I softly see value "$2,000.00" for title "Budget" against the value "Construction" inside table "---applicationReview:-:budgetTableId---"
+
+  @189567 @ValidatethesubrecipientshouldbeabletoprovideNegotiationSummarycommentsintheNegotiationstabbeforeresubmittingpreapplicationtothegrantorinNegotiationDetailsunderNegotiationTab @TBE
+  Scenario: Validate the subrecipient should be able to provide Negotiation  Summary comments in the Negotiations tab before re-submitting  pre-application to the grantor in Negotiation Details under Negotiation Tab
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "default"
+    When I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-App}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-App}" inside table
+    When I click on "Qualify" in the page details
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    And I click on "Create Pre-Application" in the page details
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "PreappEGMSID"
+    And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
+      | Name                      | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
+    And I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match |
+      | Construction  | 1000   | 100       | 100             |
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
+    And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---home:-:internalHomePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
+    When I click on "Request Negotiation" in the page details
+    And I navigate to "Negotiations" sub tab
+    When I enter "Negotiation_Edit" values from "PreApplication_Field_Values.xlsx"
+    And I edit the following rows inline in flex table with id "---preApplication:-:negotiationFormTableId---" by clicking "Edit" :
+      | Form Name                     | Needs Negotiation |
+      | Standard Pre-Application form | Checked           |
+    When I click on "Save" in the page details
+    Then I softly see field "Status" as "Created" in "Negotiation Request Details" pageblock
+    Then I softly see field "Pre-Application Sections for Negotiation" as "Files and Forms: Forms"
+    Then I softly see field "Details" as "Negotiation Initiated"
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Negotiation Initiated"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:homePendingTasks---"
+    And I navigate to "Budget" sub tab
+    Then I see textarea field "fieldApplicantResponse__c" is editable
+    When I enter value "Automation Test" into field "fieldApplicantResponse__c"
+    When I click on "Save" in the page details
+    Then I softly see field "Details" as "Automation Test"
+
