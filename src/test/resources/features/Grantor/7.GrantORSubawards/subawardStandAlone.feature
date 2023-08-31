@@ -1116,7 +1116,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -1194,9 +1194,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I navigate to "History" sub tab
-    #Then I softly see value "Subaward_Send_to_Subrecipient.pdf" for title "File Name" against the value "Subaward_Send_to_Subrecipient.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "Subaward_Send_to_Subrecipient.pdf" for title "File Name" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:PM Username}" for title "Taken By" against the value "Subaward_Send_to_Subrecipient.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+    And I wait for "60" seconds
+    Then I softly see value "Subaward Send_to_Subrecipient.pdf" for title "File Name" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+    Then I softly see value "{SavedValue:PM Username}" for title "Taken By" against the value "Subaward Send_to_Subrecipient.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel

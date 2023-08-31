@@ -1,8 +1,8 @@
 package com.ggproduct.automation.pageobjects.grantor;
 
 import com.ggproduct.automation.projectmanager.ProjectManager;
-import com.testingblaze.register.I;
-import com.testingblaze.report.LogLevel;
+import com.helperPackage.register.I;
+import com.helperPackage.report.LogLevel;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;

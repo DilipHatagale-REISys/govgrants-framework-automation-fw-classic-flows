@@ -1,7 +1,7 @@
 package com.ggproduct.automation.webservices;
 
 import com.google.gson.JsonObject;
-import com.testingblaze.register.I;
+import com.helperPackage.register.I;
 import io.restassured.response.Response;
 import org.apache.commons.lang.StringUtils;
 

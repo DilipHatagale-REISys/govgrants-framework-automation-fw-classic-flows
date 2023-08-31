@@ -1,9 +1,9 @@
 package com.ggproduct.automation.webservices;
 
-import com.automation.rei.handlers.govgrants;
+import com.helperPackage.handlers.govgrants;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.testingblaze.register.I;
+import com.helperPackage.register.I;
 import io.restassured.response.Response;
 import org.apache.commons.lang.StringUtils;
 
@@ -235,7 +235,7 @@ public class GrantorWebServices extends ProjectWebServices {
                 createAwardEndPoint, "Authorization", "Bearer " + tokenString, null);
         response.prettyPrint();
         assertStatusCode(response);
-        I.amPerforming().waitFor().makeThreadSleep(40000);
+        I.amPerforming().waitFor().makeThreadSleep(60000);
         String activateAwardEndPoint = endPoint + "/services/apexrest/activateAwardFromGrant/v2?AwardId=" + getIdOf("Award__c", awardName);
         Response response1 = I.amPerforming().restHttp().getCall(
                 activateAwardEndPoint, "Authorization", "Bearer " + tokenString);

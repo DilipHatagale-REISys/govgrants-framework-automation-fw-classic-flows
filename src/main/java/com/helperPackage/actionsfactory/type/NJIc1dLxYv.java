@@ -1,0 +1,106 @@
+/*
+ * Copyright 2020
+ *
+ * This file is part of Testing Blaze Automation Solution.
+ *
+ * Testing Blaze Automation Solution is licensed under the Apache License, Version
+ * 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy
+ * of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+package com.helperPackage.actionsfactory.type;
+
+import com.helperPackage.actionsfactory.abstracts.Action;
+import com.helperPackage.actionsfactory.abstracts.Element;
+import com.helperPackage.actionsfactory.elementfunctions.JavaScript;
+import com.helperPackage.objects.InstanceRecording;
+
+public class NJIc1dLxYv {
+    private JavaScript javaScript;
+    private Element elementApi;
+    private Action executeAction;
+
+    public NJIc1dLxYv() {
+        elementApi = InstanceRecording.getInstance(Element.class);
+        executeAction = InstanceRecording.getInstance(Action.class);
+        javaScript = InstanceRecording.getInstance(JavaScript.class);
+    }
+
+    /**
+     * input on webPage , mobilePage , AngularPage
+     * @param locator Mobile , Ng , By :
+     *                Mobile.
+     *                Angular.
+     *                By.
+     * @author nauman.shahid
+     */
+    public <T> void in(T locator,String input) {
+        in(locator,input, true);
+    }
+
+    /**
+     * input on webPage , mobilePage , AngularPage
+     * @param locator Mobile , Ng , By :
+     *                Mobile.
+     *                Angular.
+     *                By.
+     * @author nauman.shahid
+     */
+    public <T> void in(T locator,String input, Boolean processing) {
+        executeAction.doIt(elementApi.locator(locator,processing),input);
+    }
+
+    /**
+     * clear on webPage , mobilePage , AngularPage
+     * @param locator Mobile , Ng , By :
+     *                Mobile.
+     *                Angular.
+     *                By.
+     * @author nauman.shahid
+     */
+    public <T> void toClear(T locator) {
+        toClear(locator, true);
+    }
+
+    /**
+     * clear on webPage , mobilePage , AngularPage
+     * @param locator Mobile , Ng , By :
+     *                Mobile.
+     *                Angular.
+     *                By.
+     * @author nauman.shahid
+     */
+    public <T> void toClear(T locator, Boolean processing) {
+        executeAction.doIt(elementApi.locator(locator,processing),"--clear--");
+    }
+
+    /**
+     * Enter text with Java Script
+     *
+     * @param locator
+     * @param input
+     */
+    public <T> void withJavaScript(T locator, String input) {
+        withJavaScript(locator, input, true);
+    }
+
+    /**
+     * Enter text with Java Script
+     *
+     * @param locator
+     * @param input
+     */
+    public <T> void withJavaScript(T locator, String input, Boolean processing) {
+        javaScript.InputJSByWebElement(elementApi.locator(locator,processing), input);
+    }
+
+}

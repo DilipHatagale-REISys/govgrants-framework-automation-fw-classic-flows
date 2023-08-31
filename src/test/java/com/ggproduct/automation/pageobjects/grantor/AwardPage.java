@@ -1,9 +1,9 @@
 package com.ggproduct.automation.pageobjects.grantor;
 
-import com.automation.rei.handlers.govgrants;
+import com.helperPackage.handlers.govgrants;
 import com.ggproduct.automation.projectmanager.GrantorProjectManager;
-import com.testingblaze.register.I;
-import com.testingblaze.report.LogLevel;
+import com.helperPackage.register.I;
+import com.helperPackage.report.LogLevel;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 

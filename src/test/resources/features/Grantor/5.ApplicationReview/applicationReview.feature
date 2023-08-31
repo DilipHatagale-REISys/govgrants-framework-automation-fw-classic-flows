@@ -1,4 +1,4 @@
-@applicationReview @grantor-regression @grantor-parallel-regression @app @regression @applicationReviewTBE
+@applicationReviewWithouBg @grantor-regression @grantor-parallel-regression @app @regression @applicationReviewTBE
 Feature: Validate all scenarios in the Application Review
 
   Background: Submit the application for Review
@@ -294,16 +294,17 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended | 500                     |
     Then I softly see that "Recommended" has been added in flextable with Id "flexGridFundingDecisionMemoApplications"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
       | Name                      | FDM    |
       | {SavedValue:EXE Username} | Step 1 |
     Then I softly see that "{SavedValue:EXE Username}" has been added in flextable with Id "flexGridGrantorReviewStepRolesandResponsibilities"
+    And I wait for "9" seconds
     And I click on "Submit for Approval" in the page details
-    Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
+    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     And I get the "EGMS ID"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -374,8 +375,8 @@ Feature: Validate all scenarios in the Application Review
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    And I pause execution for "9" seconds
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
-    And I pause execution for "5" seconds
     Then I see the following messages in the page details :
       | Please select the reviews to send. |
     Examples:
@@ -451,7 +452,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
 
-   @78318 @78319 @79203 @reviewStepsAndPreScreenReview @keerti
+  @78318 @78319 @79203 @reviewStepsAndPreScreenReview @keerti
   Scenario Outline: To verify user will be able to view the review steps under the respective announcement related log tab
   | To verify User will be able to click the view icon on the Prescreening review step under announcement related log tab review steps section
   | To verify that,user able to click view icon for Application in prescreening review step in related log tab of Appliction phase
@@ -543,13 +544,13 @@ Feature: Validate all scenarios in the Application Review
     And I perform quick search for "<Announcement Name>"
     When I click on "View" icon for "<Announcement Name>" inside table
     And I get the "EGMS ID"
-   When I navigate to "Applications" tab
+    When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I save the field labeled "EGMS ID" as "EGMSID"
-   When I navigate to "Applications" tab
+    When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "{SavedValue:EGMSID}" in "---applicationReview:-:announcementListTableId---" panel
@@ -778,7 +779,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
 
-   @79664 @79665 @TabOfApplicationPhase @keerti
+  @79664 @79665 @TabOfApplicationPhase @keerti
   Scenario Outline: To verify that,user able to click view icon for Application in SME review step in related log tab of Appliction phase
   | To verify that,user able to click view icon for Application in Management review step in related log tab of Application phase
     And I login to "As a Grantor" app as "dynamicUser" user
@@ -1562,11 +1563,8 @@ Feature: Validate all scenarios in the Application Review
     Then I softly see "Review Panel Categories" inside flex table with id "---applicationReview:-:reviewPanelCategoriesTableId---"
     And I close "Review Form" modal by clicking the top right x button
     #79200
-    And I click on "Delete" icon for "Pre-Screen" inside flex table with id "---applicationReview:-:reviewStepFormId---" without waiting for record
-    #as page getting refresh message also getting disappear
-   # Then I softly see the following messages in the page details contains:
-    #  | Record deleted successfully. |
-    Then I softly see "No records found" inside flex table with id "---applicationReview:-:reviewStepFormId---"
+    Then I softly cannot see row level action button "Delete" against "Pre-Screen" in flex table with id "---applicationReview:-:reviewStepFormId---"
+
     Examples:
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
@@ -2235,17 +2233,8 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Edit" in the page details
     When I enter values into fields
       | Value                       | Field                 |
-      | AuGr                        | fieldGrantCode__c     |
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
-    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" by clicking "Edit" :
-      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---subAwardFromFDM:-:fdmApproverTableId---" by clicking "New" :
-      | Name                     | FDM    |
-      | {SavedValue:PM Username} | Step 1 |
-    And I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details :
       | Subaward Abbreviation is required to save under Funding Decision Memo. |
 
@@ -2440,7 +2429,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "Funding Decision Memo" in the page details
     Then I softly see field "Status" as "Created"
     When I click on "Remove" icon for "---AUTOEnvData:-:fundingAccount---" inside flex table with id "---grantor_tableId:-:FundingAccountTableId---"
-    And I perform quick search for "---AUTOEnvData:-:fundingAccount---" in "---grantor_tableId:-:FundingAccountTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---grantor_tableId:-:FundingAccountTableId---"
 
     Examples:
@@ -3079,6 +3067,7 @@ Feature: Validate all scenarios in the Application Review
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    And I wait for "9" seconds
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     #79745
@@ -3110,6 +3099,7 @@ Feature: Validate all scenarios in the Application Review
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
       | Reviewer                   |
       | {SavedValue:SPI3 Username} |
+    And I wait for "5" seconds
     And I click on "Assign" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
@@ -3225,6 +3215,7 @@ Feature: Validate all scenarios in the Application Review
       | Reviewer                   |
       | {SavedValue:SPI3 Username} |
     Then I softly see that "{SavedValue:SPI3 Username}" has been added in flextable with Id "---applicationReview:-:reviewersTableId---"
+    And I wait for "5" seconds
     And I click on "Assign" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
@@ -3243,19 +3234,21 @@ Feature: Validate all scenarios in the Application Review
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     Then I softly see value "<Application Name>" for title "Application Title" inside table "---applicationReview:-:appreviewsTableId---"
     Then I softly see value "{SavedValue:EXE Username}" for title "Assigned To" inside table "---applicationReview:-:appreviewsTableId---"
+    And I wait for "7" seconds
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     #79743
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     Then I softly see the following messages in the page details contains:
       | Record(s) successfully sent to Reviewer. |
     #80150
+    And I wait for "9" seconds
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly see the following messages in the page details contains:
       | Please select one or more Pending Application(s) before you proceed with the operation. |
     #79979
     When I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
-    And I wait for "5" seconds
+    And I wait for "8" seconds
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly see the following messages in the page details contains:
       | Cannot promote <Announcement Name> because it does not meet the minimum review requirements: |
@@ -3324,8 +3317,8 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended | 500                     |
     Then I softly see that "Recommended" has been added in flextable with Id "flexGridFundingDecisionMemoApplications"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :

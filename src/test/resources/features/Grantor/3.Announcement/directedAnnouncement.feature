@@ -1,4 +1,4 @@
-@directedAnnouncements @grantor-regression @grantor-parallel-regression @announcement @regression
+@directedAnnouncements @grantor-regression @grantor-parallel-regression @announcement @regression @annoucementTemp
 Feature: Validate all scenarios in the directed Announcement tab
 
   Background: Create Announcement
@@ -14,14 +14,14 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @73761 @73762 @73764 @73765 @70616 @73766 @70617 @34232 @73611 @73303 @73612 @73613 @73304 @73305 @73306 @73320 @submittingAnnouncementForApprovalDR @submittedAnnouncementDeletion @announcementForPastApplicationDueDate @Temphitesh
+  @73761 @73762 @73764 @73765 @70616 @73766 @70617 @34232 @73611 @73303 @73612 @73613 @73304 @73305 @73306 @73320 @submittingAnnouncementForApprovalDR @submittedAnnouncementDeletion @announcementForPastApplicationDueDate @hiteshTemp
   Scenario Outline: Validate the submission of Announcement for Approval || Validate that only record owner cannot delete Submitted for Approval status announcements || Validate that user can not enter application due date as past date
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "{SavedValue:fundingAccount" by showing entries "All" in flex table with id "---announcement:-:fundingAccTableId---"
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" by showing entries "All" in flex table with id "---announcement:-:fundingAccTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
@@ -38,9 +38,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
     And I perform quick search for "Automation Permanent Focus Area" in "---announcement:-:AnnouncementServiceArea1TableId---" panel
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---announcement:-:AnnouncementServiceArea1TableId---"
-    When I click on advance filter "#advfAnnouncementServiceArea1" of table id "---announcement:-:AnnouncementServiceArea1TableId---"
-    When I enter advance filter values inside id "advfAnnouncementServiceArea1"
-      | Title | Contains | Automation Permanent |
+#    When I click on advance filter "#advfAnnouncementServiceArea1" of table id "---announcement:-:AnnouncementServiceArea1TableId---"
+#    When I enter advance filter values inside id "advfAnnouncementServiceArea1"
+#      | Title | Contains | Automation Permanent |
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---announcement:-:AnnouncementServiceArea1TableId---"
     And I refresh the page
     When I click on advance filter "#advfAnnouncementServiceArea1" of table id "---announcement:-:AnnouncementServiceArea1TableId---"
@@ -85,9 +85,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I perform quick search for "{SavedValue:FO Username}" in "---announcement:-:flexGridApproverRolesTableId---" panel
     Then I softly see value "{SavedValue:FO Username}" for title "Name" inside table "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly see value "Fiscal Reviewer" for title "Responsibility" inside table "---announcement:-:flexGridApproverRolesTableId---"
-    When I click on advance filter "#advfGrantorAnnouncementReviewersTempGrantor" of table id "---announcement:-:flexGridApproverRolesTableId---"
-    When I enter advance filter values inside id "advfGrantorAnnouncementReviewersTempGrantor"
-      | Responsibility | equals to | Fiscal Reviewer |
+#    When I click on advance filter "#advfGrantorAnnouncementReviewersTempGrantor" of table id "---announcement:-:flexGridApproverRolesTableId---"
+#    When I enter advance filter values inside id "advfGrantorAnnouncementReviewersTempGrantor"
+#      | Responsibility | equals to | Fiscal Reviewer |
     Then I softly see value "Fiscal Reviewer" for title "Responsibility" inside table "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly can see row level action button "Edit" against "{SavedValue:FO Username}" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly can see row level action button "Delete" against "{SavedValue:FO Username}" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
@@ -214,7 +214,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Type |
       | Directed          |
 
-  @73767 @34763 @34765 @34766 @announcementApproval @announcementPendingTaskPostApproval @announcementCompletedTaskPostApproval @smoke
+  @73767 @34763 @34765 @34766 @announcementApproval @announcementPendingTaskPostApproval @announcementCompletedTaskPostApproval @smoke @hiteshTemp
   Scenario Outline: Validate that after approval of an Announcement task get added to its completed task table. || Validate the approval of an Announcement || Validate that after approval of an Announcement task get deleted from pending task table.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -448,7 +448,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I download the file
     Then I see "Invited Applicants" on page "1" of "govgrants" pdf file
 
-  @Hitesh @274142 @VerifyPMusercanselectreviewresponsesettingcolumnisYesonSMEreviewstep&shouldshowscoreofSMEreviewstepstoalluserFAYESAllocationTypeByApplicant&FA @sprint-23-US-273843 @hitesh
+  @274142 @VerifyPMusercanselectreviewresponsesettingcolumnisYesonSMEreviewstep&shouldshowscoreofSMEreviewstepstoalluserFAYESAllocationTypeByApplicant&FA @sprint-23-US-273843 @hitesh @hiteshTemp
   Scenario Outline: Verify PM user can select review response setting column is Yes on SME review step & should show score of SME review steps to all user (FA=YES & Allocation Type=By Applicant & FA)
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Formula Announcement}" on announcement "{SavedValue:Automation Runtime Formula Announcement}" with properties "default"

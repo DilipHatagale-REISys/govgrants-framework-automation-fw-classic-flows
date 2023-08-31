@@ -1,17 +1,15 @@
 package com.ggproduct.automation.projectmanager;
 
-import com.automation.rei.handlers.govgrants;
-import com.testingblaze.misclib.Emails;
-import com.testingblaze.objects.Elements;
-import com.testingblaze.register.EnvironmentFactory;
-import com.testingblaze.register.I;
-import org.apache.commons.lang3.StringUtils;
+import com.helperPackage.handlers.govgrants;
+import com.helperPackage.handlers.*;
+import com.helperPackage.misclib.Emails;
+import com.helperPackage.objects.Elements;
+import com.helperPackage.register.EnvironmentFactory;
+import com.helperPackage.register.I;
 import org.assertj.core.util.Files;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.springframework.context.annotation.Description;
-
 import javax.mail.MessagingException;
 import java.io.File;
 import java.io.IOException;
@@ -120,7 +118,6 @@ public class GrantorProjectManager extends ProjectManager {
             return false;
     }
 
-    @Description("To verify two different field values are equal or not")
     public void assertTwoFieldValues(String targetValue, String subTabName, boolean isSoftly) {
         if (isSoftly) {
             I.amPerforming().assertionsTo().assertThat(compareTwoFieldValues(targetValue, subTabName)).isTrue();

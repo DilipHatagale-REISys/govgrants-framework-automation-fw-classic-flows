@@ -1,4 +1,4 @@
-@formulaAnnouncements @grantor-regression @grantor-parallel-regression @announcement @regression
+@formulaAnnouncements @grantor-regression @grantor-parallel-regression @announcement @regression @annoucementTemp
 Feature: Validate all scenarios in the Formula Announcement tab
 
   Background: Create Announcement
@@ -91,7 +91,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I perform quick search for "Record id" in "---announcement:-:formulaAnnouncementTableId---" panel
     Then I softly cannot see row level action button "Delete" against "Record id" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
 
-  @70613 @70677 @announcementWithBlankBudgetPeriodFA
+  @70613 @70677 @announcementWithBlankBudgetPeriodFA @hiteshTemp
   Scenario: Validate that user should not submit announcement with blank budget period dates | To verify that if announcement type is -Formula then user can remove applicant organization in Invited Applicants section while creating the  Announcement
     When I click on "Edit" in the page details
     And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"

@@ -1,0 +1,106 @@
+Given/When/And 
+******Navigation**********
+I navigate to url "StaticURL"
+
+******Login Based Steps**********
+I login with username "username" and password "password" 
+I re-login with username "username" and password "password"
+I am on "portalType" portal
+I login as "userType" user
+I re-login as "userType" user on "portalType" portal
+I setup my app as "App Name"
+I login to "App Name" app as "username" user
+I re-login to "App Name" app as "userType" user
+I re-login to "App Name" app as "userType" user on "portalType" portal
+I logout
+
+******Main Page +  Side Bar Steps**********
+I navigate to "TabLabelName" tab
+I navigate to "ContentToBeClickedLabel" content inside "HeaderOfContentToBeClicked" subheader on left panel
+I navigate to "ContentToBeClickedLabel" content inside "HeaderOfContentToBeClicked" subheader on left panel inside "TabLabelName" tab
+
+******Flex Table Based Steps**********
+I click on "ButtonTitle" icon for "anyColumnValues" inside table with wait for record
+I click on "ButtonTitle" icon for "anyColumnValues" inside table without waiting for record
+I click on "ButtonTitle" icon for "anyColumnValues" inside flex table with id "flexTableID" with wait for record
+I click on "ButtonTitle" icon for "anyColumnValues" inside flex table with id "flexTableID" without waiting for record
+I click on "ButtonTitle" icon for "anyColumnValues" inside table (Performs both last search and wait for record)
+I click on "ButtonTitle" icon for "anyColumnValues" inside flex table with id "flexTableID" (Performs both last search and wait for record)
+I click on "ButtonTitle" icon for "anyColumnValues" inside table with table id "flexTableId" without processing
+I click toggle button to select "PannelTitleName"
+I click toggle button to select "PannelTitleName" in "FlexTable Id"
+I click on top right button "ButtonLabelName" in flex table with id "TableId"
+I perform quick search for "searchTerm"
+I perform quick search for "searchTerm" in "divTableId" panel
+I add the following roles to the flex table with id "flexTableId" :
+		| APi of field in flex table(BusinessRole__c)    | Name__c            | Responsibility__c   | Notify__c |
+		| Program Approver                               | Automation EXE     | Approve the program | Checked   |
+I assign the following reviewers in flex table with id "FlexTable" :
+        | step              | panel                   | user               |
+        | Pre-Screen Review | Pre-Screen Review Panel | UOVC PM automation |
+        | SME Review        | SME Review Panel        | Automation SME     |
+I check "all|anycomlumnValues" boxes in flex table with id "flexTableId"
+I enter the following values into flex table with id "flexTableId" by clicking "buttonName" :
+        | Name1  | Name2  | etc... |
+        | value1 | value2 | etc... |
+        | value3 | value4 | etc... |
+        | etc... | etc... | etc... |
+I edit the following rows inline in flex table with id "flexTableId" by clicking buttonName" :
+		| Name1  | Name2  | etc... |
+        | value1 | value2 | etc... |
+        | value3 | value4 | etc... |
+        | etc... | etc... | etc... |
+I expand nested table containing column value "columnValue"
+I collapse nested table containing column value "columnValue"
+I expand nested table containing column value "columnValue" inside nested table containing "columnValue"
+I click on top right buttons in flex tables
+		| Button  | Table Id |
+		| button1 | tableid1 |
+		| button2 | tableid2 |
+		| etc...  | etc...   |
+
+****** Modal Steps**********
+I click modal button "ButtonLabelName"
+I close modal by clicking the top right x button
+I switch to Parent frame
+I close Modal
+I click alert button "ButtonLabelName"
+
+****** PageDetails Steps**********
+I click on "ButtonName" in the page details
+I click on buttons in the page details
+		| button1Name |
+		| button2Name |
+		| etc...      |
+I click on "approve/reject/sendbacktoowner" on the approval decision box
+I click "lookupRelationshipAPIName" lookup link
+I validate the forms
+I "approve/reject/sendbacktoowner" in approval decision
+I navigate to "TabLabelName" sub tab
+
+****** fill complete page Steps**********
+I enter "sheetName" values from "ExcelFileName.xlsx"
+I enter value "value" into field "fieldAPIname"
+I enter values into fields
+		| Value | Fields |
+		| v1    | f1     |
+		| v2    | f2     |
+		| etc...| etc... |
+I clear the value from field "fieldAPIname"
+I clear the values from fields:
+		| Field |
+		| fieldAPIName1 |
+		| fieldAPIName2 |
+		| etc...        |
+
+******* Assertion Steps*********
+I see status in Progress-bar is "status" and is "color"
+I see that "record" is in "status" status
+I (see|do not see) values "column value" and "ColumnValue" inside table
+I see the text "text"
+I see field "fieldName" as "value"
+I see the following messages in the page details :
+		| message 1 |
+		| message 2 |
+		| etc...    |
+I (can see|cannot see) top right button "ButtonName" in flex table with id "tableID"
