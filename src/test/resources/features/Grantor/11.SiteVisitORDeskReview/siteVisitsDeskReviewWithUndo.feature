@@ -387,24 +387,26 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
-  """
-  Hello,
+      """
+    Hello,
 
-   This email is to notify you that approver #Automation FD1 has initiated undo action.
+    This email is to notify you that approver has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Details:
 
-   Log in to EGMS and click here to start reviewing the details.
+    EGMS ID: {SavedValue:SitevVisitId}
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
 
-   Thank you.
-   The EGMS Team
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
     """
     And I checkout to yopmail with mailid "automationfd@yopmail.com"
     And I pause execution for "10" seconds
@@ -413,35 +415,39 @@ Feature: Validate all scenarios in the Site Visit with Undo
    """
    Hello,
 
-   This email is to notify you that approver #Automation FD1 has initiated undo action.
+    This email is to notify you that approver has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Details:
 
-   Log in to EGMS and click here to start reviewing the details.
+    EGMS ID: {SavedValue:SitevVisitId}
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
 
-   Thank you.
-   The EGMS Team
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
     """
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
       """
     Hello,
 
-    This email is to notify you that approver #Automation FD1 has initiated undo action.
+    This email is to notify you that approver has initiated undo action.
 
     Details:
-    EGMS ID: {SavedValue:DeskReview}
-    Record Name: {SavedValue:Automation Runtime Award Desk Review}
+
+    EGMS ID: {SavedValue:SitevVisitId}
+
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
 
     Log in to EGMS and click here to start reviewing the details.
 
@@ -547,41 +553,45 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
-  """
-  Hello,
+      """
+    Hello,
 
-   This email is to notify you that approver #Automation FD1 has initiated undo action.
+    This email is to notify you that approver has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Details:
 
-   Log in to EGMS and click here to start reviewing the details.
+    EGMS ID: {SavedValue:SitevVisitId}
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
 
-   Thank you.
-   The EGMS Team
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
     """
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
       """
     Hello,
 
-    This email is to notify you that approver #Automation FD1 has initiated undo action.
+    This email is to notify you that approver has initiated undo action.
 
     Details:
-    EGMS ID: {SavedValue:DeskReview}
-    Record Name: {SavedValue:Automation Runtime Award Desk Review}
+
+    EGMS ID: {SavedValue:SitevVisitId}
+
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
 
     Log in to EGMS and click here to start reviewing the details.
 
@@ -697,48 +707,48 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
-     """
-    Hello,
+      """
+    Details:
 
-   This email is to notify you that approver #Automation FD has initiated undo action.
+    EGMS ID: {SavedValue:SitevVisitId}
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
 
-   Log in to EGMS and click here to start reviewing the details.
+    Log in to EGMS and click here to start reviewing the details.
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-   Thank you.
-   The EGMS Team
+    Thank you.
+    The EGMS Team
     """
     And I checkout to yopmail with mailid "automationpo@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
-  """
-  Hello,
+      """
+    Hello,
 
-   This email is to notify you that approver #Automation FD has initiated undo action.
+    This email is to notify you that approver has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Details:
 
-   Log in to EGMS and click here to start reviewing the details.
+    EGMS ID: {SavedValue:SitevVisitId}
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
 
-   Thank you.
-   The EGMS Team
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
     """
     Then I refresh the page
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
@@ -746,24 +756,26 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
-  """
-  Hello,
+      """
+    Hello,
 
-   This email is to notify you that approver #Automation FD has initiated undo action.
+    This email is to notify you that approver has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Details:
 
-   Log in to EGMS and click here to start reviewing the details.
+    EGMS ID: {SavedValue:SitevVisitId}
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Record Name: {SavedValueAutomation Runtime Award Site Visit}
 
-   Thank you.
-   The EGMS Team
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
     """
     Then I refresh the page
     And I am on "INTERNAL" portal
@@ -880,72 +892,78 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
-     """
+      """
     Hello,
 
-   This email is to notify you that approver #Automation FD has initiated undo action.
+    This email is to notify you that approver has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Details:
 
-   Log in to EGMS and click here to start reviewing the details.
+    EGMS ID: {SavedValue:SitevVisitId}
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
 
-   Thank you.
-   The EGMS Team
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
     """
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
-     """
+      """
     Hello,
 
-   This email is to notify you that approver #Automation FD has initiated undo action.
+    This email is to notify you that approver has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Details:
 
-   Log in to EGMS and click here to start reviewing the details.
+    EGMS ID: {SavedValue:SitevVisitId}
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
 
-   Thank you.
-   The EGMS Team
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
     """
     And I checkout to yopmail with mailid "fo.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
-  """
-  Hello,
+      """
+    Hello,
 
-   This email is to notify you that approver #Automation FD has initiated undo action.
+    This email is to notify you that approver has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Details:
 
-   Log in to EGMS and click here to start reviewing the details.
+    EGMS ID: {SavedValue:SitevVisitId}
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
 
-   Thank you.
-   The EGMS Team
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
     """
     Then I refresh the page
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
@@ -953,24 +971,26 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
-  """
-  Hello,
+      """
+    Hello,
 
-   This email is to notify you that approver #Automation FD has initiated undo action.
+    This email is to notify you that approver has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Details:
 
-   Log in to EGMS and click here to start reviewing the details.
+    EGMS ID: {SavedValue:SitevVisitId}
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
 
-   Thank you.
-   The EGMS Team
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
     """
     Then I refresh the page
     And I am on "INTERNAL" portal
@@ -1131,24 +1151,26 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
-  """
-  Hello,
+      """
+    Hello,
 
-   This email is to notify you that approver #Automation FD has initiated undo action.
+    This email is to notify you that approver has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Details:
 
-   Log in to EGMS and click here to start reviewing the details.
+    EGMS ID: {SavedValue:SitevVisitId}
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
 
-   Thank you.
-   The EGMS Team
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
     """
     Then I refresh the page
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
@@ -1156,24 +1178,26 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
-  """
-  Hello,
+      """
+    Hello,
 
-   This email is to notify you that approver #Automation FD has initiated undo action.
+    This email is to notify you that approver has initiated undo action.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Details:
 
-   Log in to EGMS and click here to start reviewing the details.
+    EGMS ID: {SavedValue:SitevVisitId}
 
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
 
-   Thank you.
-   The EGMS Team
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
     """
     Then I refresh the page
     And I am on "INTERNAL" portal
@@ -1324,17 +1348,23 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-    Notification: Site Visit/Desk Review {SavedValue:SitevVisitId} Approval Requested
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
       """
     Hello,
 
-    This email is to notify the details of the Site Visit/Desk Review "{SavedValue:Automation Runtime Award Site Visit}". You are requested to review and approve the site visit report.
+    This email is to notify you that approver has initiated undo action.
 
-    Log in to EGMS and click here for more details.
+    Details:
 
-    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+    EGMS ID: {SavedValue:SitevVisitId}
+
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
+
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
     Thank you.
     The EGMS Team
@@ -1344,17 +1374,23 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-    Notification: Site Visit/Desk Review {SavedValue:SitevVisitId} Approval Requested
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
       """
     Hello,
 
-    This email is to notify the details of the Site Visit/Desk Review "{SavedValue:Automation Runtime Award Site Visit}". You are requested to review and approve the site visit report.
+    This email is to notify you that approver has initiated undo action.
 
-    Log in to EGMS and click here for more details.
+    Details:
 
-    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+    EGMS ID: {SavedValue:SitevVisitId}
+
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
+
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
     Thank you.
     The EGMS Team
@@ -1364,17 +1400,23 @@ Feature: Validate all scenarios in the Site Visit with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-    Notification: Site Visit/Desk Review {SavedValue:SitevVisitId} Approval Requested
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
       """
     Then I see the mail text is as follows :
       """
     Hello,
 
-    This email is to notify the details of the Site Visit/Desk Review "{SavedValue:Automation Runtime Award Site Visit}". You are requested to review and approve the site visit report.
+    This email is to notify you that approver has initiated undo action.
 
-    Log in to EGMS and click here for more details.
+    Details:
 
-    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+    EGMS ID: {SavedValue:SitevVisitId}
+
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
+
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
     Thank you.
     The EGMS Team
