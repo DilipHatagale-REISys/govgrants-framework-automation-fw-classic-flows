@@ -3718,7 +3718,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @274119 @ValidatePOusercreatemultipleapplicationsondiffrecipientwhererelatedAnncreatedwithMultipleRecipient @Sprint-23-US-273843 @vaibhav @Allocation @TBE
+  @274119 @ValidatePOusercreatemultipleapplicationsondiffrecipientwhererelatedAnncreatedwithMultipleRecipient @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate PO user create multiple applications on diff recipient where related Ann created with Multiple Recipient
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
