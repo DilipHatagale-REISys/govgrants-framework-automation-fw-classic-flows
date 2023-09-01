@@ -7715,7 +7715,9 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I wait for "2" seconds
     And I click on "Send to Subrecipient" in the page details
+    And I wait for "8" seconds
     Then I softly see field "Status" as "Sent to Subrecipient"
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
@@ -7770,7 +7772,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Award Name                                                | Grant Name                                                |
       | {SavedValue:Automation Runtime Award for Risk Assessment} | {SavedValue:Automation Runtime Award for Risk Assessment} |
 
-  @116321 @ValidateFieldhistorySnapshotupdatepostApprovalofRiskAssessment @Sprint-23-US-273843 @vaibhav @Allocation @TBE
+  @116321 @ValidateFieldhistorySnapshotupdatepostApprovalofRiskAssessment @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate Field history Snapshot update post Approval of Risk Assessment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -7826,7 +7828,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see value "Risk Assessment Activation/Rejection.pdf" for title "File Name" inside table "---riskassessment:-:riskAssSnapShotHistoryTableId---"
     Then I softly see value "{SavedValue:FD Username}" for title "Taken By" inside table "---riskassessment:-:riskAssSnapShotHistoryTableId---"
 
-  @119401 @Validatetheriskassessmentisapprovedstep4setupactivatedpostalltheapprovalarecompletewhenpeerreviewwasperformedonit @Sprint-23-US-273843 @vaibhav @Allocation @TBE
+  @119401 @Validatetheriskassessmentisapprovedstep4setupactivatedpostalltheapprovalarecompletewhenpeerreviewwasperformedonit @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate the risk assessment is approved step4 set up activated post all the approval are complete when peer review was performed on it
     Given I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab

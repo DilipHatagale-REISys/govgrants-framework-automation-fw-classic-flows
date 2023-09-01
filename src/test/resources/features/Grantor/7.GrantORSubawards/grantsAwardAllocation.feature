@@ -24716,7 +24716,9 @@ Feature: Validate all scenarios of grants and award for Allocation
     When I enter the following values into flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "New" :
       | Name           | Award  |
       | Automation EXE | Step 1 |
+    And I wait for "2" seconds
     And I click on "Send to Subrecipient" in the page details
+    And I wait for "8" seconds
     Then I see field "Status" as "Sent to Subrecipient"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
