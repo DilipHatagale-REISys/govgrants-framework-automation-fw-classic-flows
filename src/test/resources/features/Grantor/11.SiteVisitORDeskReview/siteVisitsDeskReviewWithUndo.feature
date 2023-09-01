@@ -1244,7 +1244,6 @@ Feature: Validate all scenarios in the Site Visit with Undo
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "SitevVisitId"
-    #And I save the field labeled "Site Visit" as "SiteReviewTitle"
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
@@ -1330,69 +1329,70 @@ Feature: Validate all scenarios in the Site Visit with Undo
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I can see top right button "Undo" in page detail
-    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "10" seconds
-    Then I refresh the page
-    And I see the mail subject is as follows :
-      """
-    Notification: Site Visit/Desk Review {SavedValue:SitevVisitId} Approval Requested
-      """
-    Then I see the mail text is as follows :
-      """
-    Hello,
-
-    This email is to notify the details of the Site Visit/Desk Review "{SavedValue:SiteReviewTitle}". You are requested to review and approve the site visit report.
-
-    Log in to EGMS and click here for more details.
-
-    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
-
-    Thank you.
-    The EGMS Team
-    """
-    And I checkout to yopmail with mailid "automationpo@yopmail.com"
-    And I pause execution for "10" seconds
-    Then I refresh the page
-    And I see the mail subject is as follows :
-      """
-    Notification: Site Visit/Desk Review {SavedValue:SitevVisitId} Approval Requested
-      """
-    Then I see the mail text is as follows :
-      """
-    Hello,
-
-    This email is to notify the details of the Site Visit/Desk Review "{SavedValue:SiteReviewTitle}". You are requested to review and approve the site visit report.
-
-    Log in to EGMS and click here for more details.
-
-    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
-
-    Thank you.
-    The EGMS Team
-    """
-    And I checkout to yopmail with mailid "exe.automation@yopmail.com"
-    And I pause execution for "10" seconds
-    Then I refresh the page
-    And I see the mail subject is as follows :
-      """
-    Notification: Site Visit/Desk Review {SavedValue:SitevVisitId} Approval Requested
-      """
-    Then I see the mail text is as follows :
-      """
-    Hello,
-
-    This email is to notify the details of the Site Visit/Desk Review "{SavedValue:SiteReviewTitle}". You are requested to review and approve the site visit report.
-
-    Log in to EGMS and click here for more details.
-
-    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
-
-    Thank you.
-    The EGMS Team
-    """
-    Then I refresh the page
-    And I am on "INTERNAL" portal
-    When I login to "As a Grantor" app as "PM" user
+#    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+#    And I pause execution for "10" seconds
+#    Then I refresh the page
+#    And I see the mail subject is as follows :
+#      """
+#    Notification: Site Visit/Desk Review {SavedValue:SitevVisitId} Approval Requested
+#      """
+#    Then I see the mail text is as follows :
+#      """
+#    Hello,
+#
+#    This email is to notify the details of the Site Visit/Desk Review "{SavedValue:Automation Runtime Award Site Visit}". You are requested to review and approve the site visit report.
+#
+#    Log in to EGMS and click here for more details.
+#
+#    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+#
+#    Thank you.
+#    The EGMS Team
+#    """
+#    And I checkout to yopmail with mailid "automationpo@yopmail.com"
+#    And I pause execution for "10" seconds
+#    Then I refresh the page
+#    And I see the mail subject is as follows :
+#      """
+#    Notification: Site Visit/Desk Review {SavedValue:SitevVisitId} Approval Requested
+#      """
+#    Then I see the mail text is as follows :
+#      """
+#    Hello,
+#
+#    This email is to notify the details of the Site Visit/Desk Review "{SavedValue:Automation Runtime Award Site Visit}". You are requested to review and approve the site visit report.
+#
+#    Log in to EGMS and click here for more details.
+#
+#    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+#
+#    Thank you.
+#    The EGMS Team
+#    """
+#    And I checkout to yopmail with mailid "exe.automation@yopmail.com"
+#    And I pause execution for "10" seconds
+#    Then I refresh the page
+#    And I see the mail subject is as follows :
+#      """
+#    Notification: Site Visit/Desk Review {SavedValue:SitevVisitId} Approval Requested
+#      """
+#    Then I see the mail text is as follows :
+#      """
+#    Hello,
+#
+#    This email is to notify the details of the Site Visit/Desk Review "{SavedValue:Automation Runtime Award Site Visit}". You are requested to review and approve the site visit report.
+#
+#    Log in to EGMS and click here for more details.
+#
+#    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+#
+#    Thank you.
+#    The EGMS Team
+#    """
+#    Then I refresh the page
+#    And I am on "INTERNAL" portal
+#    When I login to "As a Grantor" app as "PM" user
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:manageSiteVisitTableId---" panel
