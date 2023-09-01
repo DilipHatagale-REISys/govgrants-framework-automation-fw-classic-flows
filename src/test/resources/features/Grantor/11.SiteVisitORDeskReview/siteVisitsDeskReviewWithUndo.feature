@@ -1327,7 +1327,6 @@ Feature: Validate all scenarios in the Site Visit with Undo
     And I click on "View" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Send Back | Forward |
-    When I "Send Back" in the approval decision
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I can see top right button "Undo" in page detail
