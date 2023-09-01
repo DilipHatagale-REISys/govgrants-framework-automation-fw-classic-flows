@@ -20492,7 +20492,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                           |
       | 0     | fieldRequestedChangeInBudget__c |
-      | 2000  | fieldRevisedCommitment__c       |
+      | 1000  | fieldRevisedCommitment__c       |
     And I click on "Save" in the page details
     And I wait for "9" seconds
     And I click on "Submit for Approval" in the page details
