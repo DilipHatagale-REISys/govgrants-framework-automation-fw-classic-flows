@@ -534,6 +534,8 @@ public class GrantorPayloads {
                 return updateRiskAssesmentAsNoForAnnouncementFocusAreaNo(json);
             case "INVITED_APPLICANT_IND_ORG":
                 return invitedIndUserOrganization(json);
+            case "INVITED_APPLICANT_IND_ORG_SPI_ORG":
+                return invitedIndUserSPIUerOrganization(json);
             case "INVITED_APPLICANT_IND_ORG_FOCUS_AREA_NO":
                 return invitedIndUserOrganizationFocusAreaNo(json);
             case "INVITED_APPLICANT_IND_ORG_BY_APPLICANT":
@@ -567,6 +569,23 @@ public class GrantorPayloads {
             default:
                 return json;
         }
+    }
+
+    private JsonObject invitedIndUserSPIUerOrganization(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("Organization", ProjectWebServices.getIdOf("Account", "SAN DIEGO ELECTRICAL TRAINING TRUST"));
+        jsonObject.addProperty("AllocatedAmount", 1000);
+        jsonObject.addProperty("Organization", ProjectWebServices.getIdOf("Account", "Automation IND"));
+        jsonObject.addProperty("AllocatedAmount", 1000);
+        pre.add(jsonObject);
+        json.add("InvitedApplicant", pre);
+        JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre1 = new JsonArray();
+        jsonObject1.addProperty("Allocationlevel","N/A");
+        pre1.add(jsonObject1);
+        json.add("Announcement", pre1);
+        return json;
     }
 
     private JsonObject updateAnnouncementWithThreeFocusAreaByappDetailsYesRiskNo(JsonObject json) {
