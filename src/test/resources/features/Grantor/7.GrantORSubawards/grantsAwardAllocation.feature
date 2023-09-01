@@ -24724,7 +24724,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---" without waiting for record
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---" without waiting for record
     When I click on "Accept" in the page details
     Then I see field "Status" as "Accepted"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
