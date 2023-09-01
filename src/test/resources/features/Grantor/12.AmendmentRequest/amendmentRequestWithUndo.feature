@@ -1,25 +1,10 @@
 @amendmentRequestsWB @amendmentRequests @grantor-regression @grantor-parallel-regression @regression @amendmentRequestUndo
 Feature: Amendment Request scenarios with Undo
 
-  @292388 @Verify when Pm approver  click on undo button in Bud red Ammend request record System will show confirmation box with a question and options for selection. @sprint-3-US-288689 @hitesh
+  @292388 @292389 @VerifywhenPmapproverclickonundobuttoninBudredAmmendrequestrecordSystemwillshowconfirmationboxwithaquestionandoptionsforselection @sprint-3-US-288689 @hitesh
   Scenario: Verify when Pm approver  click on undo button in Bud red Ammend request record System will show confirmation box with a question and options for selection.
     And I activated standalone subaward "Automation Runtime award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PO user" of type "Formula_By_Applicant_Focus_Area"
-    When I login to "As a Grantor" app as "PM" user
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
-    And I save the field labeled "EGMS ID" as "GrantEGMSID"
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    And I save the field labeled "EGMS ID" as "AwardEGMSID"
-    And I navigate to "Budget" sub tab
-    Then I softly see field "Total Commitment" as "$1,000.00"
-    And I save the field labeled "Total Commitment" as "TotalCommitment"
-    Then I softly see field "Total Commitment" as "$1,000.00"
-    And I save the field labeled "Total Commitment" as "TotalCommitment"
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I login to "As a Grantor" app as "SPI3" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - All"
@@ -95,5 +80,103 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     And I click "NO" on modal confirmation box
     Then I softly see field "Status" as "Approved"
+    #292389
+    And I checkout to yopmail with mailid "exe.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+      """
+    Then I see the mail text is as follows :
+     """
+    Hello,
+
+   This email is to notify you that approver #Automation FD has initiated undo action.
+
+   Details:
+   EGMS ID: {SavedValue:DeskReview}
+   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+
+   Log in to EGMS and click here to start reviewing the details.
+
+   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+   Thank you.
+   The EGMS Team
+    """
+    And I checkout to yopmail with mailid "fo.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+      """
+    Then I see the mail text is as follows :
+  """
+  Hello,
+
+   This email is to notify you that approver #Automation FD has initiated undo action.
+
+   Details:
+   EGMS ID: {SavedValue:DeskReview}
+   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+
+   Log in to EGMS and click here to start reviewing the details.
+
+   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+   Thank you.
+   The EGMS Team
+    """
+    And I checkout to yopmail with mailid "automationpo@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+      """
+    Then I see the mail text is as follows :
+  """
+  Hello,
+
+   This email is to notify you that approver #Automation FD has initiated undo action.
+
+   Details:
+   EGMS ID: {SavedValue:DeskReview}
+   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+
+   Log in to EGMS and click here to start reviewing the details.
+
+   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+   Thank you.
+   The EGMS Team
+    """
+    Then I refresh the page
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+      """
+    Then I see the mail text is as follows :
+  """
+  Hello,
+
+   This email is to notify you that approver #Automation FD has initiated undo action.
+
+   Details:
+   EGMS ID: {SavedValue:DeskReview}
+   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+
+   Log in to EGMS and click here to start reviewing the details.
+
+   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+   Thank you.
+   The EGMS Team
+    """
 
 
