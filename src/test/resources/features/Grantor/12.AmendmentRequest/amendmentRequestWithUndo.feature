@@ -686,7 +686,3 @@ Feature: Amendment Request scenarios with Undo
     When I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
-
-
-
-
