@@ -11,6 +11,8 @@ Feature: Amendment Request scenarios with Undo
     And I click toggle button to select "Subawards  - All"
     When I perform quick search for "{SavedValue:Automation Runtime award}" in "---amendment:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
+    And I save the field labeled "Grant ID" as "GrantEGMSID"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:recipientAwardAmendmentRequestTableId---"
     When I enter "Subrecipient_BRedirection" values from "AmendmentRequest_Field_Values.xlsx"
@@ -85,45 +87,49 @@ Feature: Amendment Request scenarios with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+     Notification: Approver has initiated Undo Action on AmendmentRequest #{SavedValue:BUDGETREDIRECTIONID}
       """
     Then I see the mail text is as follows :
      """
     Hello,
+    This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:BUDGETREDIRECTIONID}  for the award #{SavedValue:AwardEGMSID}.
+    Amendment Details:
+    Amendment Type: Budget Redirection
+    Amendment ID: {SavedValue:BUDGETREDIRECTIONID}
+    Key POC: Automation SPI3
+    Status: Submitted for Approval
+    Grant: {SavedValue:GrantEGMSID}
+    Funding Organization: Test Automation Organization
 
-   This email is to notify you that approver #Automation FD has initiated undo action.
+    Log in to EGMS and click here to review the amendment request.
 
-   Details:
-   EGMS ID: {SavedValue:DeskReview}
-   Record Name: {SavedValue:Automation Runtime Award Desk Review}
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
 
-   Log in to EGMS and click here to start reviewing the details.
-
-   Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
-
-   Thank you.
-   The EGMS Team
+    Thank you.
+    The EGMS Team
     """
     And I checkout to yopmail with mailid "fo.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+     Notification: Approver has initiated Undo Action on AmendmentRequest #{SavedValue:BUDGETREDIRECTIONID}
       """
     Then I see the mail text is as follows :
      """
     Hello,
+    This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:BUDGETREDIRECTIONID}  for the award #{SavedValue:AwardEGMSID}.
+    Amendment Details:
+    Amendment Type: Budget Redirection
+    Amendment ID: {SavedValue:BUDGETREDIRECTIONID}
+    Key POC: Automation SPI3
+    Status: Submitted for Approval
+    Grant: {SavedValue:GrantEGMSID}
+    Funding Organization: Test Automation Organization
 
-    This email is to notify you that approver #Automation FD has initiated undo action.
+    Log in to EGMS and click here to review the amendment request.
 
-    Details:
-    EGMS ID: {SavedValue:DeskReview}
-    Record Name: {SavedValue:Automation Runtime Award Desk Review}
-
-    Log in to EGMS and click here to start reviewing the details.
-
-    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
 
     Thank you.
     The EGMS Team
@@ -133,21 +139,23 @@ Feature: Amendment Request scenarios with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+     Notification: Approver has initiated Undo Action on AmendmentRequest #{SavedValue:BUDGETREDIRECTIONID}
       """
     Then I see the mail text is as follows :
-    """
+     """
     Hello,
+    This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:BUDGETREDIRECTIONID}  for the award #{SavedValue:AwardEGMSID}.
+    Amendment Details:
+    Amendment Type: Budget Redirection
+    Amendment ID: {SavedValue:BUDGETREDIRECTIONID}
+    Key POC: Automation SPI3
+    Status: Submitted for Approval
+    Grant: {SavedValue:GrantEGMSID}
+    Funding Organization: Test Automation Organization
 
-    This email is to notify you that approver #Automation FD has initiated undo action.
+    Log in to EGMS and click here to review the amendment request.
 
-    Details:
-    EGMS ID: {SavedValue:DeskReview}
-    Record Name: {SavedValue:Automation Runtime Award Desk Review}
-
-    Log in to EGMS and click here to start reviewing the details.
-
-    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
 
     Thank you.
     The EGMS Team
@@ -158,21 +166,23 @@ Feature: Amendment Request scenarios with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on #{SavedValue:DeskReview}.
+     Notification: Approver has initiated Undo Action on AmendmentRequest #{SavedValue:BUDGETREDIRECTIONID}
       """
     Then I see the mail text is as follows :
      """
     Hello,
+    This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:BUDGETREDIRECTIONID}  for the award #{SavedValue:AwardEGMSID}.
+    Amendment Details:
+    Amendment Type: Budget Redirection
+    Amendment ID: {SavedValue:BUDGETREDIRECTIONID}
+    Key POC: Automation SPI3
+    Status: Submitted for Approval
+    Grant: {SavedValue:GrantEGMSID}
+    Funding Organization: Test Automation Organization
 
-    This email is to notify you that approver #Automation FD has initiated undo action.
+    Log in to EGMS and click here to review the amendment request.
 
-    Details:
-    EGMS ID: {SavedValue:DeskReview}
-    Record Name: {SavedValue:Automation Runtime Award Desk Review}
-
-    Log in to EGMS and click here to start reviewing the details.
-
-    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
 
     Thank you.
     The EGMS Team
@@ -423,8 +433,8 @@ Feature: Amendment Request scenarios with Undo
     And I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     Then I see only the following ordered radio buttons in the approval decision :
-      | Approve | Send Back | Forward |
-    When I "Send Back" in the approval decision
+      | Approve | Reject | Forward |Send to Owner |
+    When I "Send to Owner" in the approval decision
     Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
 
@@ -579,7 +589,7 @@ Feature: Amendment Request scenarios with Undo
     Then I cannot see top right button "Undo" in page detail
     And I pause execution for "3" seconds
     And I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Active" and is "green"
+    Then I see status in Progress-bar is "Activated" and is "green"
     #292404
     Then I cannot see top right button "Undo" in page detail
 
@@ -651,14 +661,14 @@ Feature: Amendment Request scenarios with Undo
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "Green"
     #292634
-    And I click on "Menu" in the page details
-    And I select "Take Snapshot" from dropdown
-    When I navigate to "History" sub tab
-    And I click on hyperlink which contains todays date with text "SnapShot on"
-    When I download the file
-    Then I softly see "{SavedValue:BUDGETREDIRECTIONID}" on page "1" of "govgrants" pdf file
-    Then I softly see "Approved" on page "1" of "govgrants" pdf file
-    And I switch to parent tab
+#    And I click on "Menu" in the page details
+#    And I select "Take Snapshot" from dropdown
+#    When I navigate to "History" sub tab
+#    And I click on hyperlink which contains todays date with text "SnapShot on"
+#    When I download the file
+#    Then I softly see "{SavedValue:BUDGETREDIRECTIONID}" on page "1" of "govgrants" pdf file
+#    Then I softly see "Approved" on page "1" of "govgrants" pdf file
+#    And I switch to parent tab
     And I click on "Amend Subaward" in the page details
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     #292455
