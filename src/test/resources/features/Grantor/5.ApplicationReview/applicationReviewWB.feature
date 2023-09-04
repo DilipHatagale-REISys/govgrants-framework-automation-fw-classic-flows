@@ -2435,7 +2435,7 @@ Feature: Validate all scenarios in the Application Review without background
     #80262 #monu
     #Then I softly see the following messages in the page details contains:
     #  | Successfully Re-Assigned|
-    When I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
@@ -6464,13 +6464,11 @@ Feature: Validate all scenarios in the Application Review without background
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
     And I enter value "Checked" into field "AllowEdit__c"
     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I pause execution for "5" seconds
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
     And I enter value "Checked" into field "AllowEdit__c"
     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     When I click on "Send to Subrecipient" in the page details
