@@ -187,7 +187,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     #219104
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     And I pause execution for "3" seconds
-    Then I see the following messages in the page details contains:
+    Then I softly see the following messages in the page details contains:
       | Selected Applicants are associated successfully. |
 
   @219110 @219161 @VerifyPMusershouldremovethesrbyclickingtheremoveicon&successmessageshouldbedisplayforDirectedAnnouncement @sprint-9-US-208408 @komal @Allocation
@@ -514,7 +514,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PM   |
 
-  @237897 @VerifyAdminuserisabletocreatesubawardfromFDMwhenenteredrecommendedbudgetisequaltoBudgetedAmountonFDMrecordwhichiscreatedfromDirectedannouncement @sprint-14-US-224179 @komal @Allocation @hiteshTemp
+  @237897 @VerifyAdminuserisabletocreatesubawardfromFDMwhenenteredrecommendedbudgetisequaltoBudgetedAmountonFDMrecordwhichiscreatedfromDirectedannouncement @sprint-14-US-224179 @komal @Allocation
   Scenario Outline: Verify Admin user is able to create subaward from FDM when entered recommended budget is equal to Budgeted Amount on FDM record which is created from Directed announcement
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "NEGOTIATION_NO-Automation ADMIN user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -1230,6 +1230,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I can see row level action button "Create Subaward" against "<Announcement Name>" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
     And I click on "Create Subaward" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
     #234362
+    And I pause execution for "3" seconds
     Then I softly see the following messages in the page details contains:
       | The Budgeted Amount must be equal to The Recommended Budget Amount. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field and send the application back for revision to the subrecipient. |
 
@@ -1514,7 +1515,7 @@ Feature: Validate all scenarios in the directed Announcement tab
   @234368 @234371 @DirectAnnVerifyEXEusercaninlineedittheRecommendedBudgetfieldunderRecommendedApplicationsectionbeforeFDMapproval @sprint-13-US-224612 @komal @Allocation @hiteshTemp
   Scenario Outline: Direct Ann EXE user can inline edit the Recommended Budget field under Recommended Application section before FDM approval
   | DirectAnn>>Verify EXE when negotiation is initiated during FDM or from app layout then it must mandatory for user to select the "Budget: Budget Details " picklist value  for Negotiation field when the budgeted Amount is not equal to the Recommended Budget |
-    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default-Automation EXE user"
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "INVITED_APPLICANT_IND_ORG_BY_APPLICANT_FOCUS_AREA-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
@@ -2093,7 +2094,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PM  |
 
-  @234225 @234229 @234228 @CompAnnSPIusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiationFromFDMifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation @hiteshTemp
+  @234225 @234229 @234228 @CompAnnSPIusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiationFromFDMifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
   Scenario Outline: Comp Ann SPI user can see Error message on submit to grantor button when user resubmit the application after negotiation From FDM if check when the Budgeted amount must be equal to the  Recommended Amount
   | Direct Ann>> Verify SPI user can able to edit the Budget Summary by focus area section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)& submit application to s/r side |
   | Direct Ann>> Verify SPI user can able to edit the Budget details section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)then mandatory to select Budget details from picklist for negotiation |

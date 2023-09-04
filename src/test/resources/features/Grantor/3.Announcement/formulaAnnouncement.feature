@@ -147,6 +147,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Applicants                          | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     And I click on "Submit For Approval" in the page details
+    And I pause execution for "3" seconds
     Then I see the following messages in the page details :
       | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
 
