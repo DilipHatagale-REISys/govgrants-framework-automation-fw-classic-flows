@@ -6448,7 +6448,7 @@ Feature: Validate all scenarios in the Application Review without background
   @190935 @ValidateINDusershouldabletoeditthefieldatsubrecipientsideoncegrantorsendtheapplicationtosubrecipient @Sprint-1 @vaibhav @appExecution
   Scenario: Validate IND user should able to edit the field at subrecipient side once grantor send the application to subrecipient
     And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "NEGOTIATION"
-    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default-Automation IND user"
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
