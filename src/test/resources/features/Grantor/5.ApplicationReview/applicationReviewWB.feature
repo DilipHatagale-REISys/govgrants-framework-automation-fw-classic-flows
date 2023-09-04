@@ -7135,13 +7135,11 @@ Feature: Validate all scenarios in the Application Review without background
       | Value                       | Field                        |
       | Automation Test Description | fieldTitle__c                |
       | 100                         | fieldGranteeProgramincome__c |
-   And I halt execution
     And I navigate to "Negotiations" sub tab
     And I enter values into fields
       | Value                              | Field                |
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
-   And I halt execution
     When I navigate to "Forms and Files" sub tab
     Then I softly can see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:filesFormsTableId---"
     Then I softly can see row level action button "Edit" against "Program Application Form" in flex table with id "---negotiation:-:filesFormsTableId---"

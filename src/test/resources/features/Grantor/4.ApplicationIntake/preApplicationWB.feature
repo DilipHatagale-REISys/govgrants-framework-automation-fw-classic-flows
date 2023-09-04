@@ -2051,7 +2051,6 @@ Feature: Pre-Application scenarios without background
     When I click modal button "Save and Continue"
     And I get the "EGMS ID"
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
-    And I halt execution
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
     When I save the field containing "Program Income Allowed?" as "Yes"
