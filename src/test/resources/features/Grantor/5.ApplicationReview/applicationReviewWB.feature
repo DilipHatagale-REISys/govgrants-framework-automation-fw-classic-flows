@@ -17005,7 +17005,7 @@ Feature: Validate all scenarios in the Application Review without background
     Then I softly see value "1" for title "# of Reviews Assigned" against the value "{SavedValue:PM Username}" inside table "---applicationReview:-:reviewersTableId---"
     Then I softly see value "2" for title "# of Reviews Assigned" against the value "Automation PM1" inside table "---applicationReview:-:reviewersTableId---"
     Then I softly see value "Automation PM1" for title "Assigned To" inside table "---applicationReview:-:appreviewsTableId---"
-    When I expand nested table containing column value "{SavedValue:AppEGMSID}"
+    When I expand nested table containing column value "Pending"
     And I hovering mouse on table id "---applicationReview:-:reviewFormsTableId---" with table row level icon "Automation PM1: Review Completed - Recommended" for column value "Automation PM1: Review Completed - Recommended"
     Then I softly see "Automation PM1: Review Completed - Recommended" shown as help text
 
