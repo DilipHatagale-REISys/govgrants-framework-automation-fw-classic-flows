@@ -678,13 +678,13 @@ Feature: Amendment Request scenarios with Undo
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request|
       | {SavedValue:PO Username} | Step 1           |
-    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+    And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
       | Name                     | Amendment Request|
       | {SavedValue:EXE Username}| NA               |
-    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+    And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
       | Name                     | Amendment Request|
       | {SavedValue:FO Username} | NA               |
-    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+    And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
       | Name                     | Amendment Request|
       | {SavedValue:PM Username} | NA               |
     When I click on "Submit for Approval" in the page details
