@@ -667,9 +667,6 @@ Feature: Amendment Request scenarios with Undo
     When I click on "Delete" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:PO Username} | Step 1           |
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
       | Name                     | Amendment Request|
       | {SavedValue:EXE Username}| NA               |
