@@ -163,7 +163,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I see the header is "Application" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
 
-  @219102 @219104 @VerifyEXeUserAbleToSeeSuccessMessageOnAddOrgModalAfterAddingActiveSubrecipieentOrg @sprint-9-US-208408 @komal @Allocation @hiteshTemp
+  @219102 @219104 @VerifyEXeUserAbleToSeeSuccessMessageOnAddOrgModalAfterAddingActiveSubrecipieentOrg @sprint-9-US-208408 @komal @Allocation
   Scenario: Verify when EXE user click on the "Add Organization" button then user see modal with all the active SR names for Directed Announcement.
   | Verify EXE user see the Success message after adding Organization & when Applicants are updated and this modal will stay open to associate more applicants: |
     When I login to "As a Grantor" app as "EXE" user
@@ -883,7 +883,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PM   |
 
-  @234360 @DirectAnnVerifyPMusercanseeeditedtheBudgetedAmountfieldwhenusersendtheapplicationtosrfornegotiation&subrecipientaddbudgetonitwhenonceFDMisapproved @sprint-13-US-224612 @komal @Allocation @hiteshTemp
+  @234360 @DirectAnnVerifyPMusercanseeeditedtheBudgetedAmountfieldwhenusersendtheapplicationtosrfornegotiation&subrecipientaddbudgetonitwhenonceFDMisapproved @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Direct Ann PM user can see edited the Budgeted Amount field when user send the application to sr for negotiation subrecipient add budget on it when once FDM is approved
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
