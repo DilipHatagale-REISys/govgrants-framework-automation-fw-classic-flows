@@ -14558,7 +14558,6 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "EGMS ID" column header inside table with id "---negotiation:-:negotiationAppReviewListTableId---"
     And I wait for "5" seconds
     When I click on "EGMS ID" column header inside table with id "---negotiation:-:negotiationAppReviewListTableId---"
-    And I halt execution
     When I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside table
     And I get the "EGMS ID"
     When I save the field labeled "EGMS ID" as "AppEGMSID1"
