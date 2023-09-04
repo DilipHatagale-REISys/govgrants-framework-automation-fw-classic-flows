@@ -2648,8 +2648,8 @@ Feature: Validate all scenarios in the Application Review without background
     Then I softly see that "Recommended" has been added in flextable with Id "flexGridFundingDecisionMemoApplications"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
-      | Name                      | Program |
-      | {SavedValue:EXE Username} | Step 1  |
+      | Name                      | FDM    |
+      | {SavedValue:EXE Username} | Step 1 |
     Then I softly see that "{SavedValue:EXE Username}" has been added in flextable with Id "flexGridGrantorReviewStepRolesandResponsibilities"
     And I click on "Submit for Approval" in the page details
     And I get the "EGMS ID"
@@ -14575,74 +14575,14 @@ Feature: Validate all scenarios in the Application Review without background
 
   @220028 @ValidatefailemailshouldbegeneratedforbothAppifreviewer1triestoreassignAppreviewformtoreviewe2incombinationofstatusofapplicationformisReviewCompleted @sprint-12-US-226646 @vaibhav @reassignment @appExecution
   Scenario Outline: Validate fail email should be generated for both App if reviewer 1 tries to reassign App review form to reviewer 2 in combination of status of application form is Review Completed
-    When I login to "As a Grantor" app as "EXE" user
-    And I navigate to "Announcements" tab
-    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Competitive Announcements"
-    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
-    And I click modal button "Continue"
-    When I enter "Creation Second Modal1" values from "Announcement_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I get the "EGMS ID"
-    And I save the field labeled "EGMS ID" as "AnnEGMSID"
-    And I save the field labeled "Announcement Name" as "Automation Runtime FDM Announcement"
-    When I click on "Edit" in the page details
-    And I enter "Edition1" values from "Announcement_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I navigate to "Financials" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "{SavedValue:fundingAccount}" by showing entries "All" in flex table with id "---announcement:-:fundingAccTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
-    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
-    When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
-    When I refresh the page
-    When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
-    When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---announcement:-:goalsTableId---"
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name          | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
-      | Automation PM | Step 1       | Step 1 | Step 1 | Step 1            | Step 1               | Step 1          | Step 1     | Step 1   |
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c"
-    When I get the "EGMS ID"
-    When I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
-      | Budget Period Name | Start Date | End Date |
-      | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
-    And I click on "Submit For Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Announcements" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
-    And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Announcements" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
-    Then I softly can see top right button "Publish" in page detail
-    And I click on "Publish" in the page details
-    Then I see status in Progress-bar is "Published" and is "green"
-    And I pause execution for "3" seconds
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default-Automation EXE user"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    When I login to "As a Grantor" app as "EXE" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
-    And I perform quick search for "<Application Name>"
-    When I click on "View" icon for "<Application Name>" inside table
+    And I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}"
+    When I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside table
     And I get the "EGMS ID"
     When I save the field labeled "EGMS ID" as "AppEGMSID"
     And I pause execution for "3" seconds
@@ -14650,8 +14590,8 @@ Feature: Validate all scenarios in the Application Review without background
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
-    And I perform quick search for "<Application Name>"
-    When I click on "View" icon for "<Application Name>" inside table
+    And I perform quick search for "Record Id"
+    When I click on "View" icon for "Record Id" inside table
     And I get the "EGMS ID"
     When I save the field labeled "EGMS ID" as "AppEGMSID1"
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
