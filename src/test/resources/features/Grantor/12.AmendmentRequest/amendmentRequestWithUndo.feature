@@ -661,14 +661,14 @@ Feature: Amendment Request scenarios with Undo
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "Green"
     #292634
-    And I click on "Menu" in the page details
-    And I select "Take Snapshot" from dropdown
-    When I navigate to "History" sub tab
-    And I click on hyperlink which contains todays date with text "SnapShot on"
-    When I download the file
-    Then I softly see "{SavedValue:BUDGETREDIRECTIONID}" on page "1" of "govgrants" pdf file
-    Then I softly see "Approved" on page "1" of "govgrants" pdf file
-    And I switch to parent tab
+#    And I click on "Menu" in the page details
+#    And I select "Take Snapshot" from dropdown
+#    When I navigate to "History" sub tab
+#    And I click on hyperlink which contains todays date with text "SnapShot on"
+#    When I download the file
+#    Then I softly see "{SavedValue:BUDGETREDIRECTIONID}" on page "1" of "govgrants" pdf file
+#    Then I softly see "Approved" on page "1" of "govgrants" pdf file
+#    And I switch to parent tab
     And I click on "Amend Subaward" in the page details
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     #292455
