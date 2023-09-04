@@ -738,8 +738,6 @@ Feature: Validate all scenarios in the Application Review without background
     Then I softly see value "{SavedValue:EXE Username}" for title "Assigned To" inside table "---applicationReview:-:appreviewsTableId---"
     And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
-    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
-    And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
@@ -2688,8 +2686,9 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
     When I "Send to Owner" in the approval decision
     #As this msg is coming at same time of page refresh
-    Then I softly see the following messages in the page details contains:
-      | Successfully sent to Owner. It may take few minutes to process record |
+#    Then I softly see the following messages in the page details contains:
+#      | Successfully sent to Owner. It may take few minutes to process record |
+    Then I softly see field "Status" as "Created"
 
     Examples:
       | Announcement Name                                               | Application Name                                                |
@@ -5630,6 +5629,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I refresh the page
     And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
