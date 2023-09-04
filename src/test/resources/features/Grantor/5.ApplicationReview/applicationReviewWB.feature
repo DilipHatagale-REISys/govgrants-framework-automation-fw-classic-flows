@@ -252,6 +252,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Program Review has 0 out of 1 complete reviews                                               |
       | Fiscal Review has 0 out of 1 complete reviews                                                |
       | Compliance Review has 0 out of 1 complete reviews                                            |
+    And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
@@ -313,7 +314,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     And I pause execution for "4" seconds
     Then I softly see the following messages in the page details contains:
-      | Cannot promote  ann4 because it does not meet the minimum review requirements: |
+      | Cannot promote <Announcement Name> because it does not meet the minimum review requirements: |
       | Management Review has 0 out of 1 complete reviews                              |
     Examples:
       | Announcement Name                                            | Application Name                                             |
@@ -2256,6 +2257,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
@@ -2465,7 +2467,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
-    Then I softly see value "Approve FDM for Announcement #{SavedValue:ANNOUNCEMENTID}" for title "Subject" inside table "---applicationReview:-:pendingTaskTableId---"
+    Then I softly see value "Approve FDM for Announcement #{SavedValue:AnnEGMSID}" for title "Subject" inside table "---applicationReview:-:pendingTaskTableId---"
 
     Examples:
       | Announcement Name                                               | Application Name                                                |
