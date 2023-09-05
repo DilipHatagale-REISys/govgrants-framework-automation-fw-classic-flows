@@ -5560,7 +5560,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | IND  |
 
-  @225419 @VerifythatINDuserwillabletochangethevalueinbudgetbudgetdetailswhileresubmittingthenegotiationstograntorinprescreenreviewwhenallocationamountinannouncementischangedischanged @sprint-11-US-204300 @komal @Allocation @hiteshTemp
+  @225419 @VerifythatINDuserwillabletochangethevalueinbudgetbudgetdetailswhileresubmittingthenegotiationstograntorinprescreenreviewwhenallocationamountinannouncementischangedischanged @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify that IND user will able to change the value in budget:budget details while resubmitting the negotiations to grantor in pre screen review when allocation amount in announcement is changed is changed
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "INVITED_APPLICANT_IND_ORG_BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
@@ -5607,7 +5607,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     #225419
     And I navigate to "Negotiations" sub tab
-    Then I softly see field "Application Sections for Negotiation" as "Budget: Budget Details Overview: Project Information"
+    Then I softly see field "Application Sections for Negotiation" as "Overview: Project Information Budget: Budget Details"
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -5661,7 +5661,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I perform quick search for "<Announcement Name>" in "---announcement:-:formulaAnnouncementTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     When I navigate to "Overview" sub tab
-    And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    And I expand nested table containing column value "Automation IND"
     Then I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                           | Allocation Amount |
       | Automation Permanent Focus Area | 2000              |
