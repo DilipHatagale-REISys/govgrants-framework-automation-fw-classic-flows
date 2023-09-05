@@ -1,4 +1,4 @@
-@siteVisits @grantor-regression @grantor-parallel-regression @siteVisit @regression
+@SiteVisitExecution @siteVisits @grantor-regression @grantor-parallel-regression @siteVisit @regression
 Feature: Validate all scenarios in the Site Visit
 
   Background: Data setup for Site Visit
