@@ -3200,7 +3200,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I perform quick search for "<Announcement Name>" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     And I navigate to "Financials" sub tab
-    Then I softly see field "Allocation Amount" as "$2,000"
+    Then I see value "$2,000" for title "Allocation Amount" inside table "---applicationIntake:-:formulaAllocatedAmountTableId---"
+    When I click on "Qualify" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Qualified Opportunities - All"
@@ -4245,6 +4246,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I pause execution for "3" seconds
     When I click on "Send to Subrecipient" in the page details
     And I softly see the following messages in the page details contains:
       | Negotiations Tab: The Budgeted Amount must be equal to the Allocation Amount in the application. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field before sending the application back for revision. |
