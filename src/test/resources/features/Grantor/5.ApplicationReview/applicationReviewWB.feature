@@ -2162,7 +2162,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Reject" in flex table with id "---applicationReview:-:appTableId---"
-    Then I softly can see top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
+    Then I softly cannot see top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     #80510 #monu
     When I click on "Funding Decision Memo" in the page details
     And I edit the following rows inline in flex table with id "---applicationReview:-:rejectedApplicationTableId---" by clicking "Edit" :
