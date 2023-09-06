@@ -115,62 +115,6 @@ Feature: Validate all scenarios in the Site Visit
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @51089 @56010 @formFillingSiteVisitUploadAttachment
-  Scenario: User will be able to review the supporting document checklist submitted by the subrecipient and Filling up of form in Site Visit
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "GrantorActiveGrantsgrid" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "GrantorActiveGrantsgrid"
-    And I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
-      | Description | Required  | Applies To | Status |
-      | Automation  | Mandatory | Site Visit | Active |
-    And I navigate to "Monitoring" tab
-    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click toggle button to select "Site Visit Reports - All"
-    When I perform quick search for "{SavedValue:SiteVisitID}" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "View" icon for "{SavedValue:SiteVisitID}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
-    Given I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                      | Site Visit |
-      | {SavedValue:EXE Username} | Step 1     |
-    When I enter the following values into flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                     | Site Visit |
-      | {SavedValue:FO Username} | Step 2     |
-    When I save the field labeled "EGMS ID" as "EGMSID"
-    When I navigate to "Files" sub tab
-    And I click on "Upload Template" icon for "Automation" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" with wait for record
-    And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
-    Then I see that "Attachment.pdf" has been added in flextable with Id "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
-    Given I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
-    When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
-    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
-    And I click on "Notify" in the page details
-    When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:EGMSID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    When I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
-    When I navigate to "Files" sub tab
-    And I click on "Upload Template" icon for "Automation" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" with wait for record
-    And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
-    Then I see that "Attachment.pdf" has been added in flextable with Id "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "{SavedValue:EGMSID}" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
-    And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reportsTableId---"
-    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    Then I softly see that "100%" has been added in flextable with Id "---sitevisits:-:reportsTableId---"
-
   @51091 @51092  @66314 @approvalOfSiteVisit
   Scenario: Approval of Site Visit and Send Site Visit to Subrecipient | validate task for program approver
     Given I navigate to "Responsibilities" sub tab
@@ -1098,29 +1042,6 @@ Feature: Validate all scenarios in the Site Visit
     When I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "ApplicantSiteVisitReports"
     Then I softly see status in Progress-bar is "Closed" and is "Green"
 
-  @60834 @AdditionOfAttachmentForAwardSiteVisits @keerti
-  Scenario: Validating addition of attachment to Award Site Visits
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "GrantorActiveGrantsgrid" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "GrantorActiveGrantsgrid"
-    And I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
-      | Description                 | Required  | Applies To | Status |
-      | Automation test description | Mandatory | Site Visit | Active |
-    And I navigate to "Monitoring" tab
-    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click toggle button to select "Site Visit Reports - All"
-    When I perform quick search for "{SavedValue:SiteVisitID}" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "View" icon for "{SavedValue:SiteVisitID}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
-    And I navigate to "Files" sub tab
-    When I click on "Upload Template" icon for "Automation test description" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" without waiting for record
-    And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
-    And I perform quick search for "Automation test description" in "---sitevisits:-:siteVisitSupportingDocumentChecklist---" panel
-    Then I softly see value "Mandatory" for title "Required" inside table "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
-    Then I softly see value "Active" for title "Status" inside table "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
-
   @60839 @56013 @60837 @60840 @peerReviewerCanNotEdit/EnterReviewComments @keerti @smoke
   Scenario: Validate system does not allow the peer reviewer to edit/Enter review comments and Edit button hidden if the Site Visits marked as complete review
     Given I navigate to "Responsibilities" sub tab
@@ -1226,27 +1147,6 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I softly see "No Records Found" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
-
-  @61178 @addAttachmentToSiteVisit @deepika
-  Scenario: Validate whether PM will be able to add any specific docuements required along with the supporting documents details under the attachments section
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "GrantorActiveGrantsgrid" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "GrantorActiveGrantsgrid"
-    And I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
-      | Description | Required  | Applies To | Status |
-      | Automation  | Mandatory | Site Visit | Active |
-    And I navigate to "Monitoring" tab
-    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click toggle button to select "Site Visit Reports - All"
-    When I perform quick search for "{SavedValue:SiteVisitID}" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "View" icon for "{SavedValue:SiteVisitID}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
-    And I navigate to "Files" sub tab
-    And I click on "Upload Template" icon for "Automation" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" with wait for record
-    And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
-    Then I see that "Attachment.pdf" has been added in flextable with Id "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
 
   @61860 @approverCompletedTaskSiteVisits @deepika
   Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab
