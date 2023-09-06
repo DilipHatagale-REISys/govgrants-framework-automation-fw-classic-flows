@@ -611,7 +611,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Start" icon for "{SavedValue:siteVisitID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     #77257
     Then I see only the following ordered radio buttons in the approval decision :
-      | Approve | Forward |Send to Owner  | Reject |
+      | Approve | Send Back | Forward |
 
   @61861 @55278 @55210 @pmUserCanFOuserCannotViewAcceptandCloseSiteVisits @deepika
   Scenario: Validate the Infomation send to the subrecipients other than record owner, Fo user cannot accept and close the site visits and PM can accept and close
