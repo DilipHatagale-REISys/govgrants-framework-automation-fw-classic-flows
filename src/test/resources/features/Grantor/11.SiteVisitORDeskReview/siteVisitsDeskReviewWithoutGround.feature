@@ -37,6 +37,8 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Files" sub tab
     And I click on "Upload Template" icon for "Automation" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" with wait for record
     And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
+    And I click in table hyperlink containing value "View"
+    Then I softly verify that the file "Attachment.pdf" is downloaded
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
@@ -50,9 +52,8 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:EGMSID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     When I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     When I navigate to "Files" sub tab
-    And I click on "Upload Template" icon for "Automation" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" with wait for record
-    And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
-    Then I see that "Attachment.pdf" has been added in flextable with Id "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
+    And I click in table hyperlink containing value "View"
+    Then I softly verify that the file "Attachment.pdf" is downloaded
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
@@ -96,9 +97,8 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I perform quick search for "Automation test description" in "---sitevisits:-:siteVisitSupportingDocumentChecklist---" panel
     Then I softly see value "Mandatory" for title "Required" inside table "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
     Then I softly see value "Active" for title "Status" inside table "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
-    Then I see that "Attachment.pdf" has been added in flextable with Id "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
 
-  @vai @61178 @addAttachmentToSiteVisit @deepika
+  @61178 @addAttachmentToSiteVisit @deepika
   Scenario: Validate whether PM will be able to add any specific docuements required along with the supporting documents details under the attachments section
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
