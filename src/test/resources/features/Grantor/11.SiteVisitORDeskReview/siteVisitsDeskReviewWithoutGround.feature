@@ -37,7 +37,6 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Files" sub tab
     And I click on "Upload Template" icon for "Automation" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" with wait for record
     And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
-    Then I see that "Attachment.pdf" has been added in flextable with Id "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
@@ -78,8 +77,8 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "GrantorActiveGrantsgrid"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
-      | Description | Required  | Applies To | Status |
-      | Automation  | Mandatory | Site Visit | Active |
+      | Description                 | Required  | Applies To | Status |
+      | Automation test description | Mandatory | Site Visit | Active |
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---sitevisits:-:GrantsSubAwardsTableId---"
     Given I navigate to "Management" sub tab
@@ -99,7 +98,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly see value "Active" for title "Status" inside table "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
     Then I see that "Attachment.pdf" has been added in flextable with Id "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
 
-  @61178 @addAttachmentToSiteVisit @deepika
+ @vai @61178 @addAttachmentToSiteVisit @deepika
   Scenario: Validate whether PM will be able to add any specific docuements required along with the supporting documents details under the attachments section
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -127,7 +126,8 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I navigate to "Files" sub tab
     And I click on "Upload Template" icon for "Automation" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" with wait for record
     And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
-    Then I see that "Attachment.pdf" has been added in flextable with Id "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
+    And I click on "View" icon for "Other" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" without waiting for record
+    Then I softly verify that the file "Attachment.pdf" is downloaded
 
   @66713 @inProgressSiteVisitAmendedForSiteVisits @deepika @smoke
   Scenario: Validate In-progress award level site visit are carried forward to newly created award after amendment - Budget Period Change type

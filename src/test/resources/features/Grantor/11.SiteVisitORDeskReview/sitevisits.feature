@@ -608,6 +608,7 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:siteVisitID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I softly see that "Approve Site Visit" has been added in flextable with Id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    And I click on "Start" icon for "{SavedValue:siteVisitID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     #77257
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Forward |Send to Owner  | Reject |
