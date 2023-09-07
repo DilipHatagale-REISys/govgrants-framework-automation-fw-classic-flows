@@ -1371,6 +1371,14 @@ Feature: Validate all scenarios in Organizational Site Visit Without Background
     And I click on submit review
 #    When I close "Site Visit Reviewers" modal by clicking the top right x button
     Then I softly see value "Submitted" for title "Status" inside table "---orgLevelSiteVisits:-:orgPeerReviewTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    When I click on "Complete Review" in the page details
+    And I wait for "3" seconds
+    Then I softly see field "Status" as "Reviewed"
     And I checkout to yopmail with mailid "automationpo1@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
