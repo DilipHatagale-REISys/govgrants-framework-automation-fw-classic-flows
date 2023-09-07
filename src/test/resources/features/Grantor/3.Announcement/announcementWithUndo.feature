@@ -1482,7 +1482,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "Automation PM" for title "Changed By" inside table "---announcement:-:annFieldHistory---"
     Then I softly see snapshot with name containing "Snapshot_Announcement_Submission.pdf" as name
 
-  @302658  @VerifythatUserWillNotSeeUndowhenAnnouncementisinClosed @sprint-26-US-299251 @hitesh @hites123
+  @302658 @VerifythatUserWillNotSeeUndowhenAnnouncementisinClosed @sprint-26-US-299251 @hitesh @hites123
   Scenario: Verify that User Will Not See Undo when Announcement is in Closed state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
