@@ -1377,10 +1377,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
-    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Competitive Announcements"
-    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    And I click on "Start" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "Green"
     Then I can see top right button "Undo" in page detail
@@ -1475,7 +1474,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Undo" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I navigate to "History" sub tab
-    And I see "{SavedValue:EXE Username}" against "Re-approval (Pending for first approval)" in approval history
+    And I see "{SavedValue:PM Username}" against "Re-approval (Pending for first approval)" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
     Then I softly see value "Submitted for Approval" for title "New Value" inside table "---announcement:-:annFieldHistory---"
     Then I softly see value "Approved" for title "Old Value" inside table "---announcement:-:annFieldHistory---"
