@@ -1371,7 +1371,7 @@ Feature: Validate all scenarios in Organizational Site Visit Without Background
     And I click on submit review
 #    When I close "Site Visit Reviewers" modal by clicking the top right x button
     Then I softly see value "Submitted" for title "Status" inside table "---orgLevelSiteVisits:-:orgPeerReviewTableId---"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:manageSiteVisitTableId---" panel
