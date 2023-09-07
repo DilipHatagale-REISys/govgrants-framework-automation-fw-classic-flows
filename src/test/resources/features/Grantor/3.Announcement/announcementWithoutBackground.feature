@@ -682,15 +682,15 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     #  | Subject | Contains | jitu |
     Then I softly see "jitu" inside flex table with id "---announcement:-:collabMessages---"
 
-  @75524 @publishedAllowToDownloadPDF @skipOnJenkins
+ @vai @75524 @publishedAllowToDownloadPDF @skipOnJenkins
   Scenario: To verify system allow to download PDF for Announcement after publishing it
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for pdf Tests" and properties "default"
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Published Competitive Announcements"
-    And I perform quick search for "{SavedValue:Automation Announcement for pdf Tests}" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Announcement for pdf Tests}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for pdf Tests}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for pdf Tests}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I click on "Menu" in the page details
     And I select "Download As PDF" from dropdown
     And I download the file
