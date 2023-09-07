@@ -1323,16 +1323,17 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
-    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
-    And I enter in modal value "Yes" into field "IsNegotiationsAllowed__c"
+    When I enter "Creation Second Modal1" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I save the field labeled "Announcement Name" as "Automation Runtime FDM Announcement"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    And I save the field labeled "Announcement Name" as "Automation Runtime Announcement for Pre-App"
     When I click on "Edit" in the page details
-    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I enter "Edition1" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
-    When I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Associate" after selection of "{SavedValue:fundingAccount}" by showing entries "All" in flex table with id "---announcement:-:fundingAccTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
@@ -1348,14 +1349,14 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---announcement:-:goalsTableId---"
-    And I wait for "3" seconds
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name           | Announcement |
-      | Automation PM1 | Step 1       |
+      | Name                      | Announcement |
+      | {SavedValue:PM1 Username} | Step 1       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name          | Announcement |
-      | Automation PM | Step 2       |
+      | Name                      | Announcement |
+      | {SavedValue:PM Username}  | Step 2       |
+    And I pause execution for "3" seconds
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -1363,22 +1364,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
-    And I pause execution for "7" seconds
-    And I navigate to "Setup" sub tab
-    When I enter the following values into flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "New" :
-      | Step Order | Step Name       | Description |
-      | 4          | Automation Test | Testing     |
-    And I expand nested table containing column value "Automation Test"
-    When I enter the following values into flex table with id "---announcement:-:annReviewFormsTableId---" by clicking "New" :
-      | Form Name       |
-      | Automation Test |
-    And I expand nested table containing column value "Automation Test"
-    And I click on "Review Form" icon for "Automation Test" inside flex table with id "---announcement:-:annReviewFormsTableId---" without waiting for record
-    When I enter the following values into flex table with id "---applicationReview:-:reviewPanelCategoriesTableId---" by clicking "New" :
-      | Section Order | Section Header  |
-      | 1             | Automation Test |
-    And I pause execution for "3" seconds
-    And I close "Review Form" modal by clicking the top right x button
+    And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
     And I pause execution for "3" seconds
     Then I softly see field "Status" as "Submitted for Approval"

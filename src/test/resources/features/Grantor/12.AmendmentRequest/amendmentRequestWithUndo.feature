@@ -773,4 +773,4 @@ Feature: Amendment Request scenarios with Undo
     And I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     And I navigate to "History" sub tab
-    Then I softly see snapshot with name containing "Internal Program - Undo Approval.pdf" as name
+    Then I softly see snapshot with name containing "Amendment - Undo Approval.pdf" as name
