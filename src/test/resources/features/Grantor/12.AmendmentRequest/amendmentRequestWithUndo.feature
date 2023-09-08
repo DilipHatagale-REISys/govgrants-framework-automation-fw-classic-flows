@@ -926,7 +926,7 @@ Feature: Amendment Request scenarios with Undo
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
     Then I cannot see top right button "Undo" in page detail
-    And I save the field labeled "EGMS ID" as "AmendmentId"
+    And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
     And I navigate to "Overview" sub tab
     And I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---amendment:-:RecipientKeyPersonalTableId---" without waiting for record
     And I enter value "Other" into field "ProjectRole__c"
