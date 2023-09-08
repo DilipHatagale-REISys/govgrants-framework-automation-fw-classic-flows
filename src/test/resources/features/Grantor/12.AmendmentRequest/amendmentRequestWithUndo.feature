@@ -925,7 +925,7 @@ Feature: Amendment Request scenarios with Undo
     And I enter value "Automation Justification" into field "fieldContactChangeDescription__c"
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
-    Then I can see top right button "Undo" in page detail
+    Then I cannot see top right button "Undo" in page detail
     And I save the field labeled "EGMS ID" as "AmendmentId"
     And I navigate to "Overview" sub tab
     And I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---amendment:-:RecipientKeyPersonalTableId---" without waiting for record
