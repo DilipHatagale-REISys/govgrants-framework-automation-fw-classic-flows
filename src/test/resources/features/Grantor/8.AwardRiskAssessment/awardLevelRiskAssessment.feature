@@ -1,4 +1,4 @@
-@riskAssessment @awardLevelRiskAssessment @grantor-regression @grantor-parallel-regression @regression
+@riskAssessment @awardLevelRiskAssessment @grantor-regression @grantor-parallel-regression @regression @riskAssessmentTemp
 Feature: Validate all scenarios in the Risk Assessment
 
   @58164 @58165 @58166 @75867 @65552 @creationOfRiskAssessmentddingApproversSubmitForApproval @deepika @smoke
