@@ -448,7 +448,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I download the file
     Then I see "Invited Applicants" on page "1" of "govgrants" pdf file
 
-  @274142 @VerifyPMusercanselectreviewresponsesettingcolumnisYesonSMEreviewstep&shouldshowscoreofSMEreviewstepstoalluserFAYESAllocationTypeByApplicant&FA @sprint-23-US-273843 @hitesh @hiteshTemp
+  @274142 @VerifyPMusercanselectreviewresponsesettingcolumnisYesonSMEreviewstep&shouldshowscoreofSMEreviewstepstoalluserFAYESAllocationTypeByApplicant&FA @sprint-23-US-273843 @hitesh
   Scenario Outline: Verify PM user can select review response setting column is Yes on SME review step & should show score of SME review steps to all user (FA=YES & Allocation Type=By Applicant & FA)
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA-Automation PM user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Formula Announcement}" on announcement "{SavedValue:Automation Runtime Formula Announcement}" with properties "default"

@@ -163,7 +163,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I see the header is "Application" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
 
-  @219102 @219104 @VerifyEXeUserAbleToSeeSuccessMessageOnAddOrgModalAfterAddingActiveSubrecipieentOrg @sprint-9-US-208408 @komal @Allocation @hiteshTemp
+  @219102 @219104 @VerifyEXeUserAbleToSeeSuccessMessageOnAddOrgModalAfterAddingActiveSubrecipieentOrg @sprint-9-US-208408 @komal @Allocation
   Scenario: Verify when EXE user click on the "Add Organization" button then user see modal with all the active SR names for Directed Announcement.
   | Verify EXE user see the Success message after adding Organization & when Applicants are updated and this modal will stay open to associate more applicants: |
     When I login to "As a Grantor" app as "EXE" user
@@ -883,7 +883,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PM   |
 
-  @234360 @DirectAnnVerifyPMusercanseeeditedtheBudgetedAmountfieldwhenusersendtheapplicationtosrfornegotiation&subrecipientaddbudgetonitwhenonceFDMisapproved @sprint-13-US-224612 @komal @Allocation @hiteshTemp
+  @234360 @DirectAnnVerifyPMusercanseeeditedtheBudgetedAmountfieldwhenusersendtheapplicationtosrfornegotiation&subrecipientaddbudgetonitwhenonceFDMisapproved @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Direct Ann PM user can see edited the Budgeted Amount field when user send the application to sr for negotiation subrecipient add budget on it when once FDM is approved
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -1072,9 +1072,9 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PM   |
 
-  @234362 @DirectAnnVerifyPOusercanseethevalidationwhenthebudgetedAmountisnotequaltotheRecommendedamountwhenusertriedtoconverttoaward @sprint-13-US-224612 @komal @Allocation @hiteshTemp
+  @234362 @DirectAnnVerifyPOusercanseethevalidationwhenthebudgetedAmountisnotequaltotheRecommendedamountwhenusertriedtoconverttoaward @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Direct Ann PO user can see the validation when the budgeted Amount is not equal to the Recommended amount when user tried to convert to award
-    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default-Automation PO user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
@@ -1264,7 +1264,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PO   |
 
-  @234920 @DirectAnnVerifyPOusershouldseevalidationonsendtosrbuttonwhennegotiationisinitiatedCustomizedreviewstepwhenuserselectonlybudgetsummarybyFocusAreasectionfornegotiation @sprint-13-US-224612 @komal @Allocation @hiteshTemp
+  @234920 @DirectAnnVerifyPOusershouldseevalidationonsendtosrbuttonwhennegotiationisinitiatedCustomizedreviewstepwhenuserselectonlybudgetsummarybyFocusAreasectionfornegotiation @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Direct Ann PO user should see validation on send to s/r button when negotiation is initiated Customized review step when user select only budget summary by Focus Area section for negotiation
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -1322,12 +1322,13 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:annReviewFormsTableId---" by clicking "New" :
       | Form Name       |
       | Automation Test |
+    And I expand nested table containing column value "Automation Test"
     And I click on "Review Form" icon for "Automation Test" inside flex table with id "---announcement:-:annReviewFormsTableId---" without waiting for record
     When I enter the following values into flex table with id "---applicationReview:-:reviewPanelCategoriesTableId---" by clicking "New" :
       | Section Order | Section Header  |
       | 1             | Automation Test |
     And I pause execution for "3" seconds
-    And I close "Review Form" modal by clicking the top right x button
+    #And I close "Review Form" modal by clicking the top right x button
     And I click on "Submit For Approval" in the page details
     And I pause execution for "3" seconds
     Then I softly see field "Status" as "Submitted for Approval"
@@ -1512,7 +1513,7 @@ Feature: Validate all scenarios in the directed Announcement tab
   @234368 @234371 @DirectAnnVerifyEXEusercaninlineedittheRecommendedBudgetfieldunderRecommendedApplicationsectionbeforeFDMapproval @sprint-13-US-224612 @komal @Allocation @hiteshTemp
   Scenario Outline: Direct Ann EXE user can inline edit the Recommended Budget field under Recommended Application section before FDM approval
   | DirectAnn>>Verify EXE when negotiation is initiated during FDM or from app layout then it must mandatory for user to select the "Budget: Budget Details " picklist value  for Negotiation field when the budgeted Amount is not equal to the Recommended Budget |
-    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "INVITED_APPLICANT_IND_ORG"
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "INVITED_APPLICANT_IND_ORG-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
     When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab

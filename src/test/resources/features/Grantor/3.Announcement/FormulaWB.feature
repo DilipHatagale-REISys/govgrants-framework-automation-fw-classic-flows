@@ -967,7 +967,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Removes" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table with table id "---announcement:-:addOrganizationByAppFocusAreaTableId---" without processing
     Then I see confirmation box with body "This action will delete the Organization and associated focus areas and Unsaved data will be lost due to page refresh . Please save the record to continue." is displayed
 
-  @226416 @VerifyIfuseraddingonefocusareathenatleastonefocusareamustbepresentinthefocusareasectionotherwiseshowtheerrormessageonAddorganizations @sprint-11-US-201040 @komal @Allocation @hiteshTemp
+  @226416 @VerifyIfuseraddingonefocusareathenatleastonefocusareamustbepresentinthefocusareasectionotherwiseshowtheerrormessageonAddorganizations @sprint-11-US-201040 @komal @Allocation
   Scenario: Verify If user adding one focus area, then at least one focus area must be present in the focus area section, otherwise, show the error message on Add organizations .
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -2841,12 +2841,14 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Start" icon for "{SavedValue:NegoEGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
     And I navigate to "Negotiations" sub tab
     When I enter value "Automation Test" into field "fieldApplicantResponse__c"
+    When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 2000   | 100        | 100            |
-    When I click on "Save" in the page details
+    When I click on "Add Line Item Details" icon for "Construction" inside flex table with id "---applicationReview:-:budgetTableId---"
+    When I enter the following values into flex table with id "---applicationReview:-:addLineItemsModalTableId---" by clicking "New" :
+      | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
+      | Construction | The narrative | 2000         | 100        | 100            |
+    When I close "Add Line Items" modal by clicking the top right x button
     Then I softly see field "Budgeted Amount" as "$2,000.00"
     Then I softly see field "Allocation Amount" as "$2,000"
     When I click on "Submit to Grantor" in the page details
@@ -3140,9 +3142,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                |
       | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @222556 @222555 @222479 @VerifyupdatedvaluesofAllocationAmountshouldgetupdatedinopportunityandQualifiedopportunityaswell @sprint-11-US-201558 @komal @Allocation @hiteshTemp
+  @222556 @222555 @222479 @VerifyupdatedvaluesofAllocationAmountshouldgetupdatedinopportunityandQualifiedopportunityaswell @sprint-11-US-201558 @komal @Allocation
   Scenario Outline: Verify updated values of Allocation Amount should get updated in opportunity and Qualified opportunity as well.
-    Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_NEGOTIATION_NO"
+    Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_NEGOTIATION_NO-Automation PM user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "PM" user
     When I navigate to "Announcements" tab
@@ -3197,14 +3199,15 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "<Announcement Name>" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
-    And I navigate to "Budget" sub tab
-    Then I softly see field "Allocation Amount" as "$2,000"
+    And I navigate to "Financials" sub tab
+    Then I see value "$2,000" for title "Allocation Amount" inside table "---applicationIntake:-:formulaAllocatedAmountTableId---"
+    When I click on "Qualify" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Qualified Opportunities - All"
     And I perform quick search for "<Announcement Name>" in "---applicationIntake:-:qualifiedTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
-    And I navigate to "Budget" sub tab
+    And I navigate to "Financials" sub tab
     Then I softly see field "Allocation Amount" as "$2,000"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
@@ -3212,7 +3215,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click toggle button to select "Applications - All"
     And I perform quick search for "<Announcement Name>"
     When I click on "View" icon for "<Announcement Name>" inside table
-    And I navigate to "Budget" sub tab
+    And I navigate to "Financials" sub tab
     Then I softly see field "Allocation Amount" as "$2,000"
     #222555 #222479
     When I navigate to "Announcements" tab
@@ -3413,7 +3416,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
 
-  @225549 @225427 @PMUserVerifywhennegotiationisinitiatedduringpromotedtoFDMthenitshouldmustmandatoryforusertoselecttheBudgetBudgetDetailspicklistvalueforNegotiationfieldwhenthebudgetedAmountisnotequaltotheAllocationAmount @sprint-11-US-203558 @komal @Allocation @hiteshTemp
+  @225549 @225427 @PMUserVerifywhennegotiationisinitiatedduringpromotedtoFDMthenitshouldmustmandatoryforusertoselecttheBudgetBudgetDetailspicklistvalueforNegotiationfieldwhenthebudgetedAmountisnotequaltotheAllocationAmount @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: PM User when negotiation is initiated during promoted to FDM  then it should must mandatory for user to select the "Budget Budget Details " picklist value  for Negotiation field when the budgeted Amount is not equal to the Allocation Amount
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO-Automation <User> user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "BUDGETCATEGORY_NO_FOCUSAREA"
@@ -4005,7 +4008,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @227829 @227837 @227839 @VerifyAdminuserseevalidationwhenbudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatfocusareawhenItrytocreateawardfromFDM @sprint-13-US-204132 @komal @Allocation @hiteshTemp
+  @227829 @227837 @227839 @VerifyAdminuserseevalidationwhenbudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatfocusareawhenItrytocreateawardfromFDM @sprint-13-US-204132 @komal @Allocation
   Scenario Outline: Verify Admin user see validation when budgeted amount in any focus area is not equal to the Allocation amount of that focus area & when I try to create award from FDM
   | Verify Admin user see validation when budgeted amount in any focus area is not equal to the Allocation amount of that focus area & when I try Create Award from application |
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA-Automation ADMIN user"
@@ -4202,7 +4205,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @227840 @VerifyAdminusershouldseewhennegotiationisinitiatedduringtheApplicationreviewitshouldbemandatoryfortoselecttheBudgetBudgetDetailspicklistvalueinApplicationSectionsforNegotiationsectionwhenthebudgetedAmountisnot @sprint-13-US-204132 @komal @Allocation @hiteshTemp
+  @227840 @VerifyAdminusershouldseewhennegotiationisinitiatedduringtheApplicationreviewitshouldbemandatoryfortoselecttheBudgetBudgetDetailspicklistvalueinApplicationSectionsforNegotiationsectionwhenthebudgetedAmountisnot @sprint-13-US-204132 @komal @Allocation
   Scenario Outline: Verify Admin user should see  when negotiation is initiated during the Application review  it should be  mandatory for to select the "Budget: Budget Details " picklist value in Application Sections for Negotiation section when the budgeted Amount is not
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA-Automation ADMIN user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -4243,13 +4246,14 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I pause execution for "3" seconds
     When I click on "Send to Subrecipient" in the page details
     And I softly see the following messages in the page details contains:
       | Negotiations Tab: The Budgeted Amount must be equal to the Allocation Amount in the application. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field before sending the application back for revision. |
 
     Examples:
-      | Announcement Name                       |
-      | Automation Runtime Formula Announcement |
+      | Announcement Name                                    |
+      | {SavedValue:Automation Runtime Formula Announcement} |
 
   @227725 @227729 @VerifythenewreadonlyfieldforTotalAllocationFundingthisshouldbetotalofAllAllocationAmountfromrecommendedapplicationsectionforformulaannouncement @sprint-13-US-204132 @komal @Allocation
   Scenario Outline: Verify the new readonly field for "Total Allocation Funding", this should be total of All Allocation Amount, from recommended application section for formula announcement .
@@ -4407,7 +4411,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @227802 @227797 @VerifyEXEUserseethevalueBudgetTabFocusAreareplacedwithBudgetTabBudgetSummarybyFocusAreaintheApplicationsectionforNegotiation @sprint-13-US-204132 @komal @Allocation @hiteshTemp
+  @227802 @227797 @VerifyEXEUserseethevalueBudgetTabFocusAreareplacedwithBudgetTabBudgetSummarybyFocusAreaintheApplicationsectionforNegotiation @sprint-13-US-204132 @komal @Allocation
   Scenario Outline: Verify EXE User see the value "Budget Tab Focus Area" replaced with "Budget Tab Budget Summary by Focus Area" in the Application section for Negotiation.
   | Verify EXE user  should see  when negotiation is initiated during the Application review  it should be  mandatory for to select the "Budget: Budget Details " picklist value in Application Sections for Negotiation section when the budgeted Amount is not equal to the Allocation Amount |
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT-Automation EXE user"
@@ -4670,9 +4674,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | EXE  |
 
-  @227740 @VerifyPOuserseethevalidationwhenthebudgetedamountnotequaltotheAllocationamount&UsertrytocreateawardfromFDMorfromtheApplication @sprint-13-US-204132 @komal @Allocation @hiteshTemp
+  @227740 @VerifyPOuserseethevalidationwhenthebudgetedamountnotequaltotheAllocationamount&UsertrytocreateawardfromFDMorfromtheApplication @sprint-13-US-204132 @komal @Allocation
   Scenario Outline: Verify PO user see the validation when the budgeted amount not equal to  the Allocation amount & User try to create award from FDM or from the Application
-    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT"
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT-Automation PO user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
@@ -5312,7 +5316,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | SPI3 |
 
-  @225141 @VerifyIfBudgetedamountmustbeequaltotheAllocationAmountWhenINDresubmittheapplicationafternegotiationthenitwillnotthrougherrormessage @sprint-11-US-204300 @komal @Allocation @hiteshTemp
+  @225141 @VerifyIfBudgetedamountmustbeequaltotheAllocationAmountWhenINDresubmittheapplicationafternegotiationthenitwillnotthrougherrormessage @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify If Budgeted amount must be equal to the Allocation Amount When IND resubmit the application after negotiation then it will not through error message
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "INVITED_APPLICANT_IND_ORG_BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
@@ -5362,7 +5366,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   @226381 @VerifythatIfBudgetedamountnotequaltotheAllocationAmountWhenINDresubmittheapplicationafternegotiationinSMEreviewThenitshouldthrougherrormessage @sprint-11-US-204300 @komal @Allocation @hiteshTemp
   Scenario Outline: Verify that If Budgeted amount not equal to the Allocation Amount  When IND resubmit the application after negotiation in SME review Then it should through error message
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "INVITED_APPLICANT_IND_ORG_BY_APPLICANT"
-    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND User"
+    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
     And I login to "As a Grantor" app as "PM" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -5419,7 +5423,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   @225418 @VerifythatINDuserwillabletochangethevalueinbudgetbudgetdetailswhileresubmittingthenegotiationstograntorinManagementReviewwhenallocationamountinannouncementischanged @sprint-11-US-204300 @komal @Allocation @hiteshTemp
   Scenario Outline: Verify that IND user will able to change the value in budget budget details while resubmitting the negotiations to grantor in Management Review when allocation amount in announcement is changed
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "INVITED_APPLICANT_IND_ORG_BY_APPLICANT"
-    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND User"
+    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
     When I login to "As a Grantor" app as "PM" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -5531,8 +5535,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
-      | Applicants                          | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
+      | Applicants     | Allocated Amount |
+      | Automation IND | 2000             |
     Given I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "<User>" user
     And I navigate to "Home" tab
@@ -5543,7 +5547,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     #225418
     And I navigate to "Negotiations" sub tab
-    Then I softly see field "Application Sections for Negotiation" as "Budget: Budget Details Overview: Project Information"
+    Then I softly see field "Application Sections for Negotiation" as "Overview: Project Information Budget: Budget Details"
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -5560,10 +5564,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | IND  |
 
-  @225419 @VerifythatINDuserwillabletochangethevalueinbudgetbudgetdetailswhileresubmittingthenegotiationstograntorinprescreenreviewwhenallocationamountinannouncementischangedischanged @sprint-11-US-204300 @komal @Allocation @hiteshTemp
+  @225419 @VerifythatINDuserwillabletochangethevalueinbudgetbudgetdetailswhileresubmittingthenegotiationstograntorinprescreenreviewwhenallocationamountinannouncementischangedischanged @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify that IND user will able to change the value in budget:budget details while resubmitting the negotiations to grantor in pre screen review when allocation amount in announcement is changed is changed
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "INVITED_APPLICANT_IND_ORG_BY_APPLICANT_FOCUS_AREA"
-    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND User"
+    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
     When I login to "As a Grantor" app as "PM" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -5592,7 +5596,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I perform quick search for "<Announcement Name>" in "---announcement:-:formulaAnnouncementTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     When I navigate to "Overview" sub tab
-    And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    And I expand nested table containing column value "Automation IND"
     Then I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                           | Allocation Amount |
       | Automation Permanent Focus Area | 2000              |
@@ -5607,7 +5611,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     #225419
     And I navigate to "Negotiations" sub tab
-    Then I softly see field "Application Sections for Negotiation" as "Budget: Budget Details Overview: Project Information"
+    Then I softly see field "Application Sections for Negotiation" as "Overview: Project Information Budget: Budget Details"
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -5628,7 +5632,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   @226387 @VerifythatINDuserwillabletochangethevalueinbudgetbudgetdetailswhileresubmittingthenegotiationstograntorinSMEreviewwhenallocationamountinannouncementischangedischanged @sprint-11-US-204300 @komal @Allocation @hiteshTemp
   Scenario Outline: Verify that IND user will able to change the value in budget budget details while resubmitting the negotiations to grantor in SME review when allocation amount in announcement is changed is changed
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "INVITED_APPLICANT_IND_ORG_BY_APPLICANT_FOCUS_AREA"
-    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND User"
+    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
     When I login to "As a Grantor" app as "PM" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -5661,7 +5665,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I perform quick search for "<Announcement Name>" in "---announcement:-:formulaAnnouncementTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     When I navigate to "Overview" sub tab
-    And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    And I expand nested table containing column value "Automation IND"
     Then I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                           | Allocation Amount |
       | Automation Permanent Focus Area | 2000              |
@@ -5676,7 +5680,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     #226387
     And I navigate to "Negotiations" sub tab
-    Then I softly see field "Application Sections for Negotiation" as "Budget: Budget Details Overview: Project Information"
+    Then I softly see field "Application Sections for Negotiation" as "Overview: Project Information Budget: Budget Details"
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -5694,7 +5698,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | IND  |
 
-  @274025 @VerifyuserseethevalidationwhenthebudgetedAmountisnotequaltotheAllocationamountwhenusertriedtopromotetheapplicationtothenextstepfromSMEreviewstep @sprint-23-US-273843 @hitesh @hiteshTemp
+  @274025 @VerifyuserseethevalidationwhenthebudgetedAmountisnotequaltotheAllocationamountwhenusertriedtopromotetheapplicationtothenextstepfromSMEreviewstep @sprint-23-US-273843 @hitesh
   Scenario Outline: FA No Verify user see the validation when the budgeted Amount is not equal to the Allocation amount when user tried to promote the application to the next step from SME review step.
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "BUDGETCATEGORY_NO_FOCUSAREA"
