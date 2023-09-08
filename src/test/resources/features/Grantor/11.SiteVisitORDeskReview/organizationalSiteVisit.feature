@@ -925,8 +925,10 @@ Feature: Validate all scenarios in Organizational Site Visit
   @56005 @uploadsupportingDocumentChecklistFromWorkSpace @deepika @TBE
   Scenario: User will be able to review the supporting document checklist submitted by the subrecipient
     When I navigate to "Files" sub tab
-    And I upload attachment "Attachment.pdf" of type "Others" from computer
-    Then I see "Attachment.pdf" has been added in "Attachment" flex table
+    And I click on "Upload Template" icon for "Automation" inside flex table with id "---orgRiskAssessment:-:orgriskSupportingDocTableId---" with wait for record
+    And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
+    And I click in table hyperlink containing value "View"
+    Then I softly verify that the file "Attachment.pdf" is downloaded
 
   @61398 @56044 @submittingForApprovalFieldHistoryUpdatedForSiteVisitIsSendBackToOwnerByProgramApprover @keerti
   Scenario: To Validate User will be able to view the Submit for Approval button  and field history update post Org level Site Visit is send back to owner by program approver

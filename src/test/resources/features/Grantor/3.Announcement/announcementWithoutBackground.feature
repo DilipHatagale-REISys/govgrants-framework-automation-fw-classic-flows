@@ -682,7 +682,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     #  | Subject | Contains | jitu |
     Then I softly see "jitu" inside flex table with id "---announcement:-:collabMessages---"
 
- @vai @75524 @publishedAllowToDownloadPDF @skipOnJenkins
+  @75524 @publishedAllowToDownloadPDF @skipOnJenkins
   Scenario: To verify system allow to download PDF for Announcement after publishing it
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for pdf Tests" and properties "default"
     And I login to "As a Grantor" app as "PM" user
