@@ -3895,7 +3895,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @274563 @ValidateFormulaFANouserseethevalidationwhenthebudgetedAmountisnotequaltotheAllocationamountwhenusertriedtopromoteapplicationtothenextstep @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @274563 @ValidateFormulaFANouserseethevalidationwhenthebudgetedAmountisnotequaltotheAllocationamountwhenusertriedtopromoteapplicationtothenextstep @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario Outline: Validate Formula FA No user see the validation when the budgeted Amount is not equal to the Allocation amount when user tried to promote application to the next step
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO_RISKASSESSMENT_NO-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "FIRST_BUDGET_CATEGORY_NO_FOCUS_AREA"
