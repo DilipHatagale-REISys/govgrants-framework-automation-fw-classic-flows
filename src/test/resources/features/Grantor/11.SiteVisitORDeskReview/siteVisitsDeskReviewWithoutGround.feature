@@ -1,7 +1,7 @@
 @siteVisitDeskReviewWB @grantor-regression @grantor-parallel-regression @siteVisit @regression
 Feature: Validate all scenarios in the Site Visit and Desk Review without background
 
-  @51089 @56010 @formFillingSiteVisitUploadAttachment
+  @51089 @56010 @formFillingSiteVisitUploadAttachment @TBE
   Scenario: User will be able to review the supporting document checklist submitted by the subrecipient and Filling up of form in Site Visit
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -66,7 +66,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I click on "Back" in the page details
     Then I softly see that "100%" has been added in flextable with Id "---sitevisits:-:reportsTableId---"
 
-  @60834 @AdditionOfAttachmentForAwardSiteVisits @keerti
+  @60834 @AdditionOfAttachmentForAwardSiteVisits @keerti @TBE
   Scenario: Validating addition of attachment to Award Site Visits
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -94,7 +94,6 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I navigate to "Files" sub tab
     When I click on "Upload Template" icon for "Automation test description" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" without waiting for record
     And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
-    And I perform quick search for "Automation test description" in "---sitevisits:-:siteVisitSupportingDocumentChecklist---" panel
     Then I softly see value "Mandatory" for title "Required" inside table "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
     Then I softly see value "Active" for title "Status" inside table "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
 
@@ -129,7 +128,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I click in table hyperlink containing value "View"
     Then I softly verify that the file "Attachment.pdf" is downloaded
 
-  @66713 @inProgressSiteVisitAmendedForSiteVisits @deepika @smoke
+  @66713 @inProgressSiteVisitAmendedForSiteVisits @deepika @smoke @TBE
   Scenario: Validate In-progress award level site visit are carried forward to newly created award after amendment - Budget Period Change type
     Given I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award for Associate Amendment Request" with properties "default" of type "Competitive"
@@ -175,11 +174,10 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award for Amendment Request}"
-    When I click on "Edit" in the page details
+    And I wait for "3" seconds
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award for Amendment Request}"
     And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
     When I click on "Edit" in the page details
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "fieldNewBudgetPeriodEndDate__c"
@@ -333,7 +331,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I navigate to "Management" tab
     Then I see value "In Progress" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---deskreview:-:managementInitiateDRtableid---"
 
-  @66715 @approvedStatusSVCannotCarriedForwardToNewAward @deepika
+  @66715 @approvedStatusSVCannotCarriedForwardToNewAward @deepika @TBE
   Scenario: Validate if site visit is in Approved status and amendment is done for base award, final state site visit should not be moved to newly created subaward after amendment.
     Given I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award for Associate Amendment Request" with properties "default" of type "Competitive"
@@ -416,11 +414,9 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award for Amendment Request}"
-    When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award for Amendment Request}"
     And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
     When I click on "Edit" in the page details
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "fieldNewBudgetPeriodEndDate__c"
@@ -470,6 +466,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---"
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
+    Then I see that "Subaward" is in "Activated" status
     And I navigate to "Management" tab
     When I perform quick search for "{SavedValue:SiteVisitID}" in "---sitevisits:-:grantorSiteVisitsTableID---" panel
     Then I softly see "No Records Found" inside flex table with id "---sitevisits:-:grantorSiteVisitsTableID---"
@@ -485,7 +482,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SiteVisitID}" in "---sitevisits:-:grantorSiteVisitsTableID---" panel
     Then I softly see value "Approved" for title "Status" against the value "{SavedValue:SiteVisitID}" inside table "---sitevisits:-:grantorSiteVisitsTableID---"
 
-  @66716 @approvedStatusDeskReviewCannotCarriedForwardToNewAward @deepika
+  @66716 @approvedStatusDeskReviewCannotCarriedForwardToNewAward @deepika @TBE
   Scenario: Validate if desk review is in Approved status and amendment is done for base award, final state desk review should not be moved to newly created subaward after amendment.
     Given I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award for Associate Amendment Request" with properties "default" of type "Formula_By_Applicant"
@@ -651,7 +648,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Given I navigate to "Management" sub tab
     Then I can see top right button "Initiate Site Visit" in flex table with id "---sitevisits:-:InitiateSiteVisitTableId---"
 
-  @69443 @ValidateGrantFieldhistoryUpdated @aashish @buglogged150041
+  @69443 @ValidateGrantFieldhistoryUpdated @aashish @buglogged150041 @TBE
   Scenario: Validate that Grant field history gets updated after Budget period amendment
     And I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -818,7 +815,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:siteVisitTargetTableId---" panel
     Then I see value "{SavedValue:SitevVisitId}" for title "Site Visit ID" inside table "---sitevisits:-:siteVisitTargetTableId---"
 
-  @197286 @197290 @197292 @197294 @ValidateusershowSitevisitofthesourceuserforallstatesin1stsectionofSiteVisit @sprint-4 @vaibhav @reassignment
+  @197286 @197290 @197292 @197294 @ValidateusershowSitevisitofthesourceuserforallstatesin1stsectionofSiteVisit @sprint-4 @vaibhav @reassignment @TBE
   Scenario: Validate user show Site visit of the source user for all states in 1st section of Site Visit
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -914,7 +911,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I click table top right button "Transfer Ownership" in flex table with id "---sitevisits:-:siteVisitSourceTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
 
-  @197410 @197417 @ValidatependingtaskshouldbegeneratedforNewuserafterSiteVisitownershipassigntonewuser @sprint-4 @vaibhav @reassignment @ownvai
+  @197410 @197417 @ValidatependingtaskshouldbegeneratedforNewuserafterSiteVisitownershipassigntonewuser @sprint-4 @vaibhav @reassignment @TBE
   Scenario: Validate pending task should be generated for New user after Site Visit ownership assign to new user
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -998,17 +995,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
@@ -1044,7 +1041,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Responsibilities" sub tab
     Then I see value "Automation PM1" for title "Name" inside table "---sitevisits:-:siteVisitOwnerTableId---"
 
-  @197412 @197413 @ValidatewhenuserclickonYesbuttonofwarningmessageforSiteVisitthenflowshouldbeproceed @sprint-4 @vaibhav @reassignment
+  @197412 @197413 @ValidatewhenuserclickonYesbuttonofwarningmessageforSiteVisitthenflowshouldbeproceed @sprint-4 @vaibhav @reassignment @TBE
   Scenario: Validate when user click on Yes button of warning message for Site Visit then flow should be proceed
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "CREATE_AWARD_EXE" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "CREATE_AWARD_EXE" of type "Competitive"
@@ -1306,7 +1303,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @197447 @ValidatePOuserfurthertasklikeSubmittedtoGrantoshouldbegeneratedfornewSVownerotherPOuseronlyonceownershipofSVischangedevenAwardownerischangedinbetweenlifecycleofSV @sprint-4 @vaibhav @reassignment @ownershipcheck
+  @197447 @ValidatePOuserfurthertasklikeSubmittedtoGrantoshouldbegeneratedfornewSVownerotherPOuseronlyonceownershipofSVischangedevenAwardownerischangedinbetweenlifecycleofSV @sprint-4 @vaibhav @reassignment @TBE
   Scenario: Validate PO user further task like Submitted to Grantor should be generated for new SV owner other PO user only once ownership of SV is changed even if Award owner is changed in between life cycle of SV
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -1391,17 +1388,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -1457,7 +1454,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @197450 @ValidateemailshouldbegeneratedinyopmailtonewSVownerEXEuseronceownershipischangedwhenassignedapproverclickedonSentbackbutton @sprint-4 @vaibhav @reassignment
+  @197450 @ValidateemailshouldbegeneratedinyopmailtonewSVownerEXEuseronceownershipischangedwhenassignedapproverclickedonSentbackbutton @sprint-4 @vaibhav @reassignment @TBE
   Scenario: Validate email should be generated in yopmail to new SV owner EXE user once ownership is changed when assigned approver clicked on Sent back button
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -1555,31 +1552,40 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Site Visit Report for {SavedValue:SitevVisitId} has been SentBack
+      Sandbox: Notification: Site Visit/Desk Review Report for {SavedValue:SitevVisitId}has been Sent Back
       """
     Then I see the mail text is as follows :
 
       """
-     Hello,
-     This email is to notify you that the {SavedValue:SitevVisitId} has been sent back.
-     Log in to EGMS and click here to revise the report and then resubmit for approval.
-     Site Visit Details:
-     Reporting Period Start Date: {SavedValue:SiteStartDate}
-     Reporting Period End Date: {SavedValue:SiteEndDate}
-     Location Details:
-     Location: VA GA LA
-     City: GA
-     State: LA
-     Reason for Visit: Routine based on monitoring responsibilities
-     Attendees:
-     AutomationSPI3
-     ,SPI3
-     ,SPA
-     Comments provided by Approving Personnel are as follows:
-     Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
-     Thank you.
-     The EGMS Team
+      Hello,
 
+      This email is to notify you that the Site Visit/Desk Review {SavedValue:SitevVisitId} has been sent back.
+
+      Log in to EGMS and click here to revise the report and then resubmit for approval.
+
+      Site Visit/Desk Review Details:
+      Reporting Period Start Date: {Date:M/dd/yyyy::d+10}
+      Reporting Period End Date: {Date:M/dd/yyyy::d+20}
+
+      Location Details:
+      Location: asf asf Arlington WI
+      City: asf
+      State: WI
+
+      Reason for Visit: Routine based on monitoring responsibilities
+
+      Attendees:
+      AutomationSPI3
+      ,SPI3
+      ,SPA
+
+      Comments provided by Approving Personnel are as follows:
+      Automation Testing
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+
+      Thank you.
+      The EGMS Team
       """
 
   @197490 @ValidateSVownerasPMuserisinNotifiedstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinNotifiedstate @sprint-4 @vaibhav @reassignment
@@ -1706,7 +1712,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Submit for Approval" in page detail
 
-  @197493 @ValidateSVownerasEXEuserisinSubmittedtoReviewstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinSubmittedtoReviewstate @sprint-4 @vaibhav @reassignment
+  @197493 @ValidateSVownerasEXEuserisinSubmittedtoReviewstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinSubmittedtoReviewstate @sprint-4 @vaibhav @reassignment @TBE
   Scenario: Validate SV owner as EXE user is in Submitted to Review state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in Submitted to Review state
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -1757,7 +1763,6 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Site Visit Reviewers" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
     And I navigate to "Home" tab
     Then I see "Ownership" inside "Reassign" is displayed
@@ -1790,7 +1795,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I navigate to "Responsibilities" sub tab
     Then I can see top right button "New" in flex table with id "---sitevisits:-:reviewersFlexTableId---"
 
-  @197494 @ValidateSVownerasFOuserisinReviewstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinReviewstate @sprint-4 @vaibhav @reassignment
+  @197494 @ValidateSVownerasFOuserisinReviewstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinReviewstate @sprint-4 @vaibhav @reassignment @TBE
   Scenario: Validate SV owner as FO user is in Review state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in Review state
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -2094,7 +2099,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---sitevisits:-:siteVisitTargetTableId---" panel
     Then I see value "{SavedValue:DeskReview}" for title "Site Visit ID" inside table "---sitevisits:-:siteVisitTargetTableId---"
 
-  @197627 @197629 @197630 @197631 @ValidateusershowDeskReviewofthesourceuserforallstatesin1stsectionofDeskReview @sprint-4 @vaibhav @reassignment
+  @197627 @197629 @197630 @197631 @ValidateusershowDeskReviewofthesourceuserforallstatesin1stsectionofDeskReview @sprint-4 @vaibhav @reassignment @TBE
   Scenario: Validate user show Desk Review of the source user for all states in 1st section of Desk Review
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -2189,7 +2194,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I click table top right button "Transfer Ownership" in flex table with id "---deskreview:-:deskReviewSourceTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
 
-  @197634 @ValidatependingtaskshouldbegeneratedforNewuserafterDeskreviewownershipassigntonewuser @sprint-4-US-196236 @vaibhav @reassignment
+  @197634 @ValidatependingtaskshouldbegeneratedforNewuserafterDeskreviewownershipassigntonewuser @sprint-4-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate pending task should be generated for New user after Desk review ownership assign to new user
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -2257,17 +2262,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
@@ -2298,7 +2303,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I see value "{SavedValue:DeskReview}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @197635 @197636 @validatewhenuserclickonYesbuttonofwarningmessageforDeskReviewthenflowshouldbeproceed @sprint-4-US-196236 @vaibhav @reassignment
+  @197635 @197636 @validatewhenuserclickonYesbuttonofwarningmessageforDeskReviewthenflowshouldbeproceed @sprint-4-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate when user click on "Yes" button of warning message for Desk Review then flow should be proceed
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -2366,17 +2371,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
@@ -2406,7 +2411,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---deskreview:-:deskReviewTargetTableId---" panel
     Then I see value "{SavedValue:DeskReview}" for title "Site Visit ID" inside table "---deskreview:-:deskReviewTargetTableId---"
 
-  @197639 @ValidateDeskreviewafterchangingtheownershipthennewownershouldbeupdateinownersectionunderresponsibilitytab @sprint-4-US-196236 @vaibhav @reassignment
+  @197639 @ValidateDeskreviewafterchangingtheownershipthennewownershouldbeupdateinownersectionunderresponsibilitytab @sprint-4-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate Desk review after changing the ownership then new owner should be update in owner section under responsibility tab
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -2474,17 +2479,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
@@ -2651,7 +2656,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I navigate to "Management" sub tab
     Then I softly can see top right button "Initiate Desk Review" in flex table with id "---deskreview:-:managementInitiateDRtableid---"
 
-  @197652 @ValidatePOuserfurthertaskikeSubmittedtoGrantorshoulbegeneratedfornewDRownerotherPOuseronlyonceownershipofDRischangedevenifAwardownerischangedinbetweenlifecycleofDR @sprint-4-US-196236 @vaibhav @reassignment
+  @197652 @ValidatePOuserfurthertaskikeSubmittedtoGrantorshoulbegeneratedfornewDRownerotherPOuseronlyonceownershipofDRischangedevenifAwardownerischangedinbetweenlifecycleofDR @sprint-4-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate PO user further task like 'Submitted to Grantor' should be generated for new DR owner(other PO user) only once ownership of DR is changed even if Award owner is changed in between life cycle of DR
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -2720,17 +2725,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -2788,7 +2793,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Responsibilities" sub tab
     Then I see value "Automation PO1" for title "Name" inside table "---deskreview:-:deskReviewOwnerTableId---"
 
-  @197655 @ValidateemailshouldbegeneratedinyopmailtonewDRownerEXEuseronceownershipischangewhenassignedapproverclickedonSentbackbutton @reassignment
+  @197655 @ValidateemailshouldbegeneratedinyopmailtonewDRownerEXEuseronceownershipischangewhenassignedapproverclickedonSentbackbutton @reassignment @TBE
   Scenario: Validate email should be generated in yopmail to new DR owner EXE user once ownership is changed when assigned approver clicked on Sent back button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -2875,31 +2880,36 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Site Visit Report for {SavedValue:DeskReview} has been SentBack
+      Sandbox: Notification: Site Visit/Desk Review Report for {SavedValue:DeskReview}has been Sent Back
       """
     Then I see the mail text is as follows :
 
       """
-     Hello,
-     This email is to notify you that the {SavedValue:DeskReview} has been sent back.
-     Log in to EGMS and click here to revise the report and then resubmit for approval.
-     Site Visit Details:
-     Reporting Period Start Date: {SavedValue:DeskStartDate}
-     Reporting Period End Date: {SavedValue:DeskEndDate}
-     Location Details:
-     Location: VA GA LA
-     City: GA
-     State: LA
-     Reason for Visit: Routine based on monitoring responsibilities
-     Attendees:
-     AutomationSPI3
-     ,SPI3
-     ,SPA
-     Comments provided by Approving Personnel are as follows:
-     Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
-     Thank you.
-     The EGMS Team
+      Hello,
 
+      This email is to notify you that the Site Visit/Desk Review {SavedValue:DeskReview} has been sent back.
+
+      Log in to EGMS and click here to revise the report and then resubmit for approval.
+
+      Site Visit/Desk Review Details:
+      Reporting Period Start Date: {Date:M/dd/yyyy::d+10}
+      Reporting Period End Date: {Date:M/dd/yyyy::d+20}
+
+
+      Reason for Visit: Routine based on monitoring responsibilities
+
+      Attendees:
+      AutomationSPI3
+      ,SPI3
+      ,EXE
+
+      Comments provided by Approving Personnel are as follows:
+      Automation Testing
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+
+      Thank you.
+      The EGMS Team
       """
 
   @197662 @ValidateDRownerasEXEuserisinInProgressstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinInProgressstate @sprint-4-US-196236 @vaibhav @reassignment
@@ -3030,7 +3040,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I click on "View" icon for "{SavedValue:DeskReview}" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I softly can see top right button "Conduct" in page detail
 
-  @197882 @ValidateDRownerasEXEuserisinSubmittedtoReviewstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinSubmittedtoReviewstate @reassignment @ownvai
+  @197882 @ValidateDRownerasEXEuserisinSubmittedtoReviewstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinSubmittedtoReviewstate @reassignment @TBE
   Scenario: Validate DR owner as EXE user is in Submitted to Review state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in Submitted to Review state
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -3080,7 +3090,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Site Visit Reviewers" modal by clicking the top right x button
+#    When I close "Site Visit Reviewers" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
     And I navigate to "Home" tab
     Then I see "Ownership" inside "Reassign" is displayed
@@ -3196,7 +3206,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Files" sub tab
     Then I can see top right button "Add Files" in flex table with id "---deskreview:-:deskReviewsFilesTableId---"
 
-  @197884 @ValidateDRownerasFOuserisinSubmittedforapprovalstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasldownerhadinSubmittedforapprovalstate @sprint-4-US-196236 @vaibhav @reassignment
+  @197884 @ValidateDRownerasFOuserisinSubmittedforapprovalstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasldownerhadinSubmittedforapprovalstate @sprint-4-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate DR owner as FO user is in Submitted for approval state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in Submitted for approval state
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -3444,7 +3454,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I can see top right button "Edit" in page detail
     Then I softly can see top right button "Submit for Approval" in page detail
 
-  @197888 @ValidateDRownerasPOuserisinSubmittedtoGrantorstateafterthatownershipwillgetchangedthennewownerwilhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinSubmittedtoGrantorstate @sprint-4-US-196236 @vaibhav @reassignment
+  @197888 @ValidateDRownerasPOuserisinSubmittedtoGrantorstateafterthatownershipwillgetchangedthennewownerwilhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinSubmittedtoGrantorstate @sprint-4-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate DR owner as PO user is in Submitted to Grantor state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in Submitted to Grantor state
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -3513,17 +3523,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
@@ -3557,7 +3567,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
     Then I softly can see top right button "Accept and Close" in page detail
 
-  @197889 @ValidateDRownerasPMuserisinClosestateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinClosestate @sprint-4-US-196236 @vaibhav @reassignment
+  @197889 @ValidateDRownerasPMuserisinClosestateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinClosestate @sprint-4-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate DR owner as PM user is in 'Close' state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in 'Close' state
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -3621,17 +3631,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -3818,7 +3828,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I cannot see top right button "New" in flex table with id "---sitevisits:-:approverSiteVisitTableId---"
     Then I cannot see top right button "New" in flex table with id "---sitevisits:-:reviewersFlexTableId---"
 
-  @197501 @ValidateSVownerasPOuserisinSubmittedtoGrantorstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinSubmittedtoGrantorstate @sprint-4-US-196236 @vaibhav @reassignment
+  @197501 @ValidateSVownerasPOuserisinSubmittedtoGrantorstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinSubmittedtoGrantorstate @sprint-4-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate SV owner as PO user is in 'Submitted to Grantor' state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in Submitted to Grantor state
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -3893,17 +3903,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
@@ -4065,7 +4075,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Notify" in page detail
 
-  @197984 @198006 @ValidateAsadminusershouldabletoreassignthetaskofSiteVisitwithsameprofile&sameOrganization @sprint-4-US-192978 @vaibhav @reassignment
+  @197984 @198006 @ValidateAsadminusershouldabletoreassignthetaskofSiteVisitwithsameprofile&sameOrganization @sprint-4-US-192978 @vaibhav @reassignment @TBE
   Scenario: Validate As a admin user should able to reassign the task of Site Visit with same profile & same Organization
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -4141,17 +4151,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
@@ -4172,7 +4182,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @197985 @ValidatePMusershouldabletoreassignthetaskofSiteVisitfromMyTasksunderReassignsectiononleft-handnavigationbar  @sprint-4-US-192978 @vaibhav @reassignment @taskreassign
+  @197985 @ValidatePMusershouldabletoreassignthetaskofSiteVisitfromMyTasksunderReassignsectiononleft-handnavigationbar  @sprint-4-US-192978 @vaibhav @reassignment @taskreassign @TBE
   Scenario: Validate PM user should able to reassign the task of Site Visit from My Tasks under Reassign section on left-hand navigation bar
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -4248,17 +4258,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Concern"
-    And I expand nested table containing column value "Automation Finding"
+#    And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -4272,7 +4282,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198007 @ValidateEXEusershouldabletoseeallthependingtasksinReassignMyCurrentTaskpage&usershouldreassigntheownershiprelatedtaskstootherEXEuserofsameorganization @sprint-4-US-192978 @vaibhav @reassignment
+  @198007 @ValidateEXEusershouldabletoseeallthependingtasksinReassignMyCurrentTaskpage&usershouldreassigntheownershiprelatedtaskstootherEXEuserofsameorganization @sprint-4-US-192978 @vaibhav @reassignment @TBE
   Scenario: Validate EXE user should able to see all the pending tasks in Reassign My Current Task page & user should reassign the ownership-related tasks to other EXE user of same organization
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -4348,17 +4358,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -4372,7 +4382,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198008 @ValidatePOusershouldabletocheckownershiprelatedtaskNotstarted/Inprocessofsitevisitfromtable&ReassigntonewPOuserofSameorganization @sprint-4-US-192978 @vaibhav @reassignment
+  @198008 @ValidatePOusershouldabletocheckownershiprelatedtaskNotstarted/Inprocessofsitevisitfromtable&ReassigntonewPOuserofSameorganization @sprint-4-US-192978 @vaibhav @reassignment @TBE
   Scenario: Validate PO user should able to check ownership related task(Not started/In process) of site visit from table & Reassign to new PO user of Same organization
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -4448,17 +4458,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -4472,7 +4482,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I see value "Not Started" for title "Status" against the value "{SavedValue:SitevVisitId}" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198010 @ValidateFOusershouldabletoseealltaskrelatedtoSiteVisitFindingsintheReassignMyCurrentTaskandreassigntotheotherFOuserwhichsourceuserhasselectedinlookupfield @sprint-4-US-192978 @vaibhav @reassignment @taskreassign
+  @198010 @ValidateFOusershouldabletoseealltaskrelatedtoSiteVisitFindingsintheReassignMyCurrentTaskandreassigntotheotherFOuserwhichsourceuserhasselectedinlookupfield @sprint-4-US-192978 @vaibhav @reassignment @TBE
   Scenario: Validate FO user should able to see all task related to Site Visit Findings in the Reassign My Current Task and reassign to the other FO user which source user has selected in lookup field
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -4548,17 +4558,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -4577,7 +4587,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198013 @ValidatenewSVownerPOuserpendingtaskshouldbecreatedfortaskownershipofsitevisitfindingswhenoldPOuserreassigntheownershiprelatedtasktonewPOuser @sprint-4-US-192978 @vaibhav @reassignment
+  @198013 @ValidatenewSVownerPOuserpendingtaskshouldbecreatedfortaskownershipofsitevisitfindingswhenoldPOuserreassigntheownershiprelatedtasktonewPOuser @sprint-4-US-192978 @vaibhav @reassignment @TBE
   Scenario: Validate new SV owner (PO user) pending task should be created for task ownership of site visit findings when old PO user reassign the ownership related task to new PO user
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -4653,17 +4663,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -4686,7 +4696,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @198035 @199426 @198039 @ValidatePOuserOwnershipbasedtasklikeReviewSiteVisitFindingsshouldbegeneratedfornewSVownerotherPOuseronlyonceownershipofSVischangedevenifGrantownerischangedinbetweenlifecycleofSV @sprint-4-US-192978 @vaibhav @reassignment
+  @198035 @199426 @198039 @ValidatePOuserOwnershipbasedtasklikeReviewSiteVisitFindingsshouldbegeneratedfornewSVownerotherPOuseronlyonceownershipofSVischangedevenifGrantownerischangedinbetweenlifecycleofSV @sprint-4-US-192978 @vaibhav @reassignment @TBE
   Scenario: Validate PO user Ownership based task like 'Review Site Visit Findings' should be generated for new SV owner(other PO user) only once ownership of SV is changed even if Grant owner is changed in between life cycle of SV
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -4762,17 +4772,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -4822,7 +4832,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
     Then I softly can see top right button "Accept and Close" in page detail
 
-  @198036 @198057 @ValidateFOuserSVownerOwnershipbasedtaskReassigntonewFOuserthennewFOuserwillownerofthattaskbutownerofGrantshouldnotaffected @sprint-4-US-192978 @vaibhav @reassignment
+  @198036 @198057 @ValidateFOuserSVownerOwnershipbasedtaskReassigntonewFOuserthennewFOuserwillownerofthattaskbutownerofGrantshouldnotaffected @sprint-4-US-192978 @vaibhav @reassignment @TBE
   Scenario: Validate FO user (SV owner)Ownership based task Reassign to new FO user then new FO user will owner of that task but owner of Grant should not affected
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -4898,17 +4908,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -4946,7 +4956,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @198054 @Validateownershiprelatedtaskisreassigntonewuser&thatSVisinprocessafterchangedhisownershiptaskafterthatuserwanttocreateanotherSVthenownerofthatSV2shouldbetheinitiatorofSV2notthereassignownerofSV1 @sprint-4-US-192978 @vaibhav @reassignment
+  @198054 @Validateownershiprelatedtaskisreassigntonewuser&thatSVisinprocessafterchangedhisownershiptaskafterthatuserwanttocreateanotherSVthenownerofthatSV2shouldbetheinitiatorofSV2notthereassignownerofSV1 @sprint-4-US-192978 @vaibhav @reassignment @TBE
   Scenario: Validate ownership related task is reassign to new user & that SV is in process after changed his ownership task after that user want to create another SV then owner of that SV2 should be the initiator of SV2 not the reassign owner of SV 1
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -5022,17 +5032,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -5077,7 +5087,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I navigate to "Responsibilities" sub tab
     Then I see value "Automation PO" for title "Name" inside table "---sitevisits:-:siteVisitOwnerTableId---"
 
-  @198016 @ValidateoldSVownerFOusercanabletoviewtheSVrecordonceownershipoftaskisinSubmittedtograntorstateisreassigntonewFOuserNewSVowner @sprint-4-US-192978 @vaibhav @reassignment
+  @198016 @ValidateoldSVownerFOusercanabletoviewtheSVrecordonceownershipoftaskisinSubmittedtograntorstateisreassigntonewFOuserNewSVowner @sprint-4-US-192978 @vaibhav @reassignment @TBE
   Scenario: Validate old SV owner FO user can able to view the SV record once ownership of task is in Submitted to grantor state is reassign to new FO user New SV owner
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -5153,17 +5163,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -5192,7 +5202,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly can see row level action button "View" against "{SavedValue:SitevVisitId}" in flex table with id "---sitevisits:-:manageSiteVisitTableId---"
 
-  @198050 @ValidateoldSVownerasEXEusershouldnotabletoseebuttonswhenownershiprelatedtaskisreassigntonewEXEuser @sprint-4-US-192978 @vaibhav @reassignment @ownvai
+  @198050 @ValidateoldSVownerasEXEusershouldnotabletoseebuttonswhenownershiprelatedtaskisreassigntonewEXEuser @sprint-4-US-192978 @vaibhav @reassignment @TBE
   Scenario: Validate old SV owner as EXE user should not able to see buttons when ownership related task is reassign to new EXE user
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -5268,17 +5278,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -5303,7 +5313,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly cannot see top right button "Send Back to Subrecipient" in page detail
     Then I softly cannot see top right button "Accept and Close" in page detail
 
-  @198020 @198023 @ValidateAsadminusershouldabletoreassignthetaskofDeskReviewwithsameprofile&sameOrganization @sprint-4-US-192997 @vaibhav @reassignment
+  @198020 @198023 @ValidateAsadminusershouldabletoreassignthetaskofDeskReviewwithsameprofile&sameOrganization @sprint-4-US-192997 @vaibhav @reassignment @TBE
   Scenario: Validate As a admin user should able to reassign the task of Desk Review with same profile & same Organization
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -5372,17 +5382,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
@@ -5402,7 +5412,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I see value "{SavedValue:DeskReview}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @198021 @ValidatePMusershouldabletoreassignthetaskofDeskreviewfromMyTasksunderReassignsectiononleft-handnavigationbar @sprint-4-US-192997 @vaibhav @reassignment
+  @198021 @ValidatePMusershouldabletoreassignthetaskofDeskreviewfromMyTasksunderReassignsectiononleft-handnavigationbar @sprint-4-US-192997 @vaibhav @reassignment @TBE
   Scenario: Validate PM user should able to reassign the task of Desk review from My Tasks under Reassign section on left-hand navigation bar
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -5471,17 +5481,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -5495,7 +5505,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:DeskReview}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198025 @ValidateEXEusershouldabletoseeallthependingtasksinReassignMyCurrentTaskpage&usershouldreassigntheownership-relatedtaskstootherEXEuserofsameorganization @sprint-4-US-192997 @vaibhav @reassignment
+  @198025 @ValidateEXEusershouldabletoseeallthependingtasksinReassignMyCurrentTaskpage&usershouldreassigntheownership-relatedtaskstootherEXEuserofsameorganization @sprint-4-US-192997 @vaibhav @reassignment @TBE
   Scenario: Validate EXE user should able to see all the pending tasks in "Reassign My Current Task" page & user should reassign the ownership-related tasks to other EXE user of same organization
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -5564,17 +5574,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -5588,7 +5598,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "{SavedValue:DeskReview}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198026 @ValidatePOusershouldabletocheckownershiprelatedtaskNotstartedInprocessofDeskReviewfromtable&ReassigntonewPOuserofSameorganization @sprint-4-US-192997 @vaibhav @reassignment
+  @198026 @ValidatePOusershouldabletocheckownershiprelatedtaskNotstartedInprocessofDeskReviewfromtable&ReassigntonewPOuserofSameorganization @sprint-4-US-192997 @vaibhav @reassignment @TBE
   Scenario: Validate PO user should able to check ownership related task(Not started/In process) of Desk Review from table & Reassign to new PO user of Same organization
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -5657,17 +5667,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -5681,7 +5691,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I see value "Not Started" for title "Status" against the value "{SavedValue:DeskReview}" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198027 @ValidateFOusershouldabletoseealltaskrelatedtoDeskReviewFindingsintheReassignMyCurrentTaskandreassigntotheotherFOuserwhichsourceuserhasselectedinlookupfield @sprint-4-US-192997 @vaibhav @reassignment
+  @198027 @ValidateFOusershouldabletoseealltaskrelatedtoDeskReviewFindingsintheReassignMyCurrentTaskandreassigntotheotherFOuserwhichsourceuserhasselectedinlookupfield @sprint-4-US-192997 @vaibhav @reassignment @TBE
   Scenario: Validate FO user should able to see all task related to Desk Review Findings in the 'Reassign My Current Task' and reassign to the other FO user which source user has selected in lookup field
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -5750,17 +5760,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -5779,7 +5789,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:DeskReview}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198028 @ValidatenewDRownerPOuserpendingtaskshouldbecreatedfortaskownershipofDeskReviewfindingswhenoldPOuserreassigntheownershiprelatedtasktonewPOuser @reassignment
+  @198028 @ValidatenewDRownerPOuserpendingtaskshouldbecreatedfortaskownershipofDeskReviewfindingswhenoldPOuserreassigntheownershiprelatedtasktonewPOuser @reassignment @TBE
   Scenario: Validate new DR owner (PO user) pending task should be created for task ownership of Desk Review findings when old PO user reassign the ownership related task to new PO user
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -5848,17 +5858,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -5881,7 +5891,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I see value "{SavedValue:DeskReview}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @198061 @199428 @198064 @ValidatePOuserOwnershipbasedtasklikeDeskReviewFindingsshouldbegeneratedfornewDRownerotherPOuseronlyonceownershipofDRischangedevenifGrantownerischangedinbetweenlifecycleofDR @sprint-4-US-192997 @vaibhav @reassignment
+  @198061 @199428 @198064 @ValidatePOuserOwnershipbasedtasklikeDeskReviewFindingsshouldbegeneratedfornewDRownerotherPOuseronlyonceownershipofDRischangedevenifGrantownerischangedinbetweenlifecycleofDR @sprint-4-US-192997 @vaibhav @reassignment @TBE
   Scenario: Validate PO user Ownership based task like 'Desk Review Findings' should be generated for new DR owner(other PO user) only once ownership of DR is changed even if Grant owner is changed in between life cycle of DR
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -5950,17 +5960,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -6010,7 +6020,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
     Then I softly can see top right button "Accept and Close" in page detail
 
-  @198062 @198069 @ValidateFOuserDRownerOwnershipbasedtaskReassigntonewFOuserthennewFOuserwillownerofthattaskbutownerofGrantshouldnotaffected @sprint-4-US-192997 @vaibhav @reassignment
+  @198062 @198069 @ValidateFOuserDRownerOwnershipbasedtaskReassigntonewFOuserthennewFOuserwillownerofthattaskbutownerofGrantshouldnotaffected @sprint-4-US-192997 @vaibhav @reassignment @TBE
   Scenario: Validate FO user (DR owner)Ownership based task Reassign to new FO user then new FO user will owner of that task but owner of Grant should not affected
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -6079,17 +6089,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -6123,7 +6133,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @198065 @ValidateoldDRownerasEXEusershouldnotabletoseebuttonswhenownershiprelatedtaskisreassigntonewEXEuser @sprint-4-US-192997 @vaibhav @reassignment @ownvai
+  @198065 @ValidateoldDRownerasEXEusershouldnotabletoseebuttonswhenownershiprelatedtaskisreassigntonewEXEuser @sprint-4-US-192997 @vaibhav @reassignment @TBE
   Scenario: Validate old DR owner as EXE user should not able to see buttons when ownership related task is reassign to new EXE user
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -6192,17 +6202,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -6227,7 +6237,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly cannot see top right button "Send Back to Subrecipient" in page detail
     Then I softly cannot see top right button "Accept and Close" in page detail
 
-  @198067 @ValidateownershiprelatedtaskofDRisreassigntonewuser&thatDRiscompletedafterchangedhisownershiptaskafterthatuserwanttocreateanotherDRthenownerofthatDR2shouldbetheinitiatorofDR2notthereassignownerofDR1 @sprint-4-US-192997 @vaibhav @reassignment @taskreassign
+  @198067 @ValidateownershiprelatedtaskofDRisreassigntonewuser&thatDRiscompletedafterchangedhisownershiptaskafterthatuserwanttocreateanotherDRthenownerofthatDR2shouldbetheinitiatorofDR2notthereassignownerofDR1 @sprint-4-US-192997 @vaibhav @reassignment @TBE
   Scenario: Validate ownership related task of DR is reassign to new user & that DR is completed after changed his ownership task after that user want to create another DR then owner of that DR2 should be the initiator of DR2 not the reassign owner of DR1
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -6296,17 +6306,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -6350,7 +6360,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I navigate to "Responsibilities" sub tab
     Then I see value "Automation PO" for title "Name" inside table "---deskreview:-:deskReviewOwnerTableId---"
 
-  @198030 @ValidateoldDRownerFOusercanabletoviewtheDRrecordonceownershipoftaskisinSubmittedtograntorstateisreassigntonewFOuserNewDRowner @sprint-4-US-192997 @vaibhav @reassignment
+  @198030 @ValidateoldDRownerFOusercanabletoviewtheDRrecordonceownershipoftaskisinSubmittedtograntorstateisreassigntonewFOuserNewDRowner @sprint-4-US-192997 @vaibhav @reassignment @TBE
   Scenario: Validate old DR owner(FO user) can able to 'view' the DR record once ownership of task is in Submitted to grantor state is reassign to new FO user New DR owner
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -6419,17 +6429,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -6458,7 +6468,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I see value "{SavedValue:DeskReview}" for title "EGMS ID" inside table "---deskreview:-:deskReviewGridViewTableId---"
     Then I softly can see row level action button "View" against "{SavedValue:DeskReview}" in flex table with id "---deskreview:-:deskReviewGridViewTableId---"
 
-  @197656 @ValidateemailshouldbegeneratedinyopmailtonewDRownerPMuseronceownershipischangedwhens/ruserclickedonSubmittedtoGrantorbutton @sprint-5-US-196236 @vaibhav @reassignment
+  @197656 @ValidateemailshouldbegeneratedinyopmailtonewDRownerPMuseronceownershipischangedwhens/ruserclickedonSubmittedtoGrantorbutton @sprint-5-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate email should be generated in yopmail to new DR owner PM user once ownership is changed when s/r user clicked on Submitted to Grantor button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -6531,17 +6541,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -6595,7 +6605,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @197452 @ValidateemailshouldbegeneratedinyopmailtonewSVowneronceownershipischangedwhens/ruserclickedonSubmittedtoGrantorbutton @sprint-5-US-196236 @vaibhav @reassignment
+  @197452 @ValidateemailshouldbegeneratedinyopmailtonewSVowneronceownershipischangedwhens/ruserclickedonSubmittedtoGrantorbutton @sprint-5-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate email should be generated in yopmail to new SV owner once ownership is changed when s/r user clicked on 'Submitted to Grantor' button
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -6675,17 +6685,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -6740,7 +6750,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @197653 @ValidateDeskReviewemailshouldbegeneratedyopmailtonewDRowneronceownershipischangedwhenassignedpeerreviewerclickedonSubmitReviewbutton @sprint-5-US-196236 @vaibhav @reassignment
+  @197653 @ValidateDeskReviewemailshouldbegeneratedyopmailtonewDRowneronceownershipischangedwhenassignedpeerreviewerclickedonSubmitReviewbutton @sprint-5-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate Desk Review email should be generated in yopmail to new DR owner once ownership is changed when assigned peer reviewer clicked on Submit Review button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -6814,7 +6824,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Site Visit Reviewers" modal by clicking the top right x button
+#    When I close "Site Visit Reviewers" modal by clicking the top right x button
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
@@ -6833,7 +6843,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @197504 @ValidateSVownerasEXEuserisinForceClosestateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayou&sectionallevelbuttonsasoldownerhadinForceClosestate @sprint-12-US-226646 @vaibhav @reassignment
+  @197504 @ValidateSVownerasEXEuserisinForceClosestateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayou&sectionallevelbuttonsasoldownerhadinForceClosestate @sprint-12-US-226646 @vaibhav @reassignment @TBE
   Scenario: Validate SV owner as EXE user is in 'Force Close' state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in Force Close state
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -6913,17 +6923,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -7127,7 +7137,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @198051 @ValidateEmailshouldgeneratedinyopmailforSVsubmittedtoGrantortonew&oldSVownerasFOusewhenonceownershiprelatedtaskisreassigntonewuserofSV @sprint-12-US-226646 @vaibhav @reassignment
+  @198051 @ValidateEmailshouldgeneratedinyopmailforSVsubmittedtoGrantortonew&oldSVownerasFOusewhenonceownershiprelatedtaskisreassigntonewuserofSV @sprint-12-US-226646 @vaibhav @reassignment @TBE
   Scenario: Validate Email should generated in yopmail for SV submitted to Grantor to new & old  SV owner as FO user when once ownership related task is reassign to new user of SV
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -7203,17 +7213,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -7560,7 +7570,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @197376 @ValidateFOSVowneremailshouldbegeneratedforsystemadminpreviousownerandnewownerofSiteVisitafterownershipofSiteVisitischangedinForceClosestate @sprint-12-US-226646 @vaibhav @reassignment
+  @197376 @ValidateFOSVowneremailshouldbegeneratedforsystemadminpreviousownerandnewownerofSiteVisitafterownershipofSiteVisitischangedinForceClosestate @sprint-12-US-226646 @vaibhav @reassignment @TBE
   Scenario: Validate FO(SV owner)email should be generated for system admin, previous owner and new owner of Site Visit after ownership of Site Visit is changed in 'Force Close' state
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -7605,8 +7615,6 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "closeoutID"
-    When I click on "Save" in the page details
-    And I click on "Edit" in the page details
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -7621,6 +7629,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
     And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I click on "Acknowledge" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -7730,7 +7739,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @198015 @ValidatenewSVownerPOuserEmailshouldbegeneratedfortaskownershipofsitevisitfindingswhenoldPOuserreassigntheownershiprelatedtasktonewPOuser @sprint-12-US-226646 @vaibhav @reassignment
+  @198015 @ValidatenewSVownerPOuserEmailshouldbegeneratedfortaskownershipofsitevisitfindingswhenoldPOuserreassigntheownershiprelatedtasktonewPOuser @sprint-12-US-226646 @vaibhav @reassignment @TBE
   Scenario: Validate new SV owner(PO user) Email should be generated for task ownership of site visit findings when old PO user reassign the ownership related task to new PO user
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -7806,17 +7815,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -7866,7 +7875,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @198066 @ValidateEmailshouldgeneratedinyopmailforDRsubmittedtoGrantortonewDRownerasFOuserwhenonceownershiprelatedtaskisreassigntonewuserofDR @sprint-12-US-226646 @vaibhav @reassignment
+  @198066 @ValidateEmailshouldgeneratedinyopmailforDRsubmittedtoGrantortonewDRownerasFOuserwhenonceownershiprelatedtaskisreassigntonewuserofDR @sprint-12-US-226646 @vaibhav @reassignment @TBE
   Scenario: Validate Email should generated in yopmail for DR submitted to Grantor to new DR owner as FO user when once ownership related task is reassign to new user of DR
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -7935,17 +7944,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -8148,7 +8157,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @223684 @ValidateSiteVisitpeerreviewershouldgetupdateinreviewertableandemailshouldgeneratedforbothreviewerafterpeerreviewtaskreassignment @sprint-12-US-226646 @vaibhav @reassignment
+  @223684 @ValidateSiteVisitpeerreviewershouldgetupdateinreviewertableandemailshouldgeneratedforbothreviewerafterpeerreviewtaskreassignment @sprint-12-US-226646 @vaibhav @reassignment @TBE
   Scenario: Validate Site Visit peer reviewer should get update in reviewer table and email should generated for both reviewer after peer review task reassignment
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -8439,7 +8448,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @197367 @ValidateFO(SVowneremailshouldbegeneratedforsystemadminpreviousownerandnewownerofSiteVisitafterownershipofSiteVisitischangedinReviewstate @sprint-4-US-196236 @vaibhav @reassignment
+  @197367 @ValidateFO(SVowneremailshouldbegeneratedforsystemadminpreviousownerandnewownerofSiteVisitafterownershipofSiteVisitischangedinReviewstate @sprint-4-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate FO(SV owner)email should be generated for system admin, previous owner and new owner of Site Visit after ownership of Site Visit is changed in 'Review' state
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -8880,7 +8889,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @197374 @ValidatePMSVowneremailshouldbegeneratedforsystemadminpreviousownerandnewownerofSiteVisitafterownershipofSiteVisitischangedinSubmittedtoGrantorstate @sprint-4-US-196236 @vaibhav @reassignment
+  @197374 @ValidatePMSVowneremailshouldbegeneratedforsystemadminpreviousownerandnewownerofSiteVisitafterownershipofSiteVisitischangedinSubmittedtoGrantorstate @sprint-4-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate PM(SV owner)email should be generated for system admin, previous owner and new owner of Site Visit after ownership of Site Visit is changed in 'Submitted to Grantor' state
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -8955,17 +8964,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
@@ -9067,7 +9076,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @197448 @ValidateemailshouldbegeneratednyopmailtonewSVownerEXEuseronceownershipischangewhenassignedpeerreviewerclickedonSubmitReviewbutton @sprint-4-US-196236 @vaibhav @reassignment
+  @197448 @ValidateemailshouldbegeneratednyopmailtonewSVownerEXEuseronceownershipischangewhenassignedpeerreviewerclickedonSubmitReviewbutton @sprint-4-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate email should be generated in yopmail to new SV owner(EXE user) once ownership is changed when assigned peer reviewer clicked on Submit Review' button
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -9203,7 +9212,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @198029 @ValidateDRownerPOuserEmailshouldbegeneratedfortaskownershipofdeskreviewfindingswhenoldPOusereassigntheownershirelatedtasktonewPOuser @sprint-4-US-196236 @vaibhav @reassignment
+  @198029 @ValidateDRownerPOuserEmailshouldbegeneratedfortaskownershipofdeskreviewfindingswhenoldPOusereassigntheownershirelatedtasktonewPOuser @sprint-4-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate new DR owner(PO user) Email should be generated for task ownership of desk review findings when old PO user reassign the ownership related task to new PO user
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -9272,17 +9281,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -9442,7 +9451,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @197375 @ValidateEXESVowneremailshouldbegeneratedforsystemadminpreviousownerandnewownerofSiteVisitafterownershipofSiteVisitischangedinClosestate @sprint-4-US-196236 @vaibhav @reassignment
+  @197375 @ValidateEXESVowneremailshouldbegeneratedforsystemadminpreviousownerandnewownerofSiteVisitafterownershipofSiteVisitischangedinClosestate @sprint-4-US-196236 @vaibhav @reassignment @TBE
   Scenario: Validate EXE(SV owner)email should be generated for system admin, previous owner and new owner of Site Visit after ownership of Site Visit is changed in 'Close' state
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -9518,17 +9527,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -10136,17 +10145,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     And I navigate to "Grants" tab
@@ -10213,17 +10222,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal

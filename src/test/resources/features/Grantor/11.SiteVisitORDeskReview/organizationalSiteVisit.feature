@@ -586,7 +586,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I download the file
     Then I see "Closed" on page "1" of "govgrants" pdf file
 
-  @59011 @56004 @sendBacktoOwnerReceivePendingTaskSVOrgLevel @deepika @TBE
+  @59011 @56004 @sendBacktoOwnerReceivePendingTaskSVOrgLevel @deepika
   Scenario:  Validate when Site Visit record sent back to Recipients when outcomes are not properly addressed and recipients will be able to receive a pending task
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -922,7 +922,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I see the following messages in the page details :
       | Reports and Outcomes Tab - Complete all data in the form. |
 
-  @56005 @uploadsupportingDocumentChecklistFromWorkSpace @deepika @TBE
+  @56005 @uploadsupportingDocumentChecklistFromWorkSpace @deepika
   Scenario: User will be able to review the supporting document checklist submitted by the subrecipient
     When I navigate to "Files" sub tab
     And I click on "Upload Template" icon for "Automation" inside flex table with id "---orgRiskAssessment:-:orgriskSupportingDocTableId---" with wait for record
@@ -990,7 +990,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I perform quick search for "Record Id" in "History" panel
     Then I softly see value "Created" for title "Old Value" inside table "History"
 
-  @61399 @FieldHistoryUpdatedForSiteVisitIsSendBackToOwnerByFiscalApprover @keerti @TBE
+  @61399 @FieldHistoryUpdatedForSiteVisitIsSendBackToOwnerByFiscalApprover @keerti
   Scenario: To Validate field history update for Org Level Site Visits  is send back to owner by Fiscal Approver
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -1156,7 +1156,7 @@ Feature: Validate all scenarios in Organizational Site Visit
 #    When I close "Site Visit Reviewers" modal by clicking the top right x button
     Then I cannot see top right button "Edit" in page detail
 
-  @56007 @PeerReviewAfterSVIsAcceptedAndClosed @keerti @TBE
+  @56007 @PeerReviewAfterSVIsAcceptedAndClosed @keerti
   Scenario: Validate peer review  process and also system does not allow the peer reviewer to edit/Enter review comments if the Org Level Site Visits marked as complete review by the Record owner
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -1385,7 +1385,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I perform quick search for "Record Id" in "SiteVisit" panel
     Then I softly see "No Records Found" inside flex table with id "SiteVisit"
 
-  @65152 @historyOfOrgSiteVisitsendbacktoOwner @deepika @smoke @TBE
+  @65152 @historyOfOrgSiteVisitsendbacktoOwner @deepika @smoke
   Scenario: Validate History Field is getting Updated at Award owner End when Org Site Visit status is Submitted to Grantor.
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -1673,7 +1673,7 @@ Feature: Validate all scenarios in Organizational Site Visit
       | {SavedValue:PM Username} | Step 1     |
     Then I softly see "Saved Successfully!" inside flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---"
 
-  @148023 @VerifyErrorMessageAtApproverSectionWhileSkippingForSiteVisitOrgLevel-RnRFunctnality @monu @TBE
+  @148023 @VerifyErrorMessageAtApproverSectionWhileSkippingForSiteVisitOrgLevel-RnRFunctnality @monu
   Scenario: Verify the validation is displayed when NA is defined for step on organization site visit
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
