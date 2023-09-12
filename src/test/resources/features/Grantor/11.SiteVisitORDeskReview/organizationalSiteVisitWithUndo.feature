@@ -157,10 +157,10 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
       | {SavedValue:PO Username}  | Step 1     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
-      | {SavedValue:PM1 Username} | Step 2     |
+      | {SavedValue:EXE Username} | Step 2     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
-      | {SavedValue:EXE Username} | Step 3     |
+      | {SavedValue:PM Username}  | Step 3     |
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
@@ -181,7 +181,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" without waiting for record
     And I "Approve" in the approval decision
     Then I cannot see top right button "Undo" in page detail
-    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
@@ -189,7 +189,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" without waiting for record
     And I "Approve" in the approval decision
     Then I cannot see top right button "Undo" in page detail
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
@@ -211,12 +211,12 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Send Back | Forward |
     When I select radio button "Forward" in the approval decision
-    And I select user "{SavedValue:EXE1 Username}" in the approval decision
+    And I select user "{SavedValue:PM1 Username}" in the approval decision
     When I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Submitted for Approval"
     Then I cannot see top right button "Undo" in page detail
-    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
@@ -224,7 +224,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I can see top right button "Undo" in page detail
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
