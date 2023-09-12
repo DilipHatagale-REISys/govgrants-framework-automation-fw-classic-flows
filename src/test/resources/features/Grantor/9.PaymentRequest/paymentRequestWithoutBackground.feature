@@ -7216,6 +7216,7 @@ Feature: Payment Request scenarios without background
     Then I softly see field "Balance" as "$400.00"
     And I click on "View" icon for "{SavedValue:PayreqId1}" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record
     #116564
+    And I navigate to "Financials" sub tab
     Then I softly see field "Advance Applied This Action" as "$10.00"
 
   @116583 @ValidatethatifuserhasmandatorysupportingdocrecordforactiveadvancePaymentRequestatgrantlevelthenclickofsubmittograntoritshowsvalidationerrormessage @Sprint-23-US-273843 @vaibhav @Allocation @Execution
