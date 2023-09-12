@@ -757,6 +757,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     When I re-login to "As a Grantor" app as "Auditor" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    And I click toggle button to select "Site Visit Reports - All"
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly see status in Progress-bar is "Approved" and is "green"
