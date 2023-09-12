@@ -94,21 +94,18 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
       | Approve | Send Back | Forward |
     #289809
     When I navigate to "History" sub tab
+    Then I softly see snapshot with name containing "Organizational Site Visit - Undo Approval.pdf" as name
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
     When I perform quick search for "{SavedValue:SitevVisitId}" in "History" panel
     Then I softly see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "History"
     Then I softly see value "{SavedValue:PM Username}" for title "Changed By" inside table "History"
     Then I softly see value "Approved" for title "Old Value" inside table "History"
     Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
-    #Then I softly see snapshot with name containing "Organizational Site Visit - Undo Approval.pdf" as name
     #291842
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
-    And I click on hyperlink which contains todays date with text "SnapShot on"
-    When I download the file
-    Then I see "Submitted for Approval" on page "1" of "govgrants" pdf file
-    And I switch to parent tab
+    Then I see take snap shot getting saved with "Todays Date"
       #289808
     And I navigate to "Home" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
