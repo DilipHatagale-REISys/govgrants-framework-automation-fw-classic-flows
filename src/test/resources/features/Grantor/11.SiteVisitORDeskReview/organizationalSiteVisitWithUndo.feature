@@ -353,7 +353,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
 
   @289802 @VerifythatAdminapproveruserwillnotseeUNDObuttoninClosedstateofOrganizationalSiteVisit @sprint-2-US-288691 @hitesh @Undo
   Scenario: Verify that Admin approver user will not see UNDO button in Closed state of Organizational Site Visit
-    Given I login to "As a Grantor" app as "ADMIN" user
+    Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
