@@ -23,16 +23,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I save the field labeled "EGMS ID" as "SitevVisitId"
     And I click on "Notify" in the page details
     And I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    Then I softly see status in Progress-bar is "In Progress" and is "green"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
@@ -116,12 +107,12 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I softly see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:homePendingTasksTableId---"
     And I navigate to "Home" tab
     When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
-    When I reassign task to "Automation FD1"
+    When I reassign task to "Automation EXE1"
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---program:-:grantorTaskReassignTableId---" panel
     When I check "{SavedValue:SitevVisitId}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I pause execution for "30" seconds
-    When I re-login to "As a Grantor" app as "FD1" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
@@ -160,16 +151,6 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I save the field labeled "EGMS ID" as "SitevVisitId"
     And I click on "Notify" in the page details
     And I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
