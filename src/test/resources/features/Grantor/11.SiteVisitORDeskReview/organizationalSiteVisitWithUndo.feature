@@ -1,7 +1,7 @@
 @organizationalSiteVisitWB @grantor-regression @grantor-parallel-regression @siteVisit @regression @organizationalSiteVisitUndo
 Feature: Validate all scenarios in Organizational Site Visit With Undo
 
-  @289790 @289791 @289792 @289793 @289797 @289798 @289808 @289809 @VerifywhenPmapprovercanclickonundobuttoninOrganizationalSiteVisitrecordwhenrecordisinApprovedstate @sprint-2-US-288691 @hitesh @Undo
+  @289790 @289791 @289792 @289793 @289797 @289798 @289808 @289809 @291842 @VerifywhenPmapprovercanclickonundobuttoninOrganizationalSiteVisitrecordwhenrecordisinApprovedstate @sprint-2-US-288691 @hitesh @Undo
   Scenario: Verify when Pm approver can click on undo button in Organizational Site Visit record when record is in Approved state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -105,7 +105,15 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I softly see value "Approved" for title "Old Value" inside table "History"
     Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
     Then I softly see snapshot with name containing "Organizational Site Visit - Undo Approval.pdf" as name
-    #289808
+    #291842
+    And I click on "Menu" in the page details
+    And I select "Take Snapshot" from dropdown
+    When I navigate to "History" sub tab
+    And I click on hyperlink which contains todays date with text "SnapShot on"
+    When I download the file
+    Then I see "Submitted for Approval" on page "1" of "govgrants" pdf file
+    And I switch to parent tab
+      #289808
     And I navigate to "Home" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:homeCompletedTaskTableId---" panel
@@ -428,6 +436,37 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" without waiting for record
     And I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent to Subrecipient"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I navigate to "Reports and Outcomes" sub tab
+    And I expand nested table containing column value "Automation Observation"
+    When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    When I collapse nested table containing column value "Automation Observation"
+    And I expand nested table containing column value "Automation Concern"
+    When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    When I collapse nested table containing column value "Automation Concern"
+    And I expand nested table containing column value "Automation Finding"
+    When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    And I collapse nested table containing column value "Automation Finding"
+    Then I softly can see top right button "Submit to Grantor" in page detail
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    And I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---" without waiting for record
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "Green"
     Then I cannot see top right button "Undo" in page detail
