@@ -198,7 +198,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I "Approve" in the approval decision
     #289799
     Then I can see top right button "Undo" in page detail
-    Then I cannot see top right button "Send to Subrecipient" in page detail
+    Then I can see top right button "Send to Subrecipient" in page detail
     And I click on "Undo" in the page details without processing
     #289803
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
