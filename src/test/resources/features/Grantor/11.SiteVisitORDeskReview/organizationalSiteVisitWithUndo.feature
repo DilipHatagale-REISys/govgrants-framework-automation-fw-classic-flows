@@ -30,7 +30,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
       | {SavedValue:PO Username}  | Step 1     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
-      | {SavedValue:PM1 Username} | Step 2     |
+      | {SavedValue:FD Username} | Step 2     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
       | {SavedValue:EXE Username} | Step 3     |
@@ -57,7 +57,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" without waiting for record
     And I "Approve" in the approval decision
     Then I cannot see top right button "Undo" in page detail
-    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
