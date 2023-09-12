@@ -94,13 +94,14 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
       | Approve | Send Back | Forward |
     #289809
     When I navigate to "History" sub tab
-    Then I softly see snapshot with name containing "Organizational Site Visit - Undo Approval.pdf" as name
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
     When I perform quick search for "{SavedValue:SitevVisitId}" in "History" panel
     Then I softly see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "History"
     Then I softly see value "{SavedValue:PM Username}" for title "Changed By" inside table "History"
     Then I softly see value "Approved" for title "Old Value" inside table "History"
     Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
+    Then I softly see snapshot with name containing "External NGO Program - Undo Approval.pdf" as name
+    #Then I softly see snapshot with name containing "Organizational Site Visit - Undo Approval.pdf" as name
     #291842
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
@@ -713,6 +714,14 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     And I click "Yes" on modal confirmation box
     Then I softly see field "Status" as "Submitted for Approval"
+    When I navigate to "Overview" sub tab
+    Then I softly cannot see top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:participateassociateContactsId---"
+    Then I softly cannot see top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateAwardId---"
+    When I navigate to "Responsibilities" sub tab
+    Then I softly cannot see top right button "New" in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---"
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---orgLevelSiteVisits:-:siteVisitAddFilesTableId---"
+    Then I softly cannot see top right button "Add" in flex table with id "---orgLevelSiteVisits:-:siteVisitNotesTableId---"
 
   @289807 @VerifyAuditorusercannotseeundobuttoninapprovedstateofOrganizationalSiteVisit @sprint-2-US-288691 @hitesh @Undo
   Scenario:Verify Auditor user can not see undo button in approved state of Organizational Site Visit
