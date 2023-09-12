@@ -6868,7 +6868,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @117404 @Validateusercantreimbursemore$thantheawardbudgetusingsimultaneouspaymentrequestinapproval @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @117404 @Validateusercantreimbursemore$thantheawardbudgetusingsimultaneouspaymentrequestinapproval @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate user cant reimburse more $ than the award budget using simultaneous payment request in approval
     And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation EXE user" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -7031,7 +7031,7 @@ Feature: Payment Request scenarios without background
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
+    And I click toggle button to select "Grants - All"
     When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     Then I softly see field "Status" as "Draft"
@@ -7043,7 +7043,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Step 2" for title "Advance" against the value "Automation EXE" inside table "---subAwardStandAlone:-:awardApproversTableId---"
 
-  @116562 @ValidatethatenteredrequestedamountwillautomaticallypopulatetoAdvanceRequestedfieldofAdvancesummaryforAdvancePR @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @116562 @ValidatethatenteredrequestedamountwillautomaticallypopulatetoAdvanceRequestedfieldofAdvancesummaryforAdvancePR @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate that entered requested amount will automatically populate to "Advance Requested" field of  Advance summary for Advance PR
     And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -7189,7 +7189,7 @@ Feature: Payment Request scenarios without background
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 600                   |
+      | {SavedValue:fundingAccount} | 610                   |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
       | Name                     | Reimbursement |
@@ -7212,8 +7212,8 @@ Feature: Payment Request scenarios without background
     And I navigate to "Actuals" sub tab
     #116623
     Then I softly see field "Advance Applied" as "$10.00"
-    Then I softly see field "Spent" as "$500.00"
-    Then I softly see field "Balance" as "$500.00"
+    Then I softly see field "Spent" as "$600.00"
+    Then I softly see field "Balance" as "$400.00"
     And I click on "View" icon for "{SavedValue:PayreqId1}" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record
     #116564
     Then I softly see field "Advance Applied This Action" as "$10.00"
@@ -7247,7 +7247,7 @@ Feature: Payment Request scenarios without background
     And I upload attachment without random number "Attachment.pdf" of type "Invoice" from computer
     When I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details contains:
-      | Forms and Files - Complete each mandatory item listed in the checklist before submitting this Payment Request. |
+      | Files Tab - Complete each mandatory item listed in the checklist before submitting this Payment Request. |
 
   @116623 @ValidatethatwenuserapprovedreimbursementpaymentrequestwithadvanceappliedthenitwillreflectonSpentAdvanceApplied&Balancefield @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate that when user approved reimbursement payment request with advance applied then it will reflect on Spent, Advance Applied & Balance field

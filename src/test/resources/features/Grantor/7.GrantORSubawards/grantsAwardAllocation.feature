@@ -24787,7 +24787,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Spent" as "$500.00"
     Then I softly see field "Balance" as "$500.00"
     And I expand nested table containing column value "BP01"
-    Then I softly see value "$500.00" for title "Spent" against the value "Construction" inside table "---subAwardStandAlone:-:grantsPaymentSummaryBudgetTableId---"
+    Then I softly see value "$500.00" for title "Spent" against the value "Construction" inside table "---subAwardStandAlone:-:GrantsActualBudgetPeriodTableId---"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
