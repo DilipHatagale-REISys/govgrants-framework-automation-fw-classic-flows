@@ -211,12 +211,12 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Send Back | Forward |
     When I select radio button "Forward" in the approval decision
-    And I select user "{SavedValue:PO1 Username}" in the approval decision
+    And I select user "{SavedValue:EXE1 Username}" in the approval decision
     When I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Submitted for Approval"
     Then I cannot see top right button "Undo" in page detail
-    When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
