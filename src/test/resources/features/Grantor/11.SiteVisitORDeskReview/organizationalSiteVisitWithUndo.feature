@@ -1,7 +1,7 @@
 @organizationalSiteVisitWB @grantor-regression @grantor-parallel-regression @siteVisit @regression @organizationalSiteVisitUndo
 Feature: Validate all scenarios in Organizational Site Visit With Undo
 
-  @289790 @289791 @289792 @289793 @289797 @289798 @VerifywhenPmapprovercanclickonundobuttoninOrganizationalSiteVisitrecordwhenrecordisinApprovedstate @sprint-2-US-288691 @hitesh @Undo
+  @289790 @289791 @289792 @289793 @289797 @289798 @289808 @289809 @VerifywhenPmapprovercanclickonundobuttoninOrganizationalSiteVisitrecordwhenrecordisinApprovedstate @sprint-2-US-288691 @hitesh @Undo
   Scenario: Verify when Pm approver can click on undo button in Organizational Site Visit record when record is in Approved state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -96,7 +96,16 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I cannot see top right button "Undo" in page detail
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Send Back | Forward |
-    #289792
+    #289809
+    When I navigate to "History" sub tab
+    Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
+    When I perform quick search for "{SavedValue:SitevVisitId}" in "History" panel
+    Then I softly see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "History"
+    Then I softly see value "{SavedValue:PM Username}" for title "Changed By" inside table "History"
+    Then I softly see value "Approved" for title "Old Value" inside table "History"
+    Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
+    Then I softly see snapshot with name containing "Site Visit - Undo Approval.pdf" as name
+    #289808
     And I navigate to "Home" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:homeCompletedTaskTableId---" panel
@@ -119,6 +128,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     When I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
+    #289792
     Then I can see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
