@@ -98,6 +98,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see that "Review Declined" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     When I expand nested table containing column value "<Application Name>"
+    When I click on "Recommendations" column header inside table with id "---applicationReview:-:reviewFormsTableId---"
     And I hovering mouse on table id "---applicationReview:-:reviewFormsTableId---" with table row level icon "Automation EXE: Review Declined" for column value "Automation EXE: Review Declined"
     And I wait for "2" seconds
     Then I softly see "Automation EXE: Review Declined" shown as help text
