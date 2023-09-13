@@ -157,7 +157,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
       | {SavedValue:EXE Username} | Step 2     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
-      | {SavedValue:PM1 Username}  | Step 3     |
+      | {SavedValue:PM1 Username} | Step 3     |
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
@@ -686,7 +686,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I softly cannot see top right button "Add Files" in flex table with id "---orgLevelSiteVisits:-:siteVisitAddFilesTableId---"
     Then I softly cannot see top right button "Add" in flex table with id "---orgLevelSiteVisits:-:siteVisitNotesTableId---"
 
-  @290426 @304192 @VerifyPOusercannotseeundobuttoninnotifiedstateofOrganizationalSiteVisit @sprint-2-US-288691 @hitesh @Undo
+  @290426 @304192 @290427 @VerifyPOusercannotseeundobuttoninnotifiedstateofOrganizationalSiteVisit @sprint-2-US-288691 @hitesh @Undo
   Scenario:Verify PO user can not see undo button in notified state of Organizational Site Visit
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Home" tab
@@ -745,6 +745,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
       | Automation Observation | Automation Description | Observation |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    #290427
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
