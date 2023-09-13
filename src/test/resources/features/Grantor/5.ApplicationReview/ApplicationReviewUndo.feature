@@ -30,11 +30,11 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Reviewer                  |
       | {SavedValue:EXE Username} |
       | {SavedValue:FO Username}  |
-      | {SavedValue:PM Username}  |
+      | {SavedValue:PO Username}  |
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
-    And I perform quick search for "{SavedValue:PM Username}" in "---applicationReview:-:panelAppTableId---" panel
-    And I check "{SavedValue:PM Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
+    And I perform quick search for "{SavedValue:PO Username}" in "---applicationReview:-:panelAppTableId---" panel
+    And I check "{SavedValue:PO Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
     When I close "Assign Reviewers" modal by clicking the top right x button
     When I expand nested table containing column value "<Application Name>"
@@ -53,18 +53,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I pause execution for "2" seconds
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Applications" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
-    When I complete filling in the Review form with recommendation "Recommended"
-    And I click on "Save" in the page details
-    And I wait for "6" seconds
-    When I click on "Submit" in the page details without processing
-    When I click alert button "OK"
-    And I wait for "5" seconds
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
@@ -99,9 +88,9 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     Then I softly see that "Review Declined" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     When I expand nested table containing column value "<Application Name>"
     When I click on "Recommendations" column header inside table with id "---applicationReview:-:reviewFormsTableId---"
-    And I hovering mouse on table id "---applicationReview:-:reviewFormsTableId---" with table row level icon "Automation EXE: Review Declined" for column value "Automation EXE: Review Declined"
+    And I hovering mouse on table id "---applicationReview:-:reviewFormsTableId---" with table row level icon "Automation PO: Review Declined" for column value "Automation PO: Review Declined"
     And I wait for "2" seconds
-    Then I softly see "Automation EXE: Review Declined" shown as help text
+    Then I softly see "Automation PO: Review Declined" shown as help text
 
     Examples:
       | Announcement Name                                | Application Name                                 |
