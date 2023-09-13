@@ -6476,8 +6476,8 @@ Feature: Pre-Application scenarios without background
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - All"
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-Application}" in "RecipientPreApplications" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-Application}" inside table
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-App}" in "RecipientPreApplications" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-App}" inside table
     Then I softly cannot see top right button "Create Application" in page detail
     Then I cannot see top right button "Edit" in page detail
     And I navigate to "Budget" sub tab

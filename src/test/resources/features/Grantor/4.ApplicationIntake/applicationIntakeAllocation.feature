@@ -3849,7 +3849,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Submit Application" in the page details
     Then I see field "Status" as "Submitted to Grantor"
 
-  @113217 @Validatetheusercanenterprogramincome$onapplicationwhenprogramincomeinsettoyesonthefundingopportunity @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @113217 @Validatetheusercanenterprogramincome$onapplicationwhenprogramincomeinsettoyesonthefundingopportunity @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate the user can enter program income $ on application when program income is set to yes on the funding opportunity
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
     Given I am on "SUBPORTAL" portal

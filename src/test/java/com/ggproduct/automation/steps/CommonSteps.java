@@ -69,4 +69,9 @@ public class CommonSteps {
     public void iSoftlySeeFieldsValueWithLabelContainsCharacters(String usage, String fieldLabel, String charCount) {
         projectManager.assertLengthOfFieldValues(usage, fieldLabel, charCount);
     }
+
+    @And("I click radio button {string} in COI of review form")
+    public void iClickRadioButtonInCOIOfReviewForm(String radioButtonName) {
+        projectManager.clickOnCOIOption(radioButtonName);
+    }
 }

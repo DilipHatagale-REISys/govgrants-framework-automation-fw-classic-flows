@@ -21330,6 +21330,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Value                       | Field                              |
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 2000                        | fieldRequestedChangeInBudget__c    |
+      | 3000                        | fieldRevisedCommitment__c          |
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
     And I refresh the page
@@ -21363,11 +21364,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Overview" sub tab
-    And I click on "Edit" in the page details
-    When I enter values into fields
-      | Value | Field                     |
-      | 3000  | fieldRevisedCommitment__c |
-    And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 3000                |
@@ -21430,7 +21426,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "Created" for title "Old Value" inside table "History"
     Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
 
- @116919 @ValidateUsershouldbeabletoextendorreducetheBudgetperiodforactivesubaward @Execution
+  @116919 @ValidateUsershouldbeabletoextendorreducetheBudgetperiodforactivesubaward @Execution
   Scenario: Validate User should be able to extend or reduce the Budget period for active subaward
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO_BUILDUP_YES_PROJECT_END_DATE-Automation PO user" of type "Formula_By_Applicant_Focus_Area_No"
     When I login to "As a Grantor" app as "PO" user
@@ -21457,7 +21453,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
-      | {SavedValue:FO Username} | Step 1            |
+      | {SavedValue:PO Username} | Step 1            |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -21485,11 +21481,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "View" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     And I save the field labeled "Reporting Period Start Date" as "ReportingPeriodStartDate"
     And I save the field labeled "Reporting Period End Date" as "ReportingPeriodEndDate"
-   Then I softly see value "{SavedValue:startdate}" is "Equals to" the value "{SavedValue:ReportingPeriodStartDate}"
-   Then I softly see value "{SavedValue:enddate}" is "Equals to" the value "{SavedValue:ReportingPeriodEndDate}"
-   When I close "View Payment Request Schedule" modal by clicking the top right x button
-   And I click on "View" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-   And I save the field labeled "Reporting Period Start Date" as "ReportingPeriodStartDate1"
-   And I save the field labeled "Reporting Period End Date" as "ReportingPeriodEndDate1"
-   Then I softly see value "{SavedValue:startdate}" is "Equals to" the value "{SavedValue:ReportingPeriodStartDate1}"
-   Then I softly see value "{SavedValue:enddate}" is "Equals to" the value "{SavedValue:ReportingPeriodEndDate1}"
+    Then I softly see value "{SavedValue:startdate}" is "Equals to" the value "{SavedValue:ReportingPeriodStartDate}"
+    Then I softly see value "{SavedValue:enddate}" is "Equals to" the value "{SavedValue:ReportingPeriodEndDate}"
+    When I close "View Payment Request Schedule" modal by clicking the top right x button
+    And I click on "View" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    And I save the field labeled "Reporting Period Start Date" as "ReportingPeriodStartDate1"
+    And I save the field labeled "Reporting Period End Date" as "ReportingPeriodEndDate1"
+    Then I softly see value "{SavedValue:startdate}" is "Equals to" the value "{SavedValue:ReportingPeriodStartDate1}"
+    Then I softly see value "{SavedValue:enddate}" is "Equals to" the value "{SavedValue:ReportingPeriodEndDate1}"
