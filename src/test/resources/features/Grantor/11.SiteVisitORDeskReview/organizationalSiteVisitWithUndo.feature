@@ -787,4 +787,5 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
       | Approve | Send Back | Forward |
     And I "Send Back" in the approval decision
     Then I softly see status in Progress-bar is "In Progress" and is "green"
+    #304142
     Then I cannot see top right button "Undo" in page detail
