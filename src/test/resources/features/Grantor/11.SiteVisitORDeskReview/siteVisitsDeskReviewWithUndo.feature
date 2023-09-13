@@ -61,7 +61,7 @@ Feature: Validate all scenarios in the Site Visit with Undo
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:homePendingTasksTableId---" panel
-    Then I softly do not see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:homeCompletedTaskTableId---"
+    Then I softly do not see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:homePendingTasksTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
