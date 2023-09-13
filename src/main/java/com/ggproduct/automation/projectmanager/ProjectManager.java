@@ -154,7 +154,7 @@ public class ProjectManager extends ProjectWebServices {
 
     public void clickOnCOIOption(String radioButtonName) {
         try {
-            By ConflictOfInterestReviewFromPath = By.xpath("//span//input[@type='radio'][@value=' " + radioButtonName +"']");
+            By ConflictOfInterestReviewFromPath = By.xpath("//span//input[@type='radio'][@value=' "+radioButtonName+"']");
             if (I.amPerforming().checkToSee().IsElementPresentQuick(ConflictOfInterestReviewFromPath)) {
                 I.amPerforming().click().on(ConflictOfInterestReviewFromPath);
             }
