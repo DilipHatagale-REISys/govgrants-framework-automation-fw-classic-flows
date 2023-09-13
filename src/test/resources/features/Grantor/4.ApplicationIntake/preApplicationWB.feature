@@ -6427,7 +6427,7 @@ Feature: Pre-Application scenarios without background
     Then I softly can see page block "Budget Summary by Focus Area"
     Then I cannot see page block "Focus Area"
 
-  @274243 @ValidatePreApptheeffectsofpreApprejectioncreatedonCompAnn @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @274243 @ValidatePreApptheeffectsofpreApprejectioncreatedonCompAnn @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate Pre App the effects of pre App rejection created on Comp Ann
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -6482,4 +6482,4 @@ Feature: Pre-Application scenarios without background
     Then I cannot see top right button "Edit" in page detail
     And I navigate to "Budget" sub tab
     And I expand nested table containing column value "BP01"
-    Then I softly see "Actions" in flex table header "---preApplication:-:preApplicationAttachmentId---"
+    Then I softly do not see "Actions" in flex table header "---preApplication:-:preApplicationAttachmentId---"

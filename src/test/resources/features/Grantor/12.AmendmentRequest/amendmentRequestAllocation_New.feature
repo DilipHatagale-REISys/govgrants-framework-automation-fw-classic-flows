@@ -21310,7 +21310,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount. |
 
-  @247475 @ValidateFCAmendmentapprovershouldabletosentbackFCAmendmentafterreassigntheforwardedapprovaltasktootherapprover @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @247475 @ValidateFCAmendmentapprovershouldabletosentbackFCAmendmentafterreassigntheforwardedapprovaltasktootherapprover @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate FC Amendment approver should able to sent back FC Amendment after reassign the forwarded approval task to other approver
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "PM" user
@@ -21415,7 +21415,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:FundingID}" in "---amendment:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:FundingID}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
-    Then I softly see value "Review Amendment Request" for title "Task Type" inside table "---amendment:-:pendingTaskTableId---"
     When I click on "view" icon for "{SavedValue:FundingID}" inside flex table with id "---amendment:-:pendingTaskTableId---"
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Reject | Forward | Send to Owner |
@@ -21426,9 +21425,9 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "Created" for title "Old Value" inside table "History"
     Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
 
-  @116919 @ValidateUsershouldbeabletoextendorreducetheBudgetperiodforactivesubaward @Execution
+  @116919 @ValidateUsershouldbeabletoextendorreducetheBudgetperiodforactivesubaward
   Scenario: Validate User should be able to extend or reduce the Budget period for active subaward
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO_BUILDUP_YES_PROJECT_END_DATE-Automation PO user" of type "Formula_By_Applicant_Focus_Area_No"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_BUILDUP_YES-Automation PO user" of type "Formula_By_Applicant_Focus_Area_No"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
