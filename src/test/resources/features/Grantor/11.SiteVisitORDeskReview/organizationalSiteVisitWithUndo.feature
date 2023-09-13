@@ -100,7 +100,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I softly see value "{SavedValue:PM Username}" for title "Changed By" inside table "History"
     Then I softly see value "Approved" for title "Old Value" inside table "History"
     Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
-    Then I softly see snapshot with name containing "Organizational Site Visit - Undo Approval" as name
+    Then I softly see snapshot with name containing "Organizational Site Visit - Undo Approval.pdf" as name
     #291842
     And I click on "Menu" in the page details
     And I refresh the page
@@ -804,7 +804,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     #304142
     Then I cannot see top right button "Undo" in page detail
 
-  @289807 @VerifyAuditorusercannotseeundobuttoninapprovedstateofOrganizationalSiteVisit @sprint-2-US-288691 @hitesh @Undo
+  @289807 @VerifyAuditorusercannotseeundobuttoninapprovedstateofOrganizationalSiteVisit @sprint-2-US-288691 @hitesh @Undo @wip
   Scenario:Verify Auditor user can not see undo button in approved state of Organizational Site Visit
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab

@@ -1,7 +1,7 @@
 @amendmentRequestsWB @amendmentRequests @grantor-regression @grantor-parallel-regression @regression @amendmentRequestUndo
 Feature: Amendment Request scenarios with Undo
 
-  @292388 @292389 @342738 @342740 @342744 @342792 @VerifywhenPmapproverclickonundobuttoninBudredAmmendrequestrecordSystemwillshowconfirmationboxwithaquestionandoptionsforselection @sprint-3-US-288689 @hitesh
+  @292388 @292389 @342738 @342740 @342744 @342792 @VerifywhenPmapproverclickonundobuttoninBudredAmmendrequestrecordSystemwillshowconfirmationboxwithaquestionandoptionsforselection @sprint-3-US-288689 @hitesh @Undo
   Scenario: Verify when Pm approver  click on undo button in Bud red Ammend request record System will show confirmation box with a question and options for selection.
     And I activated standalone subaward "Automation Runtime award" with properties "Automation PM user" of type "Formula_By_Applicant_Focus_Area"
     Given I am on "SUBPORTAL" portal
@@ -243,7 +243,7 @@ Feature: Amendment Request scenarios with Undo
     #342792
     Then I softly see value "{SavedValue:BUDGETREDIRECTIONID}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
 
-  @292390 @292391 @292392 @292393 @292398 @292401 @VerifythatwhenPMuserafterclickonundobuttonBudredAmmendrequestrecordgoesbacktosubmitforapprovalstate @sprint-3-US-288689 @hitesh
+  @292390 @292391 @292392 @292393 @292398 @292401 @VerifythatwhenPMuserafterclickonundobuttonBudredAmmendrequestrecordgoesbacktosubmitforapprovalstate @sprint-3-US-288689 @hitesh @Undo
   Scenario: Verify that when PM user after click on undo button Bud red Ammend request record goes back to submit for approval state
     And I activated standalone subaward "Automation Runtime award" with properties "Automation PM user" of type "Formula_By_Applicant_Focus_Area"
     Given I am on "SUBPORTAL" portal
@@ -364,7 +364,7 @@ Feature: Amendment Request scenarios with Undo
     #292393
     Then I cannot see top right button "Undo" in page detail
 
-  @292394 @292395 @VerifythatwhenExeapproverForwardtheBudredAmmendrequestApprovaltaskForwardedApproverwillseeUNDObuttonandnotpreviousOne @sprint-3-US-288689 @hitesh
+  @292394 @292395 @VerifythatwhenExeapproverForwardtheBudredAmmendrequestApprovaltaskForwardedApproverwillseeUNDObuttonandnotpreviousOne @sprint-3-US-288689 @hitesh @Undo
   Scenario: Verify that when Exe approver Forward the Bud red Ammend request Approval task , Forwarded Approver will see UNDO button and not previous One.
     And I activated standalone subaward "Automation Runtime award" with properties "Automation PM user" of type "Formula_By_Applicant_Focus_Area"
     Given I am on "SUBPORTAL" portal
@@ -437,7 +437,7 @@ Feature: Amendment Request scenarios with Undo
     #292395
     Then I cannot see top right button "Undo" in page detail
 
-  @292396 @VerifythatwhenEXEapproverSendbacktheBudredAmmendrequestrecordExewillnotseeUNDObutton @sprint-3-US-288689 @hitesh
+  @292396 @VerifythatwhenEXEapproverSendbacktheBudredAmmendrequestrecordExewillnotseeUNDObutton @sprint-3-US-288689 @hitesh @Undo
   Scenario:Verify that when EXE approver Send back the Bud red Ammend request record , Exe will not see UNDO button
     And I activated standalone subaward "Automation Runtime award" with properties "Automation PM user" of type "Formula_By_Applicant_Focus_Area"
     Given I am on "SUBPORTAL" portal
@@ -493,7 +493,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
 
-  @292402 @292397 @VerifythatwhenApproveruserafterclickofRejectButtonWillnotSeeUndoButton @sprint-3-US-288689 @hitesh
+  @292402 @292397 @VerifythatwhenApproveruserafterclickofRejectButtonWillnotSeeUndoButton @sprint-3-US-288689 @hitesh @Undo
   Scenario:Verify that when Approver user after click of Reject Button Will not See Undo Button
     And I activated standalone subaward "Automation Runtime award" with properties "Automation PM user" of type "Formula_By_Applicant_Focus_Area"
     Given I am on "SUBPORTAL" portal
@@ -570,7 +570,7 @@ Feature: Amendment Request scenarios with Undo
     Then I see status in Progress-bar is "Rejected" and is "Red"
     Then I cannot see top right button "Undo" in page detail
 
-  @292403 @292404 @VerifylastapprovercannotseeundobuttononapprovedamendmentwhenawardiscreatedontheamendmentandisinPendingActivationstate @sprint-3-US-288689 @hitesh
+  @292403 @292404 @VerifylastapprovercannotseeundobuttononapprovedamendmentwhenawardiscreatedontheamendmentandisinPendingActivationstate @sprint-3-US-288689 @hitesh @Undo
   Scenario:Verify last approver cannot see undo button on approved amendment when award is created on the amendment and is in Pending Activation state
     And I activated standalone subaward "Automation Runtime award" with properties "Automation PM user" of type "Formula_By_Applicant_Focus_Area"
     Given I am on "SUBPORTAL" portal
@@ -648,7 +648,7 @@ Feature: Amendment Request scenarios with Undo
     #292404
     Then I cannot see top right button "Undo" in page detail
 
-  @292455 @292634 @VerifyUndobuttonvisibilityonapprovedamendmentaftersubawardisdeletedfromPendingactivationstate @sprint-3-US-288689 @hitesh
+  @292455 @292634 @VerifyUndobuttonvisibilityonapprovedamendmentaftersubawardisdeletedfromPendingactivationstate @sprint-3-US-288689 @hitesh @Undo
   Scenario:Verify Undo button visibility on approved amendment after subaward is deleted from Pending activation state
     And I activated standalone subaward "Automation Runtime award" with properties "Automation PM user" of type "Formula_By_Applicant_Focus_Area"
     Given I am on "SUBPORTAL" portal
@@ -752,7 +752,7 @@ Feature: Amendment Request scenarios with Undo
     And I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
 
-  @299629 @VerifythatUserWillseesnapshothistorynameAmendmentUndoApprovalpdfinsnapshotHistorytableafterlastapproverclickundobutton @sprint-3-US-299198 @hitesh
+  @299629 @VerifythatUserWillseesnapshothistorynameAmendmentUndoApprovalpdfinsnapshotHistorytableafterlastapproverclickundobutton @sprint-3-US-299198 @hitesh @Undo
   Scenario: Verify that User Will see snapshot history name Amendment - Undo Approval.pdf in snapshot History table after last approver click undo button
     And I activated standalone subaward "Automation Runtime award" with properties "Automation PM user" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -841,7 +841,7 @@ Feature: Amendment Request scenarios with Undo
     And I navigate to "History" sub tab
     Then I softly see snapshot with name containing "Amendment - Undo Approval.pdf" as name
 
-  @342745 @BudredVerifythatAnyuserwillnotseeUndobuttononBudgetredirectionAmendmentrequestinapprovedstate @sprint-3-US-288689 @hitesh
+  @342745 @BudredVerifythatAnyuserwillnotseeUndobuttononBudgetredirectionAmendmentrequestinapprovedstate @sprint-3-US-288689 @hitesh @Undo
   Scenario:Bud red ->Verify that Any user will not see Undo button on Budget redirection Amendment request in approved  state
     And I activated standalone subaward "Automation Runtime award" with properties "Automation PM user" of type "Formula_By_Applicant_Focus_Area"
     Given I am on "SUBPORTAL" portal
@@ -919,7 +919,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Approved"
     Then I cannot see top right button "Undo" in page detail
 
-  @342712 @342714 @342719 @KPCVerifythatAnyuserwillnotseeUndobuttononKeypersonalchangeARwhenARisincreatedstate @sprint-13-US-331643 @hitesh
+  @342712 @342714 @342719 @KPCVerifythatAnyuserwillnotseeUndobuttononKeypersonalchangeARwhenARisincreatedstate @sprint-13-US-331643 @hitesh @Undo
   Scenario: KPC-->Verify that Any user will not see Undo button on Key personal change AR when AR is in created state.
     And I activated standalone subaward "Automation Runtime award" with properties "Automation PM user" of type "Formula_By_Applicant_Focus_Area"
     Given I am on "SUBPORTAL" portal
@@ -1066,7 +1066,7 @@ Feature: Amendment Request scenarios with Undo
     #342721
     Then I cannot see top right button "Undo" in page detail
 
-  @342632 @342651 @verifythatanyuserwillnotseeUndobuttonwhenperiodicrenewalAmmendmentrequestisincreatedstate  @sprint-13-US-331643 @hitesh
+  @342632 @342651 @verifythatanyuserwillnotseeUndobuttonwhenperiodicrenewalAmmendmentrequestisincreatedstate  @sprint-13-US-331643 @hitesh @Undo
   Scenario: verify that any user will not see Undo button when periodic renewal Ammendment request is in created state.
     And I activated standalone subaward "Automation Runtime award" with properties "AMENDMENT_REQUEST" of type "Formula_By_Applicant_Focus_Area"
     When I am on "INTERNAL" portal
@@ -1134,4 +1134,91 @@ Feature: Amendment Request scenarios with Undo
     When I click on "View" icon for "{SavedValue:PRAMENDMENTREQUEST}" inside flex table with id "---amendment:-:recipientSideAmendmentRequestTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
     #342651
+    Then I cannot see top right button "Undo" in page detail
+
+  @287048 @VerifylastapprovercannotseeundobuttononapprovedamendmentwhenawardiscreatedontheamendmentandisinPendingActivationstate @Sprint-2-US-285149 @hitesh @Undo
+  Scenario: Verify last approver cannot see undo button on approved amendment when award is created on the amendment and is in Pending Activation state
+    And I activated standalone subaward "Automation Runtime award" with properties "AMENDMENT_REQUEST" of type "Formula_By_Applicant_Focus_Area"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
+    When I click on "Edit" in the page details
+    And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
+    When I click on "Edit" in the page details
+    And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "fieldNewBudgetPeriodEndDate__c"
+    And I click on "Save" in the page details
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 2            |
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:FO Username}  | Step 3            |
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:PM Username}  | Step 4            |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit for Approval" in the page details
+    And I pause execution for "3" seconds
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    Then I can see top right button "Undo" in page detail
+    And I click on "Amend Subaward" in the page details
+    And I save the field labeled "EGMS ID" as "ActivatedSubAwardId1"
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     Then I cannot see top right button "Undo" in page detail
