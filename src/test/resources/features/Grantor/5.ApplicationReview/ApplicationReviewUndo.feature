@@ -1,7 +1,7 @@
 @applicationReviewUndo @applicationReviewAllocation @grantor-regression @grantor-parallel-regression @applicationReview @app @regression @applicationReviewTBE
 Feature: Validate all scenarios in the Application Review with Undo Feature
 
-  @286702 @286706 @284504 @286701 @ValidateSMEReviewStepCompetitiveAnnFAYesusercansuccessfullydeclinethereviewformafterselectinIdisagreeoptioninCOIsection @Sprint-1-US-235657 @vaibhav @Undo @Execution
+  @286702 @286706 @284504 @286701 @ValidateSMEReviewStepCompetitiveAnnFAYesusercansuccessfullydeclinethereviewformafterselectinIdisagreeoptioninCOIsection @Sprint-1-US-235657 @vaibhav @Undo
   Scenario Outline: Validate SME Review Step Competitive Ann FA Yes user can successfully decline the review form after selecting I disagree option in COI section
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -99,13 +99,14 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     Then I softly see that "Review Declined" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     When I expand nested table containing column value "<Application Name>"
     And I hovering mouse on table id "---applicationReview:-:reviewFormsTableId---" with table row level icon "Automation EXE: Review Declined" for column value "Automation EXE: Review Declined"
+    And I wait for "2" seconds
     Then I softly see "Automation EXE: Review Declined" shown as help text
 
     Examples:
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @334235 @286696 @ValidatePre-ScreenReviewStepCompetitiveAnnFAYesusercansuccessfullydeclinethereviewformafterselectionIdisagreeoptioninCOIsection @Sprint-1-US-235657 @vaibhav @Undo @Execution
+  @334235 @286696 @ValidatePre-ScreenReviewStepCompetitiveAnnFAYesusercansuccessfullydeclinethereviewformafterselectionIdisagreeoptioninCOIsection @Sprint-1-US-235657 @vaibhav @Undo
   Scenario Outline: Validate Pre-Screen Review Step Competitive Ann FA Yes user can successfully decline the review form after selecting I disagree option in COI section
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
