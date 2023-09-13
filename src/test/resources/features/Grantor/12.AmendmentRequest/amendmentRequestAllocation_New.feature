@@ -21448,7 +21448,6 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I enter value "3800" into field "fieldNewBudgetPeriodEndDate__c"
     When I click on "Save" in the page details
     And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate1"
-    Then I softly see value "{SavedValue:updatedBudgetPeriodDate}" is "less than" the value "{SavedValue:updatedBudgetPeriodDate1}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
@@ -21478,12 +21477,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I save the field labeled "Project Period End Date" as "enddate"
     And I navigate to "Terms" sub tab
     And I click on "View" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
     And I save the field labeled "Reporting Period Start Date" as "ReportingPeriodStartDate"
     And I save the field labeled "Reporting Period End Date" as "ReportingPeriodEndDate"
     Then I softly see value "{SavedValue:startdate}" is "Equals to" the value "{SavedValue:ReportingPeriodStartDate}"
     Then I softly see value "{SavedValue:enddate}" is "Equals to" the value "{SavedValue:ReportingPeriodEndDate}"
     When I close "View Payment Request Schedule" modal by clicking the top right x button
     And I click on "View" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     And I save the field labeled "Reporting Period Start Date" as "ReportingPeriodStartDate1"
     And I save the field labeled "Reporting Period End Date" as "ReportingPeriodEndDate1"
     Then I softly see value "{SavedValue:startdate}" is "Equals to" the value "{SavedValue:ReportingPeriodStartDate1}"

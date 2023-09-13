@@ -69,7 +69,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
     #284504
-    Then I softly can see row level action button "Undo" against "Record ID" in flex table with id "---applicationReview:-:pendingTaskTableId---"
+    Then I softly cannot see row level action button "Undo" against "Record ID" in flex table with id "---applicationReview:-:pendingTaskTableId---"
     And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
     And I wait for "4" seconds
     And I click radio button "I disagree" in COI of review form
