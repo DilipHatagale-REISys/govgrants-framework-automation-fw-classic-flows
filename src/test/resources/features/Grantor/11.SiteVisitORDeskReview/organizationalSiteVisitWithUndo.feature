@@ -157,7 +157,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
       | {SavedValue:EXE Username} | Step 2     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
-      | {SavedValue:PM Username}  | Step 3     |
+      | {SavedValue:PM1 Username}  | Step 3     |
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
@@ -186,7 +186,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" without waiting for record
     And I "Approve" in the approval decision
     Then I cannot see top right button "Undo" in page detail
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
@@ -195,7 +195,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I "Approve" in the approval decision
     #289799
     Then I can see top right button "Undo" in page detail
-    Then I can see top right button "Send to Subrecipient" in page detail
+    Then I cannot see top right button "Send to Subrecipient" in page detail
     And I click on "Undo" in the page details without processing
     #289803
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
