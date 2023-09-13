@@ -3848,3 +3848,25 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Back" in the page details
     When I click on "Submit Application" in the page details
     Then I see field "Status" as "Submitted to Grantor"
+
+  @113217 @Validatetheusercanenterprogramincome$onapplicationwhenprogramincomeinsettoyesonthefundingopportunity @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  Scenario: Validate the user can enter program income $ on application when program income is set to yes on the funding opportunity
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I navigate to "Budget" sub tab
+    Then I softly can see page block "Budget Summary"
+    When I enter "Edition" values from "Application_Field_Values.xlsx"
+    And I navigate to "Overview" sub tab
+    And I enter values into fields
+      | Value                       | Field                        |
+      | 500                         | fieldGranteeProgramincome__c |
+    When I click on "Save" in the page details
+    Then I softly see field "Estimated Program Income For Project Period" as "$500.00"

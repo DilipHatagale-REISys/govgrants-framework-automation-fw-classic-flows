@@ -622,7 +622,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:applicationAssignTableId---"
     When I click on top right button "Reject" in flex table with id "---applicationReview:-:applicationAssignTableId---"
     #80508 #monu
-    Then I softly can see top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
+    Then I softly cannot see top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     And I pause execution for "3" seconds
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel

@@ -24729,7 +24729,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I see the following messages in the page details contains:
       | Budget Tab - Total Encumbrance must be equal to the total Award Amount in the Subaward budget section |
 
-  @117269 @ValidatetheAwardandGrantBudgetpostsinglereimbursementpaymentrequestisapproved @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @117269 @ValidatetheAwardandGrantBudgetpostsinglereimbursementpaymentrequestisapproved @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate the Award and Grant Budget post single reimbursement payment request is approved
     And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation EXE user" of type "Competitive"
     And I am on "SUBPORTAL" portal

@@ -6964,7 +6964,7 @@ Feature: Payment Request scenarios without background
     Then I see the following messages in the page details contains:
       | Financials Tab - Reimbursed Amount cannot be greater than the reimbursement balance. Subrecipient needs to apply advance. Please Send Request back. |
 
-  @116558 @Validatethatpaymentrequestrelatedsettingsarecarriedproperlyfromannouncementtograntlevel @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @116558 @Validatethatpaymentrequestrelatedsettingsarecarriedproperlyfromannouncementtograntlevel @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate that payment request related settings are carried properly from announcement to grant level
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -7103,7 +7103,7 @@ Feature: Payment Request scenarios without background
     Then I softly see field "Advance Requested This Action" as "$200.00"
     Then I softly see value "$200.00" for title "Advance Requested This Action" against the value "Total" inside table "---paymentRequest:-:budgetTableId---"
 
-  @116564 @116568 @116580 @116623 @ValidatethatapprovedadvanceappliedamountwillreflectonreimbursementPRpage @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @116564 @116568 @116580 @116623 @ValidatethatapprovedadvanceappliedamountwillreflectonreimbursementPRpage @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate that approved advance applied amount will reflect on reimbursement PR page
     And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -7219,7 +7219,7 @@ Feature: Payment Request scenarios without background
     And I navigate to "Financials" sub tab
     Then I softly see field "Advance Applied This Action" as "$10.00"
 
-  @116583 @ValidatethatifuserhasmandatorysupportingdocrecordforactiveadvancePaymentRequestatgrantlevelthenclickofsubmittograntoritshowsvalidationerrormessage @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @116583 @ValidatethatifuserhasmandatorysupportingdocrecordforactiveadvancePaymentRequestatgrantlevelthenclickofsubmittograntoritshowsvalidationerrormessage @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate that if user has mandatory supporting doc record for active advance Payment Request  at grant level  then on click of submit to grantor it shows validation error message
     And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
