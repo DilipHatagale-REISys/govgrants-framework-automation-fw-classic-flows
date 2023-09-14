@@ -7055,7 +7055,6 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
     Then I softly can see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     Then I softly can see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
     When I navigate to "Files" sub tab
@@ -7069,7 +7068,6 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
     Then I softly can see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     Then I softly can see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
     When I navigate to "Files" sub tab
@@ -7083,7 +7081,6 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
     Then I softly can see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     Then I softly can see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
     When I navigate to "Files" sub tab
@@ -7097,7 +7094,6 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
     Then I softly can see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     Then I softly can see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
     When I navigate to "Files" sub tab
@@ -7111,7 +7107,6 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
     Then I softly can see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     Then I softly can see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
     When I navigate to "Files" sub tab
@@ -7125,7 +7120,6 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
     Then I softly can see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     Then I softly can see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
     When I navigate to "Files" sub tab
