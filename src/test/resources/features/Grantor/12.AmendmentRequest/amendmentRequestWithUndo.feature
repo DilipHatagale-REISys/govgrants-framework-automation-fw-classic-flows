@@ -1226,7 +1226,11 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     #287068
     Then I cannot see top right button "Undo" in page detail
-    And I click on hyperlink containing value "{SavedValue:Automation Runtime Award}"
+    And I navigate to "Grants" tab
+    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
     When I navigate to "Management" sub tab
     When I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:amendmentRequestTableId---" without waiting for record
     Then I softly see field "Status" as "Approved"
