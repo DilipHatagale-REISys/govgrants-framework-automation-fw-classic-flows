@@ -513,7 +513,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
-    When I save the value from row "4" for column name "Score" as "Score" from flex table "---applicationReview:-:appreviewsTableId---"
+    When I save the value from row "2" for column name "Score" as "Score" from flex table "---applicationReview:-:appreviewsTableId---"
     When I expand nested table containing column value "<Application Name>"
     When I save the value from row "2" for column name "Average Score" as "AverageScore" from flex table "---applicationReview:-:reviewFormsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
@@ -596,7 +596,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
-    When I save the value from row "4" for column name "Score" as "ScoreUpdated" from flex table "---applicationReview:-:appreviewsTableId---"
+    When I save the value from row "2" for column name "Score" as "ScoreUpdated" from flex table "---applicationReview:-:appreviewsTableId---"
     Then I softly see value "{SavedValue:Score}" is "less than" the value "{SavedValue:ScoreUpdated}"
     #280804
     When I expand nested table containing column value "<Application Name>"
@@ -657,7 +657,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
-    When I save the value from row "4" for column name "Score" as "Score" from flex table "---applicationReview:-:appreviewsTableId---"
+    When I save the value from row "2" for column name "Score" as "Score" from flex table "---applicationReview:-:appreviewsTableId---"
     When I expand nested table containing column value "<Application Name>"
     When I save the value from row "2" for column name "Average Score" as "AverageScore" from flex table "---applicationReview:-:reviewFormsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
@@ -817,7 +817,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
-    When I save the value from row "4" for column name "Score" as "ScoreUpdated" from flex table "---applicationReview:-:appreviewsTableId---"
+    When I save the value from row "2" for column name "Score" as "ScoreUpdated" from flex table "---applicationReview:-:appreviewsTableId---"
     Then I softly see value "{SavedValue:Score}" is "less than" the value "{SavedValue:ScoreUpdated}"
     When I expand nested table containing column value "<Application Name>"
     When I save the value from row "2" for column name "Average Score" as "AverageScoreUpdated" from flex table "---applicationReview:-:reviewFormsTableId---"

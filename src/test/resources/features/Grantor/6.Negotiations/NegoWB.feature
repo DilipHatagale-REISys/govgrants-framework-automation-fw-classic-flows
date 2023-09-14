@@ -553,7 +553,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     Then I softly see field "Details" as "Automation Test"
 
-  @227883 @ValidateAllocationischangedintheannouncementwhentheapplicationissenttosrthenIfthebudgetbudgetdetailssectionisnotinthepicklistthenbudgetbudgetdetailsfieldinautomaticallyadded @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @227883 @ValidateAllocationischangedintheannouncementwhentheapplicationissenttosrthenIfthebudgetbudgetdetailssectionisnotinthepicklistthenbudgetbudgetdetailsfieldinautomaticallyadded @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate Allocation is changed in the announcement when the application is sent to s/r, then If the "budget: budget details" section is not in the picklist then "budget: budget details" field is automatically added
     And I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO_RISKASSESSMENT_NO-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"

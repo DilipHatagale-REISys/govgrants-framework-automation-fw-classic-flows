@@ -6317,19 +6317,19 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Overview" sub tab
     Then I see the following headers in table with id "---announcement:-:formulaInvitedApplicatsTableId---" :
       | Application EGMS ID | Application Status |
-    Then I softly see value "{SavedValue:AppEgmdId}" for title "Application EGMS ID" inside table "---announcement:-:directedInvitedApplicatsTableId---"
-    Then I softly see value "Submitted to Grantor" for title "Application Status" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+    Then I softly see value "{SavedValue:AppEgmdId}" for title "Application EGMS ID" inside table "---announcement:-:formulaInvitedApplicatsTableId---"
+    Then I softly see value "Submitted to Grantor" for title "Application Status" inside table "---announcement:-:formulaInvitedApplicatsTableId---"
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---applicationReview:-:announcementListTableId---" panel
     Then I softly can see row level action button "Initiate Review Process" against "{SavedValue:Automation Runtime FDM Announcement}" in flex table with id "---applicationReview:-:announcementListTableId---"
-    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    When I click on "Initiate Review Process" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Overview" sub tab
     Then I see the following headers in table with id "---announcement:-:formulaInvitedApplicatsTableId---" :
       | Application EGMS ID | Application Status |
-    Then I softly see value "{SavedValue:AppEgmdId}" for title "Application EGMS ID" inside table "---announcement:-:directedInvitedApplicatsTableId---"
-    Then I softly see value "Review Initiated" for title "Application Status" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+    Then I softly see value "{SavedValue:AppEgmdId}" for title "Application EGMS ID" inside table "---announcement:-:formulaInvitedApplicatsTableId---"
+    Then I softly see value "Review Initiated" for title "Application Status" inside table "---announcement:-:formulaInvitedApplicatsTableId---"
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
