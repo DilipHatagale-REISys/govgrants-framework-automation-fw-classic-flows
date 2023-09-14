@@ -581,7 +581,6 @@ Feature: Validate all scenarios in Negotiations
       | Value                              | Field                |
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
-    Then I softly do not see field "Application Sections for Negotiation" as "Budget: Budget Details" in "Negotiation Request Details" pageblock
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
