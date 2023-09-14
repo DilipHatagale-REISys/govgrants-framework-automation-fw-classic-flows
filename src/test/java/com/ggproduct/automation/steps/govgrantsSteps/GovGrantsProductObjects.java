@@ -258,6 +258,10 @@ public final class GovGrantsProductObjects {
         govgrants.perform().inputForms().completeFillingReviewForm(recommendation);
     }
 
+    public void fillingInReviewForm(String recommendation) {
+        govgrants.perform().inputForms().completeFillReviewForm(recommendation);
+    }
+
     /******* "Consolidated Methods" **********/
 
     /**

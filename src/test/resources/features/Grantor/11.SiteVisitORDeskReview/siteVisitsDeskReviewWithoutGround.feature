@@ -10422,6 +10422,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly see value "{SavedValue:PM Username}" for title "Changed By" inside table "History"
     Then I softly see value "Approved" for title "Old Value" inside table "History"
     Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
+    And I refresh the page
     Then I softly see snapshot with name containing "Organizational Site Visit - Undo Approval.pdf" as name
     #291842
     And I click on "Menu" in the page details
