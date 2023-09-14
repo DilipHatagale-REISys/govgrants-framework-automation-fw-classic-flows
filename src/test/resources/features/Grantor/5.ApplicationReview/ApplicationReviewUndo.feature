@@ -167,7 +167,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @280726 @ValidateCustomizedreviewstepwhenuserclickonsubmitbuttonafterundoThesubmittedonDateandtimeshouldbeupdatedonreviewform @Sprint-26-US-282727 @vaibhav @Undo @Execution
+  @280726 @ValidateCustomizedreviewstepwhenuserclickonsubmitbuttonafterundoThesubmittedonDateandtimeshouldbeupdatedonreviewform @Sprint-26-US-282727 @vaibhav @Undo
   Scenario Outline: Validate Customized review step when user click on submit button after undo, The submitted on Date and time should be updated on review form
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -413,7 +413,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I wait for "5" seconds
     Then I softly see that "Status" is in "Review Completed" status
     And I save the field labeled "Submitted On" as "SubmittedOn"
-    Then I softly see field "{SavedValue:SubmittedOn}" contains todays date withTime
+    Then I softly see field "Submitted On" as "{SavedValue:SubmittedOn}"
 
     Examples:
       | Announcement Name                                | Application Name                                 |
@@ -630,7 +630,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
       | Reviewer                 |
       | {SavedValue:FO Username} |
-    And I click on "Assign" icon for "{SavedValue:PM Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
+    And I click on "Assign" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"

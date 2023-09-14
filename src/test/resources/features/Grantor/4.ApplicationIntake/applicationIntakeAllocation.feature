@@ -3927,14 +3927,14 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "<Announcement Name>" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
-    And I navigate to "Budget" sub tab
+    And I navigate to "Financials" sub tab
     Then I softly see field "Allocation Amount" as "$2,000"
     And I navigate to "Opportunities" tab
     When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Qualified Opportunities - All"
     And I perform quick search for "<Announcement Name>" in "---applicationIntake:-:qualifiedTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
-    And I navigate to "Budget" sub tab
+    And I navigate to "Financials" sub tab
     Then I softly see field "Allocation Amount" as "$2,000"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
