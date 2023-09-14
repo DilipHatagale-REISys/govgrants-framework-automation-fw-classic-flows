@@ -594,8 +594,8 @@ Feature: Validate all scenarios in the Risk Assessment
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    Then I softly see that "Approve Subaward Risk Assessment" has been added in flextable with Id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    Then I softly see that "Approve Subaward Risk Assessment" has been added in flextable with Id "---subAwardStandAlone:-:pendingTaskTableId---"
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     And I get the "EGMS ID"
@@ -7024,15 +7024,25 @@ Feature: Validate all scenarios in the Risk Assessment
     And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:RAEGMSID1}" in "---riskassessment:-:riskAssTargetTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID1}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
+    When I perform quick search for "{SavedValue:RAEGMSID2}" in "---riskassessment:-:riskAssTargetTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID2}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
+    When I perform quick search for "{SavedValue:RAEGMSID3}" in "---riskassessment:-:riskAssTargetTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID3}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
+    When I perform quick search for "{SavedValue:RAEGMSID4}" in "---riskassessment:-:riskAssTargetTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID4}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
+    When I perform quick search for "{SavedValue:RAEGMSID5}" in "---riskassessment:-:riskAssTargetTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID5}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
+    When I perform quick search for "{SavedValue:RAEGMSID6}" in "---riskassessment:-:riskAssTargetTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID6}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
+    When I perform quick search for "{SavedValue:RAEGMSID7}" in "---riskassessment:-:riskAssTargetTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID7}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
+    When I perform quick search for "{SavedValue:RAEGMSID8}" in "---riskassessment:-:riskAssTargetTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID8}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
+    When I perform quick search for "{SavedValue:RAEGMSID9}" in "---riskassessment:-:riskAssTargetTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID9}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
+    When I perform quick search for "{SavedValue:RAEGMSID10}" in "---riskassessment:-:riskAssTargetTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID10}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
+    When I perform quick search for "{SavedValue:RAEGMSID11}" in "---riskassessment:-:riskAssTargetTableId---" panel
     Then I softly see value "{SavedValue:RAEGMSID11}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
     And I pause execution for "2" seconds
     And I close the tab
@@ -7192,7 +7202,7 @@ Feature: Validate all scenarios in the Risk Assessment
       The EGMS Team
       """
 
-  @116331 @ValidateRiskAssessmentsarereadonlyforSRUser @Sprint-23-US-273843 @vaibhav @Allocation @hiteshTemp
+  @116331 @ValidateRiskAssessmentsarereadonlyforSRUser @Sprint-23-US-273843 @vaibhav @Allocation @wip
   Scenario: Validate Risk Assessments are read only for SR User
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
