@@ -4623,8 +4623,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -6528,6 +6527,10 @@ Feature: Validate all scenarios in the Risk Assessment
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  | Risk Assessment | Advance |
+      | {SavedValue:EXE Username} | Step 1 | Step 1          | Step 1  |
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardEGMSID}" in "---home:-:internalHomePendingTaskTableId---" panel
@@ -6539,9 +6542,6 @@ Feature: Validate all scenarios in the Risk Assessment
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "RAEGMSID"
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
-      | Name           | Risk Assessment |
-      | Automation EXE | Step 1          |
     When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
       | Name          | Risk Assessment |
       | Automation FO | Step 2          |
