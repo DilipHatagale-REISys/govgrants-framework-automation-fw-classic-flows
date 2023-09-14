@@ -59,26 +59,26 @@ public final class ChromeManager implements qrYoTsOWwA {
 
         if(!"default".equalsIgnoreCase(EnvironmentFactory.getBrowserVersion())
                 && !"default".equalsIgnoreCase(EnvironmentFactory.getDriverVersion())) {
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(CapabilitiesManager.getChromeCapabilities());
 
 //            WebDriverManager.chromedriver()
 //                    .browserVersion(EnvironmentFactory.getBrowserVersion())
 //                    .driverVersion(EnvironmentFactory.getDriverVersion())
 //                    .setup();
         } else if (!"default".equalsIgnoreCase(EnvironmentFactory.getBrowserVersion())) {
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(CapabilitiesManager.getChromeCapabilities());
 
 //            WebDriverManager.chromedriver()
 //                    .browserVersion(EnvironmentFactory.getBrowserVersion())
 //                    .setup();
         } else if (!"default".equalsIgnoreCase(EnvironmentFactory.getDriverVersion())) {
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(CapabilitiesManager.getChromeCapabilities());
 
 //            WebDriverManager.chromedriver().useBetaVersions()
 //                    .driverVersion(EnvironmentFactory.getDriverVersion())
 //                    .setup();
         } else {
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(CapabilitiesManager.getChromeCapabilities());
 //            driver.get("https://www.gmail.com");
 //            WebDriverManager.chromedriver().useBetaVersions().setup();
         }
