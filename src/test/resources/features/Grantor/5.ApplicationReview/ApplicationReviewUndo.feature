@@ -419,7 +419,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @280803 @280804 @ValidateSMEReviewStepwhenapplicationispromotedtoFDMandassignedreviewerhasclickedundoonSMEreviewstepthenonclickofsavescoreshouldbeupdatedonthereviewssectiononreviewstep @Sprint-26-US-282727 @vaibhav @Undo @Execution
+  @280803 @280804 @ValidateSMEReviewStepwhenapplicationispromotedtoFDMandassignedreviewerhasclickedundoonSMEreviewstepthenonclickofsavescoreshouldbeupdatedonthereviewssectiononreviewstep @Sprint-26-US-282727 @vaibhav @Undo
   Scenario Outline: Validate SME Review Step when application is promoted to FDM, and assigned reviewer has clicked undo on SME review step then on click of save score should be updated on the reviews section on review step
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -827,7 +827,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @284757 @284775 @ValidatePre-ScreenReviewStepCompetitiveAnnFAYesINDusecanseetheUndobuttonontheReviewslistpagewhenthereviewwhenassignedreviewiscompleted @Sprint-26-US-282727 @vaibhav @Undo @Execution
+  @284757 @284775 @ValidatePre-ScreenReviewStepCompetitiveAnnFAYesINDusecanseetheUndobuttonontheReviewslistpagewhenthereviewwhenassignedreviewiscompleted @Sprint-26-US-282727 @vaibhav @Undo  @Execution
   Scenario Outline: Validate Pre-Screen Review Step Competitive Ann FA Yes IND user can see the "Undo" button on the Reviews list page when the review when assigned review is completed
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "INVITED_APPLICANT_IND_ORG"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default-Automation IND user"
@@ -854,7 +854,9 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I click on "Assign" icon for "{SavedValue:IND Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    And I wait for "3" seconds
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     Then I softly see that "Sent for Review" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"

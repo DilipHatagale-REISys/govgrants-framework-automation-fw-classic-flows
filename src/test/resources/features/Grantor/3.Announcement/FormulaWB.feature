@@ -6261,7 +6261,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly cannot see top right button "Extend Dates" in page detail
     Then I softly cannot see top right button "Unpublish" in page detail
 
-  @270867 @VerifyAnnownerPMUsershouldseefollowingcolumnnamesinthetableunderinvitedapplicantssectionwhenAnnisinPublishedApprovedClosedandUnderRevisionstatus @sprint-21-US-267479 @Hitesh @Execution
+  @270867 @VerifyAnnownerPMUsershouldseefollowingcolumnnamesinthetableunderinvitedapplicantssectionwhenAnnisinPublishedApprovedClosedandUnderRevisionstatus @sprint-21-US-267479 @Hitesh
   Scenario: Verify Ann owner PM User should see following column names in the table under invited applicants section when Ann is in Published Approved Closed and Under Revision status
     Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO-Automation PM user"
     When I login to "As a Grantor" app as "PM" user
