@@ -625,8 +625,8 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
-      | Form Name  | Due in Days |
-      | Pre-Screen | 5           |
+      | Form Name  | Due in Days | Minimum # of Reviews Required |
+      | Pre-Screen | 5           | 1                             |
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
       | Reviewer                 |
       | {SavedValue:FO Username} |
@@ -657,9 +657,9 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
-    When I save the value from row "2" for column name "Score" as "Score" from flex table "---applicationReview:-:appreviewsTableId---"
+    When I save the value from row "1" for column name "Score" as "Score" from flex table "---applicationReview:-:appreviewsTableId---"
     When I expand nested table containing column value "<Application Name>"
-    When I save the value from row "2" for column name "Average Score" as "AverageScore" from flex table "---applicationReview:-:reviewFormsTableId---"
+    When I save the value from row "1" for column name "Average Score" as "AverageScore" from flex table "---applicationReview:-:reviewFormsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     And I click on "Next Review Step" in the page details
@@ -817,10 +817,10 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
-    When I save the value from row "2" for column name "Score" as "ScoreUpdated" from flex table "---applicationReview:-:appreviewsTableId---"
+    When I save the value from row "1" for column name "Score" as "ScoreUpdated" from flex table "---applicationReview:-:appreviewsTableId---"
     Then I softly see value "{SavedValue:Score}" is "less than" the value "{SavedValue:ScoreUpdated}"
     When I expand nested table containing column value "<Application Name>"
-    When I save the value from row "2" for column name "Average Score" as "AverageScoreUpdated" from flex table "---applicationReview:-:reviewFormsTableId---"
+    When I save the value from row "1" for column name "Average Score" as "AverageScoreUpdated" from flex table "---applicationReview:-:reviewFormsTableId---"
     Then I softly see value "{SavedValue:AverageScore}" is "less than" the value "{SavedValue:AverageScoreUpdated}"
 
     Examples:
@@ -829,8 +829,8 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
 
   @284757 @284775 @ValidatePre-ScreenReviewStepCompetitiveAnnFAYesINDusecanseetheUndobuttonontheReviewslistpagewhenthereviewwhenassignedreviewiscompleted @Sprint-26-US-282727 @vaibhav @Undo @Execution
   Scenario Outline: Validate Pre-Screen Review Step Competitive Ann FA Yes IND user can see the "Undo" button on the Reviews list page when the review when assigned review is completed
-    Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
-    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "INVITED_APPLICANT_IND_ORG"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default-Automation IND user"
     And I login to "As a Grantor" app as "PM" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
