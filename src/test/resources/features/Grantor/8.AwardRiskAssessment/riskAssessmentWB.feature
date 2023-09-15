@@ -16,6 +16,14 @@ Feature: Risk Assessment scenarios without background
     And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "Grant ID" as "GrantId"
+    When I click "{SavedValue:GrantId}" lookup link
+    Then I refresh the page
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
+      | Description | Required  | Applies To | Status |
+      | Automation  | Mandatory | Award      | Active |
+    And I switch to parent tab
     And I navigate to "Management" sub tab
     Then I softly cannot see page block "Subaward Risk Assessments"
     And I navigate to "Files" sub tab
