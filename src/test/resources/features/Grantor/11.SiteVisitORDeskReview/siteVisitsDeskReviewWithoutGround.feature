@@ -9124,7 +9124,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I Click on "Reassign Records" icon for "Site Visit/Desk Review" without tableid
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:siteVisitSourceTableId---" panel
     Then I see value "{SavedValue:SitevVisitId}" for title "Site Visit ID" inside table "---sitevisits:-:siteVisitSourceTableId---"
-    Then I see value "Submitted to Grantor" for title "Status" inside table "---sitevisits:-:siteVisitSourceTableId---"
+    Then I see value "Submitted for Review" for title "Status" inside table "---sitevisits:-:siteVisitSourceTableId---"
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:siteVisitSourceTableId---" panel
     When I check "{SavedValue:SitevVisitId}" boxes in flex table with id "---sitevisits:-:siteVisitSourceTableId---"
     When I click table top right button "Transfer Ownership" in flex table with id "---sitevisits:-:siteVisitSourceTableId---"
