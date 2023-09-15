@@ -1435,7 +1435,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Approved"
     Then I cannot see top right button "Undo" in page detail
 
-  @292609 @VerifyusercannotseeundobuttononamendmentwhenBPchangeamendmentisinRejectedstate @Sprint-2-US-285149 @hitesh @Undo
+  @292609 @292610 @VerifyusercannotseeundobuttononamendmentwhenBPchangeamendmentisinRejectedstate @Sprint-2-US-285149 @hitesh @Undo
   Scenario: Verify user cannot see undo button on amendment when BP change amendment is in Rejected state
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PM user" of type "Directed"
     When I am on "SUBPORTAL" portal
@@ -1558,6 +1558,7 @@ Feature: Amendment Request scenarios with Undo
     When I perform quick search for "{SavedValue:budgetPChangeId}" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I softly see field "Status" as "Force Closed"
+    #292610
     Then I cannot see top right button "Undo" in page detail
 
 
