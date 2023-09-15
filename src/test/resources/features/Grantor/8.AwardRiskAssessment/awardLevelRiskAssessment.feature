@@ -4630,7 +4630,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Automation Permanent Focus Area | 0          | 3650     |
     And I refresh the page
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account             | Encumbrance |
+      | Funding Account             | Encumbrance1|
       | {SavedValue:fundingAccount} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Award Budget | Cash Match | Non-Cash Match |
