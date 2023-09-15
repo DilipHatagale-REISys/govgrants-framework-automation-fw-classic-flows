@@ -6518,6 +6518,8 @@ Feature: Validate all scenarios in the Risk Assessment
     And I enter "Grant_Creation1" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
     And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I enter value "No" into field "fieldFocusAreaRequired__c"
+    When I enter value "Yes" into field "fieldIsAdvancePermitted__c"
     When I click modal button "Save and Continue"
     And I save the field labeled "EGMS ID" as "GrantEGMSID"
     And I navigate to "Subawards" sub tab
