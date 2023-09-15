@@ -3356,8 +3356,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I enter "Grant_Creation4" values from "Award_Field_Values.xlsx"
-    And I enter value "---AUTOEnvData:-:SubrecipientOrgWithoutActiveRiskAssessment---" into field "fieldInternalOrganization__c"
+    And I enter "Grant_Creation5" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
     And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
