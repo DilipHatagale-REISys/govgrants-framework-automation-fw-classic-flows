@@ -18,11 +18,11 @@ Feature: Risk Assessment scenarios without background
     When I click on "Save" in the page details
     And I save the field labeled "Grant ID" as "GrantId"
     When I click "{SavedValue:GrantId}" lookup link
-    Then I refresh the page
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
       | Description | Required  | Applies To | Status |
       | Automation  | Mandatory | Award      | Active |
+    Then I refresh the page
     And I switch to parent tab
     And I navigate to "Management" sub tab
     Then I softly cannot see page block "Subaward Risk Assessments"
@@ -951,9 +951,11 @@ Feature: Risk Assessment scenarios without background
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
+    And I save the field labeled "Proposed Budget Period Start Date" as "PBPSD"
+    And I save the field labeled "Proposed Budget Period End Date" as "PBPED"
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
-      | Title                           | Start Date | End Date |
-      | Automation Permanent Focus Area | 0          | 650      |
+      | Title                           | Start Date         | End Date           |
+      | Automation Permanent Focus Area | {SavedValue:PBPSD} | {SavedValue:PBPED} |
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 1000                |
