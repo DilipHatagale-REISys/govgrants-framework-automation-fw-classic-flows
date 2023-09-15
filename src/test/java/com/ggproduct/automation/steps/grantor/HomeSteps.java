@@ -57,6 +57,11 @@ public  class HomeSteps {
         homePage.NavigateToYopmailPortalForWithSubject(emailId,subject);
     }
 
+    @And("I navigate to yopmail portal for {string} with click on subject {string}")
+    public void iNavigateToYopmailPortalForWithClickOnSubject(String emailId, String subject) {
+        homePage.NavigateToYopmailPortalForWithClickOnSubject(emailId,subject);
+    }
+
     /*@When("I login to portal")
     public void iLoginToPortal() {
         I.amPerforming().textInput().in(ByUsing.healingWebIdName("loginPage_userName"), TestSetupController.usersController.getUserName("Admin"));
