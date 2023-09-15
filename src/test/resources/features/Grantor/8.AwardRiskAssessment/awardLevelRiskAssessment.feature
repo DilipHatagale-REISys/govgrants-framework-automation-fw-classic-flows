@@ -3352,13 +3352,7 @@ Feature: Validate all scenarios in the Risk Assessment
 
   @66874 @orgRAisExpiredAwardRiskAssessmentSetasNo @deepika @hiteshTemp
   Scenario Outline: Validate when Organization Risk Assessment is not active and Award Risk Assessment Required is selected as No then System should throw an exception when user activates the award.
-    Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI4" user
-    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
-    And I navigate to "Risk Assessment" sub tab
-    When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
-    And I click on "View" icon for "Created" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---" without waiting for record
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"

@@ -1513,13 +1513,13 @@ Feature: Amendment Request scenarios with Undo
     And I "Reject" in the approval decision
     Then I see status in Progress-bar is "Rejected" and is "Red"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    Given I delete the record "{SavedValue:Automation Runtime Award}" from the object "Closeout"
-    When I create a post award record "Closeout" for the Award "{SavedValue:Automation Runtime Award}" having object api name as "Closeout"
+    Given I delete the record "{SavedValue:budgetPChangeId}" from the object "Closeout"
+    When I create a post award record "Closeout" for the Award "{SavedValue:budgetPChangeId}" having object api name as "Closeout"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---closeout:-:grantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---closeout:-:grantsTableId---"
     When I navigate to "Requests" sub tab
     When I click on "View" icon for "Scheduled" inside flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -1555,8 +1555,8 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see value "Force Closed" for title "Status" against the value "{SavedValue:DeskReview}" inside table "---closeout:-:PendingSiteVisitDeskReviewTableId---"
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "{SavedValue:DeskReview}" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "{SavedValue:DeskReview}" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---deskreview:-:deskReviewGridViewTableId---" panel
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I softly see field "Status" as "Force Closed"
     Then I cannot see top right button "Undo" in page detail
 
