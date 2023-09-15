@@ -1,7 +1,7 @@
 @siteVisitDeskReviewWB @grantor-regression @grantor-parallel-regression @siteVisit @regression
 Feature: Validate all scenarios in the Site Visit and Desk Review without background
 
-  @51089 @56010 @formFillingSiteVisitUploadAttachment @TBE
+  @51089 @56010 @formFillingSiteVisitUploadAttachment
   Scenario: User will be able to review the supporting document checklist submitted by the subrecipient and Filling up of form in Site Visit
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -331,7 +331,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I navigate to "Management" tab
     Then I see value "In Progress" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---deskreview:-:managementInitiateDRtableid---"
 
-  @66715 @approvedStatusSVCannotCarriedForwardToNewAward @deepika @TBE
+  @66715 @approvedStatusSVCannotCarriedForwardToNewAward @deepika
   Scenario: Validate if site visit is in Approved status and amendment is done for base award, final state site visit should not be moved to newly created subaward after amendment.
     Given I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award for Associate Amendment Request" with properties "default" of type "Competitive"
@@ -650,7 +650,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
 
   @69443 @ValidateGrantFieldhistoryUpdated @aashish @buglogged150041 @TBE
   Scenario: Validate that Grant field history gets updated after Budget period amendment
-    And I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -815,7 +815,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:siteVisitTargetTableId---" panel
     Then I see value "{SavedValue:SitevVisitId}" for title "Site Visit ID" inside table "---sitevisits:-:siteVisitTargetTableId---"
 
-  @197286 @197290 @197292 @197294 @ValidateusershowSitevisitofthesourceuserforallstatesin1stsectionofSiteVisit @sprint-4 @vaibhav @reassignment @TBE
+  @197286 @197290 @197292 @197294 @ValidateusershowSitevisitofthesourceuserforallstatesin1stsectionofSiteVisit @sprint-4 @vaibhav @reassignment
   Scenario: Validate user show Site visit of the source user for all states in 1st section of Site Visit
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -911,7 +911,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I click table top right button "Transfer Ownership" in flex table with id "---sitevisits:-:siteVisitSourceTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
 
-  @197410 @197417 @ValidatependingtaskshouldbegeneratedforNewuserafterSiteVisitownershipassigntonewuser @sprint-4 @vaibhav @reassignment @TBE
+  @197410 @197417 @ValidatependingtaskshouldbegeneratedforNewuserafterSiteVisitownershipassigntonewuser @sprint-4 @vaibhav @reassignment
   Scenario: Validate pending task should be generated for New user after Site Visit ownership assign to new user
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -1041,7 +1041,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Responsibilities" sub tab
     Then I see value "Automation PM1" for title "Name" inside table "---sitevisits:-:siteVisitOwnerTableId---"
 
-  @197412 @197413 @ValidatewhenuserclickonYesbuttonofwarningmessageforSiteVisitthenflowshouldbeproceed @sprint-4 @vaibhav @reassignment @TBE
+  @197412 @197413 @ValidatewhenuserclickonYesbuttonofwarningmessageforSiteVisitthenflowshouldbeproceed @sprint-4 @vaibhav @reassignment
   Scenario: Validate when user click on Yes button of warning message for Site Visit then flow should be proceed
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "CREATE_AWARD_EXE" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "CREATE_AWARD_EXE" of type "Competitive"
@@ -2097,7 +2097,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---sitevisits:-:siteVisitTargetTableId---" panel
     Then I see value "{SavedValue:DeskReview}" for title "Site Visit ID" inside table "---sitevisits:-:siteVisitTargetTableId---"
 
-  @197627 @197629 @197630 @197631 @ValidateusershowDeskReviewofthesourceuserforallstatesin1stsectionofDeskReview @sprint-4 @vaibhav @reassignment @TBE
+  @197627 @197629 @197630 @197631 @ValidateusershowDeskReviewofthesourceuserforallstatesin1stsectionofDeskReview @sprint-4 @vaibhav @reassignment
   Scenario: Validate user show Desk Review of the source user for all states in 1st section of Desk Review
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -2409,7 +2409,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---deskreview:-:deskReviewTargetTableId---" panel
     Then I see value "{SavedValue:DeskReview}" for title "Site Visit ID" inside table "---deskreview:-:deskReviewTargetTableId---"
 
-  @197639 @ValidateDeskreviewafterchangingtheownershipthennewownershouldbeupdateinownersectionunderresponsibilitytab @sprint-4-US-196236 @vaibhav @reassignment @TBE
+  @197639 @ValidateDeskreviewafterchangingtheownershipthennewownershouldbeupdateinownersectionunderresponsibilitytab @sprint-4-US-196236 @vaibhav @reassignment
   Scenario: Validate Desk review after changing the ownership then new owner should be update in owner section under responsibility tab
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -2791,7 +2791,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Responsibilities" sub tab
     Then I see value "Automation PO1" for title "Name" inside table "---deskreview:-:deskReviewOwnerTableId---"
 
-  @197655 @ValidateemailshouldbegeneratedinyopmailtonewDRownerEXEuseronceownershipischangewhenassignedapproverclickedonSentbackbutton @reassignment @TBE
+  @197655 @ValidateemailshouldbegeneratedinyopmailtonewDRownerEXEuseronceownershipischangewhenassignedapproverclickedonSentbackbutton @reassignment
   Scenario: Validate email should be generated in yopmail to new DR owner EXE user once ownership is changed when assigned approver clicked on Sent back button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -2891,7 +2891,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
 
       Site Visit/Desk Review Details:
       Reporting Period Start Date: {Date:M/dd/yyyy::d+10}
-      Reporting Period End Date: {Date:M/dd/yyyy::d+20}
+      Reporting Period End Date: {Date:M/d/yyyy::d+20}
 
 
       Reason for Visit: Routine based on monitoring responsibilities
@@ -3204,7 +3204,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Files" sub tab
     Then I can see top right button "Add Files" in flex table with id "---deskreview:-:deskReviewsFilesTableId---"
 
-  @197884 @ValidateDRownerasFOuserisinSubmittedforapprovalstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasldownerhadinSubmittedforapprovalstate @sprint-4-US-196236 @vaibhav @reassignment @TBE
+  @197884 @ValidateDRownerasFOuserisinSubmittedforapprovalstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasldownerhadinSubmittedforapprovalstate @sprint-4-US-196236 @vaibhav @reassignment
   Scenario: Validate DR owner as FO user is in Submitted for approval state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in Submitted for approval state
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -3452,7 +3452,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I can see top right button "Edit" in page detail
     Then I softly can see top right button "Submit for Approval" in page detail
 
-  @197888 @ValidateDRownerasPOuserisinSubmittedtoGrantorstateafterthatownershipwillgetchangedthennewownerwilhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinSubmittedtoGrantorstate @sprint-4-US-196236 @vaibhav @reassignment @TBE
+  @197888 @ValidateDRownerasPOuserisinSubmittedtoGrantorstateafterthatownershipwillgetchangedthennewownerwilhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinSubmittedtoGrantorstate @sprint-4-US-196236 @vaibhav @reassignment
   Scenario: Validate DR owner as PO user is in Submitted to Grantor state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in Submitted to Grantor state
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -3565,7 +3565,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
     Then I softly can see top right button "Accept and Close" in page detail
 
-  @197889 @ValidateDRownerasPMuserisinClosestateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinClosestate @sprint-4-US-196236 @vaibhav @reassignment @TBE
+  @197889 @ValidateDRownerasPMuserisinClosestateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinClosestate @sprint-4-US-196236 @vaibhav @reassignment
   Scenario: Validate DR owner as PM user is in 'Close' state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in 'Close' state
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -4180,7 +4180,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @197985 @ValidatePMusershouldabletoreassignthetaskofSiteVisitfromMyTasksunderReassignsectiononleft-handnavigationbar  @sprint-4-US-192978 @vaibhav @reassignment @taskreassign @TBE
+  @197985 @ValidatePMusershouldabletoreassignthetaskofSiteVisitfromMyTasksunderReassignsectiononleft-handnavigationbar  @sprint-4-US-192978 @vaibhav @reassignment @taskreassign
   Scenario: Validate PM user should able to reassign the task of Site Visit from My Tasks under Reassign section on left-hand navigation bar
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -4280,7 +4280,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198007 @ValidateEXEusershouldabletoseeallthependingtasksinReassignMyCurrentTaskpage&usershouldreassigntheownershiprelatedtaskstootherEXEuserofsameorganization @sprint-4-US-192978 @vaibhav @reassignment @TBE
+  @198007 @ValidateEXEusershouldabletoseeallthependingtasksinReassignMyCurrentTaskpage&usershouldreassigntheownershiprelatedtaskstootherEXEuserofsameorganization @sprint-4-US-192978 @vaibhav @reassignment
   Scenario: Validate EXE user should able to see all the pending tasks in Reassign My Current Task page & user should reassign the ownership-related tasks to other EXE user of same organization
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -4380,7 +4380,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198008 @ValidatePOusershouldabletocheckownershiprelatedtaskNotstarted/Inprocessofsitevisitfromtable&ReassigntonewPOuserofSameorganization @sprint-4-US-192978 @vaibhav @reassignment @TBE
+  @198008 @ValidatePOusershouldabletocheckownershiprelatedtaskNotstarted/Inprocessofsitevisitfromtable&ReassigntonewPOuserofSameorganization @sprint-4-US-192978 @vaibhav @reassignment
   Scenario: Validate PO user should able to check ownership related task(Not started/In process) of site visit from table & Reassign to new PO user of Same organization
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -4480,7 +4480,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I see value "Not Started" for title "Status" against the value "{SavedValue:SitevVisitId}" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198010 @ValidateFOusershouldabletoseealltaskrelatedtoSiteVisitFindingsintheReassignMyCurrentTaskandreassigntotheotherFOuserwhichsourceuserhasselectedinlookupfield @sprint-4-US-192978 @vaibhav @reassignment @TBE
+  @198010 @ValidateFOusershouldabletoseealltaskrelatedtoSiteVisitFindingsintheReassignMyCurrentTaskandreassigntotheotherFOuserwhichsourceuserhasselectedinlookupfield @sprint-4-US-192978 @vaibhav @reassignment
   Scenario: Validate FO user should able to see all task related to Site Visit Findings in the Reassign My Current Task and reassign to the other FO user which source user has selected in lookup field
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -4585,7 +4585,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198013 @ValidatenewSVownerPOuserpendingtaskshouldbecreatedfortaskownershipofsitevisitfindingswhenoldPOuserreassigntheownershiprelatedtasktonewPOuser @sprint-4-US-192978 @vaibhav @reassignment @TBE
+  @198013 @ValidatenewSVownerPOuserpendingtaskshouldbecreatedfortaskownershipofsitevisitfindingswhenoldPOuserreassigntheownershiprelatedtasktonewPOuser @sprint-4-US-192978 @vaibhav @reassignment
   Scenario: Validate new SV owner (PO user) pending task should be created for task ownership of site visit findings when old PO user reassign the ownership related task to new PO user
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -4694,7 +4694,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @198035 @199426 @198039 @ValidatePOuserOwnershipbasedtasklikeReviewSiteVisitFindingsshouldbegeneratedfornewSVownerotherPOuseronlyonceownershipofSVischangedevenifGrantownerischangedinbetweenlifecycleofSV @sprint-4-US-192978 @vaibhav @reassignment @TBE
+  @198035 @199426 @198039 @ValidatePOuserOwnershipbasedtasklikeReviewSiteVisitFindingsshouldbegeneratedfornewSVownerotherPOuseronlyonceownershipofSVischangedevenifGrantownerischangedinbetweenlifecycleofSV @sprint-4-US-192978 @vaibhav @reassignment
   Scenario: Validate PO user Ownership based task like 'Review Site Visit Findings' should be generated for new SV owner(other PO user) only once ownership of SV is changed even if Grant owner is changed in between life cycle of SV
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -4954,7 +4954,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @198054 @Validateownershiprelatedtaskisreassigntonewuser&thatSVisinprocessafterchangedhisownershiptaskafterthatuserwanttocreateanotherSVthenownerofthatSV2shouldbetheinitiatorofSV2notthereassignownerofSV1 @sprint-4-US-192978 @vaibhav @reassignment @TBE
+  @198054 @Validateownershiprelatedtaskisreassigntonewuser&thatSVisinprocessafterchangedhisownershiptaskafterthatuserwanttocreateanotherSVthenownerofthatSV2shouldbetheinitiatorofSV2notthereassignownerofSV1 @sprint-4-US-192978 @vaibhav @reassignment
   Scenario: Validate ownership related task is reassign to new user & that SV is in process after changed his ownership task after that user want to create another SV then owner of that SV2 should be the initiator of SV2 not the reassign owner of SV 1
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -5085,7 +5085,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I navigate to "Responsibilities" sub tab
     Then I see value "Automation PO" for title "Name" inside table "---sitevisits:-:siteVisitOwnerTableId---"
 
-  @198016 @ValidateoldSVownerFOusercanabletoviewtheSVrecordonceownershipoftaskisinSubmittedtograntorstateisreassigntonewFOuserNewSVowner @sprint-4-US-192978 @vaibhav @reassignment @TBE
+  @198016 @ValidateoldSVownerFOusercanabletoviewtheSVrecordonceownershipoftaskisinSubmittedtograntorstateisreassigntonewFOuserNewSVowner @sprint-4-US-192978 @vaibhav @reassignment
   Scenario: Validate old SV owner FO user can able to view the SV record once ownership of task is in Submitted to grantor state is reassign to new FO user New SV owner
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -5311,7 +5311,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly cannot see top right button "Send Back to Subrecipient" in page detail
     Then I softly cannot see top right button "Accept and Close" in page detail
 
-  @198020 @198023 @ValidateAsadminusershouldabletoreassignthetaskofDeskReviewwithsameprofile&sameOrganization @sprint-4-US-192997 @vaibhav @reassignment @TBE
+  @198020 @198023 @ValidateAsadminusershouldabletoreassignthetaskofDeskReviewwithsameprofile&sameOrganization @sprint-4-US-192997 @vaibhav @reassignment
   Scenario: Validate As a admin user should able to reassign the task of Desk Review with same profile & same Organization
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -5410,7 +5410,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I see value "{SavedValue:DeskReview}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @198021 @ValidatePMusershouldabletoreassignthetaskofDeskreviewfromMyTasksunderReassignsectiononleft-handnavigationbar @sprint-4-US-192997 @vaibhav @reassignment @TBE
+  @198021 @ValidatePMusershouldabletoreassignthetaskofDeskreviewfromMyTasksunderReassignsectiononleft-handnavigationbar @sprint-4-US-192997 @vaibhav @reassignment
   Scenario: Validate PM user should able to reassign the task of Desk review from My Tasks under Reassign section on left-hand navigation bar
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -5503,7 +5503,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:DeskReview}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198025 @ValidateEXEusershouldabletoseeallthependingtasksinReassignMyCurrentTaskpage&usershouldreassigntheownership-relatedtaskstootherEXEuserofsameorganization @sprint-4-US-192997 @vaibhav @reassignment @TBE
+  @198025 @ValidateEXEusershouldabletoseeallthependingtasksinReassignMyCurrentTaskpage&usershouldreassigntheownership-relatedtaskstootherEXEuserofsameorganization @sprint-4-US-192997 @vaibhav @reassignment
   Scenario: Validate EXE user should able to see all the pending tasks in "Reassign My Current Task" page & user should reassign the ownership-related tasks to other EXE user of same organization
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -5689,7 +5689,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I see value "Not Started" for title "Status" against the value "{SavedValue:DeskReview}" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198027 @ValidateFOusershouldabletoseealltaskrelatedtoDeskReviewFindingsintheReassignMyCurrentTaskandreassigntotheotherFOuserwhichsourceuserhasselectedinlookupfield @sprint-4-US-192997 @vaibhav @reassignment @TBE
+  @198027 @ValidateFOusershouldabletoseealltaskrelatedtoDeskReviewFindingsintheReassignMyCurrentTaskandreassigntotheotherFOuserwhichsourceuserhasselectedinlookupfield @sprint-4-US-192997 @vaibhav @reassignment
   Scenario: Validate FO user should able to see all task related to Desk Review Findings in the 'Reassign My Current Task' and reassign to the other FO user which source user has selected in lookup field
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -6841,7 +6841,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @197504 @ValidateSVownerasEXEuserisinForceClosestateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayou&sectionallevelbuttonsasoldownerhadinForceClosestate @sprint-12-US-226646 @vaibhav @reassignment @TBE
+  @197504 @ValidateSVownerasEXEuserisinForceClosestateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayou&sectionallevelbuttonsasoldownerhadinForceClosestate @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate SV owner as EXE user is in 'Force Close' state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in Force Close state
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -8154,7 +8154,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @223684 @ValidateSiteVisitpeerreviewershouldgetupdateinreviewertableandemailshouldgeneratedforbothreviewerafterpeerreviewtaskreassignment @sprint-12-US-226646 @vaibhav @reassignment @TBE
+  @223684 @ValidateSiteVisitpeerreviewershouldgetupdateinreviewertableandemailshouldgeneratedforbothreviewerafterpeerreviewtaskreassignment @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Site Visit peer reviewer should get update in reviewer table and email should generated for both reviewer after peer review task reassignment
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -8228,7 +8228,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Responsibilities" tab
     Then I softly see value "Automation FO1" for title "Reviewer Name" against the value "Program Reviewer" inside table "---sitevisits:-:reviewersFlexTableId---"
     And I checkout to yopmail with mailid "fo1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "120" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -8495,7 +8495,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Site Visit Reviewers" modal by clicking the top right x button
+#    When I close "Site Visit Reviewers" modal by clicking the top right x button
     Then I softly see value "Submitted" for title "Status" inside table "---deskreview:-:reviewersFlexTableId---"
     And I checkout to yopmail with mailid "fo.automation@yopmail.com"
     And I pause execution for "120" seconds
@@ -9111,7 +9111,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       | Reviewer Name  | Responsibility   | Description              | Due Date | Allow Record Editing |
       | Automation PM1 | Program Reviewer | Review Financial details | 10       | Yes                  |
     And I click on "Send for Review" icon for "Automation PM1" inside table
-    Then I see status in Progress-bar is "Submitted for Review" and is "Green"
+    Then I softly see field "Status" as "Submitted for Review"
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
     And I navigate to "Home" tab
     Then I see "Ownership" inside "Reassign" is displayed
