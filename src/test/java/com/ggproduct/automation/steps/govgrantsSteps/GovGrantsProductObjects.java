@@ -454,7 +454,7 @@ public final class GovGrantsProductObjects {
     private String getValueOfSpecifiedColFromTableHavingColumnNameAs(String rowNumber, String columnName, String flexTableId) {
         int columnValueFromRowInInt = 0;
         int counter = 1;
-        By columnHeaders = By.xpath("//div[@id='" + flexTableId + "']//th");
+        By columnHeaders = By.xpath("//div[@id='" + flexTableId + "']//th[not(contains(@class,'hide'))]");
         List<Elements> columnList = I.amPerforming().getElementReference().forListOfElements().of(columnHeaders);
 
         // get the column index of required column.
