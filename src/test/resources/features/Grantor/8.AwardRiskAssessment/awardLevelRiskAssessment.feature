@@ -3350,7 +3350,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Grant Name                 |
       | Automation Permanent Award |
 
-  @66874 @orgRAisExpiredAwardRiskAssessmentSetasNo @deepika @hiteshTemp
+  @66874 @orgRAisExpiredAwardRiskAssessmentSetasNo @deepika
   Scenario Outline: Validate when Organization Risk Assessment is not active and Award Risk Assessment Required is selected as No then System should throw an exception when user activates the award.
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
