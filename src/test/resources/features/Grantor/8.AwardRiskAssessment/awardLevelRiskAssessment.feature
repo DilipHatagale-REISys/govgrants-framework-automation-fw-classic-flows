@@ -3190,7 +3190,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I download the file
     Then I verify that "pdf" file is downloaded
 
-  @65463 @verifyOnlyOneRiskAssessmentInTable @deepika @hiteshTemp
+  @65463 @verifyOnlyOneRiskAssessmentInTable @deepika
   Scenario: Validate when the risk assessment is intiated for draft award then only one risk assessment must be available in the table
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -3211,6 +3211,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "FirstRiskId"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -3220,7 +3221,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I navigate to "Management" sub tab
-    Then I see total records count "Total Records:1" in flex table "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I softly see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
 
   @65464 @riskFieldAvailbilityOnOverviewTab @deepika
   Scenario: Validate Risk Level field on Overview Tab is not availbale for Risk Assessment that is in Created Status
