@@ -1780,7 +1780,7 @@ Feature: Amendment Request scenarios with Undo
     #292681
     Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:budgetPChangeId}" inside table "---amendment:-:homeCompletedTaskTableId---"
     And I navigate to "Home" tab
-    When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:homePendingTasksTableId---" panel
     #292682
     Then I softly see "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:homePendingTasksTableId---"
