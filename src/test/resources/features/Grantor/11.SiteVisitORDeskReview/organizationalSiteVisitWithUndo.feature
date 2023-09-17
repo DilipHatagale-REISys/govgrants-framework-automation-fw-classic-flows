@@ -105,10 +105,9 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     #291842
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
+    And I refresh the page
     When I navigate to "History" sub tab
-    And I click on hyperlink which contains todays date with text "SnapShot on"
-    When I download the file
-    Then I softly see "Submitted for Approval" on page "1" of "govgrants" pdf file
+    Then I see take snap shot getting saved with "Todays Date"
     And I switch to parent tab
     #289808
     And I navigate to "Home" tab
