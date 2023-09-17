@@ -1678,7 +1678,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
 
-  @292680 @292672 @292681 @292682 @292685 @VerifywhenlaststepapproverclicksundothenstatusofcompletedtasksofPreviousstepapproversisnotcancelledincompletedtasklist @Sprint-2-US-285149 @hitesh @Undo
+  @292680 @292672 @292681 @292682 @292685 @292710 @VerifywhenlaststepapproverclicksundothenstatusofcompletedtasksofPreviousstepapproversisnotcancelledincompletedtasklist @Sprint-2-US-285149 @hitesh @Undo
   Scenario: Verify when last step approver clicks undo, then status of completed tasks of Previous step approvers is not cancelled in completed task list
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PM user" of type "Directed"
     When I am on "SUBPORTAL" portal
@@ -1763,6 +1763,9 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     And I click "Yes" on modal confirmation box
     Then I softly see field "Status" as "Submitted for Approval"
+    #292710
+    And I navigate to "History" sub tab
+    Then I softly see snapshot with name containing "Amendment - Undo Approval.pdf" as name
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
