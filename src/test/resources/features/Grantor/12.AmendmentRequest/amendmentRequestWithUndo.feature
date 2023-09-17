@@ -2170,7 +2170,7 @@ Feature: Amendment Request scenarios with Undo
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
-      | {SavedValue:FD Username}  | Step 1            |
+      | {SavedValue:PO Username}  | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 2            |
@@ -2182,7 +2182,7 @@ Feature: Amendment Request scenarios with Undo
       | {SavedValue:PM Username}  | Step 4           |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:pendingTaskTableId---" panel
@@ -2216,10 +2216,17 @@ Feature: Amendment Request scenarios with Undo
     And I click "Yes" on modal confirmation box
     Then I softly see field "Status" as "Submitted for Approval"
     When I select radio button "Forward" in the approval decision
-    And I select user "{SavedValue:PM1 Username}" in the approval decision
+    And I select user "{SavedValue:FD Username}" in the approval decision
     When I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Submitted for Approval"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
     Then I cannot see top right button "Undo" in page detail
 
 
