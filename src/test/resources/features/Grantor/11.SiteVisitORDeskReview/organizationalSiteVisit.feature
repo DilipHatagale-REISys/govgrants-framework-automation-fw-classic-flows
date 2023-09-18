@@ -25,7 +25,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI  | 10     |
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -161,17 +161,16 @@ Feature: Validate all scenarios in Organizational Site Visit
 #    When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
     Then I softly see that "{SavedValue:Automation Runtime Site Visit Org level}" is in "Notified" status
-    And I checkout to yopmail with mailid "automationspi3@yopmail.com"
-    And I pause execution for "5" seconds
+    And I logout
+    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
+    And I pause execution for "120" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
       Sandbox: Notification: Site Visit for {SavedValue:SiteVisitId} has been scheduled
       """
-#    Then I softly can see mail notification for "EXTERNAL" user with following subject:
-#      | Site Visit for {SavedValue:SiteVisitId} has been scheduled |
     Given I am on "INTERNAL" portal
-    When I login to "As a Grantor" app as "dynamicUser" user user
+    When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "{SavedValue:SiteVisitId}" in "---sitevisits:-:manageSiteVisitTableId---" panel
@@ -366,6 +365,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     And I "Approve" in the approval decision
+    And I wait for "4" seconds
     Then I softly see status in Progress-bar is "Approved" and is "green"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -463,17 +463,17 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     Then I softly see that "{SavedValue:Automation Runtime Site Visit Org level}" is in "Sent to Subrecipient" status
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
@@ -560,17 +560,17 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -649,6 +649,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I "Send to Owner" in the approval decision
     Then I softly see status in Progress-bar is "Created" and is "green"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Site Visit Org level}" in "---sitevisits:-:manageSiteVisitTableId---" panel
     Then I softly see that "{SavedValue:Automation Runtime Site Visit Org level}" has been added in flextable with Id "---sitevisits:-:manageSiteVisitTableId---"
@@ -924,8 +925,10 @@ Feature: Validate all scenarios in Organizational Site Visit
   @56005 @uploadsupportingDocumentChecklistFromWorkSpace @deepika
   Scenario: User will be able to review the supporting document checklist submitted by the subrecipient
     When I navigate to "Files" sub tab
-    And I upload attachment "InternalOrganization_Field_Values.xlsx" from workspace
-    Then I see "InternalOrganization_Field_Values.xlsx" has been added in "Attachment" flex table
+    And I click on "Upload Template" icon for "Automation" inside flex table with id "---orgRiskAssessment:-:orgriskSupportingDocTableId---" with wait for record
+    And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
+    And I click in table hyperlink containing value "View"
+    Then I softly verify that the file "Attachment.pdf" is downloaded
 
   @61398 @56044 @submittingForApprovalFieldHistoryUpdatedForSiteVisitIsSendBackToOwnerByProgramApprover @keerti
   Scenario: To Validate User will be able to view the Submit for Approval button  and field history update post Org level Site Visit is send back to owner by program approver
@@ -1049,8 +1052,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     And I "Send to Owner" in the approval decision
     When I navigate to "History" sub tab
-    When I perform quick search for "{SavedValue:Record Id}" in "History" panel
-    Then I see value "Active" for title "New Value" inside table "History"
+    When I perform quick search for "Record Id" in "History" panel
+    Then I see value "In Progress" for title "New Value" inside table "History"
 
   @61400 @61401 @ViewSnapshotandApproversTableIsNotEditableAfterSiteVisitsIsSubmittedToApproval @keerti @skipOnJenkins
   Scenario: Validate Record Owner user is able to view the Snapshot and Approvers Table is not editable for record owner and award owner end when the status of Org Level Site Visits is Submitted to Approval
@@ -1150,7 +1153,7 @@ Feature: Validate all scenarios in Organizational Site Visit
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Site Visit Reviewers" modal by clicking the top right x button
+#    When I close "Site Visit Reviewers" modal by clicking the top right x button
     Then I cannot see top right button "Edit" in page detail
 
   @56007 @PeerReviewAfterSVIsAcceptedAndClosed @keerti
@@ -1179,38 +1182,37 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridSiteVisitReviewerRoles" by clicking "New" :
       | Reviewer Name            | Responsibility  | Description              | Due Date | Allow Record Editing |
-      | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
-    And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
+      | {SavedValue:PO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "{SavedValue:PO Username}" inside table
     And I get the "EGMS ID"
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     When I navigate to "Responsibilities" tab
-    When I click on "Enter Review" icon for "{SavedValue:FO Username}" inside flex table with id "flexGridSiteVisitReviewerRoles"
+    When I click on "Enter Review" icon for "{SavedValue:PO Username}" inside flex table with id "flexGridSiteVisitReviewerRoles"
     And I enter values into fields
       | Value  | Field             |
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on "Submit Review" in the page details
-    When I close "Site Visit Reviewers" modal by clicking the top right x button
+#    When I close "Site Visit Reviewers" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Applications" tab
-    When I navigate to "Application Site Visits" content inside "Application Reviews" subheader on left panel
-    And I click toggle button to select "Application Site Visits - All"
-    When I click on "View" icon for "{SavedValue:Automation Runtime Site Visit Org level}" inside flex table with id "---orgLevelSiteVisits:-:latestSiteVisitReportsGridTableId---"
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     When I click on "Complete Review" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Applications" tab
-    When I navigate to "Application Site Visits" content inside "Application Reviews" subheader on left panel
-    And I click toggle button to select "Application Site Visits - All"
-    And I perform quick search for "{SavedValue:Automation Runtime Site Visit Org level}" in "---orgLevelSiteVisits:-:latestSiteVisitReportsGridTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Site Visit Org level}" inside flex table with id "---orgLevelSiteVisits:-:latestSiteVisitReportsGridTableId---"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     When I navigate to "Responsibilities" sub tab
-    Then I softly cannot see row level action button "Enter Review" against "{SavedValue:FO Username}" in flex table with id "flexGridRiskAssessmentApproverRoles"
+    Then I softly cannot see row level action button "Enter Review" against "{SavedValue:PO Username}" in flex table with id "flexGridRiskAssessmentApproverRoles"
 
   @61406 @61405 @66273 @CreatedDatedisplayedOnOverviewTabAddAttchments @keerti
   Scenario: Validate whether the PM user can add the attachments to Org Level Site Visits and view the Created Date on Overview Tab |Validate whether record owner has access to delete the asoociated Contact and Application- Org Site visits
@@ -1230,7 +1232,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "GrantorSiteVisitFilesgrid"
     And I upload attachment "Announcement_Field_Values.xlsx" of type "Pre-Site Visit Letter" from computer
-    And I click on "Save" in the page details
     Then I softly see "Pre-Site Visit Letter" has been added in "Site Visit Files" flex table
 
   @61407 @61994 @CreatedDateCanNotEditSVDatesUnderOverviewTab @keerti
@@ -1446,7 +1447,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     And I "Send to Owner" in the approval decision
     When I navigate to "History" sub tab
-    Then I see value "Active" for title "New Value" inside table "History"
+    Then I see value "In Progress" for title "New Value" inside table "History"
 
   @65153 @corerctiveActionsDueDateSV @deepika
   Scenario: Validate Org Level Site Visit Submit to Grantor and Corrective Actions By Subrecipient
@@ -1638,17 +1639,17 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1712,6 +1713,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                     | Site Visit |
       | {SavedValue:PM Username} | NA         |
+    And I wait for "10" seconds
     When I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details contains:
       | Responsibilities - At least one approver is required |

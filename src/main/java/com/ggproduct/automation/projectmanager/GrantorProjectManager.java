@@ -475,7 +475,7 @@ public class GrantorProjectManager extends ProjectManager {
             savedValue1 = I.amPerforming().propertiesFileOperationsTo().getValue(savedValue1.split(":")[1]);
             savedValue2 = I.amPerforming().propertiesFileOperationsTo().getValue(savedValue2.split(":")[1]);
         }
-        if (usage.contains("softly")) {
+        if (usage.contains("softly see")) {
             I.amPerforming().assertionsTo().assertThat(savedValue1).isEqualToIgnoringCase(savedValue2);
         } else if (usage.contains("not")) {
             Assert.assertNotEquals("Saved value :" + savedValue1 + " is not equals to saved value " + savedValue2, savedValue1, savedValue2);

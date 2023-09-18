@@ -49,8 +49,8 @@ Feature: Amendment Request scenarios with Undo
       | Name                     | Amendment Request |
       | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request |
-      | {SavedValue:EXE Username} | Step 2           |
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:FO Username} | Step 3            |
@@ -272,8 +272,8 @@ Feature: Amendment Request scenarios with Undo
       | Name                     | Amendment Request |
       | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request |
-      | {SavedValue:EXE Username} | Step 2           |
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:FO Username} | Step 3            |
@@ -393,8 +393,8 @@ Feature: Amendment Request scenarios with Undo
       | Name                     | Amendment Request |
       | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request |
-      | {SavedValue:EXE Username} | Step 2           |
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 2            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -463,11 +463,11 @@ Feature: Amendment Request scenarios with Undo
     And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:PO Username} | Step 1           |
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:EXE Username} | Step 2          |
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 2            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -488,7 +488,7 @@ Feature: Amendment Request scenarios with Undo
     And I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     Then I see only the following ordered radio buttons in the approval decision :
-      | Approve | Reject | Forward |Send to Owner |
+      | Approve | Reject | Forward | Send to Owner |
     When I "Send to Owner" in the approval decision
     Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
@@ -519,17 +519,17 @@ Feature: Amendment Request scenarios with Undo
     And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:PO Username} | Step 1           |
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:EXE Username}| Step 2           |
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:FO Username} | Step 3           |
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 3            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:PM Username} | Step 4           |
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 4            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -596,17 +596,17 @@ Feature: Amendment Request scenarios with Undo
     And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:PO Username} | Step 1           |
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:EXE Username}| Step 2           |
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:FO Username} | Step 3           |
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 3            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:PM Username} | Step 4           |
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 4            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -674,17 +674,17 @@ Feature: Amendment Request scenarios with Undo
     And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:PO Username} | Step 1           |
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:EXE Username}| Step 2           |
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:FO Username} | Step 3           |
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 3            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:PM Username} | Step 4           |
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 4            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -731,17 +731,17 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request|
-      | {SavedValue:PO Username} | Step 1           |
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
-      | Name                     | Amendment Request|
-      | {SavedValue:EXE Username}| NA               |
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | NA                |
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
-      | Name                     | Amendment Request|
-      | {SavedValue:FO Username} | NA               |
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | NA                |
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
-      | Name                     | Amendment Request|
-      | {SavedValue:PM Username} | NA               |
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | NA                |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -874,8 +874,8 @@ Feature: Amendment Request scenarios with Undo
       | Name                     | Amendment Request |
       | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request |
-      | {SavedValue:EXE Username} | Step 2           |
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 2            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     Then I cannot see top right button "Undo" in page detail
@@ -1173,11 +1173,11 @@ Feature: Amendment Request scenarios with Undo
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:FO Username}  | Step 3            |
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 3            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PM Username}  | Step 4            |
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 4            |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
@@ -1274,17 +1274,17 @@ Feature: Amendment Request scenarios with Undo
     When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PO Username}  | Step 1            |
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:FO Username}  | Step 3            |
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 3            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PM Username}  | Step 4           |
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 4            |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     #292605
@@ -1360,17 +1360,17 @@ Feature: Amendment Request scenarios with Undo
     When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PO Username}  | Step 1            |
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:FO Username}  | Step 3            |
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 3            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
-      | {SavedValue:PM1 Username}  | Step 4           |
+      | {SavedValue:PM1 Username} | Step 4            |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -1467,17 +1467,17 @@ Feature: Amendment Request scenarios with Undo
     When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PO Username}  | Step 1            |
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:FO Username}  | Step 3            |
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 3            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:FD Username}  | Step 4           |
+      | Name                     | Amendment Request |
+      | {SavedValue:FD Username} | Step 4            |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -1594,8 +1594,8 @@ Feature: Amendment Request scenarios with Undo
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PM Username}  | Step 2            |
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 2            |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1649,11 +1649,11 @@ Feature: Amendment Request scenarios with Undo
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PO Username}  | Step 2            |
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PM Username}  | Step 3            |
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 3            |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1715,17 +1715,17 @@ Feature: Amendment Request scenarios with Undo
     When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PO Username}  | Step 1            |
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:FO Username}  | Step 3            |
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 3            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:FD Username}  | Step 4           |
+      | Name                     | Amendment Request |
+      | {SavedValue:FD Username} | Step 4            |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -1937,17 +1937,17 @@ Feature: Amendment Request scenarios with Undo
     When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PO Username}  | Step 1            |
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:FO Username}  | Step 3            |
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 3            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PM Username}  | Step 4           |
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 4            |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -2030,17 +2030,17 @@ Feature: Amendment Request scenarios with Undo
     When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:FD Username}  | Step 1            |
+      | Name                     | Amendment Request |
+      | {SavedValue:FD Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:FO Username}  | Step 3            |
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 3            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PM Username}  | Step 4           |
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 4            |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
@@ -2078,14 +2078,14 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
-      | Name                     | Amendment Request|
-      | {SavedValue:EXE Username}| NA               |
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | NA                |
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
-      | Name                     | Amendment Request|
-      | {SavedValue:FO Username} | NA               |
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | NA                |
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
-      | Name                     | Amendment Request|
-      | {SavedValue:PM Username} | NA               |
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | NA                |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
@@ -2132,17 +2132,17 @@ Feature: Amendment Request scenarios with Undo
     When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PO Username}  | Step 1            |
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:FO Username}  | Step 3            |
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 3            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PM Username}  | Step 4           |
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 4            |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -2229,17 +2229,17 @@ Feature: Amendment Request scenarios with Undo
     When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PO Username}  | Step 1            |
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:FO Username}  | Step 3            |
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 3            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:PM Username}  | Step 4            |
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 4            |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal

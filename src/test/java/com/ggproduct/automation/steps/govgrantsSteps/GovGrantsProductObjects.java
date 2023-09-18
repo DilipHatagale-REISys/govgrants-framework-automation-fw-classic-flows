@@ -258,6 +258,10 @@ public final class GovGrantsProductObjects {
         govgrants.perform().inputForms().completeFillingReviewForm(recommendation);
     }
 
+    public void fillingInReviewForm(String recommendation) {
+        govgrants.perform().inputForms().completeFillReviewForm(recommendation);
+    }
+
     /******* "Consolidated Methods" **********/
 
     /**
@@ -450,7 +454,7 @@ public final class GovGrantsProductObjects {
     private String getValueOfSpecifiedColFromTableHavingColumnNameAs(String rowNumber, String columnName, String flexTableId) {
         int columnValueFromRowInInt = 0;
         int counter = 1;
-        By columnHeaders = By.xpath("//div[@id='" + flexTableId + "']//th");
+        By columnHeaders = By.xpath("//div[@id='" + flexTableId + "']//th[not(contains(@class,'hide'))]");
         List<Elements> columnList = I.amPerforming().getElementReference().forListOfElements().of(columnHeaders);
 
         // get the column index of required column.
@@ -460,15 +464,15 @@ public final class GovGrantsProductObjects {
             }
             counter++;
         }
-        List<Elements> listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[" + counter + "]/span/field/span"));
+        List<Elements> listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[not(contains(@class,'hide'))][" + counter + "]/span/field/span"));
         if (listOfDataInColumn.size() == 0) {
-            listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[" + counter + "]/span/span/span"));
+            listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[not(contains(@class,'hide'))][" + counter + "]/span/span/span"));
             if (listOfDataInColumn.size() == 0) {
-                listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[" + counter + "]/span"));
+                listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[not(contains(@class,'hide'))][" + counter + "]/span"));
                 if (listOfDataInColumn.size() == 0) {
-                    listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::th/ancestor::table//tr//td[" + counter + "]/span//field/span"));
+                    listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::th/ancestor::table//tr//td[not(contains(@class,'hide'))][" + counter + "]/span//field/span"));
                     if (listOfDataInColumn.size() == 0) {
-                        listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::th/ancestor::table//tr//td[" + (counter - 1) + "]/span//field/span"));
+                        listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::th/ancestor::table//tr//td[not(contains(@class,'hide'))][" + (counter - 1) + "]/span//field/span"));
                     }
                 }
             }

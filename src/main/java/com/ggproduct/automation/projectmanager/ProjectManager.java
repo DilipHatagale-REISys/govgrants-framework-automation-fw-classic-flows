@@ -76,7 +76,7 @@ public class ProjectManager extends ProjectWebServices {
     private boolean imageIsVisibleOrNot(String imageName) {
         boolean flag = false;
         try {
-            if (I.amPerforming().checkToSee().isDisplayed(I.amPerforming().getElementReference().of(ByUsing.xpath("//img[contains(@title,'"+imageName+"')] | //img[contains(@alt,'"+imageName+"')]")))) {
+            if (I.amPerforming().checkToSee().isDisplayed(I.amPerforming().getElementReference().of(ByUsing.xpath("//img[contains(@title,'" + imageName + "')] | //img[contains(@alt,'" + imageName + "')]")))) {
                 flag = true;
             }
         } catch (Exception e) {
@@ -141,8 +141,8 @@ public class ProjectManager extends ProjectWebServices {
 
     private boolean assertLengthOfFieldValuewithLabel(String fieldLabel, String charCount) {
         Boolean flag = false;
-        By fieldAPIName = By.xpath("//div[@id='"+ fieldLabel +"']");
-        String actualValue=I.amPerforming().getElementReference().of(fieldAPIName).getText();
+        By fieldAPIName = By.xpath("//div[@id='" + fieldLabel + "']");
+        String actualValue = I.amPerforming().getElementReference().of(fieldAPIName).getText();
         try {
             return actualValue.length() == Integer.parseInt(charCount) ? true : false;
         } catch (Exception e) {
@@ -150,5 +150,16 @@ public class ProjectManager extends ProjectWebServices {
         }
         return flag;
 
+    }
+
+    public void clickOnCOIOption(String radioButtonName) {
+        try {
+            By ConflictOfInterestReviewFromPath = By.xpath("//span//input[@type='radio'][@value='"+radioButtonName+"']");
+            if (I.amPerforming().checkToSee().IsElementPresentQuick(ConflictOfInterestReviewFromPath)) {
+                I.amPerforming().click().on(ConflictOfInterestReviewFromPath);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
