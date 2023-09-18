@@ -103,11 +103,11 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I refresh the page
     Then I softly see snapshot with name containing "Organizational Site Visit - Undo Approval.pdf" as name
     #291842
-    And I click on "Menu" in the page details
+    And I click on Menu icon present on top right corner of the page
     And I select "Take Snapshot" from dropdown
-    And I refresh the page
-    When I navigate to "History" sub tab
-    Then I see take snap shot getting saved with "Todays Date"
+    And I click on hyperlink containing value "SnapShot"
+    When I download the file
+    Then I softly see "Submitted for Approval" on page "1" of "govgrants" pdf file
     And I switch to parent tab
     #289808
     And I navigate to "Home" tab
