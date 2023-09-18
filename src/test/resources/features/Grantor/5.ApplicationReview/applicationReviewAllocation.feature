@@ -4312,7 +4312,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     When I click on "View" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:appreviewsTableId---"
     And I save the field labeled "Score" as "Score"
-    Then I softly see that "Score" is in "{SavedValue:Score}" status
+    Then I softly see field "Score" as "{SavedValue:Score}"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -4324,7 +4324,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     When I click on "View" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:appreviewsTableId---"
     And I save the field labeled "Score" as "Score1"
-    Then I softly see that "Score" is in "{SavedValue:Score1}" status
+    Then I softly see field "Score" as "{SavedValue:Score1}"
 
     Examples:
       | Announcement Name                                               | Application Name                                                |
