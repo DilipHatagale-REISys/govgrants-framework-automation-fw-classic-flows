@@ -2311,8 +2311,8 @@ Feature: Amendment Request scenarios with Undo
     And I click on "Undo" in the page details
     And I navigate to "Home" tab
     When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
-    When I reassign task to "Automation FD"
-    When I perform quick search for "{SavedValue:budgetPChangeId}}" in "---program:-:grantorTaskReassignTableId---" panel
+    When I reassign task to "{SavedValue:FD Username}"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---program:-:grantorTaskReassignTableId---" panel
     When I check "{SavedValue:budgetPChangeId}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I pause execution for "30" seconds
