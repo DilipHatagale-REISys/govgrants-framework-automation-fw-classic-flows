@@ -1,4 +1,4 @@
-@directedAnnouncementsWB @grantor-regression @grantor-parallel-regression @announcement @regression
+@directedAnnouncementsWB @grantor-regression @grantor-parallel-regression @announcement @regression @annoucementTemp
 Feature: Validate all scenarios in the directed Announcement tab
 
   @219074 @219166 @AdminUserVerifiesInfoTextForDirectedAnnouncement @sprint-9-US-208408 @komal @Allocation
@@ -182,12 +182,12 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly see "Add Organizations" opens in overLay window
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---announcement:-:directedAddInviteApplicantTableId---" panel
     Then I see the following rows under the following headers in table with id "---announcement:-:directedAddInviteApplicantTableId---" :
-      | Organization                        | Applicant Type           |
+      | Organization                        | Organization Type        |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | For-profit organizations |
     #219104
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     And I pause execution for "3" seconds
-    Then I see the following messages in the page details contains:
+    Then I softly see the following messages in the page details contains:
       | Selected Applicants are associated successfully. |
 
   @219110 @219161 @VerifyPMusershouldremovethesrbyclickingtheremoveicon&successmessageshouldbedisplayforDirectedAnnouncement @sprint-9-US-208408 @komal @Allocation
@@ -1033,10 +1033,9 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Application Title   | Recommended Budget | Total Commitment Amount | Recommend for Funding | Comments    |
       | <Announcement Name> | 1500               | 1500                    | Yes                   | Recommended |
     And I click on "Submit for Approval" in the page details
-    And I wait for "5" seconds
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
-    When I "Approve" in the approval decision
     And I wait for "3" seconds
+    When I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
     And I navigate to "Funding Decision Memo" sub tab
     When I click on "Initiate Negotiation" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
@@ -1230,6 +1229,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I can see row level action button "Create Subaward" against "<Announcement Name>" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
     And I click on "Create Subaward" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
     #234362
+    And I pause execution for "3" seconds
     Then I softly see the following messages in the page details contains:
       | The Budgeted Amount must be equal to The Recommended Budget Amount. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field and send the application back for revision to the subrecipient. |
 
@@ -1280,8 +1280,6 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
-    When I navigate to "Overview" sub tab
-    When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
@@ -1324,12 +1322,13 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:annReviewFormsTableId---" by clicking "New" :
       | Form Name       |
       | Automation Test |
+    And I expand nested table containing column value "Automation Test"
     And I click on "Review Form" icon for "Automation Test" inside flex table with id "---announcement:-:annReviewFormsTableId---" without waiting for record
     When I enter the following values into flex table with id "---applicationReview:-:reviewPanelCategoriesTableId---" by clicking "New" :
       | Section Order | Section Header  |
       | 1             | Automation Test |
     And I pause execution for "3" seconds
-    And I close "Review Form" modal by clicking the top right x button
+    #And I close "Review Form" modal by clicking the top right x button
     And I click on "Submit For Approval" in the page details
     And I pause execution for "3" seconds
     Then I softly see field "Status" as "Submitted for Approval"
@@ -1514,8 +1513,8 @@ Feature: Validate all scenarios in the directed Announcement tab
   @234368 @234371 @DirectAnnVerifyEXEusercaninlineedittheRecommendedBudgetfieldunderRecommendedApplicationsectionbeforeFDMapproval @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Direct Ann EXE user can inline edit the Recommended Budget field under Recommended Application section before FDM approval
   | DirectAnn>>Verify EXE when negotiation is initiated during FDM or from app layout then it must mandatory for user to select the "Budget: Budget Details " picklist value  for Negotiation field when the budgeted Amount is not equal to the Recommended Budget |
-    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default-Automation EXE user"
-    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "INVITED_APPLICANT_IND_ORG-Automation EXE user"
+    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
     When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -1891,7 +1890,7 @@ Feature: Validate all scenarios in the directed Announcement tab
   Scenario Outline: Direct Ann IND user can see Error message on submit to grantor button when user resubmit the application after negotiation From FDM if check when the Budgeted amount must be equal to the Recommended Amount
   | Direct Ann>> Verify IND user can able to edit the Budget Summary by focus area section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)& submit application to s/r side |
   | Direct Ann>> Verify IND user can not see Error message on submit to grantor button when user resubmit the application after negotiation (From FDM), if  Budgeted amount is equal to the  Recommended Amount  |
-    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "INVITED_APPLICANT_IND_ORG"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
     When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab

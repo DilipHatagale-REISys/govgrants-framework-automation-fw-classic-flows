@@ -1,7 +1,7 @@
 @grantor-regression @grantor-parallel-regression @announcement @regression @announcement-undo
 Feature: Validate all scenarios in the Competitive Announcement tab
 
-  @283963 @283966 @283973 @283965 @VerifywhenPmapprovercanclickonundobuttoninAnnouncementrecordwhenrecordisinApprovedstate @sprint-4-US-295141 @hitesh @Undo @Temphitesh
+  @283963 @283966 @283973 @283965 @VerifywhenPmapprovercanclickonundobuttoninAnnouncementrecordwhenrecordisinApprovedstate @sprint-4-US-295141 @hitesh @Undo 
   Scenario: Verify when Pm approver can click on undo button in Announcement  record when record is in Approved state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -206,7 +206,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
    The EGMS Team
   """
 
-  @283969 @VerifythatwhenExeapproverForwardtheAnnouncementApprovaltaskForwardedApproverwillseeUNDObuttonandnotpreviousOne @sprint-4-US-295141 @hitesh @Undo @Temphitesh
+  @283969 @VerifythatwhenExeapproverForwardtheAnnouncementApprovaltaskForwardedApproverwillseeUNDObuttonandnotpreviousOne @sprint-4-US-295141 @hitesh @Undo 
   Scenario: Verify that when Exe approver Forward the Announcement Approval task , Forwarded Approver will see UNDO button and not previous One
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -327,7 +327,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
 
-  @283970 @VerifythatwhenEXEapproverSendbacktheAnnouncementrecordExewillnotseeUNDObutton @sprint-4-US-295141 @hitesh @Undo @Temphitesh
+  @283970 @VerifythatwhenEXEapproverSendbacktheAnnouncementrecordExewillnotseeUNDObutton @sprint-4-US-295141 @hitesh @Undo 
   Scenario: Verify that when EXE approver Send back the Announcement record , Exe will not see UNDO button
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -601,7 +601,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I perform quick search for "Record Id" in "---announcement:-:announcementCompletedTaskTable---" panel
     Then I softly see value "Completed" for title "Status" against the value "{SavedValue:AnnEGMSID}" inside table "---announcement:-:announcementCompletedTaskTable---"
 
-  @285570 @285574 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnissenttoreviewState @sprint-4-US-295141 @hitesh @Undo @Temphitesh
+  @285570 @285574 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnissenttoreviewState @sprint-4-US-295141 @hitesh @Undo 
   Scenario: Verify that Owner of Ann will not see Undo button when Ann is sent to review State
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -718,7 +718,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see status in Progress-bar is "Reviewed" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @285584 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnownerclickonSubmitforApprovalButton @sprint-4-US-295141 @hitesh @Undo @Temphitesh
+  @285584 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnownerclickonSubmitforApprovalButton @sprint-4-US-295141 @hitesh @Undo 
   Scenario: Verify that Owner of Ann will not see Undo button when Ann owner click on Submit for Approval Button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -837,7 +837,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Submit For Approval" in the page details
     Then I cannot see top right button "Undo" in page detail
 
-  @285603 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnownerclickonPublishButton @sprint-4-US-295141 @hitesh @Undo @Temphitesh
+  @285603 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnownerclickonPublishButton @sprint-4-US-295141 @hitesh @Undo 
   Scenario: Verify that Owner of Ann will not see Undo button when Ann owner click on Publish Button
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -1202,7 +1202,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     #283968
     Then I cannot see top right button "Undo" in page detail
 
-  @283971 @VerifythatwhensarahpmapproverForwardtheAnnouncementApprovaltaskoriginalApproverwillnotseeUNDObutton @sprint-4-US-295141 @hitesh @Undo @Temphitesh
+  @283971 @VerifythatwhensarahpmapproverForwardtheAnnouncementApprovaltaskoriginalApproverwillnotseeUNDObutton @sprint-4-US-295141 @hitesh @Undo 
   Scenario: Verify that when sarah pm approver Forward the Announcement Approval task , original  Approver will not see UNDO button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -1313,5 +1313,186 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "View" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     Then I see status in Progress-bar is "Approved" and is "Green"
     Then I cannot see top right button "Undo" in page detail
+
+  @302578 @VerifythatUndoButtonVisibilityWhenUserDynamicallyChnageApproverofAnnouncementafterInternalprogramisactivate @sprint-26-US-299251 @hitesh @hites123
+  Scenario: Verify that Undo Button Visibility When User Dynamically  Chnage Approver of Announcement after Internal program is activate
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation Second Modal1" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    And I save the field labeled "Announcement Name" as "Automation Runtime Announcement for Pre-App"
+    When I click on "Edit" in the page details
+    And I enter "Edition1" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" by showing entries "All" in flex table with id "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
+    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    When I refresh the page
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---announcement:-:goalsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:PM1 Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:PM Username}  | Step 2       |
+    And I pause execution for "3" seconds
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
+    And I click on "Save" in the page details
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    And I pause execution for "3" seconds
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    Then I see status in Progress-bar is "Approved" and is "Green"
+    Then I can see top right button "Undo" in page detail
+
+  @302609 @CompetitiveAnnVerifythatApprovalHistoryandsnapshothistoryupdatedafterclickonUNDObutton @sprint-26-US-299251 @hitesh @hites123
+  Scenario: Competitive Ann Verify that Approval History and snapshot history updated after click on UNDO button.
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation Second Modal1" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    And I save the field labeled "Announcement Name" as "Automation Runtime Announcement for Pre-App"
+    When I click on "Edit" in the page details
+    And I enter "Edition1" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" by showing entries "All" in flex table with id "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
+    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    When I refresh the page
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---announcement:-:goalsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:PM1 Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:PO Username}  | Step 3       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                       | Announcement |
+      | {SavedValue:PM Username}   | Step 4       |
+    And I pause execution for "3" seconds
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
+    And I click on "Save" in the page details
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    Then I see status in Progress-bar is "Approved" and is "Green"
+    Then I can see top right button "Undo" in page detail
+    And I click on "Undo" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I navigate to "History" sub tab
+    And I see "{SavedValue:PM Username}" against "Re-approval (Pending for first approval)" in approval history
+    Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
+    Then I softly see value "Submitted for Approval" for title "New Value" inside table "---announcement:-:annFieldHistory---"
+    Then I softly see value "Approved" for title "Old Value" inside table "---announcement:-:annFieldHistory---"
+    Then I softly see value "Automation PM" for title "Changed By" inside table "---announcement:-:annFieldHistory---"
+    Then I softly see snapshot with name containing "Snapshot_Announcement_Submission.pdf" as name
+
+  @302658 @VerifythatUserWillNotSeeUndowhenAnnouncementisinClosed @sprint-26-US-299251 @hitesh @hites123
+  Scenario: Verify that User Will Not See Undo when Announcement is in Closed state
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{AUTOEnvData:CompetitiveClosedAnnoucement}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "{AUTOEnvData:CompetitiveClosedAnnoucement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Closed" and is "green"
+    Then I cannot see top right button "Undo" in page detail
+
+
+
 
 

@@ -148,7 +148,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I download the file
     Then I see "Related Focus Areas" on page "1" of "govgrants" pdf file
 
-  @70551 @70552 @73405 @73389 @73406 @73387 @70800 @70885 @71595 @72646 @72641 @73537 @userCanViewAddAndDeleteFocusArea @aashish @Temphitesh
+  @70551 @70552 @73405 @73389 @73406 @73387 @70800 @70885 @71595 @72646 @72641 @73537 @userCanViewAddAndDeleteFocusArea @aashish
   Scenario: To Verify that user is able to remove associated focus areas While creating the Announcement | To verify PM can remove non relevant Budget categories from specific Budget Type in Announcement based on the need.
     When I navigate to "Announcements" tab
     And I click toggle button to select "Published Announcements"
@@ -186,8 +186,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     #And I click on "Remove" icon for "BP02" inside flex table with id "---announcement:-:budgetPeriodTableId---"
     And I click on "Remove" icon for "BP01" inside flex table with id "---announcement:-:budgetPeriodTableId---"
     Then I softly do not see value "BP01" for title "Budget Period Name" inside table "---announcement:-:budgetPeriodTableId---"
-    And I click on "Remove" icon for "Travel" inside flex table with id "---announcement:-:announcementBudgetCategory---" without waiting for record
-    Then I softly do not see value "Travel" for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
+    And I click on "Remove" icon for "Construction " inside flex table with id "---announcement:-:announcementBudgetCategory---" without waiting for record
+    Then I softly do not see value "Construction " for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
     And I enter value "2000" into field "---announcement:-:subawardfloor---"
     And I enter value "3000" into field "---announcement:-:subawardceiling---"
     And I click on "Save" in the page details
@@ -282,7 +282,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
       | Responsibilities - At least one approver is required                                                                  |
 
-  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @70506 @71951 @73408 @userDeleteSupportingDocument @aashish @Temphitesh
+  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @70506 @71951 @73408 @userDeleteSupportingDocument @aashish 
   Scenario: To Verify that user can delete supporting document checklist While creating the Announcement |
   To Verify that user can Edit fields in supporting document checklist While creating the Announcement |
   To Verify that user can preview business forms while creating Announcement|
@@ -399,7 +399,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "04/14/2030" for title "Start Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
     Then I softly see value "04/13/2031" for title "End Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
 
-  @70563 @70556 @70554 @70606 @70718 @73545 @73547 @73564 @73566 @userCanViewAndDeleteKPI @aashish @buglogged151548 @Temphitesh
+  @70563 @70556 @70554 @70606 @70718 @73545 @73547 @73564 @73566 @userCanViewAndDeleteKPI @aashish @buglogged151548
   Scenario: To  Verify that after associating objectives, related KPIs should be automatically populate while  creating the Announcement
   | To Verify that user is able to view Objective While creating the Announcement | Verify KPIs search and filter fuctionality
     When I navigate to "Announcements" tab
@@ -424,6 +424,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
     When I click on "Remove" icon for "Automation Permanent KPI" inside flex table with id "---announcement:-:kpiflextableid---" without waiting for record
+    And I pause execution for "3" seconds
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -434,7 +435,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     #And I perform quick search for "Automation Permanent Objective" in "---announcement:-:objectivesTableId---" panel
     Then I softly see value "Automation Permanent Objective" for title "Title" inside table "---announcement:-:objectivesTableId---"
 
-  @70163 @70166 @70197 @userAllowToSelectEligibilityDetails @aashish @Temphitesh
+  @70163 @70166 @70197 @userAllowToSelectEligibilityDetails @aashish
   Scenario: To Verify that user is  allowed  to select the Eligibility Details while creating Announcement
   | To verify that  without selecting "Eligibility Details" user is able to see the validation message by clicking on "Submit for approval" button.
     When I navigate to "Announcements" tab
@@ -442,10 +443,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "All Competitive Announcements"
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
-    And I enter value "State governments" into field "fieldEligibleApplicantTypes__c"
+    And I enter value "State Governments" into field "fieldEligibleApplicantTypes__c"
     Then I softly see multiple selected options in "multiSelectPicklistCell":
       | options           |
-      | State governments |
+      | State Governments |
     And I clear the value from field "fieldEligibleApplicantTypes__c"
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
@@ -488,7 +489,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Remove" icon for "NGO" inside flex table with id "---announcement:-:relatedAnnouncementTableId---" without waiting for record
     Then I softly do not see value "NGO" for title "Type" inside table "---announcement:-:relatedAnnouncementTableId---"
 
-  @75617 @70727 @73624 @70723 @73621 @72482 @73536 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA @Temphitesh
+  @75617 @70727 @73624 @70723 @73621 @72482 @73536 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
   Scenario Outline: Validate that user can not enter application due date as past date | Validate that user should not submit announcement with blank budget period dates|To Verify that user can view contact while creating Announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -1012,7 +1013,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type |
       | Competitive       |
 
-  @72328 @72326 @72025 @71974 @announcementDisApprovalbyEXE @aashish @Temphitesh
+  @72328 @72326 @72025 @71974 @announcementDisApprovalbyEXE @aashish
   Scenario Outline: To verify Approval history of announcement when announcement rejected by Executive Office Approval: Victor EXE
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -1057,8 +1058,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Budget Period Name | End Date |
       | BP02               | 550      |
     And I click on "Save" in the page details
-    And I save the value from row "2" for column name "Start Date" as "startDate" from flex table "---announcement:-:budgetPeriodTableId---"
-    And I save the value from row "1" for column name "End Date" as "endDate" from flex table "---announcement:-:budgetPeriodTableId---"
+    And I save the value from row "1" for column name "Start Date" as "startDate" from flex table "---announcement:-:budgetPeriodTableId---"
+    And I save the value from row "2" for column name "End Date" as "endDate" from flex table "---announcement:-:budgetPeriodTableId---"
+    And I refresh the page
     Then I softly see field "Estimated Project Period Start Date" as "{SavedValue:startDate}"
     Then I softly see field "Estimated Project Period End Date" as "{SavedValue:endDate}"
     And I click on "Remove" icon for "BP02" inside flex table with id "---announcement:-:budgetPeriodTableId---" without waiting for record
@@ -1217,7 +1219,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type |
       | Competitive       |
 
-  @65080 @VerifyDraftAnnouncementIsNotDisplayedForSRUer @keerti @Temphitesh
+  @65080 @VerifyDraftAnnouncementIsNotDisplayedForSRUer @keerti
   Scenario Outline: Verify Draft announcement is not displayed at SR user end.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -1686,7 +1688,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Monitoring           |
       | Closeout             |
 
-  @145325 @verifyAdditionOfApproverAfterAnnouncementIsUnpublished-RnRFuntionality @monu @buglogged151920 @Temphitesh
+  @145325 @verifyAdditionOfApproverAfterAnnouncementIsUnpublished-RnRFuntionality @monu @buglogged151920 
   Scenario Outline: Validate Announcement owner can add approvers while its unpublished
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"

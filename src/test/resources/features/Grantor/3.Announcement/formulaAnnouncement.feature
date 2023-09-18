@@ -1,4 +1,4 @@
-@formulaAnnouncements @grantor-regression @grantor-parallel-regression @announcement @regression
+@formulaAnnouncements @grantor-regression @grantor-parallel-regression @announcement @regression @annoucementTemp
 Feature: Validate all scenarios in the Formula Announcement tab
 
   Background: Create Announcement
@@ -146,6 +146,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Applicants                          | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I pause execution for "3" seconds
     And I click on "Submit For Approval" in the page details
     Then I see the following messages in the page details :
       | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
