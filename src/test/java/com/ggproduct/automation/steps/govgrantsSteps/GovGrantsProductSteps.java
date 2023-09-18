@@ -57,6 +57,13 @@ public final class GovGrantsProductSteps {
         );
     }
 
+    @When("I complete filling in the Review form with recommendation {string} in review step")
+    public void iCompleteFillingInTheReviewFormWithRecommendationInReviewStep(String recommendation) {
+        ggProductObjects.fillingInReviewForm(
+                recommendation
+        );
+    }
+
     @Description("Enter a Peer Review with the given rating")
     @When("^I enter a review as \"([^\"]*)\"$")
     public void enterReview(String rating) {
@@ -227,4 +234,6 @@ public final class GovGrantsProductSteps {
     public void iClickIconWithOutTableId(String iconName, String recordName) {
         ggProductObjects.clickIconWithOutTableId(iconName, recordName);
     }
+
+
 }

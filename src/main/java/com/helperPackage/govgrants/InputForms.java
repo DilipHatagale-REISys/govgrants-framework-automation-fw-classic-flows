@@ -279,6 +279,84 @@ public final class InputForms {
         }
     }
 
+    /**
+     * Handles filling up of any review form Handles Text area, Score, Percent,
+     * Date, Dollar value Note: All are text fields but expects to enter values in
+     * different format
+     *
+     * @author hema.ananthan
+     * @modified mahadev.hanme
+     * @modifier vaibhav.chandratre updated values for check the score
+     */
+    public void completeFillReviewForm(String recommendation) {
+        try {
+            if (I.amPerforming().checkToSee().IsElementPresentQuick(ConflictOfInterestReviewFromPath)) {
+                I.amPerforming().click().on(ConflictOfInterestReviewFromPath);
+            }
+            I.amPerforming().dropDownSelection().from(getSummaryRecommendationXpath()).selectByValue(recommendation);
+            I.amPerforming().textInput().in(getSummaryComments(), "Automation test description");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        for (int i = 0; i < getTitlesInForm().size(); i++) {
+            for (int j = 1; j <= getcountForRowsReviewForm(getTitlesInForm().get(i)); j++) {
+                if (checkTextAreaPresentReviewForm(getTitlesInForm().get(i), j) > 0) {
+                    I.amPerforming().textInput().toClear(getTextAreaReviewForm(getTitlesInForm().get(i), j));
+                    I.amPerforming().textInput().in(getTextAreaReviewForm(getTitlesInForm().get(i), j), "Automation test description");
+                }
+            }
+        }
+
+        for (int i = 0; i < getTitlesInForm().size(); i++) {
+            for (int j = 1; j <= getcountForRowsReviewForm(getTitlesInForm().get(i)); j++) {
+                if (checkTextInputScorePresentReviewForm(getTitlesInForm().get(i), j) > 0) {
+                    I.amPerforming().textInput().toClear(getTextInputScoreReviewForm(getTitlesInForm().get(i), j));
+                    I.amPerforming().textInput().in(getTextInputScoreReviewForm(getTitlesInForm().get(i), j), "4");
+                }
+            }
+        }
+
+        for (int i = 0; i < getTitlesInForm().size(); i++) {
+            for (int j = 1; j <= getcountForRowsReviewForm(getTitlesInForm().get(i)); j++) {
+                if (checkDropdownPresentReviewForm(getTitlesInForm().get(i), j) > 0) {
+                    Select select = I.amPerforming().dropDownSelection().from(checkDropdownReviewForm(getTitlesInForm().get(i), j));
+                    try {
+                        select.selectByVisibleText("No");
+                    } catch (Exception e) {
+                        select.selectByVisibleText("Low");
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < getTitlesInForm().size(); i++) {
+            for (int j = 1; j <= getcountForRowsReviewForm(getTitlesInForm().get(i)); j++) {
+                if (checkTextInputPercentPresentReviewForm(getTitlesInForm().get(i), j) > 0) {
+                    I.amPerforming().textInput().toClear(getTextInputPercentReviewForm(getTitlesInForm().get(i), j));
+                    I.amPerforming().textInput().in(getTextInputPercentReviewForm(getTitlesInForm().get(i), j), "20");
+                }
+            }
+        }
+
+        for (int i = 0; i < getTitlesInForm().size(); i++) {
+            for (int j = 1; j <= getcountForRowsReviewForm(getTitlesInForm().get(i)); j++) {
+                if (checkTextInputDollarPresentReviewForm(getTitlesInForm().get(i), j) > 0) {
+                    I.amPerforming().textInput().toClear(getTextInputDollarReviewForm(getTitlesInForm().get(i), j));
+                    I.amPerforming().textInput().in(getTextInputDollarReviewForm(getTitlesInForm().get(i), j), "2000");
+                }
+            }
+        }
+
+        for (int i = 0; i < getTitlesInForm().size(); i++) {
+            for (int j = 1; j <= getcountForRowsReviewForm(getTitlesInForm().get(i)); j++) {
+                if (checkTextInputDatePresentReviewForm(getTitlesInForm().get(i), j) > 0) {
+                    I.amPerforming().textInput().toClear(getTextInputDateReviewForm(getTitlesInForm().get(i), j));
+                    I.amPerforming().textInput().in(getTextInputDateReviewForm(getTitlesInForm().get(i), j), "09/09/2023");
+                }
+            }
+        }
+    }
+
     /******* "Private methods with limited functonality - Private" **************/
 
     /**

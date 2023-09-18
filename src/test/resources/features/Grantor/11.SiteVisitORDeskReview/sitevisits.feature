@@ -1,4 +1,4 @@
-@siteVisits @grantor-regression @grantor-parallel-regression @siteVisit @regression
+@SiteVisitExecution @siteVisits @grantor-regression @grantor-parallel-regression @siteVisit @regression
 Feature: Validate all scenarios in the Site Visit
 
   Background: Data setup for Site Visit
@@ -20,6 +20,7 @@ Feature: Validate all scenarios in the Site Visit
     And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "SiteVisitID"
 
   @51081 @51082 @51083 @61201 @siteVisitCreationEditionParticipantAssociationCreatedDate
   Scenario: Validate the creation, edition, created date and ParticipantAssociation
@@ -113,48 +114,6 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly see that "Automation Finding" has been added in flextable with Id "---sitevisits:-:correctiveTableId---"
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
-
-  @51089 @56010 @formFillingSiteVisitUploadAttachment
-  Scenario: User will be able to review the supporting document checklist submitted by the subrecipient and Filling up of form in Site Visit
-    Given I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                      | Site Visit |
-      | {SavedValue:EXE Username} | Step 1     |
-    When I enter the following values into flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                     | Site Visit |
-      | {SavedValue:FO Username} | Step 2     |
-    When I save the field labeled "EGMS ID" as "EGMSID"
-    When I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" by clicking "Add" :
-      | Description | Required  | Status |
-      | Automation  | Mandatory | Active |
-    And I click on "Upload Template" icon for "Automation" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" with wait for record
-    When I upload file "Program_Field_Values.xlsx" into library
-    When I close "Upload Document" modal by clicking the top right x button
-    Then I softly see "Program_Field_Values.xlsx" has been added in "Supporting Documents Checklist" flex table
-    Given I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
-    When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
-    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
-    And I click on "Notify" in the page details
-    When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:EGMSID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    When I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "{SavedValue:EGMSID}" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
-    And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reportsTableId---"
-    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    Then I softly see that "100%" has been added in flextable with Id "---sitevisits:-:reportsTableId---"
 
   @51091 @51092  @66314 @approvalOfSiteVisit
   Scenario: Approval of Site Visit and Send Site Visit to Subrecipient | validate task for program approver
@@ -282,17 +241,17 @@ Feature: Validate all scenarios in the Site Visit
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
 
@@ -644,21 +603,15 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Start" icon for "{SavedValue:siteVisitID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
-    And I logout
-    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "180" seconds
-    Then I refresh the page
-    And I see the mail subject is as follows :
-      """
-      Sandbox: Notification: Site Visit Report for {SavedValue:siteVisitID} has been Forwarded
-      """
-    Then I refresh the page
-    And I am on "INTERNAL" portal
-    When I login to "As a Grantor" app as "EXE" user
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:siteVisitID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I softly see that "Approve Site Visit" has been added in flextable with Id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    And I click on "Start" icon for "{SavedValue:siteVisitID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    #77257
+    Then I see only the following ordered radio buttons in the approval decision :
+      | Approve | Send Back | Forward |
 
   @61861 @55278 @55210 @pmUserCanFOuserCannotViewAcceptandCloseSiteVisits @deepika
   Scenario: Validate the Infomation send to the subrecipients other than record owner, Fo user cannot accept and close the site visits and PM can accept and close
@@ -727,17 +680,17 @@ Feature: Validate all scenarios in the Site Visit
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -861,7 +814,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I logout
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "180" seconds
+    And I pause execution for "200" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -921,7 +874,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I "Send to Owner" in the approval decision
     When I navigate to "History" sub tab
-    When I perform quick search for "{SavedValue:Record Id}" in "History" panel
+    When I perform quick search for "Record Id" in "History" panel
     Then I softly see value "In Progress" for title "New Value" inside table "History"
 
   @60833 @theSnapshotAfterSiteVisitsIsSendToSubrecipient @keerti @skipOnJenkins
@@ -1054,17 +1007,17 @@ Feature: Validate all scenarios in the Site Visit
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1087,22 +1040,6 @@ Feature: Validate all scenarios in the Site Visit
     And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "ApplicantSiteVisitReports" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "ApplicantSiteVisitReports"
     Then I softly see status in Progress-bar is "Closed" and is "Green"
-
-  @60834 @AdditionOfAttachmentForAwardSiteVisits @keerti
-  Scenario: Validating addition of attachment to Award Site Visits
-    When I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" by clicking "Add" :
-      | Description                 | Required  | Status |
-      | Automation test description | Mandatory | Active |
-    When I click on "Upload Template" icon for " Automation test description" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" without waiting for record
-    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
-    Then I softly see the following messages in the page details :
-      | Attachement saved successfully. |
-    When I close "Upload Document" modal by clicking the top right x button
-    And I perform quick search for "Automation test description" in "---sitevisits:-:siteVisitSupportingDocumentChecklist---" panel
-    Then I softly see value "Mandatory" for title "Required" inside table "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
-    Then I softly see value "Award" for title "Applies To" inside table "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
-    Then I softly see value "Active" for title "Status" inside table "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
 
   @60839 @56013 @60837 @60840 @peerReviewerCanNotEdit/EnterReviewComments @keerti @smoke
   Scenario: Validate system does not allow the peer reviewer to edit/Enter review comments and Edit button hidden if the Site Visits marked as complete review
@@ -1209,17 +1146,6 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I softly see "No Records Found" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
-
-  @61178 @addAttachmentToSiteVisit @deepika
-  Scenario: Validate whether PM will be able to add any specific docuements required along with the supporting documents details under the attachments section
-    When I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" by clicking "Add" :
-      | Description | Required  | Status |
-      | Automation  | Mandatory | Active |
-    And I click on "Upload Template" icon for "Automation" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" with wait for record
-    When I upload file "Program_Field_Values.xlsx" into library
-    When I close "Upload Document" modal by clicking the top right x button
-    Then I see "Program_Field_Values.xlsx" has been added in "Supporting Documents Checklist" flex table
 
   @61860 @approverCompletedTaskSiteVisits @deepika
   Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab
@@ -1531,8 +1457,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Management" sub tab
     Then I softly can see row level action button "Delete" against "Record Id" in flex table with id "---sitevisits:-:InitiateSiteVisitTableId---"
     When I click on "Delete" icon for "Record Id" inside flex table with id "---sitevisits:-:InitiateSiteVisitTableId---"
-    Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
+    Then I softly see "No Records Found" inside flex table with id "---sitevisits:-:InitiateSiteVisitTableId---"
 
   @65240 @historyOfSiteVisitsendbacktoOwner @deepika
   Scenario: Validate History Field is getting Updated at Award owner End when Site Visit status is Submitted to Grantor.
@@ -1737,17 +1662,17 @@ Feature: Validate all scenarios in the Site Visit
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab

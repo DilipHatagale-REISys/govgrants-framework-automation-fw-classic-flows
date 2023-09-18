@@ -5,6 +5,7 @@ import com.ggproduct.automation.webservices.ProjectWebServices;
 import com.helperPackage.register.I;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -67,5 +68,10 @@ public class CommonSteps {
     @Then("I softly see fields value with label {string} contains {string} characters")
     public void iSoftlySeeFieldsValueWithLabelContainsCharacters(String usage, String fieldLabel, String charCount) {
         projectManager.assertLengthOfFieldValues(usage, fieldLabel, charCount);
+    }
+
+    @And("I click radio button {string} in COI of review form")
+    public void iClickRadioButtonInCOIOfReviewForm(String radioButtonName) {
+        projectManager.clickOnCOIOption(radioButtonName);
     }
 }

@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        glue = {"setup","com.ggproduct.automation.steps","com.automation.rei.govgrantsSteps","com.testingblaze.actionsfactory.gherkin","com.testingblaze.register"},
+        glue = {"setup","com.ggproduct.automation.steps","com.helperPackage.actionsfactory.gherkin","com.helperPackage.register"},
         features = {"src/test/resources/features"},
-        plugin = {"json:target/cucumber-report/cucumber.json","html:target/cucumber-html","com.testingblaze.controller.ReportingLogsPlugin"},
+        plugin = {"json:target/cucumber-report/cucumber.json","html:target/cucumber-html"},
         tags = {"@vai"},
         monochrome = true
 )

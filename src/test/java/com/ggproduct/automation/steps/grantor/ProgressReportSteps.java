@@ -124,6 +124,22 @@ public class ProgressReportSteps {
         }
     }
 
+    @Description("To make Substraction of two saved values")
+    @Then("^I (see|softly see|softly do not see|do not see) substraction of two fields \"([^\"]*)\" and \"([^\"]*)\" is equal to \"([^\"]*)\"$")
+    public void iSeeSubstractionValueValue(String usage, String savedValue1, String savedValue2, String expectedValue) {
+        if (usage.equalsIgnoreCase("softly see")) {
+            I.amPerforming().assertionsTo().assertThat(progressReportPage.substractTwoFieldValues(savedValue1, savedValue2, expectedValue)).isTrue();
+        } else if (usage.equalsIgnoreCase("see")) {
+            Assert.assertTrue(progressReportPage.substractTwoFieldValues(savedValue1, savedValue2, expectedValue));
+        }
+        else if (usage.equalsIgnoreCase("softly do not see")) {
+            I.amPerforming().assertionsTo().assertThat(progressReportPage.substractTwoFieldValues(savedValue1, savedValue2, expectedValue)).isFalse();
+        }
+        else if (usage.equalsIgnoreCase("do not see")) {
+            Assert.assertFalse(progressReportPage.substractTwoFieldValues(savedValue1, savedValue2, expectedValue));
+        }
+    }
+
     @When("^I click on \"([^\"]*)\" icon under attachment flex table$")
     public void clickOnRowLevelButton(String buttonName) {
         progressReportPage.clickRowLevelActionIconUnderAttachmentFlexTable(buttonName);
