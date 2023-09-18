@@ -24900,6 +24900,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
    When I enter "Subrecipient_BRedirection" values from "AmendmentRequest_Field_Values.xlsx"
    And I click modal button "Save and Continue"
    And I enter value "Automation Justification" into field "fieldJustification__c"
+   And I wait for "3" seconds
    When I click on "Save" in the page details
    And I save the field labeled "EGMS ID" as "BUDGETREDIRECTIONID"
    Then I softly see status in Progress-bar is "Created" and is "green"

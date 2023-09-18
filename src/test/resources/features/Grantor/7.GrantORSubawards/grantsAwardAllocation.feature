@@ -24831,7 +24831,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     And I click on "Unpublish" in the page details
     And I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
-    When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area2" by showing entries "All" in flex table with id "---announcement:-:selectAnnouncementServiceArea1TableId---"
     When I click on "Edit" in the page details
     When I enter value "For-profit organizations" into field "fieldEligibleApplicantTypes__c"
     And I enter value "Test" into field "fieldAnnouncementDescription__c"

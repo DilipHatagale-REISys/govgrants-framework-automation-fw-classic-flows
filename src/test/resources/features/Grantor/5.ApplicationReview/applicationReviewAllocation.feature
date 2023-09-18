@@ -4345,7 +4345,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     When I click on top right button "Notify Selected Applicants" in flex table with id "flexGridFundingDecisionMemoApplications"
     Then I see value "check" for title "Applicant Notified?" against the value "{SavedValue:Automation Runtime FDM Announcement}" inside table "flexGridFundingDecisionMemoApplications"
 
-  @199810 @ValidatePMuserinAnnouncementuserselecttheYesbuttonfromreviewresponseSharedcolumnusingdropdownthenotherviewthereviewersresponse @Sprint-23-US-273843 @vaibhav @Allocation @TBE
+  @199810 @ValidatePMuserinAnnouncementuserselecttheYesbuttonfromreviewresponseSharedcolumnusingdropdownthenotherviewthereviewersresponse @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario Outline: Validate PM user in Announcement user select the "Yes" button from review response Shared column using dropdown then other view the reviewer's response
     And I published "Formula" type announcement having name "Automation Runtime Announcement Application Review" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"

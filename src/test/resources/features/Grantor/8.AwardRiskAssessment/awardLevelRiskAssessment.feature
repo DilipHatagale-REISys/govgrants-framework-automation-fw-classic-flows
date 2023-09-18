@@ -7900,7 +7900,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" without waiting for record
     Then I softly see that "EGMS ID" is in "Active" status
 
-  @116307 @ValidateAwardActivationAcceptancefailurewhenOrganizationRiskAssessmentisnotactiveandAwardRiskAssessmentRequiredisselectedasNo @Sprint-23-US-273843 @vaibhav @Allocation @TBE
+  @116307 @ValidateAwardActivationAcceptancefailurewhenOrganizationRiskAssessmentisnotactiveandAwardRiskAssessmentRequiredisselectedasNo @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario: Validate Award Activation & Acceptance failure when Organization Risk Assessment is not active and Award Risk Assessment Required is selected as No
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
