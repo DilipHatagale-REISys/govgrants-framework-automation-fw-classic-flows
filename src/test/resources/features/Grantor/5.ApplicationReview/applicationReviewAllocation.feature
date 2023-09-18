@@ -4236,7 +4236,7 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @274142 @ValidateFormulaPMusercanselectreviewresponsesettingcolumnisYesonSMEreviewstepshouldshowscoreofSMEreviewstepstoalluserFAYESAllocationTypeByApplicant&FA @Sprint-23-US-273843 @vaibhav @Allocation @TBE
+  @274142 @ValidateFormulaPMusercanselectreviewresponsesettingcolumnisYesonSMEreviewstepshouldshowscoreofSMEreviewstepstoalluserFAYESAllocationTypeByApplicant&FA @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario Outline: Validate Formula PM user can select review response setting column is Yes on SME review step & should show score of SME review steps to all user FA YES & Allocation Type By Applicant & FA
     And I published "Formula" type announcement having name "Automation Runtime Announcement Application Review" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
