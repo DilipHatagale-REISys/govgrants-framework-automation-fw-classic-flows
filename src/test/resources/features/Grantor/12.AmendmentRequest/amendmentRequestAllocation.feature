@@ -24825,7 +24825,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see value "$1,000.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:BudgetChangeTableId---"
     Then I softly see field "Budgeted Amount" as "$1,000.00"
 
- @263789 @ValidateSPISPAusershouldseeSpentvalueshouldbeCalculatedagainsteachfocusareaFAareaYes @Sprint-23-US-273843 @vaibhav @Allocation @TBE
+ @263789 @ValidateSPISPAusershouldseeSpentvalueshouldbeCalculatedagainsteachfocusareaFAareaYes @Sprint-23-US-273843 @vaibhav @Allocation
  Scenario: Validate SPI SPA user should see Spent value should be  Calculated against each focus area(FA area Yes)
    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA_RISK_ASS_NO-Automation EXE user"
    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
