@@ -24818,7 +24818,7 @@ Feature: Validate all scenarios of grants and award for Allocation
     Then I softly see field "Balance" as "$500.00"
     Then I softly see value "$500.00" for title "Spent" against the value "Construction" inside table "---subAwardStandAlone:-:paymentSummaryBudgetTableId---"
 
-  @275245 @ValidatePMusercannotseeFocusAreaswithNewObligationaszeroandSpentisalsoZeroonAwardsPaymentsummarybyfocusareasectioniftheinitialAwardisfromFDMFAisYES @Sprint-23-US-273843 @vaibhav @Allocation
+  @275245 @ValidatePMusercannotseeFocusAreaswithNewObligationaszeroandSpentisalsoZeroonAwardsPaymentsummarybyfocusareasectioniftheinitialAwardisfromFDMFAisYES @Sprint-23-US-273843 @vaibhav @Allocation @wip @BugLogged-275248
   Scenario: Validate PM user cannot see Focus Areas with New Obligation as zero and Spent is also Zero on Awards Payment summary by focus area section if the initial Award is from FDM FA is YES
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
