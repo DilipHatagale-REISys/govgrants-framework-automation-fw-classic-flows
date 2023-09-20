@@ -95,7 +95,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @334235 @286696 @ValidatePre-ScreenReviewStepCompetitiveAnnFAYesusercansuccessfullydeclinethereviewformafterselectionIdisagreeoptioninCOIsection @Sprint-1-US-235657 @vaibhav @Undo
+  @334235 @286696 @ValidatePre-ScreenReviewStepCompetitiveAnnFAYesusercansuccessfullydeclinethereviewformafterselectionIdisagreeoptioninCOIsection @Sprint-1-US-235657 @vaibhav @Undo @TBE
   Scenario Outline: Validate Pre-Screen Review Step Competitive Ann FA Yes user can successfully decline the review form after selecting I disagree option in COI section
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -607,7 +607,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @334234 @ValidatePreScreenReviewStepwhenapplicationispromotedtoFDMandassignedreviewerhasclickedundoonPreScreenreviewstepthenonclickofsubmitscoreshouldbeupdatedontheapplicationsectiononthereviewstep @Sprint-26-US-282727 @vaibhav @Undo @Execution
+  @334234 @334233 @ValidatePreScreenReviewStepwhenapplicationispromotedtoFDMandassignedreviewerhasclickedundoonPreScreenreviewstepthenonclickofsubmitscoreshouldbeupdatedontheapplicationsectiononthereviewstep @Sprint-26-US-282727 @vaibhav @Undo @Execution
   Scenario Outline: Validate PreScreen Review Step when application is promoted to FDM, and assigned reviewer has clicked undo on Pre-Screen review step then on click of submit score should be updated on the application section on the review step
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -645,6 +645,18 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Management Review | 25              |
       | SME Review        | 50              |
       | Pre-Screen Review | 25              |
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I edit the following rows inline in flex table with id "---announcement:-:annReviewFormsTableId---" by clicking "Edit" :
+      | Form Name  | Form Weight (%) |
+      | Pre-Screen | 100             |
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---announcement:-:annReviewFormsTableId---" without waiting for record
+    When I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
+      | Section Order | Section Header | Section Weight (%) |
+      | 1             | Eligibility    | 50                 |
+    When I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
+      | Section Order | Section Header | Section Weight (%) |
+      | 1             | Completeness   | 50                 |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name           | Announcement |
@@ -845,15 +857,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I edit the following rows inline in flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---" by clicking "Edit" :
       | Application Title                                | Total Commitment Amount |
       | {SavedValue:Automation Runtime FDM Announcement} | 500                     |
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
-    When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
-    And I navigate to "Related Log" sub tab
-    When I click on "View" icon for "Funding Decision Memo" inside flex table with id "---grantor_tableId:-:FDMTableId---"
-    And I navigate to "Funding Decision Memo" sub tab
+    When I save the value from row "1" for column name "Score" as "ScoreFDM" from flex table "---grantor_tableId:-:RecommendedApplicationTableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -886,7 +890,14 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I expand nested table containing column value "<Application Name>"
     When I save the value from row "1" for column name "Average Score" as "AverageScoreUpdated" from flex table "---applicationReview:-:reviewFormsTableId---"
     Then I softly see value "{SavedValue:AverageScore}" is "less than" the value "{SavedValue:AverageScoreUpdated}"
-
+    #334233
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "All Funding Decision Memos (FDM)"
+    When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I save the value from row "1" for column name "Score" as "ScoreUpdatedFDM" from flex table "---applicationReview:-:reviewFormsTableId---"
+    Then I softly see value "{SavedValue:ScoreFDM}" is "less than" the value "{SavedValue:ScoreUpdatedFDM}"
     Examples:
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
@@ -1019,8 +1030,9 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
-    Then I softly can see row level action button "Undo" against "Automation FO" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    Then I softly can see row level action button "Undo" against "Automation FO1" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
@@ -1028,13 +1040,13 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
-    Then I softly cannot see row level action button "Undo" against "Automation FO" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    Then I softly cannot see row level action button "Undo" against "Automation FO1" in flex table with id "---applicationReview:-:appreviewsTableId---"
 
     Examples:
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @280686 @ValidateCompetitiveAnnFAYesonclickofrowlevelundobuttonthestatusofreviewshouldchangeSendforReviewandalreadyenteredinformationonreviewformshouldbeitisandreviewershouldbeabletoEditandsubmitreviewagain @Sprint-26-US-282727 @vaibhav @Undo @TBE
+  @280686 @ValidateCompetitiveAnnFAYesonclickofrowlevelundobuttonthestatusofreviewshouldchangeSendforReviewandalreadyenteredinformationonreviewformshouldbeitisandreviewershouldbeabletoEditandsubmitreviewagain @Sprint-26-US-282727 @vaibhav @Undo
   Scenario Outline: Validate Competitive Ann FAYes on click of row level undo button, the status of review should change to 'Send for Review' and already entered information on review form should be as it is and reviewer should be able to Edit and submit review again
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -1188,7 +1200,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @280687 @280692 @280694 @ValidateManagmentCompAnnFAYesonclickofpagelevelundobuttonthestatusofreviewshouldchangetoSendforReviewandalreadyenteredinformationonreviewformshouldbeitisandreviewershouldbeabletoEditandsubmitreviewagain @Sprint-23-US-273843 @vaibhav @Allocation @TBE
+  @280687 @280692 @280694 @ValidateManagmentCompAnnFAYesonclickofpagelevelundobuttonthestatusofreviewshouldchangetoSendforReviewandalreadyenteredinformationonreviewformshouldbeitisandreviewershouldbeabletoEditandsubmitreviewagain @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario Outline: Validate Managment Comp Ann FA Yes on click of page level undo button, the status of review should change to 'Send for Review' and already entered information on review form should be as it is and reviewer should be able to Edit and submit review again
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -1342,7 +1354,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @280394 @280395 @280398 @ValidateCompetitiveAnnFAYesassignedreviewercanseerowlevelundobuttononlyforthecompletedreviewonreviewstep @Sprint-26-US-282727 @vaibhav @Undo @TBE
+  @280394 @280395 @280398 @ValidateCompetitiveAnnFAYesassignedreviewercanseerowlevelundobuttononlyforthecompletedreviewonreviewstep @Sprint-26-US-282727 @vaibhav @Undo
   Scenario Outline: Validate Competitive Ann FA Yes assigned reviewer can see row-level undo button only for the completed review on review step
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -1569,8 +1581,8 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see that "Review Incomplete" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
-    Then I softly cannot see row level action button "Undo" against "Automation FO" in flex table with id "---applicationReview:-:appreviewsTableId---"
-    When I click on "View" icon for "Automation FO" inside flex table with id "---applicationReview:-:appreviewsTableId---"
+    Then I softly cannot see row level action button "Undo" against "Review Incomplete" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    When I click on "View" icon for "Review Incomplete" inside flex table with id "---applicationReview:-:appreviewsTableId---"
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
@@ -1581,15 +1593,15 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see that "Review Declined" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
-    Then I softly cannot see row level action button "Undo" against "Automation FO" in flex table with id "---applicationReview:-:appreviewsTableId---"
-    When I click on "View" icon for "Automation FO" inside flex table with id "---applicationReview:-:appreviewsTableId---"
+    Then I softly cannot see row level action button "Undo" against "Review Declined" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    When I click on "View" icon for "Review Declined" inside flex table with id "---applicationReview:-:appreviewsTableId---"
     Then I cannot see top right button "Undo" in page detail
 
     Examples:
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @280659 @ValidatePreScreenReviewStepCompetitiveAnnFAYesanotherreviewerontheapplicationrecordcannotseerowlevelundobuttonforthecompletedreviewandonthereviewdetailpageonreviewstepwhenreviewresponsesharedisyes @TBE
+  @280659 @ValidatePreScreenReviewStepCompetitiveAnnFAYesanotherreviewerontheapplicationrecordcannotseerowlevelundobuttonforthecompletedreviewandonthereviewdetailpageonreviewstepwhenreviewresponsesharedisyes
   Scenario Outline: Validate Pre-Screen Review Step Competitive Ann FA Yes another reviewer on the application record cannot see row-level undo button for the completed review and on the review detail page on review step when review response shared is yes
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
