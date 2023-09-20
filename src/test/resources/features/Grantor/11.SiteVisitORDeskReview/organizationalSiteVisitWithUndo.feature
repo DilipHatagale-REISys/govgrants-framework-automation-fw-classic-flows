@@ -106,7 +106,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
     And I refresh the page
-    Then I see take snap shot getting saved with "Todays Date"
+    Then I see snapshot with name containing "SnapShot" as name
     #289808
     And I navigate to "Home" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
