@@ -647,8 +647,8 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Pre-Screen Review | 25              |
     And I expand nested table containing column value "Pre-Screen Review"
     When I edit the following rows inline in flex table with id "---announcement:-:annReviewFormsTableId---" by clicking "Edit" :
-      | Form Name  | Form Weight (%) |
-      | Pre-Screen | 100             |
+      | Form Name  | Form Weight (%) |Required? |
+      | Pre-Screen | 100             | Checked   |
     And I expand nested table containing column value "Pre-Screen Review"
     And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---announcement:-:annReviewFormsTableId---" without waiting for record
     When I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
