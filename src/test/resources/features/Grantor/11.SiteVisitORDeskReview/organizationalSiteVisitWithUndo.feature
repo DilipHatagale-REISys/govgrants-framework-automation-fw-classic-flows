@@ -106,6 +106,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I select "Take Snapshot" from dropdown
     And I refresh the page
     When I navigate to "History" sub tab
+    And I refresh the page
     Then I see take snap shot getting saved with "Todays Date"
     #289808
     And I navigate to "Home" tab
