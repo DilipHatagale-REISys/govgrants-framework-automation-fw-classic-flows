@@ -2415,7 +2415,7 @@ Feature: Amendment Request scenarios with Undo
     And I click on "View" icon for "{SavedValue:PeriodicID}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     #342694
     Then I softly see status in Progress-bar is "Approved" and is "green"
-    Then I can see top right button "Undo" in page detail
+    Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -2424,7 +2424,7 @@ Feature: Amendment Request scenarios with Undo
     And I click on "View" icon for "{SavedValue:PeriodicID}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     #342694
     Then I softly see status in Progress-bar is "Approved" and is "green"
-    Then I can see top right button "Undo" in page detail
+    Then I cannot see top right button "Undo" in page detail
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -2433,4 +2433,4 @@ Feature: Amendment Request scenarios with Undo
     When I click on "View" icon for "{SavedValue:PeriodicID}" inside flex table with id "---amendment:-:recipientSideAmendmentRequestTableId---" without waiting for record
     #342694
     Then I softly see status in Progress-bar is "Approved" and is "green"
-    Then I can see top right button "Undo" in page detail
+    Then I cannot see top right button "Undo" in page detail
