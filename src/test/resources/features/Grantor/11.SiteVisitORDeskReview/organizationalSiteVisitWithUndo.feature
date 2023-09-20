@@ -92,6 +92,21 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I cannot see top right button "Undo" in page detail
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Send Back | Forward |
+    #291842 #289809
+    When I navigate to "History" sub tab
+    Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
+    When I perform quick search for "{SavedValue:SitevVisitId}" in "History" panel
+    Then I softly see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "History"
+    Then I softly see value "{SavedValue:PM Username}" for title "Changed By" inside table "History"
+    Then I softly see value "Approved" for title "Old Value" inside table "History"
+    Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
+    Then I refresh the page
+    Then I softly see snapshot with name containing "Organizational Site Visit - Undo Approval.pdf" as name
+    When I click on "Menu" in the page details
+    And I select "Take Snapshot" from dropdown
+    And I refresh the page
+    When I navigate to "History" sub tab
+    Then I see take snap shot getting saved with "Todays Date"
     #289808
     And I navigate to "Home" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
