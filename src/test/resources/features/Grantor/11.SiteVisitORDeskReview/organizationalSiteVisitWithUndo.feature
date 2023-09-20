@@ -104,7 +104,6 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I softly see snapshot with name containing "Organizational Site Visit - Undo Approval.pdf" as name
     When I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
-    And I refresh the page
     When I navigate to "History" sub tab
     And I refresh the page
     Then I see take snap shot getting saved with "Todays Date"
