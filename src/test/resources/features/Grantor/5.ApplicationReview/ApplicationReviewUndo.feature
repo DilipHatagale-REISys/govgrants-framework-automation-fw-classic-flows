@@ -607,7 +607,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @334234 @334233 @ValidatePreScreenReviewStepwhenapplicationispromotedtoFDMandassignedreviewerhasclickedundoonPreScreenreviewstepthenonclickofsubmitscoreshouldbeupdatedontheapplicationsectiononthereviewstep @Sprint-26-US-282727 @vaibhav @Undo @TBE
+  @334234 @334233 @ValidatePreScreenReviewStepwhenapplicationispromotedtoFDMandassignedreviewerhasclickedundoonPreScreenreviewstepthenonclickofsubmitscoreshouldbeupdatedontheapplicationsectiononthereviewstep @Sprint-26-US-282727 @vaibhav @Undo
   Scenario Outline: Validate PreScreen Review Step when application is promoted to FDM, and assigned reviewer has clicked undo on Pre-Screen review step then on click of submit score should be updated on the application section on the review step
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -661,7 +661,6 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I enter the following values into flex table with id "---announcement:-:announcementReviewQuestionTableId---" by clicking "New" :
       | Question Order | Question | Type   | Max Score |
       | 5              | Test 5   | Yes/No | 50        |
-    When I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "---announcement:-:announcementReviewQuestionTableId---" by clicking "New" :
       | Question Order | Question | Type   | Max Score |
@@ -1696,7 +1695,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @280711 @ValidateFDMCompetitiveAnnFAYesreviewerhassubmittedreviewformafterundothenScoresundertheRecommendedandNonrecommendedApplicationsectionwillalsogetupdateintheFDMmodule @Sprint-26-US-282727 @vaibhav @Undo @TBE
+  @280711 @ValidateFDMCompetitiveAnnFAYesreviewerhassubmittedreviewformafterundothenScoresundertheRecommendedandNonrecommendedApplicationsectionwillalsogetupdateintheFDMmodule @Sprint-26-US-282727 @vaibhav @Undo
   Scenario Outline: Validate FDM Competitive Ann FA Yes after reviewer has submitted review form after undo, then Scores under the Recommended and Non-recommended Application section will also get updated in the FDM  module
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
