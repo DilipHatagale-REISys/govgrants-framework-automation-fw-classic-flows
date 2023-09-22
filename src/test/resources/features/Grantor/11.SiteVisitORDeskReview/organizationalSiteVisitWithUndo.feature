@@ -1181,7 +1181,6 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I save the field labeled "EGMS ID" as "SitevVisitId"
     And I click on "Notify" in the page details
     And I click on "Conduct" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
