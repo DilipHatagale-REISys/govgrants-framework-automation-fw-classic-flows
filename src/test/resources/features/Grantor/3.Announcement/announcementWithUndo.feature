@@ -1824,14 +1824,13 @@ Feature: Validate all scenarios in the Announcement with Undo
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
-    And I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
-      | Description | Required  | Applies To | Status |
-      | Automation  | Mandatory | Site Visit | Active |
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
     And I save the field labeled "Announcement Name" as "Automation Runtime Announcement for Pre-App"
     When I click on "Edit" in the page details
     And I enter "Edition1" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+    Then I cannot see top right button "Undo" in page detail
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Associate" after selection of "{SavedValue:fundingAccount}" by showing entries "All" in flex table with id "---announcement:-:fundingAccTableId---"
