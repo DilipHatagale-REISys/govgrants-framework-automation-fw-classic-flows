@@ -1495,7 +1495,7 @@ Feature: Validate all scenarios in the Announcement with Undo
     Then I softly see status in Progress-bar is "Closed" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @342791 @342362 @AnnouncementVerifythatapprovaltaskandemailisgeneratedtolaststepapproveronclickofundobuttonbyLastApprover @sprint-13-US-331643 @hitesh @Undo
+  @342791 @342362 @342488 @AnnouncementVerifythatapprovaltaskandemailisgeneratedtolaststepapproveronclickofundobuttonbyLastApprover @sprint-13-US-331643 @hitesh @Undo
   Scenario: Announcement Verify that approval task and email is generated to last step approver on click of undo button by Last Approver
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -1562,6 +1562,7 @@ Feature: Validate all scenarios in the Announcement with Undo
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
+    #342488
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1569,6 +1570,7 @@ Feature: Validate all scenarios in the Announcement with Undo
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
+    #342488
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1576,6 +1578,7 @@ Feature: Validate all scenarios in the Announcement with Undo
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
+    #342488
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1583,6 +1586,7 @@ Feature: Validate all scenarios in the Announcement with Undo
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
+    #342488
     Then I can see top right button "Undo" in page detail
     And I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
@@ -1619,7 +1623,7 @@ Feature: Validate all scenarios in the Announcement with Undo
      The EGMS Team
      """
 
-  @342365 @342366 @342381 @AnnouncementVerifythatanyuserwillnotseeUndobuttonwhenAnnouncementrecordisinSubmittedforreviewstate @sprint-13-US-331643 @hitesh @Undo
+  @342365 @342366 @342381 @342501 @AnnouncementVerifythatanyuserwillnotseeUndobuttonwhenAnnouncementrecordisinSubmittedforreviewstate @sprint-13-US-331643 @hitesh @Undo
   Scenario: Announcement Verify that any user will not see Undo button when Announcement record is in Submitted for review state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -1697,11 +1701,18 @@ Feature: Validate all scenarios in the Announcement with Undo
     When I click modal button "Save"
     When I click on submit review
     Then I softly see value "Submitted" for title "Status" inside table "---announcement:-:flexGridApproverRolesTableId---"
-    And I click on "Complete Review" in the page details
-    #342366
-    Then I softly see field "Status" as "Reviewed"
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    And I click on "Complete Review" in the page details
+      #342366
+    Then I softly see field "Status" as "Reviewed"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "All Competitive Announcements"
@@ -1746,6 +1757,42 @@ Feature: Validate all scenarios in the Announcement with Undo
     When I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     #342381
     Then I softly see field "Status" as "Submitted for Approval"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    Then I can see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    And I click on "Publish" in the page details
+    Then I softly see field "Status" as "Published"
+    #342501
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    Then I softly see field "Status" as "Published"
+    #342501
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    Then I softly see field "Status" as "Published"
+    #342501
     Then I cannot see top right button "Undo" in page detail
 
 
