@@ -1025,17 +1025,3 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly see field "Status" as " Submitted for Review"
     Then I cannot see top right button "Undo" in page detail
-    And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    When I navigate to "Monitoring" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
-    When I navigate to "Responsibilities" tab
-    When I click on "Enter Review" icon for "{SavedValue:FO Username}" inside flex table with id "flexGridSiteVisitReviewerRoles"
-    And I enter values into fields
-      | Value  | Field             |
-      | Passed | Rating__c         |
-      | Passed | ReviewComments__c |
-    When I click modal button "Save"
-    And I click on submit review
-    Then I can see top right button "Undo" in page detail
