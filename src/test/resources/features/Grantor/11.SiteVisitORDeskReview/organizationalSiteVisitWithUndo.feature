@@ -1181,16 +1181,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I save the field labeled "EGMS ID" as "SitevVisitId"
     And I click on "Notify" in the page details
     And I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
@@ -1249,16 +1240,6 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
     Then I cannot see top right button "Undo" in page detail
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
-    Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
-    Then I cannot see top right button "Undo" in page detail
-    When I click on "Submit to Grantor" in the page details
-    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
-    Then I cannot see top right button "Undo" in page detail
 #    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
 #    And I navigate to "Monitoring" tab
 #    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
@@ -1266,6 +1247,81 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
 #    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
 #    Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
 #    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
+    Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
+    Then I cannot see top right button "Undo" in page detail
+    When I navigate to "Reports and Outcomes" sub tab
+    And I expand nested table containing column value "Automation Observation"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    And I expand nested table containing column value "Automation Concern"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    And I expand nested table containing column value "Automation Finding"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
+    Then I cannot see top right button "Undo" in page detail
+#    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+#    And I navigate to "Monitoring" tab
+#    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+#    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+#    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+#    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
+#    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
+    And I click on "Accept And Close" in the page details
+    Then I softly see status in Progress-bar is "Closed" and is "Green"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    Then I softly see status in Progress-bar is "Closed" and is "Green"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    Then I softly see status in Progress-bar is "Closed" and is "Green"
+    Then I cannot see top right button "Undo" in page detail
+#    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+#    And I navigate to "Monitoring" tab
+#    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+#    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+#    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+#    Then I softly see status in Progress-bar is "Closed" and is "Green"
+#    Then I cannot see top right button "Undo" in page detail
+
 
 
 
