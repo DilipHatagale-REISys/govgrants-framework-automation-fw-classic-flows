@@ -928,10 +928,9 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
 #    Then I cannot see top right button "Undo" in page detail
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click toggle button to select "Site Visits - All"
-    When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:receipientSiteVisitSubTableId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:receipientSiteVisitSubTableId---"
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     Then I softly see field "Status" as "Notified"
     #342527
     Then I cannot see top right button "Undo" in page detail
