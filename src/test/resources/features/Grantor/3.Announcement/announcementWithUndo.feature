@@ -1745,7 +1745,7 @@ Feature: Validate all scenarios in the Announcement with Undo
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I pause execution for "5" seconds
-    And I click on "Submitted for Approval" in the page details
+    And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
