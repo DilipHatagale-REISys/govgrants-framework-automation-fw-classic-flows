@@ -2471,7 +2471,7 @@ Feature: Amendment Request scenarios with Undo
       | {SavedValue:FO Username} | Step 3            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
-      | {SavedValue:FD Username} | Step 3            |
+      | {SavedValue:FD Username} | Step 4            |
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---amendment:-:AmendmentAttachmentTableId---"
     And I upload attachment without random number "Attachment.pdf" of type "Terms and Conditions" from computer
