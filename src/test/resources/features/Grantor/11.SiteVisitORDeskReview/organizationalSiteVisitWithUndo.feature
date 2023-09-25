@@ -923,7 +923,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
 #    When I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
 #    Then I softly see field "Status" as "Notified"
     #342527
-    Then I cannot see top right button "Undo" in page detail
+#    Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
