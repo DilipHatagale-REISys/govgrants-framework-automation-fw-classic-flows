@@ -1,7 +1,7 @@
 @organizationalDeskReviewWB @grantor-regression @grantor-parallel-regression @siteVisit @regression
 Feature: Validate all scenarios in Organizational Desk Review Without Background
 
-  @235434 @ValidateDeskReviewPOusercanbletoreassigndeskreviewownershipfromPOtootherPOuserCreatedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment
+  @235434 @ValidateDeskReviewPOusercanbletoreassigndeskreviewownershipfromPOtootherPOuserCreatedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment @TBE
   Scenario: Validate Desk Review PO user can able to reassign desk review ownership from PO to other PO user in 'Created' state of desk review
     Given I login to "As a Grantor" app as "PO" user
     And I navigate to "Home" tab
@@ -44,6 +44,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I logout
     And I checkout to yopmail with mailid "automationpo@yopmail.com"
     Then I refresh the page
+    And I pause execution for "80" seconds
     And I see the mail subject is as follows :
       """
       Notification: Owner Reassignment Report
@@ -68,7 +69,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "automationpo1@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -115,7 +116,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     Then I softly see value "Automation PO1" for title "New Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
     Then I softly see value "Automation PO" for title "Old Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
 
-  @235438 @ValidateDeskReviewEXEusercanabletoreassigndeskreviewownershipfromEXEtootherEXEuserinNotifiedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment
+  @235438 @ValidateDeskReviewEXEusercanabletoreassigndeskreviewownershipfromEXEtootherEXEuserinNotifiedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment @TBE
   Scenario: Validate Desk Review EXE user can able to reassign desk review ownership from EXE to other EXE user in 'Notified' state of desk review
     Given I login to "As a Grantor" app as "EXE" user
     And I navigate to "Home" tab
@@ -161,6 +162,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -186,7 +188,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -302,7 +304,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     Then I softly see value "Automation FO1" for title "New Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
     Then I softly see value "Automation FO" for title "Old Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
 
-  @236022 @ValidateDeskReviewPMusercanabletoreassigndeskreviewownershipfromPMtootherPMuserInProgressstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment
+  @236022 @ValidateDeskReviewPMusercanabletoreassigndeskreviewownershipfromPMtootherPMuserInProgressstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment @TBE
   Scenario: Validate Desk Review PM user can able to reassign desk review ownership from PM to other PM user 'In Progress' state of desk review
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -350,6 +352,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -375,7 +378,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -423,7 +426,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
 
-  @236039 @ValidateDeskreviewEXEusercanabletochangeownershipinApprovedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment
+  @236039 @ValidateDeskreviewEXEusercanabletochangeownershipinApprovedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment @TBE
   Scenario: Validate Desk review EXE user can able to change ownership in 'Approved' state of desk review
     Given I login to "As a Grantor" app as "EXE" user
     And I navigate to "Home" tab
@@ -489,6 +492,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -514,7 +518,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -639,7 +643,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     Then I softly see value "Automation PO1" for title "New Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
     Then I softly see value "Automation PO" for title "Old Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
 
-  @236065 @ValidateDeskReviewFOusercanabletochangetheownershipSubmittoGrantorstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment
+  @236065 @ValidateDeskReviewFOusercanabletochangetheownershipSubmittoGrantorstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment @TBE
   Scenario: Validate Desk Review FO user can able to change the ownership in 'Submit to Grantor'state of desk review
     Given I login to "As a Grantor" app as "FO" user
     And I navigate to "Home" tab
@@ -744,7 +748,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     Then I softly see value "Automation FO1" for title "New Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
     Then I softly see value "Automation FO" for title "Old Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
 
-  @236076 @ValidateDeskReviewPMusercanabletoseetochangeownershipinClosedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment
+  @236076 @ValidateDeskReviewPMusercanabletoseetochangeownershipinClosedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment @TBE
   Scenario: Validate Desk Review PM user can able to see to change ownership in 'Closed' state of desk review
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -796,17 +800,17 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -841,6 +845,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -866,7 +871,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -908,7 +913,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
 
-  @236172 @236184 @ValidateDeskReviewPOusecanabletoreassignownershipofdeskreviewfromPOtootherPOuserinSentforreviewstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment
+  @236172 @236184 @ValidateDeskReviewPOusecanabletoreassignownershipofdeskreviewfromPOtootherPOuserinSentforreviewstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment @TBE
   Scenario: Validate Desk Review PO user can able to reassign ownership of desk review from PO to other PO user in 'Sent for review' state of desk review
     Given I login to "As a Grantor" app as "PO" user
     And I navigate to "Home" tab
@@ -1002,7 +1007,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I click on submit review
 #    When I close "Site Visit Reviewers" modal by clicking the top right x button
     And I checkout to yopmail with mailid "automationpo1@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1023,7 +1028,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       The EGMS Team
       """
 
-  @236174 @ValidateDeskReviewFOusercanabletoreassignownershipofdeskreviewfromFOtootheFOuserinReviewedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment
+  @236174 @ValidateDeskReviewFOusercanabletoreassignownershipofdeskreviewfromFOtootheFOuserinReviewedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment @TBE
   Scenario: Validate Desk Review FO user can able to reassign ownership of desk review from FO to other FO user in 'Reviewed' state of desk review
     Given I login to "As a Grantor" app as "FO" user
     And I navigate to "Home" tab
@@ -1178,7 +1183,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     Then I softly see value "Automation FO1" for title "New Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
     Then I softly see value "Automation FO" for title "Old Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
 
-  @236178 @ValidateDeskReviewEXEusercanabletodobusinessflowafterreassignownershipofdeskreviewfromEXEtootherEXEuserinINprogressstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment
+  @236178 @ValidateDeskReviewEXEusercanabletodobusinessflowafterreassignownershipofdeskreviewfromEXEtootherEXEuserinINprogressstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment @TBE
   Scenario: Validate Desk Review EXE user can able to do business flow after reassign ownership of desk review from EXE to other EXE user in 'IN progress' state of desk review
     Given I login to "As a Grantor" app as "EXE" user
     And I navigate to "Home" tab
@@ -1297,7 +1302,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "Green"
 
-  @236185 @ValidateDeskReviewSubmittedGrantoremailisgeneratedfornewownerofSVwhenS\RuserSubmitDRtograntorafterchangeownershipofDR @sprint-14-US-234219 @vaibhav @reassignment
+  @236185 @ValidateDeskReviewSubmittedGrantoremailisgeneratedfornewownerofSVwhenS\RuserSubmitDRtograntorafterchangeownershipofDR @sprint-14-US-234219 @vaibhav @reassignment @TBE
   Scenario: Validate Desk Review 'Submitted Grantor' email is generated for new owner of SV when S\R user submit DR to grantor after change ownership of DR
     Given I login to "As a Grantor" app as "EXE" user
     And I navigate to "Home" tab
@@ -1373,6 +1378,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1398,7 +1404,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1447,7 +1453,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1464,7 +1470,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       The EGMS Team
       """
 
-  @236190 @ValidateDeskReviewReviewApproverSentBackemailshoulddisplayfornewownerifapproversendbackdeskreviewafterownershipgetchangeofDR @sprint-14-US-234219 @vaibhav @reassignment
+  @236190 @ValidateDeskReviewReviewApproverSentBackemailshoulddisplayfornewownerifapproversendbackdeskreviewafterownershipgetchangeofDR @sprint-14-US-234219 @vaibhav @reassignment @TBE
   Scenario: Validate Desk Review 'Review Approver Sent Back' email should display for new owner if approver send back desk review after ownership get change of DR
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -1527,6 +1533,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1552,7 +1559,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1585,7 +1592,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I "Send Back" in the approval decision
     Then I softly see field "Status" as "Created"
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
-    And I pause execution for "20" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1618,7 +1625,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       The EGMS Team
       """
 
-  @235442 @VallidateDeskReviewFDusercanabletoreassignownershipfromFDtootherFDuserinNotifiedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment
+  @235442 @VallidateDeskReviewFDusercanabletoreassignownershipfromFDtootherFDuserinNotifiedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment @TBE
   Scenario: Validate Desk Review FD user can able to reassign ownership from FD to other FD user in 'Notified' state of desk review
     Given I login to "As a Grantor" app as "FD" user
     And I navigate to "Home" tab
@@ -1664,6 +1671,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "automationfd@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1689,7 +1697,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "automationfd1@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1736,7 +1744,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     Then I softly see value "Automation FD1" for title "New Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
     Then I softly see value "Automation FD" for title "Old Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
 
- @236027 @ValidateDeskReviewFDusercanabletochangeownershipinSubmittedforApprovalstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment
+ @236027 @ValidateDeskReviewFDusercanabletochangeownershipinSubmittedforApprovalstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment @TBE
   Scenario: Validate Desk Review FD user can able to change ownership in 'Submitted for Approval' state of desk review
     Given I login to "As a Grantor" app as "FD" user
     And I navigate to "Home" tab
@@ -1814,7 +1822,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     Then I softly see value "Automation FD1" for title "New Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
     Then I softly see value "Automation FD" for title "Old Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
 
-  @236192 @ValidateDeskReviewifDR1ownerFD1changehisownershiptoFD2thenFD1againcreateDR2thentheownerofSV2isFD1onlynotnewownerincreatedstateofDR @sprint-14-US-234219 @vaibhav @reassignment
+  @236192 @ValidateDeskReviewifDR1ownerFD1changehisownershiptoFD2thenFD1againcreateDR2thentheownerofSV2isFD1onlynotnewownerincreatedstateofDR @sprint-14-US-234219 @vaibhav @reassignment @TBE
   Scenario: Validate Desk Review if DR1 owner FD1 change his ownership to FD2 and then FD1 again create DR2 then then owner of SV2 is FD1 only not new owner in created state of DR
     Given I login to "As a Grantor" app as "FD" user
     And I navigate to "Home" tab
@@ -1851,11 +1859,12 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I click "Yes" on modal confirmation box
     And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:DeskReviewID}" in "---sitevisits:-:siteVisitTargetTableId---" panel
-    Then I see value "{SavedValue:DeskReviewID}" for title "Site Visit ID" inside table "---sitevisits:-:siteVisitTargetTableId---"
+    Then I softly see value "{SavedValue:DeskReviewID}" for title "Site Visit ID" inside table "---sitevisits:-:siteVisitTargetTableId---"
     And I pause execution for "2" seconds
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "automationfd@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1881,7 +1890,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "automationfd1@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """

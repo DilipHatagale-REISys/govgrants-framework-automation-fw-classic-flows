@@ -1547,10 +1547,10 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see value "Step 3" for title "Amendment Request" against the value "Automation FO" inside table "---amendment:-:approversTableId---"
     Then I softly see value "Step 4" for title "Amendment Request" against the value "Automation PM" inside table "---amendment:-:approversTableId---"
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
+    And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:SOWAMENDMENTREQUEST}" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue:SOWAMENDMENTREQUEST}" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
+    And I perform quick search for "{SavedValue:SOWAMENDMENTREQUEST}" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:SOWAMENDMENTREQUEST}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     #287056
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Reject | Forward | Send to Owner |
