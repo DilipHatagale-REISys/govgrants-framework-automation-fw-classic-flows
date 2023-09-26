@@ -2985,7 +2985,7 @@ Feature: Amendment Request scenarios with Undo
     Then I see status in Progress-bar is "Approved" and is "Green"
     Then I can see top right button "Undo" in page detail
 
-  @287058 @VerifythatPMApproverlastwillseetheundobuttontoreopentheapprovedtaskwhenFundingChangeARinApprovedState @sprint-1-US-285148 @hitesh @Undo
+  @287058 @287057 @287060 @287061 @287062 @287063 @VerifythatPMApproverlastwillseetheundobuttontoreopentheapprovedtaskwhenFundingChangeARinApprovedState @sprint-1-US-285148 @hitesh @Undo
   Scenario:Verify that PM Approver(last) will see  the undo button to reopen the approved task when  Funding Change AR in Approved State
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -3057,6 +3057,7 @@ Feature: Amendment Request scenarios with Undo
     When I perform quick search for "{SavedValue:FundingID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:FundingID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -3064,6 +3065,7 @@ Feature: Amendment Request scenarios with Undo
     When I perform quick search for "{SavedValue:FundingID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:FundingID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -3071,6 +3073,7 @@ Feature: Amendment Request scenarios with Undo
     When I perform quick search for "{SavedValue:FundingID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:FundingID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -3104,3 +3107,48 @@ Feature: Amendment Request scenarios with Undo
     And I click on "View" icon for "{SavedValue:FundingID}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I cannot see top right button "Undo" in page detail
+    And I click on "Undo" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I navigate to "Home" tab
+    When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---grantor_tableId:-:CompletedTaskAssignedToMeTableId---" panel
+    #287063
+    Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:SOWAMENDMENTREQUEST}" inside table "---grantor_tableId:-:CompletedTaskAssignedToMeTableId---"
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:homePendingTasksTableId---" panel
+    #287063
+    Then I softly see "{SavedValue:FundingID}" inside flex table with id "---amendment:-:homePendingTasksTableId---"
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:FundingID}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    And I click on "View" icon for "{SavedValue:FundingID}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I "Send to Owner" in the approval decision
+    Then I softly see field "Status" as "Created"
+    #287057
+    Then I cannot see top right button "Undo" in page detail
+    And I click on "Send to Subrecipient" in the page details
+    #287060
+    Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
+    #287061
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Submit for Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    #287062
+    Then I cannot see top right button "Undo" in page detail
+
