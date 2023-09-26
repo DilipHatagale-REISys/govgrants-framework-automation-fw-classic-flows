@@ -1395,6 +1395,8 @@ public class GrantorPayloads {
                 return advancePermissibleYesnofocusareaDetailsBuildUpYes(json);
             case "SUBRECIPIENT_ORG_IND_USER":
                 return createAwarForIndUser(json);
+            case "SUBRECIPIENT_ORG_SPI_USER":
+                return createAwarForSPIUser(json);
             case "SECOND_FOCUS_AREA":
                 if (Typeflag)
                 return createAwarForSecondFocusArea(json, Type[0]);
@@ -2208,6 +2210,18 @@ public class GrantorPayloads {
             JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
             JsonArray newA = new JsonArray();
             grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Automation IND"));
+            newA.add(grant);
+            json.add("Grant", newA);
+        }
+        return json;
+    }
+
+    private JsonObject createAwarForSPIUser(JsonObject json) {
+
+        if (EnvironmentFactory.getEnvironmentName().contains("TEST8") || EnvironmentFactory.getEnvironmentName().contains("AUTO")) {
+            JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+            JsonArray newA = new JsonArray();
+            grant.addProperty("InternalOrganization", ProjectWebServices.getIdOf("Account", "Product Sub Recipient Test Organization"));
             newA.add(grant);
             json.add("Grant", newA);
         }
