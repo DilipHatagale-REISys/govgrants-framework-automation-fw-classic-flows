@@ -3115,7 +3115,7 @@ Feature: Amendment Request scenarios with Undo
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---grantor_tableId:-:CompletedTaskAssignedToMeTableId---" panel
     #287063
-    Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:SOWAMENDMENTREQUEST}" inside table "---grantor_tableId:-:CompletedTaskAssignedToMeTableId---"
+    Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:FundingID}" inside table "---grantor_tableId:-:CompletedTaskAssignedToMeTableId---"
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:homePendingTasksTableId---" panel
