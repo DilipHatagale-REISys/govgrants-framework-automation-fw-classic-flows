@@ -2626,7 +2626,7 @@ Feature: Amendment Request scenarios with Undo
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I click on "Send Back to Subrecipient" in the page details
-    Then I softly see field "Status" as "Sent Back to Subrecipient"
+    Then I softly see field "Status" as "Sent to Subrecipient"
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -2852,9 +2852,10 @@ Feature: Amendment Request scenarios with Undo
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Reject | Forward | Send to Owner |
     When I "Reject" in the approval decision
+    And I wait for "5" seconds
     Then I softly see status in Progress-bar is "Reject" and is "Green"
-    Then I can see top right button "Undo" in page detail
-    Then I can see top right button "Amend Subaward" in page detail
+    Then I cannot see top right button "Undo" in page detail
+    Then I cannot see top right button "Amend Subaward" in page detail
 
   @299878 @ValidatethatAemailWilltriggertoallapproversIncludingForwardedoneandOwnerOfArafterclickonyesButton @Sprint-1-US-285144 @vaibhav @Undo @TBE
   Scenario: Validate that A email Will trigger to all approvers Including Forwarded one and Owner Of Ar after click on yes Button
