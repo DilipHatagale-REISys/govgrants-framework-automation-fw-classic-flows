@@ -43,7 +43,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Overview" sub tab
     Then I softly see field "Created Date" is not editable
 
-  @51014 @51015 @66147 @75859 @notifySubrecipientPendingTaskDeskReview @smoke @bugged-73739 @Execution
+  @51014 @51015 @66147 @75859 @notifySubrecipientPendingTaskDeskReview @smoke @bugged-73739
   Scenario: Notify Subrecipient about the respective POC from the applicant organization will receive a pending task about the Desk Review
   Validate the external user will receive an email notification when the desk review is in notified status
     Given I navigate to "Responsibilities" sub tab
@@ -62,13 +62,13 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Notify" in the page details
     Then I softly see status in Progress-bar is "Notified" and is "Green"
     And I logout
-#    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
-#    And I pause execution for "3" seconds
-#    And I refresh the page
-#    Then I see the mail subject is as follows :
-#      """
-#      Sandbox: Notification: Desk Review for {SavedValue:DeskReviewId} has been scheduled
-#      """
+    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
+    And I pause execution for "3" seconds
+    And I refresh the page
+    Then I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Desk Review for {SavedValue:DeskReviewId} has been scheduled
+      """
     And I refresh the page
     When I am on "INTERNAL" portal
     Given I login to "As a Grantor" app as "FO" user
@@ -393,13 +393,13 @@ Feature: Validate all scenarios in Desk Review
     And I "Send to Owner" in the approval decision
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I logout
-#    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-#    And I pause execution for "100" seconds
-#    Then I refresh the page
-#    And I see the mail subject is as follows :
-#      """
-#      Sandbox: Notification: Site Visit/Desk Review Report for {SavedValue:dvID} has been SentBack
-#      """
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "100" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Site Visit/Desk Review Report for {SavedValue:dvID} has been SentBack
+      """
     Given I am on "INTERNAL" portal
     When I login to "As a Grantor" app as "FO" user
     And I navigate to "Monitoring" tab
