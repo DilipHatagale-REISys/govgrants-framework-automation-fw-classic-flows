@@ -70,7 +70,8 @@ Feature: Validate all scenarios in Desk Review
 #      Sandbox: Notification: Desk Review for {SavedValue:DeskReviewId} has been scheduled
 #      """
     And I refresh the page
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I am on "INTERNAL" portal
+    Given I login to "As a Grantor" app as "FO" user
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
@@ -240,7 +241,7 @@ Feature: Validate all scenarios in Desk Review
     And I wait for "2" seconds
     Then I softly see status in Progress-bar is "Approved" and is "green"
 
-  @51021 @66557 @51022 @66549 @51023 @66146 @66485 @77256 @66550 @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient @Execution
+  @51021 @66557 @51022 @66549 @51023 @66146 @66485 @77256 @66550 @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
   Scenario: Send Desk Review to Subrecipient, Corrective Actions and Submit to Grantor by Subrecipient |Validate whether pending task is created for Program approver under Home Tab when the award owner submits the Desk Review for approval
   Validate when the desk review is submitted by the Subrecipient to grantor, the internal user recieves an email notification
     Given I navigate to "Responsibilities" sub tab
@@ -322,10 +323,10 @@ Feature: Validate all scenarios in Desk Review
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     And I pause execution for "180" seconds
     Then I refresh the page
-#    And I see the mail subject is as follows :
-#      """
-#      Sandbox: Notification: Desk Review Report Submitted by Subrecipient
-#      """
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Desk Review Report Submitted by Subrecipient
+      """
     Given I am on "INTERNAL" portal
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -391,6 +392,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Start" icon for "{SavedValue:dvID}" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I "Send to Owner" in the approval decision
     Then I softly see status in Progress-bar is "Created" and is "green"
+    And I logout
 #    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
 #    And I pause execution for "100" seconds
 #    Then I refresh the page
@@ -1154,7 +1156,7 @@ Feature: Validate all scenarios in Desk Review
     And I perform quick search for "Record Id" in "---deskreview:-:managementInitiateDRtableid---" panel
     Then I softly see "No Records Found" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
 
-  @65245 @historyOfDeskReviewsendbacktoOwner @deepika @Execution
+  @65245 @historyOfDeskReviewsendbacktoOwner @deepika
   Scenario: Validate History Field is getting Updated at Award owner End when Desk Review status is Submitted to Grantor.
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
