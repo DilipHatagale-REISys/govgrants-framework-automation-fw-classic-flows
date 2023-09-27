@@ -2985,7 +2985,7 @@ Feature: Amendment Request scenarios with Undo
     Then I see status in Progress-bar is "Approved" and is "Green"
     Then I can see top right button "Undo" in page detail
 
-  @287058 @287059 @287060 @287061 @287062 @287063 @287064 @287065 @VerifythatPMApproverlastwillseetheundobuttontoreopentheapprovedtaskwhenFundingChangeARinApprovedState @sprint-1-US-285148 @hitesh @Undo
+  @287058 @287059 @287060 @287061 @287062 @287063 @287064 @287065 @287073 @VerifythatPMApproverlastwillseetheundobuttontoreopentheapprovedtaskwhenFundingChangeARinApprovedState @sprint-1-US-285148 @hitesh @Undo
   Scenario:Verify that PM Approver(last) will see  the undo button to reopen the approved task when  Funding Change AR in Approved State
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -3109,7 +3109,7 @@ Feature: Amendment Request scenarios with Undo
     And I click on "View" icon for "{SavedValue:FundingID}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I can see top right button "Undo" in page detail
-    And I click on "Undo" in the page details
+    When I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     And I navigate to "Home" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
@@ -3148,7 +3148,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Submitted for Approval"
     When I "Send to Owner" in the approval decision
     Then I softly see field "Status" as "Created"
-    #287059
+    #287059 #287073
     Then I cannot see top right button "Undo" in page detail
     And I click on "Send to Subrecipient" in the page details
     #287060
@@ -3272,3 +3272,237 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
     Then I softly cannot see top right button "Amend Subaward" in page detail
+
+  @@287069 @287071 @VerifythatWhenLastApproverClicksonUndoButtonAConfirmationBoxWillOpenWithOptionYesAndNo @sprint-1-US-285148 @hitesh @Undo
+  Scenario:Verify that When Last Approver Clicks on Undo Button ,A Confirmation Box Will Open With Option Yes And No
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I save the field labeled "Grant ID" as "GrantEGMSID"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "FundingID"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | New Obligation |
+      | Automation Permanent Focus Area | 2000           |
+    And I refresh the page
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:PO Username}  | Step 1            |
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 2            |
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:FO Username}  | Step 3            |
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:PM Username}  | Step 4            |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Category Name | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction  | 3000                 | 150        | 150            |
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value | Field                     |
+      | 3000  | fieldRevisedCommitment__c |
+    And I click on "Save" in the page details
+    When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:FundingID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:FundingID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:FundingID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:FundingID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:FundingID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:FundingID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:FundingID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:FundingID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    Then I can see top right button "Undo" in page detail
+     #287069
+    Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
+    Then I softly see button "Yes" on confirmation pop-up
+    Then I softly see button "No" on confirmation pop-up
+    And I click "Yes" on modal confirmation box
+    #287072
+    Then I softly see field "Status" as "Submitted for Approval"
+    Then I see only the following ordered radio buttons in the approval decision :
+      | Approve | Reject | Forward | Send to Owner |
+    When I navigate to "Overview" sub tab
+    Then I cannot see top right button "Edit" in page detail
+    Then I softly see that "New Obligation" rendered in view mode only
+    Then I softly see that "Current Obligation" rendered in view mode only
+    Then I softly see that "Spent" rendered in view mode only
+    Then I softly see that "Budgeted Amount" rendered in view mode only
+    Then I softly see that "Current Commitment" rendered in view mode only
+    Then I softly see that "Revised Commitment" rendered in view mode only
+    Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
+    Given I navigate to "Responsibilities" sub tab
+    Then I softly cannot see top right button "New" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly cannot see top right button "New" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly cannot see row level action button "Edit" against "{SavedValue:PO Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly cannot see row level action button "Edit" against "{SavedValue:EXE Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly cannot see row level action button "Edit" against "{SavedValue:FO Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly cannot see row level action button "Edit" against "{SavedValue:PM Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
+
+    #287071
+    And I checkout to yopmail with mailid "exe.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on AmendmentRequest #{SavedValue:FundingID}
+      """
+    Then I see the mail text is as follows :
+     """
+    Hello,
+    This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
+    Amendment Details:
+    Amendment Type: Budget Redirection
+    Amendment ID: {SavedValue:FundingID}
+    Key POC: Automation SPI3
+    Status: Submitted for Approval
+    Grant: {SavedValue:GrantEGMSID}
+    Funding Organization: Test Automation Organization
+
+    Log in to EGMS and click here to review the amendment request.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
+    """
+    And I checkout to yopmail with mailid "fo.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on AmendmentRequest #{SavedValue:FundingID}
+      """
+    Then I see the mail text is as follows :
+     """
+    Hello,
+    This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
+    Amendment Details:
+    Amendment Type: Budget Redirection
+    Amendment ID: {SavedValue:FundingID}
+    Key POC: Automation SPI3
+    Status: Submitted for Approval
+    Grant: {SavedValue:GrantEGMSID}
+    Funding Organization: Test Automation Organization
+
+    Log in to EGMS and click here to review the amendment request.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
+    """
+    And I checkout to yopmail with mailid "automationpo@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on AmendmentRequest #{SavedValue:FundingID}
+      """
+    Then I see the mail text is as follows :
+     """
+    Hello,
+    This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
+    Amendment Details:
+    Amendment Type: Budget Redirection
+    Amendment ID: {SavedValue:FundingID}
+    Key POC: Automation SPI3
+    Status: Submitted for Approval
+    Grant: {SavedValue:GrantEGMSID}
+    Funding Organization: Test Automation Organization
+
+    Log in to EGMS and click here to review the amendment request.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
+    """
+    Then I refresh the page
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on AmendmentRequest #{SavedValue:FundingID}
+      """
+    Then I see the mail text is as follows :
+     """
+    Hello,
+    This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
+    Amendment Details:
+    Amendment Type: Budget Redirection
+    Amendment ID: {SavedValue:FundingID}
+    Key POC: Automation SPI3
+    Status: Submitted for Approval
+    Grant: {SavedValue:GrantEGMSID}
+    Funding Organization: Test Automation Organization
+
+    Log in to EGMS and click here to review the amendment request.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
+    """

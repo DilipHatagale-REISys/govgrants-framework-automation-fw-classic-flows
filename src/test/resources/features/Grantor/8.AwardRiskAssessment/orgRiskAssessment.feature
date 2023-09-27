@@ -52,7 +52,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     Then I see "Risk Level" image as "yellow.png"
 
-  @61982 @61978 @additonOfAttachmentWhenRAISActive @deepika @hiteshTemp
+  @61982 @61978 @additonOfAttachmentWhenRAISActive @deepika
   Scenario: Validate one the Org RA is Active then there will be no add or Edit button on attachments flextable
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -231,7 +231,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "History" sub tab
     Then I see value "Active" for title "New Value" inside table "History"
 
-  @62317 @messageInfoToAuthorizedSignatory @deepika @bug-82240 @hiteshTemp
+  @62317 @messageInfoToAuthorizedSignatory @deepika @bug-82240
   Scenario: Validate when Request New Assessment button is clicked a message is displayed to Authrozed Signatory
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -382,7 +382,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Revise Risk Assessment" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
     Then I do not see values "EGMS ID" and "Automation Permanent Organization for Risk Assessment" inside table
 
-  @62520 @77260 @taskCreationWhenGrantorProvideAccess @deepika @hiteshTemp
+  @62520 @77260 @taskCreationWhenGrantorProvideAccess @deepika
   Scenario: Validate task is created for Subrecipient User when Grantor provides access to Revise Risk Assessment | Validate when the external user request for new assessment, the internal user recives an email notification to Revise Risk Assessment for Subrecipient Organization
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -531,7 +531,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     Then I cannot see top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @62672 @validateExpiredRAWhenSecIsActive @deepika @smoke @hiteshTemp
+  @62672 @validateExpiredRAWhenSecIsActive @deepika @smoke
   Scenario: Validate as soon as user can activate the second Risk Assessment the first Risk Assessment will go in Expired State
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -645,7 +645,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Save and Continue" in the page details
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Automation Permanent Organization for Risk Assessment" in "CompletedTasks" panel
-    Then I see values "Automation Permanent Organization for Risk Assessment" and "Revise Risk Assessment" inside table
+    Then I see values "Automation Permanent Organization for Risk Assessment" and "Completed" inside table
 
   @62523 @ReviseRAButtonIsNotpresentedForSPAUsers @keerti
   Scenario: Validate the Revise Risk Assessment Button should not be present for SPA users that are not the SA.
@@ -1301,10 +1301,10 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     #When I close "Edit Progress Report Schedule" modal by clicking the top right x button
-    When I navigate to "Overview" sub tab
-    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---"
-    And I enter "Contact_Creation" values from "RiskAssessment_Field_Values.xlsx"
-    And I click modal button "Save"
+#    When I navigate to "Overview" sub tab
+#    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---"
+#    And I enter "Contact_Creation" values from "RiskAssessment_Field_Values.xlsx"
+#    And I click modal button "Save"
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Project Role             | Is Key Personnel |
       | Project Director/Manager | Checked          |
@@ -1474,7 +1474,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     Then I softly see field name "Effective From" is blank in flex table
     Then I softly see field name "Effective Until" is blank in flex table
-    Then I see field name "Frequency__c" is blank in flex table
+    Then I see field name "StartDate__c" is blank in flex table
+    Then I see field name "EndDate__c" is blank in flex table
     #When I save the value from row "1" for column name "Effective From" as "EffectiveDate" from flex table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     #When I save the value from row "1" for column name "Effective Until" as "ExpirationDate" from flex table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     #Then I softly see value "{SavedValue:EffectiveDate}" for title "Effective From" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"

@@ -122,7 +122,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "subaward"
-    And I activated standalone subaward "Automation Award for Organizational Risk Assessment" with properties "SUBRECIPIENT_ORG_SPI_USER" of type "Competitive"
+    And I activated standalone subaward "Automation Award for Organizational Risk Assessment" with properties "SUBRECIPIENT_ORG_SPI_USER-Automation PM user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI4" user
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
@@ -392,7 +392,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
 
-  @64389 @budgetPeriodChangeAmendmentWhenORAIsExpired @smoke @hiteshTemp
+  @64389 @budgetPeriodChangeAmendmentWhenORAIsExpired @smoke
   Scenario:  Validate when the Organizational Risk Assessment is expired while the base award is active and whether the user is able to activate the newly created award post performing amendment of type - Budget Period Change
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
