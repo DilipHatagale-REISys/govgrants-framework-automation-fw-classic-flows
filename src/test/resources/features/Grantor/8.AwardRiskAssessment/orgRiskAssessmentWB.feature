@@ -1,7 +1,7 @@
 @riskAssessment @orgAwardLevelRiskAssessmentWB @regression @orgRiskAssessment
 Feature: Validate all scenarios when the Organizational Risk Assessment is in expired status
 
-  @64384 @expiredOrgRiskassementValidation @smoke
+  @64384 @expiredOrgRiskassementValidation @smoke @hiteshTemp
   Scenario Outline: Validate system generates an exception at award activation if Organizational Risk Assessment is expired.
     Given I delete the record "Automation Award for Risk Assessment" from the object "Award"
     And I delete the record "Automation Award for Risk Assessment" from the object "Grant"
@@ -9,8 +9,8 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I enter in modal "Grant_Creation3" values from "Award_Field_Values.xlsx"
-    And I enter value "---AUTOEnvData:-:SubrecipientOrgWithoutActiveRiskAssessment---" into field "fieldInternalOrganization__c"
+    And I enter in modal "Grant_Creation5" values from "Award_Field_Values.xlsx"
+    #And I enter value "---AUTOEnvData:-:SubrecipientOrgWithoutActiveRiskAssessment---" into field "fieldInternalOrganization__c"
     And I click modal button "Continue"
     And I enter in modal "Grant_Edition1" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
@@ -117,14 +117,14 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
       | Award Name                                                | Grant Name                                                |
       | {SavedValue:Automation Runtime Award for Risk Assessment} | {SavedValue:Automation Runtime Award for Risk Assessment} |
 
-  @64385 @scopeofWorkAmendmentWhenORAIsExpired
+  @64385 @scopeofWorkAmendmentWhenORAIsExpired @hiteshTemp
   Scenario: Validate when Org Risk Assessment is expired and user is able to activate newly created award post performing amendment of type - Scope Of Work
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "subaward"
-    And I activated standalone subaward "Automation Award for Organizational Risk Assessment" with properties "default" of type "Competitive"
+    And I activated standalone subaward "Automation Award for Organizational Risk Assessment" with properties "SUBRECIPIENT_ORG_SPI_USER" of type "Competitive"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI3" user
+    When I login to "Grants Portal" app as "SPI4" user
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Expired" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
@@ -153,13 +153,14 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:EXE Username} | Step 2            |
+      | Name                     | Amendment Request |
+      | {SavedValue:EXE Username}| Step 2            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:FO Username} | Step 3            |
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    When I re-login to "Grants Portal" app as "SPI4" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -209,7 +210,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     Then I see that "Activated" has been added in flextable with Id "---subAwardStandAlone:-:subawardsTableId---"
 
-  @64387 @periodicRenewalAmendmentWhenORAIsExpired
+  @64387 @periodicRenewalAmendmentWhenORAIsExpired @hiteshTemp
   Scenario: Validate when Org Risk Assessment is expired user is able to activate newly created award post performing amendment of type - Periodic Renewal
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
@@ -391,7 +392,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
 
-  @64389 @budgetPeriodChangeAmendmentWhenORAIsExpired @smoke
+  @64389 @budgetPeriodChangeAmendmentWhenORAIsExpired @smoke @hiteshTemp
   Scenario:  Validate when the Organizational Risk Assessment is expired while the base award is active and whether the user is able to activate the newly created award post performing amendment of type - Budget Period Change
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
@@ -466,7 +467,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     Then I see the following messages in the page details contains:
       | The subrecipient organization risk assessment is expired. Please notify the subrecipient to renew their organization risk assessment. |
 
-  @201170 @ValidateOrganizationRiskAssessmentsarenotshownintheReassignmodal @sprint-12-US-226646 @vaibhav @reassignment
+  @201170 @ValidateOrganizationRiskAssessmentsarenotshownintheReassignmodal @sprint-12-US-226646 @vaibhav @reassignment @hiteshTemp
   Scenario: Validate Organization Risk Assessments are not shown in the Reassign modal
     Given I delete the record "Automation Permanent Organization for Risk Assessment" from the object "ORGANIZATION RISKASSESSMENT"
     When I create a risk assessment record for organization "Automation Permanent Organization for Risk Assessment"

@@ -1151,7 +1151,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
 #     Then I softly see field "Status" as " Submitted for Review"
 #    Then I cannot see top right button "Undo" in page detail
 
-  @342571 @342575 @342584 @OSVVerifythatUndoButtonwillnotvisibletoanyuserwhenOrganizationSitevisitisininSendtoSrState @sprint-13-US-331643 @hitesh @Undo
+  @342571 @342575 @342584 @OSVVerifythatUndoButtonwillnotvisibletoanyuserwhenOrganizationSitevisitisininSendtoSrState @sprint-13-US-331643 @hitesh @Undo @366345
   Scenario:OSV->Verify that Undo Button will not visible to any user when Organization Site visit is in in Send to S/r State
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
