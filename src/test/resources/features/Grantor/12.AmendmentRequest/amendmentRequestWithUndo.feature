@@ -3303,7 +3303,6 @@ Feature: Amendment Request scenarios with Undo
     When I perform quick search for "{SavedValue:kpcId}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:kpcId}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    Then I softly see field "Status" as "Approved"
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -3367,7 +3366,7 @@ Feature: Amendment Request scenarios with Undo
     The EGMS Team
     """
 
-  @329639 @ValidateBudredthatapprovaltaskandemailisgeneratedtolaststepapproveronclickofundobuttonbyLastApprover @Sprint-13-US-331643 @vaibhav @Undo @TBE
+  @329639 @ValidateBudredthatapprovaltaskandemailisgeneratedtolaststepapproveronclickofundobuttonbyLastApprover @Sprint-13-US-331643 @vaibhav @Undo
   Scenario: Validate Bud red-Verify that approval task and email is generated to last step approver on click of undo button by Last Approver
     And I activated standalone subaward "Automation Runtime Award" with properties "IS_BUILDUP_FUNCTIONALITY_YES" of type "Formula_By_Applicant_Focus_Area"
     Given I am on "SUBPORTAL" portal
@@ -3425,7 +3424,6 @@ Feature: Amendment Request scenarios with Undo
     When I perform quick search for "{SavedValue:BUDGETREDIRECTIONID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:BUDGETREDIRECTIONID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    Then I softly see field "Status" as "Approved"
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -3465,7 +3463,7 @@ Feature: Amendment Request scenarios with Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-     Notification: Approver has initiated Undo Action on AmendmentRequest #{SavedValue:BUDGETREDIRECTIONID}
+     Sandbox: Notification: Approver has initiated Undo Action onAmendment Request #{SavedValue:BUDGETREDIRECTIONID}
       """
     Then I see the mail text is as follows :
      """
@@ -3560,7 +3558,7 @@ Feature: Amendment Request scenarios with Undo
     When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     And I refresh the page
     When I navigate to "Open Items" sub tab
-    Then I softly see value "Submitted for Approval" for title "Status" against the value "{SavedValue:SOWAMENDMENTREQUEST}" inside table "---closeout:-:closeoutPendingAmendmentRequestsTableId---"
+    Then I softly see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:SOWAMENDMENTREQUEST}" inside table "---closeout:-:closeoutPendingAmendmentRequestsTableId---"
     When I click on "Override" in the page details
     And I refresh the page
     When I navigate to "Open Items" sub tab

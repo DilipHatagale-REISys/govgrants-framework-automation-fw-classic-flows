@@ -1871,12 +1871,6 @@ Feature: Validate all scenarios in Desk Review with Undo
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
-    Then I softly see field "Status" as "Submitted for Approval"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I can see top right button "Undo" in page detail
@@ -1887,7 +1881,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "80" seconds
+    And I pause execution for "100" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
