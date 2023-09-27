@@ -237,6 +237,9 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "asf" into field "Addressline1__c"
+    And I enter value "asf" into field "City__c"
+    And I enter value "20171" into field "Zip4__c"
     When I enter values into fields
       | Value | Field                           |
       | 4000  | fieldRevisedCommitment__c       |
