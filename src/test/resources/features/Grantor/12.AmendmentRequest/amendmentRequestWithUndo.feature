@@ -2683,7 +2683,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see status in Progress-bar is "Created" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @286651 @VerifyUndoAmendSubawardbuttonsaredisplayedonapprovedamendmenttolaststepapproverwhenamendmentownerisselectedaslastapproverontheapprovedSOWamendmentrequest @Sprint-1-US-285146 @hitesh @Undo
+  @286651 @286725 @VerifyUndoAmendSubawardbuttonsaredisplayedonapprovedamendmenttolaststepapproverwhenamendmentownerisselectedaslastapproverontheapprovedSOWamendmentrequest @Sprint-1-US-285146 @hitesh @Undo
   Scenario: Verify Undo, Amend Subaward buttons are displayed on approved amendment to last step approver when amendment owner is selected as last approver on the approved SOW amendment request
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_BUILDUP_YES-Automation PM user" of type "Directed"
     When I am on "SUBPORTAL" portal
@@ -2746,7 +2746,7 @@ Feature: Amendment Request scenarios with Undo
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "Green"
-    #286651
+    #286651 #286725
     Then I can see top right button "Undo" in page detail
     Then I can see top right button "Amend Subaward" in page detail
 
