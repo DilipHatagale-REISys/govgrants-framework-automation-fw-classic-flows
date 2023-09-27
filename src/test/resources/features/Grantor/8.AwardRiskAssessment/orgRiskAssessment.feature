@@ -927,7 +927,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I navigate to "Subawards" sub tab
-    And I click on "Start" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I get the "EGMS ID"
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -1250,7 +1250,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     Then I see that "{SavedValue:EGMSID}" has been added in flextable with Id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @63233 @verifyRiskAssessmemtException @deepika @smoke @hiteshTemp
+  @63233 @verifyRiskAssessmemtException @deepika @smoke
   Scenario Outline: Validate system generates generates an exception at award activation if Organizational Risk Assessment is Created and not Active
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1344,13 +1344,13 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1460,7 +1460,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     Then I see total records count "Total Records:3" in flex table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @63982 @effectiveDatesOnOrgRiskAssessmentIsBlackDraftOnCreated @deepika @hiteshTemp
+  @63982 @effectiveDatesOnOrgRiskAssessmentIsBlackDraftOnCreated @deepika
   Scenario: Verify that Effective and Expiration dates are blank when Org risk assessment is in created state
     Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
