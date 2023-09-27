@@ -3150,6 +3150,27 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Created"
     #287059 #287073
     Then I cannot see top right button "Undo" in page detail
+    #287073
+    Then I can see top right button "Edit" in page detail
+    And I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
+    Then I softly see fields "New Obligation" is in edit mode
+    Then I softly see fields "Current Obligation" is in edit mode
+    Then I softly see fields "Spent" is in edit mode
+    Then I softly see fields "Budgeted Amount" is in edit mode
+    Then I softly see fields "Current Commitment" is in edit mode
+    Then I softly see fields "Revised Commitment" is in edit mode
+    And I click on "Save" in the page details
+    Then I softly can see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
+    Given I navigate to "Responsibilities" sub tab
+    Then I softly can see top right button "New" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly can see top right button "New" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly can see row level action button "Edit" against "{SavedValue:PO Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly can see row level action button "Edit" against "{SavedValue:EXE Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly can see row level action button "Edit" against "{SavedValue:FO Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly can see row level action button "Edit" against "{SavedValue:PM Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
     And I click on "Send to Subrecipient" in the page details
     #287060
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
@@ -3273,7 +3294,7 @@ Feature: Amendment Request scenarios with Undo
     Then I can see top right button "Undo" in page detail
     Then I softly cannot see top right button "Amend Subaward" in page detail
 
-  @@287069 @287071 @VerifythatWhenLastApproverClicksonUndoButtonAConfirmationBoxWillOpenWithOptionYesAndNo @sprint-1-US-285148 @hitesh @Undo
+  @@287069 @287071 @287072 @VerifythatWhenLastApproverClicksonUndoButtonAConfirmationBoxWillOpenWithOptionYesAndNo @sprint-1-US-285148 @hitesh @Undo
   Scenario:Verify that When Last Approver Clicks on Undo Button ,A Confirmation Box Will Open With Option Yes And No
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -3381,8 +3402,8 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Submitted for Approval"
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Reject | Forward | Send to Owner |
-    When I navigate to "Overview" sub tab
     Then I cannot see top right button "Edit" in page detail
+    When I navigate to "Overview" sub tab
     Then I softly see that "New Obligation" rendered in view mode only
     Then I softly see that "Current Obligation" rendered in view mode only
     Then I softly see that "Spent" rendered in view mode only
@@ -3399,8 +3420,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly cannot see row level action button "Edit" against "{SavedValue:PM Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
     When I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
-
-    #287071
+      #287071
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page

@@ -215,9 +215,9 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "subaward"
-    And I activated standalone subaward "Automation Award for Organizational Risk Assessment" with properties "default" of type "Competitive"
+    And I activated standalone subaward "Automation Award for Organizational Risk Assessment" with properties "SUBRECIPIENT_ORG_SPI_USER-Automation PM user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI3" user
+    When I login to "Grants Portal" app as "SPI4" user
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Expired" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
@@ -263,12 +263,12 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 3            |
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI4" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---amendment:-:RecipientKeyPersonalTableId---" without waiting for record
+    And I click on "Edit" icon for "{SavedValue:SPI4 Username}" inside flex table with id "---amendment:-:RecipientKeyPersonalTableId---" without waiting for record
     And I enter value "Principal Investigator" into field "ProjectRole__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:RecipientKeyPersonalTableId---"
     And I click on "Submit to Grantor" in the page details
