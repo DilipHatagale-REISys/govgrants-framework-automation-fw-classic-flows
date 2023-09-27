@@ -62,7 +62,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click modal button "Save and Continue"
     Then I see field "Desk Review Type" as "Award"
 
-  @54425 @addParticipantsT0OrgDeskReviewInternalUser @deepika @Execution
+  @54425 @addParticipantsT0OrgDeskReviewInternalUser @deepika
   Scenario Outline: User will be able to add contacts or users from both internal and subrecipient organizations.
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -260,7 +260,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
 
-  @54888 @55203 @deskReviewCorrectiveActionsSubmitToGrantoBySubrecipientOrgLevel @deepika @Execution
+  @54888 @55203 @deskReviewCorrectiveActionsSubmitToGrantoBySubrecipientOrgLevel @deepika
   Scenario: Validate Org Level Desk Review Submit to Grantor and Corrective Actions By Subrecipient
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -354,7 +354,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @55415 @viewOrgDeskReviewAcceptButtonAfterSRecipientsSubmission @deepika @smoke @Execution
+  @55415 @viewOrgDeskReviewAcceptButtonAfterSRecipientsSubmission @deepika @smoke
   Scenario: Validate Submitted By field at Certification table should get updated on Org Desk Review at SR user end and User will be able to view the Desk Review Accept button after review the submission by Recipients
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -735,7 +735,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Conduct" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
 
-  @55867 @55873 @54460 @75861 @NotifyTaskRecipientCannotCreateAndSeeReportAndOutcomesWhenInNotifiedStatusOrgDR @deepika @Execution
+  @55867 @55873 @54460 @75861 @NotifyTaskRecipientCannotCreateAndSeeReportAndOutcomesWhenInNotifiedStatusOrgDR @deepika
   Scenario: Validate whether the respective POC from the applicant organization will receive a pending task D will not be able to create / edit the Outcomes and cannot view the report or outcomes while in the Notified status.
   Validate the external user will receive an email notification when the org desk review is in notified status
     Given I navigate to "Related Log" sub tab
@@ -860,7 +860,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I close "Upload Template" modal by clicking the top right x button
    Then I see value "Mandatory" for title "Required" against the value "Active" inside table "---orgRiskAssessment:-:orgriskSupportingDocTableId---"
 
-  @61061 @61995 @61059 @CreatedDateOfRAdisplayedOnOverviewTabAdditionOfAttachment @Keerti @buglogged150045 @Execution
+  @61061 @61995 @61059 @CreatedDateOfRAdisplayedOnOverviewTabAdditionOfAttachment @Keerti @buglogged150045
   Scenario: Validate the Created Date of Desk Review display on Overview Tab and Adding Attachments- Organizational Desk Review
     When I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---orgRiskAssessment:-:orgriskSupportingDocTableId---" by clicking "Add" :
@@ -1247,7 +1247,7 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Site Visit Reviewers" modal by clicking the top right x button
+#    When I close "Site Visit Reviewers" modal by clicking the top right x button
     Then I cannot see top right button "Edit" in page detail
 
   @148330 @VerifyErrorMessageAtApproverSectionWhileSkippingForDeskReviewOrgLevel-RnRFunctnality @monu

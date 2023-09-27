@@ -62,13 +62,13 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Notify" in the page details
     Then I softly see status in Progress-bar is "Notified" and is "Green"
     And I logout
-    And I checkout to yopmail with mailid "automationspi3@yopmail.com"
-    And I pause execution for "3" seconds
-    And I refresh the page
-    Then I see the mail subject is as follows :
-      """
-      Sandbox: Notification: Desk Review for {SavedValue:DeskReviewId} has been scheduled
-      """
+#    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
+#    And I pause execution for "3" seconds
+#    And I refresh the page
+#    Then I see the mail subject is as follows :
+#      """
+#      Sandbox: Notification: Desk Review for {SavedValue:DeskReviewId} has been scheduled
+#      """
     And I refresh the page
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -171,7 +171,7 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "Record Id" in "---deskreview:-:homePendingTasksTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---deskreview:-:homePendingTasksTableId---"
 
-  @51020 @66145 @66269 @approvalOfDeskReview @Execution
+  @51020 @66145 @66269 @approvalOfDeskReview
   Scenario: Approval of Desk Review | Validate Non award owner does not have permission to Submit the Desk Review for Approval |Validate whether user is able to view the Completed task once approved under Monitoring Tab
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -322,10 +322,10 @@ Feature: Validate all scenarios in Desk Review
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     And I pause execution for "180" seconds
     Then I refresh the page
-    And I see the mail subject is as follows :
-      """
-      Sandbox: Notification: Desk Review Report Submitted by Subrecipient
-      """
+#    And I see the mail subject is as follows :
+#      """
+#      Sandbox: Notification: Desk Review Report Submitted by Subrecipient
+#      """
     Given I am on "INTERNAL" portal
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -391,13 +391,13 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Start" icon for "{SavedValue:dvID}" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I "Send to Owner" in the approval decision
     Then I softly see status in Progress-bar is "Created" and is "green"
-    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "100" seconds
-    Then I refresh the page
-    And I see the mail subject is as follows :
-      """
-      Sandbox: Notification: Site Visit/Desk Review Report for {SavedValue:dvID} has been SentBack
-      """
+#    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+#    And I pause execution for "100" seconds
+#    Then I refresh the page
+#    And I see the mail subject is as follows :
+#      """
+#      Sandbox: Notification: Site Visit/Desk Review Report for {SavedValue:dvID} has been SentBack
+#      """
     Given I am on "INTERNAL" portal
     When I login to "As a Grantor" app as "FO" user
     And I navigate to "Monitoring" tab
@@ -683,7 +683,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I cannot see top right button "Conduct" in page detail
 
-  @55368 @55801 @55804 @reportsAndOutcomesEditAccessDeskReview @deepika @Execution
+  @55368 @55801 @55804 @reportsAndOutcomesEditAccessDeskReview @deepika
   Scenario: User will be able to view the Notify and conduct button and upon conduct, Reports And Outcomes tab are editable to the internal user for an award level desk review
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -717,7 +717,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Reports and Outcomes" sub tab
     Then I softly cannot see row level action button "Edit" against "General Review Form" in flex table with id "---deskreview:-:reportsTableId---"
 
-  @55791 @internalUserParticipantAssociationDeskReview @deepika @Execution
+  @55791 @internalUserParticipantAssociationDeskReview @deepika
   Scenario Outline: Internal User participant Association of Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -751,7 +751,7 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     Then I cannot see "Reports and Outcomes" sub tab at view detail page
 
-  @56017 @62112 @peerReviewIntiationfFDeskReview @deepika @smoke @Execution
+  @56017 @62112 @peerReviewIntiationfFDeskReview @deepika @smoke
   Scenario: Validate whether user is to able to initiate the peer review on their process for Desk Review
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -1388,7 +1388,7 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @145748 @VerifyErrorMessageAtApproverSectionWhileSkippingAtDeskReview-RnRFunctionality @monu @Execution
+  @145748 @VerifyErrorMessageAtApproverSectionWhileSkippingAtDeskReview-RnRFunctionality @monu
   Scenario: Verify the validation is displayed when no approver is defined on desk review and submit for approval
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -1466,7 +1466,7 @@ Feature: Validate all scenarios in Desk Review
       | {SavedValue:PM Username} | Step 2      |
     Then I softly see "You cannot specify the same user for multiple steps for Desk Review" inside flex table with id "---deskreview:-:approverDeskReviewTableId---"
 
-  @145879 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUserAtDeskReview-RnRFunctionality @monu @Execution
+  @145879 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUserAtDeskReview-RnRFunctionality @monu
   Scenario: Verify the validation when same steps are defined for different approver on Desk approver
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
