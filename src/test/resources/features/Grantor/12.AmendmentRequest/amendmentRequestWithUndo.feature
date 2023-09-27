@@ -3272,4 +3272,3 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
     Then I softly cannot see top right button "Amend Subaward" in page detail
-
