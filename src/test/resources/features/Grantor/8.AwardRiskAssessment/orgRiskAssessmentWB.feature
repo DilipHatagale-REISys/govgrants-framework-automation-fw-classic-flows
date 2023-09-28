@@ -142,16 +142,15 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    When I click on "Edit" in the page details
+    And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "asf" into field "Addressline1__c"
     And I enter value "asf" into field "City__c"
     And I enter value "20171" into field "Zip4__c"
     And I enter value "LA" into field "fieldState__c"
     And I enter value "GA" into field "fieldCounty__c"
-    And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
-    And I save the field labeled "EGMS ID" as "EGMSID"
-    When I click on "Edit" in the page details
-    And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
