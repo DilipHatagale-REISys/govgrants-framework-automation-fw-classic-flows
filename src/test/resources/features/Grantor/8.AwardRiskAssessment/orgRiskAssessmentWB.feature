@@ -1,7 +1,7 @@
 @riskAssessment @orgAwardLevelRiskAssessmentWB @regression @orgRiskAssessment
 Feature: Validate all scenarios when the Organizational Risk Assessment is in expired status
 
-  @64384 @expiredOrgRiskassementValidation @smoke @hiteshTemp
+  @vai @64384 @expiredOrgRiskassementValidation @smoke @hiteshTemp
   Scenario Outline: Validate system generates an exception at award activation if Organizational Risk Assessment is expired.
     Given I delete the record "Automation Award for Risk Assessment" from the object "Award"
     And I delete the record "Automation Award for Risk Assessment" from the object "Grant"
@@ -9,8 +9,8 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I enter in modal "Grant_Creation5" values from "Award_Field_Values.xlsx"
-    #And I enter value "---AUTOEnvData:-:SubrecipientOrgWithoutActiveRiskAssessment---" into field "fieldInternalOrganization__c"
+    And I enter in modal "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I enter value "---AUTOEnvData:-:SubrecipientOrgWithoutActiveRiskAssessment---" into field "fieldInternalOrganization__c"
     And I click modal button "Continue"
     And I enter in modal "Grant_Edition1" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
@@ -142,6 +142,11 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "asf" into field "Addressline1__c"
+    And I enter value "asf" into field "City__c"
+    And I enter value "20171" into field "Zip4__c"
+    And I enter value "LA" into field "fieldState__c"
+    And I enter value "GA" into field "fieldCounty__c"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "EGMSID"
@@ -240,6 +245,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I enter value "asf" into field "Addressline1__c"
     And I enter value "asf" into field "City__c"
     And I enter value "20171" into field "Zip4__c"
+    And I enter value "Test" into field "ScopeofWorkChangeDescription__c"
     When I enter values into fields
       | Value | Field                           |
       | 4000  | fieldRevisedCommitment__c       |
