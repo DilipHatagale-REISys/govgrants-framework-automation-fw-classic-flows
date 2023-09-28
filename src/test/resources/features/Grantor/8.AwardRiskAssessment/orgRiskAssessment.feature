@@ -888,7 +888,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I can see top right button "Edit" in page detail
     Then I can see top right button "Submit" in page detail
 
-  @62951 @RAinCreatedStatusImpactOnAward @deepika @hiteshTemp
+  @62951 @RAinCreatedStatusImpactOnAward @deepika
   Scenario Outline: Validate if SA has requested for revision of initial Risk Assessment  and it is being revised and present in Created sttaus does not make an impact on Award Activation system will always refer the active Risk Assessment.
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
