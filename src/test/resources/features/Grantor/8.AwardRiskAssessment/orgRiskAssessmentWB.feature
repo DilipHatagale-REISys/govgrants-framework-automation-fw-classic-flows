@@ -144,7 +144,6 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I save the field labeled "EGMS ID" as "EGMSID"
-    When I click on "Edit" in the page details
     And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "asf" into field "Addressline1__c"
     And I enter value "asf" into field "City__c"
