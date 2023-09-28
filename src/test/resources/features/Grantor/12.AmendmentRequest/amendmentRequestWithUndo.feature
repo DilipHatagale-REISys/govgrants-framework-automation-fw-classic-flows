@@ -3171,6 +3171,7 @@ Feature: Amendment Request scenarios with Undo
     #287073
     Then I can see top right button "Edit" in page detail
     And I click on "Edit" in the page details
+    Given I navigate to "Overview" sub tab
     Then I softly see fields "Revised Commitment" is in edit mode
     And I click on "Save" in the page details
     Then I softly can see top right button "Associate" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
@@ -3446,7 +3447,7 @@ Feature: Amendment Request scenarios with Undo
     Hello,
     This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
     Amendment Details:
-    Amendment Type: Budget Redirection
+    Amendment Type:  Funding Change
     Amendment ID: {SavedValue:FundingID}
     Key POC: Automation SPI3
     Status: Submitted for Approval
@@ -3472,7 +3473,7 @@ Feature: Amendment Request scenarios with Undo
     Hello,
     This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
     Amendment Details:
-    Amendment Type: Budget Redirection
+    Amendment Type: Funding Change
     Amendment ID: {SavedValue:FundingID}
     Key POC: Automation SPI3
     Status: Submitted for Approval
@@ -3498,7 +3499,7 @@ Feature: Amendment Request scenarios with Undo
     Hello,
     This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
     Amendment Details:
-    Amendment Type: Budget Redirection
+    Amendment Type: Funding Change
     Amendment ID: {SavedValue:FundingID}
     Key POC: Automation SPI3
     Status: Submitted for Approval
@@ -3525,7 +3526,7 @@ Feature: Amendment Request scenarios with Undo
     Hello,
     This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
     Amendment Details:
-    Amendment Type: Budget Redirection
+    Amendment Type: Funding Change
     Amendment ID: {SavedValue:FundingID}
     Key POC: Automation SPI3
     Status: Submitted for Approval
