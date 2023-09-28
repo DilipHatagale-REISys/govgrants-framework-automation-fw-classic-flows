@@ -151,6 +151,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I enter value "20171" into field "Zip4__c"
     And I enter value "LA" into field "fieldState__c"
     And I enter value "GA" into field "fieldCounty__c"
+    And I enter value "Test" into field "ScopeofWorkChangeDescription__c"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
@@ -244,7 +245,6 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I enter value "asf" into field "Addressline1__c"
     And I enter value "asf" into field "City__c"
     And I enter value "20171" into field "Zip4__c"
-    And I enter value "Test" into field "ScopeofWorkChangeDescription__c"
     When I enter values into fields
       | Value | Field                           |
       | 4000  | fieldRevisedCommitment__c       |
