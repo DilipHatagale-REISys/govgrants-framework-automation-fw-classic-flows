@@ -117,7 +117,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
       | Award Name                                                | Grant Name                                                |
       | {SavedValue:Automation Runtime Award for Risk Assessment} | {SavedValue:Automation Runtime Award for Risk Assessment} |
 
-  @64385 @scopeofWorkAmendmentWhenORAIsExpired @hiteshTemp
+  @64385 @scopeofWorkAmendmentWhenORAIsExpired
   Scenario: Validate when Org Risk Assessment is expired and user is able to activate newly created award post performing amendment of type - Scope Of Work
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
