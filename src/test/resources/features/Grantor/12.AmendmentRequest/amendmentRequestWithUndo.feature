@@ -2985,7 +2985,7 @@ Feature: Amendment Request scenarios with Undo
     Then I see status in Progress-bar is "Approved" and is "Green"
     Then I can see top right button "Undo" in page detail
 
-  @287058 @287059 @287060 @287061 @287062 @287063 @287064 @287065 @287073 @287074 @VerifythatPMApproverlastwillseetheundobuttontoreopentheapprovedtaskwhenFundingChangeARinApprovedState @sprint-1-US-285148 @hitesh @Undo
+  @287058 @287059 @287060 @287061 @287062 @287063 @287064 @287065 @287073 @287074 @287067 @VerifythatPMApproverlastwillseetheundobuttontoreopentheapprovedtaskwhenFundingChangeARinApprovedState @sprint-1-US-285148 @hitesh @Undo
   Scenario:Verify that PM Approver(last) will see  the undo button to reopen the approved task when  Funding Change AR in Approved State
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -3115,6 +3115,18 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Approved"
     #287074
     Then I can see top right button "Undo" in page detail
+    #287067
+    Given I navigate to "Overview" sub tab
+    Then I softly cannot see top right button "Undo" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
+    Then I softly cannot see row level action button "Undo" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
+    Given I navigate to "Responsibilities" sub tab
+    Then I softly cannot see top right button "Undo" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly cannot see row level action button "Undo" against "{SavedValue:PO Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly cannot see row level action button "Undo" against "{SavedValue:EXE Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly cannot see row level action button "Undo" against "{SavedValue:FO Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly cannot see row level action button "Undo" against "{SavedValue:PM Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Undo" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
     When I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     And I navigate to "Home" tab
@@ -3159,46 +3171,40 @@ Feature: Amendment Request scenarios with Undo
     #287073
     Then I can see top right button "Edit" in page detail
     And I click on "Edit" in the page details
-#    When I navigate to "Overview" sub tab
-#    Then I softly see fields "New Obligation" is in edit mode
-#    Then I softly see fields "Current Obligation" is in edit mode
-#    Then I softly see fields "Spent" is in edit mode
-#    Then I softly see fields "Budgeted Amount" is in edit mode
-#    Then I softly see fields "Current Commitment" is in edit mode
-#    Then I softly see fields "Revised Commitment" is in edit mode
-#    And I click on "Save" in the page details
-#    Then I softly can see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
-#    Given I navigate to "Responsibilities" sub tab
-#    Then I softly can see top right button "New" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
-#    Then I softly can see top right button "New" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
-#    Then I softly can see row level action button "Edit" against "{SavedValue:PO Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
-#    Then I softly can see row level action button "Edit" against "{SavedValue:EXE Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
-#    Then I softly can see row level action button "Edit" against "{SavedValue:FO Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
-#    Then I softly can see row level action button "Edit" against "{SavedValue:PM Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
-#    When I navigate to "Files" sub tab
-#    Then I softly can see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
-#    And I click on "Send to Subrecipient" in the page details
-#    #287060
-#    Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
-#    Then I cannot see top right button "Undo" in page detail
-#    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-#    And I navigate to "Grants" tab
-#    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-#    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-#    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-#    And I click on "Submit to Grantor" in the page details
-#    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
-#    #287061
-#    Then I cannot see top right button "Undo" in page detail
-#    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-#    And I navigate to "Grants" tab
-#    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-#    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-#    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-#    And I click on "Submit for Approval" in the page details
-#    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
-#    #287062
-#    Then I cannot see top right button "Undo" in page detail
+    Then I softly see fields "Revised Commitment" is in edit mode
+    And I click on "Save" in the page details
+    Then I softly can see top right button "Associate" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
+    Then I softly can see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
+    Given I navigate to "Responsibilities" sub tab
+    Then I softly can see top right button "New" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly can see row level action button "Edit" against "{SavedValue:PO Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly can see row level action button "Edit" against "{SavedValue:EXE Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly can see row level action button "Edit" against "{SavedValue:FO Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly can see row level action button "Edit" against "{SavedValue:PM Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
+    And I click on "Send to Subrecipient" in the page details
+    #287060
+    Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
+    #287061
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Submit for Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    #287062
+    Then I cannot see top right button "Undo" in page detail
 
   @287066 @VerifyThatwhenLastApproverandAwardOwnerArenotSamethenAmendSubawardbuttonisnotvisibletoapprrover @sprint-1-US-285148 @hitesh @Undo
   Scenario:Verify That when Last Approver and Award Owner Are not Same then  Amend Subaward button is not visible to apprrover
@@ -3399,6 +3405,7 @@ Feature: Amendment Request scenarios with Undo
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
+    And I click on "Undo" in the page details without processing
      #287069
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     Then I softly see button "Yes" on confirmation pop-up
