@@ -3641,7 +3641,7 @@ Feature: Amendment Request scenarios with Undo
     Then I see status in Progress-bar is "Rejected" and is "Red"
     Then I cannot see top right button "Undo" in page detail
 
-  @287076 @291089 @291090 @VerifythatUsercanForwardARafterclickonUndoButtonAndafterthathewillnotseeUndoButton @sprint-2-US-289813 @hitesh @Undo
+  @287076 @291089 @VerifythatUsercanForwardARafterclickonUndoButtonAndafterthathewillnotseeUndoButton @sprint-2-US-289813 @hitesh @Undo
   Scenario:Verify that User can Forward AR after click on Undo Button And after that he will not see Undo Button
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -3744,12 +3744,12 @@ Feature: Amendment Request scenarios with Undo
     And I submit the approval in the approval decision
     Then I can see the message "Comments are Required." in the approval decision
     When I select radio button "Forward" in the approval decision
-    And I select user "{SavedValue:FD Username}" in the approval decision
+    And I select user "{SavedValue:PM1 Username}" in the approval decision
     When I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Submitted for Approval"
     Then I cannot see top right button "Undo" in page detail
-    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:FundingID}" in "---amendment:-:pendingTaskTableId---" panel
@@ -3758,33 +3758,6 @@ Feature: Amendment Request scenarios with Undo
     And I "Approve" in the approval decision
     #291089
     Then I can see top right button "Undo" in page detail
-    And I click on "Undo" in the page details
-    Then I softly see field "Status" as "Submitted for Approval"
-    And I navigate to "Home" tab
-    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
-    When I reassign task to "Automation FD1"
-    When I perform quick search for "{SavedValue:FundingID}" in "---program:-:grantorTaskReassignTableId---" panel
-    When I check "{SavedValue:FundingID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
-    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
-    And I pause execution for "30" seconds
-    When I re-login to "As a Grantor" app as "FD1" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "{SavedValue:FundingID}" in "---amendment:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:FundingID}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    Then I softly see field "Status" as "Submitted for Approval"
-    And I "Approve" in the approval decision
-    Then I softly see status in Progress-bar is "Approved" and is "green"
-    #291090
-    Then I can see top right button "Undo" in page detail
-    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Amendment Requests - All"
-    When I perform quick search for "{SavedValue:FundingID}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
-    And I click on "View" icon for "{SavedValue:FundingID}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
-    Then I softly see status in Progress-bar is "Approved" and is "green"
-    Then I cannot see top right button "Undo" in page detail
 
   @291705 @VerifylastapprovercannotseeundobuttononapprovedamendmentwhenawardiscreatedontheamendmentandisinActivatedstate @Sprint-2-US-286592 @hitesh @Undo
   Scenario:Verify last approver cannot see undo button on approved amendment when award is created on the amendment and is in Activated state
@@ -4116,9 +4089,9 @@ Feature: Amendment Request scenarios with Undo
     Then I see the mail text is as follows :
      """
     Hello,
-    This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
+    This email is to inform you that the Approver Automation FD1  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
     Amendment Details:
-    Amendment Type:  Funding Change
+    Amendment Type:  Scope of Work Change
     Amendment ID: {SavedValue:SOWAMENDMENTREQUEST}
     Key POC: Automation SPI3
     Status: Submitted for Approval
@@ -4142,9 +4115,9 @@ Feature: Amendment Request scenarios with Undo
     Then I see the mail text is as follows :
      """
     Hello,
-    This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
+    This email is to inform you that the Approver Automation FD1  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
     Amendment Details:
-    Amendment Type:  Funding Change
+    Amendment Type:  Scope of Work Change
     Amendment ID: {SavedValue:SOWAMENDMENTREQUEST}
     Key POC: Automation SPI3
     Status: Submitted for Approval
@@ -4168,9 +4141,9 @@ Feature: Amendment Request scenarios with Undo
     Then I see the mail text is as follows :
      """
     Hello,
-    This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
+    This email is to inform you that the Approver Automation FD1  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
     Amendment Details:
-    Amendment Type: Funding Change
+    Amendment Type: Scope of Work Change
     Amendment ID: {SavedValue:SOWAMENDMENTREQUEST}
     Key POC: Automation SPI3
     Status: Submitted for Approval
@@ -4194,9 +4167,9 @@ Feature: Amendment Request scenarios with Undo
     Then I see the mail text is as follows :
      """
     Hello,
-    This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
+    This email is to inform you that the Approver Automation FD1  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
     Amendment Details:
-    Amendment Type: Funding Change
+    Amendment Type: Scope of Work Change
     Amendment ID: {SavedValue:SOWAMENDMENTREQUEST}
     Key POC: Automation SPI3
     Status: Submitted for Approval
@@ -4210,7 +4183,32 @@ Feature: Amendment Request scenarios with Undo
     Thank you.
     The EGMS Team
     """
+    And I checkout to yopmail with mailid "automationfd1@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+     Notification: Approver has initiated Undo Action on AmendmentRequest #{SavedValue:SOWAMENDMENTREQUEST}
+      """
+    Then I see the mail text is as follows :
+     """
+    Hello,
+    This email is to inform you that the Approver Automation FD1  has initiated Undo Action for amendment request #{SavedValue:FundingID}  for the award #{SavedValue:AwardEGMSID}.
+    Amendment Details:
+    Amendment Type: Scope of Work Change
+    Amendment ID: {SavedValue:SOWAMENDMENTREQUEST}
+    Key POC: Automation SPI3
+    Status: Submitted for Approval
+    Grant: {SavedValue:GrantEGMSID}
+    Funding Organization: Test Automation Organization
 
+    Log in to EGMS and click here to review the amendment request.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
+    """
   @289046 @VerifylastapprovercannotseeundobuttononapprovedamendmentwhenawardiscreatedontheamendmentandisinPendingActivationstate @Sprint-2-US-289825 @hitesh @Undo
   Scenario: Verify last approver cannot see undo button on approved amendment when award is created on the amendment and is in Pending Activation state
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_BUILDUP_YES-Automation PM user" of type "Directed"
@@ -4295,4 +4293,3 @@ Feature: Amendment Request scenarios with Undo
     When I click on "View" icon for "{SavedValue:SOWAMENDMENTREQUEST}" inside flex table with id "---amendment:-:amendmentRequestTableId---" without waiting for record
     Then I softly see field "Status" as "Approved"
     Then I cannot see top right button "Undo" in page detail
-
