@@ -4004,7 +4004,7 @@ Feature: Amendment Request scenarios with Undo
     And I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
 
-  @290495 @Verifyafterapprovaltaskisreassignedbylastapproverandamendmentisapprovedbythereassigneduserthenundobuttonshouldbevisibleonlytotheusertowhomtheapprovaltaskisreassigned @Sprint-2-US-289816 @hitesh @Undo
+  @290495 @290497 @Verifyafterapprovaltaskisreassignedbylastapproverandamendmentisapprovedbythereassigneduserthenundobuttonshouldbevisibleonlytotheusertowhomtheapprovaltaskisreassigned @Sprint-2-US-289816 @hitesh @Undo
   Scenario: Verify after approval task is reassigned by last approver and amendment is approved by the reassigned user then undo button should be visible only to the user to whom the approval task is reassigned
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_BUILDUP_YES-Automation PM user" of type "Directed"
     When I am on "SUBPORTAL" portal
@@ -4104,6 +4104,7 @@ Feature: Amendment Request scenarios with Undo
     And I navigate to "Home" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---grantor_tableId:-:CompletedTaskAssignedToMeTableId---" panel
+    #290497
     Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:SOWAMENDMENTREQUEST}" inside table "---grantor_tableId:-:CompletedTaskAssignedToMeTableId---"
     And I checkout to yopmail with mailid "automationpo@yopmail.com"
     And I pause execution for "10" seconds
