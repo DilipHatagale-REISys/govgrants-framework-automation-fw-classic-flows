@@ -1,4 +1,4 @@
-@closeout @grantor-regression @grantor-parallel-regression @regression
+@closeoutExecution @closeout @grantor-regression @grantor-parallel-regression @regression
 Feature: Validate all scenarios in Closeout
 
   @265608 @ValidateSPAuserseecumulativeobligationvaluewhichiscopiedfromthegrantwhenCLrequestiscreated @sprint-20-US-263394 @vaibhav @Allocation
