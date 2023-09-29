@@ -18901,6 +18901,11 @@ Feature: Validate all scenarios in the Application Review without background
     #2nd Application
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I navigate to "Applications" tab
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "<Announcement Name>"
+    When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
@@ -19033,6 +19038,10 @@ Feature: Validate all scenarios in the Application Review without background
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     And I wait for "5" seconds
     When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "<Announcement Name>"
+    When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
@@ -19850,32 +19859,32 @@ Feature: Validate all scenarios in the Application Review without background
     When I check "{SavedValue:AppEGMSID1}" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Funding Decision Memo" in the page details
+    Then I softly see field "Status" as "Approved"
+    And I navigate to "Funding Decision Memo" sub tab
+    And I click on "Edit" in the page details
+    When I enter values into fields
+      | Value                       | Field                 |
+      | AuGr                        | GrantCode__c          |
+      | Automation Test Description | fieldJustification__c |
+    And I click on "Save" in the page details
+    And I wait for "5" seconds
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
+      | Name                         | FDM    |
+      | {SavedValue:<User> Username} | Step 1 |
+    And I navigate to "Funding Decision Memo" sub tab
+    And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
+      | EGMS ID                 | Recommended Budget | Total Commitment Amount | Recommend for Funding | Comments    |
+      | {SavedValue:AppEGMSID1} | 1000               | 1000                    | Yes                   | Recommended |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
+    And I navigate to "Funding Decision Memo" sub tab
+    Then I softly see value "Pending" for title "Final Decision" inside table "---subAwardFromFDM:-:recommendedAppTableId---"
+    When I "Reject" in the approval decision
+    Then I softly see the following messages in the page details contains:
+      | Rejection of the FDM is not allowed because at least one application in the FDM is converted to award. |
+    When I "Send to Owner" in the approval decision
     Then I softly see field "Status" as "Created"
-#    And I navigate to "Funding Decision Memo" sub tab
-#    And I click on "Edit" in the page details
-#    When I enter values into fields
-#      | Value                       | Field                 |
-#      | AuGr                        | GrantCode__c          |
-#      | Automation Test Description | fieldJustification__c |
-#    And I click on "Save" in the page details
-#    And I wait for "5" seconds
-#    When I navigate to "Responsibilities" sub tab
-#    When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
-#      | Name                         | FDM    |
-#      | {SavedValue:<User> Username} | Step 1 |
-#    And I navigate to "Funding Decision Memo" sub tab
-#    And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-#      | EGMS ID                 | Recommended Budget | Total Commitment Amount | Recommend for Funding | Comments    |
-#      | {SavedValue:AppEGMSID1} | 1000               | 1000                    | Yes                   | Recommended |
-#    And I click on "Submit for Approval" in the page details
-#    Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
-#    And I navigate to "Funding Decision Memo" sub tab
-#    Then I softly see value "Pending" for title "Final Decision" inside table "---subAwardFromFDM:-:recommendedAppTableId---"
-#    When I "Reject" in the approval decision
-#    Then I softly see the following messages in the page details contains:
-#      | Rejection of the FDM is not allowed because at least one application in the FDM is converted to award. |
-#    When I "Send to Owner" in the approval decision
-#    Then I softly see field "Status" as "Created"
 
     Examples:
       | Announcement Name                            | Filter              | User |
