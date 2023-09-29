@@ -18743,7 +18743,7 @@ Feature: Validate all scenarios in the Application Review without background
 
   @204089 @ValidateEXEuserFinalDecisionstatusofallapplicationsshouldbeCancelledwhenuserrejectFDMwhileapprovalevenifpreviousapplicationsareinApprovedPendingstateforNonrecommendedApplication @Sprint-08-US-202799 @vaibhav @TBE
   Scenario Outline: Validate EXE user 'Final Decision' status of all applications should be 'Cancelled' when user reject FDM while approval even if previous applications are in 'Approved''Pending' state for Non-recommended Application
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "<Filter>"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-<Filter>"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
@@ -19213,7 +19213,7 @@ Feature: Validate all scenarios in the Application Review without background
 
   @204091 @204094 @ValidatePOuserwhenanyFDMisRejectedbyapproverduringFDMapprovalthenshouldnotallowanyfurtherapplicationonthisannouncementtogetpromotedtoFDMforRecommendedApplication @Sprint-08-US-202799 @vaibhav @TBE
   Scenario Outline: Validate PO user when any FDM is Rejected by approver during FDM approval then should not allow any further application on this announcement to get promoted to FDM for Recommended Application
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "<Filter>"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-<Filter>"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
@@ -19505,7 +19505,7 @@ Feature: Validate all scenarios in the Application Review without background
 
   @204093 @ValidateEXEusewhenanyFDMisRejectedbyapproverduringFDMapprovalthenshouldnotallowanyfurtherapplicationonthisannouncementtogetpromotedtoFDMforNonrecommendedApplication @Sprint-08-US-202799 @vaibhav @TBE
   Scenario Outline: Validate EXE user when any FDM is Rejected by approver during FDM approval then should not allow any further application on this announcement to get promoted to FDM for Non-recommended Application
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "<Filter>"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-<Filter>"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
@@ -19797,7 +19797,7 @@ Feature: Validate all scenarios in the Application Review without background
 
   @204097 @ValidateEXEusershouldseevalidationmessageonrejecbuttonifusertriestorejecttheFDMwhileapprovalbutapprovershouldstillcontinuetoSendbackApprovewhenFDMhasoneapplicationwhichisconvertedtoaward @Sprint-08-US-202799 @vaibhav @TBE
   Scenario Outline: Validate EXE user should see validation message on reject button if user tries to reject the FDM while approval but approver should still continue to 'Send back' 'Approve' when FDM has one application which is converted to award
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "<Filter>"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-<Filter>"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     And I created approved FDM on application "<Announcement Name>"
     When I login to "As a Grantor" app as "<User>" user
@@ -19973,7 +19973,7 @@ Feature: Validate all scenarios in the Application Review without background
 
   @204099 @ValidatePOuserFinalDecisionstatusofallapplicationsshouldbeCancelledwhenuserrejectFDMwhileapprovalvenifpreviousapplicationsareinApprovedPendingstateshouldbeforRecommendedApplication @Sprint-08-US-202799 @vaibhav @TBE
   Scenario Outline: Validate PO user 'Final Decision' status of all applications should be 'Cancelled' when user reject FDM while approval even if  previous applications are in 'Approved' 'Pending' state should be for Recommended Application
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "<Filter>"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-<Filter>"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab

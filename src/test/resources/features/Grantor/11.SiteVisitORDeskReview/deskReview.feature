@@ -341,7 +341,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @55279 @66469 @66148 @approverSendBackToUserDeskReview @deepika @Execution
+  @55279 @66469 @66148 @approverSendBackToUserDeskReview @deepika
   Scenario: Validate whether the approver will be able to SendBack to Owner |Validate Pending task is not created to fiscal approver when program approver performs send to the owner.
   Verify when the FO user Send Back to owner during approval process of desk review, the record owner recieves an email notification
     Given I navigate to "Responsibilities" sub tab
