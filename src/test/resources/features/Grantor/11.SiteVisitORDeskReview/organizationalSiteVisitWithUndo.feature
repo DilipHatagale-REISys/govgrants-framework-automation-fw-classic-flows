@@ -790,7 +790,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     #304142
     Then I cannot see top right button "Undo" in page detail
 
-  @329511 @ValidateOSVthatapprovaltaskanemailisgeneratedtolaststepapproveronclickofundobuttonbyLastApproveronOrgSiteVisit @Sprint-13-US-331643 @vaibhav @Undo @TBE
+  @329511 @ValidateOSVthatapprovaltaskanemailisgeneratedtolaststepapproveronclickofundobuttonbyLastApproveronOrgSiteVisit @Sprint-13-US-331643 @vaibhav @Undo
   Scenario: Validate OSV that approval task and email is generated to last step approver on click of undo button by Last Approver on Org Site Visit
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -914,7 +914,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
 
     EGMS ID: {SavedValue:SitevVisitId}
 
-    Record Name: {SavedValue:Automation Runtime Award Site Visit}
+    Record Name: {SavedValue:Automation Runtime Site Visit Org level}
 
     Log in to EGMS and click here to start reviewing the details.
 

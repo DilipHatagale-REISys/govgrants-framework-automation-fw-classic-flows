@@ -1822,7 +1822,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     The EGMS Team
     """
 
-  @329543 @ValidateDRthatapprovaltaskandemailisgeneratedtolaststepapproveronclickofundobuttonbyLastApproverofdeskreview @Sprint-13-US-331643 @vaibhav @Undo @TBE
+  @329543 @ValidateDRthatapprovaltaskandemailisgeneratedtolaststepapproveronclickofundobuttonbyLastApproverofdeskreview @Sprint-13-US-331643 @vaibhav @Undo
   Scenario: Validate DR that approval task and email is generated to last step approver on click of undo button by Last Approver of desk review
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default-Automation EXE user" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default-Automation EXE user" of type "Formula_By_Applicant_Focus_Area"

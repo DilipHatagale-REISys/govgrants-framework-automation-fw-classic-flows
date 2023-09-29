@@ -3094,7 +3094,7 @@ Feature: Amendment Request scenarios with Undo
 #    The EGMS Team
 #    """
 
-  @329625 @ValidatePRthatapprovaltaskandemailisgeneratedtolaststepapproveronclickofundobuttonbyLastApprover @Sprint-13-US-331643 @vaibhav @Undo @TBE
+  @329625 @ValidatePRthatapprovaltaskandemailisgeneratedtolaststepapproveronclickofundobuttonbyLastApprover @Sprint-13-US-331643 @vaibhav @Undo
   Scenario: Validate PR that approval task and email is generated to last step approver on click of undo button by Last Approver of desk review
     And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant_Focus_Area"
     Given I login to "As a Grantor" app as "PM" user
@@ -3223,7 +3223,7 @@ Feature: Amendment Request scenarios with Undo
     And I perform quick search for "{SavedValue:SOWAMENDMENTREQUEST}" in "---amendment:-:pendingTaskTableId---" panel
     Then I softly see value "{SavedValue:SOWAMENDMENTREQUEST}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "100" seconds
+    And I pause execution for "200" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -3487,7 +3487,7 @@ Feature: Amendment Request scenarios with Undo
     The EGMS Team
     """
 
-  @326045 @ValidateBudredthatlastapprovercannotseeUndoButtonOnAmmendmentwhenARisinForceclosedstate @Sprint-13-US-331643 @vaibhav @Undo @TBE
+  @326045 @ValidateBudredthatlastapprovercannotseeUndoButtonOnAmmendmentwhenARisinForceclosedstate @Sprint-13-US-331643 @vaibhav @Undo
   Scenario: Validate Bud red that last approver can not see Undo Button On Ammendment when AR isin Force closed state
     And I activated standalone subaward "Automation Runtime Award" with properties "IS_BUILDUP_FUNCTIONALITY_YES" of type "Formula_By_Applicant_Focus_Area"
     Given I am on "SUBPORTAL" portal
