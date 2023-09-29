@@ -4332,13 +4332,14 @@ Feature: Amendment Request scenarios with Undo
     When I click on "View" icon for "{SavedValue:SOWAMENDMENTREQUEST}" inside flex table with id "---amendment:-:amendmentRequestTableId---" without waiting for record
     Then I softly see field "Status" as "Approved"
     Then I cannot see top right button "Undo" in page detail
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    Then I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Amendment Requests - All"
-    When I perform quick search for "{SavedValue:AwardEGMSID1}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
-    And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
-    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
+    Then I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Pending Activation" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "green"
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
