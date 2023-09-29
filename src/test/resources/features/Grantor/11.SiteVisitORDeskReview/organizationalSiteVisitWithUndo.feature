@@ -791,7 +791,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I cannot see top right button "Undo" in page detail
 
   @329511 @ValidateOSVthatapprovaltaskanemailisgeneratedtolaststepapproveronclickofundobuttonbyLastApproveronOrgSiteVisit @Sprint-13-US-331643 @vaibhav @Undo @TBE
-  Scenario: Validate OSV-Verify that approval task and email is generated to last step approver on click of undo button by Last Approver on Org Site Visit
+  Scenario: Validate OSV that approval task and email is generated to last step approver on click of undo button by Last Approver on Org Site Visit
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
@@ -897,8 +897,8 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:homePendingTasksTableId---" panel
     Then I softly see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:homePendingTasksTableId---"
-    And I checkout to yopmail with mailid "automationpo@yopmail.com"
-    And I pause execution for "10" seconds
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "200" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
