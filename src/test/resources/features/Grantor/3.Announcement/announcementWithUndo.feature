@@ -1492,7 +1492,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see status in Progress-bar is "Closed" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @342506 @ValidateAnnouncementthatanyuserwillnotseeUndobuttonwhenAnnouncementrecordisinClosedstate @Sprint-13-US-331643 @vaibhav @Undo @TBE
+  @342506 @ValidateAnnouncementthatanyuserwillnotseeUndobuttonwhenAnnouncementrecordisinClosedstate @Sprint-13-US-331643 @vaibhav @Undo
   Scenario: Validate Announcement that any user will not see Undo button when Announcement record is in Closed state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
