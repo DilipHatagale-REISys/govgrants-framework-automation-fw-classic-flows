@@ -18741,7 +18741,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @204089 @ValidateEXEuserFinalDecisionstatusofallapplicationsshouldbeCancelledwhenuserrejectFDMwhileapprovalevenifpreviousapplicationsareinApprovedPendingstateforNonrecommendedApplication @Sprint-08-US-202799 @vaibhav @TBE
+  @vai @204089 @ValidateEXEuserFinalDecisionstatusofallapplicationsshouldbeCancelledwhenuserrejectFDMwhileapprovalevenifpreviousapplicationsareinApprovedPendingstateforNonrecommendedApplication @Sprint-08-US-202799 @vaibhav @TBE
   Scenario Outline: Validate EXE user 'Final Decision' status of all applications should be 'Cancelled' when user reject FDM while approval even if previous applications are in 'Approved''Pending' state for Non-recommended Application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-<Filter>"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -18761,8 +18761,6 @@ Feature: Validate all scenarios in the Application Review without background
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     And I save the value from row "1" for column name "EGMS ID" as "AppEgmdId" from flex table "---applicationReview:-:appTableId---"
-    And I save the value from row "2" for column name "EGMS ID" as "AppEGMSID1" from flex table "---applicationReview:-:appTableId---"
-    And I save the value from row "3" for column name "EGMS ID" as "AppEGMSID2" from flex table "---applicationReview:-:appTableId---"
     When I perform quick search for "<Announcement Name>" in "---applicationReview:-:appTableId---" panel
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
@@ -18917,6 +18915,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    And I save the value from row "2" for column name "EGMS ID" as "AppEGMSID1" from flex table "---applicationReview:-:appTableId---"
     When I perform quick search for "{SavedValue:AppEGMSID1}" in "---applicationReview:-:appTableId---" panel
     When I check "{SavedValue:AppEGMSID1}" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
@@ -19052,6 +19051,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    And I save the value from row "3" for column name "EGMS ID" as "AppEGMSID2" from flex table "---applicationReview:-:appTableId---"
     When I perform quick search for "{SavedValue:AppEGMSID2}" in "---applicationReview:-:appTableId---" panel
     When I check "{SavedValue:AppEGMSID2}" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
