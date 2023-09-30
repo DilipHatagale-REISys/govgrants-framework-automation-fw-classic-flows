@@ -4695,7 +4695,7 @@ Feature: Amendment Request scenarios with Undo
     And I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     Then I see only the following ordered radio buttons in the approval decision :
-      | Approve | Reject | Send back | Forward |
+      | Approve | Reject | Forward | Send to Owner |
     When I select radio button "Forward" in the approval decision
     And I submit the approval in the approval decision
     Then I can see the message "Comments are Required." in the approval decision
