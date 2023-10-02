@@ -28,6 +28,13 @@ public final class GovGrantsProductSteps {
         ggProductObjects.iSavedSpecificValueFromFlexTableInsideGivenKey(columnValueFromRow, columnName, key, flexTableId);
     }
 
+    @Description("To save the link values of specific column of table")
+    @And("I save the link value from row {string} for column name {string} as {string} from flex table {string}")
+    public void iSaveTheLinkValueFromRowForColumnNameAsFromFlexTable(String columnValueFromRow, String columnName, String key, String flexTableId) {
+        ggProductObjects.iSavedSpecificLinkValueFromFlexTableInsideGivenKey(columnValueFromRow, columnName, key, flexTableId);
+
+    }
+
     @Description("To assert if the given value is present in the flextable")
     @Then("^I (see|softly see) that \"([^\"]*)\" has been added in flextable with Id \"([^\"]*)\"$")
     public void assertColumnOnTable(String usage, String columnUniqueValue, String flextableId) {

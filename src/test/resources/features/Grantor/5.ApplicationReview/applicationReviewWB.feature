@@ -18755,9 +18755,9 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    And I save the value from row "1" for column name "EGMS ID" as "AppEgmdId" from flex table "---applicationReview:-:applicationAssignTableId---"
-    And I save the value from row "2" for column name "EGMS ID" as "AppEGMSID1" from flex table "---applicationReview:-:applicationAssignTableId---"
-    And I save the value from row "3" for column name "EGMS ID" as "AppEGMSID2" from flex table "---applicationReview:-:applicationAssignTableId---"
+    And I save the link value from row "1" for column name "EGMS ID" as "AppEgmdId" from flex table "---applicationReview:-:applicationAssignTableId---"
+    And I save the link value from row "2" for column name "EGMS ID" as "AppEGMSID1" from flex table "---applicationReview:-:applicationAssignTableId---"
+    And I save the link value from row "3" for column name "EGMS ID" as "AppEGMSID2" from flex table "---applicationReview:-:applicationAssignTableId---"
     When I perform quick search for "<Announcement Name>" in "---applicationReview:-:appTableId---" panel
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
