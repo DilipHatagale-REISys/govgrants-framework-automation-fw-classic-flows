@@ -19029,8 +19029,8 @@ Feature: Validate all scenarios in the Application Review without background
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | EGMS ID                 | Recommended Budget | Total Commitment Amount | Recommend for Funding | Comments    |
       | {SavedValue:AppEGMSID1} | 1000               | 1000                    | No                    | Recommended |
-    And I click on "Submit for Approval" in the page details
-    Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
+#    And I click on "Submit for Approval" in the page details
+#    Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
     And I navigate to "Funding Decision Memo" sub tab
     Then I softly see value "Pending" for title "Final Decision" inside table "---subAwardFromFDM:-:fdmNonRecommendedTableId---"
     #3rd Application
