@@ -19012,7 +19012,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I check "{SavedValue:AppEGMSID1}" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Funding Decision Memo" in the page details
-    Then I softly see field "Status" as "Created"
+    Then I softly see field "Status" as "Approved"
     And I navigate to "Funding Decision Memo" sub tab
     And I click on "Edit" in the page details
     When I enter values into fields
@@ -19023,8 +19023,8 @@ Feature: Validate all scenarios in the Application Review without background
     And I wait for "5" seconds
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
-      | Name                         | FDM    |
-      | {SavedValue:<User> Username} | Step 1 |
+      | Name                     | FDM    |
+      | {SavedValue:FO Username} | Step 1 |
     And I navigate to "Funding Decision Memo" sub tab
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | EGMS ID                 | Recommended Budget | Total Commitment Amount | Recommend for Funding | Comments    |
@@ -19147,7 +19147,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I check "{SavedValue:AppEGMSID2}" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Funding Decision Memo" in the page details
-    Then I softly see field "Status" as "Created"
+    Then I softly see field "Status" as "Submitted for Approval"
     And I navigate to "Funding Decision Memo" sub tab
     And I click on "Edit" in the page details
     When I enter values into fields
@@ -20152,7 +20152,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I check "{SavedValue:AppEGMSID1}" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Funding Decision Memo" in the page details
-    Then I softly see field "Status" as "Created"
+    Then I softly see field "Status" as "Approved"
     And I navigate to "Funding Decision Memo" sub tab
     And I click on "Edit" in the page details
     When I enter values into fields
@@ -20163,8 +20163,8 @@ Feature: Validate all scenarios in the Application Review without background
     And I wait for "5" seconds
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
-      | Name                         | FDM    |
-      | {SavedValue:<User> Username} | Step 1 |
+      | Name                     | FDM    |
+      | {SavedValue:FO Username} | Step 1 |
     And I navigate to "Funding Decision Memo" sub tab
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | EGMS ID                 | Recommended Budget | Total Commitment Amount | Recommend for Funding | Comments    |
@@ -20281,7 +20281,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I check "{SavedValue:AppEGMSID2}" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Funding Decision Memo" in the page details
-    Then I softly see field "Status" as "Created"
+    Then I softly see field "Status" as "Submitted for Approval"
     And I navigate to "Funding Decision Memo" sub tab
     And I click on "Edit" in the page details
     When I enter values into fields
