@@ -20654,6 +20654,12 @@ Feature: Validate all scenarios in the Application Review without background
     And I navigate to "Funding Decision Memo" sub tab
     Then I softly see value "Approved" for title "Final Decision" inside table "---subAwardFromFDM:-:recommendedAppTableId---"
     When I click on "Initiate Negotiation" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "ApplicationSectionsForRevision__c"
+    When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Negotiation Initiated"
     #2nd Application
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
