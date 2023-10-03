@@ -2026,7 +2026,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     Then I softly see field "Status" as "Submitted for Approval"
     And I "Approve" in the approval decision
-    Then I can see top right button "Undo" in page detail
+    Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2034,7 +2034,7 @@ Feature: Validate all scenarios in Desk Review with Undo
     And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     Then I softly see field "Status" as "Submitted for Approval"
     And I "Approve" in the approval decision
-    Then I can see top right button "Undo" in page detail
+    Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
