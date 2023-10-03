@@ -1536,7 +1536,7 @@ Feature: Amendment Request scenarios with Undo
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Reject | Forward | Send to Owner |
     When I select radio button "Forward" in the approval decision
-    And I select user "{SavedValue:FD Username}" in the approval decision
+    And I select user "{SavedValue:EXE1 Username}" in the approval decision
     When I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I cannot see top right button "Undo" in page detail
@@ -1546,7 +1546,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see value "Step 2" for title "Amendment Request" against the value "Automation EXE" inside table "---amendment:-:approversTableId---"
     Then I softly see value "Step 3" for title "Amendment Request" against the value "Automation FO" inside table "---amendment:-:approversTableId---"
     Then I softly see value "Step 4" for title "Amendment Request" against the value "Automation PM" inside table "---amendment:-:approversTableId---"
-    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:SOWAMENDMENTREQUEST}" in "---amendment:-:pendingTaskTableId---" panel
@@ -1564,14 +1564,14 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Submitted for Approval"
     And I navigate to "Home" tab
     When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
-    When I reassign task to "Automation FD1"
+    When I reassign task to "Automation EXE"
     When I perform quick search for "{SavedValue:SOWAMENDMENTREQUEST}" in "---program:-:grantorTaskReassignTableId---" panel
     When I check "{SavedValue:SOWAMENDMENTREQUEST}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:SOWAMENDMENTREQUEST}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:SOWAMENDMENTREQUEST}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
-    When I re-login to "As a Grantor" app as "FD1" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:SOWAMENDMENTREQUEST}" in "---amendment:-:pendingTaskTableId---" panel
@@ -1697,11 +1697,11 @@ Feature: Amendment Request scenarios with Undo
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Reject | Forward | Send to Owner |
     When I select radio button "Forward" in the approval decision
-    And I select user "{SavedValue:FD1 Username}" in the approval decision
+    And I select user "{SavedValue:EXE1 Username}" in the approval decision
     When I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I cannot see top right button "Undo" in page detail
-    When I re-login to "As a Grantor" app as "FD1" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:SOWAMENDMENTREQUEST}" in "---amendment:-:pendingTaskTableId---" panel
