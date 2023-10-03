@@ -20659,6 +20659,8 @@ Feature: Validate all scenarios in the Application Review without background
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
+    And I wait for "5" seconds
+    And I refresh the page
     Then I softly see field "Status" as "Negotiation Initiated"
     #2nd Application
     When I navigate to "Applications" tab
@@ -20789,7 +20791,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
     When I "Reject" in the approval decision
-    Then I see the following messages in the page details contains:
+    Then I softly see the following messages in the page details contains:
       | Rejection of the FDM is not allowed because one or more applications in the FDM are undergoing negotiations. |
     #204098
     When I select radio button "Forward" in the approval decision
