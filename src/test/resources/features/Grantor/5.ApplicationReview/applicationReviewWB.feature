@@ -20461,7 +20461,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     #204106
-    Then I softly see confirmation box with body "Rejecting the FDM will update the 'Final Decision' for all applications in this FDM to 'Cancelled' and the system will not allow you to award any recommended applications in the FDM. Are you sure you wish to continue?" is displayed
+    Then I see confirmation box with body "Rejecting the FDM will update the 'Final Decision' for all applications in this FDM to 'Cancelled' and the system will not allow you to award any recommended applications in the FDM. Are you sure you wish to continue?" is displayed
     Then I softly see button "Continue" on confirmation pop-up
     Then I softly see button "Cancel" on confirmation pop-up
     And I click "Continue" on modal confirmation box
@@ -20771,7 +20771,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
     And I wait for "5" seconds
-    And I save the field labeled "EGMS ID" as "EGMSID"
+    And I save the field labeled "Announcement EGMS ID" as "EGMSID"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
       | Name                     | FDM    |
@@ -20783,7 +20783,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
     When I "Reject" in the approval decision
-    Then I softly see the following messages in the page details contains:
+    Then I see the following messages in the page details contains:
       | Rejection of the FDM is not allowed because one or more applications in the FDM are undergoing negotiations. |
     #204098
     When I select radio button "Forward" in the approval decision
@@ -20803,7 +20803,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                            | Filter              | User |
       | {SavedValue:Automation Runtime Announcement} | Automation EXE user | EXE  |
 
-  @204088 @ValidatePMuserFinalDecisionshouldbepresentbeforetheApplicantNotifiedcolumninrecommendedNonrecommendedsectiononFDM @Sprint-08-US-202799 @vaibhav @TBE
+  @204088 @ValidatePMuserFinalDecisionshouldbepresentbeforetheApplicantNotifiedcolumninrecommendedNonrecommendedsectiononFDM @Sprint-08-US-202799 @vaibhav
   Scenario Outline: Validate PM user "Final Decision" should be present before the Applicant Notified column in recommended Non-recommended section on FDM
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-<Filter>"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -21059,7 +21059,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I check "{SavedValue:AppEGMSID1}" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Funding Decision Memo" in the page details
-    Then I softly see field "Status" as "Approved"
+    Then I softly see field "Status" as "Created"
     And I navigate to "Funding Decision Memo" sub tab
     And I click on "Edit" in the page details
     When I enter values into fields
@@ -21084,7 +21084,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                            | Filter             | User |
       | {SavedValue:Automation Runtime Announcement} | Automation PM user | PM   |
 
-  @204103 @ValidatePMusershouldnotabletoeditingnegotiationconvertingtoawardonApplicationwhenFinaldecisionstatusisCancelled @TBE
+  @204103 @ValidatePMusershouldnotabletoeditingnegotiationconvertingtoawardonApplicationwhenFinaldecisionstatusisCancelled
   Scenario Outline: Validate PM user should not able to editing, negotiation, converting to award on Application when Final decision status is 'Cancelled'
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-<Filter>"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -21233,13 +21233,7 @@ Feature: Validate all scenarios in the Application Review without background
       | <Announcement Name> | 1000               | 1000                    | Yes                   | Recommended |
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
-    When I select radio button "Reject" in the approval decision
-    When I enter comment "Automation testing" in the approval decision
-    And I submit the approval in the approval decision without processing
-    Then I softly see confirmation box with body "Rejecting the FDM will update the 'Final Decision' for all applications in this FDM to 'Cancelled' and the system will not allow you to award any recommended applications in the FDM. Are you sure you wish to continue?" is displayed
-    Then I softly see button "Continue" on confirmation pop-up
-    Then I softly see button "Cancel" on confirmation pop-up
-    And I click "Continue" on modal confirmation box
+    And I "Reject" in the approval decision
     And I wait for "3" seconds
     Then I softly see field "Status" as "Rejected"
     And I navigate to "Funding Decision Memo" sub tab
@@ -21258,17 +21252,14 @@ Feature: Validate all scenarios in the Application Review without background
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
-    And I navigate to "Applications" content inside "Applications" subheader on left panel
-    When I click toggle button to select "Applications - All"
-    And I perform quick search for "<Announcement Name>"
-    When I click on "View" icon for "<Announcement Name>" inside table
-    And I save the field labeled "EGMS ID" as "AppEgmdId"
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    And I save the link value from row "1" for column name "EGMS ID" as "AppEgmdId" from flex table "---applicationReview:-:appTableId---"
+    And I save the link value from row "2" for column name "EGMS ID" as "AppEGMSID1" from flex table "---applicationReview:-:appTableId---"
     When I perform quick search for "<Announcement Name>" in "---applicationReview:-:appTableId---" panel
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
@@ -21409,7 +21400,6 @@ Feature: Validate all scenarios in the Application Review without background
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
     Then I softly see value "Cancelled" for title "Final Decision" against the value "{SavedValue:AppEgmdId}" inside table "---subAwardFromFDM:-:fdmNonRecommendedTableId---"
     #2nd Application
-    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
@@ -21417,7 +21407,6 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    And I save the value from row "1" for column name "EGMS ID" as "AppEGMSID1" from flex table "---applicationReview:-:appTableId---"
     When I perform quick search for "{SavedValue:AppEGMSID1}" in "---applicationReview:-:appTableId---" panel
     When I check "{SavedValue:AppEGMSID1}" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
