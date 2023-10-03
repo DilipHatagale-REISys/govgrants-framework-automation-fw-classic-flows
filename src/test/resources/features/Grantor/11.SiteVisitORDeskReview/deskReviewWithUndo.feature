@@ -2012,14 +2012,12 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I cannot see top right button "Undo" in page detail
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Name                     | Desk Review |
-      | {SavedValue:PO Username} | Step 1      |
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Name                      | Desk Review |
       | {SavedValue:PM Username}  | Step 2      |
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Name                      | Desk Review |
       | {SavedValue:FO Username}  | Step 3      |
+    When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
