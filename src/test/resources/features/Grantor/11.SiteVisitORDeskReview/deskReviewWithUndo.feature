@@ -1929,8 +1929,8 @@ Feature: Validate all scenarios in Desk Review with Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @308398 @Verifythebehaviourofundobuttonvisibilitywhendeskreviewownerdynamicallychangepredefinedlaststepapproverfromgrant @sprint-7-US-306815 @hitesh @Undo
-  Scenario:Verify the behaviour of undo button visibility when desk review owner dynamically change predefined last step approver from grant
+  @308408 @Verifythatapproverundobuttonvisibilitywillchangeasperpositionofapproverofdeskreviewlastormiddle @sprint-7-US-306815 @hitesh @Undo
+  Scenario:Verify that approver undo button visibility will change as per position of approver of desk review last or middle
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
