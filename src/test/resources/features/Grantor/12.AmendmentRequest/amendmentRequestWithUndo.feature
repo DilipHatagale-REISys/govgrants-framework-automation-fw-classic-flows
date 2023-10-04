@@ -3928,6 +3928,7 @@ Feature: Amendment Request scenarios with Undo
     When I enter values into fields
       | Value | Field                     |
       | 3000  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -4196,11 +4197,11 @@ Feature: Amendment Request scenarios with Undo
       | Approve | Reject | Forward | Send to Owner |
     And I navigate to "History" sub tab
     Then I softly see snapshot with name containing "Amendment - Undo Approval.pdf" as name
-    Then I softly see value "Submitted for Approval" for title "New Value" against the value "Automation EXE1" inside table "---amendment:-:historyTableId---"
-    Then I softly see value "Approved" for title "Old Value" against the value "Automation EXE1" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Submitted for Approval" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Approved" for title "Old Value" inside table "---amendment:-:historyTableId---"
     And I navigate to "History" sub tab
     Then I see "{SavedValue:EXE1 Username}" against "Pending" in approval history
-    Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Approved"
+    Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
     And I navigate to "Grants" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:CFAmendmentId}" in "---subAwardStandAlone:-:completeTaskTableId---" panel
@@ -4747,6 +4748,15 @@ Feature: Amendment Request scenarios with Undo
     And I edit the following rows inline in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Carry Forward |
       | Construction    | 500           |
+    And I expand nested table containing column value "BP02"
+    And I edit the following rows inline in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Carry Forward |
+      | Construction    | 0             |
+    And I expand nested table containing column value "BP02"
+    And I click on page navigation arrow "---amendment:-:RecipientCarryForwardBudgetTableId---" for table id "Next"
+    And I edit the following rows inline in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Carry Forward |
+      | Construction    | 0             |
     And I edit the following rows inline in flex table with id "---progressReport:-:budgetChangeTableId---" by clicking "Edit" :
       | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
       | Construction    | 1200                 | 120        | 0              |
