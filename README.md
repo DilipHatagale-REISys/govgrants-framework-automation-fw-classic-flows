@@ -85,3 +85,6 @@ Migration Disclaimer
 =======================
 1)After Migration We can use same email id while creating the user 
 2)Added @NotApplicable tag for few test cases that has not applicable please don't execute those test cases
+3)Added @Allocation tag for Allocation Related test cases
+4)Added @Undo tag for undo related test cases
+5)Added @ErrorMessageTimeout tag for few test cases for error messages disappear in fraction of seconds in application review scenarios.
