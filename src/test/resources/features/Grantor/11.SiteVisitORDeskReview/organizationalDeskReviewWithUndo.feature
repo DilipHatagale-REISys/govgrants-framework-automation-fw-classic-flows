@@ -124,11 +124,17 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     Then I see only the following ordered radio buttons in the approval decision :
-      | Approve | Reject | Send back | Forward |
+      | Approve | Send Back | Forward |
     And I "Send Back" in the approval decision
     Then I softly see field "Status" as "In Progress"
     Then I cannot see top right button "Undo" in page detail
     Given I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
+      | Name                      | Desk Review |
+      | {SavedValue:FO Username}  | NA          |
+    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
+      | Name                      | Desk Review |
+      | {SavedValue:PM Username}  | NA          |
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Name                      | Desk Review |
       | {SavedValue:PM Username}  | Step 2     |
