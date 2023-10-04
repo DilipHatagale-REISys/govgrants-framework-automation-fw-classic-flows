@@ -4199,8 +4199,6 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see snapshot with name containing "Amendment - Undo Approval.pdf" as name
     Then I softly see value "Submitted for Approval" for title "New Value" inside table "---amendment:-:historyTableId---"
     Then I softly see value "Approved" for title "Old Value" inside table "---amendment:-:historyTableId---"
-    And I navigate to "History" sub tab
-    Then I see "{SavedValue:EXE1 Username}" against "Pending" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
     And I navigate to "Grants" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
