@@ -141,6 +141,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:FO Username}  | Step 3      |
+    When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
