@@ -166,4 +166,4 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     Then I softly see field "Status" as "Submitted for Approval"
     And I "Approve" in the approval decision
-    Then I cannot see top right button "Undo" in page detail
+    Then I can see top right button "Undo" in page detail
