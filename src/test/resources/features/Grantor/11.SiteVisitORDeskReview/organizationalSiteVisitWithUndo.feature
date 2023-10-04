@@ -1359,8 +1359,6 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I pause execution for "5" seconds
     And I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I "Approve" in the approval decision
-    And I pause execution for "5" seconds
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
     And I navigate to "Home" tab
