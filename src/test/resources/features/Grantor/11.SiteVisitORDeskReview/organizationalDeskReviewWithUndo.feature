@@ -46,7 +46,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I can see top right button "Undo" in page detail
     And I navigate to "Home" tab
     And I select "Site Visits / Desk Reviews" from dropdown for Global search
-    And I perform quick search inside global search "{SavedValue:DeskReview}"
+    And I perform quick search inside global search "{SavedValue:DeskReviewID}"
     And I perform quick search for "{SavedValue:DeskReviewID}" in "SiteVisit__c" panel
     Then I softly cannot see row level action button "Undo" against "{SavedValue:DeskReviewID}" in flex table with id "SiteVisit__c"
     And I navigate to "Monitoring" tab

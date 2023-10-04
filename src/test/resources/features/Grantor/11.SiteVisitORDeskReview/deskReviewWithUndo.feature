@@ -1818,7 +1818,6 @@ Feature: Validate all scenarios in Desk Review with Undo
     Thank you.
     The EGMS Team
     """
-
   @308182 @VerifyIfOwnerandlaststepapproverofDeskReviewaresameandDeskReviewisApprovedandtheOwnershipReassignmentofDeskReviewischangedinthisstatewillnewOwnerSeeUNDObutton @sprint-7-US-306815 @hitesh @Undo
   Scenario: Verify If Owner and last step approver of Desk Review are same and Desk Review is Approved and the Ownership Reassignment of Desk Review is changed in this state will new Owner See UNDO button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant_Focus_Area"
@@ -1922,14 +1921,14 @@ Feature: Validate all scenarios in Desk Review with Undo
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I softly see status in Progress-bar is "Approved" and is "green"
-    Then I can see top right button "Undo" in page detail
+    Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I softly see status in Progress-bar is "Approved" and is "green"
-    Then I cannot see top right button "Undo" in page detail
+    Then I can see top right button "Undo" in page detail
 
   @308408 @Verifythatapproverundobuttonvisibilitywillchangeasperpositionofapproverofdeskreviewlastormiddle @sprint-7-US-306815 @hitesh @Undo
   Scenario:Verify that approver undo button visibility will change as per position of approver of desk review last or middle
@@ -2118,4 +2117,3 @@ Feature: Validate all scenarios in Desk Review with Undo
     Given I navigate to "Management" sub tab
     And I perform quick search for "{SavedValue:DeskReview}" in "GrantorDeskReviewAward" panel
     Then I softly cannot see row level action button "Undo" against "{SavedValue:DeskReview}" in flex table with id "GrantorDeskReviewAward"
-
