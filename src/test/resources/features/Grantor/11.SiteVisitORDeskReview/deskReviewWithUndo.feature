@@ -2154,7 +2154,7 @@ Feature: Validate all scenarios in Desk Review with Undo
       | {SavedValue:PM Username}  | NA          |
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Name                      | Desk Review |
-      | {SavedValue:EXE Username} | NA          |
+      | {SavedValue:PO Username}  | NA          |
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Name                      | Desk Review |
       | {SavedValue:FO Username}  | NA          |
