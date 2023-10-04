@@ -131,14 +131,14 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Name                      | Desk Review |
-      | {SavedValue:FO Username}  | NA          |
+      | {SavedValue:PM Username}  | NA          |
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Name                      | Desk Review |
-      | {SavedValue:PM Username}  | NA          |
-    And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | {SavedValue:FO Username}  | NA          |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:PM Username}  | Step 2     |
-    And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:FO Username}  | Step 3      |
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"

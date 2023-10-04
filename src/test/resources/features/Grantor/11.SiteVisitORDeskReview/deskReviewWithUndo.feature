@@ -2017,10 +2017,10 @@ Feature: Validate all scenarios in Desk Review with Undo
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Name                      | Desk Review |
       | {SavedValue:PM Username}  | NA          |
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:PM Username}  | Step 2      |
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:FO Username}  | Step 3      |
     When I click on "Submit for Approval" in the page details
