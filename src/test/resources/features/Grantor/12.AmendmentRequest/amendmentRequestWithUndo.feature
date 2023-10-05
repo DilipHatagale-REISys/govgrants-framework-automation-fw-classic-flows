@@ -3859,7 +3859,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @329507 @ValidateFCthatapprovaltaskandemailisgeneratedtolaststepapproveronclickofundobuttonbyLastApprover @Sprint-13-US-331643 @vaibhav @Undo @TBE
+  @329507 @ValidateFCthatapprovaltaskandemailisgeneratedtolaststepapproveronclickofundobuttonbyLastApprover @Sprint-13-US-331643 @vaibhav @Undo
   Scenario: Validate FC that approval task and email is generated to last step approver on click of undo button by Last Approver
     And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -4003,7 +4003,7 @@ Feature: Amendment Request scenarios with Undo
     The EGMS Team
     """
 
-  @325565 @ValidateCArryFwdthebehaviorifForwardedapproverapprovesARandclicksonundoButton @Sprint-13-US-331643 @vaibhav @Undo @TBE
+  @325565 @ValidateCArryFwdthebehaviorifForwardedapproverapprovesARandclicksonundoButton @Sprint-13-US-331643 @vaibhav @Undo
   Scenario: Validate CArry Fwd the behavior if Forwarded approver approves AR and clicks on undo Button
     And I activated standalone subaward "Automation Runtime award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -4489,7 +4489,7 @@ Feature: Amendment Request scenarios with Undo
     #342732
     Then I cannot see top right button "Undo" in page detail
 
-  @325583 @ValidateCarryForwrdthatUndobuttonisavailabletocarryForwardamendmentonBPO2andBP03award @Sprint-13-US-331643 @vaibhav @Undo @TBE
+  @325583 @ValidateCarryForwrdthatUndobuttonisavailabletocarryForwardamendmentonBPO2andBP03award @Sprint-13-US-331643 @vaibhav @Undo
   Scenario: Validate Carry Forwrd that Undo button is available to carry Forward amendment on BPO2 and BP03 award
     And I activated standalone subaward "Automation Runtime award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
