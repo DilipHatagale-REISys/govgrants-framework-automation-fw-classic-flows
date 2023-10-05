@@ -103,7 +103,7 @@ public class UsersAndURL implements UsersController {
                 password = "Salesforce@2031";
                 break;
             case "SPI3":
-                password = "Salesforce@2031";
+                password = "Salesforce@2032";
                 break;
             case "IND":
                 password = "Salesforce@2031";

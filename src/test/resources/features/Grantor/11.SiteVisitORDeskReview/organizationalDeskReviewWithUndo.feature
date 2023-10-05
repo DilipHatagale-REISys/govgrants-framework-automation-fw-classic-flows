@@ -1,7 +1,7 @@
 @organizationalDeskReviewWB @grantor-regression @grantor-parallel-regression @siteVisit @regression
 Feature: Validate all scenarios in Organizational Desk Review Without Undo
 
-  @308889 @ODR-VerifythatUNDOiconorbuttonisnotavailableontheactionbuttonsofOrganizationDeskreviewrecordontablethatispresentonsidebarorphaselevelorthatonOrganization @sprint-7-US-306815 @hitesh @Undo
+  @308889 @310988 @ODR-VerifythatUNDOiconorbuttonisnotavailableontheactionbuttonsofOrganizationDeskreviewrecordontablethatispresentonsidebarorphaselevelorthatonOrganization @sprint-7-US-306815 @hitesh @Undo
   Scenario:ODR-Verify that UNDO icon or button is not  available on the action buttons of Organization Desk review record on table that is present on side bar or phase level or that on Organization
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -24,6 +24,9 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I click on "Notify" in the page details
     And I click on "Conduct" in the page details
+    Then I softly see status in Progress-bar is "In Progress" and is "green"
+    #310988
+    Then I cannot see top right button "Undo" in page detail
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
@@ -41,7 +44,6 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     When I click on "Submit for Approval" in the page details
     And I pause execution for "5" seconds
     And I "Approve" in the approval decision
-    And I pause execution for "5" seconds
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
     And I navigate to "Home" tab
@@ -54,7 +56,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     When I perform quick search for "{SavedValue:DeskReviewID}" in "---deskreview:-:deskReviewGridViewTableId---" panel
     Then I softly cannot see row level action button "Undo" against "{SavedValue:DeskReviewID}" in flex table with id "---deskreview:-:deskReviewGridViewTableId---"
 
-  @308898 @ODRVerifythatapproverundobuttonvisibilitywillchangeasperpositionofapproverofOrgdeskreviewlastormiddle @sprint-7-US-306815 @hitesh @Undo
+  @308898 @310989 @ODRVerifythatapproverundobuttonvisibilitywillchangeasperpositionofapproverofOrgdeskreviewlastormiddle @sprint-7-US-306815 @hitesh @Undo
   Scenario:ODR-Verify that approver undo button visibility will change as per position of approver of Org desk review last or middle
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -127,6 +129,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
       | Approve | Send Back | Forward |
     And I "Send Back" in the approval decision
     Then I softly see field "Status" as "In Progress"
+    #310989
     Then I cannot see top right button "Undo" in page detail
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
