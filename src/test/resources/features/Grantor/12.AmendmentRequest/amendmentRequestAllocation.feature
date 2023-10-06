@@ -14,6 +14,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
     When I click on "Edit" in the page details
@@ -82,7 +83,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Grant Name                            |
       | {SavedValue:Automation Runtime Award} |
 
-  @57364 @verifyAdvancePRCreatedAtRevisedAmendmentSubaward @jitendra @Execution
+  @57364 @verifyAdvancePRCreatedAtRevisedAmendmentSubaward @jitendra
   Scenario: Verify user can submit Advance Payment request to grantor after Budget Period Change Amendment is done on Subaward.
     Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST_ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -265,6 +266,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
     When I click on "Edit" in the page details
@@ -395,6 +397,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Extra Salary | The narrative | 2000         |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
+    Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -527,6 +530,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 1200  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
@@ -640,8 +644,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly cannot see field "Requested Change in Budget" inside page block
     When I click on "Edit" in the page details
     Then I softly see that "New Obligation" rendered in view mode only
-    And I click on "Save" in the page details
     And I wait for "3" seconds
+    And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                           | New Obligation |
       | Automation Permanent Focus Area | 500            |
@@ -691,6 +695,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Overview" sub tab
     And I click on "Edit" in the page details
     Then I softly see that "Budgeted Amount" rendered in view mode only
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     Then I softly see value "$1,000.00" for title "Revised Award Amount" against the value "Construction" inside table "---amendment:-:grantorBudgetChangeTableId---"
     And I click on page navigation arrow "---amendment:-:grantorBudgetChangeTableId---" for table id "Next"
@@ -906,6 +911,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 500   | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                           | New Obligation |
@@ -931,6 +937,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 4100  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
@@ -1377,6 +1384,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 4100  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                           | New Obligation |
@@ -1524,6 +1532,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value                       | Field                              |
       | Automation Test Description | fieldFundingChangeJustification__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
@@ -1564,6 +1573,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 4100  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -1626,6 +1636,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 4100  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -1990,7 +2001,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | SPI3 |
       | SPA  |
 
-  @249607 @ValidateINDusercanseeCurrentCommitmentfieldvalueonamendmentispopulatedfromTotalcommitmentfielofthepreviousaward @sprint-18-US-241042 @vaibhav @Allocation @Execution
+  @249607 @ValidateINDusercanseeCurrentCommitmentfieldvalueonamendmentispopulatedfromTotalcommitmentfielofthepreviousaward @sprint-18-US-241042 @vaibhav @Allocation
   Scenario: Validate IND user can see Current Commitment field value on amendment is populated from Total commitment field of the previous award
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SUBRECIPIENT_ORG_IND_USER-Automation PM user" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "FD" user
@@ -2287,6 +2298,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 3000  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -2719,7 +2731,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I see field "Cumulative Obligation" as "$3,000.00"
     Then I softly see value "{SavedValue:Encumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligation}"
 
-  @249894 @ValidatePOusercannotseeFocusreaonthenewAwardiftheinitialAwardisfromFDMandvalueforNewObligationandcumulativeobligationisZeroforparticularFocusArea @sprint-18-US-246081 @vaibhav @Allocation @Execution
+  @249894 @ValidatePOusercannotseeFocusreaonthenewAwardiftheinitialAwardisfromFDMandvalueforNewObligationandcumulativeobligationisZeroforparticularFocusArea @sprint-18-US-246081 @vaibhav @Allocation
   Scenario: Validate PO user cannot see a Focus area on the new Award if the initial Award is from FDM and value for New Obligation and cumulative obligation is Zero for a particular Focus Area
     Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "SECOND_FOCUS_AREA_BY_APPLICANT_FOCUS_AREA_RISK_ASS_NO-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -3017,6 +3029,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value                       | Field                              |
       | Automation Test Description | fieldFundingChangeJustification__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
@@ -3049,6 +3062,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 3000  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -3339,6 +3353,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #253663
     When I click on "Edit" in the page details
     Then I softly see that "Revised Commitment" rendered in view mode only
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I refresh the page
     #253669
@@ -3378,7 +3393,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
 
-  @254002 @254198 @253628 @253634 @253642 @253647 @254194 @254207 @ValidateFundingChangethatEXEusercanseevalidationastheTotalRevisedObligationmustbeequaltotheRevisedEncumbranceFANo @sprint-18-US-242373-247642 @vaibhav @Allocation @Execution
+  @254002 @254198 @253628 @253634 @253642 @253647 @254194 @254207 @ValidateFundingChangethatEXEusercanseevalidationastheTotalRevisedObligationmustbeequaltotheRevisedEncumbranceFANo @sprint-18-US-242373-247642 @vaibhav @Allocation
   Scenario: Validate Funding Change that EXE user can see validation as the Total Revised Obligation must be equal to the Revised Encumbrance (FA No)
     And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation EXE user" of type "Formula_By_Applicant_Focus_Area_No"
     When I login to "As a Grantor" app as "EXE" user
@@ -3552,6 +3567,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Value                       | Field                              |
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 2000                        | fieldRequestedChangeInBudget__c    |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
     And I refresh the page
@@ -3587,6 +3603,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Value | Field                           |
       | 500   | fieldRevisedCommitment__c       |
       | -1000 | fieldRequestedChangeInBudget__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -5126,6 +5143,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Value                       | Field                              |
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 2000                        | fieldRequestedChangeInBudget__c    |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
     And I refresh the page
@@ -5160,6 +5178,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 3000  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -6514,6 +6533,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Budgeted Amount" rendered in view mode only
     Then I softly see that "Current Commitment" rendered in view mode only
     Then I softly see that "Revised Commitment" rendered in view mode only
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     #254290
     Then I softly see field "Current Obligation" as "$1,000.00"
@@ -6536,6 +6556,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #254296
     When I click on "Edit" in the page details
     Then I softly see that "Revised Commitment" rendered in view mode only
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     Then I softly see field "Revised Commitment" as "$3,000.00"
     #254297
@@ -9824,7 +9845,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | You cannot delete this Focus Area as the Budgeted Amount is not zero. |
 
-  @258487 @258508 @258515 @258516 @258539 @ValidateINDusercanseeNewObligationfieldasreadyonlyfieldwhenPeriodicRenewalamendmentrequestinSendtoSubrecipientstateFAYES @sprint-19-US-250556 @vaibhav @Allocation @Execution
+  @258487 @258508 @258515 @258516 @258539 @ValidateINDusercanseeNewObligationfieldasreadyonlyfieldwhenPeriodicRenewalamendmentrequestinSendtoSubrecipientstateFAYES @sprint-19-US-250556 @vaibhav @Allocation
   Scenario: Validate IND user can see New Obligation field as ready only field when Periodic Renewal amendment request in Send to Subrecipient state(FA=YES)
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default-Automation IND user"
@@ -10215,6 +10236,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Value                       | Field                              |
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 2000                        | fieldRequestedChangeInBudget__c    |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
     When I click on top right button "Associate" in flex table with id "---amendment:-:projectAreasTableId---"
@@ -10252,6 +10274,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 3000  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -10428,6 +10451,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value                       | Field                              |
       | Automation Test Description | fieldFundingChangeJustification__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
@@ -10468,6 +10492,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 3000  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Revised Encumbrance |
@@ -11372,6 +11397,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Value | Field                           |
       | 2000  | fieldRequestedChangeInBudget__c |
       | 4000  | fieldRevisedCommitment__c       |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "PeriodicID"
     And I refresh the page
@@ -11958,10 +11984,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     And I click in table hyperlink containing value "{SavedValue:FundingAccount2}"
     Then I see the header is "Funding Account" in the page details
-    Then I softly see field "Pre-Encumbrance" as "$0.00"
-    Then I softly see field "Encumbrance" as "$10,000.00" in "Financials" pageblock
+    Then I softly see field "Pre-Encumbrance" as "$4,000.00"
+    Then I softly see field "Encumbrance" as "$26,000.00" in "Financials" pageblock
     Then I softly see field "Spent" as "$0.00"
-    Then I softly see field "Total Obligation" as "$10,000.00"
+    Then I softly see field "Total Obligation" as "$30,000.00"
     Then I softly see field "Available Balance" as "$990,000.00"
     Then I softly see field "Appropriation Amount" as "$1,000,000.00"
     And I switch to parent tab
@@ -12119,6 +12145,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 4000  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     Then I softly see field "Revised Commitment" as "$4,000.00"
     #256632
@@ -12126,12 +12153,14 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value                | Field                     |
       | 20000000000000000.30 | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     Then I softly see the following messages in the page details contains:
       | Revised Commitment : Number is too large. |
     When I enter values into fields
       | Value | Field                     |
       | 4000  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "SOWAMENDMENTREQUEST"
     And I get the "EGMS ID"
@@ -12268,6 +12297,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | 5000  | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     Then I softly see field "Revised Commitment" as "$5,000.00"
     When I click on "Edit" in the page details
@@ -12283,6 +12313,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter values into fields
       | Value | Field                     |
       | -1000 | fieldRevisedCommitment__c |
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     Then I softly see field "Revised Commitment" as "($1,000.00)"
     And I wait for "9" seconds
@@ -14460,7 +14491,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Cumulative Obligation" as "$2,000.00"
     Then I softly see value "{SavedValue:RevisedEncumbrance}" is "Equals to" the value "{SavedValue:CumulativeObligation3}"
 
-  @257448 @257461 @257667 @257691 @257797 @257800 @257479 @ValidateusershouldabletoseeNewObligationissimilarasAwardBudgetthisPeriodincreatedstateofPeriodicRenewalrequestFAYes @sprint-19-US-242374 @vaibhav @Allocation @Execution
+  @257448 @257461 @257667 @257691 @257797 @257800 @257479 @ValidateusershouldabletoseeNewObligationissimilarasAwardBudgetthisPeriodincreatedstateofPeriodicRenewalrequestFAYes @sprint-19-US-242374 @vaibhav @Allocation
   Scenario: Validate user should able to see New Obligation is similar as Award Budget this Period in created state of Periodic Renewal request (FA Yes)
     Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "SECOND_FOCUS_AREA_BY_APPL_RISK_ASS_NO-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "SECOND_BUDGET_CATEGORY"
@@ -22507,6 +22538,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | 1000  | fieldRequestedChangeInBudget__c |
     #264302
     Then I softly see that "Budgeted Amount" rendered in view mode only
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     Then I softly see field "Budgeted Amount" as "$3,000.00"
     Then I see the following rows under the following headers in table with id "---amendment:-:grantorBudgetChangeTableId---" :
@@ -23383,6 +23415,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #264582
     When I click on "Edit" in the page details
     Then I softly see that "Budgeted Amount" rendered in view mode only
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     Then I softly see field "Budgeted Amount" as "$2,700.00"
     Then I see the following rows under the following headers in table with id "---amendment:-:budgetChangeTableId---" :
@@ -23426,6 +23459,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     #264501
     Then I softly see fields "fieldRequestedChangeInBudget__c" is in edit mode
     And I enter value "900" into field "fieldRequestedChangeInBudget__c"
+    And I wait for "3" seconds
     When I click on "Save" in the page details
     Then I softly see field "Carry Forward Amount" as "$900.00"
     #266219
@@ -24159,7 +24193,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
     Then I softly see "Total Awarded amount across budget periods" shown as help text
 
-  @265034 @ValidatePMusercannotseeFocusareaonthenewAwardiftheinitialAwardisfromFDMandvalueforNewObligationandspentisZeroforparticularFocusArea @sprint-20-US-263390 @vaibhav @Allocation @Execution
+  @265034 @ValidatePMusercannotseeFocusareaonthenewAwardiftheinitialAwardisfromFDMandvalueforNewObligationandspentisZeroforparticularFocusArea @sprint-20-US-263390 @vaibhav @Allocation
   Scenario: Validate PM user cannot see a Focus area on the new Award if the initial Award is from FDM and value for New Obligation and spent is Zero for a particular Focus Area
     Given I published "Formula" type announcement having name "Automation Runtime Announcement" and properties "THREE_FOCUS_BY_APP_DETAILS_BUDGET_YES_RISK_NO"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CAT_DETAILS_BUD_YES"
