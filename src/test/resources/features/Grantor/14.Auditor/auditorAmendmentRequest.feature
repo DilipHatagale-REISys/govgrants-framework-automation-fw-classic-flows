@@ -16,7 +16,7 @@ Feature: Validate all scenarios for Auditor Profile in Amendment Request module
     And I navigate to "Management" sub tab
     Then I cannot see top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
 
-  @69174 @auditorViewAccessToAmendmentRequest @TBE
+  @69174 @auditorViewAccessToAmendmentRequest
   Scenario: Validate Auditor should have view Amendment Request Record that is created by PM user - Budget Period Change
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user

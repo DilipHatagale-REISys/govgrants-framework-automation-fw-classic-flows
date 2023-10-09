@@ -147,7 +147,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedToMe---"
     Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedByMe---"
 
- @vai @69142 @auditorCannotCreateEditSubrecipientContact @smoke
+  @69142 @auditorCannotCreateEditSubrecipientContact @smoke
   Scenario: Validate Auditor cannot Create/Edit any subrecipient contact user
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Home" tab
@@ -170,7 +170,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
-    Then I softly cannot see top right button "New" in flex table with id "---home:-:internalContactTableId---"
+    Then I softly do not see top right button "New" inside flex table "---home:-:internalContactTableId---"
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel
     Then I softly cannot see row level action button "Edit" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:internalContactTableId---"
 

@@ -1,7 +1,7 @@
 @auditorApplication  @auditorNegotiations @auditor @parallel-regression @regression
 Feature: Validate all scenarios for Auditor Profile in Application Module
 
-  @73805 @auditorCannotViewCreatedStatusPreApplication @TBE
+  @73805 @auditorCannotViewCreatedStatusPreApplication
   Scenario: Validate whether Auditor can view the application that is in Created Status
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
@@ -89,7 +89,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     Then I see status in Progress-bar is "Approved" and is "green"
 
-  @69166 @auditorApplication @smoke @TBE
+  @69166 @auditorApplication @smoke
   Scenario Outline: Validate Auditor should be able to View submitted application details but cannot edit the submitted application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
     Given I am on "SUBPORTAL" portal
@@ -138,7 +138,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
       | Application Name                                         |
       | {SavedValue:Automation Runtime Announcement Application} |
 
-  @69301 @auditorCannotAddAttachmentsAndNotes @TBE
+  @69301 @auditorCannotAddAttachmentsAndNotes
   Scenario Outline: Verify User with Auditor profile has no ability to add attachments and notes.
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Application" and properties "default"
     Given I am on "SUBPORTAL" portal
@@ -186,14 +186,14 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     When I click toggle button to select "Applications - All"
     And I perform quick search for "<Application Name>" in "---auditor:-:applicationTableId---" panel
     When I click on "View" icon for "<Application Name>" inside table
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     Then I softly cannot see top right button "Add Files" in flex table with id "GrantorApplicationFilesgrid"
     Then I softly cannot see top right button "Add" in flex table with id "GrantorApplicationNotesgrid"
     Examples:
       | Application Name                                             | User    |
       | {SavedValue:Automation Runtime Announcement for Application} | Auditor |
 
-  @69941 @69940 @audiorPreApplicationToApplication @TBE
+  @69941 @69940 @audiorPreApplicationToApplication
   Scenario Outline: Validate Auditor should have view / read  only access to submitted pre-application| Validate Auditor should not be  able to Review/Accept/Reject Preapplication
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
@@ -216,7 +216,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
    And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
      | Name                       | Project Role             | Is Key Contact |
      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
-    When I navigate to "Files and Forms" sub tab
+    When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
     And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -252,7 +252,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
       | EGMS ID                                 | Target |
       | Automation Permanent KPI | 10     |
     And I get the "EGMS ID"
-    When I navigate to "Files and Forms" sub tab
+    When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details

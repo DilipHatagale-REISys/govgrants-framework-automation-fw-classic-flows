@@ -213,7 +213,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | User    |
       | AUDITOR |
 
-  @69151 @69153 @auditorViewCannotCreateEditFormsandPackages  @deepika @TBE
+  @69151 @69153 @auditorViewCannotCreateEditFormsandPackages  @deepika
   Scenario Outline: Verify Auditor profile user cannot create a new Forms and Packages |Validate Auditor should have view / read  only access to Forms and Packages|
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
