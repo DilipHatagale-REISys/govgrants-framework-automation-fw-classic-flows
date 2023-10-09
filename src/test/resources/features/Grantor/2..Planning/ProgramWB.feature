@@ -5852,22 +5852,58 @@ Feature: Validate all scenarios for program
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
+      | Title        | Description        |
+      | Notes Record1 | Automation Notes1 |
+    Then I softly see value "Notes Record" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
     And I "Reject" in the approval decision
     And I refresh the page
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
     And I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly see field "Created By" as "{SavedValue:EXE Username}"
-    When I click on "Edit" icon for "Notes Record" inside flex table with id "---program:-:internalProgramNotesTableId---"
-    And I enter value "Notes Record1" into field "Title"
-    And I enter value "Automation Notes1" into field "Body"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    When I click on "Edit" icon for "Notes Record1" inside flex table with id "---program:-:internalProgramNotesTableId---"
+    And I enter value "Notes Record2" into field "Title"
+    And I enter value "Automation Notes2" into field "Body"
     And I click on top right button "Save" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:internalProgramNotesTableId---"
-    And I click on "Delete" icon for "Notes Record1" inside flex table with id "---program:-:internalProgramNotesTableId---" without waiting for record
-    Then I softly see "Notes Record1" inside flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly see value "Notes Record2" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
+    Then I softly see value "Automation Notes2" for title "Description" inside table "---program:-:internalProgramNotesTableId---"
+    And I click on "Delete" icon for "Notes Record2" inside flex table with id "---program:-:internalProgramNotesTableId---" without waiting for record
+    Then I softly see "Notes Record2" inside flex table with id "---program:-:internalProgramNotesTableId---"
 
-
+  @204522 @ValidateAuditorusercantaddeditdeletenotesonaInternalProgram @sprint-7-US-201927 @hitesh @Notes
+  Scenario:Validate Auditor user cant add, edit, delete notes on a Internal Program
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
+    Then I softly see value "Notes Record" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
+    Then I softly see field "Created By" as "{SavedValue:PM Username}"
+    Then I softly see field "Created Date" is getting updated with todays date
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly see field "Created By" as "{SavedValue:PM Username}"
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
 
