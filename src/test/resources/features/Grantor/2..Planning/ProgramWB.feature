@@ -5852,6 +5852,7 @@ Feature: Validate all scenarios for program
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
       | Title        | Description        |
       | Notes Record1 | Automation Notes1 |
