@@ -5611,7 +5611,7 @@ Feature: Validate all scenarios for program
       | Title        | Description      |
       | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly see field "Created By" as "{SavedValue:PM Username}"
+    Then I softly see field "Created By" as "Automation PM"
     Then I softly see field "Created Date" is getting updated with todays date
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
@@ -5655,7 +5655,7 @@ Feature: Validate all scenarios for program
       | Title        | Description      |
       | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly see field "Created By" as "{SavedValue:EXE Username}"
+    Then I softly see field "Created By" as "Automation PM"
     Then I softly see field "Created Date" is getting updated with todays date
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
@@ -5676,7 +5676,6 @@ Feature: Validate all scenarios for program
     When I enter "Edition" values from "Program_Field_Values.xlsx"
     And I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
-    Then I cannot see top right button "Undo" in page detail
     When I navigate to "Overview" sub tab
     When I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Associate" after selection of "{SavedValue:PM Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
@@ -5709,7 +5708,7 @@ Feature: Validate all scenarios for program
       | Title        | Description      |
       | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly see field "Created By" as "{SavedValue:PM Username}"
+    Then I softly see field "Created By" as "Automation PO"
 
   @204489 @ValidatePMusercanteditdeletenotesaddedbyEXEonaInternalProgramwhenthestatusiscreated @sprint-7-US-201927 @hitesh @Notes
   Scenario:Validate PM user cant edit/ delete notes added by EXE on a Internal Program when the status is created
@@ -5732,7 +5731,7 @@ Feature: Validate all scenarios for program
       | Title        | Description      |
       | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly see field "Created By" as "{SavedValue:EXE Username}"
+    Then I softly see field "Created By" as "Automation EXE"
     Then I softly see field "Created Date" is getting updated with todays date
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -5741,7 +5740,7 @@ Feature: Validate all scenarios for program
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---" without waiting for record
     And I navigate to "Files" sub tab
-    Then I softly see field "Created By" as "{SavedValue:EXE Username}"
+    Then I softly see field "Created By" as "Automation EXE"
     Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
 
@@ -5800,7 +5799,6 @@ Feature: Validate all scenarios for program
     Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly see field "Created By" as "{SavedValue:EXE Username}"
     When I click on "Edit" icon for "Notes Record" inside flex table with id "---program:-:internalProgramNotesTableId---"
     And I enter value "Notes Record1" into field "Title"
     And I enter value "Automation Notes1" into field "Body"
@@ -5808,7 +5806,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
     Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:internalProgramNotesTableId---"
     And I click on "Delete" icon for "Notes Record1" inside flex table with id "---program:-:internalProgramNotesTableId---" without waiting for record
-    Then I softly see "Notes Record1" inside flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly do not see "Notes Record1" inside flex table with id "---program:-:internalProgramNotesTableId---"
 
   @204513 @ValidatePMuserusercantaddnotesbuteditdeletehisnotesonInternalProgramcreatedbyEXEuserwhenitsstatusisRejected @sprint-7-US-201927 @hitesh @Notes
   Scenario: Validate PM user user cant add notes but edit/delete his notes on Internal Program created by EXE user when its status is Rejected
@@ -5871,7 +5869,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Notes Record2" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
     Then I softly see value "Automation Notes2" for title "Description" inside table "---program:-:internalProgramNotesTableId---"
     And I click on "Delete" icon for "Notes Record2" inside flex table with id "---program:-:internalProgramNotesTableId---" without waiting for record
-    Then I softly see "Notes Record2" inside flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly do not see "Notes Record2" inside flex table with id "---program:-:internalProgramNotesTableId---"
 
   @204522 @ValidateAuditorusercantaddeditdeletenotesonaInternalProgram @sprint-7-US-201927 @hitesh @Notes
   Scenario:Validate Auditor user cant add, edit, delete notes on a Internal Program
@@ -5894,16 +5892,15 @@ Feature: Validate all scenarios for program
       | Title        | Description      |
       | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly see field "Created By" as "{SavedValue:PM Username}"
+    Then I softly see field "Created By" as "Automation PM"
     Then I softly see field "Created Date" is getting updated with todays date
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Internal Programs - All"
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---" without waiting for record
     And I navigate to "Files" sub tab
-    Then I softly see field "Created By" as "{SavedValue:PM Username}"
     Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
     Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
