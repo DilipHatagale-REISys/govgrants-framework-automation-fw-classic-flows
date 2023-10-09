@@ -5611,13 +5611,13 @@ Feature: Validate all scenarios for program
       | Title        | Description      |
       | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly see field "Created By" as "{SavedValue:EXE Username}"
+    Then I softly see field "Created By" as "{SavedValue:PM Username}"
     Then I softly see field "Created Date" is getting updated with todays date
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
     When I click on "Edit" icon for "Notes Record" inside flex table with id "---program:-:internalProgramNotesTableId---"
     And I enter value "Notes Record1" into field "Title"
-    And I enter value "Automation Notes1" into field "Description"
+    And I enter value "Automation Notes1" into field "Body"
     And I click on top right button "Save" in flex table with id "---program:-:internalProgramNotesTableId---"
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
     Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:internalProgramNotesTableId---"
@@ -5626,7 +5626,7 @@ Feature: Validate all scenarios for program
       | Notes Record2 | Automation Notes2 |
     Then I softly see value "Notes Record2" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
     And I click on "Delete" icon for "Notes Record2" inside flex table with id "---program:-:internalProgramNotesTableId---" without waiting for record
-    Then I softly see "Notes Record2" inside flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see "Notes Record2" inside flex table with id "---program:-:internalProgramNotesTableId---"
 
   @204487 @ValidatePMusercanaddnotesonInternalProgramcreatedbyEXEuserwhenitsstatusiscreated @sprint-7-US-201927 @hitesh @Notes
   Scenario:Validate PM user can add notes on Internal Program created by EXE user when its status is created
@@ -5715,7 +5715,7 @@ Feature: Validate all scenarios for program
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
     When I click on "Edit" icon for "Notes Record" inside flex table with id "---program:-:internalProgramNotesTableId---"
     And I enter value "Notes Record1" into field "Title"
-    And I enter value "Automation Notes1" into field "Description"
+    And I enter value "Automation Notes1" into field "Body"
     And I click on top right button "Save" in flex table with id "---program:-:internalProgramNotesTableId---"
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
     Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:internalProgramNotesTableId---"
@@ -5809,7 +5809,7 @@ Feature: Validate all scenarios for program
     And I click toggle button to select "Internal Programs - All"
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---" without waiting for record
-    Then I softly can see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
 
