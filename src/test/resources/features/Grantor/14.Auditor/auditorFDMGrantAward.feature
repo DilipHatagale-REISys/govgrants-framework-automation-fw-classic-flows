@@ -13,7 +13,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     And I navigate to "Subawards" sub tab
     Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:subawardsTableId---"
 
-  @69169 @auditorCannotEDitActiveGrantAward
+  @69169 @auditorCannotEDitActiveGrantAward @TBE
   Scenario: Validate Auditor do not have Edit permission for Grant/Subaward
     Given I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
     Given I login to "As a Grantor" app as "AUDITOR" user
@@ -53,11 +53,11 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     And I download the file
     Then I see "Active" on page "1" of "govgrants" pdf file
 
-  @69939 @auditorCannotEditorApproveFDM
+  @69939 @auditorCannotEditorApproveFDM @TBE
   Scenario Outline: Validate Auditor should not be  able to Edit/Approve FDM
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
-    Given I login to "As a Grantor" app as "PO" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"

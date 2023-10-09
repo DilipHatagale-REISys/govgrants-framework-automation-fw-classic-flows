@@ -25,12 +25,12 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I perform quick search for "Created" in "---auditor:-:paymentrequestAdvancesTableId---" panel
     Then I see value "Created" for title "Status" inside table "---auditor:-:paymentrequestAdvancesTableId---"
 
-  @69179 @69942 @auditorOrgRiskAssessment @smoke
+  @69179 @69942 @auditorOrgRiskAssessment @smoke @TBE
   Scenario: Validate Auditor should have view / read  only access to Organizational Risk Assessment |Validate Auditor should not be  able to Provide revision access
     Given I delete the record "Automation Permanent Organization for Risk Assessment" from the object "ORGANIZATION RISKASSESSMENT"
     When I create a risk assessment record for organization "Automation Permanent Organization for Risk Assessment"
     Given I am on "SUBPORTAL" portal
-    When And I login to "Grants Portal" app as "SA" user
+    When I login to "Grants Portal" app as "SA" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Automation Permanent Organization for Risk Assessment" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
@@ -57,7 +57,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     Then I softly see status in Progress-bar is "Active" and is "green"
     Then I softly cannot see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @69180 @auditorMonitoringSchedule
+  @69180 @auditorMonitoringSchedule @TBE
   Scenario Outline: Validate Auditor should have view Monitoring Scheduled Activities of award
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I login to "As a Grantor" app as "<User>" user
@@ -281,7 +281,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---auditor:-:progressreportTableId---"
     Then I softly cannot see top right button "Send Back to Subrecipient" in page detail
 
-  @70075 @auditorCannotBeAnApprover
+  @70075 @auditorCannotBeAnApprover @TBE
   Scenario: Validate approver user is not allowed to reassign tasks their tasks to Auditor.
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -329,7 +329,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I select radio button "Forward" in the approval decision
     Then I cannot see user "{SavedValue:AUDITOR Username}" in the user lookup in the approval decision
 
-  @70324 @auditorCannotEdit/CompletePeerReviewProcess
+  @70324 @auditorCannotEdit/CompletePeerReviewProcess @TBE
   Scenario: Validate whether the complete Review Button is available for Auditor user to complete peer review process
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -347,7 +347,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
