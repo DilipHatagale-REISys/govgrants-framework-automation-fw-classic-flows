@@ -57,7 +57,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     Then I softly see status in Progress-bar is "Active" and is "green"
     Then I softly cannot see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
- @vai @69180 @auditorMonitoringSchedule
+  @69180 @auditorMonitoringSchedule
   Scenario Outline: Validate Auditor should have view Monitoring Scheduled Activities of award
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I login to "As a Grantor" app as "<User>" user
