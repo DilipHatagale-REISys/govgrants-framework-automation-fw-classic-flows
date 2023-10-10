@@ -7355,7 +7355,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | PO   |
       | EXE  |
 
-  @204095 @204136 @ValidateAdminusershouldabletoseetheoptionUploadfilefromComputerafterclickonuploadfile @Sprint-7-US-203239 @vaibhav @SuppDoc @TBE
+  @204095 @204136 @ValidateAdminusershouldabletoseetheoptionUploadfilefromComputerafterclickonuploadfile @Sprint-7-US-203239 @vaibhav @SuppDoc
   Scenario: Validate Admin user should able to see the option "Upload file from Computer" after click on upload file
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Announcements" tab
@@ -7385,7 +7385,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see "Upload File" inside page block detail
     Then I softly see "Description" inside page block detail
 
-  @204154 @204155 @ValidatePMusershouldhavetwooptionsifuserclickonClassificationinUploadFilefromComputer @Sprint-7-US-203239 @vaibhav @SuppDoc @TBE
+  @204154 @204155 @ValidatePMusershouldhavetwooptionsifuserclickonClassificationinUploadFilefromComputer @Sprint-7-US-203239 @vaibhav @SuppDoc
   Scenario: Validate PM user should have two options if user click on Classification in Upload File from Computer
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -7469,8 +7469,9 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter the following values into flex table with id "---announcement:-:annChecklist---" by clicking "Add" :
       | Description                 | Required  | Applies To  | Status |
       | Automation test description | Mandatory | Application | Active |
-    Then I softly see value "Application" for title "Applies To" inside table "---announcement:-:annChecklist---"
+    Then I softly see value "Automation test description" for title "Description" inside table "---announcement:-:annChecklist---"
     And I click on "Submit For Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
