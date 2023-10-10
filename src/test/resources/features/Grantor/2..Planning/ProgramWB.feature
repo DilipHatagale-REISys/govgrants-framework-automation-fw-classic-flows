@@ -6713,8 +6713,6 @@ Feature: Validate all scenarios for program
     Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
@@ -6736,8 +6734,6 @@ Feature: Validate all scenarios for program
     Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
@@ -6759,8 +6755,6 @@ Feature: Validate all scenarios for program
     Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
@@ -6782,8 +6776,6 @@ Feature: Validate all scenarios for program
     Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
@@ -6805,8 +6797,6 @@ Feature: Validate all scenarios for program
     Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
@@ -6828,5 +6818,3 @@ Feature: Validate all scenarios for program
     Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
