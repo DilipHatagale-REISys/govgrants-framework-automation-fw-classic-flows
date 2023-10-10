@@ -77,6 +77,7 @@ Feature: Validate all scenarios in Negotiations
     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
+    And I refresh the page
     Then I see value "true" for title "Needs Negotiation" against the value "Standard Assurances Form" inside table "---negotiation:-:NegotiationFormsTableId---"
 
   @164570 @ValidatePOuserisabletoselectAllowEditforatleastoneformintheAvailableFormsforRevisionstablewhenapplicationissubmittedtograntor @sprint-3 @vaibhav @negoTemp
@@ -124,8 +125,8 @@ Feature: Validate all scenarios in Negotiations
     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
-    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
-    Then I see value "true" for title "Needs Negotiation" against the value "Standard Assurances Form" inside table "---negotiation:-:NegotiationFormsTableId---"
+    And I refresh the page
+    Then I see value "True" for title "Needs Negotiation" against the value "Standard Assurances Form" inside table "---negotiation:-:NegotiationFormsTableId---"
 
   @164569 @ValidateEXEUserAbleToSelectFileAndFormsForRevisionPicklistWhenApplicationInreviewedState @sprint-3 @vaibhv
   Scenario: Validate EXE User Able To Select File And Forms For Revision Picklist When Application In reviewed State
@@ -229,7 +230,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly see the following messages in the page details contains:
       | Negotiations Tab - Select at least one form for negotiation, because Form section is added for negotiation. |
 
-  @vai @164574 @ValidatePOUserelectAlloweditformorethanoneformwhenapplicationissubmittedtograntor @sprint-3 @vaibhav @negoTemp
+  @164574 @ValidatePOUserelectAlloweditformorethanoneformwhenapplicationissubmittedtograntor @sprint-3 @vaibhav @negoTemp
   Scenario: Validate PO User Select Allow edit for more than one form when application is submitted to grantor
     And I published "Competitive" type announcement having name "Automation Runtime Competitive Announcement" and properties "NEGOTIATION-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Competitive Announcement}" on announcement "{SavedValue:Automation Runtime Competitive Announcement}" with properties "default"
@@ -277,10 +278,11 @@ Feature: Validate all scenarios in Negotiations
     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
     And I enter value "Checked" into field "AllowEdit__c"
     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I refresh the page
     Then I see value "true" for title "Needs Negotiation" against the value "Standard Assurances Form" inside table "---negotiation:-:NegotiationFormsTableId---"
     Then I see value "true" for title "Needs Negotiation" against the value "Program Application Form" inside table "---negotiation:-:NegotiationFormsTableId---"
 
-  @164575 @ValidateEXEUserelectAlloweditformorethanoneformwhenapplicationissubmittedtograntor @sprint-3 @vaibhav @negoTemp
+  @164575 @ValidateEXEUserelectAlloweditformorethanoneformwhenapplicationissubmittedtograntor @sprint-3 @vaibhav
   Scenario: Validate EXE User Select Allow edit for more than one form when application is submitted to grantor
     And I published "Competitive" type announcement having name "Automation Runtime Competitive Announcement" and properties "NEGOTIATION-Automation EXE user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Competitive Announcement}" on announcement "{SavedValue:Automation Runtime Competitive Announcement}" with properties "default"
@@ -648,7 +650,7 @@ Feature: Validate all scenarios in Negotiations
     Then I can see top right button "Cancel" in page detail
     Then I can see top right button "Save" in page detail
 
-  @164577 @ValidateINDuserisnotabletoeditformifFormisnotselectedonNegotiationstabAvailablFormsforRevisionsandApplicationisinNegotiationInitiatedstate @sprint-3 @vaibhav  @negoTemp
+  @164577 @ValidateINDuserisnotabletoeditformifFormisnotselectedonNegotiationstabAvailablFormsforRevisionsandApplicationisinNegotiationInitiatedstate @sprint-3 @vaibhav @negoTemp
   Scenario: Validate IND user is not able to edit form if Form is not selected on Negotiations tab Available Forms for Revisions and Application is in Negotiation Initiated state
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default-Automation IND user"

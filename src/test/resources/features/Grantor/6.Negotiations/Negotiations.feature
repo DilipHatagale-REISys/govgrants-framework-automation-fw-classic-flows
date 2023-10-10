@@ -1088,7 +1088,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly can see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     Then I softly can see row level action button "Edit" against "Program Application Form" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
 
-  @133569 @ValidateSPIuserisabletoEditformonclickofeditactionwhenApplicationissenttosubrecipientandisinNegotiationInitiatedstate @sprint-3 @vaibhav @negoTemp
+  @133569 @ValidateSPIuserisabletoEditformonclickofeditactionwhenApplicationissenttosubrecipientandisinNegotiationInitiatedstate @sprint-3 @vaibhav
   Scenario: SPI user is able to Edit form on click of edit action when Application is sent to subrecipient and is in Negotiation Initiated state
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -1131,7 +1131,7 @@ Feature: Validate all scenarios in Negotiations
     Then I can see top right button "Cancel" in page detail
     Then I can see top right button "Save" in page detail
 
-  @165881 @Verifythateditactionisnotdisplayedtoannouncementownerfor"Allowedit"columnwhenApplicationissenttosubrecipientandisinNegotiationInitiatedstate @sprint-3 @vrishali @negoTemp
+  @165881 @Verifythateditactionisnotdisplayedtoannouncementownerfor"Allowedit"columnwhenApplicationissenttosubrecipientandisinNegotiationInitiatedstate @sprint-3 @vrishali
   Scenario: Verify that edit action is not displayed to announcement owner for "Allow edit" column  when Application is sent to subrecipient and is in Negotiation Initiated state
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -1160,7 +1160,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly cannot see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     Then I softly cannot see row level action button "Edit" against "Program Application Form" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
 
-  @165880 @Verify-PMuserisnotabletoselectFiles:FormsinApplicationSectionsforRevisionmultipicklistwhenApplicationissenttoSubrecipientuserandinNegotiationInitiatedstate @sprint-3 @Vrishali @negoTemp
+  @165880 @Verify-PMuserisnotabletoselectFiles:FormsinApplicationSectionsforRevisionmultipicklistwhenApplicationissenttoSubrecipientuserandinNegotiationInitiatedstate @sprint-3 @Vrishali
   Scenario:Verify PM user is not able to select Files:Forms in Application Sections for Revision multi picklist when Application is sent to Subrecipient user and is in Negotiation Initiated state
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -1232,6 +1232,7 @@ Feature: Validate all scenarios in Negotiations
     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
     And I enter value "Checked" into field "AllowEdit__c"
     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I refresh the page
     Then I see value "true" for title "Needs Negotiation" against the value "Standard Assurances Form" inside table "---negotiation:-:NegotiationFormsTableId---"
     Then I see value "true" for title "Needs Negotiation" against the value "Program Application Form" inside table "---negotiation:-:NegotiationFormsTableId---"
 
@@ -1278,7 +1279,7 @@ Feature: Validate all scenarios in Negotiations
     Then I can see top right button "Cancel" in page detail
     Then I can see top right button "Save" in page detail
 
-  @165815 @Verify-PMuserisabletoselectFiles:FormsinApplicationSectionsforRevisionmultipicklistwhensubrecipientuserhassubmittedapplicationtograntorandApplicationinNegotiationInitiatedstate @sprint-3 @Vrishali @negoTemp
+  @165815 @Verify-PMuserisabletoselectFiles:FormsinApplicationSectionsforRevisionmultipicklistwhensubrecipientuserhassubmittedapplicationtograntorandApplicationinNegotiationInitiatedstate @sprint-3 @Vrishali
   Scenario: Verify PM user is able to select Files:Forms in Application Sections for Revision multi picklist when Subrecipient user has submitted application to grantor and Application is in Negotiation Initiated state
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -1338,7 +1339,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly see the following messages in the page details :
       | Negotiations Tab - Select at least one form for negotiation, because Form section is added for negotiation. |
 
-  @133572 @ValidateSPIuserisnotabletoeditformifFormisnotselectedonNegotiationstabAvailablFormsforRevisionsandApplicationisinNegotiationInitiatedstate @sprint-3 @vaibhav @negoTemp
+  @133572 @ValidateSPIuserisnotabletoeditformifFormisnotselectedonNegotiationstabAvailablFormsforRevisionsandApplicationisinNegotiationInitiatedstate @sprint-3 @vaibhav
   Scenario: Validate SPI user is not able to edit form if Form is not selected on Negotiations tab Available Forms for Revisions and Application is in Negotiation Initiated state
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -1418,7 +1419,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly cannot see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:filesFormsTableId---"
     Then I softly cannot see row level action button "Edit" against "Program Application Form" in flex table with id "---negotiation:-:filesFormsTableId---"
 
-  @165810 @ValidateSPIuserisnotabletoeditselectedformonapplicationwhenapplicationisinNegotiationinitiatedstateandapplicationissubmittedtoGrantor @sprint-3 @vaibhav @negoTemp
+  @165810 @ValidateSPIuserisnotabletoeditselectedformonapplicationwhenapplicationisinNegotiationinitiatedstateandapplicationissubmittedtoGrantor @sprint-3 @vaibhav
   Scenario: Validate SPI user is not able to edit selected form on application when application is in Negotiation initiated state and application is submitted to Grantor
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -1484,7 +1485,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly cannot see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:filesFormsTableId---"
     Then I softly cannot see row level action button "Edit" against "Program Application Form" in flex table with id "---negotiation:-:filesFormsTableId---"
 
-  @165882 @ValidateSubrecipientuserisnotabletoeditformswhenApplicationisinNegotiatedstate @sprint-3 @vaibhav @negoTemp
+  @165882 @ValidateSubrecipientuserisnotabletoeditformswhenApplicationisinNegotiatedstate @sprint-3 @vaibhav
   Scenario: Validate Subrecipient user is not able to edit forms when Application is in Negotiated state
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -1550,7 +1551,7 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
     Then I softly cannot see top right button "Edit" in page detail
 
-  @165884 @ValidateSubrecipientuserisnotabletoeditformswhenApplicationisinConvertedtoAwardstate  @sprint-3 @vaibhav @negoTemp
+  @165884 @ValidateSubrecipientuserisnotabletoeditformswhenApplicationisinConvertedtoAwardstate  @sprint-3 @vaibhav
   Scenario: Validate Subrecipient user is not able to edit forms when Application is in Converted to Award state
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -1662,7 +1663,7 @@ Feature: Validate all scenarios in Negotiations
     Then I see status in Progress-bar is "Approved" and is "Green"
     Then  I can see top right button "Notify Selected Applicants" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
 
-  @189488 @189498 @189504 @ValidateS/Rsideallowtheapplicationrecordownerwitheditaccesstoeditsectionsandformswithintheapplicationonlyforcreatedstatus @sprint-13 @vaibhav @negoTemp
+  @189488 @189498 @189504 @ValidateS/Rsideallowtheapplicationrecordownerwitheditaccesstoeditsectionsandformswithintheapplicationonlyforcreatedstatus @sprint-13 @vaibhav
   Scenario: Validate allow the application record owner with edit access to edit sections and forms within the application only for created status
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -1765,7 +1766,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
    Then I softly see field "Due Date" as "10/18/2142" in "Negotiation Request Details" pageblock
 
-  @189521 @Validatere-submittingtherevisedapplicationtheapplicationsectionsandformsshouldbelockedfortheS/Ruser @sprint-13 @vaibhav @negoTemp
+  @189521 @Validatere-submittingtherevisedapplicationtheapplicationsectionsandformsshouldbelockedfortheS/Ruser @sprint-13 @vaibhav
   Scenario: Validate re-submitting the revised application, the application sections and forms should be locked  for the S/R user
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -1897,7 +1898,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     Then I softly see field "Details" as "Automation Negotiation Iniatiation" in "Applicant Response" pageblock
 
-  @189571 @Validatesubmittingtherevisedapplicationthesectionsandformsgetlockedforthesubrecipient @sprint-13 @vaibhav @negoTemp
+  @189571 @Validatesubmittingtherevisedapplicationthesectionsandformsgetlockedforthesubrecipient @sprint-13 @vaibhav
   Scenario: Validate submitting the revised application the sections and forms get locked for the subrecipient
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -1963,7 +1964,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly see field "Estimated Program Income For Project Period" as "$100.00"
     Then I softly see field "Application Title" as "Automation Test Description"
 
-  @189574 @Validateusershouldgetnotificationandtheapplicationcomesbackinpendingtaskoncethenegotiationontheapplication @sprint-13 @vaibhav @negoTemp
+  @189574 @Validateusershouldgetnotificationandtheapplicationcomesbackinpendingtaskoncethenegotiationontheapplication @sprint-13 @vaibhav
   Scenario: Validate user should get notification and the application comes back in pending task once the negotiation on the application
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -2274,7 +2275,7 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     Then I softly can see row level action button "Initiate Negotiation" against "{SavedValue:Automation Runtime FDM Announcement}" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
 
-  @219357 @CompetativeAnnVerifyasEXEuserIcannotseeRecommendedforawardcolumnisvisiblewhenAppstatusisnegotiationinitiated @sprint-10-US-203669 @komal @Allocation @negoTemp
+  @219357 @CompetativeAnnVerifyasEXEuserIcannotseeRecommendedforawardcolumnisvisiblewhenAppstatusisnegotiationinitiated @sprint-10-US-203669 @komal @Allocation
   Scenario: Competative Ann as EXE user I cannot see Recommended for award column is visible when App status is negotiation initiated
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Applications" tab
