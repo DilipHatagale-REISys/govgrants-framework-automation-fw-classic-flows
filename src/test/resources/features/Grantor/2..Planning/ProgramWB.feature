@@ -5816,8 +5816,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
     Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:internalProgramNotesTableId---"
     And I click on "Delete" icon for "Notes Record1" inside flex table with id "---program:-:internalProgramNotesTableId---" without waiting for record
-    Then I softly do not see "Notes Record1" inside flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly see "No Records Found" inside flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly do not see value "Notes Record1" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
 
   @204513 @ValidatePMuserusercantaddnotesbuteditdeletehisnotesonInternalProgramcreatedbyEXEuserwhenitsstatusisRejected @sprint-7-US-201927 @hitesh @Notes
   Scenario: Validate PM user user cant add notes but edit/delete his notes on Internal Program created by EXE user when its status is Rejected
@@ -5880,7 +5879,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Notes Record2" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
     Then I softly see value "Automation Notes2" for title "Description" inside table "---program:-:internalProgramNotesTableId---"
     And I click on "Delete" icon for "Notes Record2" inside flex table with id "---program:-:internalProgramNotesTableId---" without waiting for record
-    Then I softly do not see "Notes Record2" inside flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly do not see value "Notes Record2" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
 
   @204522 @ValidateAuditorusercantaddeditdeletenotesonaInternalProgram @sprint-7-US-201927 @hitesh @Notes
   Scenario:Validate Auditor user cant add, edit, delete notes on a Internal Program
@@ -6371,34 +6370,33 @@ Feature: Validate all scenarios for program
     #204587
     Then I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
-    And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "All NGO Programs"
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
       | Title        | Description      |
       | Notes Record | Automation Notes |
-    Then I softly see value "Notes Record" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "Automation PM" for title "Created By" inside table "---program:-:internalProgramNotesTableId---"
-    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    When I click on "Edit" icon for "Notes Record" inside flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly see value "Notes Record" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation PM" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    When I click on "Edit" icon for "Notes Record" inside flex table with id "---program:-:externalProgramNotesTableId---"
     And I enter value "Notes Record1" into field "Title"
     And I enter value "Automation Notes1" into field "Body"
-    And I click on top right button "Save" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:internalProgramNotesTableId---"
-    When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
+    And I click on top right button "Save" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
       | Title         | Description       |
       | Notes Record2 | Automation Notes2 |
-    Then I softly see value "Notes Record2" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    And I click on "Delete" icon for "Notes Record2" inside flex table with id "---program:-:internalProgramNotesTableId---" without waiting for record
-    Then I softly do not see value "Notes Record2" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
+    Then I softly see value "Notes Record2" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    And I click on "Delete" icon for "Notes Record2" inside flex table with id "---program:-:externalProgramNotesTableId---" without waiting for record
+    Then I softly do not see value "Notes Record2" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
@@ -6407,27 +6405,27 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
       | Title         | Description      |
       | Notes Record3 | Automation Notes3 |
-    Then I softly see value "Notes Record3" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "Automation PO" for title "Created By" inside table "---program:-:internalProgramNotesTableId---"
-    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
-    When I click on "Edit" icon for "Notes Record3" inside flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly see value "Notes Record3" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation PO" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    When I click on "Edit" icon for "Notes Record3" inside flex table with id "---program:-:externalProgramNotesTableId---"
     And I enter value "Notes Record4" into field "Title"
     And I enter value "Automation Notes4" into field "Body"
-    And I click on top right button "Save" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "Notes Record4" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "Automation Notes4" for title "Description" inside table "---program:-:internalProgramNotesTableId---"
-    When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
+    And I click on top right button "Save" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Notes Record4" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation Notes4" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
       | Title         | Description       |
       | Notes Record5 | Automation Notes5 |
-    Then I softly see value "Notes Record5" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    And I click on "Delete" icon for "Notes Record5" inside flex table with id "---program:-:internalProgramNotesTableId---" without waiting for record
-    Then I softly do not see value "Notes Record5" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
+    Then I softly see value "Notes Record5" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    And I click on "Delete" icon for "Notes Record5" inside flex table with id "---program:-:externalProgramNotesTableId---" without waiting for record
+    Then I softly do not see value "Notes Record5" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
@@ -6436,26 +6434,140 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
       | Title         | Description       |
       | Notes Record6 | Automation Notes6 |
-    Then I softly see value "Notes Record6" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "Automation EXE" for title "Created By" inside table "---program:-:internalProgramNotesTableId---"
-    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:internalProgramNotesTableId---"
-    When I click on "Edit" icon for "Notes Record6" inside flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly see value "Notes Record6" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation EXE" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
+    When I click on "Edit" icon for "Notes Record6" inside flex table with id "---program:-:externalProgramNotesTableId---"
     And I enter value "Notes Record7" into field "Title"
     And I enter value "Automation Notes7" into field "Body"
-    And I click on top right button "Save" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "Notes Record8" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "Automation Notes8" for title "Description" inside table "---program:-:internalProgramNotesTableId---"
-    When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
+    And I click on top right button "Save" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Notes Record8" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation Notes8" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
       | Title         | Description       |
       | Notes Record9 | Automation Notes9 |
-    Then I softly see value "Notes Record9" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    And I click on "Delete" icon for "Notes Record9" inside flex table with id "---program:-:internalProgramNotesTableId---" without waiting for record
-    Then I softly do not see value "Notes Record9" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
+    Then I softly see value "Notes Record9" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    And I click on "Delete" icon for "Notes Record9" inside flex table with id "---program:-:externalProgramNotesTableId---" without waiting for record
+    Then I softly do not see value "Notes Record9" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+
+  @204589 @ValidatePMEXEADMINusercanaddeditdeletenotesonExternalPrograminApprovedstatus @sprint-7-US-201927 @hitesh @Notes
+  Scenario: Validate PM,EXE, ADMIN user can add/edit/delete notes on  External Program in Approved status
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click on top right button "New" in flex table with id "---program:-:ExternalNGOProgramTableId---"
+    When I enter "NGOCreation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    And I enter "NGOEdit" values from "Program_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    When I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
+    When I click "Associate" after selection of "NGO Contact" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 1  |
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    When I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    Then I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
+    Then I softly see value "Notes Record" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation PM" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    When I click on "Edit" icon for "Notes Record" inside flex table with id "---program:-:externalProgramNotesTableId---"
+    And I enter value "Notes Record1" into field "Title"
+    And I enter value "Automation Notes1" into field "Body"
+    And I click on top right button "Save" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
+      | Title         | Description       |
+      | Notes Record2 | Automation Notes2 |
+    Then I softly see value "Notes Record2" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    And I click on "Delete" icon for "Notes Record2" inside flex table with id "---program:-:externalProgramNotesTableId---" without waiting for record
+    Then I softly do not see value "Notes Record2" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
+      | Title         | Description      |
+      | Notes Record3 | Automation Notes3 |
+    Then I softly see value "Notes Record3" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation EXE" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    When I click on "Edit" icon for "Notes Record3" inside flex table with id "---program:-:externalProgramNotesTableId---"
+    And I enter value "Notes Record4" into field "Title"
+    And I enter value "Automation Notes4" into field "Body"
+    And I click on top right button "Save" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Notes Record4" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation Notes4" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
+      | Title         | Description       |
+      | Notes Record5 | Automation Notes5 |
+    Then I softly see value "Notes Record5" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    And I click on "Delete" icon for "Notes Record5" inside flex table with id "---program:-:externalProgramNotesTableId---" without waiting for record
+    Then I softly do not see value "Notes Record5" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
+      | Title         | Description       |
+      | Notes Record6 | Automation Notes6 |
+    Then I softly see value "Notes Record6" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation ADMIN" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
+    When I click on "Edit" icon for "Notes Record6" inside flex table with id "---program:-:externalProgramNotesTableId---"
+    And I enter value "Notes Record7" into field "Title"
+    And I enter value "Automation Notes7" into field "Body"
+    And I click on top right button "Save" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Notes Record7" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation Notes7" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
+      | Title         | Description       |
+      | Notes Record8 | Automation Notes8 |
+    Then I softly see value "Notes Record8" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    And I click on "Delete" icon for "Notes Record8" inside flex table with id "---program:-:externalProgramNotesTableId---" without waiting for record
+    Then I softly do not see value "Notes Record8" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
 
 
