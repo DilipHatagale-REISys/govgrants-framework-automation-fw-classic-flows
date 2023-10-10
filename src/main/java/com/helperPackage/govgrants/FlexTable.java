@@ -487,7 +487,7 @@ public final class FlexTable implements FlexTableComponent {
                 + "']//ancestor::tr[1]//td[not(contains(@class,'ng-hide'))][" + columnTitleNumber
                 + "]//descendant-or-self::*[text()='" + columnValue + "' or contains(@class,'" + columnValue + "')]");
         try {
-            if (I.amPerforming().checkToSee().isEnabled(columnValuePath, false)) {
+            if (I.amPerforming().checkToSee().isEnabled(columnValuePath, true)) {
                 return true;
             }
         } catch (Exception e) {
