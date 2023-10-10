@@ -4919,12 +4919,12 @@ Feature: Amendment Request scenarios with Undo
     Then I cannot see top right button "Undo" in page detail
     And I logout
     And I checkout to yopmail with mailid "automationfd@yopmail.com"
-    And I pause execution for "180" seconds
+    And I pause execution for "220" seconds
     Then I refresh the page
-    And I click on mail with subject "Sandbox: Notification: Approver has initiated Undo Action on AmendmentRequest #{SavedValue:TermsCondId}"
+    And I click on mail with subject "Sandbox: Notification: Approver has initiated Undo Action onAmendment Request #{SavedValue:TermsCondId}"
     And I see the mail subject is as follows :
       """
-     Sandbox: Notification: Approver has initiated Undo Action on AmendmentRequest #{SavedValue:TermsCondId}
+     Sandbox: Notification: Approver has initiated Undo Action onAmendment Request #{SavedValue:TermsCondId}
       """
     Then I see the mail text is as follows :
      """
