@@ -5826,20 +5826,15 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
-      | Name                     | Amendment Request |
-      | {SavedValue:FD Username} | NA                |
-    And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
-      | Name                     | Amendment Request |
-      | {SavedValue:PO Username} | NA                |
-    And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
-      | Name                     | Amendment Request |
-      | {SavedValue:FO Username} | NA                |
+      | Name                      | Amendment Request |
+      | {SavedValue:FD1 Username} | NA                |
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
       | Name                     | Amendment Request |
       | {SavedValue:PO Username} | Step 1            |
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
       | Name                     | Amendment Request |
       | {SavedValue:FO Username} | Step 2            |
+    And I refresh the page
     And I wait for "9" seconds
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
