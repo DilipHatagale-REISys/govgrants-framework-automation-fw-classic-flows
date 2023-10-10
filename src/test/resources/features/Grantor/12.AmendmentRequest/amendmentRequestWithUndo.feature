@@ -5798,6 +5798,8 @@ Feature: Amendment Request scenarios with Undo
     When I click on "Start" icon for "{SavedValue:TermsCondId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     Then I softly see field "Status" as "Submitted for Approval"
     Then I cannot see top right button "Undo" in page detail
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
     And I click on "Undo" in the page details without processing
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     And I click "Yes" on modal confirmation box
