@@ -5817,6 +5817,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:internalProgramNotesTableId---"
     And I click on "Delete" icon for "Notes Record1" inside flex table with id "---program:-:internalProgramNotesTableId---" without waiting for record
     Then I softly do not see "Notes Record1" inside flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:internalProgramNotesTableId---"
 
   @204513 @ValidatePMuserusercantaddnotesbuteditdeletehisnotesonInternalProgramcreatedbyEXEuserwhenitsstatusisRejected @sprint-7-US-201927 @hitesh @Notes
   Scenario: Validate PM user user cant add notes but edit/delete his notes on Internal Program created by EXE user when its status is Rejected
@@ -6070,11 +6071,11 @@ Feature: Validate all scenarios for program
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:peerReviewTableId---" by clicking "New" :
       | Reviewer Name  | Responsibility  | Description                 | Due Date |
-      | Automation EXE | Fiscal Reviewer | Automation Test Description | 10       |
-    And I click on "Send for Review" icon for "{SavedValue:EXE Username}" inside table
+      | Automation PM | Fiscal Reviewer | Automation Test Description | 10       |
+    And I click on "Send for Review" icon for "{SavedValue:PM Username}" inside table
     Then I softly see status in Progress-bar is "Submitted for Review" and is "green"
     And I navigate to "Responsibilities" sub tab
-    When I click on "Enter Review" icon for "{SavedValue:EXE Username}" inside flex table with id "---program:-:peerReviewTableId---" without waiting for record
+    When I click on "Enter Review" icon for "{SavedValue:PM Username}" inside flex table with id "---program:-:peerReviewTableId---" without waiting for record
     And I enter values into fields
       | Value       | Field             |
       | Cannot Rate | Rating__c         |
@@ -6370,10 +6371,11 @@ Feature: Validate all scenarios for program
     #204587
     Then I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
-    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Internal Programs - All"
-    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
-    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
@@ -6399,10 +6401,10 @@ Feature: Validate all scenarios for program
     Then I softly do not see value "Notes Record2" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Planning" tab
-    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Internal Programs - All"
-    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
-    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
@@ -6428,10 +6430,10 @@ Feature: Validate all scenarios for program
     Then I softly do not see value "Notes Record5" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
-    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Internal Programs - All"
-    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
-    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
