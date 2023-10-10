@@ -6668,6 +6668,21 @@ Feature: Validate all scenarios for program
     Then I softly see value "Automation ADMIN" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:externalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
+      | Title         | Description       |
+      | Notes Record6 | Automation Notes6 |
+    Then I softly see value "Notes Record6" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation AUDITOR" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:externalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
@@ -6700,19 +6715,21 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     Then I softly see field "Status" as "Rejected"
     And I navigate to "Files" sub tab
-    Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
@@ -6721,19 +6738,21 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     Then I softly see field "Status" as "Rejected"
     And I navigate to "Files" sub tab
-    Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
@@ -6742,19 +6761,21 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     Then I softly see field "Status" as "Rejected"
     And I navigate to "Files" sub tab
-    Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
@@ -6763,19 +6784,21 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     Then I softly see field "Status" as "Rejected"
     And I navigate to "Files" sub tab
-    Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
@@ -6784,19 +6807,21 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     Then I softly see field "Status" as "Rejected"
     And I navigate to "Files" sub tab
-    Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
@@ -6805,16 +6830,41 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     Then I softly see field "Status" as "Rejected"
     And I navigate to "Files" sub tab
-    Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly can see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see field "Status" as "Rejected"
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record6" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:externalProgramNotesTableId---"
