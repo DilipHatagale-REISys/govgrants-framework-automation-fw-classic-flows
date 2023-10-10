@@ -5168,6 +5168,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     And I click "Yes" on modal confirmation box
     Then I softly see field "Status" as "Submitted for Approval"
+    And I refresh the page
     And I navigate to "History" sub tab
     Then I softly see snapshot with name containing "Amendment - Undo Approval.pdf" as name
     Then I softly see value "Submitted for Approval" for title "New Value" inside table "---amendment:-:historyTableId---"
@@ -5351,8 +5352,8 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see value "Step 2" for title "Amendment Request" against the value "Automation PO" inside table "---amendment:-:approversTableId---"
     And I navigate to "History" sub tab
     Then I softly see snapshot with name containing "Amendment - Undo Approval.pdf" as name
-    Then I softly see value "Automation EXE" for title "New Value" inside table "---amendment:-:historyTableId---"
-    Then I softly see value "Automation PO" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Submitted for Approval" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Approved" for title "Old Value" inside table "---amendment:-:historyTableId---"
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
@@ -5495,6 +5496,8 @@ Feature: Amendment Request scenarios with Undo
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
     When I navigate to "Subawards" sub tab
+    And I click on parallel menu button in flex table title "Subawards"
+    And I select "Reset Table" from parallel lines dropdown of "Subawards"
     And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "green"
