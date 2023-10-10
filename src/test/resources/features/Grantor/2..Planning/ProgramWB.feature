@@ -6447,14 +6447,14 @@ Feature: Validate all scenarios for program
     And I enter value "Notes Record7" into field "Title"
     And I enter value "Automation Notes7" into field "Body"
     And I click on top right button "Save" in flex table with id "---program:-:externalProgramNotesTableId---"
-    Then I softly see value "Notes Record8" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
-    Then I softly see value "Automation Notes8" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Notes Record7" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation Notes7" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
     When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
       | Title         | Description       |
-      | Notes Record9 | Automation Notes9 |
-    Then I softly see value "Notes Record9" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
-    And I click on "Delete" icon for "Notes Record9" inside flex table with id "---program:-:externalProgramNotesTableId---" without waiting for record
-    Then I softly do not see value "Notes Record9" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+      | Notes Record8 | Automation Notes8 |
+    Then I softly see value "Notes Record8" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    And I click on "Delete" icon for "Notes Record8" inside flex table with id "---program:-:externalProgramNotesTableId---" without waiting for record
+    Then I softly do not see value "Notes Record8" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
 
   @204589 @ValidatePMEXEADMINusercanaddeditdeletenotesonExternalPrograminApprovedstatus @sprint-7-US-201927 @hitesh @Notes
   Scenario: Validate PM,EXE, ADMIN user can add/edit/delete notes on  External Program in Approved status
@@ -6570,4 +6570,251 @@ Feature: Validate all scenarios for program
     And I click on "Delete" icon for "Notes Record8" inside flex table with id "---program:-:externalProgramNotesTableId---" without waiting for record
     Then I softly do not see value "Notes Record8" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
 
-
+  @204837 @ValidatePMEXEPOFOFDADMINAuditorusercantaddnotesbuteditanddeletetheirnoteswhenExternalProgramisrejected @sprint-7-US-201927 @hitesh @Notes
+  Scenario: Validate PM, EXE, PO, FO, FD, ADMIN, Auditor user cant add notes but edit and delete their notes when External Program is rejected
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click on top right button "New" in flex table with id "---program:-:ExternalNGOProgramTableId---"
+    When I enter "NGOCreation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    And I enter "NGOEdit" values from "Program_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
+    Then I softly see value "Notes Record" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation PM" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:externalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
+      | Title         | Description       |
+      | Notes Record1 | Automation Notes1 |
+    Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation EXE" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:externalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
+      | Title         | Description       |
+      | Notes Record2 | Automation Notes2 |
+    Then I softly see value "Notes Record2" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation FO" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:externalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
+      | Title         | Description       |
+      | Notes Record3 | Automation Notes3 |
+    Then I softly see value "Notes Record3" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation PO" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:externalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
+      | Title         | Description       |
+      | Notes Record4 | Automation Notes4 |
+    Then I softly see value "Notes Record4" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation FD" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:externalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
+      | Title         | Description       |
+      | Notes Record5 | Automation Notes5 |
+    Then I softly see value "Notes Record5" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "Automation ADMIN" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:externalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    When I navigate to "Overview" sub tab
+    When I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
+    When I click "Associate" after selection of "NGO Contact" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 1  |
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    And I "Reject" in the approval decision
+    Then I softly see field "Status" as "Rejected"
+    Then I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see field "Status" as "Rejected"
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see field "Status" as "Rejected"
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see field "Status" as "Rejected"
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see field "Status" as "Rejected"
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see field "Status" as "Rejected"
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:ExternalNGOProgramTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
+    Then I softly see field "Status" as "Rejected"
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record5" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record2" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record4" in flex table with id "---program:-:internalProgramNotesTableId---"
