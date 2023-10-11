@@ -6993,12 +6993,11 @@ Feature: Validate all scenarios for program
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---" without waiting for record
     And I navigate to "Files" sub tab
-    And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
       | Title        | Description      |
       | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
-    Then I softly see value "Automation PM" for title "Created By" inside table "---program:-:internalProgramNotesTableId---"
+    Then I softly see value "Automation FO" for title "Created By" inside table "---program:-:internalProgramNotesTableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:internalProgramNotesTableId---"
     Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---program:-:internalProgramNotesTableId---"
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:internalProgramNotesTableId---"
