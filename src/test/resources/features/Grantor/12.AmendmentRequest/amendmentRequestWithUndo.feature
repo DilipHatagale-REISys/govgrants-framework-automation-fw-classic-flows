@@ -5854,7 +5854,7 @@ Feature: Amendment Request scenarios with Undo
     And I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
 
-  @292867 @292869 @292871 @ValidatePmapprovercanclickonundobuttoninCarryFwdAmmendrequestAmmendrequestrecordwhenrecordisinApprovedstate @Sprint-3-US-288693 @vaibhav @Undo @TBE
+  @292867 @292869 @292871 @ValidatePmapprovercanclickonundobuttoninCarryFwdAmmendrequestAmmendrequestrecordwhenrecordisinApprovedstate @Sprint-3-US-288693 @vaibhav @Undo
   Scenario: Validate Pm approver can click on undo button in Carry Fwd Ammend request Ammend request record when record is in Approved state
     And I activated standalone subaward "Automation Runtime award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -6462,7 +6462,7 @@ Feature: Amendment Request scenarios with Undo
     The EGMS Team
     """
 
-  @292868 @292870 @292877 @292888 @ValidatePmapproverclickonundobuttoninCarryFwdAmmendrequestAmmendrequestrecordSystemwillshowconfirmationboxwithquestionandoptionsforselection @Sprint-3-US-288693 @vaibhav @Undo @TBE
+  @292868 @292870 @292877 @292888 @ValidatePmapproverclickonundobuttoninCarryFwdAmmendrequestAmmendrequestrecordSystemwillshowconfirmationboxwithquestionandoptionsforselection @Sprint-3-US-288693 @vaibhav @Undo
   Scenario: Validate Pm approver click on undo button in Carry Fwd Ammend request Ammend request record System will show confirmation box with a question and options for selection
     And I activated standalone subaward "Automation Runtime award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -6890,7 +6890,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Rejected"
     Then I cannot see top right button "Undo" in page detail
 
-  @292883 @292884 @292886 @ValidatelastapprovercannotseeundobuttononapprovedamendmentwhenawardiscreatedontheamendmentandisinPendingActivationstate @Sprint-3-US-288693 @vaibhav @Undo @TBE
+  @292883 @292884 @292886 @ValidatelastapprovercannotseeundobuttononapprovedamendmentwhenawardiscreatedontheamendmentandisinPendingActivationstate @Sprint-3-US-288693 @vaibhav @Undo
   Scenario: Validate last approver cannot see undo button on approved amendment when award is created on the amendment and is in Pending Activation state
     And I activated standalone subaward "Automation Runtime award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -7133,7 +7133,7 @@ Feature: Amendment Request scenarios with Undo
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---closeout:-:grantsTableId---"
     Then I softly see field "Status" as "Closed/Completed"
     Then I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:ActivatedSubAwardId}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:AwardEGMSID1}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Closed" and is "Green"
     And I navigate to "Grants" tab
     When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -7600,7 +7600,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see value "Step 1" for title "Amendment Request" against the value "Automation PO" inside table "---amendment:-:approversTableId---"
     Then I softly see value "Step 2" for title "Amendment Request" against the value "Automation EXE" inside table "---amendment:-:approversTableId---"
     Then I softly see value "Step 3" for title "Amendment Request" against the value "Automation FO" inside table "---amendment:-:approversTableId---"
-    Then I softly see value "Step 4" for title "Amendment Request" against the value "Automation PM" inside table "---amendment:-:approversTableId---"
+    Then I softly see value "Step 4" for title "Amendment Request" against the value "Automation PM1" inside table "---amendment:-:approversTableId---"
     When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -7645,7 +7645,7 @@ Feature: Amendment Request scenarios with Undo
     The EGMS Team
     """
 
-  @292875 @292876 @ValidatethatwhenEXEapproverForwardtheCarryFwdAmmendrequestrAmmendrequestApprovaltaskoriginalApproverwillnotseeUNDObutton @Sprint-3-US-288693 @vaibhav @Undo @TBEEX1
+  @292875 @292876 @ValidatethatwhenEXEapproverForwardtheCarryFwdAmmendrequestrAmmendrequestApprovaltaskoriginalApproverwillnotseeUNDObutton @Sprint-3-US-288693 @vaibhav @Undo
   Scenario: Vallidate that when EXE approver Forward the Carry Fwd Ammend request Ammend request Approval task original Approver will not see UNDO button
     And I activated standalone subaward "Automation Runtime award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
