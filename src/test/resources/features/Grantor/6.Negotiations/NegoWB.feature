@@ -124,7 +124,7 @@ Feature: Validate all scenarios in Negotiations
     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
-    Then I see value "True" for title "Needs Negotiation" against the value "Standard Assurances Form" inside table "---negotiation:-:NegotiationFormsTableId---"
+    Then I see value "check" for title "Needs Negotiation" against the value "Standard Assurances Form" inside table "---negotiation:-:NegotiationFormsTableId---"
 
   @164569 @ValidateEXEUserAbleToSelectFileAndFormsForRevisionPicklistWhenApplicationInreviewedState @sprint-3 @vaibhv
   Scenario: Validate EXE User Able To Select File And Forms For Revision Picklist When Application In reviewed State
