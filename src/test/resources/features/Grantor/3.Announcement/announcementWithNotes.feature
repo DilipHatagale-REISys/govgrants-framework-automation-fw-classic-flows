@@ -568,7 +568,7 @@ Feature: Validate all notes scenarios in the  Announcement tab
     And I click on "Delete" icon for "Notes Record8" inside flex table with id "---announcement:-:AnnouncementNotestableId---" without waiting for record
     Then I softly do not see value "Notes Record8" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
 
-  @220087 @ValidateProgramReviewerEXEusercanAddeditdeletehisnotesonaformulaannouncementwhichisinstatusSubmittedforReviewandallowrecordeditisNo @sprint-9-US-201923 @hitesh @Notes
+  @220087 @220157 @ValidateProgramReviewerEXEusercanAddeditdeletehisnotesonaformulaannouncementwhichisinstatusSubmittedforReviewandallowrecordeditisNo @sprint-9-US-201923 @hitesh @Notes
   Scenario: Validate Program Reviewer EXE user can Add/edit/delete his notes on a formula announcement which is in status Submitted for Review and allow record edit is No
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
