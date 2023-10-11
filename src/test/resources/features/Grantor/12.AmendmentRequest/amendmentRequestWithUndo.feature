@@ -6198,7 +6198,7 @@ Feature: Amendment Request scenarios with Undo
     The EGMS Team
     """
 
-  @292872 @ValidatethatwhenPMuserReasignTaskofsubmitforapprovalischangedtonewusethennewownerwillseeundobuttonafterapprovingtheCarryFwdAmmendrequestAmmendrequest @Sprint-3-US-288693 @vaibhav @Undo @TBEEX1
+  @292872 @ValidatethatwhenPMuserReasignTaskofsubmitforapprovalischangedtonewusethennewownerwillseeundobuttonafterapprovingtheCarryFwdAmmendrequestAmmendrequest @Sprint-3-US-288693 @vaibhav @Undo
   Scenario: Validate that when PM user Reasign Task of submit for approval is changed to new user,then new owner will see undo button after approving the Carry Fwd Ammend request Ammend request
     And I activated standalone subaward "Automation Runtime award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -6419,8 +6419,8 @@ Feature: Amendment Request scenarios with Undo
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Step 4" for title "Amendment Request" against the value "Automation PM1" inside table "---amendment:-:approversTableId---"
     And I navigate to "History" sub tab
-    Then I softly see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
-    Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Submitted for Approval" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Approved" for title "Old Value" inside table "---amendment:-:historyTableId---"
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
@@ -7335,7 +7335,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
 
-  @292873 @292874 @ValidatethatwhenPMUserReasignTasksubmitforapprovaltonewusethenoldownerwillnotseeundobuttonafterapprovaloftheCarryFwdAmmendrequestAmmendrequest @Sprint-3-US-288693 @vaibhav @Undo @TBEEX1
+  @292873 @292874 @ValidatethatwhenPMUserReasignTasksubmitforapprovaltonewusethenoldownerwillnotseeundobuttonafterapprovaloftheCarryFwdAmmendrequestAmmendrequest @Sprint-3-US-288693 @vaibhav @Undo
   Scenario: Validate that when PM User Reasign Task submit for approval  to new user,then old owner will not see undo button after approval of  the Carry Fwd Ammend request Ammend request
     And I activated standalone subaward "Automation Runtime award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -7556,8 +7556,8 @@ Feature: Amendment Request scenarios with Undo
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Step 4" for title "Amendment Request" against the value "Automation PM1" inside table "---amendment:-:approversTableId---"
     And I navigate to "History" sub tab
-    Then I see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
-    Then I see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    Then I see value "Submitted for Approval" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I see value "Approved" for title "Old Value" inside table "---amendment:-:historyTableId---"
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
