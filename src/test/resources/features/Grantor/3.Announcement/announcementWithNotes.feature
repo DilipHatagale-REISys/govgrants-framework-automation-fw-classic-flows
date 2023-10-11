@@ -630,8 +630,8 @@ Feature: Validate all notes scenarios in the  Announcement tab
     #220157
     Then I softly can see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "Automation PM" for title "Created By" inside table "---announcement:-:AnnouncementNotestableId---"
-    Then I softly can see row level action button "Edit" against "Notes Record3" in flex table with id "---announcement:-:AnnouncementNotestableId---"
-    Then I softly can see row level action button "Delete" against "Notes Record3" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---announcement:-:AnnouncementNotestableId---"
     #220087
     When I enter the following values into flex table with id "---announcement:-:AnnouncementNotestableId---" by clicking "Add" :
       | Title        | Description      |
