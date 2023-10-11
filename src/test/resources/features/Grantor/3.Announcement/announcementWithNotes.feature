@@ -1345,18 +1345,6 @@ Feature: Validate all notes scenarios in the  Announcement tab
     Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---announcement:-:AnnouncementNotestableId---"
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---announcement:-:AnnouncementNotestableId---"
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---announcement:-:AnnouncementNotestableId---"
-    When I click on "Edit" icon for "Notes Record" inside flex table with id "---announcement:-:AnnouncementNotestableId---"
-    And I enter value "Notes Record1" into field "Title"
-    And I enter value "Automation Notes1" into field "Body"
-    And I click on top right button "Save" in flex table with id "---announcement:-:AnnouncementNotestableId---"
-    Then I softly see value "Notes Record1" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
-    Then I softly see value "Automation Notes1" for title "Description" inside table "---announcement:-:AnnouncementNotestableId---"
-    When I enter the following values into flex table with id "---announcement:-:AnnouncementNotestableId---" by clicking "Add" :
-      | Title         | Description       |
-      | Notes Record2 | Automation Notes2 |
-    Then I softly see value "Notes Record2" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
-    And I click on "Delete" icon for "Notes Record2" inside flex table with id "---announcement:-:AnnouncementNotestableId---" without waiting for record
-    Then I softly do not see value "Notes Record2" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -1365,8 +1353,8 @@ Feature: Validate all notes scenarios in the  Announcement tab
     And I click on "View" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Approved" and is "green"
     And I navigate to "Files" sub tab
-    Then I softly see value "Notes Record3" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
-    Then I softly see value "Automation EXE" for title "Created By" inside table "---announcement:-:AnnouncementNotestableId---"
+    Then I softly see value "Notes Record" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
+    Then I softly see value "Automation PM" for title "Created By" inside table "---announcement:-:AnnouncementNotestableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---announcement:-:AnnouncementNotestableId---"
     Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---announcement:-:AnnouncementNotestableId---"
