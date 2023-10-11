@@ -108,20 +108,17 @@ public class UsersAndURL implements UsersController {
     private String getAUTOEnvironmentPassword(String userLevel) {
         String password;
         switch (userLevel.toUpperCase()) {
-            case "SME":
-                password = "Salesforce2027";
-                break;
             case "SPI4":
                 password = "Salesforce@2028";
                 break;
             case "SPA":
-                password = "Salesforce2029";
+                password = "Salesforce2030";
                 break;
             case "FD":
-                password = "Salesforce2029";
+                password = "Salesforce2030";
                 break;
             default:
-                password = "Salesforce2027";
+                password = "Salesforce2028";
         }
         return password;
     }
