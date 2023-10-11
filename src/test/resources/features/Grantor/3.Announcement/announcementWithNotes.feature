@@ -1357,6 +1357,6 @@ Feature: Validate all notes scenarios in the  Announcement tab
     Then I softly see value "Automation PM" for title "Created By" inside table "---announcement:-:AnnouncementNotestableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---announcement:-:AnnouncementNotestableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record3" in flex table with id "---announcement:-:AnnouncementNotestableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record3" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---announcement:-:AnnouncementNotestableId---"
 
