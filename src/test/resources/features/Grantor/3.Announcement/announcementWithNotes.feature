@@ -1627,96 +1627,60 @@ Feature: Validate all notes scenarios in the  Announcement tab
 
   @220169 @ValidateEXEFOusercantaddnotesoncompetitiveannouncementwhichisClosed @sprint-9-US-201923 @hitesh @Notes
   Scenario:Validate EXE/FO user cant add notes on competitive announcement which is Closed
-    When I login to "As a Grantor" app as "PM" user
+    When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Competitive Announcements"
-    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
-    And I click modal button "Continue"
-    When I enter "Creation Second Modal1" values from "Announcement_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I get the "EGMS ID"
-    And I save the field labeled "EGMS ID" as "AnnEGMSID"
-    And I save the field labeled "Announcement Name" as "Automation Runtime Announcement for Pre-App"
-    When I click on "Edit" in the page details
-    And I enter "Edition1" values from "Announcement_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I navigate to "Financials" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "{SavedValue:fundingAccount}" by showing entries "All" in flex table with id "---announcement:-:fundingAccTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
-    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
-    When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
-    When I refresh the page
-    When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
-    When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---announcement:-:goalsTableId---"
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:PM Username}  | Step 1       |
-    And I pause execution for "3" seconds
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c"
-    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
-      | Budget Period Name | Start Date | End Date |
-      | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
-    And I pause execution for "3" seconds
-    And I click on "Submit For Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{SavedValue:CompetitiveClosedAnnoucement}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:CompetitiveClosedAnnoucement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
-    And I "Approve" in the approval decision
-    Then I softly see status in Progress-bar is "Approved" and is "green"
-    And I click on "Publish" in the page details
-    Then I softly see status in Progress-bar is "Published" and is "green"
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Opportunities" tab
-    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:reviewsTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:reviewsTableId---"
-    When I click on "Qualify" in the page details
-    When I click on "Create Application" in the page details
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "Application_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Budget" sub tab
-    When I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 1000   | 100        | 100            |
-    When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    And I enter value "Checked" into field "IsKeyContact__c"
-    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    When I navigate to "Proposal" sub tab
-    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                  | Target |
-      | Automation Permanent KPI | 10     |
-    And I navigate to "Forms and Files" sub tab
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    And I get the "EGMS ID"
-    When I click on "Submit Application" in the page details
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{SavedValue:CompetitiveClosedAnnoucement}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:CompetitiveClosedAnnoucement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+
+  @220170 @ValidatePMADMINusercantaddnotesondirectedannouncementwhichisClosed @sprint-9-US-201923 @hitesh @Notes
+  Scenario:Validate PM/ADMIN user cant add notes on directed announcement which is Closed
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Directed" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Directed Announcements"
+    And I perform quick search for "{SavedValue:ClosedStateAnnouncement}" in "---announcement:-:annoucementTableId---" panel
+    And I click on "View" icon for "{SavedValue:ClosedStateAnnouncement}" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Directed" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Directed Announcements"
+    And I perform quick search for "{SavedValue:ClosedStateAnnouncement}" in "---announcement:-:annoucementTableId---" panel
+    And I click on "View" icon for "{SavedValue:ClosedStateAnnouncement}" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+
+  @220171 @ValidateFDPOusercantaddnotesonformulaannouncementwhichisClosed @sprint-9-US-201923 @hitesh @Notes
+  Scenario:Validate FD/PO user cant add notes on formula announcement which is Closed
+    When I login to "As a Grantor" app as "FD" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Formula Announcements"
+    And I perform quick search for "{SavedValue:FormulaClosedAnnoucement}" in "---announcement:-:formulaAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:FormulaClosedAnnoucement" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Formula Announcements"
+    And I perform quick search for "{SavedValue:FormulaClosedAnnoucement}" in "---announcement:-:formulaAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:FormulaClosedAnnoucement}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
 
   @220179 @ValidateAuditorusercantaddnotesoncompetitiveannouncementwhichisPublished @sprint-9-US-201923 @hitesh @Notes
   Scenario:Validate Auditor user cant add notes on competitive announcement which is Published
@@ -1797,8 +1761,8 @@ Feature: Validate all notes scenarios in the  Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     And I click on "View" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
-    Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---announcement:-:AnnouncementNotestableId---"
-    Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---announcement:-:AnnouncementNotestableId---"
 
   @220180 @ValidateuserwithAuditorprofilecantaddnotesondirectedannouncementwhichisapproved  @sprint-9-US-201923 @hitesh @Notes
   Scenario: Validate user with Auditor profile cant add notes on directed announcement which is approved
@@ -2006,3 +1970,7 @@ Feature: Validate all notes scenarios in the  Announcement tab
     Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
     Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---announcement:-:AnnouncementNotestableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+
+  @32 @VerifyPMusershouldnotabletoupdatetheallocationamountonAnnifnegotiationisNoonAnnonceapplicationispromotetoFDMrecord @sprint-20-US-320518 @hitesh
+  Scenario:Verify PM user should not able to update the allocation amount on Ann  if negotiation is No on Ann once application is promote to FDM record
+    Given I published "Formula" type announcement having name "Formula Closed Annoucement" and properties "BY_APPLICANT_FOCUS_AREA_NEGOTIATION_NO-Automation PM user"
