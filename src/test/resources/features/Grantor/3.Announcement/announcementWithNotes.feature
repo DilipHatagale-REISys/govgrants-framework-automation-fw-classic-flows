@@ -1390,9 +1390,9 @@ Feature: Validate all notes scenarios in the  Announcement tab
     And I click on "Save" in the page details
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---announcement:-:AnnouncementNotestableId---" by clicking "Add" :
-      | Title        | Description      |
-      | Notes Record | Automation Notes |
-    Then I softly see value "Notes Record" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
+      | Title        | Description       |
+      | Notes Record1 | Automation Notes1|
+    Then I softly see value "Notes Record1" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "Automation PM" for title "Created By" inside table "---announcement:-:AnnouncementNotestableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---announcement:-:AnnouncementNotestableId---"
@@ -1405,8 +1405,8 @@ Feature: Validate all notes scenarios in the  Announcement tab
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---announcement:-:AnnouncementNotestableId---" by clicking "Add" :
       | Title         | Description       |
-      | Notes Record1 | Automation Notes1 |
-    Then I softly see value "Notes Record" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
+      | Notes Record3 | Automation Notes3 |
+    Then I softly see value "Notes Record3" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "Automation PO" for title "Created By" inside table "---announcement:-:AnnouncementNotestableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---announcement:-:AnnouncementNotestableId---"
@@ -1451,13 +1451,13 @@ Feature: Validate all notes scenarios in the  Announcement tab
     Then I softly see field "Status" as "Rejected"
     And I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
-    Then I softly see value "Notes Record" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
+    Then I softly see value "Notes Record1" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "Automation PM" for title "Created By" inside table "---announcement:-:AnnouncementNotestableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---announcement:-:AnnouncementNotestableId---"
-    Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---announcement:-:AnnouncementNotestableId---"
-    Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---announcement:-:AnnouncementNotestableId---"
-    When I click on "Edit" icon for "Notes Record" inside flex table with id "---announcement:-:AnnouncementNotestableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record1" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record1" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    When I click on "Edit" icon for "Notes Record1" inside flex table with id "---announcement:-:AnnouncementNotestableId---"
     And I enter value "Notes Record2" into field "Title"
     And I enter value "Automation Notes2" into field "Body"
     And I click on top right button "Save" in flex table with id "---announcement:-:AnnouncementNotestableId---"
@@ -1473,13 +1473,13 @@ Feature: Validate all notes scenarios in the  Announcement tab
     And I click on "View" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
-    Then I softly see value "Notes Record1" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
+    Then I softly see value "Notes Record3" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "Automation PO" for title "Created By" inside table "---announcement:-:AnnouncementNotestableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---announcement:-:AnnouncementNotestableId---"
-    Then I softly can see row level action button "Edit" against "Notes Record1" in flex table with id "---announcement:-:AnnouncementNotestableId---"
-    Then I softly can see row level action button "Delete" against "Notes Record1" in flex table with id "---announcement:-:AnnouncementNotestableId---"
-    When I click on "Edit" icon for "Notes Record1" inside flex table with id "---announcement:-:AnnouncementNotestableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record3" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record3" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    When I click on "Edit" icon for "Notes Record3" inside flex table with id "---announcement:-:AnnouncementNotestableId---"
     And I enter value "Notes Record4" into field "Title"
     And I enter value "Automation Notes4" into field "Body"
     And I click on top right button "Save" in flex table with id "---announcement:-:AnnouncementNotestableId---"
