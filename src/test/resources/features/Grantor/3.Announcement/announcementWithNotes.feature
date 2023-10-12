@@ -2054,4 +2054,4 @@ Feature: Validate all notes scenarios in the  Announcement tab
 
   @32 @VerifyPMusershouldnotabletoupdatetheallocationamountonAnnifnegotiationisNoonAnnonceapplicationispromotetoFDMrecord @sprint-20-US-320518 @hitesh
   Scenario:Verify PM user should not able to update the allocation amount on Ann  if negotiation is No on Ann once application is promote to FDM record
-    Given I published "Formula" type announcement having name "Formula Closed Annoucement" and properties "BY_APPLICANT_FOCUS_AREA_NEGOTIATION_NO-Automation PM user"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-Automation PM user"
