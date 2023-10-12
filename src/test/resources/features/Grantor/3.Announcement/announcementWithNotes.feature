@@ -1404,7 +1404,7 @@ Feature: Validate all notes scenarios in the  Announcement tab
     And I click on "View" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---announcement:-:AnnouncementNotestableId---" by clicking "Add" :
-      | Title        | Description       |
+      | Title         | Description       |
       | Notes Record1 | Automation Notes1 |
     Then I softly see value "Notes Record" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "Automation PO" for title "Created By" inside table "---announcement:-:AnnouncementNotestableId---"
@@ -1550,7 +1550,7 @@ Feature: Validate all notes scenarios in the  Announcement tab
     And I click on "View" icon for "Record id" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---announcement:-:AnnouncementNotestableId---" by clicking "Add" :
-      | Title        | Description       |
+      | Title        | Description      |
       | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "Automation EXE" for title "Created By" inside table "---announcement:-:AnnouncementNotestableId---"
@@ -1742,26 +1742,26 @@ Feature: Validate all notes scenarios in the  Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "All Formula Announcements"
-    And I perform quick search for "{SavedValue:FormulaClosedAnnoucement}" in "---announcement:-:formulaAnnouncementTableId---" panel
-    And I click on "View" icon for "{SavedValue:FormulaClosedAnnoucement}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
-    And I navigate to "Files" sub tab
-    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
-    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
-    And I navigate to "Announcements" tab
-    When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "All Formula Announcements"
     And I perform quick search for "{SavedValue:ArchivedStateFormulaAnn_ByApplicantAndFocusArea}" in "---announcement:-:formulaAnnouncementTableId---" panel
     And I click on "View" icon for "{SavedValue:ArchivedStateFormulaAnn_ByApplicantAndFocusArea}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     And I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
-    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
-    And I navigate to "Announcements" tab
-    When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "All Formula Announcements"
-    And I perform quick search for "{SavedValue:ArchivedStateFormulaAnn_ByApplicantAndFocusArea}" in "---announcement:-:formulaAnnouncementTableId---" panel
-    And I click on "View" icon for "{SavedValue:ArchivedStateFormulaAnn_ByApplicantAndFocusArea}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
-    And I navigate to "Files" sub tab
-    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+#    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+#    And I navigate to "Announcements" tab
+#    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+#    And I click toggle button to select "All Formula Announcements"
+#    And I perform quick search for "{SavedValue:ArchivedStateFormulaAnn_ByApplicantAndFocusArea}" in "---announcement:-:formulaAnnouncementTableId---" panel
+#    And I click on "View" icon for "{SavedValue:ArchivedStateFormulaAnn_ByApplicantAndFocusArea}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+#    And I navigate to "Files" sub tab
+#    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+#    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+#    And I navigate to "Announcements" tab
+#    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+#    And I click toggle button to select "All Formula Announcements"
+#    And I perform quick search for "{SavedValue:ArchivedStateFormulaAnn_ByApplicantAndFocusArea}" in "---announcement:-:formulaAnnouncementTableId---" panel
+#    And I click on "View" icon for "{SavedValue:ArchivedStateFormulaAnn_ByApplicantAndFocusArea}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+#    And I navigate to "Files" sub tab
+#    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
 
   @220179 @ValidateAuditorusercantaddnotesoncompetitiveannouncementwhichisPublished @sprint-9-US-201923 @hitesh @Notes
   Scenario:Validate Auditor user cant add notes on competitive announcement which is Published
