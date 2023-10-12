@@ -10622,3 +10622,44 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
     And I navigate to "Budget" sub tab
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+
+  @234421 @ValidatethatSarahPmcanaddnotesinGrantrecordwhenGrantisincreatedstate @Sprint-13-US-201925 @vaibhav @Notes
+  Scenario: Validate that Sarah PM can add notes in Grant record when Grant is in created state
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter value "abc" into field "fieldGrantDescription__c"
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    Then I softly see field "Status" as "Draft"
+    And I navigate to "Files" sub tab
+    Then I can see top right button "Add" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:grantsNotesTableId---" by clicking "Add" :
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
+    Then I softly see value "Notes Record" for title "Title" inside table "---subAwardStandAlone:-:grantsNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
+    #234422
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    When I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I navigate to "Files" sub tab
+    Then I can see top right button "Add" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:grantsNotesTableId---" by clicking "Add" :
+      | Title                 | Description      |
+      | EXE User Notes Record | Automation Notes |
+    Then I softly see value "EXE User Notes Record" for title "Title" inside table "---subAwardStandAlone:-:grantsNotesTableId---"
+    Then I softly can see row level action button "Edit" against "EXE User Notes Record" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
+    Then I softly can see row level action button "Delete" against "EXE User Notes Record" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
+
+  @234426 @ValidatethatRobertPOcanaddnotesinGrantrecordwhenGrantisincreatedstate @Sprint-13-US-201925 @vaibhav @Notes
+  Scenario: Validate that Robert PO can add notes in Grant record when Grant is in created state
