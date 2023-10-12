@@ -49,7 +49,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @72341 @programActivation @TBE1
+  @72341 @programActivation
   Scenario: Validate the activation of Internal Program and the status changes to Active
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -114,7 +114,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I wait for "5" seconds
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @65077 @publishingCompetitiveAnnouncementCA @TBE1
+  @65077 @publishingCompetitiveAnnouncementCA
   Scenario: Validate the activation of Competitive Announcement
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -587,7 +587,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Publish" in the page details
     Then I softly see status in Progress-bar is "Published" and is "green"
 
-  @72343 @publishingFormulaAnnouncementByApplicantFocusArea @TBE1
+  @72343 @publishingFormulaAnnouncementByApplicantFocusArea
   Scenario: Validate the activation of Formula By Applicant Focus Area Announcement and the status changes to published and is green
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -1223,7 +1223,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     Then I can see row level action button "View" against "{SavedValue:Automation Runtime FDM Announcement}" in flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
 
-  @38224 @awardHappyPathFromFDM @TBE1
+  @38224 @awardHappyPathFromFDM
   Scenario Outline: Validate  the activation of subaward from FDM happy path and the status changes to Activated
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -1646,7 +1646,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I close "{SavedValue:PayreqId}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "green"
 
-  @72350 @adhocAdvanceHappyPath @TBE1
+  @72350 @adhocAdvanceHappyPath
   Scenario: Validate the Advance Payment Request happy path and the status changes to 'Paid'
     Given I activated standalone subaward "Automation Runtime award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -1868,7 +1868,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click toggle button to select "Progress Reports - Approved"
     Then I see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:internalProgressReportFlexTableId---"
 
-  @72353 @siteVisitAcceptAndClose @TBE1
+  @72353 @siteVisitAcceptAndClose
   Scenario: Validate once the Award level Site Visit is clicked on Accept and Close butted then sttaus changes to closed
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"

@@ -10623,7 +10623,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Budget" sub tab
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @234421 @234422 @ValidatethatSarahPmcanaddnotesinGrantrecordwhenGrantisincreatedstate @Sprint-13-US-201925 @vaibhav @Notes @TBE
+  @234421 @234422 @ValidatethatSarahPmcanaddnotesinGrantrecordwhenGrantisincreatedstate @Sprint-13-US-201925 @vaibhav @Notes
   Scenario: Validate that Sarah PM can add notes in Grant record when Grant is in created state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -10662,7 +10662,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly can see row level action button "Edit" against "EXE User Notes Record" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
     Then I softly can see row level action button "Delete" against "EXE User Notes Record" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
 
-  @234426 @ValidatethatRobertPOcanaddnotesinGrantrecordwhenGrantisincreatedstate @Sprint-13-US-201925 @vaibhav @Notes @TBE
+  @234426 @ValidatethatRobertPOcanaddnotesinGrantrecordwhenGrantisincreatedstate @Sprint-13-US-201925 @vaibhav @Notes
   Scenario: Validate that Robert PO can add notes in Grant record when Grant is in created state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -10684,7 +10684,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -10735,7 +10735,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly can see row level action button "Edit" against "PO User Notes Record" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
     Then I softly can see row level action button "Delete" against "PO User Notes Record" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
 
-  @234427 @234430 @234433 @ValidatethatAdmincanaddnotesinGrantrecordwhenGrantisinActivestate @Sprint-13-US-201925 @vaibhav @Notes @TBE
+  @234427 @234430 @234433 @ValidatethatAdmincanaddnotesinGrantrecordwhenGrantisinActivestate @Sprint-13-US-201925 @vaibhav @Notes
   Scenario: Validate that Admin can add notes in Grant record when Grant is in Active state
     And I activated standalone subaward "Automation Runtime Award" with properties "default-Automation PO user" of type "Competitive"
     Given I login to "As a Grantor" app as "ADMIN" user
@@ -10885,7 +10885,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly can see row level action button "Edit" against "PO User Notes Record" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
     Then I softly can see row level action button "Delete" against "PO User Notes Record" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
 
-  @234543 @ValidatethatSarahPmcannotaddnotesinGrantrecordwhenGrantisinTerminatedstate @Sprint-13-US-201925 @vaibhav @Notes @TBE
+  @234543 @ValidatethatSarahPmcannotaddnotesinGrantrecordwhenGrantisinTerminatedstate @Sprint-13-US-201925 @vaibhav @Notes @TBE1
   Scenario: Validate that Sarah Pm can not add notes in Grant record when Grant is in Terminated state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -10992,12 +10992,13 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     Then I softly see field "Status" as "Terminated"
+    When I navigate to "Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
     Then I softly see value "PM User Notes Record" for title "Title" inside table "---subAwardStandAlone:-:grantsNotesTableId---"
     Then I softly can see row level action button "Edit" against "PM User Notes Record" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
     Then I softly can see row level action button "Delete" against "PM User Notes Record" in flex table with id "---subAwardStandAlone:-:grantsNotesTableId---"
 
-  @236063 @236079 @ValidatePMusershouldabletoaddnotesfromsameorganizationwhensubawardisincreatedstate @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236063 @236079 @ValidatePMusershouldabletoaddnotesfromsameorganizationwhensubawardisincreatedstate @Sprint-14-US-234263 @vaibhav @Notes
   Scenario: Validate PM user should able to add notes from same organization when subaward is in created state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -11231,7 +11232,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly can see row level action button "Edit" against "Reviewed State PO1 User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
     Then I softly can see row level action button "Delete" against "Reviewed State PO1 User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236260 @ValidatewhenPOuserallowrecordeditingisyesthenpeerreviewerShouldabletoaddnotesinsentforreviewstate @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236260 @ValidatewhenPOuserallowrecordeditingisyesthenpeerreviewerShouldabletoaddnotesinsentforreviewstate @Sprint-14-US-234263 @vaibhav @Notes
   Scenario: Validate when PO user allow record editing is yes then peer reviewer should able to add notes in sent for review state
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -11281,7 +11282,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly can see row level action button "Edit" against "Submitted Review State FO User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
     Then I softly can see row level action button "Delete" against "Submitted Review State FO User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236360 @236363 @236366 @236376 @ValidateEXEuserallowrecordeditingisyesthepeerreviewershouldabletoeditdeletethenotesinsentforreviewstate @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236360 @236363 @236366 @236376 @ValidateEXEuserallowrecordeditingisyesthepeerreviewershouldabletoeditdeletethenotesinsentforreviewstate @Sprint-14-US-234263 @vaibhav @Notes @TBE1
   Scenario Outline: Validate EXE user allow record editing is yes then peer reviewer should able to edit & delete the notes in sent for review state
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -11307,7 +11308,7 @@ Feature: Validate all scenarios of grants and award without background
     When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
       | Reviewer Name | Role             | Description            | Due Date | Allow Record Editing |
       | Automation FO | Program Reviewer | Automation Description | 5        | <filter>             |
-    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
+    And I click on "Send for Review" icon for "Program Reviewer" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
     Then I softly see field "Status" as "Submitted for Review"
     And I navigate to "Files" sub tab
     Then I can see top right button "Add" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
@@ -11371,7 +11372,7 @@ Feature: Validate all scenarios of grants and award without background
       | Yes    |
       | No     |
 
-  @236391 @236407 @236423 @236440 @ValidateAdminusershouldnotabletoaddnoteswhenawardissubmitforapprovalstate @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236391 @236407 @236423 @236440 @ValidateAdminusershouldnotabletoaddnoteswhenawardissubmitforapprovalstate @Sprint-14-US-234263 @vaibhav @Notes
   Scenario: Validate Admin user should not able to add notes when award is submit for approval state
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -11582,10 +11583,10 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236453 @ValidateAdminusershouldnotabletoaddnoteswhenawardisclosedforcedclosedstate @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236453 @ValidateAdminusershouldnotabletoaddnoteswhenawardisclosedforcedclosedstate @Sprint-14-US-234263 @vaibhav @Notes @TBE1
   Scenario: Validate Admin user should not able to add notes  when award is closed state
     And I activated standalone subaward "Automation Runtime Award" with properties "default-Automation EXE user" of type "Competitive"
-    Given I login to "As a Grantor" app as "PO" user
+    Given I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -11664,8 +11665,8 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
       | Reviewer Name | Role             | Description            | Due Date | Allow Record Editing |
-      | Automation FO | Program Reviewer | Automation Description | 5        | <filter>             |
-    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
+      | Automation FO | Program Reviewer | Automation Description | 5        | No                   |
+    And I click on "Send for Review" icon for "Program Reviewer" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
     Then I softly see field "Status" as "Submitted for Review"
     When I re-login to "As a Grantor" app as "SARAH PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
