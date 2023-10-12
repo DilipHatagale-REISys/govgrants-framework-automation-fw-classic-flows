@@ -1682,6 +1682,87 @@ Feature: Validate all notes scenarios in the  Announcement tab
     And I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
 
+  @220175 @ValidatePMEXEADMINcantaddnotesonCompetitiveannouncementhavingstatusasArchived @sprint-9-US-201923 @hitesh @Notes
+  Scenario:Validate PM/EXE/ADMIN cant add notes on Competitive announcement having status as Archived
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{SavedValue:CompetitiveArchivedAnnoucement}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:CompetitiveArchivedAnnoucement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{SavedValue:CompetitiveArchivedAnnoucement}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:CompetitiveArchivedAnnoucement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{SavedValue:CompetitiveArchivedAnnoucement}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:CompetitiveArchivedAnnoucement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+
+  @220177 @ValidatePOFOFDcantaddnotesonDirectedannouncementhavingstatusasArchived @sprint-9-US-201923 @hitesh @Notes
+  Scenario:Validate PO/FO/FD cant add notes on Directed announcement having status as Archived
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Directed" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Directed Announcements"
+    And I perform quick search for "{SavedValue:DirectedArchivedAnnoucement}" in "---announcement:-:annoucementTableId---" panel
+    And I click on "View" icon for "{SavedValue:DirectedArchivedAnnoucement}" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Directed" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Directed Announcements"
+    And I perform quick search for "{SavedValue:DirectedArchivedAnnoucement}" in "---announcement:-:annoucementTableId---" panel
+    And I click on "View" icon for "{SavedValue:DirectedArchivedAnnoucement}" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Directed" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Directed Announcements"
+    And I perform quick search for "{SavedValue:DirectedArchivedAnnoucement}" in "---announcement:-:annoucementTableId---" panel
+    And I click on "View" icon for "{SavedValue:DirectedArchivedAnnoucement}" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+
+  @220178 @ValidatePMPOADMINcantaddnotesonFormulaannouncementhavingstatusasArchived @sprint-9-US-201923 @hitesh @Notes
+  Scenario:Validate PM/PO/ADMIN cant add notes on Formula announcement having status as Archived
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Formula Announcements"
+    And I perform quick search for "{SavedValue:FormulaClosedAnnoucement}" in "---announcement:-:formulaAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:FormulaClosedAnnoucement}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Formula Announcements"
+    And I perform quick search for "{SavedValue:ArchivedStateFormulaAnn_ByApplicantAndFocusArea}" in "---announcement:-:formulaAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:ArchivedStateFormulaAnn_ByApplicantAndFocusArea}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Formula Announcements"
+    And I perform quick search for "{SavedValue:ArchivedStateFormulaAnn_ByApplicantAndFocusArea}" in "---announcement:-:formulaAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:ArchivedStateFormulaAnn_ByApplicantAndFocusArea}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+
   @220179 @ValidateAuditorusercantaddnotesoncompetitiveannouncementwhichisPublished @sprint-9-US-201923 @hitesh @Notes
   Scenario:Validate Auditor user cant add notes on competitive announcement which is Published
     When I login to "As a Grantor" app as "PM" user
