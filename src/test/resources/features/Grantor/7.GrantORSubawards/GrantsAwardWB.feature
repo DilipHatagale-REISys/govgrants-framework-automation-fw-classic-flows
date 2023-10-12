@@ -11664,7 +11664,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
       | Reviewer Name | Role             | Description            | Due Date | Allow Record Editing |
-      | SARAH PM      | Program Reviewer | Automation Description | 5        | No                   |
+      | Sarah PM      | Program Reviewer | Automation Description | 5        | No                   |
     And I click on "Send for Review" icon for "Program Reviewer" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
     Then I softly see field "Status" as "Submitted for Review"
     When I re-login to "As a Grantor" app as "SARAH PM" user on "INTERNAL" portal
