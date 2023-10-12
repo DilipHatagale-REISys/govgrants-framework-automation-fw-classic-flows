@@ -1463,12 +1463,8 @@ Feature: Validate all notes scenarios in the  Announcement tab
     And I click on top right button "Save" in flex table with id "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "Notes Record2" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "Automation Notes2" for title "Description" inside table "---announcement:-:AnnouncementNotestableId---"
-    When I enter the following values into flex table with id "---announcement:-:AnnouncementNotestableId---" by clicking "Add" :
-      | Title         | Description       |
-      | Notes Record3 | Automation Notes3 |
-    Then I softly see value "Notes Record3" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
-    And I click on "Delete" icon for "Notes Record3" inside flex table with id "---announcement:-:AnnouncementNotestableId---" without waiting for record
-    Then I softly do not see value "Notes Record3" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
+    And I click on "Delete" icon for "Notes Record2" inside flex table with id "---announcement:-:AnnouncementNotestableId---" without waiting for record
+    Then I softly do not see value "Notes Record2" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -1489,12 +1485,8 @@ Feature: Validate all notes scenarios in the  Announcement tab
     And I click on top right button "Save" in flex table with id "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "Notes Record4" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
     Then I softly see value "Automation Notes4" for title "Description" inside table "---announcement:-:AnnouncementNotestableId---"
-    When I enter the following values into flex table with id "---announcement:-:AnnouncementNotestableId---" by clicking "Add" :
-      | Title         | Description       |
-      | Notes Record5 | Automation Notes5 |
-    Then I softly see value "Notes Record5" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
-    And I click on "Delete" icon for "Notes Record5" inside flex table with id "---announcement:-:AnnouncementNotestableId---" without waiting for record
-    Then I softly do not see value "Notes Record5" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
+    And I click on "Delete" icon for "Notes Record4" inside flex table with id "---announcement:-:AnnouncementNotestableId---" without waiting for record
+    Then I softly do not see value "Notes Record4" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
 
   @220165 @ValidateEXEFDusercantaddnotesbuteditdeletehisnotesondirectedannouncementcreatedbyPMwhichisRejected  @sprint-9-US-201923 @hitesh @Notes
   Scenario: Validate EXE/FD user cant add notes but edit/delete his notes on directed announcement created by PM which is Rejected
