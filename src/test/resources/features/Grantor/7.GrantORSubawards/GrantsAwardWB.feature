@@ -11084,7 +11084,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly can see row level action button "Edit" against "Sent S/R State PM User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
     Then I softly can see row level action button "Delete" against "Sent S/R State PM User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236109 @236112 @236120 @236359 @validatePOusershouldabletoaddnotesfromsameorganizationwhensubawardisinsubmittedforreviewstate @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236109 @236112 @236120 @236359 @validatePOusershouldabletoaddnotesfromsameorganizationwhensubawardisinsubmittedforreviewstate @Sprint-14-US-234263 @vaibhav @Notes
   Scenario: Validate PO user should able to add notes from same organization when subaward is in submitted for review state
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -11282,7 +11282,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly can see row level action button "Edit" against "Submitted Review State FO User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
     Then I softly can see row level action button "Delete" against "Submitted Review State FO User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236360 @236363 @236366 @236376 @ValidateEXEuserallowrecordeditingisyesthepeerreviewershouldabletoeditdeletethenotesinsentforreviewstate @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236360 @236363 @236366 @236376 @ValidateEXEuserallowrecordeditingisyesthepeerreviewershouldabletoeditdeletethenotesinsentforreviewstate @Sprint-14-US-234263 @vaibhav @Notes
   Scenario Outline: Validate EXE user allow record editing is yes then peer reviewer should able to edit & delete the notes in sent for review state
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -11493,7 +11493,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236450 @236451 @ValidateAdminusershouldnotabletoaddnoteswhenawardispendingactivationstate @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236450 @236451 @ValidateAdminusershouldnotabletoaddnoteswhenawardispendingactivationstate @Sprint-14-US-234263 @vaibhav @Notes
   Scenario: Validate Admin user should not able to add notes  when award is pending activation state
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default-Automation ADMIN user" of type "Directed"
     When I login to "As a Grantor" app as "ADMIN" user
@@ -11664,23 +11664,20 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
       | Reviewer Name | Role             | Description            | Due Date | Allow Record Editing |
-      | Automation FO | Program Reviewer | Automation Description | 5        | No                   |
+      | SARAH PM      | Program Reviewer | Automation Description | 5        | No                   |
     And I click on "Send for Review" icon for "Program Reviewer" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
     Then I softly see field "Status" as "Submitted for Review"
     When I re-login to "As a Grantor" app as "SARAH PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
     Then I softly see field "Status" as "Submitted for Review"
     And I navigate to "Files" sub tab
     Then I can see top right button "Add" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
     When I enter the following values into flex table with id "---subAwardStandAlone:-:notesAwardTableId---" by clicking "Add" :
-      | Title                                      | Description      |
-      | Submitted Review State FO User Award Notes | Automation Notes |
-    Then I softly see value "Submitted Review State FO User Award Notes" for title "Title" inside table "---subAwardStandAlone:-:notesAwardTableId---"
-    Then I softly can see row level action button "Edit" against "Submitted Review State FO User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
-    Then I softly can see row level action button "Delete" against "Submitted Review State FO User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
+      | Title                                         | Description      |
+      | Submitted Review State Sarah User Award Notes | Automation Notes |
+    Then I softly see value "Submitted Review State Sarah User Award Notes" for title "Title" inside table "---subAwardStandAlone:-:notesAwardTableId---"
+    Then I softly can see row level action button "Edit" against "Submitted Review State Sarah User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
+    Then I softly can see row level action button "Delete" against "Submitted Review State Sarah User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
