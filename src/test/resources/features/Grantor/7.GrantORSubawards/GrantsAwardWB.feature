@@ -11358,7 +11358,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     Then I softly see field "Status" as "Reviewed"
     And I navigate to "Files" sub tab
-    Then I can see top right button "Add" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
+    Then I softly see top right button "Add" inside flex table "---subAwardStandAlone:-:notesAwardTableId---"
     When I enter the following values into flex table with id "---subAwardStandAlone:-:notesAwardTableId---" by clicking "Add" :
       | Title                              | Description      |
       | Reviewed State FO User Award Notes | Automation Notes |
