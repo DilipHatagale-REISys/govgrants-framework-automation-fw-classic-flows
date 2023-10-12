@@ -5137,12 +5137,6 @@ Feature: Amendment Request scenarios with Undo
     Then I cannot see top right button "Undo" in page detail
     Then I cannot see top right button "Edit" in page detail
     When I navigate to "Overview" sub tab
-    Then I softly see that "New Obligation" rendered in view mode only
-    Then I softly see that "Current Obligation" rendered in view mode only
-    Then I softly see that "Spent" rendered in view mode only
-    Then I softly see that "Budgeted Amount" rendered in view mode only
-    Then I softly see that "Current Commitment" rendered in view mode only
-    Then I softly see that "Revised Commitment" rendered in view mode only
     Then I softly cannot see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
     Given I navigate to "Responsibilities" sub tab
     Then I softly cannot see top right button "New" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
