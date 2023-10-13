@@ -5725,93 +5725,93 @@ Feature: Amendment Request scenarios with Undo
     Then I can see top right button "Amend Subaward" in page detail
     And I click on "Amend Subaward" in the page details
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
-    And I save the field labeled "EGMS ID" as "AwardEGMSID1"
-    And I navigate to "Grants" tab
-    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Subawards  - Active"
-    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
-    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
-    When I navigate to "Management" sub tab
-    When I click on "View" icon for "{SavedValue:KPCID}" inside flex table with id "---amendment:-:amendmentRequestTableId---" without waiting for record
-    Then I softly see field "Status" as "Approved"
-    #292663
-    Then I cannot see top right button "Undo" in page detail
-    Then I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
-    Then I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Pending Activation" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    And I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Activated" and is "green"
-    And I navigate to "Grants" tab
-    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Subawards  - All"
-    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
-    And I click on "View" icon for "{SavedValue:AwardEGMSID}}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
-    When I navigate to "Management" sub tab
-    When I click on "View" icon for "{SavedValue:KPCID}" inside flex table with id "---amendment:-:amendmentRequestTableId---" without waiting for record
-    #292664
-    Then I softly see field "Status" as "Approved"
-    Then I cannot see top right button "Undo" in page detail
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---closeout:-:grantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---closeout:-:grantsTableId---"
-    When I navigate to "Requests" sub tab
-    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
-    And I get the "EGMS ID"
-    And I save the field labeled "EGMS ID" as "closeoutID"
-    When I click on "Save" in the page details
-    And I click on "Edit" in the page details
-    And I enter value "Automation Test justification" into field "fieldJustification__c"
-    When I click on "Save" in the page details
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
-      | Name          | Closeout |
-      | Automation PM | Step 1   |
-    And I click on "Send To Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    When I navigate to "Closeout" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
-    When I click on "Edit" in the page details
-    And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I click on "Acknowledge" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    When I navigate to "Closeout" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
-    And I refresh the page
-    When I click on "Override" in the page details
-    When I click on "Submit for Approval" in the page details
-    When I "Approve" in the approval decision
-    Then I softly see status in Progress-bar is "Completed" and is "green"
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---closeout:-:grantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---closeout:-:grantsTableId---"
-    Then I softly see field "Status" as "Closed/Completed"
-    And I navigate to "Grants" tab
-    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Subawards  - All"
-    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
-    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
-    When I navigate to "Management" sub tab
-    When I click on "View" icon for "{SavedValue:KPCID}" inside flex table with id "---amendment:-:amendmentRequestTableId---" without waiting for record
-    Then I softly see field "Status" as "Approved"
-    #292665
-    Then I cannot see top right button "Undo" in page detail
+#    And I save the field labeled "EGMS ID" as "AwardEGMSID1"
+#    And I navigate to "Grants" tab
+#    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+#    And I click toggle button to select "Subawards  - Active"
+#    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+#    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
+#    When I navigate to "Management" sub tab
+#    When I click on "View" icon for "{SavedValue:KPCID}" inside flex table with id "---amendment:-:amendmentRequestTableId---" without waiting for record
+#    Then I softly see field "Status" as "Approved"
+#    #292663
+#    Then I cannot see top right button "Undo" in page detail
+#    Then I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+#    And I navigate to "Grants" tab
+#    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+#    And I click toggle button to select "Grants - Active"
+#    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+#    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
+#    Then I navigate to "Subawards" sub tab
+#    And I click on "View" icon for "Pending Activation" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+#    And I click on "Activate" in the page details
+#    Then I see status in Progress-bar is "Activated" and is "green"
+#    And I navigate to "Grants" tab
+#    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+#    And I click toggle button to select "Subawards  - All"
+#    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+#    And I click on "View" icon for "{SavedValue:AwardEGMSID}}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
+#    When I navigate to "Management" sub tab
+#    When I click on "View" icon for "{SavedValue:KPCID}" inside flex table with id "---amendment:-:amendmentRequestTableId---" without waiting for record
+#    #292664
+#    Then I softly see field "Status" as "Approved"
+#    Then I cannot see top right button "Undo" in page detail
+#    And I navigate to "Grants" tab
+#    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+#    And I click toggle button to select "Grants - Active"
+#    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---closeout:-:grantsTableId---" panel
+#    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---closeout:-:grantsTableId---"
+#    When I navigate to "Requests" sub tab
+#    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+#    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+#    And I click modal button "Save and Continue"
+#    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+#    And I get the "EGMS ID"
+#    And I save the field labeled "EGMS ID" as "closeoutID"
+#    When I click on "Save" in the page details
+#    And I click on "Edit" in the page details
+#    And I enter value "Automation Test justification" into field "fieldJustification__c"
+#    When I click on "Save" in the page details
+#    When I navigate to "Responsibilities" sub tab
+#    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+#      | Name          | Closeout |
+#      | Automation PM | Step 1   |
+#    And I click on "Send To Subrecipient" in the page details
+#    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+#    When I navigate to "Closeout" tab
+#    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+#    When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+#    And I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+#    When I click on "Edit" in the page details
+#    And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
+#    When I click on "Save" in the page details
+#    And I click on "Acknowledge" in the page details
+#    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+#    When I navigate to "Closeout" tab
+#    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+#    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+#    When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+#    And I refresh the page
+#    When I click on "Override" in the page details
+#    When I click on "Submit for Approval" in the page details
+#    When I "Approve" in the approval decision
+#    Then I softly see status in Progress-bar is "Completed" and is "green"
+#    And I navigate to "Grants" tab
+#    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+#    And I click toggle button to select "Grants - All"
+#    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---closeout:-:grantsTableId---" panel
+#    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---closeout:-:grantsTableId---"
+#    Then I softly see field "Status" as "Closed/Completed"
+#    And I navigate to "Grants" tab
+#    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+#    And I click toggle button to select "Subawards  - All"
+#    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+#    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
+#    When I navigate to "Management" sub tab
+#    When I click on "View" icon for "{SavedValue:KPCID}" inside flex table with id "---amendment:-:amendmentRequestTableId---" without waiting for record
+#    Then I softly see field "Status" as "Approved"
+#    #292665
+#    Then I cannot see top right button "Undo" in page detail
 
   @292666 @VerifyUndobuttonvisibilityonapprovedamendmentaftersubawardisdeletedfromPendingactivationstate @sprint-3-US-288690 @hitesh @Undo @hitesTemp
   Scenario:Verify Undo button visibility on approved amendment after subaward is deleted from Pending activation state

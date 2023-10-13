@@ -56,7 +56,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     When I perform quick search for "{SavedValue:DeskReviewID}" in "---deskreview:-:deskReviewGridViewTableId---" panel
     Then I softly cannot see row level action button "Undo" against "{SavedValue:DeskReviewID}" in flex table with id "---deskreview:-:deskReviewGridViewTableId---"
 
-  @308898 @310989 @295797 @ODRVerifythatapproverundobuttonvisibilitywillchangeasperpositionofapproverofOrgdeskreviewlastormiddle @sprint-7-US-306815-288692 @hitesh @Undo
+  @308898 @310989 @295797 @295867 @ODRVerifythatapproverundobuttonvisibilitywillchangeasperpositionofapproverofOrgdeskreviewlastormiddle @sprint-7-US-306815-288692 @hitesh @Undo
   Scenario:ODR-Verify that approver undo button visibility will change as per position of approver of Org desk review last or middle
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -173,7 +173,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
 
-  @295875 @295879 @295879 @ODRVerifythatapproverundobuttonvisibilitywillchangeasperpositionofapproverofOrgdeskreviewlastormiddle @sprint-4-US-288692 @hitesh @Undo
+  @295875 @295879 @ODRVerifythatapproverundobuttonvisibilitywillchangeasperpositionofapproverofOrgdeskreviewlastormiddle @sprint-4-US-288692 @hitesh @Undo
   Scenario:Verify when 4 Approvers are added to approve Organizational Desk Review , only last approver will see UNDO button
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
