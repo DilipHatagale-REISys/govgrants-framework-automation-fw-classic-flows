@@ -5261,7 +5261,7 @@ Feature: Amendment Request scenarios with Undo
     Hello,
     This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:KPCID}  for the award #{SavedValue:AwardEGMSID}.
     Amendment Details:
-    Amendment Type:  Scope of Work Change
+    Amendment Type:  Key Personnel Change
     Amendment ID: {SavedValue:KPCID}
     Key POC: Automation SPI3
     Status: Submitted for Approval
@@ -5287,7 +5287,7 @@ Feature: Amendment Request scenarios with Undo
     Hello,
     This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:KPCID}  for the award #{SavedValue:AwardEGMSID}.
     Amendment Details:
-    Amendment Type:  Scope of Work Change
+    Amendment Type:  Key Personnel Change
     Amendment ID: {SavedValue:KPCID}
     Key POC: Automation SPI3
     Status: Submitted for Approval
@@ -5313,7 +5313,7 @@ Feature: Amendment Request scenarios with Undo
     Hello,
     This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:KPCID}  for the award #{SavedValue:AwardEGMSID}.
     Amendment Details:
-    Amendment Type: Scope of Work Change
+    Amendment Type: Key Personnel Change
     Amendment ID: {SavedValue:KPCID}
     Key POC: Automation SPI3
     Status: Submitted for Approval
@@ -5328,7 +5328,7 @@ Feature: Amendment Request scenarios with Undo
     The EGMS Team
     """
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "180" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -5339,7 +5339,7 @@ Feature: Amendment Request scenarios with Undo
     Hello,
     This email is to inform you that the Approver Automation PM  has initiated Undo Action for amendment request #{SavedValue:KPCID}  for the award #{SavedValue:AwardEGMSID}.
     Amendment Details:
-    Amendment Type: Scope of Work Change
+    Amendment Type: Key Personnel Change
     Amendment ID: {SavedValue:KPCID}
     Key POC: Automation SPI3
     Status: Submitted for Approval
