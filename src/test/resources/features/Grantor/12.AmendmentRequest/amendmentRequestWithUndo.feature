@@ -6640,15 +6640,15 @@ Feature: Amendment Request scenarios with Undo
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Reject | Forward | Send to Owner |
     Then I cannot see top right button "Edit" in page detail
-#    #292888
-#    And I navigate to "History" sub tab
-#    And I click on hyperlink containing value "Amendment - Undo Approval.pdf"
-#    When I download the file
-#    Then I softly see "{SavedValue:Automation Runtime award}" on page "1" of "govgrants" pdf file
-#    Then I softly see following details in "govgrants" pdf file:
-#      | Detail                     | Page Number |
-#      | {SavedValue:CFAmendmentId} | 1           |
-#    And I switch to parent tab
+    #292888
+    And I navigate to "History" sub tab
+    And I click on hyperlink containing value "Amendment - Undo Approval.pdf"
+    When I download the file
+    Then I softly see "{SavedValue:Automation Runtime award}" on page "1" of "govgrants" pdf file
+    Then I softly see following details in "govgrants" pdf file:
+      | Detail                     | Page Number |
+      | {SavedValue:CFAmendmentId} | 1           |
+    And I switch to parent tab
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
     #292877

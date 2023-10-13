@@ -11371,7 +11371,7 @@ Feature: Validate all scenarios of grants and award without background
       | Yes    |
       | No     |
 
-  @236391 @236407 @236423 @236440 @236542 @236544 @236545 @ValidateAdminusershouldnotabletoaddnoteswhenawardissubmitforapprovalstate @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236391 @236407 @236423 @236440 @236542 @236544 @236545 @ValidateAdminusershouldnotabletoaddnoteswhenawardissubmitforapprovalstate @Sprint-14-US-234263 @vaibhav @Notes
   Scenario: Validate Admin user should not able to add notes when award is submit for approval state
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -11722,7 +11722,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly can see row level action button "Edit" against "Submitted Review State Sarah User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
     Then I softly can see row level action button "Delete" against "Submitted Review State Sarah User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236488 @236495 @236504 @236515 @236518 @236524 @ValidatewhenEXEusercanabletoeditdeletethenotesonrowlevelwhichisaddedbytheirowninsubmitforapprovalstate @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236488 @236495 @236504 @236515 @236518 @236524 @ValidatewhenEXEusercanabletoeditdeletethenotesonrowlevelwhichisaddedbytheirowninsubmitforapprovalstate @Sprint-14-US-234263 @vaibhav @Notes
   Scenario: Validate when EXE user can able to edit & delete the notes on row level which is added by their own in submit for approval state
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -12039,7 +12039,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see field "Status" as "Accepted"
     Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236534 @ValidatewhenawardisinSenttoSrbeforeapprovalstatethenINDusersshouldabletoaddthenotes @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236534 @ValidatewhenawardisinSenttoSrbeforeapprovalstatethenINDusersshouldabletoaddthenotes @Sprint-14-US-234263 @vaibhav @Notes
   Scenario: Validate when award is in Sent to S/r before approval state then IND users should able to add the notes
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -12106,7 +12106,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly can see row level action button "Edit" against "Sent to SR State IND User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
     Then I softly can see row level action button "Delete" against "Sent to SR State IND User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236546 @236547 @ValidateINDusershouldnotabletoaddnoteswhenawardisActivatedstate @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236546 @236547 @ValidateINDusershouldnotabletoaddnoteswhenawardisActivatedstate @Sprint-14-US-234263 @vaibhav @Notes
   Scenario: Validate IND user should not able to add notes  when award is Activated state
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "SUBRECIPIENT_ORG_IND_USER-Automation ADMIN user" of type "Directed"
     When I am on "SUBPORTAL" portal
