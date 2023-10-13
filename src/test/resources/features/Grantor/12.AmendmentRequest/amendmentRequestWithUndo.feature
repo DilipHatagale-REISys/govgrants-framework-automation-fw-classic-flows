@@ -5747,6 +5747,7 @@ Feature: Amendment Request scenarios with Undo
     And I click on "View" icon for "Pending Activation" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "green"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID2"
     When I navigate to "Management" sub tab
     When I click on "View" icon for "{SavedValue:KPCID}" inside flex table with id "---amendment:-:amendmentRequestTableId---" without waiting for record
     #292664
@@ -5795,14 +5796,14 @@ Feature: Amendment Request scenarios with Undo
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---closeout:-:grantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---closeout:-:grantsTableId---"
     Then I softly see field "Status" as "Closed/Completed"
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - All"
-    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
-    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:AwardEGMSID2}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+    And I click on "View" icon for "{SavedValue:AwardEGMSID2}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
     When I navigate to "Management" sub tab
     When I click on "View" icon for "{SavedValue:KPCID}" inside flex table with id "---amendment:-:amendmentRequestTableId---" without waiting for record
     Then I softly see field "Status" as "Approved"
