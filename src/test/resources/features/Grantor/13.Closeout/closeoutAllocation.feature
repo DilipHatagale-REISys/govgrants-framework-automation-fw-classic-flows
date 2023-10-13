@@ -1,7 +1,7 @@
 @closeout @grantor-regression @grantor-parallel-regression @regression
 Feature: Validate all scenarios in Closeout
 
-  @265608 @ValidateSPAuserseecumulativeobligationvaluewhichiscopiedfromthegrantwhenCLrequestiscreated @sprint-20-US-263394 @vaibhav @Allocation @hiteshTemp
+  @265608 @ValidateSPAuserseecumulativeobligationvaluewhichiscopiedfromthegrantwhenCLrequestiscreated @sprint-20-US-263394 @vaibhav @Allocation
   Scenario: Validate SPA user see 'cumulative obligation' value which is copied from the grant when CL request is created
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -838,7 +838,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Overview" sub tab
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
 
-  @265223 @265225 @ValidateEXEusershouldnotseezerofocusareaoncloseoutwhichisnotcopiedfromawardtograntwhenawardisnotfromFDM @sprint-20-US-246948 @vaibhav @Allocation @hiteshTemp
+  @265223 @265225 @ValidateEXEusershouldnotseezerofocusareaoncloseoutwhichisnotcopiedfromawardtograntwhenawardisnotfromFDM @sprint-20-US-246948 @vaibhav @Allocation
   Scenario: Validate EXE user should not see zero focus area on closeout which is not copied from award to grant when award is not from FDM
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -979,7 +979,7 @@ Feature: Validate all scenarios in Closeout
     When I save the value from row "2" for column name "Cumulative Obligation" as "CumulativeObligationCloseout" from flex table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "{SavedValue:CumulativeObligationGrant}" is "Equals to" the value "{SavedValue:CumulativeObligationCloseout}"
 
-  @265233 @ValidateAdminuserseecumulativeobligationvaluewhichiscopiedfromthegrantwhenCLrequestiscreated @sprint-20-US-246948 @vaibhav @Allocation @hiteshTemp
+  @265233 @ValidateAdminuserseecumulativeobligationvaluewhichiscopiedfromthegrantwhenCLrequestiscreated @sprint-20-US-246948 @vaibhav @Allocation
   Scenario: Validate Admin user see 'cumulative obligation' value which is copied from the  grant when CL request is created
    #TO Do: due to this bug 282819 cannot use ADMIN user for closeout once resolved use admin user
     When I login to "As a Grantor" app as "PM" user
