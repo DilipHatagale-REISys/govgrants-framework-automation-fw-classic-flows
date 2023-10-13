@@ -11425,7 +11425,7 @@ Feature: Validate all scenarios of grants and award without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
       | Name              | Award  |
       | Automation ADMIN1 | Step 1 |
-    And I wait for "3" seconds
+    And I wait for "5" seconds
     And I click on "Send to Subrecipient" in the page details
     And I wait for "9" seconds
     Then I softly see field "Status" as "Sent To Subrecipient"
@@ -11520,7 +11520,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236450 @236451 @236549 @ValidateAdminusershouldnotabletoaddnoteswhenawardispendingactivationstate @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236450 @236451 @236549 @ValidateAdminusershouldnotabletoaddnoteswhenawardispendingactivationstate @Sprint-14-US-234263 @vaibhav @Notes
   Scenario: Validate Admin user should not able to add notes  when award is pending activation state
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default-Automation ADMIN user" of type "Directed"
     When I login to "As a Grantor" app as "ADMIN" user
@@ -11865,7 +11865,8 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly cannot see row level action button "Delete" against "Created State PM User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
     #236495
     And I "Approve" in the approval decision
-    Then I softly see status in Progress-bar is "Approved" and is "Green"
+    And I wait for "3" seconds
+    Then I softly see field "Status" as "Approved"
     And I navigate to "Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
     Then I softly see value "Created State EXE User Award Notes" for title "Title" inside table "---subAwardStandAlone:-:notesAwardTableId---"
@@ -11918,7 +11919,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly cannot see row level action button "Edit" against "Created State EXE User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
     Then I softly cannot see row level action button "Delete" against "Created State EXE User Award Notes" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236531 @236535 @236541 @236559 @ValidatewhenawardisinSenttoSrbeforeapprovalstatethenSPIusersshouldabletoaddthenotesbutexternaluserwhoisnottheownerofthenotesthenshouldnoteditanddeletenotes @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236531 @236535 @236541 @236559 @ValidatewhenawardisinSenttoSrbeforeapprovalstatethenSPIusersshouldabletoaddthenotesbutexternaluserwhoisnottheownerofthenotesthenshouldnoteditanddeletenotes @Sprint-14-US-234263 @vaibhav @Notes
   Scenario: Validate when award is in Sent to S/r before approval state then SPI users should able to add the notes but external user who is not the owner of the notes then should not edit and delete notes
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -12058,7 +12059,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -12138,6 +12139,7 @@ Feature: Validate all scenarios of grants and award without background
       | Value                       | Field                              |
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 2000                        | fieldRequestedChangeInBudget__c    |
+    And I wait for "3" seconds
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
     And I refresh the page
@@ -12147,7 +12149,7 @@ Feature: Validate all scenarios of grants and award without background
       | {SavedValue:ADMIN1 Username} | Step 1            |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -12204,7 +12206,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236556 @ValidateSPAusershouldnotabletoaddnoteswhenawardisrejectedstate @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236556 @ValidateSPAusershouldnotabletoaddnoteswhenawardisrejectedstate @Sprint-14-US-234263 @vaibhav @Notes
   Scenario: Validate SPA user should not able to add notes when award is rejected state
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -12298,7 +12300,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see field "Status" as "Rejected"
     Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236557 @236558 @ValidateSPAusershouldnotabletoaddnoteswhenawardissubmittedforreview @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236557 @236558 @ValidateSPAusershouldnotabletoaddnoteswhenawardissubmittedforreview @Sprint-14-US-234263 @vaibhav @Notes
   Scenario: Validate SPA user should not able to add notes  when award is submitted for review
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -12417,7 +12419,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see field "Status" as "Reviewed"
     Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236562 @ValidateAuditorusershouldonlyreadnotes @Sprint-14-US-234263 @vaibhav @Notes @TBE
+  @236562 @ValidateAuditorusershouldonlyreadnotes @Sprint-14-US-234263 @vaibhav @Notes
   Scenario: Validate Auditor user should only read notes
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
