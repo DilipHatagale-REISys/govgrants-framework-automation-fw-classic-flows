@@ -5153,10 +5153,9 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see snapshot with name containing "Amendment - Undo Approval.pdf" as name
     And I see "{SavedValue:PM Username}" against "Re-approval (Pending for first approval)" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
-    And I perform quick search for "{SavedValue:closeoutID}" in "History" panel
-    Then I softly see value "true" for title "New Value" inside table "History"
-    Then I softly see value "false" for title "Old Value" inside table "History"
-
+    And I perform quick search for "{SavedValue:KPCID}" in "History" panel
+    Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
+    Then I softly see value "Approved" for title "Old Value" inside table "History"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
