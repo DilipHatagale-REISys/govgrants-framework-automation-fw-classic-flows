@@ -975,28 +975,33 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-    Notification: Approver has initiated Undo Action on #{SavedValue:DeskReviewID}
+      Task Reassignment Report
       """
     Then I see the mail text is as follows :
       """
-    Hello,
+     Hello,
 
-    This email is to notify you that approver has initiated undo action.
+     The task(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
 
-    Details:
+     EGMS ID Type Status Subject Assigned By Due Date
+     {SavedValue:DeskReviewID} Approve Desk Review Org Not Started Approve Desk Review for Organization SAN DIEGO ELECTRICAL TRAINING TRUST Automation PM {Date:yyyy/MM/dd 00:00:00::d+10}
 
-    EGMS ID: {SavedValue:DeskReviewID}
 
-    Record Name: {SavedValue:Automation Runtime Desk Review Org level}
+     Because these tasks have been reassigned, the original reviewer may have lost edit access to the record. However, they may still view the record.
+     Login in to EGMS and click on EGMS IDs to access the assigned record.
 
-    Log in to EGMS and click here to start reviewing the details.
 
-    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+     The task(s) below were failed to reassigned as user was already assigned as a reviewer on this record.
 
-    Thank you.
-    The EGMS Team
-    """
+     EGMS ID Type Status Subject Assigned By Reason of Failure
 
+
+     Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+     Thank you,
+
+     The EGMS Team.
+      """
   @296153 @296154 @VerifythatwhenExeapproverForwardtheOrganizationalDeskReviewApprovaltaskForwardedApproverwillseeUNDObuttonandnotpreviousOne @sprint-4-US-288692 @hitesh @Undo
   Scenario:Verify that when Exe approver Forward the Organizational Desk Review Approval task , Forwarded Approver will see UNDO button and not previous One
     Given I login to "As a Grantor" app as "PM" user
