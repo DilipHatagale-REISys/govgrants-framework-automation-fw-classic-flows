@@ -479,7 +479,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
 
     EGMS ID: {SavedValue:DeskReviewID}
 
-    Record Name: {SavedValue:Automation Runtime Award Site Visit}
+    Record Name: {SavedValue:Automation Runtime Desk Review Org level}
 
     Log in to EGMS and click here to start reviewing the details.
 
@@ -505,7 +505,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
 
     EGMS ID: {SavedValue:DeskReviewID}
 
-    Record Name: {SavedValue:Automation Runtime Award Site Visit}
+    Record Name: {SavedValue:Automation Runtime Desk Review Org level}
 
     Log in to EGMS and click here to start reviewing the details.
 
@@ -531,7 +531,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
 
     EGMS ID: {SavedValue:DeskReviewID}
 
-    Record Name: {SavedValue:Automation Runtime Award Site Visit}
+    Record Name: {SavedValue:Automation Runtime Desk Review Org level}
 
     Log in to EGMS and click here to start reviewing the details.
 
@@ -557,7 +557,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
 
     EGMS ID: {SavedValue:DeskReviewID}
 
-    Record Name: {SavedValue:Automation Runtime Award Site Visit}
+    Record Name: {SavedValue:Automation Runtime Desk Review Org level}
 
     Log in to EGMS and click here to start reviewing the details.
 
@@ -583,7 +583,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
 
     EGMS ID: {SavedValue:DeskReviewID}
 
-    Record Name: {SavedValue:Automation Runtime Award Site Visit}
+    Record Name: {SavedValue:Automation Runtime Desk Review Org level}
 
     Log in to EGMS and click here to start reviewing the details.
 
@@ -860,7 +860,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @296097 @VerifythatwhenPMuserReassignsubmitforapprovaltasktonewuserthennewownerwillseeundobuttonafterapprovingtheOrganizationalDeskReview @sprint-4-US-288692 @hitesh @Undo
+  @296097 @296098 @VerifythatwhenPMuserReassignsubmitforapprovaltasktonewuserthennewownerwillseeundobuttonafterapprovingtheOrganizationalDeskReview @sprint-4-US-288692 @hitesh @Undo
   Scenario:Verify that when PM user Reassign submit for approval task  to new user,then new owner will see undo button after approving the Organizational Desk Review
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -940,6 +940,14 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I softly cannot see top right button "Send to Subrecipient" in page detail
     And I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
+    Then I see only the following ordered radio buttons in the approval decision :
+      | Approve | Send Back | Forward |
+    When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:homeCompletedTaskTableId---" panel
+    Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---deskreview:-:homeCompletedTaskTableId---"
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    Then I softly see value "{SavedValue:DeskReviewID}" for title "EGMS ID" inside table "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I navigate to "Home" tab
     When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
     When I reassign task to "Automation PM1"
@@ -955,4 +963,12 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I can see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    #296098
+    Then I softly see status in Progress-bar is "Approved" and is "green"
+    Then I cannot see top right button "Undo" in page detail
 
