@@ -173,7 +173,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
 
-  @295875 @295879 @ODRVerifythatapproverundobuttonvisibilitywillchangeasperpositionofapproverofOrgdeskreviewlastormiddle @sprint-4-US-288692 @hitesh @Undo
+  @295875 @295879 @296044 @296049 @ODRVerifythatapproverundobuttonvisibilitywillchangeasperpositionofapproverofOrgdeskreviewlastormiddle @sprint-4-US-288692 @hitesh @Undo
   Scenario:Verify when 4 Approvers are added to approve Organizational Desk Review , only last approver will see UNDO button
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -252,6 +252,34 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     #295879
     Then I can see top right button "Undo" in page detail
     Then I softly can see top right button "Send to Subrecipient" in page detail
+    #296044
+    Given I click on "Send to Subrecipient" in the page details
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I navigate to "Reports and Outcomes" sub tab
+    And I expand nested table containing column value "Automation Observation"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    When I collapse nested table containing column value "Automation Observation"
+    And I expand nested table containing column value "Automation Concern"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    When I collapse nested table containing column value "Automation Concern"
+    And I expand nested table containing column value "Automation Finding"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    And I collapse nested table containing column value "Automation Finding"
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
+    #296049
+    Then I cannot see top right button "Undo" in page detail
 
   @296041 @VerifythatwhenlastApproverandOwnerofOrganizationalSiteVisitarenotsameLastApproverwillSeeonlyUNDObutton @sprint-4-US-288692 @hitesh @Undo
   Scenario:Verify that when last Approver and Owner of Organizational Site Visit are not same , Last Approver will See only UNDO button
