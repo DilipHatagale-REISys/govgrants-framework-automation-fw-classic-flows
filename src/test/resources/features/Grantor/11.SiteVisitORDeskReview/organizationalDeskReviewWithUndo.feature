@@ -1097,7 +1097,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     #296153
     Then I can see top right button "Undo" in page detail
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
