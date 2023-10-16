@@ -1940,7 +1940,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     Then I see the following messages in the page details contains:
       | Files Tab - Complete each mandatory item listed in the checklist before submitting this Subaward. |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
-    When I upload attachment "Attachment.pdf" of type "Other" from computer
+    When I upload attachment without random number "Attachment.pdf" of type "Other" from computer
     When I click on "Accept" in the page details
     When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -2015,7 +2015,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     Then I softly see field "Status" as "Sent to Subrecipient after Approval"
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
-    When I upload attachment "Attachment.pdf" of type "Other" from computer
+    When I upload attachment without random number "Attachment.pdf" of type "Other" from computer
     And I click on "Accept after Approval" in the page details
     Then I softly see status in Progress-bar is "Accepted" and is "Green"
     #223463
@@ -2103,7 +2103,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     Then I softly see "Classification" inside page block detail
     Then I softly see "Upload File" inside page block detail
     Then I softly see "Description" inside page block detail
-    When I upload attachment "Attachment.pdf" of type "Other" from computer
+    When I upload attachment without random number "Attachment.pdf" of type "Other" from computer
     When I click on "Accept" in the page details
     #223462
     And I navigate to "Files" sub tab
