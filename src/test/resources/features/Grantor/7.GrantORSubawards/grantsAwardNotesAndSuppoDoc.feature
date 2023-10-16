@@ -1919,7 +1919,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I navigate to "Files" sub tab
     Then I softly see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
-    Then I softly can see row level action button "Upload Template" against "Award" in flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
+    Then I softly can see row level action button "Attach" against "Award" in flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
     Then I softly see "Add Supporting Documents Checklist" opens in overLay window
     #223457
@@ -1931,6 +1931,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     #223456
+    When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
     Then I softly see "Add Supporting Documents Checklist" opens in overLay window
     Then I do not see "Cancel" button is disabled at modal under library
@@ -1940,7 +1941,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     Then I see the following messages in the page details contains:
       | Files Tab - Complete each mandatory item listed in the checklist before submitting this Subaward. |
     When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
-    When I upload attachment without random number "Attachment.pdf" of type "Other" from computer
+    When I upload attachment without random number "Attachment.pdf" of type "Others" from computer
     When I click on "Accept" in the page details
     When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -2002,7 +2003,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I navigate to "Files" sub tab
     Then I softly see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
-    Then I softly can see row level action button "Upload Template" against "Award" in flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
+    Then I softly can see row level action button "Attach" against "Award" in flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
     Then I softly see "Add Supporting Documents Checklist" opens in overLay window
     Then I see "Upload" button is disabled at modal under library
@@ -2015,7 +2016,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     Then I softly see field "Status" as "Sent to Subrecipient after Approval"
     When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
-    When I upload attachment without random number "Attachment.pdf" of type "Other" from computer
+    When I upload attachment without random number "Attachment.pdf" of type "Others" from computer
     And I click on "Accept after Approval" in the page details
     Then I softly see status in Progress-bar is "Accepted" and is "Green"
     #223463
@@ -2103,7 +2104,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     Then I softly see "Classification" inside page block detail
     Then I softly see "Upload File" inside page block detail
     Then I softly see "Description" inside page block detail
-    When I upload attachment without random number "Attachment.pdf" of type "Other" from computer
+    When I upload attachment without random number "Attachment.pdf" of type "Others" from computer
     When I click on "Accept" in the page details
     #223462
     And I navigate to "Files" sub tab
@@ -2118,6 +2119,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I wait for "3" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     When I re-login to "As a Grantor" app as "ADMIN1" user on "INTERNAL" portal
@@ -2263,6 +2265,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I wait for "3" seconds
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     When I re-login to "As a Grantor" app as "ADMIN1" user on "INTERNAL" portal
@@ -2290,7 +2293,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I click on "Accept after Approval" in the page details
     Then I softly see status in Progress-bar is "Accepted" and is "Green"
 
-  @223469 @223471 @ValidateAdminusernewawardownercanabletoseenewtemplatelinkonsupportingdocumentchecklistonAwardwhenuseruploadedtemplatelinkwhilecreatingdirectgrantafterthatagainuploadedonActivegrant @Sprint-10-US-217547 @vaibhav @SuppDoc
+  @223469 @223471 @ValidateAdminusernewawardownercanabletoseenewtemplatelinkonsupportingdocumentchecklistonAwardwhenuseruploadedtemplatelinkwhilecreatingdirectgrantafterthatagainuploadedonActivegrant @Sprint-10-US-217547 @vaibhav @SuppDoc @TBE
   Scenario: Validate Admin user new award owner can able to see new template link on supporting document checklist on Award when user uploaded template link while creating direct grant after that again uploaded on Active grant
     Given I activated standalone subaward "Automation Runtime Award" with properties "Automation ADMIN user" of type "Competitive"
     When I login to "As a Grantor" app as "ADMIN" user
@@ -2364,7 +2367,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     When I navigate to "Files" sub tab
     Then I softly do not see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:grantsNotesTableId---"
 
-  @223477 @ValidateINDusershouldseefollowingerrormessageifusertriestoAcceptafterapprovalonlyifinternalusercreateGrant&selectappliestoAwardandRequiredfieldisMandatory @Sprint-10-US-217547 @vaibhav @SuppDoc
+  @223477 @ValidateINDusershouldseefollowingerrormessageifusertriestoAcceptafterapprovalonlyifinternalusercreateGrant&selectappliestoAwardandRequiredfieldisMandatory @Sprint-10-US-217547 @vaibhav @SuppDoc @TBE
   Scenario: Validate IND user should see following error message if user tries to Accept after approval only if internal user create Grant & select applies to=Award and Required field is Mandatory
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -2444,6 +2447,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Terms" sub tab
+    And I wait for "3" seconds
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
