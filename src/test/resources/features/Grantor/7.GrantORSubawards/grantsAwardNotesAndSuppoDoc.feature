@@ -1920,26 +1920,26 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     Then I softly see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     Then I softly can see row level action button "Upload Template" against "Award" in flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
-    Then I softly see "Add Supporting Checklist Documents" opens in overLay window
+    When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
+    Then I softly see "Add Supporting Documents Checklist" opens in overLay window
     #223457
     And I click modal button "Cancel"
-    Then I see "Add Supporting Checklist Documents" modal is closed
+    Then I see "Add Supporting Documents Checklist" modal is closed
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     #223456
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
-    Then I softly see "Add Supporting Checklist Documents" opens in overLay window
+    When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
+    Then I softly see "Add Supporting Documents Checklist" opens in overLay window
     Then I do not see "Cancel" button is disabled at modal under library
     And I refresh the page
     When I click on "Accept" in the page details
     #223460
     Then I see the following messages in the page details contains:
       | Files Tab - Complete each mandatory item listed in the checklist before submitting this Subaward. |
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
+    When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
     When I upload attachment without random number "Attachment.pdf" of type "Other" from computer
     When I click on "Accept" in the page details
     When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
@@ -1984,9 +1984,9 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I navigate to "Files" sub tab
     Then I softly see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
-    Then I softly can see row level action button "Upload Template" against "Award" in flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
-    Then I softly see "Add Supporting Checklist Documents" opens in overLay window
+    Then I softly can see row level action button "Attach" against "Award" in flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
+    When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
+    Then I softly see "Add Supporting Documents Checklist" opens in overLay window
     Then I see "Upload File from Computer" page block displayed
     Then I see only the following ordered options in dropdown field "WorkspaceFilesUpload" :
       | Select file classification | Template for Award | Others |
@@ -2003,8 +2003,8 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     Then I softly see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     Then I softly can see row level action button "Upload Template" against "Award" in flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
-    Then I softly see "Add Supporting Checklist Documents" opens in overLay window
+    When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
+    Then I softly see "Add Supporting Documents Checklist" opens in overLay window
     Then I see "Upload" button is disabled at modal under library
     When I upload file "AttachmentTesting.pdf" into library
     Then I do not see "Upload" button is disabled at modal under library
@@ -2014,7 +2014,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     Then I softly see field "Status" as "Sent to Subrecipient after Approval"
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
+    When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
     When I upload attachment without random number "Attachment.pdf" of type "Other" from computer
     And I click on "Accept after Approval" in the page details
     Then I softly see status in Progress-bar is "Accepted" and is "Green"
@@ -2096,9 +2096,9 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     #223453
     Then I softly see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
-    Then I softly can see row level action button "Upload Template" against "Award" in flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
-    Then I softly see "Add Supporting Checklist Documents" opens in overLay window
+    Then I softly can see row level action button "Attach" against "Award" in flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
+    When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
+    Then I softly see "Add Supporting Documents Checklist" opens in overLay window
     Then I softly see "Upload File from Computer" page block displayed
     Then I softly see "Classification" inside page block detail
     Then I softly see "Upload File" inside page block detail
@@ -2146,9 +2146,9 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I navigate to "Files" sub tab
     Then I softly see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
-    Then I softly can see row level action button "Upload Template" against "Award" in flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
-    Then I softly see "Add Supporting Checklist Documents" opens in overLay window
+    Then I softly can see row level action button "Attach" against "Award" in flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
+    When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
+    Then I softly see "Add Supporting Documents Checklist" opens in overLay window
     Then I see "Upload File from Computer" page block displayed
     #223455
     Then I see "Upload" button is disabled at modal under library
@@ -2289,3 +2289,186 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I click on "Accept after Approval" in the page details
     Then I softly see status in Progress-bar is "Accepted" and is "Green"
+
+  @223469 @223471 @ValidateAdminusernewawardownercanabletoseenewtemplatelinkonsupportingdocumentchecklistonAwardwhenuseruploadedtemplatelinkwhilecreatingdirectgrantafterthatagainuploadedonActivegrant @Sprint-10-US-217547 @vaibhav @SuppDoc
+  Scenario: Validate Admin user new award owner can able to see new template link on supporting document checklist on Award when user uploaded template link while creating direct grant after that again uploaded on Active grant
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation ADMIN user" of type "Competitive"
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    Then I softly see field "Status" as "Active"
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" by clicking "Add" :
+      | Description | Required  | Applies To | Status |
+      | Award       | Mandatory | Award      | Active |
+    And I click on "Upload Template" icon for "Automation" inside flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" with wait for record
+    And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
+    And I click in table hyperlink containing value "View"
+    Then I softly verify that the file "Attachment.pdf" is downloaded
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "TermsAndConditions_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                    | Field               |
+      | Automation Justification | fieldTncComments__c |
+    And I wait for "3" seconds
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "TermsCondId"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name              | Amendment Request |
+      | Automation ADMIN1 | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:TermsCondId}" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:TermsCondId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:TermsCondId}" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:TermsCondId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I wait for "3" seconds
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    And I wait for "3" seconds
+    And I click on "Amend Subaward" in the page details
+    And I pause execution for "10" seconds
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    When I navigate to "Files" sub tab
+    Then I softly see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:grantsNotesTableId---"
+    And I click in table hyperlink containing value "View"
+    Then I softly verify that the file "Attachment.pdf" is downloaded
+    #223471
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
+    Then I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    Then I softly see that "Subaward" is in "Activated" status
+    When I navigate to "Files" sub tab
+    Then I softly do not see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:grantsNotesTableId---"
+
+  @223477 @ValidateINDusershouldseefollowingerrormessageifusertriestoAcceptafterapprovalonlyifinternalusercreateGrant&selectappliestoAwardandRequiredfieldisMandatory @Sprint-10-US-217547 @vaibhav @SuppDoc
+  Scenario: Validate IND user should see following error message if user tries to Accept after approval only if internal user create Grant & select applies to=Award and Required field is Mandatory
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFieldsIndUser1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter value "abc" into field "fieldGrantDescription__c"
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    Then I softly see field "Status" as "Draft"
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" by clicking "Add" :
+      | Description | Required  | Applies To | Status |
+      | Award       | Mandatory | Award      | Active |
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Subaward Title" as "Automation Runtime award"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Award Amount | Cash Match | Non-Cash Match |
+      | Construction    | 1000         | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name                      | Project Role             | Is Key Personnel |
+      | {SavedValue:IND Username} | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name              | Award  |
+      | Automation ADMIN1 | Step 1 |
+    And I wait for "5" seconds
+    And I click on "Send to Subrecipient" in the page details
+    And I wait for "9" seconds
+    Then I softly see field "Status" as "Sent To Subrecipient"
+    And I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    When I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    When I click on "Accept" in the page details
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I navigate to "Terms" sub tab
+    When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "ADMIN1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    Then I softly see field "Status" as "Approved"
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent to Subrecipient after Approval"
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I click on "Accept after Approval" in the page details
+    Then I see the following messages in the page details contains:
+      | Files Tab - Complete each mandatory item listed in the checklist before submitting this Subaward. |
