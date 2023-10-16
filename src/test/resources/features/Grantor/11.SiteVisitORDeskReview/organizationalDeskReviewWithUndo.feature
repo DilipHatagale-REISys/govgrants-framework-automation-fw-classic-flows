@@ -278,7 +278,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     #296049
     Then I cannot see top right button "Undo" in page detail
 
-  @296041 @VerifythatwhenlastApproverandOwnerofOrganizationalSiteVisitarenotsameLastApproverwillSeeonlyUNDObutton @sprint-4-US-288692 @hitesh @Undo
+  @296041 @296073 @VerifythatwhenlastApproverandOwnerofOrganizationalSiteVisitarenotsameLastApproverwillSeeonlyUNDObutton @sprint-4-US-288692 @hitesh @Undo
   Scenario:Verify that when last Approver and Owner of Organizational Site Visit are not same , Last Approver will See only UNDO button
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -356,6 +356,25 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I can see top right button "Undo" in page detail
     Then I softly cannot see top right button "Send to Subrecipient" in page detail
+    And I click on "Undo" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    Then I see only the following ordered radio buttons in the approval decision :
+      | Approve | Send Back | Forward |
+    #296074
+    And I see "{SavedValue:EXE Username}" against "Re-approval (Pending for first approval)" in approval history
+    Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
+    When I perform quick search for "{SavedValue:DeskReviewID}" in "History" panel
+    Then I softly see value "{SavedValue:DeskReviewID}" for title "EGMS ID" inside table "History"
+    Then I softly see value "{SavedValue:EXE Username}" for title "Changed By" inside table "History"
+    Then I softly see value "Approved" for title "Old Value" inside table "History"
+    Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
+    #296073
+    When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:homeCompletedTaskTableId---" panel
+    Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---deskreview:-:homeCompletedTaskTableId---"
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---deskreview:-:monitoringTabPhasePendingTasks---"
 
   @296067 @VerifythatafterPOuserclickonUndobuttonEmailwillbesenttoPreviousApproverandOwnerofOrganizationalDeskReviewrecord @sprint-4-US-288692 @hitesh @Undo
   Scenario:Verify that after PO user click on Undo button Email will be sent to Previous Approver and Owner of Organizational Desk Review record
