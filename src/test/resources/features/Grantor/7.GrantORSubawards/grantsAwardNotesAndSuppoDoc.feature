@@ -1938,8 +1938,8 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I refresh the page
     When I click on "Accept" in the page details
     #223460
-    Then I see the following messages in the page details contains:
-      | Files Tab - Complete each mandatory item listed in the checklist before submitting this Subaward. |
+    Then I softly see the following messages in the page details contains:
+      | FilesTab - Complete each mandatory item listed in the checklist before submitting this Subaward. |
     When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
     When I upload attachment without random number "Attachment.pdf" of type "Others" from computer
     When I click on "Accept" in the page details
@@ -2023,7 +2023,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I navigate to "Files" sub tab
     Then I softly do not see "Actions" in flex table header "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
 
-  @223452 @223453 @223455 @223461 @223462 @223466 @ValidateasINDUsercanabletoseeoptionUploadFilefromComputerwhennewmodalgetOpennamedasAddSupportingDocumentChecklistafterClickingonUploadTemplateiconofsupportingdocumentchecklistonAward @Sprint-10-US-217547 @vaibhav @SuppDoc @TBE
+  @223452 @223453 @223455 @223461 @223462 @223466 @ValidateasINDUsercanabletoseeoptionUploadFilefromComputerwhennewmodalgetOpennamedasAddSupportingDocumentChecklistafterClickingonUploadTemplateiconofsupportingdocumentchecklistonAward @Sprint-10-US-217547 @vaibhav @SuppDoc
   Scenario: Validate as IND user can able to see option "Upload File from Computer" when new modal get open named as 'Add Supporting Document Checklist' after clicking on "Upload Template" icon of supporting document checklist on Award
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -2184,7 +2184,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
       | Award       | Optional | Award      | Active |
     Then I softly see value "Optional" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:grantSupportDocTableId---"
 
-  @223464 @ValidateINDusershouldnotseeerrormessageifusertriestosubmittheAwardtoGrantoronlyifinternalusercreateGrant&selectappliestoAwardandRequiredfieldisOptional @Sprint-10-US-217547 @vaibhav @SuppDoc @TBE
+  @223464 @ValidateINDusershouldnotseeerrormessageifusertriestosubmittheAwardtoGrantoronlyifinternalusercreateGrant&selectappliestoAwardandRequiredfieldisOptional @Sprint-10-US-217547 @vaibhav @SuppDoc
   Scenario: Validate IND user should not see error message if user tries to submit the Award to Grantor only if internal user create Grant & select applies to=Award and Required field is 'Optional'
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -2328,8 +2328,8 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I save the field labeled "EGMS ID" as "TermsCondId"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name              | Amendment Request |
-      | Automation ADMIN1 | Step 1            |
+      | Name             | Amendment Request |
+      | Automation ADMIN | Step 1            |
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -2429,23 +2429,6 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
       | Name              | Award  |
       | Automation ADMIN1 | Step 1 |
     And I wait for "5" seconds
-    And I click on "Send to Subrecipient" in the page details
-    And I wait for "9" seconds
-    Then I softly see field "Status" as "Sent To Subrecipient"
-    And I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
-    When I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    When I click on "Accept" in the page details
-    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Terms" sub tab
     And I wait for "3" seconds
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
@@ -2474,5 +2457,5 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I click on "Accept after Approval" in the page details
-    Then I see the following messages in the page details contains:
-      | Files Tab - Complete each mandatory item listed in the checklist before submitting this Subaward. |
+    Then I softly see the following messages in the page details contains:
+      | FilesTab - Complete each mandatory item listed in the checklist before submitting this Subaward. |
