@@ -2015,6 +2015,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     Then I softly see field "Status" as "Sent to Subrecipient after Approval"
+    And I navigate to "Files" sub tab
     When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
     When I upload attachment without random number "Attachment.pdf" of type "Others" from computer
     And I click on "Accept after Approval" in the page details
