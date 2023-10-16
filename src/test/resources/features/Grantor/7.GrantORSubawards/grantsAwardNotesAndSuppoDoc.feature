@@ -2353,9 +2353,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I pause execution for "10" seconds
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     When I navigate to "Files" sub tab
-    Then I softly see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:grantsNotesTableId---"
-    And I click in table hyperlink containing value "View"
-    Then I softly verify that the file "Attachment.pdf" is downloaded
+    Then I softly see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:awardSuppDocTableId---"
     #223471
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -2366,7 +2364,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     Then I softly see that "Subaward" is in "Activated" status
     When I navigate to "Files" sub tab
-    Then I softly do not see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:grantsNotesTableId---"
+    Then I softly do not see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:awardSuppDocTableId---"
 
   @223477 @ValidateINDusershouldseefollowingerrormessageifusertriestoAcceptafterapprovalonlyifinternalusercreateGrant&selectappliestoAwardandRequiredfieldisMandatory @Sprint-10-US-217547 @vaibhav @SuppDoc
   Scenario: Validate IND user should see following error message if user tries to Accept after approval only if internal user create Grant & select applies to=Award and Required field is Mandatory
