@@ -970,6 +970,32 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     #296098
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I cannot see top right button "Undo" in page detail
+    And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+    Notification: Approver has initiated Undo Action on #{SavedValue:DeskReviewID}
+      """
+    Then I see the mail text is as follows :
+      """
+    Hello,
+
+    This email is to notify you that approver has initiated undo action.
+
+    Details:
+
+    EGMS ID: {SavedValue:DeskReviewID}
+
+    Record Name: {SavedValue:Automation Runtime Desk Review Org level}
+
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
+    """
 
   @296153 @296154 @VerifythatwhenExeapproverForwardtheOrganizationalDeskReviewApprovaltaskForwardedApproverwillseeUNDObuttonandnotpreviousOne @sprint-4-US-288692 @hitesh @Undo
   Scenario:Verify that when Exe approver Forward the Organizational Desk Review Approval task , Forwarded Approver will see UNDO button and not previous One
