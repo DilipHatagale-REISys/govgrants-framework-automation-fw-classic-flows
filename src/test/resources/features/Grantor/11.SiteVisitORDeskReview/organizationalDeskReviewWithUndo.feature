@@ -668,4 +668,4 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I softly see status in Progress-bar is "Approved" and is "green"
-    Then I can see top right button "Undo" in page detail
+    Then I cannot see top right button "Undo" in page detail
