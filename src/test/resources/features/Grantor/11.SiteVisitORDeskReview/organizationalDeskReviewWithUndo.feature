@@ -375,7 +375,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---deskreview:-:homeCompletedTaskTableId---"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---deskreview:-:monitoringTabPhasePendingTasks---"
+    Then I softly see value "{SavedValue:DeskReviewID}" for title "EGMS ID" inside table "---deskreview:-:monitoringTabPhasePendingTasks---"
 
   @296067 @VerifythatafterPOuserclickonUndobuttonEmailwillbesenttoPreviousApproverandOwnerofOrganizationalDeskReviewrecord @sprint-4-US-288692 @hitesh @Undo
   Scenario:Verify that after PO user click on Undo button Email will be sent to Previous Approver and Owner of Organizational Desk Review record
@@ -717,6 +717,8 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I save the field labeled "EGMS ID" as "DeskReviewID"
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I click on "Notify" in the page details
+    Then I softly see field "Status" as "Notified"
+    Then I cannot see top right button "Undo" in page detail
     And I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -777,10 +779,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Send Back | Forward |
     And I "Send Back" in the approval decision
-    Then I softly see field "Status" as "Created"
-    And I click on "Notify" in the page details
-    Then I softly see field "Status" as "Notified"
-    Then I cannot see top right button "Undo" in page detail
+    Then I softly see field "Status" as "In Progress"
     #296087
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
