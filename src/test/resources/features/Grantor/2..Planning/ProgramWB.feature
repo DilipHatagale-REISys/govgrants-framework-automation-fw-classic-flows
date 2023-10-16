@@ -7011,7 +7011,7 @@ Feature: Validate all scenarios for program
 
   @204588 @ValidatePMEXEADMINusercanaddeditdeletenotesonExternalPrograminApprovedstatus @sprint-7-US-201927 @hitesh @Notes
   Scenario: Validate PM,EXE, ADMIN user can add/edit/delete notes on  External Program in Approved status
-    When I login to "As a Grantor" app as "EXE" user
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
     And I click on top right button "New" in flex table with id "---program:-:ExternalNGOProgramTableId---"
