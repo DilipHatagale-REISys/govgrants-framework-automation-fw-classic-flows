@@ -514,6 +514,84 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Thank you.
     The EGMS Team
     """
+    And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+    Notification: Approver has initiated Undo Action on #{SavedValue:DeskReviewID}
+      """
+    Then I see the mail text is as follows :
+      """
+    Hello,
+
+    This email is to notify you that approver has initiated undo action.
+
+    Details:
+
+    EGMS ID: {SavedValue:DeskReviewID}
+
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
+
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
+    """
+    And I checkout to yopmail with mailid "automationpo@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+    Notification: Approver has initiated Undo Action on #{SavedValue:DeskReviewID}
+      """
+    Then I see the mail text is as follows :
+      """
+    Hello,
+
+    This email is to notify you that approver has initiated undo action.
+
+    Details:
+
+    EGMS ID: {SavedValue:DeskReviewID}
+
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
+
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
+    """
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+    Notification: Approver has initiated Undo Action on #{SavedValue:DeskReviewID}
+      """
+    Then I see the mail text is as follows :
+      """
+    Hello,
+
+    This email is to notify you that approver has initiated undo action.
+
+    Details:
+
+    EGMS ID: {SavedValue:DeskReviewID}
+
+    Record Name: {SavedValue:Automation Runtime Award Site Visit}
+
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
+    """
 
   @296068 @VerifythatafterEXEuserclickonUndobuttonAllthetablesofOrganizationalDeskReviewwillnotgetaffected @sprint-4-US-288692 @hitesh @Undo
   Scenario:Verify that after EXE user click on Undo button All the tables of Organizational Desk Review will not get affected
@@ -539,16 +617,16 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I click on "Notify" in the page details
     And I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:PO Username}  | Step 1      |
-    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:PM1 Username} | Step 2      |
-    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:FO Username}  | Step 3      |
-    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:EXE Username}  | Step 4      |
     And I navigate to "Reports and Outcomes" sub tab
@@ -594,17 +672,14 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I can see top right button "Undo" in page detail
     And I click on "Undo" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
-    Given I navigate to "Overview" sub tab
-    Then I softly cannot see top right button "Undo" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
-    Then I softly cannot see row level action button "Undo" against "Automation Permanent Focus Area" in flex table with id "---amendment:-:projectAreasTableId---"
-    Given I navigate to "Responsibilities" sub tab
-    Then I softly cannot see top right button "Undo" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
-    Then I softly cannot see row level action button "Undo" against "{SavedValue:PO Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
-    Then I softly cannot see row level action button "Undo" against "{SavedValue:EXE Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
-    Then I softly cannot see row level action button "Undo" against "{SavedValue:FO Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
-    Then I softly cannot see row level action button "Undo" against "{SavedValue:PM Username}" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
-    When I navigate to "Files" sub tab
-    Then I softly cannot see top right button "Undo" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
+    When I navigate to "Overview" sub tab
+    Then I softly cannot see top right button "Associate" in flex table with id "---orgLevelDeskReview:-:participateassociateContactsId---"
+    Then I softly cannot see top right button "Associate" in flex table with id "orgLevelDeskReview:-:associateAwardId---"
+    When I navigate to "Responsibilities" sub tab
+    Then I softly cannot see top right button "New" in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---"
+    And I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---orgLevelDeskReview:-:siteVisitAddFilesTableId---"
+    Then I softly cannot see top right button "Add" in flex table with id "---orgLevelDeskReview:-:siteVisitNotesTableId---"
 
   @296072 @VerifyAuditorusercannotseeundobuttoninApprovedstateofOrganizationalDeskReview @sprint-4-US-288692 @hitesh @Undo
   Scenario:Verify Auditor user can not see undo button in Approved  state of Organizational Desk Review
