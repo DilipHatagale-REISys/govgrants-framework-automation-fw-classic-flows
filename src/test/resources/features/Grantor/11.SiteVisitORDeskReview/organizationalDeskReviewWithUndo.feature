@@ -682,9 +682,14 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    Given I navigate to "Related log" sub tab
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:deskreviewPanelId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:deskreviewPanelId---"
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I cannot see top right button "Undo" in page detail
