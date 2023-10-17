@@ -1867,7 +1867,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @279410 @279704 @ValidateaftercompletingnegotiationfrommanagementreviewstepPMusercanagainstartapplicationreviewfromPrescreenreviewstepandcanassigntheapplicationforreviewtothereviewers @Sprint-25-US-227292 @vaibhav @TBE1
+  @279410 @279704 @ValidateaftercompletingnegotiationfrommanagementreviewstepPMusercanagainstartapplicationreviewfromPrescreenreviewstepandcanassigntheapplicationforreviewtothereviewers @Sprint-25-US-227292 @vaibhav
   Scenario Outline:Validate after completing negotiation from management review step, PM user can again start application review from Prescreen review step and can assign the application for review to the reviewers
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -2143,12 +2143,13 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     Then I softly see field "Status" as "In Progress"
     Then I see value "Pending" for title "Decision Status" inside table "---applicationReview:-:appTableId---"
     Then I softly see value "Resubmitted" for title "Decision Status" against the value "{SavedValue:AppEGMSID}" inside table "---applicationReview:-:reSubmittedAppTableId---"
-    Then I softly see value "N/A" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:reSubmittedAppTableId---"
+    When I save the value from row "1" for column name "Average Weighted Score" as "Score" from flex table "---applicationReview:-:reSubmittedAppTableId---"
+    Then I softly see value "{SavedValue:Score}" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
     And I click on "Assign" icon for "Automation PM1" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
-    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
+    And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
     And I navigate to "Applications" tab
@@ -2173,6 +2174,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I save the value from row "1" for column name "Average Weighted Score" as "UpdatedScore" from flex table "---applicationReview:-:reSubmittedAppTableId---"
     Then I softly see value "{SavedValue:UpdatedScore}" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
+    Then I softly see value "{SavedValue:Score}" is "Less Than" the value "{SavedValue:UpdatedScore}"
     #279704
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -2183,12 +2185,12 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     Then I softly see value "{SavedValue:UpdatedScore}" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
-
+    Then I softly see value "{SavedValue:Score}" is "Less Than" the value "{SavedValue:UpdatedScore}"
     Examples:
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @279819 @ValidatecorrectscoreisupdatedfortheapplicationontheRecommendedapplicationsectiononFDMafterApplicationpromotedtoFDMafternegotiation @Sprint-25-US-227292 @vaibhav @TBE1
+  @279819 @ValidatecorrectscoreisupdatedfortheapplicationontheRecommendedapplicationsectiononFDMafterApplicationpromotedtoFDMafternegotiation @Sprint-25-US-227292 @vaibhav
   Scenario Outline: Validate correct score is updated for the application on the Recommended application section on FDM after Application promoted to FDM after negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -2451,7 +2453,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @279692 @Validateaftercompletingnegotiationusershouldnotbeabletopromoteapplicationtonextstepifminimumreviewrequirementisnotcompletedonthereviewstep @Sprint-25-US-227292 @vaibhav @TBE1
+  @279692 @Validateaftercompletingnegotiationusershouldnotbeabletopromoteapplicationtonextstepifminimumreviewrequirementisnotcompletedonthereviewstep @Sprint-25-US-227292 @vaibhav @ErrorMessageTimeout
   Scenario Outline: Validate after completing negotiation user should not be able to promote application to next step if minimum review requirement is not completed on the review step
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
