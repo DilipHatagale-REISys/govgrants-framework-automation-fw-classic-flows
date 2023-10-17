@@ -6720,7 +6720,7 @@ Feature: Amendment Request scenarios with Undo
     And I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     Then I see only the following ordered radio buttons in the approval decision :
-      | Approve | Send Back | Forward |
-    And I "Send Back" in the approval decision
-    Then I softly see field "Status" as "In Progress"
+      | Approve | Reject | Forward | Send to Owner |
+    And I "Send to Owner" in the approval decision
+    Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
