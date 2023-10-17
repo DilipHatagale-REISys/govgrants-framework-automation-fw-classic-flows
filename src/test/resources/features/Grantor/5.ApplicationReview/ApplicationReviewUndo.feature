@@ -2143,7 +2143,9 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     Then I softly see field "Status" as "In Progress"
     Then I see value "Pending" for title "Decision Status" inside table "---applicationReview:-:appTableId---"
     Then I softly see value "Resubmitted" for title "Decision Status" against the value "{SavedValue:AppEGMSID}" inside table "---applicationReview:-:reSubmittedAppTableId---"
-    Then I softly see value "6.0/100.00" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
+    When I expand nested table containing column value "Resubmitted"
+    When I save the value from row "1" for column name "Average Score" as "AverageScore" from flex table "---applicationReview:-:reviewFormsTableId---"
+    Then I softly see value "{SavedValue:AverageScore}" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
     And I click on "Assign" icon for "Automation PM1" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
@@ -2172,8 +2174,10 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     #279704
-    Then I softly see value "8.0/100.00" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
-    Then I softly see value "6.0/100.00" is "Less Than" the value "8.0/100.00"
+    When I expand nested table containing column value "Pending"
+    When I save the value from row "1" for column name "Average Score" as "UpdatedAverageScore" from flex table "---applicationReview:-:reviewFormsTableId---"
+    Then I softly see value "{SavedValue:UpdatedAverageScore}" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
+    Then I softly see value "{SavedValue:AverageScore}" is "Less Than" the value "{SavedValue:UpdatedAverageScore}"
 
     Examples:
       | Announcement Name                                | Application Name                                 |
