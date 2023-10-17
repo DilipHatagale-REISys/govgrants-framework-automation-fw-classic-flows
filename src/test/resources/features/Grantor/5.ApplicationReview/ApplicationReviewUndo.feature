@@ -2172,7 +2172,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
-    When I save the value from row "1" for column name "Average Weighted Score" as "UpdatedScore" from flex table "---applicationReview:-:reSubmittedAppTableId---"
+    When I save the value from row "1" for column name "Average Weighted Score" as "UpdatedScore" from flex table "---applicationReview:-:appTableId---"
     Then I softly see value "{SavedValue:UpdatedScore}" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
     Then I softly see value "{SavedValue:Score}" is "Less Than" the value "{SavedValue:UpdatedScore}"
     #279704
