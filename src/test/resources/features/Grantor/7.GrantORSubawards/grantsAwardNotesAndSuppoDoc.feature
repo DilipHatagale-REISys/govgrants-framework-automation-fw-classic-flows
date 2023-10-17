@@ -2459,7 +2459,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     Then I softly see the following messages in the page details contains:
       | FilesTab - Complete each mandatory item listed in the checklist before submitting this Subaward. |
 
-  @223478 @223700 @223312 @223386 @223395 @ValidateasAdminusercanseeActioncolumnshouldgethideonsupportingdocumentchecklistonAwardisincreatedstatewhensupportingdocumentchecklistiscreatedforAwardwhilecreatingdirectGrant @Sprint-10-US-217547 @vaibhav @SuppDoc @TBE
+  @223478 @223700 @223312 @223386 @223395 @ValidateasAdminusercanseeActioncolumnshouldgethideonsupportingdocumentchecklistonAwardisincreatedstatewhensupportingdocumentchecklistiscreatedforAwardwhilecreatingdirectGrant @Sprint-10-US-217547 @vaibhav @SuppDoc
   Scenario: Validate as Admin user can see 'Action' column should get hide on supporting document checklist on Award is in 'created' state when supporting document checklist is created for Award while creating direct Grant
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab

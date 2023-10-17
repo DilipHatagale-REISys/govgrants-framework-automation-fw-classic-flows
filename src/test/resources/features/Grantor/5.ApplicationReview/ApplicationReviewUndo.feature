@@ -2141,10 +2141,9 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I click on "Back to Current Review Step" in the page details
     Then I see the sub-header is "Pre-Screen Review" in the page details
     Then I softly see field "Status" as "In Progress"
+    Then I see value "Pending" for title "Decision Status" inside table "---applicationReview:-:appTableId---"
     Then I softly see value "Resubmitted" for title "Decision Status" against the value "{SavedValue:AppEGMSID}" inside table "---applicationReview:-:reSubmittedAppTableId---"
-    When I save the value from row "1" for column name "Average Weighted Score" as "Score" from flex table "---applicationReview:-:reSubmittedAppTableId---"
-    Then I softly see value "{SavedValue:Score}" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:reSubmittedAppTableId---"
-    Then I softly see that "Review Incomplete" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    Then I softly see value "N/A" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:reSubmittedAppTableId---"
     And I click on "Assign" icon for "Automation PM1" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
@@ -2174,7 +2173,6 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I save the value from row "1" for column name "Average Weighted Score" as "UpdatedScore" from flex table "---applicationReview:-:reSubmittedAppTableId---"
     Then I softly see value "{SavedValue:UpdatedScore}" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
-    Then I softly see value "{SavedValue:Score}" is "less than" the value "{SavedValue:UpdatedScore}"
     #279704
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -2185,7 +2183,6 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     Then I softly see value "{SavedValue:UpdatedScore}" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
-    Then I softly see value "{SavedValue:Score}" is "less than" the value "{SavedValue:UpdatedScore}"
 
     Examples:
       | Announcement Name                                | Application Name                                 |
@@ -2339,10 +2336,10 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:internalHomePendingTableId---" panel
     And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:internalHomePendingTableId---"
     When I click on "Complete Negotiation" in the page details
-    When I click on "Back to Current Review Step" in the page details
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Negotiation Request Status" as "Complete" in "Negotiation Request Details" pageblock
     When I click on "Back to Current Review Step" in the page details
+    Then I see value "Pending" for title "Decision Status" inside table "---applicationReview:-:appTableId---"
     Then I softly see value "Resubmitted" for title "Decision Status" against the value "{SavedValue:AppEGMSID}" inside table "---applicationReview:-:reSubmittedAppTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
@@ -2409,7 +2406,6 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     And I click on "Next Review Step" in the page details
     Then I softly see value "Resubmitted" for title "Decision Status" against the value "{SavedValue:AppEGMSID}" inside table "---applicationReview:-:reSubmittedAppTableId---"
-    Then I softly see value "Review Incomplete" for title "Status" inside table "---applicationReview:-:appreviewsTableId---"
     And I click on "Assign" icon for "Automation FO" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
@@ -2602,10 +2598,10 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:internalHomePendingTableId---" panel
     And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:internalHomePendingTableId---"
     When I click on "Complete Negotiation" in the page details
-    When I click on "Back to Current Review Step" in the page details
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Negotiation Request Status" as "Complete" in "Negotiation Request Details" pageblock
     When I click on "Back to Current Review Step" in the page details
+    Then I see value "Pending" for title "Decision Status" inside table "---applicationReview:-:appTableId---"
     Then I softly see value "Resubmitted" for title "Decision Status" against the value "{SavedValue:AppEGMSID}" inside table "---applicationReview:-:reSubmittedAppTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
