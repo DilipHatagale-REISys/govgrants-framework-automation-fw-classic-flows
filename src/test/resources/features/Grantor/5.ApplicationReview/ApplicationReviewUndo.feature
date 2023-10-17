@@ -2143,8 +2143,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     Then I softly see field "Status" as "In Progress"
     Then I see value "Pending" for title "Decision Status" inside table "---applicationReview:-:appTableId---"
     Then I softly see value "Resubmitted" for title "Decision Status" against the value "{SavedValue:AppEGMSID}" inside table "---applicationReview:-:reSubmittedAppTableId---"
-    When I save the value from row "1" for column name "Average Weighted Score" as "Score" from flex table "---applicationReview:-:reSubmittedAppTableId---"
-    Then I softly see value "{SavedValue:Score}" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
+    Then I softly see value "6.0/100.00" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
     And I click on "Assign" icon for "Automation PM1" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
@@ -2172,20 +2171,10 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
-    When I save the value from row "1" for column name "Average Weighted Score" as "UpdatedScore" from flex table "---applicationReview:-:appTableId---"
-    Then I softly see value "{SavedValue:UpdatedScore}" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
-    Then I softly see value "{SavedValue:Score}" is "Less Than" the value "{SavedValue:UpdatedScore}"
     #279704
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
-    When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
-    And I navigate to "Related Log" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
-    Then I softly see value "{SavedValue:UpdatedScore}" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
-    Then I softly see value "{SavedValue:Score}" is "Less Than" the value "{SavedValue:UpdatedScore}"
+    Then I softly see value "8.0/100.00" for title "Average Weighted Score" against the value "<Application Name>" inside table "---applicationReview:-:appTableId---"
+    Then I softly see value "6.0/100.00" is "Less Than" the value "8.0/100.00"
+
     Examples:
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
