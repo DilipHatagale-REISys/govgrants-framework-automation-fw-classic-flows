@@ -2510,9 +2510,9 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
       | Award       | Optional | Award      | Active |
     Then I softly see value "Optional" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:grantSupportDocTableId---"
     And I click on "Upload Template" icon for "Automation" inside flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" with wait for record
-    And I upload attachment without random number "Attachment1.pdf" of type "Others" from computer
+    And I upload attachment without random number "AttachmentTesting.pdf" of type "Others" from computer
     And I click in table hyperlink containing value "View"
-    Then I softly verify that the file "Attachment1.pdf" is downloaded
+    Then I softly verify that the file "AttachmentTesting.pdf" is downloaded
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I navigate to "Files" sub tab
@@ -2520,7 +2520,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     Then I softly do not see "Actions" in flex table header "---subAwardStandAlone:-:awardSuppDocTableId---"
     Then I softly cannot see row level action button "Upload Template" against "Award" in flex table with id "---subAwardStandAlone:-:awardSuppDocTableId---"
     And I click in table hyperlink containing value "View"
-    Then I softly verify that the file "Attachment1.pdf" is downloaded
+    Then I softly verify that the file "AttachmentTesting.pdf" is downloaded
 
   @223400 @223405 @223410 @ValidateasAdminusercannotabletoseetemplatelinkinsupportingdocumentchecklistonAwardwhendocumentisnotuploadedbyuserwhilecreatingdirectGrant @Sprint-10-US-217547 @vaibhav @SuppDoc @TBE
   Scenario: Validate as Admin user can not able to see template link in supporting document checklist on Award when document is not uploaded by user while creating direct Grant
