@@ -2199,6 +2199,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I perform quick search for "<Application Name>"
     When I click on "View" icon for "<Application Name>" inside table
     And I get the "EGMS ID"
+    When I save the field labeled "EGMS ID" as "AppEGMSID"
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
@@ -2461,6 +2462,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I perform quick search for "<Application Name>"
     When I click on "View" icon for "<Application Name>" inside table
     And I get the "EGMS ID"
+    When I save the field labeled "EGMS ID" as "AppEGMSID"
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
