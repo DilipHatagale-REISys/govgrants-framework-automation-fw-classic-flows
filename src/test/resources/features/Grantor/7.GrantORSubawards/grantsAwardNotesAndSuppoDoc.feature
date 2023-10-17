@@ -2477,7 +2477,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     When I enter the following values into flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" by clicking "Add" :
       | Description | Required  | Applies To | Status |
       | Award       | Mandatory | Award      | Active |
-    And I click on "Upload Template" icon for "Automation" inside flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" with wait for record
+    And I click on "Upload Template" icon for "Award" inside flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" with wait for record
     And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
     And I click in table hyperlink containing value "View"
     Then I softly verify that the file "Attachment.pdf" is downloaded
