@@ -593,7 +593,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     The EGMS Team
     """
 
-  @296068 @VerifythatafterEXEuserclickonUndobuttonAllthetablesofOrganizationalDeskReviewwillnotgetaffected @sprint-4-US-288692 @hitesh @Undo
+  @296068 @296094 @VerifythatafterEXEuserclickonUndobuttonAllthetablesofOrganizationalDeskReviewwillnotgetaffected @sprint-4-US-288692 @hitesh @Undo
   Scenario:Verify that after EXE user click on Undo button All the tables of Organizational Desk Review will not get affected
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -680,6 +680,14 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add Files" in flex table with id "---orgLevelDeskReview:-:siteVisitAddFilesTableId---"
     Then I softly cannot see top right button "Add" in flex table with id "---orgLevelDeskReview:-:siteVisitNotesTableId---"
+    #296094
+    And I navigate to "History" sub tab
+    And I click on hyperlink containing value "Organizational Desk Review - Undo Approval.pdf"
+    When I download the file
+    Then I softly see "{SavedValue:DeskReviewID}" on page "1" of "govgrants" pdf file
+    Then I softly see following details in "govgrants" pdf file:
+      | Status                 | Page Number |
+      | Submitted for Approval | 1           |
 
   @296072 @VerifyAuditorusercannotseeundobuttoninApprovedstateofOrganizationalDeskReview @sprint-4-US-288692 @hitesh @Undo
   Scenario:Verify Auditor user can not see undo button in Approved  state of Organizational Desk Review
