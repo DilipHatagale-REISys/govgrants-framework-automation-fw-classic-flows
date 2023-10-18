@@ -317,7 +317,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Overview" sub tab
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:subrecipientBudgetSummaryFocusAreaTableId---"
 
-  @265626 @ValidateSPAuserseespentvalueshouldbeupdatedoncloseoutinsenttoSRstateofcloseout @sprint-20-US-263394 @vaibhav @Allocation @hiteshTemp
+  @265626 @ValidateSPAuserseespentvalueshouldbeupdatedoncloseoutinsenttoSRstateofcloseout @sprint-20-US-263394 @vaibhav @Allocation
   Scenario: Validate SPA user see 'spent' value should be updated on closeout in sent to S\R state of closeout
     #TO Do: due to this bug 282819 cannot use ADMIN user for closeout once resolved use admin user
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation PM user" of type "Competitive"
