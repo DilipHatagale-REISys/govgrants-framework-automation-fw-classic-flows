@@ -2522,7 +2522,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I click in table hyperlink containing value "View"
     Then I softly verify that the file "AttachmentTesting.pdf" is downloaded
 
-  @223400 @223405 @223410 @ValidateasAdminusercannotabletoseetemplatelinkinsupportingdocumentchecklistonAwardwhendocumentisnotuploadedbyuserwhilecreatingdirectGrant @Sprint-10-US-217547 @vaibhav @SuppDoc @TBE
+  @223400 @223405 @223410 @ValidateasAdminusercannotabletoseetemplatelinkinsupportingdocumentchecklistonAwardwhendocumentisnotuploadedbyuserwhilecreatingdirectGrant @Sprint-10-US-217547 @vaibhav @SuppDoc
   Scenario: Validate as Admin user can not able to see template link in supporting document checklist on Award when document is not uploaded by user while creating direct Grant
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -2798,7 +2798,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     When I enter the following values into flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" by clicking "Add" :
       | Description | Required  | Applies To | Status |
       | Award       | Mandatory | Award      | Active |
-    And I click on "Upload Template" icon for "Automation" inside flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" with wait for record
+    And I click on "Upload Template" icon for "Award" inside flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" with wait for record
     And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
@@ -2877,8 +2877,8 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     Then I softly can see row level action button "Attach" against "Award" in flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     When I click on "Attach" icon for "Award" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
     When I upload attachment without random number "Attachment.pdf" of type "Others" from computer
-    Then I softly see value "view" for title "Template Link" against the value "Award" inside table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
-    Then I softly see value "view" for title "Subrecipient Document Link" against the value "Award" inside table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
+    Then I softly see value "View" for title "Template Link" against the value "Award" inside table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
+    Then I softly see value "View" for title "Subrecipient Document Link" against the value "Award" inside table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     And I save the link value from row "1" for column name "Subrecipient Document Link" as "SubrecipientDocumentLink" from flex table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     And I click in table hyperlink containing value "{SavedValue:SubrecipientDocumentLink}"
     Then I softly verify that the file "Attachment.pdf" is downloaded
@@ -2962,11 +2962,11 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     Then I see only the following ordered options in dropdown field "WorkspaceFilesUpload" :
       | Select file classification | Template for Award | Others |
     When I upload attachment without random number "Attachment.pdf" of type "Others" from computer
-    Then I softly see value "view" for title "Subrecipient Document Link" against the value "Award" inside table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
+    Then I softly see value "View" for title "Subrecipient Document Link" against the value "Award" inside table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     And I save the link value from row "1" for column name "Subrecipient Document Link" as "SubrecipientDocumentLink" from flex table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
     And I click in table hyperlink containing value "{SavedValue:SubrecipientDocumentLink}"
     Then I softly verify that the file "Attachment.pdf" is downloaded
-    And I "Reject" in the approval decision
+    When I click on "Reject" in the page details
     Then I softly see field "Status" as "Rejected"
     When I navigate to "Files" sub tab
     Then I softly see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---"
