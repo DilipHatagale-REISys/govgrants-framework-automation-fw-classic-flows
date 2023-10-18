@@ -678,6 +678,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see the following messages in the page details :
       | Overview Tab - Provide Justification for overriding open items to closure and proceed with the closeout. |
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see field "Override Justification" as "Automation Test justification"
@@ -837,6 +838,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see "Collab" sub tab at view detail page
     #93255 #monu
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     When I click on "Override" in the page details
@@ -964,6 +966,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see field "Override Justification" as "Automation Test justification"
@@ -1157,6 +1160,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see field "Override Justification" as "Automation Test justification"
