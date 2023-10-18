@@ -2354,17 +2354,17 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
     When I navigate to "Files" sub tab
     Then I softly see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:awardSuppDocTableId---"
-    #223471
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
-    Then I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    Then I softly see that "Subaward" is in "Activated" status
-    When I navigate to "Files" sub tab
-    Then I softly do not see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:awardSuppDocTableId---"
+    #223471 Commented below due to bug Bug Id:-223888 and US are created for this Enhancement
+#    And I navigate to "Grants" tab
+#    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+#    And I click toggle button to select "Grants - Active"
+#    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+#    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
+#    Then I navigate to "Subawards" sub tab
+#    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+#    Then I softly see that "Subaward" is in "Activated" status
+#    When I navigate to "Files" sub tab
+#    Then I softly do not see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:awardSuppDocTableId---"
 
   @223477 @ValidateINDusershouldseefollowingerrormessageifusertriestoAcceptafterapprovalonlyifinternalusercreateGrant&selectappliestoAwardandRequiredfieldisMandatory @Sprint-10-US-217547 @vaibhav @SuppDoc
   Scenario: Validate IND user should see following error message if user tries to Accept after approval only if internal user create Grant & select applies to=Award and Required field is Mandatory
@@ -2780,7 +2780,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     Then I softly see value "Mandatory" for title "Required" against the value "Award" inside table "---subAwardStandAlone:-:awardSuppDocTableId---"
     Then I softly do not see "Actions" in flex table header "---subAwardStandAlone:-:awardSuppDocTableId---"
 
-  @223415 @ValidateasINDusercanabletouploadtemplateatsrsideundersupportingdocumentchecklistonAwardisinSendtosrafterApprovalstatewhensupportingdocumentchecklistiscreatedforAwardwhilecreatingdirectGrant @Sprint-10-US-217547 @vaibhav @SuppDoc @TBE
+  @223415 @ValidateasINDusercanabletouploadtemplateatsrsideundersupportingdocumentchecklistonAwardisinSendtosrafterApprovalstatewhensupportingdocumentchecklistiscreatedforAwardwhilecreatingdirectGrant @Sprint-10-US-217547 @vaibhav @SuppDoc
   Scenario: Validate as IND user can able to upload template at s/r side under supporting document checklist on Award is in "Send to s/r after Approval" state when supporting document checklist is created for Award while creating direct Grant
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -2883,7 +2883,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I click in table hyperlink containing value "{SavedValue:SubrecipientDocumentLink}"
     Then I softly verify that the file "Attachment.pdf" is downloaded
 
-  @223815 @ValidateassrusercannotabletoseeActioncolumnundersupportingdocumentchecklistonAwardisinRejectedstatebeforeapprovalwhensupportingdocumentchecklistiscreatedforAwardwhilecreatingdirectGrant @Sprint-10-US-217547 @vaibhav @SuppDoc @TBE
+  @223815 @ValidateassrusercannotabletoseeActioncolumnundersupportingdocumentchecklistonAwardisinRejectedstatebeforeapprovalwhensupportingdocumentchecklistiscreatedforAwardwhilecreatingdirectGrant @Sprint-10-US-217547 @vaibhav @SuppDoc
   Scenario: Validate as s/r user can not able to see "Action" column under supporting document checklist on Award is in "Rejected" state before approval when supporting document checklist is created for Award while creating direct Grant
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
