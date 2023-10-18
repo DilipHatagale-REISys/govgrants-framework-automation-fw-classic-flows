@@ -96,11 +96,32 @@ public class UsersAndURL implements UsersController {
     private String getTest8EnvironmentPassword(String userLevel) {
         String password;
         switch (userLevel.toUpperCase()) {
-            case "FD":
-                password = "Salesforce@2029";
+            case "ADMIN":
+                password = "Salesforce@2031";
+                break;
+            case "ADMIN1":
+                password = "Salesforce@2031";
+                break;
+            case "SPI3":
+                password = "Salesforce@2032";
+                break;
+            case "SA":
+                password = "Salesforce@2032";
+                break;
+            case "IND":
+                password = "Salesforce@2031";
+                break;
+            case "PM":
+                password = "Salesforce@2031";
+                break;
+            case "PM1":
+                password = "Salesforce@2031";
+                break;
+            case "SPA":
+                password = "Salesforce@2031";
                 break;
             default:
-                password = "Salesforce@2028";
+                password = "Salesforce@2030";
         }
         return password;
     }
