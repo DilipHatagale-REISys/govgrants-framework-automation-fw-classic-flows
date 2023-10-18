@@ -2489,74 +2489,70 @@ Feature: Validate all scenarios of grants and award with undo
     Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:AwardEGMSID}" inside table "---subAwardStandAlone:-:completeTaskTableId---"
     And I checkout to yopmail with mailid "fo.automation@yopmail.com"
     Then I refresh the page
-    Then I do not see the mail text is as follows :
-      """
-      Hello,
-
-      This email is to notify you that approver #Automation PO has initiated undo action.
-
-      Subaward Details:
-
-       Subaward Title: {SavedValue:Automation Runtime award}
-       Subaward Type: Initial
-       Subaward Number: {SavedValue:AwardEGMSID}
-       Grant : {SavedValue:GrantEGMSID}
-
-      Log in to EGMS and click here to start reviewing the details.
-
-      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
-
-     Thank you.
-     The EGMS Team
-      """
-    And I checkout to yopmail with mailid "automationfd@yopmail.com"
-    Then I refresh the page
     And I see the mail subject is as follows :
     """
-   Notification: Approver has initiated Undo Action on Program #{SavedValue:AwardEGMSID}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:AwardEGMSID}.
     """
     Then I see the mail text is as follows :
     """
-      Hello,
+    Hello,
 
-      This email is to notify you that approver #Automation PO has initiated undo action.
+    This email is to notify you that last approver has initiated undo action for Award.
 
-       Subaward Title: {SavedValue:Automation Runtime award}
-       Subaward Type: Initial
-       Subaward Number: {SavedValue:AwardEGMSID}
-       Grant : {SavedValue:GrantEGMSID}
+    Award Details:
+    Award ID: {SavedValue:AwardEGMSID}
+    Award Name:{SavedValue:Automation Runtime award}
+    Log in to EGMS and click here to start reviewing the details.
 
-      Log in to EGMS and click here to start reviewing the details.
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+    Thank you.
+    The EGMS Team
+    """
+    And I checkout to yopmail with mailid "automationfd@yopmail.com"
+    Then I refresh the page
+    And I see the mail subject is as follows :
+   """
+    Notification: Approver has initiated Undo Action on #{SavedValue:AwardEGMSID}.
+    """
+    Then I see the mail text is as follows :
+    """
+    Hello,
 
-     Thank you.
-     The EGMS Team
-      """
+    This email is to notify you that last approver has initiated undo action for Award.
+
+    Award Details:
+    Award ID: {SavedValue:AwardEGMSID}
+    Award Name:{SavedValue:Automation Runtime award}
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
+    """
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     Then I refresh the page
     And I see the mail subject is as follows :
     """
-   Notification: Approver has initiated Undo Action on Program #{SavedValue:AwardEGMSID}.
+    Notification: Approver has initiated Undo Action on #{SavedValue:AwardEGMSID}.
     """
     Then I see the mail text is as follows :
     """
-      Hello,
+    Hello,
 
-      This email is to notify you that approver #Automation PO has initiated undo action.
+    This email is to notify you that last approver has initiated undo action for Award.
 
-       Subaward Title: {SavedValue:Automation Runtime award}
-       Subaward Type: Initial
-       Subaward Number: {SavedValue:AwardEGMSID}
-       Grant : {SavedValue:GrantEGMSID}
+    Award Details:
+    Award ID: {SavedValue:AwardEGMSID}
+    Award Name:{SavedValue:Automation Runtime award}
+    Log in to EGMS and click here to start reviewing the details.
 
-      Log in to EGMS and click here to start reviewing the details.
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
-
-     Thank you.
-     The EGMS Team
-      """
+    Thank you.
+    The EGMS Team
+    """
 
 
 
