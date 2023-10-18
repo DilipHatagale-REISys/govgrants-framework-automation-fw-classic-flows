@@ -517,6 +517,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see "Create Closeout Request" opens in overLay window
     When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
     #87353
     And I navigate to "Overview" sub tab
     And I save the field labeled "EGMS ID" as "CloseoutEGMSID"
@@ -561,11 +562,13 @@ Feature: Validate all scenarios in Closeout
     #86714
     When I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
-    And I enter value "07/20/2023" into field "fieldCloseoutDate__c"
-    And I enter value "08/12/2023" into field "fieldCloseoutDueDateGrantor__c"
+    And I enter value "4000" into field "fieldCloseoutDate__c"
+    And I enter value "4005" into field "fieldCloseoutDueDateGrantor__c"
     When I click on "Save" in the page details
-    Then I softly see field "Closeout Effective Date" as "07/20/2023"
-    Then I softly see field "Closeout Activities Due Date" as "08/12/2023"
+    And I save the field labeled "Closeout" as "CloseoutEffectiveDate"
+    And I save the field labeled "Closeout" as "CloseoutActivitiesDueDate"
+    Then I softly see field "Closeout Effective Date" as "{SavedValue:CloseoutEffectiveDate}"
+    Then I softly see field "Closeout Effective Date" as "{SavedValue:CloseoutActivitiesDueDate}"
     #76488
     Then I softly see value "---AUTOEnvData:-:fundingAccount---" for title "Funding Account" inside table "---closeout:-:closeoutFundingAccountsTableId---"
     And I softly see value "$1,000.00" for title "Encumbrance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
@@ -1016,8 +1019,8 @@ Feature: Validate all scenarios in Closeout
     And I click on "View" icon for "Created" inside flex table with id "---closeout:-:closeoutTableId---" without waiting for record
     And I navigate to "Overview" sub tab
     When I click on "Edit" in the page details
-    And I enter value "07/20/2023" into field "fieldCloseoutDate__c"
-    And I enter value "08/12/2023" into field "fieldCloseoutDueDateGrantor__c"
+    And I enter value "4000" into field "fieldCloseoutDate__c"
+    And I enter value "4050" into field "fieldCloseoutDueDateGrantor__c"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send To Subrecipient" in the page details
@@ -1083,8 +1086,8 @@ Feature: Validate all scenarios in Closeout
     And I click on "View" icon for "Created" inside flex table with id "---closeout:-:closeoutTableId---" without waiting for record
     When I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
-    And I enter value "07/20/2023" into field "fieldCloseoutDate__c"
-    And I enter value "08/12/2023" into field "fieldCloseoutDueDateGrantor__c"
+    And I enter value "4000" into field "fieldCloseoutDate__c"
+    And I enter value "4050" into field "fieldCloseoutDueDateGrantor__c"
     When I click on "Save" in the page details
     When I click on "Send To Subrecipient" in the page details
     Then I softly see field "Status" as "Sent To Subrecipient"
@@ -1223,7 +1226,7 @@ Feature: Validate all scenarios in Closeout
     And I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     And I navigate to "Files" sub tab
     When I click on "Attach" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
-    Then I softly see "Upload Document" opens in overLay window
+    Then I softly see "Add Supporting Documents Checklist" opens in overLay window
     When I upload file "AttachmentTesting.pdf" into library
     And I click modal button "Save"
     Then I see the following messages in the page details contains:
