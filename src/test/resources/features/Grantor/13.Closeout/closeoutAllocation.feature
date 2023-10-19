@@ -2634,7 +2634,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "$500.00" for title "Balance" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
 
-  @267755 @ValidatevalueinSpentandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestisincreatedstateandFundingChangeandpaymentrequestisapproved @sprint-21-US-265880 @vaibhav @Allocation @hiteshTemp
+  @267755 @ValidatevalueinSpentandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestisincreatedstateandFundingChangeandpaymentrequestisapproved @sprint-21-US-265880 @vaibhav @Allocation
   Scenario: Validate value in Spent and Cumulative obligation column on closeout request when closeout request is in created state and Funding Change, and payment request is approved
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Directed"
     And I am on "SUBPORTAL" portal
@@ -3100,7 +3100,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "$500.00" for title "Balance" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:grantorBudgetSummaryFocusAreaTableId---"
 
-  @267761 @ValidateAuditorvalueinSpentandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestisincreatedstateandpaymentrequestisapprovedandnewawardisactivatedfromcarryforwardamendment @sprint-21-US-265880 @vaibhav @Allocation @BugLogged-266597 @hiteshTemp
+  @267761 @ValidateAuditorvalueinSpentandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestisincreatedstateandpaymentrequestisapprovedandnewawardisactivatedfromcarryforwardamendment @sprint-21-US-265880 @vaibhav @Allocation @BugLogged-266597
   Scenario: Validate Auditor value in Spent and Cumulative obligation column on closeout request when closeout request is in created state and payment request is approved and new award is activated from carry forward amendment
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab

@@ -564,10 +564,10 @@ Feature: Validate all scenarios in Closeout
     And I enter value "4000" into field "fieldCloseoutDate__c"
     And I enter value "4005" into field "fieldCloseoutDueDateGrantor__c"
     When I click on "Save" in the page details
-    And I save the field labeled "Closeout" as "CloseoutEffectiveDate"
-    And I save the field labeled "Closeout" as "CloseoutActivitiesDueDate"
+    And I save the field labeled "Closeout Effective Date" as "CloseoutEffectiveDate"
+    And I save the field labeled "Closeout Activities Due Date" as "CloseoutActivitiesDueDate"
     Then I softly see field "Closeout Effective Date" as "{SavedValue:CloseoutEffectiveDate}"
-    Then I softly see field "Closeout Effective Date" as "{SavedValue:CloseoutActivitiesDueDate}"
+    Then I softly see field "Closeout Activities Due Date" as "{SavedValue:CloseoutActivitiesDueDate}"
     #76488
     Then I softly see value "---AUTOEnvData:-:fundingAccount---" for title "Funding Account" inside table "---closeout:-:closeoutFundingAccountsTableId---"
     And I softly see value "$1,000.00" for title "Encumbrance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
@@ -1226,8 +1226,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Files" sub tab
     When I click on "Attach" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
     Then I softly see "Add Supporting Documents Checklist" opens in overLay window
-    When I upload attachment "AttachmentTesting.pdf" of type "Other" from computer
-    #When I upload attachment "AttachmentTesting.pdf" of type "Others"
+    When I upload attachment "AttachmentTesting.pdf" of type "Others" from computer
     And I pause execution for "3" seconds
     And I click on hyperlink containing value "View"
     And I pause execution for "3" seconds
@@ -1585,7 +1584,7 @@ Feature: Validate all scenarios in Closeout
       | {SavedValue:FO Username} | Step 1   |
     Then I softly see "You cannot specify the same step for multiple users for Closeout." inside flex table with id "---closeout:-:closeoutApproverTableId---"
 
-  @154059 @ValidateuserIsAbleToAddThreeStepApproverForAdhocCloseoutAndRejectItOnStepThree @vaibhav @hiteshTemp
+  @154059 @ValidateuserIsAbleToAddThreeStepApproverForAdhocCloseoutAndRejectItOnStepThree @vaibhav
   Scenario: Validate user Is Able To Add Three Step Approver For Adhoc Closeout And Reject It On Step Three
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
