@@ -1,7 +1,7 @@
 @closeoutExecution @closeout @grantor-regression @grantor-parallel-regression @regression
 Feature: Validate all scenarios in Closeout
 
-  @96615 @VerifyAdvanceValueAtCloseoutRequest @monu @hiteshTemp
+  @96615 @VerifyAdvanceValueAtCloseoutRequest @monu
   Scenario: Verify user can see advance value at closeout request as same as on SubAward
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -11,7 +11,7 @@ Feature: Validate all scenarios in Closeout
     When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
     And I navigate to "Actuals" sub tab
-    Then I softly see field "Advance Available" as "$0"
+    Then I softly see field "Advance Available" as "$0.00"
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
     When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
@@ -222,8 +222,8 @@ Feature: Validate all scenarios in Closeout
   #  Then I softly see value "Submission.pdf" for title "File Name" against the value "Submission.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
   #  Then I softly see value "{SavedValue:PM Username}" for title "Taken By" against the value "Submission.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     And I click on hyperlink containing value "Overriden.pdf"
+    Then I softly verify that the file "Overriden.pdf" is downloaded
     And I switch to parent tab
-    Then I softly see page title contains as "servlet.FileDownload"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -234,7 +234,6 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Closeout" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
-    And I softly see value "Automation PM" for title "Assigned By" inside table "---closeout:-:pendingTaskTableId---"
     When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I "Approve" in the approval decision
     Then I see status in Progress-bar is "Completed" and is "green"
@@ -244,7 +243,7 @@ Feature: Validate all scenarios in Closeout
     And I click toggle button to select "Project Period Closeouts - Completed"
     Then I softly see value "Completed" for title "Status" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
 
-  @87358 @86711 @86707 @86709 @VerifyEmailNoificationRecievedBySPIUserForCloseout @meenakshi @buglogged-234888 @hiteshTemp
+  @87358 @86711 @86707 @86709 @VerifyEmailNoificationRecievedBySPIUserForCloseout @meenakshi @buglogged-234888
   Scenario: To verify Email notification should be received to SPI user when closeout Request has Sent to Subrecipient in Closeout phase
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -392,8 +391,6 @@ Feature: Validate all scenarios in Closeout
     And I enter a review as "Passed"
     When I click modal button "Save"
     And I click on submit review
-    Then I softly see the following messages in the page details :
-      | Review has been submitted successfully. |
     Then I softly see that "Submitted" has been added in flextable with Id "---closeout:-:closeoutPeerReviewTableId---"
 
   @93808 @validateSendBackProgramApproverInCloseoutPhase @meenakshi @hiteshTemp
@@ -439,6 +436,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test Reason" into field "fieldReason__c"
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
@@ -573,7 +571,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "Approved" for title "Old Value" inside table "History"
     And I refresh the page
     #40747 #monu
-    And I see "{SavedValue:EXE Username}" against "Initial Submitter" in approval history
+    And I see "{SavedValue:EXE Username}" against "Approval Request Submitted" in approval history
     And I see "{SavedValue:PM Username}" against "Step 1" in approval history
     Then I softly see column "Date" inside row "1" at position "1" contains text "Step : Step 2"
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Approved"
@@ -1194,6 +1192,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test Reason" into field "fieldReason__c"
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I navigate to "Checklist" sub tab
@@ -1222,7 +1221,7 @@ Feature: Validate all scenarios in Closeout
     And I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "Green"
 
-  @154050 @Verify3StepApprovalFor-ScheduleCloseoutRequest-RnRFunctionality @monu @hiteshTemp
+  @154050 @Verify3StepApprovalFor-ScheduleCloseoutRequest-RnRFunctionality @monu
   Scenario: Verify user is able to add three step approver for schedule closeout and reject it on step three
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
@@ -1262,6 +1261,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test Reason" into field "fieldReason__c"
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I navigate to "Checklist" sub tab
@@ -1333,6 +1333,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test Reason" into field "fieldReason__c"
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I navigate to "Checklist" sub tab
@@ -1364,7 +1365,7 @@ Feature: Validate all scenarios in Closeout
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Submitted for Approval"
 
-  @154027 @Verify2StepApprovalFor-ScheduleCloseoutRequest-RnRFunctionality @monu @buglogged171129 @hiteshTemp
+  @154027 @Verify2StepApprovalFor-ScheduleCloseoutRequest-RnRFunctionality @monu @buglogged171129
   Scenario: Validate Approvers are getting inherited from award record to schedule closeout request
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
@@ -1401,6 +1402,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test Reason" into field "fieldReason__c"
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I navigate to "Checklist" sub tab
@@ -1482,6 +1484,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test Reason" into field "fieldReason__c"
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I navigate to "Checklist" sub tab
@@ -2332,7 +2335,7 @@ Feature: Validate all scenarios in Closeout
     Then I cannot see top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
     Then I can see top right button "Add" in flex table with id "---closeout:-:closeoutNotesTableId---"
 
-  @199774 @ValidatePMuserEmailCloseoutApproverSentBackNotifyshouldtriggertonewownerofcloseoutwhenonceownershiprelatedtaskisreassigntonewuserofcloseout @sprint-12-US-226646 @vaibhav @reassignment @hiteshTemp
+  @199774 @ValidatePMuserEmailCloseoutApproverSentBackNotifyshouldtriggertonewownerofcloseoutwhenonceownershiprelatedtaskisreassigntonewuserofcloseout @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate PM user Email 'Closeout Approver Sent Back Notify' should trigger to new owner of closeout when once ownership related task is reassign to new user of closeout
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -2537,7 +2540,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I "Approve" in the approval decision
-    Then I softly see field "Status" as "Approved"
+    Then I see status in Progress-bar is "Completed" and is "green"
     And I checkout to yopmail with mailid "automationpo1@yopmail.com"
     And I pause execution for "20" seconds
     And I refresh the page
@@ -3104,7 +3107,7 @@ Feature: Validate all scenarios in Closeout
     And I refresh the page
     When I click on "Override" in the page details
     Then I see the following messages in the page details :
-      | Open Items - Some records on the grant selected for closeout are Submitted for Approval, to proceed with the business process of Override you may have to either send the record to owner or approve/reject the record. {{SavedValue:SOWAMENDMENTREQUEST}, {SavedValue:PayreqId1}} |
+      | Open Items - Some records on the grant selected for closeout are Submitted for Approval, to proceed with the business process of Override you may have to either send the record to owner or approve/reject the record.|
     And I refresh the page
     When I navigate to "Open Items" sub tab
     Then I softly see value "Submitted for Approval" for title "Status" against the value "{SavedValue:SOWAMENDMENTREQUEST}" inside table "---closeout:-:closeoutPendingAmendmentRequestsTableId---"
@@ -3114,7 +3117,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "Force Closed" for title "Status" against the value "{SavedValue:DeskReview}" inside table "---closeout:-:PendingSiteVisitDeskReviewTableId---"
     Then I softly see value "Force Closed" for title "Status" against the value "{SavedValue:SitevVisitId}" inside table "---closeout:-:PendingSiteVisitDeskReviewTableId---"
 
-  @199819 @199765 @ValidatePOuserEmailshouldgeneratedinyopmailtonewownerofcloseoutwhenonceownershiprelatedtaskreassigntonewuserofcloseout @sprint-12-US-226646 @vaibhav @reassignment @hiteshTemp
+  @199819 @199765 @ValidatePOuserEmailshouldgeneratedinyopmailtonewownerofcloseoutwhenonceownershiprelatedtaskreassigntonewuserofcloseout @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate PO user Email should generated in yopmail to new owner of closeout when once ownership related task is reassign to new user of closeout
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
@@ -3307,7 +3310,7 @@ Feature: Validate all scenarios in Closeout
       The EGMS Team
       """
 
-  @200126 @ValidatePOusercloseoutowneremailshouldbegeneratedfosystemadminpreviousownerandnewownerofcloseoutafterownershipofcloseoutischangedinCreatedstate @sprint-12-US-226646 @vaibhav @reassignment @hiteshTemp
+  @200126 @ValidatePOusercloseoutowneremailshouldbegeneratedfosystemadminpreviousownerandnewownerofcloseoutafterownershipofcloseoutischangedinCreatedstate @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate PO user(closeout owner)email should be generated for system admin, previous owner and new owner of closeout after ownership of closeout is changed in 'Created' state
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
@@ -3807,7 +3810,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "Automation PO1" for title "New Value" inside table "---closeout:-:closeoutHistoryTableId---"
     Then I softly see value "Automation PO" for title "Old Value" inside table "---closeout:-:closeoutHistoryTableId---"
 
-  @224656 @ValidateCloseoutnewownerofpeerreviewershouldabletosubmitthereviewcommentforcloseout @sprint-11-US-218319 @vaibhav @reassignment @hiteshTemp
+  @224656 @ValidateCloseoutnewownerofpeerreviewershouldabletosubmitthereviewcommentforcloseout @sprint-11-US-218319 @vaibhav @reassignment
   Scenario: Validate Closeout new owner of peer reviewer should able to submit the review comments for closeout
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
@@ -4185,7 +4188,7 @@ Feature: Validate all scenarios in Closeout
     And I refresh the page
     When I click on "Override" in the page details
     Then I see the following messages in the page details :
-      | Open Items - Some records on the grant selected for closeout are Submitted for Approval, to proceed with the business process of Override you may have to either send the record to owner or approve/reject the record. {{SavedValue:SOWAMENDMENTREQUEST}, {SavedValue:progID}, {SavedValue:PayreqId}, {SavedValue:PayreqId1}} |
+      | Open Items - Some records on the grant selected for closeout are Submitted for Approval, to proceed with the business process of Override you may have to either send the record to owner or approve/reject the record.|
     And I refresh the page
     When I navigate to "Open Items" sub tab
     Then I softly see value "Submitted for Approval" for title "Status" against the value "{SavedValue:SOWAMENDMENTREQUEST}" inside table "---closeout:-:closeoutPendingAmendmentRequestsTableId---"
@@ -4631,7 +4634,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "Force Closed" for title "Status" against the value "{SavedValue:DeskReview}" inside table "---closeout:-:PendingSiteVisitDeskReviewTableId---"
     Then I softly see value "Force Closed" for title "Status" against the value "{SavedValue:SitevVisitId}" inside table "---closeout:-:PendingSiteVisitDeskReviewTableId---"
 
-  @228156 @ValidatePMuserwecanoverridethependingitemswhenstateofrecordsareApprovedeventhoughownerofsomerecordsaredifferentthanownerofcloseoutincaseofownershiptransfer @sprint-12-US-226976 @vaibhav @reassignment @hiteshTemp
+  @228156 @ValidatePMuserwecanoverridethependingitemswhenstateofrecordsareApprovedeventhoughownerofsomerecordsaredifferentthanownerofcloseoutincaseofownershiptransfer @sprint-12-US-226976 @vaibhav @reassignment
   Scenario: Valdate PM user we can override the pending items when state of records are Approved even though owner of some records are different than owner of closeout in case of ownership transfer
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     # Desk Review

@@ -317,7 +317,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Overview" sub tab
     Then I softly see value "$500.00" for title "Spent" against the value "Total" inside table "---closeout:-:subrecipientBudgetSummaryFocusAreaTableId---"
 
-  @265626 @ValidateSPAuserseespentvalueshouldbeupdatedoncloseoutinsenttoSRstateofcloseout @sprint-20-US-263394 @vaibhav @Allocation @hiteshTemp
+  @265626 @ValidateSPAuserseespentvalueshouldbeupdatedoncloseoutinsenttoSRstateofcloseout @sprint-20-US-263394 @vaibhav @Allocation
   Scenario: Validate SPA user see 'spent' value should be updated on closeout in sent to S\R state of closeout
     #TO Do: due to this bug 282819 cannot use ADMIN user for closeout once resolved use admin user
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation PM user" of type "Competitive"
@@ -2676,7 +2676,7 @@ Feature: Validate all scenarios in Closeout
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Reimbursements" content inside "Payments" subheader on left panel
-    And I click toggle button to select "Reimbursements - All"
+    And I click toggle button to select "Reimbursements - Draft"
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     And I navigate to "Financials" sub tab
@@ -2739,9 +2739,7 @@ Feature: Validate all scenarios in Closeout
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "FundingID"
     When I click on top right button "Associate" in flex table with id "---amendment:-:projectAreasTableId---"
-    And I perform quick search for "Automation Permanent Focus Area2" in "---amendment:-:focusAreaTableId---" panel
-    When I check "Automation Permanent Focus Area2" boxes in flex table with id "---amendment:-:focusAreaTableId---"
-    When I click on top right button "Associate" in flex table with id "---amendment:-:focusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area2" by showing entries "All" in flex table with id "---amendment:-:focusAreaTableId---"
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
@@ -2988,7 +2986,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Balance" as "$2,500.00"
     Then I softly see field "Cumulative Obligation" as "$3,000.00"
 
-  @267760 @ValidatevalueinSpentandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestisincreatedstateandBudgetrediectionamendmentisapproved @sprint-21-US-265880 @vaibhav @Allocation @hiteshTemp
+  @267760 @ValidatevalueinSpentandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestisincreatedstateandBudgetrediectionamendmentisapproved @sprint-21-US-265880 @vaibhav @Allocation
   Scenario: Validate value in Spent and Cumulative obligation column on closeout request when closeout request is in created state and Budget rediection amendment is approved
     And I published "Formula" type announcement having name "Automation Runtime Award" and properties "BY_APPLICANT_RISK_ASSESSMENT_NO-Automation PO user"
     And I initiated an application review for application "{SavedValue:Automation Runtime Award}" on announcement "{SavedValue:Automation Runtime Award}" with properties "default"
@@ -3034,7 +3032,7 @@ Feature: Validate all scenarios in Closeout
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Reimbursements" content inside "Payments" subheader on left panel
-    And I click toggle button to select "Reimbursements - All"
+    And I click toggle button to select "Reimbursements - Draft"
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     And I navigate to "Financials" sub tab
@@ -3405,6 +3403,7 @@ Feature: Validate all scenarios in Closeout
     And I edit the following rows inline in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Carry Forward |
       | Construction    | 200           |
+    And I expand nested table containing column value "BP01"
     And I click on page navigation arrow "---amendment:-:RecipientCarryForwardBudgetTableId---" for table id "Next"
     And I edit the following rows inline in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Carry Forward |
@@ -3526,6 +3525,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Override" in the page details
     When I click on "Submit for Approval" in the page details
     Then I see field "Status" as "Submitted for Approval"
+    When I navigate to "Overview" sub tab
     Then I softly see field "Spent" as "$0.00"
     When I navigate to "Open Items" sub tab
     Then I softly see value "Force Closed" for title "Status" against the value "{SavedValue:PayreqId}" inside table "---closeout:-:closeoutPaymentRequestTableId---"

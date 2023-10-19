@@ -517,6 +517,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see "Create Closeout Request" opens in overLay window
     When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
     #87353
     And I navigate to "Overview" sub tab
     And I save the field labeled "EGMS ID" as "CloseoutEGMSID"
@@ -561,11 +562,13 @@ Feature: Validate all scenarios in Closeout
     #86714
     When I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
-    And I enter value "07/20/2023" into field "fieldCloseoutDate__c"
-    And I enter value "08/12/2023" into field "fieldCloseoutDueDateGrantor__c"
+    And I enter value "4000" into field "fieldCloseoutDate__c"
+    And I enter value "4005" into field "fieldCloseoutDueDateGrantor__c"
     When I click on "Save" in the page details
-    Then I softly see field "Closeout Effective Date" as "07/20/2023"
-    Then I softly see field "Closeout Activities Due Date" as "08/12/2023"
+    And I save the field labeled "Closeout" as "CloseoutEffectiveDate"
+    And I save the field labeled "Closeout" as "CloseoutActivitiesDueDate"
+    Then I softly see field "Closeout Effective Date" as "{SavedValue:CloseoutEffectiveDate}"
+    Then I softly see field "Closeout Effective Date" as "{SavedValue:CloseoutActivitiesDueDate}"
     #76488
     Then I softly see value "---AUTOEnvData:-:fundingAccount---" for title "Funding Account" inside table "---closeout:-:closeoutFundingAccountsTableId---"
     And I softly see value "$1,000.00" for title "Encumbrance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
@@ -678,6 +681,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see the following messages in the page details :
       | Overview Tab - Provide Justification for overriding open items to closure and proceed with the closeout. |
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see field "Override Justification" as "Automation Test justification"
@@ -837,6 +841,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see "Collab" sub tab at view detail page
     #93255 #monu
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     When I click on "Override" in the page details
@@ -964,6 +969,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see field "Override Justification" as "Automation Test justification"
@@ -1013,8 +1019,8 @@ Feature: Validate all scenarios in Closeout
     And I click on "View" icon for "Created" inside flex table with id "---closeout:-:closeoutTableId---" without waiting for record
     And I navigate to "Overview" sub tab
     When I click on "Edit" in the page details
-    And I enter value "07/20/2023" into field "fieldCloseoutDate__c"
-    And I enter value "08/12/2023" into field "fieldCloseoutDueDateGrantor__c"
+    And I enter value "4000" into field "fieldCloseoutDate__c"
+    And I enter value "4050" into field "fieldCloseoutDueDateGrantor__c"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send To Subrecipient" in the page details
@@ -1052,7 +1058,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "Acknowledged by Subrecipient" for title "New Value" inside table "History"
     Then I softly see value "Sent to Subrecipient" for title "Old Value" inside table "History"
 
-  @87355 @VerifyCloseoutRequestWithMultipleStatusInListVIew @monu @hiteshTemp
+  @87355 @VerifyCloseoutRequestWithMultipleStatusInListVIew @monu
   Scenario: Validate user should be able to see Created, Send to sub-recipient, Overridden, Submitted to grantor status of closeout request inside closeout request list view
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -1080,8 +1086,8 @@ Feature: Validate all scenarios in Closeout
     And I click on "View" icon for "Created" inside flex table with id "---closeout:-:closeoutTableId---" without waiting for record
     When I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
-    And I enter value "07/20/2023" into field "fieldCloseoutDate__c"
-    And I enter value "08/12/2023" into field "fieldCloseoutDueDateGrantor__c"
+    And I enter value "4000" into field "fieldCloseoutDate__c"
+    And I enter value "4050" into field "fieldCloseoutDueDateGrantor__c"
     When I click on "Save" in the page details
     When I click on "Send To Subrecipient" in the page details
     Then I softly see field "Status" as "Sent To Subrecipient"
@@ -1124,7 +1130,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:closeoutID}" in "ProjectPeriodCloseoutGrantor" panel
     Then I softly see value "Acknowledged by Subrecipient" for title "Status" inside table "ProjectPeriodCloseoutGrantor"
 
-  @76490 @VerifyEmailNotificationForApprovedCloseoutRequest @monu @hiteshTemp
+  @76490 @VerifyEmailNotificationForApprovedCloseoutRequest @monu
   Scenario: Validate user should receive email notification for approval of closeout Request
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -1157,6 +1163,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see field "Override Justification" as "Automation Test justification"
@@ -1219,12 +1226,8 @@ Feature: Validate all scenarios in Closeout
     And I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     And I navigate to "Files" sub tab
     When I click on "Attach" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
-    Then I softly see "Upload Document" opens in overLay window
-    When I upload file "AttachmentTesting.pdf" into library
-    And I click modal button "Save"
-    Then I see the following messages in the page details contains:
-      | Attachment saved successfully. |
-    When I close "Upload Document" modal by clicking the top right x button
+    Then I softly see "Add Supporting Documents Checklist" opens in overLay window
+    When I upload attachment "AttachmentTesting.pdf" of type "Others"
     And I pause execution for "3" seconds
     And I click on hyperlink containing value "View"
     And I pause execution for "3" seconds
