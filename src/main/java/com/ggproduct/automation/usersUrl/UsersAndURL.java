@@ -188,7 +188,7 @@ public class UsersAndURL implements UsersController {
         username.put("PO1", "automationpo1@yopmail.com");
         username.put("FO1", "fo1.automation@yopmail.com");
         username.put("FD1", "automationfd1@yopmail.com");
-        username.put("SME", "sme1@yopmail.com");
+        username.put("SME", "sme@yopmail.com.automation");
         username.put("SPI4", "signingauthority.sa@yopmail.com.automation");
         username.put("SARAH PM", "sarah.pm@ggp.test9.automation");
 
@@ -233,6 +233,8 @@ public class UsersAndURL implements UsersController {
         username.put("PO1", "test8.automationpo1@yopmail.com");
         username.put("FD1", "test8.automationfd1@yopmail.com");
         username.put("SME", "sme1@yopmail.com");
+        username.put("SARAH PM", "sarah.pm@ggp.test8");
+
 
         if (userLevel.toUpperCase() != null) {
             return username.get(userLevel.toUpperCase());

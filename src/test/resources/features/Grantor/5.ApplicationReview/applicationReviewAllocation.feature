@@ -4097,3 +4097,452 @@ Feature: Validate all scenarios in the Application Review with Allocation Featur
     Examples:
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @274107 @ValidateotheruserscanseereviewstepReviewResponsetothemformanagementreview @Sprint-23-US-273843 @vaibhav @Allocation
+  Scenario Outline: Validate other users can see review step Review Response to them for management review
+    And I published "Directed" type announcement having name "Automation Runtime Announcement Application Review" and properties "default-Automation PO user"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    When I login to "As a Grantor" app as "PO" user
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "<Application Name>"
+    When I click on "View" icon for "<Application Name>" inside table
+    And I get the "EGMS ID"
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
+    And I click on "Next Review Step" in the page details
+    When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
+      | Form Name         | Due in Days |
+      | Program Review    | 5           |
+      | Fiscal Review     | 5           |
+      | Compliance Review | 5           |
+    When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
+      | Reviewer                  |
+      | {SavedValue:EXE Username} |
+      | {SavedValue:FO Username}  |
+      | {SavedValue:PM Username}  |
+    And I refresh the page
+    When I expand nested table containing column value "<Application Name>"
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
+    And I perform quick search for "{SavedValue:PM Username}" in "---applicationReview:-:panelAppTableId---" panel
+    And I check "{SavedValue:PM Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I close "Assign Reviewers" modal by clicking the top right x button
+    When I expand nested table containing column value "<Application Name>"
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
+    And I perform quick search for "{SavedValue:FO Username}" in "---applicationReview:-:panelAppTableId---" panel
+    And I check "{SavedValue:FO Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I close "Assign Reviewers" modal by clicking the top right x button
+    When I expand nested table containing column value "<Application Name>"
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
+    And I perform quick search for "{SavedValue:EXE Username}" in "---applicationReview:-:panelAppTableId---" panel
+    And I check "{SavedValue:EXE Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I close "Assign Reviewers" modal by clicking the top right x button
+    And I pause execution for "5" seconds
+    And I refresh the page
+    And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
+    And I pause execution for "2" seconds
+    And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
+    When I complete filling in the Review form with recommendation "Recommended"
+    And I click on "Save" in the page details
+    And I wait for "6" seconds
+    When I click on "Submit" in the page details without processing
+    When I click alert button "OK"
+    And I wait for "5" seconds
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
+    When I complete filling in the Review form with recommendation "Recommended"
+    And I click on "Save" in the page details
+    And I wait for "6" seconds
+    When I click on "Submit" in the page details without processing
+    When I click alert button "OK"
+    And I wait for "5" seconds
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
+    When I complete filling in the Review form with recommendation "Recommended"
+    And I click on "Save" in the page details
+    And I wait for "6" seconds
+    When I click on "Submit" in the page details without processing
+    When I click alert button "OK"
+    And I wait for "5" seconds
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
+    Then I softly see that "Promoted to Management Review Step" has been added in flextable with Id "---applicationReview:-:appTableId---"
+    And I click on "Next Review Step" in the page details
+    When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
+      | Form Name         | Due in Days |
+      | Management Review | 5           |
+    When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
+      | Reviewer                 |
+      | {SavedValue:FO Username} |
+    Then I softly see that "{SavedValue:FO Username}" has been added in flextable with Id "---applicationReview:-:reviewersTableId---"
+    And I click on "Assign" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
+    When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    And I refresh the page
+    Then I softly see that "Assigned" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
+    And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    Then I softly can see row level action button "View" against "<Announcement Name>" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    Then I softly can see row level action button "View" against "<Announcement Name>" in flex table with id "---applicationReview:-:appreviewsTableId---"
+
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @274142 @ValidateFormulaPMusercanselectreviewresponsesettingcolumnisYesonSMEreviewstepshouldshowscoreofSMEreviewstepstoalluserFAYESAllocationTypeByApplicant&FA @Sprint-23-US-273843 @vaibhav @Allocation
+  Scenario Outline: Validate Formula PM user can select review response setting column is Yes on SME review step & should show score of SME review steps to all user FA YES & Allocation Type By Applicant & FA
+    And I published "Formula" type announcement having name "Automation Runtime Announcement Application Review" and properties "BY_APPLICANT_FOCUS_AREA"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    When I login to "As a Grantor" app as "PM" user
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "<Application Name>"
+    When I click on "View" icon for "<Application Name>" inside table
+    And I get the "EGMS ID"
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
+    And I click on "Next Review Step" in the page details
+    When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
+      | Form Name         | Due in Days |
+      | Program Review    | 5           |
+      | Fiscal Review     | 5           |
+      | Compliance Review | 5           |
+    When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
+      | Reviewer                  |
+      | {SavedValue:EXE Username} |
+      | {SavedValue:FO Username}  |
+      | {SavedValue:PM Username}  |
+    And I refresh the page
+    When I expand nested table containing column value "<Application Name>"
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
+    And I perform quick search for "{SavedValue:PM Username}" in "---applicationReview:-:panelAppTableId---" panel
+    And I check "{SavedValue:PM Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I close "Assign Reviewers" modal by clicking the top right x button
+    When I expand nested table containing column value "<Application Name>"
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
+    And I perform quick search for "{SavedValue:FO Username}" in "---applicationReview:-:panelAppTableId---" panel
+    And I check "{SavedValue:FO Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I close "Assign Reviewers" modal by clicking the top right x button
+    When I expand nested table containing column value "<Application Name>"
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
+    And I perform quick search for "{SavedValue:EXE Username}" in "---applicationReview:-:panelAppTableId---" panel
+    And I check "{SavedValue:EXE Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I close "Assign Reviewers" modal by clicking the top right x button
+    And I pause execution for "5" seconds
+    And I refresh the page
+    And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
+    And I pause execution for "2" seconds
+    And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
+    When I complete filling in the Review form with recommendation "Recommended"
+    And I click on "Save" in the page details
+    And I wait for "6" seconds
+    When I click on "Submit" in the page details without processing
+    When I click alert button "OK"
+    And I wait for "5" seconds
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    When I click on "View" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:appreviewsTableId---"
+    And I save the field labeled "Score" as "Score"
+    Then I softly see field "Score" as "{SavedValue:Score}"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    When I click on "View" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:appreviewsTableId---"
+    And I save the field labeled "Score" as "Score1"
+    Then I softly see field "Score" as "{SavedValue:Score1}"
+
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @274167 @ValidateFormulaPMusercannotifyApplicantafterApprovedFDMwhenApplicationisrecommendedforAwardshouldseeemailnotificationdetailsonemail @Sprint-23-US-273843 @vaibhav @Allocation
+  Scenario: Validate Formula PM user can notify Applicant after Approved FDM when Application is recommended for Award & should see email notification & details on email
+    Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "SECOND_FOCUS_AREA_BY_APPLICANT_FOCUS_AREA_RISK_ASS_NO"
+    When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---" without waiting for record
+    When I check "{SavedValue:Automation Runtime FDM Announcement}" boxes in flex table with id "flexGridFundingDecisionMemoApplications"
+    When I click on top right button "Notify Selected Applicants" in flex table with id "flexGridFundingDecisionMemoApplications"
+    Then I see value "check" for title "Applicant Notified?" against the value "{SavedValue:Automation Runtime FDM Announcement}" inside table "flexGridFundingDecisionMemoApplications"
+
+  @199810 @ValidatePMuserinAnnouncementuserselecttheYesbuttonfromreviewresponseSharedcolumnusingdropdownthenotherviewthereviewersresponse @Sprint-23-US-273843 @vaibhav @Allocation
+  Scenario Outline: Validate PM user in Announcement user select the "Yes" button from review response Shared column using dropdown then other view the reviewer's response
+    And I published "Formula" type announcement having name "Automation Runtime Announcement Application Review" and properties "BY_APPLICANT_FOCUS_AREA"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    When I login to "As a Grantor" app as "PM" user
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "<Application Name>"
+    When I click on "View" icon for "<Application Name>" inside table
+    And I get the "EGMS ID"
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
+      | Form Name  | Due in Days |
+      | Pre-Screen | 5           |
+    When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
+      | Reviewer                 |
+      | {SavedValue:FO Username} |
+    And I click on "Assign" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
+    When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
+    And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
+    When I complete filling in the Review form with recommendation "Recommended"
+    And I click on "Save" in the page details
+    And I wait for "6" seconds
+    When I click on "Submit" in the page details without processing
+    When I click alert button "OK"
+    And I wait for "5" seconds
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    When I click on "View" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:appreviewsTableId---"
+    Then I softly see that "Reviewer" is in "Automation FO" status
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    When I click on "View" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:appreviewsTableId---"
+    Then I softly see that "Reviewer" is in "Automation FO" status
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @199776 @ValidatePMuserininternalprogramuserselecttheNobuttonfromreviewresponseSharedcolumnusingdropdownthenassignedreviewertheannouncementrecordownertoviewthereviewersresponse @Sprint-23-US-273843 @vaibhav @Allocation
+  Scenario Outline: Validate PM user in internal program user select the "No" button(from review response Shared column) using dropdown then assigned reviewer & the announcement record owner to view the reviewer's response
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation Second Negotiation" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    And I save the field labeled "Announcement Name" as "Automation Runtime FDM Announcement"
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" by showing entries "All" in flex table with id "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
+    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    When I refresh the page
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
+    When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "SME Review"
+    And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
+      | Form Name      | Review Response Shared |
+      | Program Review | No                     |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name           | Announcement |
+      | Automation EXE | Step 1       |
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
+    And I wait for "9" seconds
+    And I click on "Submit For Approval" in the page details
+    Then I see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
+    Then I softly can see top right button "Publish" in page detail
+    And I click on "Publish" in the page details
+    Then I see status in Progress-bar is "Published" and is "green"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "<Application Name>"
+    When I click on "View" icon for "<Application Name>" inside table
+    And I get the "EGMS ID"
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
+    And I click on "Next Review Step" in the page details
+    When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
+      | Form Name         | Due in Days |
+      | Program Review    | 5           |
+      | Fiscal Review     | 5           |
+      | Compliance Review | 5           |
+    When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
+      | Reviewer                  |
+      | {SavedValue:FO Username}  |
+    When I expand nested table containing column value "<Application Name>"
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
+    And I perform quick search for "{SavedValue:FO Username}" in "---applicationReview:-:panelAppTableId---" panel
+    And I check "{SavedValue:FO Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I close "Assign Reviewers" modal by clicking the top right x button
+    And I pause execution for "5" seconds
+    And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
+    And I pause execution for "2" seconds
+    And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
+    When I complete filling in the Review form with recommendation "Recommended"
+    And I click on "Save" in the page details
+    And I wait for "6" seconds
+    When I click on "Submit" in the page details without processing
+    When I click alert button "OK"
+    And I wait for "5" seconds
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    When I click on "View" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:appreviewsTableId---"
+    Then I softly see that "Reviewer" is in "Automation FO" status
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    When I click on "View" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:appreviewsTableId---"
+    Then I softly see that "Reviewer" is in "Automation FO" status
+    Examples:
+      | Announcement Name                                | Application Name                                 |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |

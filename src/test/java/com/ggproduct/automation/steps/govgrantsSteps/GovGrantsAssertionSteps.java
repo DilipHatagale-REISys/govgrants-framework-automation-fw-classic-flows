@@ -699,4 +699,24 @@ public final class GovGrantsAssertionSteps {
     public void verifyButtonPresentOnConfirmationPopUp(String usage, String buttonName) {
         ggAssertionObjects.isButtonPreentOnConfirmationPopUp(usage, buttonName);
     }
+
+    @Then("I (softly see|softly do not see) top right button \"([^\"]*)\" inside flex table \"([^\"]*)\"$")
+    public void iSoftlyDoNotSeeTopRightButtonInsideFlexTable(String usage, String buttonName, String tableId) {
+        if (usage.equalsIgnoreCase("softly see")) {
+            I.amPerforming().assertionsTo().assertThat(topRightButtonVisibleOrNot(buttonName,tableId)).isTrue();
+        } else if (usage.equalsIgnoreCase("do not see")) {
+            I.amPerforming().assertionsTo().assertThat(topRightButtonVisibleOrNot(buttonName,tableId)).isFalse();
+        }
+    }
+
+    private boolean topRightButtonVisibleOrNot(String buttonName, String tableId) {
+        boolean flag = false;
+        try {
+            if (I.amPerforming().checkToSee().isDisplayed(I.amPerforming().getElementReference().of(By.xpath("//div[@id='" + tableId + "']//span//button[@title='New' or text()='" + buttonName + "']")))) {
+                flag = true;
+            }
+        } catch (Exception e) {
+        }
+        return flag;
+    }
 }

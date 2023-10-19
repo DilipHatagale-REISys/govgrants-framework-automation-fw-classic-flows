@@ -934,7 +934,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see that "Budgeted Amount" rendered in view mode only
     Then I softly see that "Current Commitment" rendered in view mode only
 
-  @264084 @264589 @264590 @264085 @264083 @264080 @264594 @264591 @264564 @264581 @264086 @263945 @264906 @264952 @264963 @264964 @264953 @264965 @264556 @263938 @264974 @ValidatePMusercanseevalidationonSubmitforApprovalbuttowhenRevisedObligationislessthanBudgetedAmountonBudgetSummarysectiononAmendmentrequestFAisYES @sprint-20-US-249450-249461 @vaibhav @Allocation
+  @264084 @264589 @264590 @264085 @264083 @264080 @264594 @264591 @264564 @264581 @264086 @263945 @264906 @264952 @264963 @264964 @264953 @264965 @264556 @263938 @264974 @ValidatePMusercanseevalidationonSubmitforApprovalbuttowhenRevisedObligationislessthanBudgetedAmountonBudgetSummarysectiononAmendmentrequestFAisYES @sprint-20-US-249450-249461  @Allocation
   Scenario: Validate PM user can see validation on Submit for Approval button when 'Revised Obligation' is less than Budgeted Amount on Budget Summary section on Amendment request (FA is YES)
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA_RISK_ASS_NO"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
@@ -1227,7 +1227,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly cannot see row level action button "Edit" against "Construction" in flex table with id "---amendment:-:RecipientCarryForwardBudgetTableId---"
     Then I softly see value "$500.00" for title "Carry Forward" against the value "Construction" inside table "---amendment:-:RecipientCarryForwardBudgetTableId---"
 
-  @264616 @264638 @264613 @264611 @264635 @264651 @264616 @265056 @265111 @265112 @265113 @265114 @ValidateAdminusercanseeCarryForwardiseditablefield&canacceptonlyzerodollarvalueonSubmittoGrantorstateofAmendmentRequestFAisNO @sprint-20-US-249450 @vaibhav @Allocation
+  @264616 @264638 @264613 @264611 @264635 @264651 @264616 @265056 @265111 @265112 @265113 @265114 @ValidateAdminusercanseeCarryForwardiseditablefield&canacceptonlyzerodollarvalueonSubmittoGrantorstateofAmendmentRequestFAisNO @sprint-20-US-249450  @Allocation
   Scenario: Validate Admin user can see 'Carry Forward' is editable field & can accept only zero dollar value on Submit to Grantor state of Amendment Request FA is NO
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation ADMIN user" of type "Competitive"
     When I login to "As a Grantor" app as "ADMIN" user
@@ -1424,7 +1424,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I navigate to "Overview" sub tab
     Then I softly see field "Carry Forward Amount" as "$0.00"
 
-  @264081 @ValidatePMusercanseevalidationonSubmitforApprovalbuttonwhenRevisedObligationislessthanspentonAmendmentrequestFAisYES @sprint-20-US-249450 @vaibhav @Allocation
+  @264081 @ValidatePMusercanseevalidationonSubmitforApprovalbuttonwhenRevisedObligationislessthanspentonAmendmentrequestFAisYES @sprint-20-US-249450  @Allocation
   Scenario: Validate PM user can see validation on Submit for Approval button when Revised Obligation is less than spent on Amendment request FA is YES
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA_RISK_ASS_NO"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "TWO_BUD_CAT_FIFTEEN_HUNDRED_AMT"
@@ -1590,7 +1590,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Revised Obligation must be greater than or equal to the Spent amount. |
 
-  @264608 @265844 @265014 @265015 @265043 @265105 @265009 @265010 @ValidateAdminusercanseeSpentasreadonlyfieldanditsvaluewhichisTotalSpentontheawardversion1onBP01FAisNO @sprint-20-US-249450 @vaibhav @Allocation
+  @264608 @265844 @265014 @265015 @265043 @265105 @265009 @265010 @ValidateAdminusercanseeSpentasreadonlyfieldanditsvaluewhichisTotalSpentontheawardversion1onBP01FAisNO @sprint-20-US-249450  @Allocation
   Scenario: Validate Admin user can see 'Spent' as read only field and it's value which is Total Spent on the award version 1 on BP01 FA is NO
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation ADMIN user" of type "Competitive"
     When I login to "As a Grantor" app as "ADMIN" user
@@ -1780,7 +1780,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Spent" as "$300.00"
     Then I softly see value "{SavedValue:awardSpent}" is "Equals to" the value "{SavedValue:Spent}"
 
-  @264092 @264972 @264971 @ValidatePMusercannotseeCarryForwardiseditablefieldinUnderRevisionstateofAmendmentRequestFAisYES @sprint-20-US-249450 @vaibhav @Allocation
+  @264092 @264972 @264971 @ValidatePMusercannotseeCarryForwardiseditablefieldinUnderRevisionstateofAmendmentRequestFAisYES @sprint-20-US-249450  @Allocation
   Scenario: Validate PM user cannot see Carry Forward is editable field in Under Revision state of Amendment Request FA is YES
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "SECOND_FOCUS_AREA_RISK_ASS_NO"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "SECOND_BUDGET_CATEGORY"
