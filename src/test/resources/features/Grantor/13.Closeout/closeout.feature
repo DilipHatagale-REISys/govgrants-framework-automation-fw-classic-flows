@@ -1058,7 +1058,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "Acknowledged by Subrecipient" for title "New Value" inside table "History"
     Then I softly see value "Sent to Subrecipient" for title "Old Value" inside table "History"
 
-  @87355 @VerifyCloseoutRequestWithMultipleStatusInListVIew @monu @hiteshTemp
+  @87355 @VerifyCloseoutRequestWithMultipleStatusInListVIew @monu
   Scenario: Validate user should be able to see Created, Send to sub-recipient, Overridden, Submitted to grantor status of closeout request inside closeout request list view
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -1130,7 +1130,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:closeoutID}" in "ProjectPeriodCloseoutGrantor" panel
     Then I softly see value "Acknowledged by Subrecipient" for title "Status" inside table "ProjectPeriodCloseoutGrantor"
 
-  @76490 @VerifyEmailNotificationForApprovedCloseoutRequest @monu @hiteshTemp
+  @76490 @VerifyEmailNotificationForApprovedCloseoutRequest @monu
   Scenario: Validate user should receive email notification for approval of closeout Request
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -1227,11 +1227,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Files" sub tab
     When I click on "Attach" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
     Then I softly see "Add Supporting Documents Checklist" opens in overLay window
-    When I upload file "AttachmentTesting.pdf" into library
-    And I click modal button "Save"
-    Then I see the following messages in the page details contains:
-      | Attachment saved successfully. |
-    When I close "Upload Document" modal by clicking the top right x button
+    When I upload attachment "AttachmentTesting.pdf" of type "Others"
     And I pause execution for "3" seconds
     And I click on hyperlink containing value "View"
     And I pause execution for "3" seconds
