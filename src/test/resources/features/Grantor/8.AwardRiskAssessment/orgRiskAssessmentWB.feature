@@ -1,7 +1,7 @@
-@riskAssessment @orgAwardLevelRiskAssessmentWB @regression
+@riskAssessment @orgAwardLevelRiskAssessmentWB @regression @orgRiskAssessment
 Feature: Validate all scenarios when the Organizational Risk Assessment is in expired status
 
-  @64384 @expiredOrgRiskassementValidation @smoke
+  @vai @64384 @expiredOrgRiskassementValidation @smoke
   Scenario Outline: Validate system generates an exception at award activation if Organizational Risk Assessment is expired.
     Given I delete the record "Automation Award for Risk Assessment" from the object "Award"
     And I delete the record "Automation Award for Risk Assessment" from the object "Grant"
@@ -9,7 +9,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I enter in modal "Grant_Creation3" values from "Award_Field_Values.xlsx"
+    And I enter in modal "Grant_Creation" values from "Award_Field_Values.xlsx"
     And I enter value "---AUTOEnvData:-:SubrecipientOrgWithoutActiveRiskAssessment---" into field "fieldInternalOrganization__c"
     And I click modal button "Continue"
     And I enter in modal "Grant_Edition1" values from "Award_Field_Values.xlsx"
@@ -122,9 +122,9 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "subaward"
-    And I activated standalone subaward "Automation Award for Organizational Risk Assessment" with properties "default" of type "Competitive"
+    And I activated standalone subaward "Automation Award for Organizational Risk Assessment" with properties "SUBRECIPIENT_ORG_SPI_USER-Automation PM user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI3" user
+    When I login to "Grants Portal" app as "SPI4" user
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Expired" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
@@ -143,23 +143,28 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "EGMSID"
-    When I click on "Edit" in the page details
     And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "asf" into field "Addressline1__c"
+    And I enter value "asf" into field "City__c"
+    And I enter value "20171" into field "Zip4__c"
+    And I enter value "LA" into field "fieldState__c"
+    And I enter value "GA" into field "fieldCounty__c"
+    And I enter value "Test" into field "ScopeofWorkChangeDescription__c"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                      | Amendment Request |
-      | {SavedValue:EXE Username} | Step 2            |
+      | Name                     | Amendment Request |
+      | {SavedValue:EXE Username}| Step 2            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:FO Username} | Step 3            |
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    When I re-login to "Grants Portal" app as "SPI4" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -214,9 +219,9 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "subaward"
-    And I activated standalone subaward "Automation Award for Organizational Risk Assessment" with properties "default" of type "Competitive"
+    And I activated standalone subaward "Automation Award for Organizational Risk Assessment" with properties "SUBRECIPIENT_ORG_SPI_USER-Automation PM user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI3" user
+    When I login to "Grants Portal" app as "SPI4" user
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Expired" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
@@ -236,21 +241,25 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "asf" into field "Addressline1__c"
+    And I enter value "asf" into field "City__c"
+    And I enter value "20171" into field "Zip4__c"
+    When I enter values into fields
+      | Value | Field                           |
+      | 4000  | fieldRevisedCommitment__c       |
+      | 2000  | fieldRequestedChangeInBudget__c |
     When I click on "Save" in the page details
-    And I click on "Edit" icon for "---AUTOEnvData:-:fundingAccount---" inside flex table with id "---amendment:-:AmendmentFundingAccountTableId---" without waiting for record
-    And I enter value "1000" into field "ActualEncumbrance__c"
-    And I click on top right button "Save" in flex table with id "---amendment:-:AmendmentFundingAccountTableId---"
-    And I save the field labeled "EGMS ID" as "PERIODICRENEWAL"
+    And I save the field labeled "EGMS ID" as "SOWAMENDMENTREQUEST"
     And I get the "EGMS ID"
     And I save the field labeled "Proposed Budget Period Start Date" as "PBPSD"
     And I save the field labeled "Proposed Budget Period End Date" as "PBPED"
-    And I click on "Edit" icon for "Automation Permanent Focus Area" inside flex table with id "---amendment:-:FundingChangeFocusAreaTableId---" without waiting for record
-    And I enter value "{SavedValue:PBPSD}" into field "GATStartDate__c"
-    And I enter value "{SavedValue:PBPED}" into field "GATEndDate__c"
-    And I click on top right button "Save" in flex table with id "---amendment:-:FundingChangeFocusAreaTableId---"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | Start Date         | End Date           |
+      | Automation Permanent Focus Area | {SavedValue:PBPSD} | {SavedValue:PBPED} |
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
-      | {SavedValue:fundingAccount} | 1000                |
+      | {SavedValue:fundingAccount} | 2000                |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
@@ -262,14 +271,17 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 3            |
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI4" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---amendment:-:RecipientKeyPersonalTableId---" without waiting for record
+    And I click on "Edit" icon for "{SavedValue:SPI4 Username}" inside flex table with id "---amendment:-:RecipientKeyPersonalTableId---" without waiting for record
     And I enter value "Principal Investigator" into field "ProjectRole__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:RecipientKeyPersonalTableId---"
+    And I edit the following rows inline in flex table with id "---amendment:-:budgetChangeTableId---" by clicking "Edit" :
+      | Budget Category | Revised Award Amount | Cash Match | Non Cash Match |
+      | Construction    | 2000                 | 200        | 0              |
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -466,7 +478,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     Then I see the following messages in the page details contains:
       | The subrecipient organization risk assessment is expired. Please notify the subrecipient to renew their organization risk assessment. |
 
-  @201170 @ValidateOrganizationRiskAssessmentsarenotshownintheReassignmodal @sprint-12-US-226646 @vaibhav @reassignment
+  @201170 @ValidateOrganizationRiskAssessmentsarenotshownintheReassignmodal @sprint-12-US-226646 @vaibhav @reassignment 
   Scenario: Validate Organization Risk Assessments are not shown in the Reassign modal
     Given I delete the record "Automation Permanent Organization for Risk Assessment" from the object "ORGANIZATION RISKASSESSMENT"
     When I create a risk assessment record for organization "Automation Permanent Organization for Risk Assessment"
