@@ -1058,7 +1058,7 @@ Feature: Validate all scenarios of grants and award Notes and Supporting Documen
     And I navigate to "Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:notesAwardTableId---"
 
-  @236107 @ValidateGranteePMusershouldabletoaddnotesfromotherorganizationwhensubawardisinsubmittedtoreviewstate @Sprint-14-US-234263 @vaibhav @Notes
+  @236107 @ValidateGranteePMusershouldabletoaddnotesfromotherorganizationwhensubawardisinsubmittedtoreviewstate @Sprint-14-US-234263 @vaibhav @Notes @wip
   Scenario: Validate Grantee PM user should able to add notes from other organization when subaward is in submitted to review state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab

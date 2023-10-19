@@ -59,7 +59,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @56717 @56716 @56718 @internalContactsViewCreateEdit @smoke @TBE
+  @56717 @56716 @56718 @internalContactsViewCreateEdit @smoke
   Scenario Outline: Validate that Internal contacts are accessible across agencies and can be create, Edit and view access to Contacts by any Internal users
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -85,7 +85,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56721 @56720 @smeReviewersContactViewAndCreate @smoke @TBE
+  @56721 @56720 @smeReviewersContactViewAndCreate @smoke
   Scenario Outline: Verifying all Internal Users has View access to SME Reviewers Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -108,7 +108,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56722 @smeReviewersContactSendInvitation @TBE
+  @56722 @smeReviewersContactSendInvitation
   Scenario Outline: Verify the system allows all Internal users to Send Invitation to SME Reviewer
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -134,7 +134,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56723 @activeSMEReviewersContactDetailPageView @TBE
+  @56723 @activeSMEReviewersContactDetailPageView
   Scenario Outline: Verify that system allows user to see the detail page of Active SME Reviewer contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -155,7 +155,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56725 @56724 @56726 @termsandConditionsViewCreateAdminEdit @smoke @TBE
+  @56725 @56724 @56726 @termsandConditionsViewCreateAdminEdit @smoke
   Scenario Outline: Verifying all Internal Users has View, Create and Edit access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Planning" tab
@@ -257,7 +257,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56719 @56734 @subrecipientContactsCreateEdit @smoke @TBE
+  @56719 @56734 @subrecipientContactsCreateEdit @smoke
   Scenario Outline: Verifying if the Internal Users has create and Edit access to Subrecipient Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -303,7 +303,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @56736 @56737 @additionalAddressesCreationEdition @TBE
+  @56736 @56737 @additionalAddressesCreationEdition
   Scenario: Validate whether ADMIN can Create and Edition of Additional Addresses
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
@@ -320,7 +320,7 @@ Feature: Validate all scenarios in the home tab
     #And I close "Edit" modal by clicking the top right x button
     Then I softly see that "Test Automation Organization" is in "Active" status
 
-  @56739 @56907 @relatedContactsCreationEdition @TBE
+  @56739 @56907 @relatedContactsCreationEdition
   Scenario Outline: The Internal Users should be able to Create and Edit Related Contacts
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -345,7 +345,7 @@ Feature: Validate all scenarios in the home tab
       | EXE  |
       | PM   |
 
-  @56738 @deletionOfRelatedContact @TBE
+  @56738 @deletionOfRelatedContact
   Scenario:  Validate whether the admin is able to Delete Related Contacts
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
@@ -362,7 +362,6 @@ Feature: Validate all scenarios in the home tab
     And I save the contact name as "Automation Runtime Contact"
     And I select value inside table "---home:-:relatedContactsTableId---" is "All"
     And I click on "Delete" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:relatedContactsTableId---" without waiting for record
-    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:relatedContactsTableId---" panel
     Then I softly do not see value "{SavedValue:Automation Runtime Contact}" for title "Full Name" inside table "---home:-:relatedContactsTableId---"
 
   @56740 @56741 @56742 @dunsNumberCreationEditionAndDeletion @smoke
@@ -470,7 +469,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @57344 @57345 @homePendingTaskCompletedAndTaskCount @TBE
+  @57344 @57345 @homePendingTaskCompletedAndTaskCount
   Scenario: Validate whether user is able to view the total count of pending Tasks assigned to user and Pending Task and Completed Task on the left Navigation shows Pending Tasks across all the Modules
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -525,7 +524,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @73851 @73856 @73850 @57347 @57348 @viewActiveGrantsSubmittedApplicationsOnRelatedLog @TBE
+  @73851 @73856 @73850 @57347 @57348 @viewActiveGrantsSubmittedApplicationsOnRelatedLog
   Scenario Outline: Verify all profiles users should be able to view the Submitted Applications and Active Grants.
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Application" and properties "default"
@@ -682,7 +681,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @62103 @pageBlockSectionsRelatedLog @deepika @TBE
+  @62103 @pageBlockSectionsRelatedLog @deepika
   Scenario Outline:  Validate whether the Related Log displays Active Federal/NGO Applications (Grantee) and Active Federal/NGO Grants (Grantee).
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -747,7 +746,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Record Id" in "---home:-:externalPendingTasktableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---home:-:externalPendingTasktableId---"
 
-  @62106 @indUserEditProfile @deepika @TBE
+  @62106 @indUserEditProfile @deepika
   Scenario: Verify whether the Individual Sub Profile Users can view their own contact information under Overview Tab
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "IND" user
@@ -794,7 +793,7 @@ Feature: Validate all scenarios in the home tab
     And I mouse hover to link contains "Test Automation Organization"
     Then I softly see page title contains as "Test Automation Organization"
 
-  @62911 @VerifyStatusIsNewForInvitation/BulkInvitationISentStatusChanges @keerti @TBE
+  @62911 @VerifyStatusIsNewForInvitation/BulkInvitationISentStatusChanges @keerti
   Scenario Outline: Validate once Contact has registered the status will be New , when the Invitation/Bulk Invitation is sent, the status changes from Invitation Sent
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -819,7 +818,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @33882 @34674 @validatingcreateSMEReviewer @meenakshi @TBE
+  @33882 @34674 @validatingcreateSMEReviewer @meenakshi
   Scenario: To verify internal user able to Create new SME reviewer
     Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Home" tab
