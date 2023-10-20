@@ -514,14 +514,13 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:fundingAccount}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---" without waiting for record
-    When I enter Revised Encumbrance for award "{SavedValue:Automation Runtime Award}"
-    And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
+    When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 1100                |
     And I click on "Edit" in the page details
     When I enter values into fields
       | Value | Field                     |
-      | 1200  | fieldRevisedCommitment__c |
-    And I wait for "3" seconds
+      | 1100  | fieldRevisedCommitment__c |
     And I click on "Save" in the page details
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
