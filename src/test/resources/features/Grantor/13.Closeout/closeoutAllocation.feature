@@ -2800,7 +2800,7 @@ Feature: Validate all scenarios in Closeout
 
   @267758 @ValidateFormulaGrantvalueinCumulativeobligationfieldandCumulativeobligationcolumnoncloseoutrequestwhencloseoutrequestisincreatedandsecondperiodicrenewalamendmentandpaymentrequestisapprovedFANO @sprint-21-US-265880 @vaibhav @Allocation @hiteshTemp
   Scenario: Validate Formula Grant value in Cumulative obligation field and Cumulative obligation column on closeout request when closeout request is in created and second periodic renewal amendment and payment request is approved(FA=NO)
-    And I activated standalone subaward "Automation Runtime FDM Announcement" with properties "Automation PO user" of type "Formula_By_Applicant_Focus_Area_No"
+    And I activated standalone subaward "Automation Runtime FDM Announcement" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PO user" of type "Formula_By_Applicant_Focus_Area_No"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
