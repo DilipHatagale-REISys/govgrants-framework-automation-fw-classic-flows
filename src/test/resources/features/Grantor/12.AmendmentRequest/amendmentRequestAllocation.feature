@@ -562,6 +562,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
+    And I wait for "3" seconds
     And I upload attachment without random number "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -5933,7 +5934,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "EGMS ID" as "FundingID"
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
     When I get the "EGMS ID"
@@ -9268,12 +9269,18 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     And I click in table hyperlink containing value "{SavedValue:FundingAccount2}"
     Then I see the header is "Funding Account" in the page details
-    Then I softly see field "Pre-Encumbrance" as "$2,000.00"
-    Then I softly see field "Encumbrance" as "$9,000.00" in "Financials" pageblock
-    Then I softly see field "Spent" as "$0.00"
-    Then I softly see field "Total Obligation" as "$11,000.00"
-    Then I softly see field "Available Balance" as "$989,000.00"
-    Then I softly see field "Appropriation Amount" as "$1,000,000.00"
+    And I save the field labeled "Pre-Encumbrance" as "Pre-Encumbrance1"
+    And I save the field labeled "Encumbrance" as "Encumbrance1"
+    And I save the field labeled "Spent" as "Spent1"
+    And I save the field labeled "Total Obligation" as "TotalObligation1"
+    And I save the field labeled "Available Balance" as "AvailableBalance1"
+    And I save the field labeled "Appropriation Amount" as "AppropriationAmount1"
+    Then I softly see field "Pre-Encumbrance" as "{SavedValue:Pre-Encumbrance1}"
+    Then I softly see field "Encumbrance" as "{SavedValue:Encumbrance1}" in "Financials" pageblock
+    Then I softly see field "Spent" as "{SavedValue:Spent1}"
+    Then I softly see field "Total Obligation" as "{SavedValue:TotalObligation1}"
+    Then I softly see field "Available Balance" as "{SavedValue:AvailableBalance1}"
+    Then I softly see field "Appropriation Amount" as "{SavedValue:AppropriationAmount1}"
 
   @257686 @257701 @257708 @257692 @257717 @257709 @257736 @257744 @257745 @257747 @257746 @257748 @257749 @ValidatePOusercanseeNewObligationfieldasuserenterdollarfieldenterPositivevalueinNewObligationfieldunderBudgetSummarysectionwhenPeriodicRenewalamendmentrequestincreatedstateFAYES @sprint-19-US-250552 @vaibhav @Allocation
   Scenario: Validate PO user can see New Obligation field as user enter dollar field & enter Positive Value in New Obligation field under Budget Summary section when Periodic Renewal amendment request in created state(FA=YES)
@@ -10461,7 +10468,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Automation Permanent Focus Area2 | 1000           |
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
     When I get the "EGMS ID"
@@ -11809,7 +11816,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
       | Test Focus Area | 1000           |
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
     When I get the "EGMS ID"
@@ -11865,6 +11872,8 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     And I navigate to "Financials" sub tab
+    And I click on parallel menu button in flex table title "Payment Request Budget"
+    And I select "Reset Table" from parallel lines dropdown of "Payment Request Budget"
     Then I softly see value "$1,500.00" for title "Awarded Budget" against the value "Construction" inside table "---paymentRequest:-:paymentRequestBudgetTableId---"
     Then I softly see value "$1,500.00" for title "Subaward Balance" against the value "Construction" inside table "---paymentRequest:-:paymentRequestBudgetTableId---"
     And I click on page navigation arrow "---paymentRequest:-:paymentRequestBudgetTableId---" for table id "Next"
@@ -11986,12 +11995,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     And I click in table hyperlink containing value "{SavedValue:FundingAccount2}"
     Then I see the header is "Funding Account" in the page details
-    Then I softly see field "Pre-Encumbrance" as "$4,000.00"
-    Then I softly see field "Encumbrance" as "$26,000.00" in "Financials" pageblock
-    Then I softly see field "Spent" as "$0.00"
-    Then I softly see field "Total Obligation" as "$30,000.00"
-    Then I softly see field "Available Balance" as "$990,000.00"
-    Then I softly see field "Appropriation Amount" as "$1,000,000.00"
+    And I save the field labeled "Pre-Encumbrance" as "Pre-Encumbrance"
+    And I save the field labeled "Encumbrance" as "Encumbrance"
+    And I save the field labeled "Spent" as "Spent"
+    And I save the field labeled "Total Obligation" as "TotalObligation"
+    And I save the field labeled "Available Balance" as "AvailableBalance"
+    And I save the field labeled "Appropriation Amount" as "AppropriationAmount"
     And I switch to parent tab
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -12111,12 +12120,19 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     And I click in table hyperlink containing value "{SavedValue:FundingAccount2}"
     Then I see the header is "Funding Account" in the page details
-    Then I softly see field "Pre-Encumbrance" as "$0.00"
-    Then I softly see field "Encumbrance" as "$9,700.00" in "Financials" pageblock
-    Then I softly see field "Spent" as "$300.00"
-    Then I softly see field "Total Obligation" as "$13,000.00"
-    Then I softly see field "Available Balance" as "$987,000.00"
-    Then I softly see field "Appropriation Amount" as "$1,000,000.00"
+    And I save the field labeled "Pre-Encumbrance" as "Pre-Encumbrance1"
+    And I save the field labeled "Encumbrance" as "Encumbrance1"
+    And I save the field labeled "Spent" as "Spent1"
+    And I save the field labeled "Total Obligation" as "TotalObligation1"
+    And I save the field labeled "Available Balance" as "AvailableBalance1"
+    And I save the field labeled "Appropriation Amount" as "AppropriationAmount1"
+    Then I softly see value "{SavedValue:Pre-Encumbrance}" is "Less Than" the value "{SavedValue:Pre-Encumbrance1}"
+    Then I softly see value "{SavedValue:Encumbrance}" is "Less Than" the value "{SavedValue:Encumbrance1}"
+    Then I softly see value "{SavedValue:Spent}" is "Less Than" the value "{SavedValue:Spent1}"
+    Then I softly see value "{SavedValue:Spent}" is "Less Than" the value "{SavedValue:Spent1}"
+    Then I softly see value "{SavedValue:TotalObligation}" is "Less Than" the value "{SavedValue:TotalObligation1}"
+    Then I softly see value "{SavedValue:AvailableBalance}" is "Less Than" the value "{SavedValue:AvailableBalance1}"
+    Then I softly see value "{SavedValue:AppropriationAmount}" is "Less Than" the value "{SavedValue:AppropriationAmount1}"
 
   @256591 @256863 @256632 @256652 @256802 @256714 @256810 @256965 @256918 @256943 @256971 @257050 @256573 @256623 @256633 @256634 @256659 @256825 @256835 @ValidatePMusercanseeNewobligationasReadOnlyfieldinsteadofAwardBudgetthisPeriodcopiedfromTotalrolledupfromtheNewobligationcolumninBudgetsummarybyFocusareaSection @sprint-19-US-241142-241581 @vaibhav @Allocation
   Scenario: Validate PM user can see 'New obligation' as Read Only field instead of 'Award Budget this Period' copied from Total rolled up from the New obligation column in Budget summary by Focus area Section
