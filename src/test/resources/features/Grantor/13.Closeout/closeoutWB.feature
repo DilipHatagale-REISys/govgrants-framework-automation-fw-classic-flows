@@ -5347,3 +5347,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "History" sub tab
     Then I softly see value "Automation EXE1" for title "New Value" inside table "---closeout:-:closeoutHistoryTableId---"
     Then I softly see value "Automation EXE" for title "Old Value" inside table "---closeout:-:closeoutHistoryTableId---"
+
+  @11111 @VerifyApprovalDecisionFieldsAndButtons-Scheduled @monu @buglogged141587 @hiteshTemp
+  Scenario: Validate user can see approval decision fields and button at approval decision box
+    Given I activated standalone subaward "Automation Runtime Award
