@@ -456,7 +456,7 @@ public class GenericSteps {
 
     @Given("I initiated an application review for application {string} on announcement {string} with properties {string}")
     public void iInitiatedAnApplicationReviewOnAnnouncement(String applicationTitle, String announcmentTitle, String filter) {
-        I.amPerforming().waitFor().makeThreadSleep(30000); //ToDO- This API gets failed as It needs Announcement Record, So added wait time as of now
+        I.amPerforming().waitFor().makeThreadSleep(40000); //ToDO- This API gets failed as It needs Announcement Record, So added wait time as of now
         grantorWebServices.initateApplicationReviewOnAnnouncement(applicationTitle, announcmentTitle, filter);
     }
 

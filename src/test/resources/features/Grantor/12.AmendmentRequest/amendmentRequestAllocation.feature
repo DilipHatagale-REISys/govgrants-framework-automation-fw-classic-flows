@@ -72,7 +72,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I enter "PaymentRequestEdition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
-    Then I see field "Payment Period End Date" as "{SavedValue:updatedBudgetPeriodDate}"
+    Then I see field "Payment Period End Date" as "{SavedValue:updatedBudgetPeriodDate1}"
     Examples:
       | Grant Name                            |
       | {SavedValue:Automation Runtime Award} |
@@ -268,10 +268,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 #      | Title                           | End Date                             |
 #      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
-    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:FO Username} | Step 2            |
     When I get the "EGMS ID"
@@ -487,10 +487,10 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 #      | Title                           | End Date                             |
 #      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
-    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:FO Username} | Step 2            |
     When I get the "EGMS ID"
@@ -3333,7 +3333,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Current Obligation" as "$1,000.00"
     Then I softly see field "Revised Obligation" as "$2,000.00"
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
     When I get the "EGMS ID"
@@ -5143,7 +5143,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "EGMS ID" as "FundingID"
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
     When I get the "EGMS ID"
@@ -20739,6 +20739,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I save the field labeled "Total Commitment" as "TotalCommitment4"
     Then I softly see value "{SavedValue:TotalCommitment3}" is "Equals to" the value "{SavedValue:TotalCommitment4}"
     #258214
+    And I refresh the page
     When I hovering mouse on help text icon inside page block detail "Cumulative Obligation"
     Then I softly see "Total Awarded amount across budget periods" shown as help text
     Then I softly see field "Cumulative Obligation" as "$1,000.00"
