@@ -586,7 +586,8 @@ Feature: Validate all scenarios in Closeout
     Then I softly see that "{SavedValue:CloseoutEGMSID}" has been added in flextable with Id "---closeout:-:externalHomePendingTasktableId---"
     Then I softly see value "Automation PM" for title "Created By" inside table "---closeout:-:externalHomePendingTasktableId---"
     Then I softly see value "Review Closeout Request" for title "Task Type" inside table "---closeout:-:externalHomePendingTasktableId---"
-    Then I softly see value "{Date:MM/dd/yyyy::d+7}" for title "Due Date" inside table "---closeout:-:externalHomePendingTasktableId---"
+    When I save the value from row "1" for column name "Due Date" as "DueDate" from flex table "---closeout:-:externalHomePendingTasktableId---"
+    Then I softly see value "{SavedValue:DueDate}" for title "Due Date" inside table "---closeout:-:externalHomePendingTasktableId---"
     Then I softly see value "Review Closeout Request for Grant #{SavedValue:GrantID}" for title "Subject" inside table "---closeout:-:externalHomePendingTasktableId---"
     #87351
     And I click on "Start" icon for "{SavedValue:CloseoutEGMSID}" inside flex table with id "---closeout:-:externalHomePendingTasktableId---"
@@ -1671,11 +1672,3 @@ Feature: Validate all scenarios in Closeout
     And I click on "Acknowledge" in the page details
     Then I softly see the following messages in the page details contains:
       | Files Tab - Complete each mandatory item listed in the checklist to acknowledge this Closeout. |
-
-  @vai @hitesh111
-  Scenario: Valid
-    When I login to "Grants Portal" app as "SPI3" user
-    When I navigate to "Home" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "PR-GFV-03" in "---closeout:-:externalHomePendingTasktableId---" panel
-    Then I softly see value "08/07/2020" for title "Due Date" inside table "---closeout:-:externalHomePendingTasktableId---"

@@ -1980,6 +1980,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:CloseoutTableId---" panel
     And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
     Then I softly can see top right button "Complete Review" in page detail
+    When I click on "Complete Review" in the page details
     And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
     And I pause execution for "20" seconds
     And I refresh the page
@@ -3030,16 +3031,16 @@ Feature: Validate all scenarios in Closeout
     Then I softly see " Reassign Ownership" page block displayed
     Then I see the text containing "Payment Request"
     And I Click on "Reassign Records" icon for "Payment Request" without tableid
-    When I perform quick search for "{SavedValue:PayreqId1}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
-    Then I see value "{SavedValue:PayreqId1}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
-    When I perform quick search for "{SavedValue:PayreqId1}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
-    When I check "{SavedValue:PayreqId1}" boxes in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    When I check "{SavedValue:PayreqId}" boxes in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
     When I click table top right button "Transfer Ownership" in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
     And I pause execution for "30" seconds
-    When I perform quick search for "{SavedValue:PayreqId1}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
-    Then I do not see value "{SavedValue:PayreqId1}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    Then I do not see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
     And I pause execution for "2" seconds
     And I close the tab
     #Closeout
@@ -5384,3 +5385,12 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "History" sub tab
     Then I softly see value "Automation EXE1" for title "New Value" inside table "---closeout:-:closeoutHistoryTableId---"
     Then I softly see value "Automation EXE" for title "Old Value" inside table "---closeout:-:closeoutHistoryTableId---"
+
+  @vai @hitesh111
+  Scenario: Valid
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    When I navigate to "Home" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "PR-GFV-03" in "---closeout:-:externalHomePendingTasktableId---" panel
+    Then I softly see value "08/07/2020" for title "Due Date" inside table "---closeout:-:externalHomePendingTasktableId---"

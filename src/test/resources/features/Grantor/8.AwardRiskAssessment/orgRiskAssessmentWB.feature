@@ -1,7 +1,7 @@
 @riskAssessment @orgAwardLevelRiskAssessmentWB @regression @orgRiskAssessment
 Feature: Validate all scenarios when the Organizational Risk Assessment is in expired status
 
-  @vai @64384 @expiredOrgRiskassementValidation @smoke
+  @64384 @expiredOrgRiskassementValidation @smoke
   Scenario Outline: Validate system generates an exception at award activation if Organizational Risk Assessment is expired.
     Given I delete the record "Automation Award for Risk Assessment" from the object "Award"
     And I delete the record "Automation Award for Risk Assessment" from the object "Grant"
