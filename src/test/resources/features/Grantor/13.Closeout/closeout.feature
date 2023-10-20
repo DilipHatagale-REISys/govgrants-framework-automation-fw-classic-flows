@@ -1671,3 +1671,11 @@ Feature: Validate all scenarios in Closeout
     And I click on "Acknowledge" in the page details
     Then I softly see the following messages in the page details contains:
       | Files Tab - Complete each mandatory item listed in the checklist to acknowledge this Closeout. |
+
+  @vai @hitesh111
+  Scenario: Valid
+    When I login to "Grants Portal" app as "SPI3" user
+    When I navigate to "Home" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "PR-GFV-03" in "---closeout:-:externalHomePendingTasktableId---" panel
+    Then I softly see value "08/07/2020" for title "Due Date" inside table "---closeout:-:externalHomePendingTasktableId---"
