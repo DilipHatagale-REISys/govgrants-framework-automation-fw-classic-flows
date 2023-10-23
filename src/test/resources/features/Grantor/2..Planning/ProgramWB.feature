@@ -5862,7 +5862,7 @@ Feature: Validate all scenarios for program
     And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
-      | Title        | Description        |
+      | Title         | Description       |
       | Notes Record1 | Automation Notes1 |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
     And I "Reject" in the approval decision
@@ -6069,7 +6069,7 @@ Feature: Validate all scenarios for program
     When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:peerReviewTableId---" by clicking "New" :
-      | Reviewer Name  | Responsibility  | Description                 | Due Date |
+      | Reviewer Name | Responsibility  | Description                 | Due Date |
       | Automation PM | Fiscal Reviewer | Automation Test Description | 10       |
     And I click on "Send for Review" icon for "{SavedValue:PM Username}" inside table
     Then I softly see status in Progress-bar is "Submitted for Review" and is "green"
@@ -6091,8 +6091,8 @@ Feature: Validate all scenarios for program
     Then I softly see status in Progress-bar is "Reviewed" and is "green"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
-      | Title         | Description      |
-      | Notes Record  | Automation Notes |
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
     Then I softly see value "Automation PM" for title "Created By" inside table "---program:-:internalProgramNotesTableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:internalProgramNotesTableId---"
@@ -6307,7 +6307,7 @@ Feature: Validate all scenarios for program
     Then I softly see field "Status" as "Active"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:internalProgramNotesTableId---" by clicking "Add" :
-      | Title          | Description       |
+      | Title          | Description        |
       | Notes Record10 | Automation Notes10 |
     Then I softly see value "Notes Record10" for title "Title" inside table "---program:-:internalProgramNotesTableId---"
     Then I softly see value "Automation PM" for title "Created By" inside table "---program:-:internalProgramNotesTableId---"
@@ -6406,7 +6406,7 @@ Feature: Validate all scenarios for program
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
-      | Title         | Description      |
+      | Title         | Description       |
       | Notes Record3 | Automation Notes3 |
     Then I softly see value "Notes Record3" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation PO" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
@@ -6520,7 +6520,7 @@ Feature: Validate all scenarios for program
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
-      | Title         | Description      |
+      | Title         | Description       |
       | Notes Record3 | Automation Notes3 |
     Then I softly see value "Notes Record3" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation EXE" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
@@ -6900,8 +6900,8 @@ Feature: Validate all scenarios for program
     When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:peerReviewTableId---" by clicking "New" :
-      | Reviewer Name  | Responsibility   | Description                 | Due Date | Allow Record Editing |
-      | Automation PO  | Program Reviewer | Automation Test Description | 10       | Yes                  |
+      | Reviewer Name | Responsibility   | Description                 | Due Date | Allow Record Editing |
+      | Automation PO | Program Reviewer | Automation Test Description | 10       | Yes                  |
     And I click on "Send for Review" icon for "{SavedValue:PO Username}" inside table
     Then I softly see status in Progress-bar is "Submitted for Review" and is "green"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -6961,8 +6961,8 @@ Feature: Validate all scenarios for program
     When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:peerReviewTableId---" by clicking "New" :
-      | Reviewer Name  | Responsibility   | Description                 | Due Date | Allow Record Editing |
-      | Automation FO  | Fiscal Reviewer  | Automation Test Description | 10       | Yes                  |
+      | Reviewer Name | Responsibility  | Description                 | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Automation Test Description | 10       | Yes                  |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     Then I softly see status in Progress-bar is "Submitted for Review" and is "green"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -7042,8 +7042,8 @@ Feature: Validate all scenarios for program
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
-      | Title         | Description       |
-      | Notes Record  | Automation Notes  |
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation PM" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
@@ -7051,8 +7051,8 @@ Feature: Validate all scenarios for program
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     When I edit the following rows inline in flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Edit" :
-      |Created By     | Title         | Description      |
-      |Automation PM  | Notes Record1 | Automation Notes1|
+      | Created By    | Title         | Description       |
+      | Automation PM | Notes Record1 | Automation Notes1 |
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
@@ -7067,8 +7067,8 @@ Feature: Validate all scenarios for program
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
-      | Title         | Description       |
-      | Notes Record  | Automation Notes  |
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation FO" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
@@ -7076,8 +7076,8 @@ Feature: Validate all scenarios for program
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     When I edit the following rows inline in flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Edit" :
-      |Created By     | Title         | Description      |
-      |Automation FO  | Notes Record1 | Automation Notes1|
+      | Created By    | Title         | Description       |
+      | Automation FO | Notes Record1 | Automation Notes1 |
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
@@ -7092,8 +7092,8 @@ Feature: Validate all scenarios for program
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
-      | Title         | Description       |
-      | Notes Record  | Automation Notes  |
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation FD" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
@@ -7101,8 +7101,8 @@ Feature: Validate all scenarios for program
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     When I edit the following rows inline in flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Edit" :
-      |Created By     | Title         | Description      |
-      |Automation FD  | Notes Record1 | Automation Notes1|
+      | Created By    | Title         | Description       |
+      | Automation FD | Notes Record1 | Automation Notes1 |
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
@@ -7117,8 +7117,8 @@ Feature: Validate all scenarios for program
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
-      | Title         | Description       |
-      | Notes Record  | Automation Notes  |
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation Admin" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
@@ -7126,8 +7126,8 @@ Feature: Validate all scenarios for program
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     When I edit the following rows inline in flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Edit" :
-      |Created By       | Title         | Description      |
-      |Automation Admin | Notes Record1 | Automation Notes1|
+      | Created By       | Title         | Description       |
+      | Automation Admin | Notes Record1 | Automation Notes1 |
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
@@ -7174,8 +7174,8 @@ Feature: Validate all scenarios for program
     Then I softly see status in Progress-bar is "Active" and is "green"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
-      | Title         | Description       |
-      | Notes Record  | Automation Notes  |
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation PM" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
@@ -7183,8 +7183,8 @@ Feature: Validate all scenarios for program
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     When I edit the following rows inline in flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Edit" :
-      |Created By     | Title         | Description      |
-      |Automation PM  | Notes Record1 | Automation Notes1|
+      | Created By    | Title         | Description       |
+      | Automation PM | Notes Record1 | Automation Notes1 |
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
@@ -7199,8 +7199,8 @@ Feature: Validate all scenarios for program
     Then I softly see status in Progress-bar is "Active" and is "green"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
-      | Title         | Description       |
-      | Notes Record  | Automation Notes  |
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation EXE" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
@@ -7208,8 +7208,8 @@ Feature: Validate all scenarios for program
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     When I edit the following rows inline in flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Edit" :
-      |Created By      | Title         | Description      |
-      |Automation EXE  | Notes Record1 | Automation Notes1|
+      | Created By     | Title         | Description       |
+      | Automation EXE | Notes Record1 | Automation Notes1 |
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
@@ -7224,8 +7224,8 @@ Feature: Validate all scenarios for program
     Then I softly see status in Progress-bar is "Active" and is "green"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
-      | Title         | Description       |
-      | Notes Record  | Automation Notes  |
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation FO" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
@@ -7233,8 +7233,8 @@ Feature: Validate all scenarios for program
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     When I edit the following rows inline in flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Edit" :
-      |Created By     | Title         | Description      |
-      |Automation FO  | Notes Record1 | Automation Notes1|
+      | Created By    | Title         | Description       |
+      | Automation FO | Notes Record1 | Automation Notes1 |
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
@@ -7249,8 +7249,8 @@ Feature: Validate all scenarios for program
     Then I softly see status in Progress-bar is "Active" and is "green"
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Add" :
-      | Title         | Description       |
-      | Notes Record  | Automation Notes  |
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation PO" for title "Created By" inside table "---program:-:externalProgramNotesTableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---program:-:externalProgramNotesTableId---"
@@ -7258,15 +7258,15 @@ Feature: Validate all scenarios for program
     Then I softly can see row level action button "Edit" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record" in flex table with id "---program:-:externalProgramNotesTableId---"
     When I edit the following rows inline in flex table with id "---program:-:externalProgramNotesTableId---" by clicking "Edit" :
-      |Created By     | Title         | Description      |
-      |Automation PO  | Notes Record1 | Automation Notes1|
+      | Created By    | Title         | Description       |
+      | Automation PO | Notes Record1 | Automation Notes1 |
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Automation Notes1" for title "Description" inside table "---program:-:externalProgramNotesTableId---"
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     And I click on "Delete" icon for "Notes Record1" inside flex table with id "---program:-:externalProgramNotesTableId---" without waiting for record
     Then I softly do not see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
 
- @204035 @ValidatethatuserEXEshouldhavetwooptionsifIclickonClassificationinUploadFilefromcomputerATemplateforPlanningBOthers @sprint-7-US-202724 @vaibhav
+  @204035 @ValidatethatuserEXEshouldhavetwooptionsifIclickonClassificationinUploadFilefromcomputerATemplateforPlanningBOthers @sprint-7-US-202724 @vaibhav
   Scenario: Validate that user EXE should have two options if I click on Classification in Upload File from computer A.Template for Planning B. Others
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -7286,3 +7286,58 @@ Feature: Validate all scenarios for program
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
     Then I see only the following ordered options in dropdown field "WorkspaceFilesUpload" :
       | Select file classification | Template for Planning | Others |
+
+  @330560 @330580 @330611 @330615 @ValidatePMusershouldseevaluepopulatesinSubjectFromAddressToAddressAttentiontoEmailsubjectccaddresscolumnsonMessagessectionundercollabtabofInternalProgram @SystemEmail
+  Scenario: Validate PM user should see value populates in " Subject, From Address, To Address, Attention to, Email subject,cc address" columns on Messages section under collab tab of Internal Program
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    Then I softly see field "Status" as "Created"
+    And I navigate to "Collab" sub tab
+    And I click on top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    And I send the email under collab tab with following details:
+      | To                        | Subject         | Body                       |
+      | fo.automation@yopmail.com | Automation Test | Automation Test Email Body |
+    Then I softly see the following messages in the page details contains:
+      | Email Sent Successfully. |
+    And I close "Send Email" modal by clicking the top right x button
+    Then I softly see value "" for title "Attention To" inside table "---program:-:programCollabMessagesTableId---"
+    Then I see the following rows under the following headers in table with id "---program:-:programCollabMessagesTableId---" :
+      | Subject         | From Address              | CC Address | To Address                | Attention To | Email Subject   |
+      | Automation Test | pm.automation@yopmail.com |            | fo.automation@yopmail.com |              | Automation Test |
+    #330580
+    And I click on "Reply" icon for "Automation Test" inside flex table with id "---program:-:programCollabMessagesTableId---" without waiting for record
+    And I send the email under collab tab with following details:
+      | To                        | Subject              | Body                          |
+      | fo.automation@yopmail.com | RE: Automation Test1 | Automation Re-Test Email Body |
+    Then I softly see the following messages in the page details contains:
+      | Email Sent Successfully. |
+    And I close "Reply" modal by clicking the top right x button
+    Then I see value "" for title "Attention To" against the value "RE: Automation Test1" inside table "---program:-:programCollabMessagesTableId---"
+    #330611
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    And I navigate to "Collab" sub tab
+    Then I see the following rows under the following headers in table with id "---program:-:programCollabMessagesTableId---" :
+      | Subject         | From Address              | CC Address | To Address                | Attention To | Email Subject   |
+      | Automation Test | pm.automation@yopmail.com |            | fo.automation@yopmail.com |              | Automation Test |
+    #330615
+    And I click on "Reply" icon for "Automation Test" inside flex table with id "---program:-:programCollabMessagesTableId---" without waiting for record
+    And I send the email under collab tab with following details:
+      | To                        | Subject              | Body                                |
+      | fo.automation@yopmail.com | RE: Automation Test2 | Automation Re-Test Email Body Again |
+    Then I softly see the following messages in the page details contains:
+      | Email Sent Successfully. |
+    And I close "Reply" modal by clicking the top right x button
+    Then I see value "" for title "Attention To" against the value "RE: Automation Test2" inside table "---program:-:programCollabMessagesTableId---"
