@@ -157,7 +157,7 @@ Feature: Validate all scenarios in Payment Request With Notes
   Scenario:Verify PM/PO/ADMIN//FO same Org user should be able to 'Add' notes but 'Edit/Delete' their own notes on schedule reimbursement payment request is in 'Submit to grantor' state
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Payment Request"
-    When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
+    When I create a post award record "PaymentRequest" for the Award "{SavedValue:Automation Runtime award}" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Monitoring" tab
