@@ -1116,6 +1116,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Created" and is "green"
+    And I navigate to "Forms and Files" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1123,6 +1124,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Created" and is "green"
+    And I navigate to "Forms and Files" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1130,6 +1132,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Created" and is "green"
+    And I navigate to "Forms and Files" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
 
   @236271 @VerifyPMFOFDusershouldnotabletoAddnotesonschedulereimbursementpaymentrequestisinSubmittedforApprovalstate @sprint-14-US-225425 @hitesh @Notes
@@ -1168,12 +1171,7 @@ Feature: Validate all scenarios in Payment Request With Notes
       | {SavedValue:EXE Username} | Step 1        |
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
-    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
-    Then I see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I navigate to "Forms and Files" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1181,6 +1179,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I navigate to "Forms and Files" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1188,4 +1187,11 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I navigate to "Forms and Files" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
