@@ -1115,7 +1115,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     #296154
     Then I cannot see top right button "Undo" in page detail
 
-  @308925 @ValidateODRIfOwnerandlaststepapproverofOrgSiteVisitaresameandSiteVisitisApprovedandtheOwnershipReassignmentofDeskReviewischangedinthisstatewillnewOwnerSeeUNDObutton @Undo @TBE
+  @308925 @ValidateODRIfOwnerandlaststepapproverofOrgSiteVisitaresameandSiteVisitisApprovedandtheOwnershipReassignmentofDeskReviewischangedinthisstatewillnewOwnerSeeUNDObutton @Undo
   Scenario: Validate ODR If Owner and last step approver of Org Site Visit are same and Site Visit is Approved and the Ownership Reassignment of Desk Review is changed in this state will new Owner See UNDO button
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -1227,7 +1227,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @310991 @ValidateOrgdrthatUndoButtonnotvisibleinForceClosedstate @Undo @TBE
+  @310991 @ValidateOrgdrthatUndoButtonnotvisibleinForceClosedstate @Undo
   Scenario: Validate Org dr that Undo Button not visible in Force Closed state
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab

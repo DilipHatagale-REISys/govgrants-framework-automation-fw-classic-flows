@@ -2838,6 +2838,8 @@ Feature: Validate all scenarios for program
       | {SavedValue:EXE Username} | Step 2  |
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
+    And I refresh the page
+    And I wait for "5" seconds
     And I navigate to "History" sub tab
     And I click on hyperlink containing value "Internal Program - submit for approval.pdf"
     When I download the file
@@ -2861,6 +2863,8 @@ Feature: Validate all scenarios for program
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
     And I click on "Undo" in the page details
+    And I refresh the page
+    And I wait for "5" seconds
     And I navigate to "History" sub tab
     And I click on hyperlink containing value "Internal Program - Undo Approval.pdf"
     When I download the file
@@ -2899,5 +2903,7 @@ Feature: Validate all scenarios for program
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I refresh the page
+    And I wait for "5" seconds
     And I navigate to "History" sub tab
     Then I softly see snapshot with name containing "Internal Program - submit for approval.pdf" as name
