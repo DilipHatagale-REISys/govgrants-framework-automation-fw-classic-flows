@@ -472,6 +472,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PayreqId"
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
@@ -561,6 +562,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     When I click on "Mark As Paid" in the page details
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
+    When I close "{SavedValue:PayreqId}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "green"
     And I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
@@ -1066,13 +1068,13 @@ Feature: Validate all scenarios in Payment Request With Notes
     Then I see status in Progress-bar is "Rejected" and is "Red"
     And I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
-    When I edit the following rows inline in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Created By    | Title         | Description      |
       |Automation PM | Notes Record | Automation Notes  |
-    Then I softly see value "Notes Record" for title "Title" inside table "---paymentRequest:-:advancePaymentNotesTableId---"
-    Then I softly see value "Automation Notes" for title "Description" inside table "---paymentRequest:-:advancePaymentNotesTableId---"
-    And I click on "Delete" icon for "Notes Record" inside flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" without waiting for record
-    Then I softly do not see value "Notes Record" for title "Title" inside table "---paymentRequest:-:advancePaymentNotesTableId---"
+    Then I softly see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    Then I softly see value "Automation Notes" for title "Description" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    And I click on "Delete" icon for "Notes Record" inside flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" without waiting for record
+    Then I softly do not see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1086,13 +1088,13 @@ Feature: Validate all scenarios in Payment Request With Notes
     Then I see status in Progress-bar is "Rejected" and is "Red"
     And I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
-    When I edit the following rows inline in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Created By    | Title         | Description      |
       |Automation PO | Notes Record | Automation Notes  |
-    Then I softly see value "Notes Record" for title "Title" inside table "---paymentRequest:-:advancePaymentNotesTableId---"
-    Then I softly see value "Automation Notes" for title "Description" inside table "---paymentRequest:-:advancePaymentNotesTableId---"
-    And I click on "Delete" icon for "Notes Record" inside flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" without waiting for record
-    Then I softly do not see value "Notes Record" for title "Title" inside table "---paymentRequest:-:advancePaymentNotesTableId---"
+    Then I softly see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    Then I softly see value "Automation Notes" for title "Description" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    And I click on "Delete" icon for "Notes Record" inside flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" without waiting for record
+    Then I softly do not see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1106,10 +1108,25 @@ Feature: Validate all scenarios in Payment Request With Notes
     Then I see status in Progress-bar is "Rejected" and is "Red"
     And I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
-    When I edit the following rows inline in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Created By    | Title         | Description      |
       |Automation FD | Notes Record | Automation Notes  |
-    Then I softly see value "Notes Record" for title "Title" inside table "---paymentRequest:-:advancePaymentNotesTableId---"
-    Then I softly see value "Automation Notes" for title "Description" inside table "---paymentRequest:-:advancePaymentNotesTableId---"
-    And I click on "Delete" icon for "Notes Record" inside flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" without waiting for record
-    Then I softly do not see value "Notes Record" for title "Title" inside table "---paymentRequest:-:advancePaymentNotesTableId---"
+    Then I softly see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    Then I softly see value "Automation Notes" for title "Description" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    And I click on "Delete" icon for "Notes Record" inside flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" without waiting for record
+    Then I softly do not see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+
+  @236266 @VerifyPMFOFDusershouldnotabletoAddnotesnotesonschedulereimbursementpaymentrequestisinCreatedstate @sprint-14-US-225425 @hitesh @Notes
+  Scenario:Verify PM/FO/FD/ user should not able to 'Add' notes notes on schedule reimbursement payment request is in 'Created' state
+    Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Payment Request"
+    When I create a post award record "PaymentRequest" for the Award "{SavedValue:Automation Runtime award}" having object api name as "PaymentRequest__c"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    And I click on "Save" in the page details
