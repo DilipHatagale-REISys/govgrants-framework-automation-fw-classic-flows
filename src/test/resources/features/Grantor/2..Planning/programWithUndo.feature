@@ -2805,7 +2805,7 @@ Feature: Validate all scenarios for program
     Then I softly see field "Status" as "Approved"
     Then I cannot see top right button "Undo" in page detail
 
-  @312499 @312505 @ValidateInternalProgIseeIcaneditandupdatethefiledwhenundoisinprogress @Undo
+  @312499 @312505 @ValidateInternalProgIseeIcaneditandupdatethefiledwhenundoisinprogress @Undo @TBE
   Scenario: Validate Internal Prog I see I can edit and update the filed when undo is in progress
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -2872,6 +2872,7 @@ Feature: Validate all scenarios for program
     Then I softly see following details in "govgrants" pdf file:
       | Status                 | Page Number |
       | Submitted for Approval | 1           |
+    And I switch to parent tab
     And I "Send Back" in the approval decision
     Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
