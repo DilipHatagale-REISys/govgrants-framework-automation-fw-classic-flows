@@ -359,7 +359,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     When I navigate to "Actuals" sub tab
     And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record
     And I navigate to "Forms and Files" sub tab
-    Then I can see top right button "Add" in flex table with id "----paymentRequest:-:advancePaymentNotesTableId---"
+    Then I can see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
     When I enter the following values into flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Add" :
       | Title         | Description      |
       | Notes Record1 | Automation Notes1|
@@ -444,3 +444,18 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    Then I softly see field "Status" as "Created"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:grantorGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:grantorAwardTableId---" without waiting for record
+    When I navigate to "Actuals" sub tab
+    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record
+    And I navigate to "Forms and Files" sub tab
+    Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
