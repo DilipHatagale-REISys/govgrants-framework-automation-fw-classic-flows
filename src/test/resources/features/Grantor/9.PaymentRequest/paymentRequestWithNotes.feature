@@ -249,8 +249,18 @@ Feature: Validate all scenarios in Payment Request With Notes
       | {SavedValue:EXE Username}| Step 1        |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:grantorGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:grantorAwardTableId---" without waiting for record
+    When I navigate to "Actuals" sub tab
+    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I navigate to "Forms and Files" sub tab
-    Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
       |Created By    | Title         | Description      |
       |Automation PM | Notes Record | Automation Notes  |
@@ -270,7 +280,6 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I navigate to "Forms and Files" sub tab
-    Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
       |Created By    | Title         | Description      |
       |Automation PO | Notes Record | Automation Notes  |
