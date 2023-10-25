@@ -1115,7 +1115,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     #296154
     Then I cannot see top right button "Undo" in page detail
 
-  @308929 @ValidateODRIfOwnerandlaststepapproverofOrgSiteVisitaresameandSiteVisitisApprovedandtheOwnershipReassignmentofDeskReviewischangedinthisstatewillnewOwnerSeeUNDObutton @Undo @TBE
+  @308925 @ValidateODRIfOwnerandlaststepapproverofOrgSiteVisitaresameandSiteVisitisApprovedandtheOwnershipReassignmentofDeskReviewischangedinthisstatewillnewOwnerSeeUNDObutton @Undo @TBE
   Scenario: Validate ODR If Owner and last step approver of Org Site Visit are same and Site Visit is Approved and the Ownership Reassignment of Desk Review is changed in this state will new Owner See UNDO button
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -1229,7 +1229,6 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
 
   @310991 @ValidateOrgdrthatUndoButtonnotvisibleinForceClosedstate @Undo @TBE
   Scenario: Validate Org dr that Undo Button not visible in Force Closed state
-    And I activated standalone subaward "Automation Runtime award" with properties "default" of type "Formula_By_Applicant_Focus_Area"
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
@@ -1246,8 +1245,6 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelDeskReview:-:associateContactsId---"
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "DeskReviewID"
     Then I softly see status in Progress-bar is "Created" and is "green"
@@ -1256,13 +1253,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                     | Desk Review |
-      | {SavedValue:PO Username} | Step 1      |
-    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                     | Desk Review |
-      | {SavedValue:FO Username} | Step 2      |
-    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                     | Desk Review |
-      | {SavedValue:PM Username} | Step 3      |
+      | {SavedValue:PM Username} | Step 1      |
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
@@ -1274,53 +1265,36 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I click on "Save" in the page details
     When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
-    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---closeout:-:grantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---closeout:-:grantsTableId---"
-    When I navigate to "Requests" sub tab
-    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
-    And I get the "EGMS ID"
-    And I save the field labeled "EGMS ID" as "closeoutID"
-    When I click on "Save" in the page details
-    And I click on "Edit" in the page details
-    And I enter value "Automation Test justification" into field "fieldJustification__c"
-    When I click on "Save" in the page details
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
-      | Name                      | Closeout |
-      | {SavedValue:EXE Username} | Step 1   |
-    And I click on "Send To Subrecipient" in the page details
+    And I pause execution for "5" seconds
+    And I "Approve" in the approval decision
+    And I pause execution for "5" seconds
+    When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    When I navigate to "Closeout" tab
+    When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
-    When I click on "Edit" in the page details
-    And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I click on "Acknowledge" in the page details
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I navigate to "Reports and Outcomes" sub tab
+    And I expand nested table containing column value "Automation Observation"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    And I expand nested table containing column value "Automation Concern"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    And I expand nested table containing column value "Automation Finding"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    When I navigate to "Closeout" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
-    And I refresh the page
-    When I navigate to "Open Items" sub tab
-    Then I softly see value "Submitted for Approval" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---closeout:-:PendingSiteVisitDeskReviewTableId---"
-    When I click on "Override" in the page details
-    And I refresh the page
-    When I navigate to "Open Items" sub tab
-    Then I softly see value "Force Closed" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---closeout:-:PendingSiteVisitDeskReviewTableId---"
     And I navigate to "Monitoring" tab
-    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
-    When I click toggle button to select "Desk Review Reports - All"
-    When I perform quick search for "{SavedValue:DeskReviewID}" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
-    Then I softly see field "Status" as "Force Closed"
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:DeskReviewID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    Then I see value "{SavedValue:DeskReviewID}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    And I click on "Start" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---" without waiting for record
+    And I click on "Accept And Close" in the page details
+    Then I see status in Progress-bar is "Closed" and is "Green"
     Then I cannot see top right button "Undo" in page detail

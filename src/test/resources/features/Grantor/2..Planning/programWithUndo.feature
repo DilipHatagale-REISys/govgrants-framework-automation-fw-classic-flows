@@ -2518,8 +2518,8 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:extapproverTableId---" by clicking "Edit" :
-      | Name                        | Program |
-      | {SavedValue:FD Username}    | NA      |
+      | Name                     | Program |
+      | {SavedValue:FD Username} | NA      |
     When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                       | Program |
       | {SavedValue:EXE1 Username} | Step 4  |
@@ -2646,6 +2646,7 @@ Feature: Validate all scenarios for program
      Thank you.
      The EGMS Team
       """
+
   @279522 @Verifyifforwardedapproverapprovetheprogramthentheforwardedapproveronlycanseeundobutton @sprint-25-US-291914 @hitesh @Undo
   Scenario: Verify if forwarded approver approve the program then the forwarded approver only can see undo button
     When I login to "As a Grantor" app as "PM" user
@@ -2665,8 +2666,8 @@ Feature: Validate all scenarios for program
     When I click "Associate" after selection of "NGO Contact" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
-      | Name                      | Program |
-      | {SavedValue:FO Username}  | Step 1  |
+      | Name                     | Program |
+      | {SavedValue:FO Username} | Step 1  |
     When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                      | Program |
       | {SavedValue:EXE Username} | Step 2  |
@@ -2774,7 +2775,7 @@ Feature: Validate all scenarios for program
     When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-      | Name                      | Program |
+      | Name                     | Program |
       | {SavedValue:FO Username} | Step 1  |
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
@@ -2803,3 +2804,100 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---" without waiting for record
     Then I softly see field "Status" as "Approved"
     Then I cannot see top right button "Undo" in page detail
+
+  @312499 @312505 @ValidateInternalProgIseeIcaneditandupdatethefiledwhenundoisinprogress @Undo @TBE
+  Scenario: Validate Internal Prog I see I can edit and update the filed when undo is in progress
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    When I navigate to "Overview" sub tab
+    When I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:PM Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
+    When I navigate to "Setup" sub tab
+    When I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
+    When I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
+    When I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:FD Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 2  |
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    And I navigate to "History" sub tab
+    And I click on hyperlink containing value "Internal Program - submit for approval.pdf"
+    When I download the file
+    #312505
+    Then I softly see following details in "govgrants" pdf file:
+      | Status                 | Page Number |
+      | Submitted for Approval | 1           |
+    And I switch to parent tab
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    Then I can see top right button "Undo" in page detail
+    And I click on "Undo" in the page details
+    And I navigate to "History" sub tab
+    And I click on hyperlink containing value "Internal Program - Undo Approval.pdf"
+    When I download the file
+    #312505
+    Then I softly see following details in "govgrants" pdf file:
+      | Status                 | Page Number |
+      | Submitted for Approval | 1           |
+    And I "Send Back" in the approval decision
+    Then I softly see field "Status" as "Created"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    Then I softly can see top right button "Edit" in page detail
+    Then I softly can see top right button "Submitted for Approval" in page detail
+    Then  I can see top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    Then  I can see top right button "New" in flex table with id "---program:-:contactsTableId---"
+    When I navigate to "Setup" sub tab
+    Then  I can see top right button "Add" in flex table with id "---program:-:checklistTableId---"
+    Then  I can see top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    Then  I can see top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    Then  I can see top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I navigate to "Responsibilities" sub tab
+    Then  I can see top right button "New" in flex table with id "---program:-:peerReviewTableId---"
+    Then  I can see top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I navigate to "Files" sub tab
+    Then  I can see top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    Then  I can see top right button "Add" in flex table with id "---program:-:internalProgramNotesTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | NA      |
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I navigate to "History" sub tab
+    Then I softly see snapshot with name containing "Internal Program - submit for approval.pdf" as name
