@@ -1744,7 +1744,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I navigate to "Related log" sub tab
     Then I softly cannot see row level action button "Undo" against "{SavedValue:SitevVisitId}" in flex table with id "SiteVisit"
 
-  @310669 @ValidateOrgSVthatUndoButtonnotvisibleinForceClosedstate @Undo @TBE1
+  @310669 @ValidateOrgSVthatUndoButtonnotvisibleinForceClosedstate @Undo 1
   Scenario: Validate Org SV that Undo Button not visible in Force Closed state
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab

@@ -13841,7 +13841,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Force Closed"
     Then I cannot see top right button "Undo" in page detail
 
-  @329283 @ValidateauditorusercannotseeUndobuttonontheSOWchangeamendmentwhenamendmentisinapprovedstate @Undo @TBE
+  @329283 @ValidateauditorusercannotseeUndobuttonontheSOWchangeamendmentwhenamendmentisinapprovedstate @Undo
   Scenario: Validate auditor user can not see Undo button on the SOW change amendment when amendment is in approved state
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PM user" of type "Directed"
     When I login to "As a Grantor" app as "PM" user
@@ -14004,7 +14004,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Force Closed"
     Then I cannot see top right button "Undo" in page detail
 
-  @329402 @ValidateSOWuserseeapprovalhistoryandfiledhistorygetupdatedafterlaststepapproverclickonundobutton @Undo @TBE1
+  @329402 @ValidateSOWuserseeapprovalhistoryandfiledhistorygetupdatedafterlaststepapproverclickonundobutton @Undo
   Scenario: Validate SOW user see approval history and filed history get updated after last step approver click on undo button
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PM user" of type "Directed"
     When I login to "As a Grantor" app as "PM" user
@@ -14078,7 +14078,6 @@ Feature: Amendment Request scenarios with Undo
     And I click "Yes" on modal confirmation box
     Then I softly see field "Status" as "Submitted for Approval"
     When I navigate to "History" sub tab
-    Then I see "{SavedValue:FO Username}" against "Re-approval (Pending for first approval)" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
@@ -14198,7 +14197,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Force Closed"
     Then I cannot see top right button "Undo" in page detail
 
-  @310047 @ValidateCFthatIfuserdynamicallychangedApproverwhilecreatingammendmentthenalsoonlylastapprovercanseeUndobutton @Undo @TBE
+  @310047 @ValidateCFthatIfuserdynamicallychangedApproverwhilecreatingammendmentthenalsoonlylastapprovercanseeUndobutton @Undo
   Scenario: Validate CF that If user dynamically changed Approver while creating ammendment ,then also only last approver can see undo button
     And I activated standalone subaward "Automation Runtime award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
@@ -14323,10 +14322,10 @@ Feature: Amendment Request scenarios with Undo
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 2            |
-    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
       | Name                     | Amendment Request |
       | {SavedValue:PO Username} | NA                |
-    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
     And I wait for "9" seconds

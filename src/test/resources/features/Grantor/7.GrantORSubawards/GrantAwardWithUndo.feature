@@ -2554,7 +2554,7 @@ Feature: Validate all scenarios of grants and award with undo
     The EGMS Team
     """
 
-  @312143 @ValidateGrant&AwardinitialapprovershouldnotseeundobuttononawardafterupdatetheRR @Undo @TBE1
+  @312143 @ValidateGrant&AwardinitialapprovershouldnotseeundobuttononawardafterupdatetheRR @Undo
   Scenario: Validate Grant Award initial approver should not see undo button on award after update the R&R
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -2898,7 +2898,7 @@ Feature: Validate all scenarios of grants and award with undo
     Then I softly see field "Status" as "Terminated"
     Then I cannot see top right button "Undo" in page detail
 
-  @312344 @ValidateGrant&AwardIobservedsnapshothistorypdfdocnotupdatedbeforeandafterUndohappenedonaward @Undo @TBE
+  @312344 @ValidateGrant&AwardIobservedsnapshothistorypdfdocnotupdatedbeforeandafterUndohappenedonaward @Undo
   Scenario: Validate Grant & Award I observed snapshot history pdf doc not updated before and after Undo happened on award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
