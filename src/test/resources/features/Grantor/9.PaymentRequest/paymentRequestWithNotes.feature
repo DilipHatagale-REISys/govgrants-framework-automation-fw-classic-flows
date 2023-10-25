@@ -261,7 +261,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I navigate to "Forms and Files" sub tab
-    Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Created By    | Title         | Description      |
       |Automation PM | Notes Record | Automation Notes  |
     Then I softly see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
@@ -280,7 +280,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I navigate to "Forms and Files" sub tab
-    Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Created By    | Title         | Description      |
       |Automation PO | Notes Record | Automation Notes  |
     Then I softly see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
@@ -299,7 +299,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I navigate to "Forms and Files" sub tab
-    Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Created By    | Title         | Description      |
       |Automation FD | Notes Record | Automation Notes  |
     Then I softly see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
