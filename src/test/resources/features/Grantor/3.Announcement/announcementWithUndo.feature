@@ -1,7 +1,7 @@
 @grantor-regression @grantor-parallel-regression @announcement @regression @announcement-undo
 Feature: Validate all scenarios in the Announcement with Undo
 
-  @283963 @283966 @283973 @283965 @VerifywhenPmapprovercanclickonundobuttoninAnnouncementrecordwhenrecordisinApprovedstate @sprint-4-US-295141 @hitesh @Undo 
+  @283963 @283966 @283973 @283965 @VerifywhenPmapprovercanclickonundobuttoninAnnouncementrecordwhenrecordisinApprovedstate @sprint-4-US-295141 @hitesh @Undo
   Scenario: Verify when Pm approver can click on undo button in Announcement  record when record is in Approved state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -47,11 +47,11 @@ Feature: Validate all scenarios in the Announcement with Undo
       | Name                      | Announcement |
       | {SavedValue:EXE Username} | Step 2       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:PO Username}  | Step 3       |
+      | Name                     | Announcement |
+      | {SavedValue:PO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                       | Announcement |
-      | {SavedValue:PM Username}   | Step 4       |
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 4       |
     And I pause execution for "3" seconds
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
@@ -209,7 +209,7 @@ Feature: Validate all scenarios in the Announcement with Undo
    The EGMS Team
   """
 
-  @283969 @VerifythatwhenExeapproverForwardtheAnnouncementApprovaltaskForwardedApproverwillseeUNDObuttonandnotpreviousOne @sprint-4-US-295141 @hitesh @Undo 
+  @283969 @VerifythatwhenExeapproverForwardtheAnnouncementApprovaltaskForwardedApproverwillseeUNDObuttonandnotpreviousOne @sprint-4-US-295141 @hitesh @Undo
   Scenario: Verify that when Exe approver Forward the Announcement Approval task , Forwarded Approver will see UNDO button and not previous One
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -252,11 +252,11 @@ Feature: Validate all scenarios in the Announcement with Undo
       | Name                      | Announcement |
       | {SavedValue:EXE Username} | Step 2       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:PO Username}  | Step 3       |
+      | Name                     | Announcement |
+      | {SavedValue:PO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                       | Announcement |
-      | {SavedValue:PM Username}   | Step 4       |
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 4       |
     And I pause execution for "3" seconds
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
@@ -330,7 +330,7 @@ Feature: Validate all scenarios in the Announcement with Undo
     And I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
 
-  @283970 @VerifythatwhenEXEapproverSendbacktheAnnouncementrecordExewillnotseeUNDObutton @sprint-4-US-295141 @hitesh @Undo 
+  @283970 @VerifythatwhenEXEapproverSendbacktheAnnouncementrecordExewillnotseeUNDObutton @sprint-4-US-295141 @hitesh @Undo
   Scenario: Verify that when EXE approver Send back the Announcement record , Exe will not see UNDO button
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -367,17 +367,17 @@ Feature: Validate all scenarios in the Announcement with Undo
     When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:PM Username}  | Step 1       |
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PO Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement |
-      | {SavedValue:PO Username}  | Step 2       |
-    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:FO Username}  | Step 3       |
-    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                       | Announcement |
-      | {SavedValue:EXE Username}  | Step 4       |
+      | {SavedValue:EXE Username} | Step 4       |
     And I pause execution for "3" seconds
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
@@ -421,7 +421,7 @@ Feature: Validate all scenarios in the Announcement with Undo
     And I click "Yes" on modal confirmation box
     Then I softly see field "Status" as "Submitted for Approval"
     Then I see only the following ordered radio buttons in the approval decision :
-      | Approve | Forward |Send to Owner  | Reject |
+      | Approve | Forward | Send to Owner | Reject |
     And I "Send to Owner" in the approval decision
     Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
@@ -463,8 +463,8 @@ Feature: Validate all scenarios in the Announcement with Undo
     When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:PM Username}  | Step 1       |
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement |
       | {SavedValue:EXE Username} | Step 2       |
@@ -538,11 +538,11 @@ Feature: Validate all scenarios in the Announcement with Undo
       | Name                      | Announcement |
       | {SavedValue:EXE Username} | Step 2       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:PO Username}  | Step 3       |
+      | Name                     | Announcement |
+      | {SavedValue:PO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                       | Announcement |
-      | {SavedValue:PM Username}   | Step 4       |
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 4       |
     And I pause execution for "3" seconds
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
@@ -604,7 +604,7 @@ Feature: Validate all scenarios in the Announcement with Undo
     When I perform quick search for "Record Id" in "---announcement:-:announcementCompletedTaskTable---" panel
     Then I softly see value "Completed" for title "Status" against the value "{SavedValue:AnnEGMSID}" inside table "---announcement:-:announcementCompletedTaskTable---"
 
-  @285570 @285574 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnissenttoreviewState @sprint-4-US-295141 @hitesh @Undo 
+  @285570 @285574 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnissenttoreviewState @sprint-4-US-295141 @hitesh @Undo
   Scenario: Verify that Owner of Ann will not see Undo button when Ann is sent to review State
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -642,7 +642,7 @@ Feature: Validate all scenarios in the Announcement with Undo
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement |
-      | {SavedValue:PM1 Username}  | Step 1       |
+      | {SavedValue:PM1 Username} | Step 1       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement |
       | {SavedValue:EXE Username} | Step 2       |
@@ -675,7 +675,7 @@ Feature: Validate all scenarios in the Announcement with Undo
     And I click "Yes" on modal confirmation box
     Then I softly see field "Status" as "Submitted for Approval"
     Then I see only the following ordered radio buttons in the approval decision :
-      | Approve | Forward |Send to Owner  | Reject |
+      | Approve | Forward | Send to Owner | Reject |
     And I "Send to Owner" in the approval decision
     Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
@@ -721,7 +721,7 @@ Feature: Validate all scenarios in the Announcement with Undo
     Then I softly see status in Progress-bar is "Reviewed" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @285584 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnownerclickonSubmitforApprovalButton @sprint-4-US-295141 @hitesh @Undo 
+  @285584 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnownerclickonSubmitforApprovalButton @sprint-4-US-295141 @hitesh @Undo
   Scenario: Verify that Owner of Ann will not see Undo button when Ann owner click on Submit for Approval Button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -764,11 +764,11 @@ Feature: Validate all scenarios in the Announcement with Undo
       | Name                      | Announcement |
       | {SavedValue:EXE Username} | Step 2       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:PO Username}  | Step 3       |
+      | Name                     | Announcement |
+      | {SavedValue:PO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                       | Announcement |
-      | {SavedValue:PM Username}   | Step 4       |
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 4       |
     And I pause execution for "3" seconds
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
@@ -812,7 +812,7 @@ Feature: Validate all scenarios in the Announcement with Undo
     And I click "Yes" on modal confirmation box
     Then I softly see field "Status" as "Submitted for Approval"
     Then I see only the following ordered radio buttons in the approval decision :
-      | Approve | Forward |Send to Owner  | Reject |
+      | Approve | Forward | Send to Owner | Reject |
     And I "Send to Owner" in the approval decision
     Then I softly see field "Status" as "Created"
     Then I cannot see top right button "Undo" in page detail
@@ -840,7 +840,7 @@ Feature: Validate all scenarios in the Announcement with Undo
     And I click on "Submit For Approval" in the page details
     Then I cannot see top right button "Undo" in page detail
 
-  @285603 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnownerclickonPublishButton @sprint-4-US-295141 @hitesh @Undo 
+  @285603 @VerifythatOwnerofAnnwillnotseeUndobuttonwhenAnnownerclickonPublishButton @sprint-4-US-295141 @hitesh @Undo
   Scenario: Verify that Owner of Ann will not see Undo button when Ann owner click on Publish Button
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -877,8 +877,8 @@ Feature: Validate all scenarios in the Announcement with Undo
     When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:PM Username}  | Step 1       |
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement |
       | {SavedValue:EXE Username} | Step 2       |
@@ -954,8 +954,8 @@ Feature: Validate all scenarios in the Announcement with Undo
     When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:PM Username}  | Step 1       |
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement |
       | {SavedValue:EXE Username} | Step 2       |
@@ -1037,11 +1037,11 @@ Feature: Validate all scenarios in the Announcement with Undo
       | Name                      | Announcement |
       | {SavedValue:EXE Username} | Step 2       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:PO Username}  | Step 3       |
+      | Name                     | Announcement |
+      | {SavedValue:PO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                       | Announcement |
-      | {SavedValue:PM Username}   | Step 4       |
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 4       |
     And I pause execution for "3" seconds
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
@@ -1132,11 +1132,11 @@ Feature: Validate all scenarios in the Announcement with Undo
       | Name                      | Announcement |
       | {SavedValue:EXE Username} | Step 2       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:PO Username}  | Step 3       |
+      | Name                     | Announcement |
+      | {SavedValue:PO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                       | Announcement |
-      | {SavedValue:PM Username}   | Step 4       |
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 4       |
     And I pause execution for "3" seconds
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
@@ -1205,7 +1205,7 @@ Feature: Validate all scenarios in the Announcement with Undo
     #283968
     Then I cannot see top right button "Undo" in page detail
 
-  @283971 @VerifythatwhensarahpmapproverForwardtheAnnouncementApprovaltaskoriginalApproverwillnotseeUNDObutton @sprint-4-US-295141 @hitesh @Undo 
+  @283971 @VerifythatwhensarahpmapproverForwardtheAnnouncementApprovaltaskoriginalApproverwillnotseeUNDObutton @sprint-4-US-295141 @hitesh @Undo
   Scenario: Verify that when sarah pm approver Forward the Announcement Approval task , original  Approver will not see UNDO button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -1248,11 +1248,11 @@ Feature: Validate all scenarios in the Announcement with Undo
       | Name                      | Announcement |
       | {SavedValue:EXE Username} | Step 2       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:PO Username}  | Step 3       |
+      | Name                     | Announcement |
+      | {SavedValue:PO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                       | Announcement |
-      | {SavedValue:PM Username}   | Step 4       |
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 4       |
     And I pause execution for "3" seconds
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
@@ -1357,8 +1357,8 @@ Feature: Validate all scenarios in the Announcement with Undo
       | Name                      | Announcement |
       | {SavedValue:PM1 Username} | Step 1       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:PM Username}  | Step 2       |
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 2       |
     And I pause execution for "3" seconds
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
@@ -1430,11 +1430,11 @@ Feature: Validate all scenarios in the Announcement with Undo
       | Name                      | Announcement |
       | {SavedValue:EXE Username} | Step 2       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                      | Announcement |
-      | {SavedValue:PO Username}  | Step 3       |
+      | Name                     | Announcement |
+      | {SavedValue:PO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                       | Announcement |
-      | {SavedValue:PM Username}   | Step 4       |
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 4       |
     And I pause execution for "3" seconds
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
@@ -1904,10 +1904,21 @@ Feature: Validate all scenarios in the Announcement with Undo
     Then I softly see field "Status" as "Under Revision"
     Then I cannot see top right button "Undo" in page detail
 
-
-
-
-
-
-
-
+  @342506 @ValidateAnnouncementthatanyuserwillnotseeUndobuttonwhenAnnouncementrecordisinClosedstate @Sprint-13-US-331643 @vaibhav @Undo
+  Scenario: Validate Announcement that any user will not see Undo button when Announcement record is in Closed state
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{AUTOEnvData:closedAnnouncementForUndo}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "{AUTOEnvData:closedAnnouncementForUndo}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Closed" and is "green"
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{AUTOEnvData:closedAnnouncementForUndo}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "{AUTOEnvData:closedAnnouncementForUndo}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Closed" and is "green"
+    Then I cannot see top right button "Undo" in page detail

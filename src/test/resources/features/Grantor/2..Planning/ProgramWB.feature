@@ -3910,8 +3910,8 @@ Feature: Validate all scenarios for program
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "Program_Field_Values.xlsx"
     And I click on "Save" in the page details
-   And I get the "EGMS ID"
-   And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
@@ -7265,3 +7265,24 @@ Feature: Validate all scenarios for program
     Then I softly see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
     And I click on "Delete" icon for "Notes Record1" inside flex table with id "---program:-:externalProgramNotesTableId---" without waiting for record
     Then I softly do not see value "Notes Record1" for title "Title" inside table "---program:-:externalProgramNotesTableId---"
+
+ @204035 @ValidatethatuserEXEshouldhavetwooptionsifIclickonClassificationinUploadFilefromcomputerATemplateforPlanningBOthers @sprint-7-US-202724 @vaibhav
+  Scenario: Validate that user EXE should have two options if I click on Classification in Upload File from computer A.Template for Planning B. Others
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    Then I softly see field "Status" as "Created"
+    And I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
+    Then I see only the following ordered options in dropdown field "WorkspaceFilesUpload" :
+      | Select file classification | Template for Planning | Others |

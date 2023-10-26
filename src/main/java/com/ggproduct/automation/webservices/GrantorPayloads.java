@@ -2407,7 +2407,7 @@ public class GrantorPayloads {
         JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
         JsonArray newA = new JsonArray();
 
-        grant.addProperty("RiskAssessment_Required", "Yes");
+        grant.addProperty("RiskAssessment_Required", "No");
         grant.addProperty("IsProgramIncomeAnticipated", "No");
         grant.addProperty("IsBuildUpFunctionality", "Yes");
         grant.addProperty("WBSRequired", "No");

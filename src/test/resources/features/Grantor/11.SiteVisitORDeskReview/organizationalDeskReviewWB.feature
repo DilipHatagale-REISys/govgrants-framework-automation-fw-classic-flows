@@ -44,6 +44,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I logout
     And I checkout to yopmail with mailid "automationpo@yopmail.com"
     Then I refresh the page
+    And I pause execution for "80" seconds
     And I see the mail subject is as follows :
       """
       Notification: Owner Reassignment Report
@@ -68,7 +69,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "automationpo1@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -115,7 +116,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     Then I softly see value "Automation PO1" for title "New Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
     Then I softly see value "Automation PO" for title "Old Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
 
-  @235438 @ValidateDeskReviewEXEusercanabletoreassigndeskreviewownershipfromEXEtootherEXEuserinNotifiedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment
+  @235438 @ValidateDeskReviewEXEusercanabletoreassigndeskreviewownershipfromEXEtootherEXEuserinNotifiedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment @wip
   Scenario: Validate Desk Review EXE user can able to reassign desk review ownership from EXE to other EXE user in 'Notified' state of desk review
     Given I login to "As a Grantor" app as "EXE" user
     And I navigate to "Home" tab
@@ -161,6 +162,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -186,7 +188,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -350,6 +352,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -375,7 +378,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -489,6 +492,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -514,7 +518,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -691,17 +695,17 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
@@ -796,17 +800,17 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -841,6 +845,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -866,7 +871,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1000,9 +1005,9 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Site Visit Reviewers" modal by clicking the top right x button
+#    When I close "Site Visit Reviewers" modal by clicking the top right x button
     And I checkout to yopmail with mailid "automationpo1@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1067,7 +1072,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Site Visit Reviewers" modal by clicking the top right x button
+#    When I close "Site Visit Reviewers" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
@@ -1104,6 +1109,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "fo.automation@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1129,7 +1135,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "fo1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1274,17 +1280,17 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
@@ -1371,56 +1377,57 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I pause execution for "2" seconds
     And I close the tab
     And I logout
-#    And I checkout to yopmail with mailid "exe.automation@yopmail.com"
-#    Then I refresh the page
-#    And I see the mail subject is as follows :
-#      """
-#      Notification: Owner Reassignment Report
-#      """
-#    Then I see the mail text is as follows :
-#      """
-#      Hello,
-#
-#     The record(s) below have been reassigned from [Automation EXE] to [Automation EXE1] successfully. Please find the details below:
-#
-#      EGMS ID Assigned By Module Name
-#      {SavedValue:DeskReviewID} Automation ADMIN Site Visit /Desk Review
-#
-#      Because these records have been reassigned, the original reviewer may have only view access to the record.
-#
-#      Log in to EGMS and click on EGMS IDs to access the assigned record.
-#
-#      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
-#
-#      Thank you,
-#      The EGMS Team
-#      """
-#    Given I am on "INTERNAL" portal
-#    And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
-#    And I pause execution for "10" seconds
-#    Then I refresh the page
-#    And I see the mail subject is as follows :
-#      """
-#      Notification: Owner Reassignment Report
-#      """
-#    Then I see the mail text is as follows :
-#      """
-#      Hello,
-#
-#     The record(s) below have been reassigned from [Automation EXE] to [Automation EXE1] successfully. Please find the details below:
-#
-#      EGMS ID Assigned By Module Name
-#      {SavedValue:DeskReviewID} Automation ADMIN Site Visit /Desk Review
-#
-#      Because these records have been reassigned, the original reviewer may have only view access to the record.
-#
-#      Log in to EGMS and click on EGMS IDs to access the assigned record.
-#
-#      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
-#
-#      Thank you,
-#      The EGMS Team
-#      """
+    And I checkout to yopmail with mailid "exe.automation@yopmail.com"
+    And I pause execution for "80" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Notification: Owner Reassignment Report
+      """
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+     The record(s) below have been reassigned from [Automation EXE] to [Automation EXE1] successfully. Please find the details below:
+
+      EGMS ID Assigned By Module Name
+      {SavedValue:DeskReviewID} Automation ADMIN Site Visit /Desk Review
+
+      Because these records have been reassigned, the original reviewer may have only view access to the record.
+
+      Log in to EGMS and click on EGMS IDs to access the assigned record.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+
+      Thank you,
+      The EGMS Team
+      """
+    Given I am on "INTERNAL" portal
+    And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
+    And I pause execution for "80" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Notification: Owner Reassignment Report
+      """
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+     The record(s) below have been reassigned from [Automation EXE] to [Automation EXE1] successfully. Please find the details below:
+
+      EGMS ID Assigned By Module Name
+      {SavedValue:DeskReviewID} Automation ADMIN Site Visit /Desk Review
+
+      Because these records have been reassigned, the original reviewer may have only view access to the record.
+
+      Log in to EGMS and click on EGMS IDs to access the assigned record.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+
+      Thank you,
+      The EGMS Team
+      """
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Monitoring" tab
@@ -1432,21 +1439,21 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
+#    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
+#    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
+#    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1456,7 +1463,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
 
       """
       Hello Automation EXE1,
-      The site visit report for {SavedValue:Automation Desk Review Org level} and {SavedValue:DeskReviewID} has been submitted by the Subrecipient.
+      The desk review report for {SavedValue:Automation Desk Review Org level} and {SavedValue:DeskReviewID} has been submitted by the Subrecipient.
       Log in to EGMS and click here to see the details.
       Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
       Thank you,
@@ -1526,6 +1533,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1551,7 +1559,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1582,20 +1590,20 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     When I perform quick search for "{SavedValue:DeskReviewID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     And I click on "Start" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I "Send Back" in the approval decision
-    Then I softly see field "Status" as "Created"
+    Then I softly see field "Status" as "In Progress"
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
-    And I pause execution for "20" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Notification: Site Visit/Desk Review Report for {SavedValue:DeskReviewID} has beenSent Back
+      Notification: Site Visit/Desk Review Report for {SavedValue:DeskReviewID}has been Sent Back
       """
 
     Then I see the mail text is as follows :
       """
       Hello,
 
-      This email is to notify you that the {SavedValue:DeskReviewID} has been sent back.
+      This email is to notify you that the Site Visit/Desk Review {SavedValue:DeskReviewID} has been sent back.
 
       Log in to EGMS and click here to revise the report and then resubmit for approval.
 
@@ -1617,7 +1625,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       The EGMS Team
       """
 
-  @235442 @VallidateDeskReviewFDusercanabletoreassignownershipfromFDtootherFDuserinNotifiedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment
+  @235442 @VallidateDeskReviewFDusercanabletoreassignownershipfromFDtootherFDuserinNotifiedstateofdeskreview @sprint-14-US-234219 @vaibhav @reassignment @Wip
   Scenario: Validate Desk Review FD user can able to reassign ownership from FD to other FD user in 'Notified' state of desk review
     Given I login to "As a Grantor" app as "FD" user
     And I navigate to "Home" tab
@@ -1663,6 +1671,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "automationfd@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1688,7 +1697,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "automationfd1@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1850,11 +1859,12 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I click "Yes" on modal confirmation box
     And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:DeskReviewID}" in "---sitevisits:-:siteVisitTargetTableId---" panel
-    Then I see value "{SavedValue:DeskReviewID}" for title "Site Visit ID" inside table "---sitevisits:-:siteVisitTargetTableId---"
+    Then I softly see value "{SavedValue:DeskReviewID}" for title "Site Visit ID" inside table "---sitevisits:-:siteVisitTargetTableId---"
     And I pause execution for "2" seconds
     And I close the tab
     And I logout
     And I checkout to yopmail with mailid "automationfd@yopmail.com"
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1880,7 +1890,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "automationfd1@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "80" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1917,7 +1927,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Background
     And I click on "View" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---orgLevelDeskReview:-:deskreviewPanelId---"
     Then I softly can see top right button "Notify" in page detail
     And I navigate to "Responsibilities" sub tab
-    Then I see value "Automation PO1" for title "Name" inside table "---deskreview:-:deskReviewOwnerTableId---"
+    Then I see value "Automation FD1" for title "Name" inside table "---deskreview:-:deskReviewOwnerTableId---"
     And I navigate to "Responsibilities" sub tab
     Then I can see top right button "New" in flex table with id "---deskreview:-:approverDeskReviewTableId---"
     When I navigate to "Files" sub tab

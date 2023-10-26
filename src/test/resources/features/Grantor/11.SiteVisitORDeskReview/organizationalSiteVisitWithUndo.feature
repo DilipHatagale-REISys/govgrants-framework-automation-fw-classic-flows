@@ -26,17 +26,17 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I softly see status in Progress-bar is "In Progress" and is "green"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                      | Site Visit |
-      | {SavedValue:PO Username}  | Step 1     |
+      | Name                     | Site Visit |
+      | {SavedValue:PO Username} | Step 1     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                      | Site Visit |
+      | Name                     | Site Visit |
       | {SavedValue:FD Username} | Step 2     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
       | {SavedValue:EXE Username} | Step 3     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                      | Site Visit |
-      | {SavedValue:PM Username}  | Step 4     |
+      | Name                     | Site Visit |
+      | {SavedValue:PM Username} | Step 4     |
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
@@ -165,8 +165,8 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I click on "Conduct" in the page details
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                      | Site Visit |
-      | {SavedValue:PO Username}  | Step 1     |
+      | Name                     | Site Visit |
+      | {SavedValue:PO Username} | Step 1     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
       | {SavedValue:EXE Username} | Step 2     |
@@ -279,8 +279,8 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                      | Site Visit |
-      | {SavedValue:PO Username}  | Step 1     |
+      | Name                     | Site Visit |
+      | {SavedValue:PO Username} | Step 1     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
       | {SavedValue:PM1 Username} | Step 2     |
@@ -288,8 +288,8 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
       | Name                      | Site Visit |
       | {SavedValue:EXE Username} | Step 3     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                      | Site Visit |
-      | {SavedValue:PM Username}  | Step 4     |
+      | Name                     | Site Visit |
+      | {SavedValue:PM Username} | Step 4     |
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
@@ -397,11 +397,11 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                      | Site Visit |
-      | {SavedValue:PO Username}  | Step 1     |
+      | Name                     | Site Visit |
+      | {SavedValue:PO Username} | Step 1     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                        | Site Visit|
-      | {SavedValue:PM Username}     | Step 2   |
+      | Name                     | Site Visit |
+      | {SavedValue:PM Username} | Step 2     |
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
@@ -496,12 +496,12 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
-      | {SavedValue:EXE Username}  | Step 1     |
+      | {SavedValue:EXE Username} | Step 1     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
       | {SavedValue:PM1 Username} | Step 2     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                      | Site Visit |
+      | Name                     | Site Visit |
       | {SavedValue:PO Username} | Step 3     |
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
@@ -662,8 +662,8 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                      | Site Visit |
-      | {SavedValue:PO Username}  | Step 1     |
+      | Name                     | Site Visit |
+      | {SavedValue:PO Username} | Step 1     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
       | {SavedValue:PM1 Username} | Step 2     |
@@ -759,8 +759,8 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                      | Site Visit |
-      | {SavedValue:PM Username}  | Step 1     |
+      | Name                     | Site Visit |
+      | {SavedValue:PM Username} | Step 1     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
       | Name                      | Site Visit |
       | {SavedValue:PM1 Username} | Step 2     |
@@ -768,8 +768,8 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
       | Name                      | Site Visit |
       | {SavedValue:EXE Username} | Step 3     |
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
-      | Name                      | Site Visit |
-      | {SavedValue:PO Username}  | Step 4     |
+      | Name                     | Site Visit |
+      | {SavedValue:PO Username} | Step 4     |
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
@@ -826,6 +826,140 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I softly see status in Progress-bar is "In Progress" and is "green"
     #304142
     Then I cannot see top right button "Undo" in page detail
+
+  @329511 @ValidateOSVthatapprovaltaskanemailisgeneratedtolaststepapproveronclickofundobuttonbyLastApproveronOrgSiteVisit @Sprint-13-US-331643 @vaibhav @Undo
+  Scenario: Validate OSV that approval task and email is generated to last step approver on click of undo button by Last Approver on Org Site Visit
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    And I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
+    And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
+    When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "SitevVisitId"
+    And I click on "Notify" in the page details
+    And I click on "Conduct" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Site Visit |
+      | {SavedValue:PO Username} | Step 1     |
+    When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                      | Site Visit |
+      | {SavedValue:PM1 Username} | Step 2     |
+    When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                      | Site Visit |
+      | {SavedValue:EXE Username} | Step 3     |
+    When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Site Visit |
+      | {SavedValue:PM Username} | Step 4     |
+    And I navigate to "Reports and Outcomes" sub tab
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I click on "Submit for Approval" in the page details
+    And I pause execution for "5" seconds
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:SitevVisitId}" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
+    Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
+    And I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:SitevVisitId}" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
+    Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
+    And I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:SitevVisitId}" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
+    Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
+    And I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:SitevVisitId}" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
+    Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
+    And I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I can see top right button "Undo" in page detail
+    And I click on "Undo" in the page details without processing
+    Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
+    And I click "No" on modal confirmation box
+    Then I softly see field "Status" as "Approved"
+    And I click on "Undo" in the page details without processing
+    Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    Then I softly see field "Status" as "Submitted for Approval"
+    Then I see only the following ordered radio buttons in the approval decision :
+      | Approve | Send Back | Forward |
+    And I navigate to "Home" tab
+    When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:homeCompletedTaskTableId---" panel
+    Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:SitevVisitId}" inside table "---sitevisits:-:homeCompletedTaskTableId---"
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:homePendingTasksTableId---" panel
+    Then I softly see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:homePendingTasksTableId---"
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "200" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+    Notification: Approver has initiated Undo Action on #{SavedValue:SitevVisitId}
+      """
+    Then I see the mail text is as follows :
+      """
+    Hello,
+
+    This email is to notify you that approver has initiated undo action.
+
+    Details:
+
+    EGMS ID: {SavedValue:SitevVisitId}
+
+    Record Name: {SavedValue:Automation Runtime Site Visit Org level}
+
+    Log in to EGMS and click here to start reviewing the details.
+
+    Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+    Thank you.
+    The EGMS Team
+    """
 
   @289807 @VerifyAuditorusercannotseeundobuttoninapprovedstateofOrganizationalSiteVisit @sprint-2-US-288691 @hitesh @Undo @366345
   Scenario:Verify Auditor user can not see undo button in approved state of Organizational Site Visit
@@ -1510,8 +1644,3 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     And I click on "Start" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" without waiting for record
     And I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
-
-
-
-
-

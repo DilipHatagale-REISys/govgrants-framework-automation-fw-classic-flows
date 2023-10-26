@@ -217,6 +217,13 @@ public class ProgressReportPage extends GrantorProjectManager {
         return compare.equalsIgnoreCase("Not Equals to") ? value1 != value2 : compare.equalsIgnoreCase("Less Than") ? value1 < value2 : compare.equalsIgnoreCase("Greater Than") ? value1 > value2 : value1 == value2 ;
     }
 
+    public boolean compareTwoValues(String savedValue1, String compare, String savedValue2) {
+        float value1 = Double.valueOf(savedValue1.split("/")[0].replaceAll("[^0-9.]", "")).floatValue();
+        float value2 = Double.valueOf(savedValue2.split("/")[0].replaceAll("[^0-9.]", "")).floatValue();
+        return compare.equalsIgnoreCase("Not Equals to") ? value1 != value2 : compare.equalsIgnoreCase("Less Than") ? value1 < value2 : compare.equalsIgnoreCase("Greater Than") ? value1 > value2 : value1 == value2 ;
+    }
+
+
     public Boolean addTwoFieldValues(String savedValue1, String savedValue2, String expectedValue) {
         int value1 = Double.valueOf(savedValue1.replaceAll("[^0-9.]", "")).intValue();
         int value2 = Double.valueOf(savedValue2.replaceAll("[^0-9.]", "")).intValue();

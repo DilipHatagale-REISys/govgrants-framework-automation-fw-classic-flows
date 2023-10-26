@@ -399,6 +399,18 @@ public final class GovGrantsProductObjects {
                 columnName, flexTableId));
     }
 
+    /**
+     * It will save specific column values of table
+     *
+     * @param columnValueFromRow
+     * @param columnName
+     * @param flexTableId
+     */
+    public void iSavedSpecificLinkValueFromFlexTableInsideGivenKey(String columnValueFromRow, String columnName, String key, String flexTableId) {
+        I.amPerforming().propertiesFileOperationsTo().saveValue(key, getValueOfSpecifiedLinkColFromTableHavingColumnNameAs(columnValueFromRow,
+                columnName, flexTableId));
+    }
+
     /******* "Local Methods with Limited functionality " **********/
 
     private void singleApproverApproval(String recordName, String approver,
@@ -473,6 +485,45 @@ public final class GovGrantsProductObjects {
                     listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::th/ancestor::table//tr//td[not(contains(@class,'hide'))][" + counter + "]/span//field/span"));
                     if (listOfDataInColumn.size() == 0) {
                         listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::th/ancestor::table//tr//td[not(contains(@class,'hide'))][" + (counter - 1) + "]/span//field/span"));
+                    }
+                }
+            }
+        }
+        columnValueFromRowInInt = rowNumber.equalsIgnoreCase("last row") ? listOfDataInColumn.size()
+                : Integer.parseInt(rowNumber);
+        return listOfDataInColumn.get(columnValueFromRowInInt - 1).getText();
+    }
+
+    /**
+     * @param rowNumber   Specify the row number such as 1,2,3 and so on. and if you want column value from last row then mention "last row"
+     * @param columnName  Name of the column from which you want a value
+     * @param flexTableId Id of flex table
+     * @return value from specified row for specified column from the Flex Table.
+     * @author jitendra.pisal
+     * @Updated by: Vaibhav.Chandratre
+     */
+    private String getValueOfSpecifiedLinkColFromTableHavingColumnNameAs(String rowNumber, String columnName, String flexTableId) {
+        int columnValueFromRowInInt = 0;
+        int counter = 1;
+        By columnHeaders = By.xpath("//div[@id='" + flexTableId + "']//th[not(contains(@class,'hide'))]");
+        List<Elements> columnList = I.amPerforming().getElementReference().forListOfElements().of(columnHeaders);
+
+        // get the column index of required column.
+        for (Elements columnEle : columnList) {
+            if (columnEle.getText().equalsIgnoreCase(columnName)) {
+                break;
+            }
+            counter++;
+        }
+        List<Elements> listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[not(contains(@class,'hide'))][" + counter + "]/span//a"));
+        if (listOfDataInColumn.size() == 0) {
+            listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[not(contains(@class,'hide'))][" + counter + "]/span//a"));
+            if (listOfDataInColumn.size() == 0) {
+                listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[not(contains(@class,'hide'))][" + counter + "]/span//a"));
+                if (listOfDataInColumn.size() == 0) {
+                    listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[not(contains(@class,'hide'))][" + counter + "]/span//a"));
+                    if (listOfDataInColumn.size() == 0) {
+                        listOfDataInColumn = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::th/ancestor::table//tr//td[not(contains(@class,'hide'))][" + (counter - 1) + "]/span//a"));
                     }
                 }
             }

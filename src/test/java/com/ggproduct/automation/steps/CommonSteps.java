@@ -74,4 +74,9 @@ public class CommonSteps {
     public void iClickRadioButtonInCOIOfReviewForm(String radioButtonName) {
         projectManager.clickOnCOIOption(radioButtonName);
     }
+
+    @Then("I (see|softly see) radio button \"([^\"]*)\" in view mode for COI section$")
+    public void iSeeRadioButtonInViewModeForCOISection(String usage, String radioButtonName) {
+        projectManager.assertCOISectionInViewMode(radioButtonName, usage.contains("softly"));
+    }
 }

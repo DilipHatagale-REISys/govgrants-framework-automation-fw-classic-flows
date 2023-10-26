@@ -220,7 +220,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
     Then I softly cannot see top right button "New" for "---auditor:-:formsflextableID---" flex table
     Then I softly cannot see top right button "New" for "---auditor:-:packagesFlextableID---" flex table
-    When I perform quick search for "PSAF - 001" in "---auditor:-:formsflextableID---" panel
+    And I select value inside table "---auditor:-:formsflextableID---" is "All"
     Then I see the following rows under the following headers in table with id "---auditor:-:formsflextableID---" :
       | Form Number | Actions |
       | PSAF - 001  | Preview |

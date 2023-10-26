@@ -57,7 +57,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
   Scenario Outline: Validate Auditor should not be  able to Edit/Approve FDM
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
-    Given I login to "As a Grantor" app as "PO" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"

@@ -3871,7 +3871,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     Then I softly see field "Estimated Program Income For Project Period" as "$500.00"
 
-  @274238 @FormulaFANoVerifyupdatedvaluesofAllocationAmountshouldgetupdatedinopportunityandQualifiedopportunityaswell @Sprint-23-US-273843 @vaibhav @Allocation @Execution
+  @274238 @FormulaFANoVerifyupdatedvaluesofAllocationAmountshouldgetupdatedinopportunityandQualifiedopportunityaswell @Sprint-23-US-273843 @vaibhav @Allocation
   Scenario Outline: Formula FA No Verify updated values of Allocation Amount should get updated in opportunity and Qualified opportunity as well.
     Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO_NEGOTIATION_YES"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "FIRST_BUDGET_CATEGORY_NO_FOCUS_AREA"

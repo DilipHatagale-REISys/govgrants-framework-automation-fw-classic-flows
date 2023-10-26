@@ -648,7 +648,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Given I navigate to "Management" sub tab
     Then I can see top right button "Initiate Site Visit" in flex table with id "---sitevisits:-:InitiateSiteVisitTableId---"
 
-  @69443 @ValidateGrantFieldhistoryUpdated @aashish @buglogged150041 @TBE
+  @69443 @ValidateGrantFieldhistoryUpdated @aashish @buglogged150041
   Scenario: Validate that Grant field history gets updated after Budget period amendment
     And I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -6018,7 +6018,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
     Then I softly can see top right button "Accept and Close" in page detail
 
-  @198062 @198069 @ValidateFOuserDRownerOwnershipbasedtaskReassigntonewFOuserthennewFOuserwillownerofthattaskbutownerofGrantshouldnotaffected @sprint-4-US-192997 @vaibhav @reassignment @TBE
+  @198062 @198069 @ValidateFOuserDRownerOwnershipbasedtaskReassigntonewFOuserthennewFOuserwillownerofthattaskbutownerofGrantshouldnotaffected @sprint-4-US-192997 @vaibhav @reassignment
   Scenario: Validate FO user (DR owner)Ownership based task Reassign to new FO user then new FO user will owner of that task but owner of Grant should not affected
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
@@ -8445,7 +8445,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @197367 @ValidateFO(SVowneremailshouldbegeneratedforsystemadminpreviousownerandnewownerofSiteVisitafterownershipofSiteVisitischangedinReviewstate @sprint-4-US-196236 @vaibhav @reassignment @TBE
+  @197367 @ValidateFO(SVowneremailshouldbegeneratedforsystemadminpreviousownerandnewownerofSiteVisitafterownershipofSiteVisitischangedinReviewstate @sprint-4-US-196236 @vaibhav @reassignment
   Scenario: Validate FO(SV owner)email should be generated for system admin, previous owner and new owner of Site Visit after ownership of Site Visit is changed in 'Review' state
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -9074,7 +9074,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
-  @197448 @ValidateemailshouldbegeneratednyopmailtonewSVownerEXEuseronceownershipischangewhenassignedpeerreviewerclickedonSubmitReviewbutton @sprint-4-US-196236 @vaibhav @reassignment @TBE
+  @197448 @ValidateemailshouldbegeneratednyopmailtonewSVownerEXEuseronceownershipischangewhenassignedpeerreviewerclickedonSubmitReviewbutton @sprint-4-US-196236 @vaibhav @reassignment
   Scenario: Validate email should be generated in yopmail to new SV owner(EXE user) once ownership is changed when assigned peer reviewer clicked on Submit Review' button
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"

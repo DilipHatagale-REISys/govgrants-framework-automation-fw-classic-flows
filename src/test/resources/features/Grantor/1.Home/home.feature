@@ -67,6 +67,8 @@ Feature: Validate all scenarios in the home tab
     And I pause execution for "3" seconds
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID1"
+    And I enter value "{SavedValue:uniqueEmailID1}" into field "fieldEmail"
     When I click modal button "Save"
     #And I close "Create Internal Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
@@ -90,6 +92,8 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID1"
+    And I enter value "{SavedValue:uniqueEmailID1}" into field "fieldEmail"
     When I click modal button "Save"
     #And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
@@ -111,6 +115,8 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID1"
+    And I enter value "{SavedValue:uniqueEmailID1}" into field "fieldEmail"
     When I click modal button "Save"
     #And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
@@ -135,6 +141,8 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID1"
+    And I enter value "{SavedValue:uniqueEmailID1}" into field "fieldEmail"
     When I click modal button "Save"
     #And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
@@ -269,7 +277,7 @@ Feature: Validate all scenarios in the home tab
     And I click modal button "Edit"
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
-    And I close "View Subrecipient Contacts" modal by clicking the top right x button
+#    And I close "View Subrecipient Contacts" modal by clicking the top right x button
     Then I softly see value "New" for title "Status" inside table "---home:-:internalContactTableId---"
     Examples:
       | User  |
@@ -306,7 +314,6 @@ Feature: Validate all scenarios in the home tab
     And I click modal button "Save"
     #And I close "New Additional Address" modal by clicking the top right x button
     Then I softly see that "Internal Organization" is in "Active" status
-    When I perform quick search for "Billing Address" in "---home:-:additionalAddressTableId---" panel
     And I click on "Edit" icon for "Billing Address" inside flex table with id "---home:-:additionalAddressTableId---" without waiting for record
     And I enter "AdditioanlAddressesEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
@@ -326,7 +333,7 @@ Feature: Validate all scenarios in the home tab
     And I click modal button "Save"
     #And I close "Create Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
-    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:relatedContactsTableId---" panel
+    And I select value inside table "---home:-:relatedContactsTableId---" is "All"
     Then I softly can see row level action button "Edit" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:relatedContactsTableId---"
     And I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:relatedContactsTableId---" without waiting for record
     When I enter "RelatedContactsEdition" values from "InternalOrganization_Field_Values.xlsx"
@@ -353,10 +360,9 @@ Feature: Validate all scenarios in the home tab
     And I click modal button "Save"
     #And I close "Create Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
-    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:relatedContactsTableId---" panel
+    And I select value inside table "---home:-:relatedContactsTableId---" is "All"
     And I click on "Delete" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:relatedContactsTableId---" without waiting for record
-    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:relatedContactsTableId---" panel
-    Then I see "No Records Found" inside flex table with id "---home:-:relatedContactsTableId---"
+    Then I softly do not see value "{SavedValue:Automation Runtime Contact}" for title "Full Name" inside table "---home:-:relatedContactsTableId---"
 
   @56740 @56741 @56742 @dunsNumberCreationEditionAndDeletion @smoke
   Scenario: Validate whether ADMIN and DA users can Create, Edit and delete the DUNS Number
@@ -479,7 +485,7 @@ Feature: Validate all scenarios in the home tab
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---home:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---home:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---home:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
@@ -489,14 +495,11 @@ Feature: Validate all scenarios in the home tab
       | {SavedValue:EXE Username} | Step 2  |
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -538,8 +541,6 @@ Feature: Validate all scenarios in the home tab
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
@@ -555,7 +556,7 @@ Feature: Validate all scenarios in the home tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                  | Target |
       | Automation Permanent KPI | 10     |
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---" without waiting for record
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -752,7 +753,6 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     When I navigate to "Overview" sub tab
-    When I perform quick search for "{user:fullName}" in "---home:-:indContactTableId---" panel
     Then I see that "{user:fullName}" has been added in flextable with Id "---home:-:indContactTableId---"
 
   @62255 @CreatedNotes @keerti
@@ -800,6 +800,8 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID1"
+    And I enter value "{SavedValue:uniqueEmailID1}" into field "fieldEmail"
     When I click modal button "Save"
     #And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
@@ -824,12 +826,14 @@ Feature: Validate all scenarios in the home tab
     #33882
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldEmail"
     When I click modal button "Save"
     #And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     Then I softly see value "{SavedValue:Automation Runtime Contact}" for title "Full Name" inside table "---home:-:reviewersTableId---"
-    Then I softly see value "automation.sme143@yopmail.com" for title "Email" inside table "---home:-:reviewersTableId---"
+    Then I softly see value "{SavedValue:uniqueEmailID}" for title "Email" inside table "---home:-:reviewersTableId---"
     Then I softly see value "New" for title "Status" inside table "---home:-:reviewersTableId---"
     Then I softly see value "Test Automation Organization" for title "Sponsoring Agency" inside table "---home:-:reviewersTableId---"
     #34674
