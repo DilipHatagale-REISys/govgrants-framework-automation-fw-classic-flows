@@ -29,8 +29,8 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I cannot see top right button "Undo" in page detail
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PM Username}  | Step 1      |
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 1      |
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
@@ -81,14 +81,14 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PO Username}  | Step 1      |
+      | Name                     | Desk Review |
+      | {SavedValue:PO Username} | Step 1      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:FO Username}  | Step 2      |
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PM Username}  | Step 3      |
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 3      |
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
@@ -135,17 +135,17 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I cannot see top right button "Undo" in page detail
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Name                      | Desk Review |
-      | {SavedValue:PM Username}  | NA          |
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | NA          |
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Name                      | Desk Review |
-      | {SavedValue:FO Username}  | NA          |
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | NA          |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PM Username}  | Step 2     |
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 2      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:FO Username}  | Step 3      |
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 3      |
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -198,17 +198,17 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PO Username}  | Step 1      |
+      | Name                     | Desk Review |
+      | {SavedValue:PO Username} | Step 1      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:PM1 Username} | Step 2      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:FO Username}  | Step 3      |
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 3      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PM Username}  | Step 4      |
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 4      |
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
@@ -303,17 +303,17 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PO Username}  | Step 1      |
+      | Name                     | Desk Review |
+      | {SavedValue:PO Username} | Step 1      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:PM1 Username} | Step 2      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:FO Username}  | Step 3      |
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 3      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
-      | {SavedValue:EXE Username}  | Step 4      |
+      | {SavedValue:EXE Username} | Step 4      |
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
@@ -403,16 +403,16 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
-      | {SavedValue:EXE Username}  | Step 1      |
+      | {SavedValue:EXE Username} | Step 1      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:PM1 Username} | Step 2      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:FO Username}  | Step 3      |
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 3      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PO Username}  | Step 4      |
+      | Name                     | Desk Review |
+      | {SavedValue:PO Username} | Step 4      |
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
@@ -618,17 +618,17 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PO Username}  | Step 1      |
+      | Name                     | Desk Review |
+      | {SavedValue:PO Username} | Step 1      |
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:PM1 Username} | Step 2      |
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:FO Username}  | Step 3      |
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 3      |
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
-      | {SavedValue:EXE Username}  | Step 4      |
+      | {SavedValue:EXE Username} | Step 4      |
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
@@ -714,8 +714,8 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PO Username}  | Step 1      |
+      | Name                     | Desk Review |
+      | {SavedValue:PO Username} | Step 1      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:PM1 Username} | Step 2      |
@@ -723,8 +723,8 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
       | Name                      | Desk Review |
       | {SavedValue:EXE Username} | Step 3      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PM Username}  | Step 4      |
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 4      |
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
@@ -806,16 +806,16 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
-      | {SavedValue:EXE Username}  | Step 1      |
+      | {SavedValue:EXE Username} | Step 1      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
       | {SavedValue:PM1 Username} | Step 2      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:FO Username}  | Step 3      |
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 3      |
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PO Username}  | Step 4      |
+      | Name                     | Desk Review |
+      | {SavedValue:PO Username} | Step 4      |
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
@@ -893,17 +893,17 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PO Username}  | Step 1      |
+      | Name                     | Desk Review |
+      | {SavedValue:PO Username} | Step 1      |
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
-      | {SavedValue:FO Username}  | Step 2      |
+      | {SavedValue:EXE Username} | Step 3      |
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:EXE Username}  | Step 3      |
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PM Username}  | Step 4      |
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 4      |
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
@@ -1010,6 +1010,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
 
      The EGMS Team.
       """
+
   @296153 @296154 @VerifythatwhenExeapproverForwardtheOrganizationalDeskReviewApprovaltaskForwardedApproverwillseeUNDObuttonandnotpreviousOne @sprint-4-US-288692 @hitesh @Undo
   Scenario:Verify that when Exe approver Forward the Organizational Desk Review Approval task , Forwarded Approver will see UNDO button and not previous One
     Given I login to "As a Grantor" app as "PM" user
@@ -1035,17 +1036,17 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:PO Username}  | Step 1      |
+      | Name                     | Desk Review |
+      | {SavedValue:PO Username} | Step 1      |
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FD Username} | Step 3      |
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
       | Name                      | Desk Review |
-      | {SavedValue:FO Username}  | Step 2      |
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:FD Username}  | Step 3      |
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                      | Desk Review |
-      | {SavedValue:EXE Username}  | Step 4      |
+      | {SavedValue:EXE Username} | Step 4      |
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
@@ -1182,4 +1183,186 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     When I perform quick search for "Record Id" in "---deskreview:-:homeCompletedTaskTableId---" panel
     Then I softly see value "Completed" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---deskreview:-:homeCompletedTaskTableId---"
 
+  @308925 @ValidateODRIfOwnerandlaststepapproverofOrgSiteVisitaresameandSiteVisitisApprovedandtheOwnershipReassignmentofDeskReviewischangedinthisstatewillnewOwnerSeeUNDObutton @Undo
+  Scenario: Validate ODR If Owner and last step approver of Org Site Visit are same and Site Visit is Approved and the Ownership Reassignment of Desk Review is changed in this state will new Owner See UNDO button
+    Given I login to "As a Grantor" app as "PM" user
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "---orgLevelDeskReview:-:deskreviewPanelId---"
+    And I enter "Creation" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:deskReviewContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelDeskReview:-:associateContactsId---"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "DeskReviewID"
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I click on "Notify" in the page details
+    And I click on "Conduct" in the page details
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:PO Username} | Step 1      |
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 3      |
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 4      |
+    And I navigate to "Reports and Outcomes" sub tab
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I click on "Submit for Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    And I "Approve" in the approval decision
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    And I "Approve" in the approval decision
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    And I "Approve" in the approval decision
+    Then I cannot see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Approved" and is "green"
+    Then I can see top right button "Undo" in page detail
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    Then I see the text containing "Site Visit/Desk Review"
+    And I Click on "Reassign Records" icon for "Site Visit/Desk Review" without tableid
+    When I perform quick search for "{SavedValue:DeskReviewID}" in "---sitevisits:-:siteVisitSourceTableId---" panel
+    Then I see value "{SavedValue:DeskReviewID}" for title "Site Visit ID" inside table "---sitevisits:-:siteVisitSourceTableId---"
+    When I perform quick search for "{SavedValue:DeskReviewID}" in "---sitevisits:-:siteVisitSourceTableId---" panel
+    When I check "{SavedValue:DeskReviewID}" boxes in flex table with id "---sitevisits:-:siteVisitSourceTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---sitevisits:-:siteVisitSourceTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:DeskReviewID}" in "---sitevisits:-:siteVisitTargetTableId---" panel
+    Then I see value "{SavedValue:DeskReviewID}" for title "Site Visit ID" inside table "---sitevisits:-:siteVisitTargetTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    And I navigate to "Related log" sub tab
+    When I perform quick search for "{SavedValue:DeskReviewID}" in "---orgLevelDeskReview:-:deskreviewPanelId---" panel
+    And I click on "View" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---orgLevelDeskReview:-:deskreviewPanelId---"
+    Then I softly see status in Progress-bar is "Approved" and is "green"
+    Then I cannot see top right button "Undo" in page detail
 
+  @310991 @ValidateOrgdrthatUndoButtonnotvisibleinForceClosedstate @Undo
+  Scenario: Validate Org dr that Undo Button not visible in Force Closed state
+    Given I login to "As a Grantor" app as "PM" user
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "---orgLevelDeskReview:-:deskreviewPanelId---"
+    And I enter "Creation" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:deskReviewContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelDeskReview:-:associateContactsId---"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "DeskReviewID"
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I click on "Notify" in the page details
+    And I click on "Conduct" in the page details
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 1      |
+    And I navigate to "Reports and Outcomes" sub tab
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I click on "Submit for Approval" in the page details
+    And I pause execution for "5" seconds
+    And I "Approve" in the approval decision
+    And I pause execution for "5" seconds
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I navigate to "Reports and Outcomes" sub tab
+    And I expand nested table containing column value "Automation Observation"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    And I expand nested table containing column value "Automation Concern"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    And I expand nested table containing column value "Automation Finding"
+    When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:DeskReviewID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    Then I see value "{SavedValue:DeskReviewID}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    And I click on "Start" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---" without waiting for record
+    And I click on "Accept And Close" in the page details
+    Then I see status in Progress-bar is "Closed" and is "Green"
+    Then I cannot see top right button "Undo" in page detail
