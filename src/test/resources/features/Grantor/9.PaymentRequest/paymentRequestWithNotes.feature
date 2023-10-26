@@ -1406,8 +1406,8 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I navigate to "Monitoring" tab
     When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
     And I click toggle button to select "Reimbursements - All"
-    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
+    And I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
+    When I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     And I navigate to "Forms and Files" sub tab
     When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Created By     | Title         | Description      |
@@ -1420,8 +1420,8 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I navigate to "Monitoring" tab
     When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
     And I click toggle button to select "Reimbursements - All"
-    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
+    And I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
+    When I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     And I navigate to "Forms and Files" sub tab
     When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Created By     | Title         | Description      |
@@ -1434,8 +1434,8 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I navigate to "Monitoring" tab
     When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
     And I click toggle button to select "Reimbursements - All"
-    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
+    And I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
+    When I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     And I navigate to "Forms and Files" sub tab
     When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Created By     | Title         | Description      |
