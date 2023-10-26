@@ -2993,6 +2993,7 @@ Feature: Validate all scenarios of grants and award with undo
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     Then I softly see field "Status" as "Draft"
     Then I cannot see top right button "Undo" in page detail
+    When I navigate to "History" sub tab
     Then I softly see value "Automation PM1" for title "New Value" inside table "---subAwardStandAlone:-:historyTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---subAwardStandAlone:-:historyTableId---"
     Then I cannot see top right button "Edit" in page detail
@@ -3006,6 +3007,7 @@ Feature: Validate all scenarios of grants and award with undo
     And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
     And I enter "Grant_Ed_Directed_Risk_Yes" values from "Award_Field_Values.xlsx"
+    And I enter value "Yes" into field "FocusAreaRequired__c"
     When I click modal button "Save and Continue"
     And I save the field labeled "EGMS ID" as "GrantEGMSID"
     And I navigate to "Subawards" sub tab
