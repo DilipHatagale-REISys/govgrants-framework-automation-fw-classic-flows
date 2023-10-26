@@ -3383,6 +3383,7 @@ Feature: Validate all scenarios of grants and award with undo
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     When I navigate to "Subawards" sub tab
     When I click on "View" icon for "{SavedValue:AwardEGMSID}" inside table with wait for record
+    And I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account              | Encumbrance |
       | {SavedValue:FundingAccount2} | 2000        |
