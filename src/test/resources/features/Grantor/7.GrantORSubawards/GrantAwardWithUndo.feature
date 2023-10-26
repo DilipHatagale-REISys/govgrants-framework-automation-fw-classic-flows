@@ -3005,7 +3005,7 @@ Feature: Validate all scenarios of grants and award with undo
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
-    And I enter "Grant_Edition_Directed" values from "Award_Field_Values.xlsx"
+    And I enter "Grant_Ed_Directed_Risk_Yes" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I save the field labeled "EGMS ID" as "GrantEGMSID"
     And I navigate to "Subawards" sub tab
