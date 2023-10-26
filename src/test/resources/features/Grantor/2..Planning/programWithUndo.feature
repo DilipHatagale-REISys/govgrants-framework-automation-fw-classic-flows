@@ -2746,7 +2746,7 @@ Feature: Validate all scenarios for program
     Then I softly see "Submitted for Approval" on page "1" of "govgrants" pdf file
     Then I softly see "Test With Automation PM" on page "1" of "govgrants" pdf file
 
-  @303515 @InternalProgVerifyotherPMusershouldnotseeundobuttononprogram @sprint-6-US-303298 @hitesh @Undo
+  @303515 @332446 @InternalProgVerifyotherPMusershouldnotseeundobuttononprogram @sprint-6-US-303298 @hitesh @Undo
   Scenario: Internal Prog_ Verify other PM user should not see undo button on program
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -2782,6 +2782,8 @@ Feature: Validate all scenarios for program
       | {SavedValue:PM Username} | Step 2  |
     And I pause execution for "5" seconds
     And I click on "Submit for Approval" in the page details
+    #332446
+    Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
