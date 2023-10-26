@@ -13515,7 +13515,7 @@ Feature: Amendment Request scenarios with Undo
     And I pause execution for "3" seconds
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "budgetPChangeId"
-    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
+    And I get the updated budget end date by offset "1" for award "{SavedValue:AwardEGMSID}"
     When I click on "Edit" in the page details
     And I enter "SubRecipientBPC_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
