@@ -1340,7 +1340,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I click on "Save" in the page details
     When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
-    Then I softly see field "Status" as "Submitted for Approval"
+    Then I see field "Status" as "Submitted for Approval"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1375,7 +1375,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I softly see value "Submitted for Approval" for title "Old Value" inside table "History"
     Then I softly see value "Approved" for title "New Value" inside table "History"
 
-  @329514 @ValidateOrgDRundobuttonshouldnotdisplayonOrgDRwhenOrgdeskreviewisinInprogressstate @Undo @TBE1
+  @329514 @ValidateOrgDRundobuttonshouldnotdisplayonOrgDRwhenOrgdeskreviewisinInprogressstate @Undo
   Scenario: Validate Org DR undo button should not display on Org DR when Org desk review is in In progress state
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab

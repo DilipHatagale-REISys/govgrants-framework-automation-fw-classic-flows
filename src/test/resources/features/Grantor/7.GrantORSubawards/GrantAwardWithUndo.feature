@@ -3016,7 +3016,7 @@ Feature: Validate all scenarios of grants and award with undo
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program | Award  |
@@ -3072,10 +3072,6 @@ Feature: Validate all scenarios of grants and award with undo
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Award Amount | Cash Match | Non-Cash Match |
       | Construction    | 1000         | 100        | 100            |
-    And I save the field labeled "Budget Period End Date" as "BudgetPeriodDate"
-    And I save the field labeled "New Obligation" as "NewObligation"
-    And I save the field labeled "Cumulative Obligation" as "CumulativeObligation"
-    And I save the field labeled "Total Commitment" as "TotalCommitment"
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                  | Target |
