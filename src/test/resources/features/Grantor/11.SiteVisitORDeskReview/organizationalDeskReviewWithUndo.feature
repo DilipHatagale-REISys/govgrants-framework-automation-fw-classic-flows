@@ -1299,7 +1299,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I see status in Progress-bar is "Closed" and is "Green"
     Then I cannot see top right button "Undo" in page detail
 
-  @329508 @ValidateOrgDRFieldhistoryshouldgetupdatedafterclickonundobuttoaftertakingapprovaldecisionApproved @Undo
+  @329508 @ValidateOrgDRFieldhistoryshouldgetupdatedafterclickonundobuttoaftertakingapprovaldecisionApproved @Undo @TBE
   Scenario: Validate Org DR Field history should get updated after click on undo button & after taking approval decision Approved
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -1375,7 +1375,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I softly see value "Submitted for Approval" for title "Old Value" inside table "History"
     Then I softly see value "Approved" for title "New Value" inside table "History"
 
-  @329514 @ValidateOrgDRundobuttonshouldnotdisplayonOrgDRwhenOrgdeskreviewisinInprogressstate @Undo
+  @329514 @ValidateOrgDRundobuttonshouldnotdisplayonOrgDRwhenOrgdeskreviewisinInprogressstate @Undo @TBE1
   Scenario: Validate Org DR undo button should not display on Org DR when Org desk review is in In progress state
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab

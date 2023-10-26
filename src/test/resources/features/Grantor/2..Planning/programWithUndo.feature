@@ -2909,7 +2909,7 @@ Feature: Validate all scenarios for program
     And I navigate to "History" sub tab
     Then I softly see snapshot with name containing "Internal Program - submit for approval.pdf" as name
 
-  @332441 @ValidateExternalProgusershouldnotseeundobuttoninrejectedstateofprogram @Undo
+  @332441 @ValidateExternalProgusershouldnotseeundobuttoninrejectedstateofprogram @Undo @TBE1
   Scenario: Validate External Prog user should not see undo button in rejected state of program
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab

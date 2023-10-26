@@ -1954,7 +1954,7 @@ Feature: Validate all scenarios in Organizational Site Visit With Undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I cannot see top right button "Undo" in page detail
 
-  @304196 @ValidatethatLastapproverwillnotseeUndobuttonforSelectingRejectoptionafterclickonundobutton @Undo
+  @304196 @ValidatethatLastapproverwillnotseeUndobuttonforSelectingRejectoptionafterclickonundobutton @Undo @TBE
     Scenario: Validate that Last approver will not see Undo button for Selecting Reject option after click on undo button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab

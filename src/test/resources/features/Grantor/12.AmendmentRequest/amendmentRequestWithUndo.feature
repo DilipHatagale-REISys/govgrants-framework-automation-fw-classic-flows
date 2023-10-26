@@ -14334,7 +14334,7 @@ Feature: Amendment Request scenarios with Undo
     And I "Approve" in the approval decision
     Then I can see top right button "Undo" in page detail
 
-  @329496 @ValidateBudgetperiodchangeauditorusercannotseeUndobuttonontheBPchangeamendmentwhenamendmentisinapprovedstate @Undo
+  @329496 @ValidateBudgetperiodchangeauditorusercannotseeUndobuttonontheBPchangeamendmentwhenamendmentisinapprovedstate @Undo @TBE
   Scenario: Validate Budget period change Verify auditor user can not see Undo button on the BP change amendment when amendment is in approved state
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PM user" of type "Directed"
     When I am on "SUBPORTAL" portal
@@ -14421,7 +14421,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Approved"
     Then I cannot see top right button "Undo" in page detail
 
-  @329500 @ValidateBudgetPeriodChangeuserseeapprovalhistoryandfiledhistorygetupdatedafterlaststepapproverclickonundobutton @Undo
+  @329500 @ValidateBudgetPeriodChangeuserseeapprovalhistoryandfiledhistorygetupdatedafterlaststepapproverclickonundobutton @Undo @TBE
   Scenario: Validate Budget Period Change user see approval history and filed history get updated after last step approver click on undo button
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PM user" of type "Directed"
     When I am on "SUBPORTAL" portal
@@ -14498,7 +14498,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see value "Submitted for Approval" for title "Old Value" inside table "History"
     Then I softly see value "Approved" for title "New Value" inside table "History"
 
-  @309995 @ValidatethatAuditorusercannotseeundobuttonwhenKPCARisinapprovedstate @Undo
+  @309995 @ValidatethatAuditorusercannotseeundobuttonwhenKPCARisinapprovedstate @Undo @TBE
   Scenario: Validate that Auditor user can not see undo button when KPC AR is in approved state
     And I activated standalone subaward "Automation Runtime award" with properties "Automation PM user" of type "Formula_By_Applicant_Focus_Area"
     Given I am on "SUBPORTAL" portal
@@ -14563,7 +14563,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Approved"
     Then I cannot see top right button "Undo" in page detail
 
-  @309998 @ValidateKPCthatIfuserdynamicallychangedApproverwhilecreatingammendmentthenalsoonlylastapproveranseeundobutton @Undo
+  @309998 @ValidateKPCthatIfuserdynamicallychangedApproverwhilecreatingammendmentthenalsoonlylastapproveranseeundobutton @Undo @TBE1
   Scenario: Validate KPC that If user dynamically changed Approver while creating ammendment then also only last approver can see undo button
     And I activated standalone subaward "Automation Runtime award" with properties "Automation PM user" of type "Formula_By_Applicant_Focus_Area"
     Given I am on "SUBPORTAL" portal
@@ -14620,7 +14620,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
 
-  @310001 @ValidatefcthatAuditorusercannotseeundobuttoninapprovedoffcstate @Undo
+  @310001 @ValidatefcthatAuditorusercannotseeundobuttoninapprovedoffcstate @Undo @TBE
   Scenario: Validate fc that Auditor user can not see undo button in approved of fc state
     And I activated standalone subaward "Automation Runtime Award" with properties "SECOND_FOCUS_AREA_BUDGET_CATEGORY" of type "Formula_By_Applicant_Focus_Area"
     When I login to "As a Grantor" app as "PM" user
