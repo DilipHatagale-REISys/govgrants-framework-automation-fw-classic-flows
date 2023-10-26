@@ -14483,6 +14483,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     And I click "Yes" on modal confirmation box
     Then I softly see field "Status" as "Submitted for Approval"
+    And I navigate to "History" sub tab
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
     When I perform quick search for "{SavedValue:budgetPChangeId}" in "History" panel
     Then I softly see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "History"
@@ -14491,6 +14492,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
+    And I navigate to "History" sub tab
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Approved"
     When I perform quick search for "{SavedValue:budgetPChangeId}" in "History" panel
     Then I softly see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "History"
