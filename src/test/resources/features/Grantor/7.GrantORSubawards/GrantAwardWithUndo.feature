@@ -3147,6 +3147,15 @@ Feature: Validate all scenarios of grants and award with undo
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
       | Name                     | Award  |
