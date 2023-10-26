@@ -1180,6 +1180,6 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     And I navigate to "Monitoring" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:homeCompletedTaskTableId---" panel
-    Then I softly see value "Completed" for title "Status" against the value "{SavedValue:DeskReview}" inside table "---deskreview:-:homeCompletedTaskTableId---"
+    Then I softly see value "Completed" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---deskreview:-:homeCompletedTaskTableId---"
 
 
