@@ -3040,7 +3040,7 @@ Feature: Validate all scenarios for program
     And I click on "Undo" in the page details
     And I "Reject" in the approval decision
     Then I softly see field "Status" as "Rejected"
-    Then I can see top right button "Undo" in page detail
+    Then I cannot see top right button "Undo" in page detail
     And I click on "Menu" in the page details
     And I select "Download As PDF" from dropdown
     And I download the file
