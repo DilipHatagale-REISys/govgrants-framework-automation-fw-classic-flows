@@ -2273,7 +2273,7 @@ Feature: Validate all scenarios of grants and award with undo
     Then I see status in Progress-bar is "Approved" and is "Green"
     Then I can see top right button "Undo" in page detail
 
-  @286507 @312334 @VerifyuserseealltablesdisplaycorrectlyindownloadedPDFforawardinrejectedstate @sprint-1-US-295145 @hitesh @Undo
+  @286507 @VerifyuserseealltablesdisplaycorrectlyindownloadedPDFforawardinrejectedstate @sprint-1-US-295145 @hitesh @Undo
   Scenario: Verify user see all tables display correctly in downloaded PDF for award in rejected state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -2359,11 +2359,6 @@ Feature: Validate all scenarios of grants and award with undo
     And I "Reject" in the approval decision
     Then I see status in Progress-bar is "Rejected" and is "Red"
     Then I cannot see top right button "Undo" in page detail
-    #312334
-    And I click "{SavedValue:GrantEGMSID}" lookup link
-    Then I softly see field "Status" as "Draft"
-    Then I cannot see top right button "Undo" in page detail
-    And I switch to parent tab
     And I click on "Menu" in the page details
     And I select "Download As PDF" from dropdown
     And I download the file
@@ -2812,7 +2807,7 @@ Feature: Validate all scenarios of grants and award with undo
     When I navigate to "History" sub tab
     Then I softly see value "{SavedValue:GrantEGMSID}" for title "EGMS ID" inside table "History"
 
-  @312239 @ValidateGrants&Awardgrantownerandlaststepapproverofawardnotseeundobuttononterminatedgrant @Undo
+  @312239 @312334 @ValidateGrants&Awardgrantownerandlaststepapproverofawardnotseeundobuttononterminatedgrant @Undo
   Scenario: Validate Grants & Award grant owner and last step approver of award not see undo button on terminated grant
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -2892,6 +2887,7 @@ Feature: Validate all scenarios of grants and award with undo
     And I click toggle button to select "Grants - All"
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardFromFDM:-:grantsTableId---" panel
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
+    #312334
     Then I softly see field "Status" as "Terminated"
     Then I cannot see top right button "Undo" in page detail
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
