@@ -1,7 +1,7 @@
 @workflow @regression
 Feature: Validate all scenarios of every modules flow
 
-  @programFlow @ValidateFullProgramFlow
+  @programFlow @ValidateFullProgramFlow @workTemp
   Scenario: Validate Full Program Flow
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -16,22 +16,19 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
       | {SavedValue:FO Username} | Step 1  |
     When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
-    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
-    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
+    When I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
+    When I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     And I click on "Submit For Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -94,7 +91,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Back To Strategic Plan" in the page details
     And I click on "Activate" in the page details
 
-  @PublishAnn-Application
+  @PublishAnn-Application @workTemp
   Scenario: Validate Publish Announcement Submit Application Submit
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -115,7 +112,7 @@ Feature: Validate all scenarios of every modules flow
     Then I softly see status in Progress-bar is "Created" and is "Green"
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" by showing entries "All" in flex table with id "---announcement:-:fundingAccTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
@@ -126,10 +123,10 @@ Feature: Validate all scenarios of every modules flow
     When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" by showing entries "All" in flex table with id "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -182,7 +179,7 @@ Feature: Validate all scenarios of every modules flow
     When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                  | Target |
       | Automation Permanent KPI | 10     |
-    And I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
     When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -194,7 +191,7 @@ Feature: Validate all scenarios of every modules flow
     And I get the "EGMS ID"
     When I click on "Submit Application" in the page details
 
-  @pre-applicatiomFlow
+  @pre-applicatiomFlow @workTemp
   Scenario: Validate Pre-Application flow
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -223,7 +220,7 @@ Feature: Validate all scenarios of every modules flow
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
-    When I navigate to "Files and Forms" sub tab
+    When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
     And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -236,7 +233,7 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Start" icon for "Record Id" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
     When I click on "Accept" in the page details
 
-  @subawardactivateFlow
+  @subawardactivateFlow @workTemp
   Scenario: Activate the subaward
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -258,7 +255,7 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" by showing entries "All" in flex table with id "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -340,7 +337,7 @@ Feature: Validate all scenarios of every modules flow
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Activate" in the page details
 
-  @reimbursementPaymentRequest
+  @reimbursementPaymentRequest @workTemp
   Scenario: rimbursement payment request
     And I activated standalone subaward "Automation Runtime award" with properties "NO_ADVANCE_PERMISSION"
     And I am on "SUBPORTAL" portal
@@ -396,7 +393,7 @@ Feature: Validate all scenarios of every modules flow
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
 
-  @AdvancePaymentRequest
+  @AdvancePaymentRequest @workTemp
   Scenario: Advance Payment Request
     And I activated standalone subaward "Automation Runtime award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -455,7 +452,7 @@ Feature: Validate all scenarios of every modules flow
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
 
-  @progressReportWorkflow
+  @progressReportWorkflow @workTemp
   Scenario: progress report
     Given I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
@@ -506,7 +503,7 @@ Feature: Validate all scenarios of every modules flow
     And I click toggle button to select "Progress Reports - Approved"
     Then I see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:internalProgressReportFlexTableId---"
 
-  @SiteVisitFlow
+  @SiteVisitFlow @workTemp
   Scenario: Sitevisit Flow
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -601,7 +598,7 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
 
-  @DeskReviewFlow
+  @DeskReviewFlow @workTemp
   Scenario: Desk Review Flow
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -695,7 +692,7 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
 
-  @CloseoutWorkFlow
+  @CloseoutWorkFlow @workTemp
   Scenario: Closeout WorkFlow
     And I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
@@ -844,7 +841,7 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Negotiation Request Status" as "Complete" in "Negotiation Request Details" pageblock
 
-  @ApplicationReviewtoapprovedFDMWorkFlow
+  @ApplicationReviewtoapprovedFDMWorkFlow @workTemp
   Scenario Outline: Application Review WorkFlow
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -1048,7 +1045,7 @@ Feature: Validate all scenarios of every modules flow
     When I perform quick search for "{SavedValue:EGMSID}" in "---home:-:termsAndConditionsTableId---" panel
     Then I softly see value "Active" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---home:-:termsAndConditionsTableId---"
 
-  @GrantorSideAmendmentRequestWorkflow
+  @GrantorSideAmendmentRequestWorkflow @workTemp
   Scenario:
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
     When I login to "As a Grantor" app as "PM" user
@@ -1112,7 +1109,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
 
-  @SubrecipientSideAmendmentRequestWorkflow
+  @SubrecipientSideAmendmentRequestWorkflow @workTemp
   Scenario:
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
     When I am on "SUBPORTAL" portal
@@ -1168,7 +1165,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
 
-  @SubrecipientOrganizationRegistrationFlow
+  @SubrecipientOrganizationRegistrationFlow @workTemp
   Scenario: Verify Subrecipient Organization Registration Process
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -1240,7 +1237,7 @@ Feature: Validate all scenarios of every modules flow
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     Then I see the header is "Subrecipient Organization" in the page details
 
-  @IndividualUserRegistrationFlow
+  @IndividualUserRegistrationFlow @workTemp
   Scenario:Verify Individual User Registration Process
     Given I begin "Individual" registration
     When I click on "Agree" in the page details
@@ -1274,7 +1271,7 @@ Feature: Validate all scenarios of every modules flow
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     Then I see the header is "Individual Subrecipient" in the page details
 
-  @SMEreviewerFlow
+  @SMEreviewerFlow @workTemp
   Scenario:
     Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Home" tab
@@ -1313,7 +1310,7 @@ Feature: Validate all scenarios of every modules flow
     And I select "My Profile" from user dropdown
     Then I see the header is "{SavedValue:Automation Runtime Contact}" in the page details
 
-  @end-to-end-flow-paymentrequest-progressreport-closeout
+  @end-to-end-flow-paymentrequest-progressreport-closeout @workTemp
   Scenario: end-to-end-flow-paymentrequest-progressreport-closeout
     Given I activated standalone subaward "Automation Runtime award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal

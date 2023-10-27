@@ -1,7 +1,6 @@
 @grantsAwardNotesAndSuppDoc @grantor-regression @grantor-parallel-regression @grantAndAward @regression
 Feature: Validate all scenarios of grants and award Notes and Supporting Document
 
-
   @234421 @234422 @ValidatethatSarahPmcanaddnotesinGrantrecordwhenGrantisincreatedstate @Sprint-13-US-201925 @vaibhav @Notes
   Scenario: Validate that Sarah PM can add notes in Grant record when Grant is in created state
     When I login to "As a Grantor" app as "PM" user

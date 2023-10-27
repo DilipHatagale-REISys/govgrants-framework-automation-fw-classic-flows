@@ -349,7 +349,7 @@ Feature: Validate all scenarios in Closeout
       | Type is required to save.   |
       | Reason is required to save. |
 
-  @40065 @87352 @40608 @89221 @89222 @89223 @89224 @89225 @89226 @89229 @89227 @88734 @88735 @88736 @88737 @88738 @88739 @ValidatingCloseoutRequest @meenakshi @buglogged141573 @hiteshTemp
+  @40065 @87352 @40608 @89221 @89222 @89223 @89224 @89225 @89226 @89229 @89227 @88734 @88735 @88736 @88737 @88738 @88739 @ValidatingCloseoutRequest @meenakshi @buglogged141573
   Scenario: To verify the PM user should be able to create the Closeout Request
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -465,7 +465,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Has the subrecipient completed all corrective actions for any open findings/concerns?" as "Yes"
     Then I softly see field "Has the funding organization reviewed and accepted all corrective actions?" as "Yes"
 
-  @89228 @ValidatingDownloadBehaviour @buglogged141573 @hiteshTemp
+  @89228 @ValidatingDownloadBehaviour @buglogged141573
   Scenario: To verify the PM user should be able to create the Closeout Request
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -506,7 +506,7 @@ Feature: Validate all scenarios in Closeout
     And I click on "Download" icon for "{SavedValue:AttachedFile}" inside flex table with id "---closeout:-:closeoutFilesTableId---" with wait for record
     Then I softly verify that the file "{SavedValue:AttachedFile}" is downloaded
 
-  @87353 @86713 @40071 @93106 @40644 @86714 @76488 @42103 @87351 @76487 @86716 @86712 @87346 @ValidatingSentToSubrecipientInCloseoutRequest @meenakshi @buglogged141586 @hiteshTemp
+  @87353 @86713 @40071 @93106 @40644 @86714 @76488 @42103 @87351 @76487 @86716 @86712 @87346 @ValidatingSentToSubrecipientInCloseoutRequest @meenakshi @buglogged141586
   Scenario: To validate status : Sent to Subrecipient in closeout request section when closeout request is Sent to Subrecipient by an internal user
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -533,7 +533,6 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Grant Title" as "{SavedValue:GrantTitle}"
     Then I softly see field "Subrecipient Organization" as "{SavedValue:SubrecipientOrganization}"
     Then I softly see field "Funding Organization" as "{SavedValue:FundingOrganization}"
-    When I click on "Save" in the page details
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -565,10 +564,10 @@ Feature: Validate all scenarios in Closeout
     And I enter value "4000" into field "fieldCloseoutDate__c"
     And I enter value "4005" into field "fieldCloseoutDueDateGrantor__c"
     When I click on "Save" in the page details
-    And I save the field labeled "Closeout" as "CloseoutEffectiveDate"
-    And I save the field labeled "Closeout" as "CloseoutActivitiesDueDate"
+    And I save the field labeled "Closeout Effective Date" as "CloseoutEffectiveDate"
+    And I save the field labeled "Closeout Activities Due Date" as "CloseoutActivitiesDueDate"
     Then I softly see field "Closeout Effective Date" as "{SavedValue:CloseoutEffectiveDate}"
-    Then I softly see field "Closeout Effective Date" as "{SavedValue:CloseoutActivitiesDueDate}"
+    Then I softly see field "Closeout Activities Due Date" as "{SavedValue:CloseoutActivitiesDueDate}"
     #76488
     Then I softly see value "---AUTOEnvData:-:fundingAccount---" for title "Funding Account" inside table "---closeout:-:closeoutFundingAccountsTableId---"
     And I softly see value "$1,000.00" for title "Encumbrance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
@@ -587,7 +586,8 @@ Feature: Validate all scenarios in Closeout
     Then I softly see that "{SavedValue:CloseoutEGMSID}" has been added in flextable with Id "---closeout:-:externalHomePendingTasktableId---"
     Then I softly see value "Automation PM" for title "Created By" inside table "---closeout:-:externalHomePendingTasktableId---"
     Then I softly see value "Review Closeout Request" for title "Task Type" inside table "---closeout:-:externalHomePendingTasktableId---"
-    Then I softly see value "{Date:MM/dd/yyyy::d+7}" for title "Due Date" inside table "---closeout:-:externalHomePendingTasktableId---"
+    When I save the value from row "1" for column name "Due Date" as "DueDate" from flex table "---closeout:-:externalHomePendingTasktableId---"
+    Then I softly see value "{SavedValue:DueDate}" for title "Due Date" inside table "---closeout:-:externalHomePendingTasktableId---"
     Then I softly see value "Review Closeout Request for Grant #{SavedValue:GrantID}" for title "Subject" inside table "---closeout:-:externalHomePendingTasktableId---"
     #87351
     And I click on "Start" icon for "{SavedValue:CloseoutEGMSID}" inside flex table with id "---closeout:-:externalHomePendingTasktableId---"
@@ -644,7 +644,7 @@ Feature: Validate all scenarios in Closeout
     And I softly see value "Automation PM" for title "Created By" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
     And I softly see value "Created" for title "Status" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
 
-  @87350 @86706 @88851 @VerifyOverriddenJustificationinCloseout  @meenakshi @hiteshTemp
+  @87350 @86706 @88851 @VerifyOverriddenJustificationinCloseout  @meenakshi
   Scenario: To verify closeout owner allow to entered the Justification when Overriding the pending items in closeout phase
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -799,7 +799,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see row level action button "Edit" against "{SavedValue:closeoutID2}" in flex table with id "---closeout:-:closeoutTableId---"
     Then I softly can see row level action button "Delete" against "{SavedValue:closeoutID2}" in flex table with id "---closeout:-:closeoutTableId---"
 
-  @93254 @93255 @93256 @VerifyCloseOutRequestDetailsPage @smoke @monu @hiteshTemp
+  @93254 @93255 @93256 @VerifyCloseOutRequestDetailsPage @smoke @monu
   Scenario: Validate user is able to see closeout request details page after clicking on start button under pending tasks
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -933,7 +933,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
     Then I softly see value "{SavedValue:closeoutID}" for title "EGMS ID" inside table "---closeout:-:pendingTaskTableId---"
 
-  @86708 @VerifyStatusOfCloseoutRequestInApprovalHistoryPageBlock  @monu @hiteshTemp
+  @86708 @VerifyStatusOfCloseoutRequestInApprovalHistoryPageBlock @monu
   Scenario: Validate user is able to see status of closeout request in chevron diagram and inside Approval history table after first approval only
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -992,7 +992,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see column "Date" inside row "2" at position "1" contains text "Step : Step 1"
     Then I softly see column "Overall Status" inside row "2" at position "1" contains text "Approved"
 
-  @40759 @VerifyExpectedValueInsideFieldHistoryPageBlockOfCloseoutRequest @monu @hiteshTemp
+  @40759 @VerifyExpectedValueInsideFieldHistoryPageBlockOfCloseoutRequest @monu
   Scenario: Validate expected New value and Old value inside Field History page block for closeout request
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -1199,7 +1199,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see the following messages in the page details contains:
       | Reason is required to save. |
 
-  @95522 @VerifyAttachmentUploadBySubrecipientForAdhocCloseoutRequest @monu @buglogged141573 @hiteshTemp
+  @95522 @VerifyAttachmentUploadBySubrecipientForAdhocCloseoutRequest @monu @buglogged141573
   Scenario: Validate sub-recipient user should be able to upload attachment while creating adhoc closeout request
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -1227,7 +1227,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Files" sub tab
     When I click on "Attach" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
     Then I softly see "Add Supporting Documents Checklist" opens in overLay window
-    When I upload attachment "AttachmentTesting.pdf" of type "Others"
+    When I upload attachment "AttachmentTesting.pdf" of type "Others" from computer
     And I pause execution for "3" seconds
     And I click on hyperlink containing value "View"
     And I pause execution for "3" seconds
@@ -1250,7 +1250,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see "File Extension" in flex table header "---closeout:-:CloseoutDetailsTableId---"
     Then I softly see "Description" in flex table header "---closeout:-:CloseoutDetailsTableId---"
 
-  @95671 @VerifyUserCanAcknowledgeCloseoutRequest @monu @buglogged141573 @hiteshTemp
+  @95671 @VerifyUserCanAcknowledgeCloseoutRequest @monu @buglogged141573
   Scenario: Validate user can acknowledge closeout request without uploading attachment
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -1585,7 +1585,7 @@ Feature: Validate all scenarios in Closeout
       | {SavedValue:FO Username} | Step 1   |
     Then I softly see "You cannot specify the same step for multiple users for Closeout." inside flex table with id "---closeout:-:closeoutApproverTableId---"
 
-  @154059 @ValidateuserIsAbleToAddThreeStepApproverForAdhocCloseoutAndRejectItOnStepThree @vaibhav @hiteshTemp
+  @154059 @ValidateuserIsAbleToAddThreeStepApproverForAdhocCloseoutAndRejectItOnStepThree @vaibhav
   Scenario: Validate user Is Able To Add Three Step Approver For Adhoc Closeout And Reject It On Step Three
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -1620,6 +1620,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:closeoutRequestNo}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:closeoutRequestNo}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see field "Override Justification" as "Automation Test justification"
