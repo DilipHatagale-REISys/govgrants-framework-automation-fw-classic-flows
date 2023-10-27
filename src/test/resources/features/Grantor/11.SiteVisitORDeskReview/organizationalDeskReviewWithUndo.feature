@@ -1341,7 +1341,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
     Then I see field "Status" as "Submitted for Approval"
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
@@ -1360,6 +1360,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I softly see field "Status" as "Submitted for Approval"
     Then I see only the following ordered radio buttons in the approval decision :
       | Approve | Send Back | Forward |
+    And I navigate to "History" sub tab
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Pending"
     When I perform quick search for "{SavedValue:DeskReviewID}" in "History" panel
     Then I softly see value "{SavedValue:DeskReviewID}" for title "EGMS ID" inside table "History"
@@ -1368,6 +1369,7 @@ Feature: Validate all scenarios in Organizational Desk Review Without Undo
     Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
+    And I navigate to "History" sub tab
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Approved"
     When I perform quick search for "{SavedValue:DeskReviewID}" in "History" panel
     Then I softly see value "{SavedValue:DeskReviewID}" for title "EGMS ID" inside table "History"

@@ -3001,7 +3001,7 @@ Feature: Validate all scenarios of grants and award with undo
       | {SavedValue:CumulativeObligation} | 3           |
       | {SavedValue:TotalCommitment}      | 3           |
 
-  @312278 @ValidateGrantsawardaslaststepapproverPOseeundobuttoawardforinheritedapproverfromprogramforaward @Undo @TBE1
+  @312278 @ValidateGrantsawardaslaststepapproverPOseeundobuttoawardforinheritedapproverfromprogramforaward @Undo
   Scenario: Validate Grants & award as last step approver PO see undo button on award for inherited approver from program for award
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
