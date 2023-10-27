@@ -3014,7 +3014,7 @@ Feature: Validate all scenarios for program
       | {SavedValue:PO Username}  | Step 2  |
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                      | Program |
-      | {SavedValue:FO Username} | Step 2  |
+      | {SavedValue:FO Username}  | Step 3  |
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
