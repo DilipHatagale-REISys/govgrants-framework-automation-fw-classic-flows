@@ -7412,14 +7412,14 @@ Feature: Validate all scenarios for program
     And I wait for "180" seconds
     And I refresh the page
     And I navigate to "Collab" sub tab
-    Then I softly see value "Notification: Program {SavedValue:ProgramEGMSID} has been PeerReviewed" for title "Subject" inside table "---program:-:systemEmailsTableId---"
-    Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
-    Then I softly see value "exe.automation@yopmail.com" for title "To Address" inside table "---program:-:systemEmailsTableId---"
-    And I click on "View" icon for "Notification: Program {SavedValue:ProgramEGMSID} has been PeerReviewed" inside flex table with id "---program:-:systemEmailsTableId---" without waiting for record
+    Then I softly see value "Notification: Program {SavedValue:ProgramEGMSID} has been Peer Reviewed" for title "Subject" inside table "---program:-:systemEmailsTableId---"
+    Then I softly see value "exe.automation@yopmail.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
+    Then I softly see value "pm.automation@yopmail.com" for title "To Address" inside table "---program:-:systemEmailsTableId---"
+    And I click on "View" icon for "Notification: Program {SavedValue:ProgramEGMSID} has been Peer Reviewed" inside flex table with id "---program:-:systemEmailsTableId---" without waiting for record
     Then I softly see following details for email sent under collab:
-      | pm.automation@yopmail.com                                              |
-      | exe.automation@yopmail.com                                             |
-      | Notification: Program {SavedValue:ProgramEGMSID} has been PeerReviewed |
+      | exe.automation@yopmail.com                                              |
+      | pm.automation@yopmail.com                                               |
+      | Notification: Program {SavedValue:ProgramEGMSID} has been Peer Reviewed |
     When I close "System Email" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -7427,18 +7427,15 @@ Feature: Validate all scenarios for program
     And I click toggle button to select "Internal Programs - Draft"
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside table
-    When I navigate to "Responsibilities" sub tab
-    And I click on "Complete Review" in the page details
-    Then I softly see field "Status" as "Reviewed"
     And I navigate to "Collab" sub tab
-    Then I softly see value "Notification: Program {SavedValue:ProgramEGMSID} has been PeerReviewed" for title "Subject" inside table "---program:-:systemEmailsTableId---"
-    Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
-    Then I softly see value "exe.automation@yopmail.com" for title "To Address" inside table "---program:-:systemEmailsTableId---"
-    And I click on "View" icon for "Notification: Program {SavedValue:ProgramEGMSID} has been PeerReviewed" inside flex table with id "---program:-:systemEmailsTableId---" without waiting for record
+    Then I softly see value "Notification: Program {SavedValue:ProgramEGMSID} has been Peer Reviewed" for title "Subject" inside table "---program:-:systemEmailsTableId---"
+    Then I softly see value "exe.automation@yopmail.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
+    Then I softly see value "pm.automation@yopmail.com" for title "To Address" inside table "---program:-:systemEmailsTableId---"
+    And I click on "View" icon for "Notification: Program {SavedValue:ProgramEGMSID} has been Peer Reviewed" inside flex table with id "---program:-:systemEmailsTableId---" without waiting for record
     Then I softly see following details for email sent under collab:
-      | pm.automation@yopmail.com                                              |
-      | exe.automation@yopmail.com                                             |
-      | Notification: Program {SavedValue:ProgramEGMSID} has been PeerReviewed |
+      | exe.automation@yopmail.com                                              |
+      | pm.automation@yopmail.com                                               |
+      | Notification: Program {SavedValue:ProgramEGMSID} has been Peer Reviewed |
     When I close "System Email" modal by clicking the top right x button
     #331477
     Then I softly see "Created Date" in flex table header "---program:-:systemEmailsTableId---"
@@ -7447,11 +7444,11 @@ Feature: Validate all scenarios for program
     Then I softly see "Subject" in flex table header "---program:-:systemEmailsTableId---"
     Then I softly see "Actions" in flex table header "---program:-:systemEmailsTableId---"
     #331478
-    Then I softly can see row level action button "View" against "Notification: Program {SavedValue:ProgramEGMSID} has been PeerReviewed" in flex table with id "---program:-:systemEmailsTableId---"
+    Then I softly can see row level action button "View" against "Notification: Program {SavedValue:ProgramEGMSID} has been Peer Reviewed" in flex table with id "---program:-:systemEmailsTableId---"
     Then I softly can see row level action button "View" against "Notification: Program {SavedValue:ProgramEGMSID} awaiting Peer Review" in flex table with id "---program:-:systemEmailsTableId---"
     #331479
     And I save the value from row "1" for column name "Subject" as "newSubject" from flex table "---program:-:systemEmailsTableId---"
-    Then I softly see that the saved value "{SavedValue:newSubject}" and "Notification: Program {SavedValue:ProgramEGMSID} has been PeerReviewed" are equal
+    Then I softly see that the saved value "{SavedValue:newSubject}" and "Notification: Program {SavedValue:ProgramEGMSID} has been Peer Reviewed" are equal
     And I save the value from row "2" for column name "Subject" as "oldSubject" from flex table "---program:-:systemEmailsTableId---"
     Then I softly see that the saved value "{SavedValue:oldSubject}" and "Notification: Program {SavedValue:ProgramEGMSID} awaiting Peer Review" are equal
 
@@ -7512,12 +7509,12 @@ Feature: Validate all scenarios for program
     And I navigate to "Collab" sub tab
     And I refresh the page
     Then I softly see value "Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}." for title "Subject" inside table "---program:-:systemEmailsTableId---"
-    Then I softly see value "automation@yopmailpo.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
-    Then I softly see value "automation@yopmailpo.com" for title "To Address" inside table "---program:-:systemEmailsTableId---"
-    And I click on "View" icon for "automation@yopmailpo.com" inside flex table with id "---program:-:systemEmailsTableId---" without waiting for record
+    Then I softly see value "automationpo@yopmail.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
+    Then I softly see value "automationpo@yopmail.com" for title "To Address" inside table "---program:-:systemEmailsTableId---"
+    And I click on "View" icon for "automationpo@yopmail.com" inside flex table with id "---program:-:systemEmailsTableId---" without waiting for record
     Then I softly see following details for email sent under collab:
-      | automation@yopmailpo.com                                                                 |
-      | automation@yopmailpo.com                                                                 |
+      | automationpo@yopmail.com                                                                 |
+      | automationpo@yopmail.com                                                                 |
       | Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}. |
     When I close "System Email" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -7529,11 +7526,11 @@ Feature: Validate all scenarios for program
     And I navigate to "Collab" sub tab
     And I refresh the page
     Then I softly see value "Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}." for title "Subject" inside table "---program:-:systemEmailsTableId---"
-    Then I softly see value "automation@yopmailpo.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
+    Then I softly see value "automationpo@yopmail.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
     Then I softly see value "exe.automation@yopmail.com" for title "To Address" inside table "---program:-:systemEmailsTableId---"
     And I click on "View" icon for "exe.automation@yopmail.com" inside flex table with id "---program:-:systemEmailsTableId---" without waiting for record
     Then I softly see following details for email sent under collab:
-      | automation@yopmailpo.com                                                                 |
+      | automationpo@yopmail.com                                                                 |
       | exe.automation@yopmail.com                                                               |
       | Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}. |
     When I close "System Email" modal by clicking the top right x button
@@ -7546,11 +7543,11 @@ Feature: Validate all scenarios for program
     And I navigate to "Collab" sub tab
     And I refresh the page
     Then I softly see value "Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}." for title "Subject" inside table "---program:-:systemEmailsTableId---"
-    Then I softly see value "automationpo@yopmailpo.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
+    Then I softly see value "automationpo@yopmail.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
     Then I softly see value "pm.automation@yopmail.com" for title "To Address" inside table "---program:-:systemEmailsTableId---"
     And I click on "View" icon for "pm.automation@yopmail.com" inside flex table with id "---program:-:systemEmailsTableId---" without waiting for record
     Then I softly see following details for email sent under collab:
-      | automationpo@yopmailpo.com                                                               |
+      | automationpo@yopmail.com                                                                 |
       | pm.automation@yopmail.com                                                                |
       | Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}. |
 
@@ -7582,8 +7579,9 @@ Feature: Validate all scenarios for program
       | Name                      | Program |
       | {SavedValue:EXE Username} | Step 1  |
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-      | Name                      | Program |
+      | Name                     | Program |
       | {SavedValue:PO Username} | Step 2  |
+    And I refresh the page
     And I click on "Submit For Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -7618,7 +7616,7 @@ Feature: Validate all scenarios for program
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---program:-:systemEmailsTableId---"
 
-  @331476 @331881 @331480 @ValidatethatAmeliafduserwillnotseeEmailsentfrommessageSectioninmessagestabonSystemEmailSectionofCollabtab @Sprint-11-US-327737 @SystemEmail @TBE
+  @331476 @331881 @331480 @ValidatethatAmeliafduserwillnotseeEmailsentfrommessageSectioninmessagestabonSystemEmailSectionofCollabtab @Sprint-11-US-327737 @SystemEmail
   Scenario: Validate that Amelia fd user will not see Email sent from message section in messages tab on System Email Section of Collab tab
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -7686,7 +7684,7 @@ Feature: Validate all scenarios for program
       | {SavedValue:EXE Username} | Step 1  |
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |
-      | {SavedValue:PO Username} | Step 1  |
+      | {SavedValue:PO Username} | Step 2  |
     And I refresh the page
     And I click on "Submit For Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
