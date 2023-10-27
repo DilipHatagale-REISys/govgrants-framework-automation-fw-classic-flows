@@ -7402,11 +7402,11 @@ Feature: Validate all scenarios for program
     When I close "System Email" modal by clicking the top right x button
     #331482
     And I navigate to "Responsibilities" sub tab
-    When I click on "Enter Review" icon for "{SavedValue:FO Username}" inside flex table with id "---program:-:peerReviewTableId---" without waiting for record
+    When I click on "Enter Review" icon for "{SavedValue:EXE Username}" inside flex table with id "---program:-:peerReviewTableId---" without waiting for record
     And I enter values into fields
-      | Value       | Field             |
-      | Cannot Rate | Rating__c         |
-      | Passed      | ReviewComments__c |
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
     And I wait for "180" seconds
@@ -7512,12 +7512,12 @@ Feature: Validate all scenarios for program
     And I navigate to "Collab" sub tab
     And I refresh the page
     Then I softly see value "Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}." for title "Subject" inside table "---program:-:systemEmailsTableId---"
-    Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
+    Then I softly see value "automation@yopmailpo.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
     Then I softly see value "automation@yopmailpo.com" for title "To Address" inside table "---program:-:systemEmailsTableId---"
-    And I click on "View" icon for "Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}." inside flex table with id "---program:-:systemEmailsTableId---" without waiting for record
+    And I click on "View" icon for "automation@yopmailpo.com" inside flex table with id "---program:-:systemEmailsTableId---" without waiting for record
     Then I softly see following details for email sent under collab:
-      | pm.automation@yopmail.com                                                                |
-      | exe.automation@yopmail.com                                                               |
+      | automation@yopmailpo.com                                                                 |
+      | automation@yopmailpo.com                                                                 |
       | Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}. |
     When I close "System Email" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -7529,11 +7529,11 @@ Feature: Validate all scenarios for program
     And I navigate to "Collab" sub tab
     And I refresh the page
     Then I softly see value "Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}." for title "Subject" inside table "---program:-:systemEmailsTableId---"
-    Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
-    Then I softly see value "automation@yopmailpo.com" for title "To Address" inside table "---program:-:systemEmailsTableId---"
-    And I click on "View" icon for "Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}." inside flex table with id "---program:-:systemEmailsTableId---" without waiting for record
+    Then I softly see value "automation@yopmailpo.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
+    Then I softly see value "exe.automation@yopmail.com" for title "To Address" inside table "---program:-:systemEmailsTableId---"
+    And I click on "View" icon for "exe.automation@yopmail.com" inside flex table with id "---program:-:systemEmailsTableId---" without waiting for record
     Then I softly see following details for email sent under collab:
-      | pm.automation@yopmail.com                                                                |
+      | automation@yopmailpo.com                                                                 |
       | exe.automation@yopmail.com                                                               |
       | Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}. |
     When I close "System Email" modal by clicking the top right x button
@@ -7546,12 +7546,12 @@ Feature: Validate all scenarios for program
     And I navigate to "Collab" sub tab
     And I refresh the page
     Then I softly see value "Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}." for title "Subject" inside table "---program:-:systemEmailsTableId---"
-    Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
-    Then I softly see value "automation@yopmailpo.com" for title "To Address" inside table "---program:-:systemEmailsTableId---"
-    And I click on "View" icon for "Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}." inside flex table with id "---program:-:systemEmailsTableId---" without waiting for record
+    Then I softly see value "automationpo@yopmailpo.com" for title "From Address" inside table "---program:-:systemEmailsTableId---"
+    Then I softly see value "pm.automation@yopmail.com" for title "To Address" inside table "---program:-:systemEmailsTableId---"
+    And I click on "View" icon for "pm.automation@yopmail.com" inside flex table with id "---program:-:systemEmailsTableId---" without waiting for record
     Then I softly see following details for email sent under collab:
+      | automationpo@yopmailpo.com                                                               |
       | pm.automation@yopmail.com                                                                |
-      | exe.automation@yopmail.com                                                               |
       | Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}. |
 
   @331862 @331869 @ValidatethatEmailwillnotgenerateSystemEmailmessagestabwhenOwnerofprogramclicksonActivatebuttononInternalProgram @Sprint-11-US-327737 @SystemEmail @TBE
@@ -7581,6 +7581,9 @@ Feature: Validate all scenarios for program
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                      | Program |
       | {SavedValue:EXE Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:PO Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -7589,7 +7592,7 @@ Feature: Validate all scenarios for program
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
@@ -7655,7 +7658,7 @@ Feature: Validate all scenarios for program
     Then I softly see quick search inside table id "---program:-:systemEmailsTableId---"
 
   @331489 @331812 @ValidatethatSystemEmailWillnotGenerateafterSarahPmsubmitsinternalProgramforApproval @Sprint-11-US-327737 @SystemEmail @TBE
-    Scenario: Validate that System Email Will not Generate after Sarah Pm submits internal Program for Approval
+  Scenario: Validate that System Email Will not Generate after Sarah Pm submits internal Program for Approval
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -7682,8 +7685,9 @@ Feature: Validate all scenarios for program
       | Name                      | Program |
       | {SavedValue:EXE Username} | Step 1  |
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-      | Name                      | Program |
+      | Name                     | Program |
       | {SavedValue:PO Username} | Step 1  |
+    And I refresh the page
     And I click on "Submit For Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
     And I wait for "180" seconds

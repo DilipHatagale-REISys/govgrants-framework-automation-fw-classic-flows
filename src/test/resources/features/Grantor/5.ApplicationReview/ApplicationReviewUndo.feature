@@ -2872,7 +2872,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @329495 @ValidateAppReviewwhenapplicationispromotedtoFDMandassignedreviewerhasclickedundoonSMEreviewstepthenonclickofcancelscoreshouldnotbeupdatedonthereviewssectiononreviewstep @Undo @TBE
+  @329495 @ValidateAppReviewwhenapplicationispromotedtoFDMandassignedreviewerhasclickedundoonSMEreviewstepthenonclickofcancelscoreshouldnotbeupdatedonthereviewssectiononreviewstep @Undo
   Scenario Outline: Validate App Review when application is promoted to FDM, and assigned reviewer has clicked undo on SME review step then on click of cancel score should not be updated on the reviews section on review step
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"

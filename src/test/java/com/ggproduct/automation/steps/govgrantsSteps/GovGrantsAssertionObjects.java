@@ -2786,7 +2786,7 @@ public final class GovGrantsAssertionObjects {
     private boolean quickSearchLocator(String tableIdName) {
         boolean flag = false;
         try {
-            if (I.amPerforming().checkToSee().isDisplayed(By.cssSelector("div#" + tableIdName + "div>div>input"))) {
+            if (I.amPerforming().checkToSee().isDisplayed(By.cssSelector("div#" + tableIdName + " div>div>input"))) {
                 flag = true;
             }
         } catch (Exception e) {
