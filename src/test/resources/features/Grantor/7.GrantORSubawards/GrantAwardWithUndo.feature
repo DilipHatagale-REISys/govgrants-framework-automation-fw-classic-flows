@@ -3390,6 +3390,9 @@ Feature: Validate all scenarios of grants and award with undo
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Award Amount | Cash Match | Non-Cash Match |
       | Construction    | 2000         | 200        | 200            |
+    And I click on "Edit" in the page details
+    And I enter value "2000" into field "fieldNewObligation__c"
+    And I click on "Save" in the page details
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -3406,6 +3409,8 @@ Feature: Validate all scenarios of grants and award with undo
     And I "Approve" in the approval decision
     And I pause execution for "3" seconds
     Then I softly see field "Status" as "Approved"
+    And I click on "Undo" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
     And I click on "Menu" in the page details
     And I select "Download As PDF" from dropdown
     And I download the file
@@ -3413,12 +3418,11 @@ Feature: Validate all scenarios of grants and award with undo
     Then I softly see "{SavedValue:GrantEGMSID}" on page "1" of "govgrants" pdf file
     Then I softly see following details in "govgrants" pdf file:
       | Detail                   | Page Number |
-      | {SavedValue:AwardEGMSID} | 1           |
-      | {SavedValue:GrantEGMSID} | 1           |
-      | Rejected                 | 1           |
-      | Created by               | 2           |
-      | {SavedValue:PM Username} | 2           |
-      | Last Modified by         | 2           |
-      | {SavedValue:FO Username} | 2           |
+      | New Obligation           | 3           |
+      | $2,000.00                | 3           |
+      | Cumulative Obligation    | 3           |
+      | $2,000.00                | 3           |
+      | Construction             | 3           |
+      | $2,000.00                | 3           |
 
 
