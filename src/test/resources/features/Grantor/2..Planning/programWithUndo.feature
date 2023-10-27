@@ -3046,10 +3046,11 @@ Feature: Validate all scenarios for program
     And I download the file
     Then I softly see "{SavedValue:ProgramEGMSID}" on page "1" of "govgrants" pdf file
     Then I softly see following details in "govgrants" pdf file:
-      | Detail                      | Page Number |
-      | Funding Account Information | 3           |
-      | Budget Summary by Focus Area| 3           |
-      | Subaward budget             | 3           |
+      | Detail      | Page Number |
+      | Contacts    | 1           |
+      | Setup       | 3           |
+      | Review Forms| 3           |
+      | Approvers   | 4           |
     And I switch to parent tab
     When I refresh the page
     And I navigate to "History" sub tab
