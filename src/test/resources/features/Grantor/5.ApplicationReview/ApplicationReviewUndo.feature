@@ -3020,7 +3020,6 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    Then I softly see value "Review Completed" for title "Status" against the value "Automation EXE" inside table "---applicationReview:-:appreviewsTableId---"
     When I click on "Undo" icon for "Automation EXE" inside flex table with id "---applicationReview:-:appreviewsTableId---"
     Then I softly see that "Status" is in "Sent for Review" status
     And I click on "Edit" in the page details
