@@ -3044,13 +3044,13 @@ Feature: Validate all scenarios for program
     And I click on "Menu" in the page details
     And I select "Download As PDF" from dropdown
     And I download the file
-    Then I softly see "{SavedValue:AwardEGMSID}" on page "1" of "govgrants" pdf file
-    Then I softly see "{SavedValue:GrantEGMSID}" on page "1" of "govgrants" pdf file
+    Then I softly see "{SavedValue:ProgramEGMSID}" on page "1" of "govgrants" pdf file
     Then I softly see following details in "govgrants" pdf file:
       | Detail                      | Page Number |
       | Funding Account Information | 3           |
       | Budget Summary by Focus Area| 3           |
       | Subaward budget             | 3           |
     And I switch to parent tab
+    When I refresh the page
     And I navigate to "History" sub tab
     Then I softly see snapshot with name containing "Internal Program - submit for approval.pdf" as name
