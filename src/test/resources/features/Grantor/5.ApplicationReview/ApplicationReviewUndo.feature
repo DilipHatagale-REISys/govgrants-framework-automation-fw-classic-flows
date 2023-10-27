@@ -2725,7 +2725,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     Then I softly can see row level action button "Undo" against "{SavedValue:PM Username}" in flex table with id "---applicationReview:-:appreviewsTableId---"
 
-  @337305 @ValidatePre-screenReviewStepDirectedAnnFAYesassignedreviewercannotseerowlevelundobuttoninreviewssectionandonthereviewdetailpagewhenthereviewisReviewincompleteorReviewisdeclinedonprescreenreviewstep @Undo @TBE
+  @337305 @ValidatePre-screenReviewStepDirectedAnnFAYesassignedreviewercannotseerowlevelundobuttoninreviewssectionandonthereviewdetailpagewhenthereviewisReviewincompleteorReviewisdeclinedonprescreenreviewstep @Undo
   Scenario Outline: Validate Pre-screen Review Step Directed Ann FA Yes assigned reviewer cannot see row-level undo button in reviews section and on the review detail page when the review is Review incomplete or Review is declined on prescreen review step
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -3035,7 +3035,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     When I save the value from row "1" for column name "Average Weighted Score" as "AverageWeightedScore1" from flex table "---applicationReview:-:appTableId---"
-    Then I softly see value "{SavedValue:AverageWeightedScore}" is "Equals to" the value "{SavedValue:AverageWeightedScore1}"
+    Then I softly see value "{SavedValue:AverageWeightedScore}" is "Equals to" value "{SavedValue:AverageWeightedScore1}"
 
     Examples:
       | Announcement Name                                | Application Name                                 |

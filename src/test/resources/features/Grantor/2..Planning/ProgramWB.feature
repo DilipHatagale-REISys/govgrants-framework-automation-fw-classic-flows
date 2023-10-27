@@ -7342,7 +7342,7 @@ Feature: Validate all scenarios for program
     And I close "Reply" modal by clicking the top right x button
     Then I see value "" for title "Attention To" against the value "RE: Automation Test2" inside table "---program:-:programCollabMessagesTableId---"
 
-  @331481 @331482 @ValidatethatSarahPMAndPeerReviewerVictorEXEwillseesystemEmailafterSarahPmsendsInternalProgramforPeerreview @Sprint-11-US-327737 @SystemEmail
+  @331481 @331482 @331479 @331477 @331478 @ValidatethatSarahPMAndPeerReviewerVictorEXEwillseesystemEmailafterSarahPmsendsInternalProgramforPeerreview @Sprint-11-US-327737 @SystemEmail @TBE
   Scenario: Validate that Sarah PM And Peer Reviewer Victor EXE will see system Email after Sarah Pm sends Internal Program for Peer review
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -7373,7 +7373,7 @@ Feature: Validate all scenarios for program
       | Automation EXE | Fiscal Reviewer | Automation Test Description | 10       |
     And I click on "Send for Review" icon for "{SavedValue:EXE Username}" inside table
     Then I softly see field "Status" as "Submitted for Review"
-    And I wait for "30" seconds
+    And I wait for "180" seconds
     And I refresh the page
     And I navigate to "Collab" sub tab
     Then I softly see value "Notification: Program {SavedValue:ProgramEGMSID} awaiting Peer Review" for title "Subject" inside table "---program:-:systemEmailsTableId---"
@@ -7409,7 +7409,7 @@ Feature: Validate all scenarios for program
       | Passed      | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    And I wait for "30" seconds
+    And I wait for "180" seconds
     And I refresh the page
     And I navigate to "Collab" sub tab
     Then I softly see value "Notification: Program {SavedValue:ProgramEGMSID} has been PeerReviewed" for title "Subject" inside table "---program:-:systemEmailsTableId---"
@@ -7439,8 +7439,23 @@ Feature: Validate all scenarios for program
       | pm.automation@yopmail.com                                              |
       | exe.automation@yopmail.com                                             |
       | Notification: Program {SavedValue:ProgramEGMSID} has been PeerReviewed |
+    When I close "System Email" modal by clicking the top right x button
+    #331477
+    Then I softly see "Created Date" in flex table header "---program:-:systemEmailsTableId---"
+    Then I softly see "From Address" in flex table header "---program:-:systemEmailsTableId---"
+    Then I softly see "To Address" in flex table header "---program:-:systemEmailsTableId---"
+    Then I softly see "Subject" in flex table header "---program:-:systemEmailsTableId---"
+    Then I softly see "Actions" in flex table header "---program:-:systemEmailsTableId---"
+    #331478
+    Then I softly can see row level action button "View" against "Notification: Program {SavedValue:ProgramEGMSID} has been PeerReviewed" in flex table with id "---program:-:systemEmailsTableId---"
+    Then I softly can see row level action button "View" against "Notification: Program {SavedValue:ProgramEGMSID} awaiting Peer Review" in flex table with id "---program:-:systemEmailsTableId---"
+    #331479
+    And I save the value from row "1" for column name "Subject" as "newSubject" from flex table "---program:-:systemEmailsTableId---"
+    Then I softly see that the saved value "{SavedValue:newSubject}" and "Notification: Program {SavedValue:ProgramEGMSID} has been PeerReviewed" are equal
+    And I save the value from row "2" for column name "Subject" as "oldSubject" from flex table "---program:-:systemEmailsTableId---"
+    Then I softly see that the saved value "{SavedValue:oldSubject}" and "Notification: Program {SavedValue:ProgramEGMSID} awaiting Peer Review" are equal
 
-  @331854 @ValidatethatSystemEmailwillgenerateinmessagestabwhenlastApproverClickonundobuttononApprovedInternalProgram @Sprint-11-US-327737 @SystemEmail
+  @331854 @ValidatethatSystemEmailwillgenerateinmessagestabwhenlastApproverClickonundobuttononApprovedInternalProgram @Sprint-11-US-327737 @SystemEmail @TBE
   Scenario: Validate that System Email will generate in messages tab when last Approver Click on undo button on Approved Internal Program
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -7493,6 +7508,7 @@ Feature: Validate all scenarios for program
     And I click on "Undo" in the page details without processing
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     And I click "Yes" on modal confirmation box
+    And I wait for "180" seconds
     And I navigate to "Collab" sub tab
     And I refresh the page
     Then I softly see value "Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}." for title "Subject" inside table "---program:-:systemEmailsTableId---"
@@ -7537,3 +7553,161 @@ Feature: Validate all scenarios for program
       | pm.automation@yopmail.com                                                                |
       | exe.automation@yopmail.com                                                               |
       | Notification: Approver has initiated Undo Action on Program #{SavedValue:ProgramEGMSID}. |
+
+  @331862 @331869 @ValidatethatEmailwillnotgenerateSystemEmailmessagestabwhenOwnerofprogramclicksonActivatebuttononInternalProgram @Sprint-11-US-327737 @SystemEmail @TBE
+  Scenario: Validate that Email will not generate System Email in messages tab when Owner of program clicks on Activate button on Internal Program
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 1  |
+    And I click on "Submit For Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    Then I softly see value "Activate Internal Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:pendingTaskTableId---"
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    And I click on "Activate" in the page details
+    Then I softly see field "Status" as "Active"
+    And I wait for "180" seconds
+    And I navigate to "Collab" sub tab
+    And I refresh the page
+    Then I see "No Records Found" inside flex table with id "---program:-:systemEmailsTableId---"
+    #331869
+    And I click on "Amend Program" in the page details
+    Then I softly see field "Status" as "Being Amended"
+    And I wait for "180" seconds
+    And I navigate to "Collab" sub tab
+    And I refresh the page
+    Then I see "No Records Found" inside flex table with id "---program:-:systemEmailsTableId---"
+
+  @331476 @331881 @331480 @ValidatethatAmeliafduserwillnotseeEmailsentfrommessageSectioninmessagestabonSystemEmailSectionofCollabtab @Sprint-11-US-327737 @SystemEmail @TBE
+  Scenario: Validate that Amelia fd user will not see Email sent from message section in messages tab on System Email Section of Collab tab
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I navigate to "Collab" sub tab
+    #331476
+    Then I softly see "System Emails" page block displayed
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    And I navigate to "Collab" sub tab
+    And I click on top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    And I send the email under collab tab with following details:
+      | To                        | Subject         | Body                       |
+      | pm.automation@yopmail.com | Automation Test | Automation Test Email Body |
+    Then I softly see the following messages in the page details contains:
+      | Email Sent Successfully. |
+    And I close "Send Email" modal by clicking the top right x button
+    Then I softly see value "" for title "Attention To" inside table "---program:-:programCollabMessagesTableId---"
+    Then I see the following rows under the following headers in table with id "---program:-:programCollabMessagesTableId---" :
+      | Subject         | From Address             | CC Address | To Address                | Attention To | Email Subject   |
+      | Automation Test | automationfd@yopmail.com |            | pm.automation@yopmail.com |              | Automation Test |
+    And I refresh the page
+    Then I see "No Records Found" inside flex table with id "---program:-:systemEmailsTableId---"
+    #331480
+    Then I softly see quick search inside table id "---program:-:systemEmailsTableId---"
+
+  @331489 @331812 @ValidatethatSystemEmailWillnotGenerateafterSarahPmsubmitsinternalProgramforApproval @Sprint-11-US-327737 @SystemEmail @TBE
+    Scenario: Validate that System Email Will not Generate after Sarah Pm submits internal Program for Approval
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:PO Username} | Step 1  |
+    And I click on "Submit For Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I wait for "180" seconds
+    And I refresh the page
+    And I navigate to "Collab" sub tab
+    And I refresh the page
+    Then I see "No Records Found" inside flex table with id "---program:-:systemEmailsTableId---"
+    #331812
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    And I navigate to "Collab" sub tab
+    And I wait for "180" seconds
+    And I refresh the page
+    And I navigate to "Collab" sub tab
+    And I refresh the page
+    Then I see "No Records Found" inside flex table with id "---program:-:systemEmailsTableId---"
