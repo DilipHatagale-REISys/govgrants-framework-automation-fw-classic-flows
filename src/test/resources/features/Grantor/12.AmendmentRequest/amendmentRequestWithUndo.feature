@@ -14784,5 +14784,6 @@ Feature: Amendment Request scenarios with Undo
     Then I can see top right button "Undo" in page detail
     And I click on "Undo" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
+    Then I refresh the page
     And I navigate to "History" sub tab
     Then I softly see snapshot with name containing "Amendment - Undo Approval.pdf" as name

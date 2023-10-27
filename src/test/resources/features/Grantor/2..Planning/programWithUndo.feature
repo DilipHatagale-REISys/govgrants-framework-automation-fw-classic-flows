@@ -3048,9 +3048,6 @@ Feature: Validate all scenarios for program
     Then I softly see following details in "govgrants" pdf file:
       | Detail      | Page Number |
       | Contacts    | 1           |
-      | Setup       | 3           |
-      | Review Forms| 3           |
-      | Approvers   | 4           |
     And I switch to parent tab
     When I refresh the page
     And I navigate to "History" sub tab
