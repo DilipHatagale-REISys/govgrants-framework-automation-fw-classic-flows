@@ -3488,10 +3488,10 @@ Feature: Validate all scenarios of grants and award with undo
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:grantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---subAwardFromFDM:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---" without waiting for record
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
@@ -3510,7 +3510,6 @@ Feature: Validate all scenarios of grants and award with undo
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I can see top right button "Undo" in page detail
-
 
   @312266 @Grant&AwardVerifyuserisabletocreateandactiveRAevenifundoisinprogress @sprint-7-US-304339 @hitesh @Undo
   Scenario: Grant & Award_  Verify user is able to create and active RA even if undo is in progress
