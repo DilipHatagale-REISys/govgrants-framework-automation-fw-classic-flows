@@ -3933,6 +3933,7 @@ Feature: Validate all scenarios of grants and award with undo
     And I click modal button "Continue"
     When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
+    And I pause execution for "3" seconds
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
