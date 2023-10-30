@@ -4012,7 +4012,7 @@ Feature: Validate all scenarios of grants and award with undo
     And I perform quick search for "Record id" in "---announcement:-:annoucementTableId---" panel
     And I click on "View" icon for "Record id" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
     And I click on "Publish" in the page details
-    Then I softly see status in Progress-bar is "Published" and is "green"F
+    Then I softly see status in Progress-bar is "Published" and is "green"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     And I navigate to "Applications" tab
@@ -4050,12 +4050,10 @@ Feature: Validate all scenarios of grants and award with undo
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
     And I enter in modal "Payment Request Schedule_FDM" values from "Award_Field_Values.xlsx"
     When I click modal button "Save"
-    #When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     When I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    #When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
@@ -4107,4 +4105,3 @@ Feature: Validate all scenarios of grants and award with undo
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I can see top right button "Undo" in page detail
-
