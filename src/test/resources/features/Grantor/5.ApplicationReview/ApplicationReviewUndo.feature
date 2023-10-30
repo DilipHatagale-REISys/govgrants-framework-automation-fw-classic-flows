@@ -3103,7 +3103,6 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                            | Filter             | User |
       | {SavedValue:Automation Runtime Announcement} | Automation PM user | PM   |
 
-
   @280799 @ValidatecorrectscoreisupdatedfortheapplicationontheRecommendedapplicationsectiononFDMafterApplicationpromotedtoFDMafternegotiation @Sprint-25-US-227292 @hitesh @Undo
   Scenario: Validate correct score is updated for the application on the Recommended application section on FDM after Application promoted to FDM after negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
@@ -3231,8 +3230,8 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I wait for "6" seconds
