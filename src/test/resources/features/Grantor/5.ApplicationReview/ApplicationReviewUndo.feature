@@ -3066,8 +3066,6 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    And I navigate to "Related Log" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly can see row level action button "Undo" against "Automation PM" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I click on "Undo" icon for "Automation PM" inside flex table with id "---applicationReview:-:appreviewsTableId---"
     Then I softly see that "Status" is in "Sent for Review" status
