@@ -7538,7 +7538,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see following details for email sent under collab:
       | pm.automation@yopmail.com                                              |
       | automationfd@yopmail.com                                               |
-      | Notification: Announcement {SavedValue:AnnEGMSID} awaiting Peer Review |
+      | Notification: Announcement {SavedValue:AnnEGMSID} awaiting peer review |
     When I close "System Email" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -7557,7 +7557,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see following details for email sent under collab:
       | pm.automation@yopmail.com                                              |
       | automationfd@yopmail.com                                               |
-      | Notification: Announcement {SavedValue:AnnEGMSID} awaiting Peer Review |
+      | Notification: Announcement {SavedValue:AnnEGMSID} awaiting peer review |
     When I close "System Email" modal by clicking the top right x button
     And I navigate to "Responsibilities" sub tab
     When I click on "Enter Review" icon for "Automation FD" inside flex table with id "---announcement:-:reviewersTableId---" without waiting for record
