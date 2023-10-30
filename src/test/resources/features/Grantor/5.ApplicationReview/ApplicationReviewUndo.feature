@@ -2910,8 +2910,10 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    And I save the link value from row "1" for column name "EGMS ID" as "AppEgmdId" from flex table "---applicationReview:-:applicationAssignTableId---"
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
@@ -3211,8 +3213,10 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    And I save the link value from row "1" for column name "EGMS ID" as "AppEgmdId" from flex table "---applicationReview:-:applicationAssignTableId---"
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
