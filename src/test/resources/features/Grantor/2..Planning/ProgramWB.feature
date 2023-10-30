@@ -7714,7 +7714,7 @@ Feature: Validate all scenarios for program
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---program:-:systemEmailsTableId---"
 
-  @331820 @331821 @331823 @ValidatethatAfterApproverclicksonSendbackbuttonforInternalProgramthenSystemEmaildonotgenerateinmessagestab @Sprint-11-US-327737 @SystemEmail @TBE
+  @331820 @331821 @331823 @ValidatethatAfterApproverclicksonSendbackbuttonforInternalProgramthenSystemEmaildonotgenerateinmessagestab @Sprint-11-US-327737 @SystemEmail
   Scenario: Validate that After Approver clicks on Send back button for Internal Program then System Email do not generate in messages tab
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -7802,7 +7802,7 @@ Feature: Validate all scenarios for program
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---program:-:systemEmailsTableId---"
 
-  @331853 @ValidatethatSystemEmailwillnotgenerateinmessagestabwhenApproverApprovesInternalProgramtowhenitisassignedtosubmitforapproval @Sprint-11-US-327737 @SystemEmail @TBE
+  @331853 @ValidatethatSystemEmailwillnotgenerateinmessagestabwhenApproverApprovesInternalProgramtowhenitisassignedtosubmitforapproval @Sprint-11-US-327737 @SystemEmail
   Scenario: Validate that System Email will not generate in messages tab when Approver Approves Internal Program to when it is assigned to submit for approval
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -7898,6 +7898,11 @@ Feature: Validate all scenarios for program
     And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
     And I wait for "180" seconds
     And I refresh the page
     And I navigate to "Collab" sub tab
