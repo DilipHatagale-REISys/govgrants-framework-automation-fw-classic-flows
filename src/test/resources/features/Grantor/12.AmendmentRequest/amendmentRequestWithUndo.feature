@@ -14736,7 +14736,7 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see field "Status" as "Approved"
     Then I cannot see top right button "Undo" in page detail
 
-  @289040 @ValidateStatusofpendingtaskcreatedforamendmentownerafteramendmentrequestisapprovediscancelledafterlaststepapproverclicksundobutton @Undo @TBE
+  @289040 @ValidateStatusofpendingtaskcreatedforamendmentownerafteramendmentrequestisapprovediscancelledafterlaststepapproverclicksundobutton @Undo
   Scenario: Validate Status of pending task created for amendment owner after amendment request is approved is cancelled after last step approver clicks undo button
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMIS_YES_FOCUS_AREA_NO_SUB_ORG_IND-Automation PM user" of type "Directed"
     When I login to "As a Grantor" app as "PM" user
@@ -14827,5 +14827,5 @@ Feature: Amendment Request scenarios with Undo
     Then I softly see value "Cancelled" for title "Status" against the value "{SavedValue:SOWAMENDMENTREQUEST}" inside table "---grantor_tableId:-:CompletedTaskAssignedToMeTableId---"
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "SavedValue:SOWAMENDMENTREQUEST}" in "---amendment:-:pendingTaskTableId---" panel
+    When I perform quick search for "{SavedValue:SOWAMENDMENTREQUEST}" in "---amendment:-:pendingTaskTableId---" panel
     Then I softly see value "{SavedValue:SOWAMENDMENTREQUEST}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
