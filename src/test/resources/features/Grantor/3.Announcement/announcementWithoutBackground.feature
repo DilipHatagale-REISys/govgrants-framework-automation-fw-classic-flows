@@ -7573,13 +7573,14 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click toggle button to select "All Announcements"
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
     When I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
-    And I wait for "120" seconds
+    And I wait for "180" seconds
     And I refresh the page
     And I navigate to "Collab" sub tab
     Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} has been Peer Reviewed" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "automationfd@yopmail.com" for title "To Address" inside table "---announcement:-:systemEmailsTableId---"
     And I click on "View" icon for "automationfd@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
+    And I wait for "5" seconds
     Then I softly see following details for email sent under collab:
       | pm.automation@yopmail.com                                                |
       | automationfd@yopmail.com                                                 |
@@ -7596,6 +7597,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "automationfd@yopmail.com" for title "To Address" inside table "---announcement:-:systemEmailsTableId---"
     And I click on "View" icon for "automationfd@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
+    And I wait for "5" seconds
     Then I softly see following details for email sent under collab:
       | pm.automation@yopmail.com                                                |
       | automationfd@yopmail.com                                                 |
@@ -7667,10 +7669,10 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Planning" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
     #336714
@@ -7747,10 +7749,10 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Submit For Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Planning" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     When I select radio button "Forward" in the approval decision
     And I select user "{SavedValue:FD Username}" in the approval decision
     When I enter comment "Automation testing" in the approval decision
@@ -7791,7 +7793,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" by showing entries "All" in flex table with id "---announcement:-:fundingAccTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
@@ -7804,7 +7806,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
-    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" by showing entries "All" in flex table with id "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
@@ -7858,7 +7860,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" by showing entries "All" in flex table with id "---announcement:-:fundingAccTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
@@ -7871,7 +7873,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
-    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" by showing entries "All" in flex table with id "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
@@ -7905,7 +7907,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
 
-  @336718 @ValidateAnnouncementPMusershouldnotabletoseeemailtoInvitedApplicantsofPublishedAnnouncementinSystemEmailssectioninmessagestabwhenPublishtheAnn @Sprint-13-US-341529-332637 @SystemEmail @TBE
+  @336718 @ValidateAnnouncementPMusershouldnotabletoseeemailtoInvitedApplicantsofPublishedAnnouncementinSystemEmailssectioninmessagestabwhenPublishtheAnn @Sprint-13-US-341529-332637 @SystemEmail
   Scenario: Validate Announcement PM user should not able to see email to Notify Invited Applicants of Published Announcement in System Emails section in messages tab when Publish the Ann
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
