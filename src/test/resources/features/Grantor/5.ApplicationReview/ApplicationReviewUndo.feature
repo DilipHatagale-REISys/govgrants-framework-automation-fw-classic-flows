@@ -4007,4 +4007,3 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     Examples:
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
-
