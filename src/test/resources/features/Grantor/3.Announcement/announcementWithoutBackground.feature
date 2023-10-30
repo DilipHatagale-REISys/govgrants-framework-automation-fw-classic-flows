@@ -7499,7 +7499,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see value "Automation test description" for title "Description" inside table "---applicationIntake:-:supportedDocumentsTableId---"
     Then I softly see value "Mandatory" for title "Required" inside table "---applicationIntake:-:supportedDocumentsTableId---"
 
-  @336709 @336710 @336711 @336712 @ValidateAnnouncementPMusershouldabletoseeSystemEmailsectioninmessagestab @Sprint-11-US-341529-332637 @SystemEmail @TBE
+  @336709 @336710 @336711 @336712 @ValidateAnnouncementPMusershouldabletoseeSystemEmailsectioninmessagestab @Sprint-11-US-341529-332637 @SystemEmail
   Scenario: Validate Announcement PM user should able to see System Email section in messages tab
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -7526,7 +7526,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Name          | Responsibility   | Description                 | Due Date |
       | Automation FD | Program Reviewer | Automation Test Description | 10       |
     And I pause execution for "3" seconds
-    And I click on "Send for Review" icon for "{SavedValue:PM Username}" inside table
+    And I click on "Send for Review" icon for "{SavedValue:FD Username}" inside table
     Then I softly see field "Status" as "Submitted for Review"
     And I wait for "180" seconds
     And I refresh the page
@@ -7601,7 +7601,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | automationfd@yopmail.com                                                 |
       | Notification: Announcement {SavedValue:AnnEGMSID} has been Peer Reviewed |
 
-  @336713 @ValidateAnnouncementusershouldnotabletoseeemailtoNotifyApprovalinSystemEmailssectioninmessagestabwhensubmitAnnforapproval @Sprint-11-US-341529-332637 @SystemEmail @TBE
+  @336713 @ValidateAnnouncementusershouldnotabletoseeemailtoNotifyApprovalinSystemEmailssectioninmessagestabwhensubmitAnnforapproval @Sprint-11-US-341529-332637 @SystemEmail
   Scenario: Validate Announcement PM user should not able to see email to Notify Approval in System Emails section in messages tab when submit Ann for approval
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab

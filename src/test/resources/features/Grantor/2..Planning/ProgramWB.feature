@@ -7856,7 +7856,7 @@ Feature: Validate all scenarios for program
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---program:-:systemEmailsTableId---"
 
-  @331855 @ValidatethatSystemEmailwillnotgenerateinmessagestabofInternalProgramwhenApprovaltaskisReassignstootheruserbyapprover @Sprint-11-US-327737 @SystemEmail @TBE
+  @331855 @ValidatethatSystemEmailwillnotgenerateinmessagestabofInternalProgramwhenApprovaltaskisReassignstootheruserbyapprover @Sprint-11-US-327737 @SystemEmail
   Scenario: Validate that System Email will not generate in messages tab of Internal Program when Approval task is Reassigns to other user by approver
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
