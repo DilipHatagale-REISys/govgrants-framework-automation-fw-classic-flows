@@ -2909,7 +2909,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
-    And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    And I get the "EGMS ID"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
@@ -3114,7 +3114,6 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}"
     When I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside table
     And I get the "EGMS ID"
-    When I save the field labeled "EGMS ID" as "AppEGMSID"
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---applicationReview:-:announcementListTableId---" panel
