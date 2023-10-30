@@ -3097,7 +3097,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    Then I softly cannot see row level action button "Undo" against "Automation FO" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    Then I softly can see row level action button "Undo" against "Automation FO" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I click on "View" icon for "Automation FO" inside flex table with id "---applicationReview:-:appreviewsTableId---"
     Then I cannot see top right button "Undo" in page detail
 
@@ -3376,7 +3376,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
     When I click on "Send to Subrecipient" in the page details
     When I click on "Back to Current Review Step" in the page details
-    Then I softly see value "Negotiation In-Progress" for title "Decision Status" against the value "{SavedValue:Automation Runtime FDM Announcement}" inside table "---applicationReview:-:appTableId---"
+    Then I softly see value "Negotiation In-Progress" for title "Decision Status" against the value "{SavedValue:Automation Runtime Announcement}" inside table "---applicationReview:-:appTableId---"
     When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -3385,7 +3385,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    Then I softly cannot see row level action button "Undo" against "Automation FO" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    Then I softly can see row level action button "Undo" against "Automation FO" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I click on "View" icon for "Automation FO" inside flex table with id "---applicationReview:-:appreviewsTableId---"
     Then I cannot see top right button "Undo" in page detail
 
