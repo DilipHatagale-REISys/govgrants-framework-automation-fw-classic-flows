@@ -8268,11 +8268,11 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I refresh the page
     Then I softly see value "Notification: Approver initiated undo action on Announcement {SavedValue:AnnEGMSID}." for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "automationpo@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
-    Then I softly see value "automationpm@yopmail.com" for title "To Address" inside table "---announcement:-:systemEmailsTableId---"
-    And I click on "View" icon for "automationpo@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
+    Then I softly see value "pm.automationpm@yopmail.com" for title "To Address" inside table "---announcement:-:systemEmailsTableId---"
+    And I click on "View" icon for "pm.automationpm@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
     Then I softly see following details for email sent under collab:
       | automationpo@yopmail.com                                                             |
-      | automationpm@yopmail.com                                                             |
+      | pm.automationpm@yopmail.com                                                          |
       | Notification: Approver initiated undo action on Announcement {SavedValue:AnnEGMSID}. |
     When I close "System Email" modal by clicking the top right x button
     #336739
@@ -8285,11 +8285,11 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I refresh the page
     Then I softly see value "Notification: Approver initiated undo action on Announcement {SavedValue:AnnEGMSID}." for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "automationpo@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
-    Then I softly see value "automationpm@yopmail.com" for title "To Address" inside table "---announcement:-:systemEmailsTableId---"
-    And I click on "View" icon for "automationpo@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
+    Then I softly see value "fo.automation@yopmail.com" for title "To Address" inside table "---announcement:-:systemEmailsTableId---"
+    And I click on "View" icon for "fo.automation@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
     Then I softly see following details for email sent under collab:
       | automationpo@yopmail.com                                                             |
-      | automationpm@yopmail.com                                                             |
+      | fo.automation@yopmail.com                                                            |
       | Notification: Approver initiated undo action on Announcement {SavedValue:AnnEGMSID}. |
 
   @336735 @ValidateAnnouncemenPMuserseeretesttablebuttonunderhamburgericononSystemEmailsectioshouldnotabletoResetthetablewhenuserapplytheadvancefilterclickonresetbutton
