@@ -1756,6 +1756,8 @@ Feature: Validate all scenarios in Payment Request With Notes
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 20                            |
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
