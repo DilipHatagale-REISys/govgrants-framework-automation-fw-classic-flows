@@ -4027,7 +4027,6 @@ Feature: Validate all scenarios of grants and award with undo
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
-    When I get the "EGMS ID"
     And I save the field labeled "Grant ID" as "GrantEGMSID"
     And I save the field labeled "EGMS ID" as "AwardEGMSID"
     And I navigate to "Budget" sub tab
