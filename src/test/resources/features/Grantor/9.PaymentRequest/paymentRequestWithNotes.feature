@@ -1756,8 +1756,6 @@ Feature: Validate all scenarios in Payment Request With Notes
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
-      | Budget Category | Advance Requested This Action |
-      | Construction    | 20                            |
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
@@ -1765,30 +1763,34 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
+    Then I can see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
+    When I enter the following values into flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Add" :
+      | Title         | Description      |
+      | Notes Record1 | Automation Notes|
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
-    And I click toggle button to select "Reimbursements - All"
-    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
+    When I navigate to "Advances" content inside "Payments" subheader on left panel
+    And I click toggle button to select "Advances - All"
+    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestAdvancesTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestAdvancesTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I navigate to "Forms and Files" sub tab
-    Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
-    And I click toggle button to select "Reimbursements - All"
-    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
+    When I navigate to "Advances" content inside "Payments" subheader on left panel
+    And I click toggle button to select "Advances - All"
+    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestAdvancesTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestAdvancesTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I navigate to "Forms and Files" sub tab
-    Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
-    And I click toggle button to select "Reimbursements - All"
-    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
+    When I navigate to "Advances" content inside "Payments" subheader on left panel
+    And I click toggle button to select "Advances - All"
+    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestAdvancesTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestAdvancesTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I navigate to "Forms and Files" sub tab
-    Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
