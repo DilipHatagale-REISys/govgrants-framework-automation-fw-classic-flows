@@ -7568,7 +7568,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click modal button "Save"
     And I click on submit review
     #336721
-    And I wait for "180" seconds
+    And I wait for "220" seconds
     And I refresh the page
     And I navigate to "Collab" sub tab
     Then I softly see quick search inside table id "---announcement:-:systemEmailsTableId---"
@@ -8008,7 +8008,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
 
-  @336719 @ValidateAnnouncementEXEusershouldnotabletoseeEmailinSystemEmailssectionwhensendmailthroughmessagessectioninmessagestab @Sprint-13-US-341529-332637 @SystemEmail @TBE
+  @336719 @ValidateAnnouncementEXEusershouldnotabletoseeEmailinSystemEmailssectionwhensendmailthroughmessagessectioninmessagestab @Sprint-13-US-341529-332637 @SystemEmail
   Scenario: Validate Announcement EXE user should not able to see Email in System Emails section when send mail through messages section in messages tab
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -8041,7 +8041,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---program:-:systemEmailsTableId---"
 
-  @336732 @336732 @336731 @ValidateAnnouncementFOuserseeRefreshbuttonunderhamburgericononSystemEmailssectionshouldabletorefreshthetable @Sprint-13-US-341529-332637 @SystemEmail @TBE
+  @336732 @336731 @ValidateAnnouncementFOuserseeRefreshbuttonunderhamburgericononSystemEmailssectionshouldabletorefreshthetable @Sprint-13-US-341529-332637 @SystemEmail @TBE1
   Scenario: Validate Announcement FO user see Refresh button under hamburger icon on System Emails section & should able to refresh the table
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -8075,17 +8075,17 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
     When I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
     Then I softly see field "Status" as "Submitted for Review"
-    And I wait for "150" seconds
+    And I wait for "200" seconds
     And I refresh the page
     And I navigate to "Collab" sub tab
-    Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} awaiting Peer Review" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
+    Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} awaiting peer review" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "automationfd@yopmail.com" for title "To Address" inside table "---announcement:-:systemEmailsTableId---"
     When I perform quick search for "exe.automation@yopmail.com" in "---announcement:-:systemEmailsTableId---" panel
     Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
     And I click on parallel menu button in flex table title "System Emails"
     And I select "Reset Table" from parallel lines dropdown of "System Emails"
-    Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} awaiting Peer Review" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
+    Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} awaiting peer review" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
     #336731
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -8098,7 +8098,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
     And I click on parallel menu button in flex table title "System Emails"
     And I select "Reset Table" from parallel lines dropdown of "System Emails"
-    Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} awaiting Peer Review" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
+    Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} awaiting peer review" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
 
   @336722 @336724 @ValidateAnnouncementPOusercanseeAdvancefiltershouldworkcorrectlyonSystemEmailsection @Sprint-13-US-341529-332637 @SystemEmail @TBE
   Scenario: Validate Announcement PO user can see Advance filter should work correctly on System Email section
@@ -8126,12 +8126,12 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I pause execution for "3" seconds
     And I click on "Send for Review" icon for "{SavedValue:FD Username}" inside table
     Then I softly see field "Status" as "Submitted for Review"
-    And I wait for "180" seconds
+    And I wait for "220" seconds
     And I refresh the page
     And I navigate to "Collab" sub tab
     When I click on advance filter "#advfRecordSystemEmailHistory" of table id "---announcement:-:systemEmailsTableId---"
     When I enter advance filter values inside id "advfRecordSystemEmailHistory"
-      | Created Date | contains | {Date:MM/dd/yyyy::d-1} |
+      | Created Date | contains | {Date:dd/MM/yyyy hh:mm a::d-1}} |
     Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
     And I refresh the page
     #336724
@@ -8146,7 +8146,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "automationfd@yopmail.com" for title "To Address" inside table "---announcement:-:systemEmailsTableId---"
 
-  @336725 @ValidateAnnouncementEXEusershouldnotabletoviewemailontableemailgeneratedafterPublishtheAnninSystemEmailssectionincollabtab @Sprint-13-US-341529-332637 @SystemEmail @TBE
+  @336725 @ValidateAnnouncementEXEusershouldnotabletoviewemailontableemailgeneratedafterPublishtheAnninSystemEmailssectionincollabtab @Sprint-13-US-341529-332637 @SystemEmail @TBE1
   Scenario: Validate Announcement EXE user should not able to view email on table & email generated after Publish the Ann in System Emails section in collab tab
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -8180,8 +8180,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "Automation PM" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name          | Announcement |
-      | Automation PM | Step 1       |
+      | Name           | Announcement |
+      | Automation EXE | Step 1       |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -8295,7 +8295,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Undo" in the page details without processing
     Then I softly see confirmation box with body "WARNING: This action will reopen the approval decision made earlier. Do you want to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    And I wait for "180" seconds
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I wait for "220" seconds
     And I navigate to "Collab" sub tab
     And I refresh the page
     Then I softly see value "Notification: Approver has initiated Undo Action on Announcement #{SavedValue:AnnEGMSID}." for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
@@ -8340,7 +8341,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | automationpm@yopmail.com                                                                  |
       | Notification: Approver has initiated Undo Action on Announcement #{SavedValue:AnnEGMSID}. |
 
-  @336735 @ValidateAnnouncemenPMuserseeretesttablebuttonunderhamburgericononSystemEmailsectioshouldnotabletoResetthetablewhenuserapplytheadvancefilterclickonresetbutton @TBE
+  @336735 @ValidateAnnouncemenPMuserseeretesttablebuttonunderhamburgericononSystemEmailsectioshouldnotabletoResetthetablewhenuserapplytheadvancefilterclickonresetbutton @TBE1
   Scenario: Validate Announcement PM user see retest table button under hamburger icon on System Email section & should not able to Reset the table when user apply the advance filter & click on reset button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -8366,16 +8367,18 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I pause execution for "3" seconds
     And I click on "Send for Review" icon for "{SavedValue:FD Username}" inside table
     Then I softly see field "Status" as "Submitted for Review"
-    And I wait for "180" seconds
+    And I wait for "220" seconds
     And I refresh the page
     And I navigate to "Collab" sub tab
-    Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} awaiting Peer Review" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
+    Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} awaiting peer review" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
     When I click on advance filter "#advfRecordSystemEmailHistory" of table id "---announcement:-:systemEmailsTableId---"
     When I enter advance filter values inside id "advfRecordSystemEmailHistory"
       | From Address | contains | exe.automation@yopmail.com |
+    And I wait for "3" seconds
     Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
     And I click on parallel menu button in flex table title "System Emails"
     And I select "Reset Table" from parallel lines dropdown of "System Emails"
+    And I wait for "3" seconds
     Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
 
   @336736 @ValidateAnnouncementPMuserusershouldabletoseeallSystemEmailsaresortedbydefaultbyCreatedDatewithmostrecentontopforInternalorganization @Sprint-13-US-341529-332637 @SystemEmail @TBE
@@ -8427,6 +8430,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click toggle button to select "All Announcements"
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
     When I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
+    And I wait for "200" seconds
     And I refresh the page
     And I navigate to "Collab" sub tab
     Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} has been Peer Reviewed" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
@@ -8435,7 +8439,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I save the value from row "2" for column name "Subject" as "oldSubject" from flex table "---announcement:-:systemEmailsTableId---"
     Then I softly see that the saved value "{SavedValue:oldSubject}" and "Notification: Announcement {SavedValue:AnnEGMSID} awaiting peer review" are equal
 
-  @336737 @ValidateAnnouncementPMusershouldnotabletoseeemailforTaskReassignmentinSystemEmailssectioninmessagestabwhenAnnownerassigntheirtasktootheruser @Sprint-13-US-341529-332637 @SystemEmail @TBE
+  @336737 @ValidateAnnouncementPMusershouldnotabletoseeemailforTaskReassignmentinSystemEmailssectioninmessagestabwhenAnnownerassigntheirtasktootheruser @Sprint-13-US-341529-332637 @SystemEmail @TBE1
   Scenario: Validate Announcement PM user should not able to see email for Task Reassignment in System Emails section in messages tab when Ann owner assign their task to other user
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -8503,7 +8507,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     When I check "{SavedValue:AnnEGMSID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
-    And I pause execution for "30" seconds
+    And I pause execution for "50" seconds
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:AnnEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
@@ -8547,9 +8551,9 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:annAdminOwnerReplaceTableId---" panel
     When I check "{SavedValue:AnnEGMSID}" boxes in flex table with id "---announcement:-:annAdminOwnerReplaceTableId---"
     And I click on top right button "Transfer Ownership" in flex table with id "---announcement:-:annAdminOwnerReplaceTableId---"
-    And I pause execution for "30" seconds
+    And I pause execution for "50" seconds
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:annAdminTargetOwnerReplaceTableId---" panel
-    Then I see value "{SavedValue:AnnEGMSID}" for title "Announcement ID" inside table "---announcement:-:annAdminTargetOwnerReplaceTableId---"
+    Then I softly see value "{SavedValue:AnnEGMSID}" for title "Announcement ID" inside table "---announcement:-:annAdminTargetOwnerReplaceTableId---"
     When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     And I click toggle button to select "All Announcements"
