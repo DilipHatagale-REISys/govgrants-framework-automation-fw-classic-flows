@@ -4002,6 +4002,8 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly see value "Review Incomplete" for title "Status" inside table "---applicationReview:-:appreviewsTableId---"
 
     Examples:
