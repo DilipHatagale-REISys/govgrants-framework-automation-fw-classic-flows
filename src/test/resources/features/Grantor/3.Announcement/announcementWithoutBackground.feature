@@ -7584,7 +7584,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I close "System Email" modal by clicking the top right x button
     #336723
     And I wait for "5" seconds
-    When I click on top right parallel lines bar for "System Emails"
+    And I click on parallel menu button in flex table title "System Emails"
     And I select "Download as PDF" from parallel lines dropdown of "System Emails"
     And I download the file
     Then I see "System Emails" on page "1" of "govgrants" pdf file
@@ -8042,7 +8042,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---program:-:systemEmailsTableId---"
 
-  @336732 @336731 @ValidateAnnouncementFOuserseeRefreshbuttonunderhamburgericononSystemEmailssectionshouldabletorefreshthetable @Sprint-13-US-341529-332637 @SystemEmail @TBE1
+  @336732 @336731 @ValidateAnnouncementFOuserseeRefreshbuttonunderhamburgericononSystemEmailssectionshouldabletorefreshthetable @Sprint-13-US-341529-332637 @SystemEmail
   Scenario: Validate Announcement FO user see Refresh button under hamburger icon on System Emails section & should able to refresh the table
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -8101,7 +8101,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I select "Reset Table" from parallel lines dropdown of "System Emails"
     Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} awaiting peer review" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
 
-  @336722 @336724 @ValidateAnnouncementPOusercanseeAdvancefiltershouldworkcorrectlyonSystemEmailsection @Sprint-13-US-341529-332637 @SystemEmail @TBE
+  @336722 @336724 @ValidateAnnouncementPOusercanseeAdvancefiltershouldworkcorrectlyonSystemEmailsection @Sprint-13-US-341529-332637 @SystemEmail
   Scenario: Validate Announcement PO user can see Advance filter should work correctly on System Email section
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -8144,10 +8144,10 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} awaiting Peer Review" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
-    Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
+    Then I softly see value "automationpo@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "automationfd@yopmail.com" for title "To Address" inside table "---announcement:-:systemEmailsTableId---"
 
-  @336725 @ValidateAnnouncementEXEusershouldnotabletoviewemailontableemailgeneratedafterPublishtheAnninSystemEmailssectionincollabtab @Sprint-13-US-341529-332637 @SystemEmail @TBE1
+  @336725 @ValidateAnnouncementEXEusershouldnotabletoviewemailontableemailgeneratedafterPublishtheAnninSystemEmailssectionincollabtab @Sprint-13-US-341529-332637 @SystemEmail
   Scenario: Validate Announcement EXE user should not able to view email on table & email generated after Publish the Ann in System Emails section in collab tab
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -8300,14 +8300,14 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I wait for "220" seconds
     And I navigate to "Collab" sub tab
     And I refresh the page
-    Then I softly see value "Notification: Approver has initiated Undo Action on Announcement #{SavedValue:AnnEGMSID}." for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
+    Then I softly see value "Notification: Approver initiated undo Action on Announcement #{SavedValue:AnnEGMSID}." for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "automationpo@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "automationpo@yopmail.com" for title "To Address" inside table "---announcement:-:systemEmailsTableId---"
     And I click on "View" icon for "automationpo@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
     Then I softly see following details for email sent under collab:
-      | automationpo@yopmail.com                                                                  |
-      | automationpo@yopmail.com                                                                  |
-      | Notification: Approver has initiated Undo Action on Announcement #{SavedValue:AnnEGMSID}. |
+      | automationpo@yopmail.com                                                              |
+      | automationpo@yopmail.com                                                              |
+      | Notification: Approver initiated undo Action on Announcement #{SavedValue:AnnEGMSID}. |
     When I close "System Email" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -8316,14 +8316,14 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
     And I navigate to "Collab" sub tab
     And I refresh the page
-    Then I softly see value "Notification: Approver has initiated Undo Action on Announcement #{SavedValue:AnnEGMSID}." for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
+    Then I softly see value "Notification: Approver initiated undo Action on Announcement #{SavedValue:AnnEGMSID}." for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "automationpo@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "automationpm@yopmail.com" for title "To Address" inside table "---announcement:-:systemEmailsTableId---"
     And I click on "View" icon for "automationpo@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
     Then I softly see following details for email sent under collab:
-      | automationpo@yopmail.com                                                                  |
-      | automationpm@yopmail.com                                                                  |
-      | Notification: Approver has initiated Undo Action on Announcement #{SavedValue:AnnEGMSID}. |
+      | automationpo@yopmail.com                                                              |
+      | automationpm@yopmail.com                                                              |
+      | Notification: Approver initiated undo Action on Announcement #{SavedValue:AnnEGMSID}. |
     When I close "System Email" modal by clicking the top right x button
     #336739
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -8333,16 +8333,16 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
     And I navigate to "Collab" sub tab
     And I refresh the page
-    Then I softly see value "Notification: Approver has initiated Undo Action on Announcement #{SavedValue:AnnEGMSID}." for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
+    Then I softly see value "Notification: Approver initiated undo Action on Announcement #{SavedValue:AnnEGMSID}." for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "automationpo@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "automationpm@yopmail.com" for title "To Address" inside table "---announcement:-:systemEmailsTableId---"
     And I click on "View" icon for "automationpo@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
     Then I softly see following details for email sent under collab:
-      | automationpo@yopmail.com                                                                  |
-      | automationpm@yopmail.com                                                                  |
-      | Notification: Approver has initiated Undo Action on Announcement #{SavedValue:AnnEGMSID}. |
+      | automationpo@yopmail.com                                                              |
+      | automationpm@yopmail.com                                                              |
+      | Notification: Approver initiated undo Action on Announcement #{SavedValue:AnnEGMSID}. |
 
-  @336735 @ValidateAnnouncemenPMuserseeretesttablebuttonunderhamburgericononSystemEmailsectioshouldnotabletoResetthetablewhenuserapplytheadvancefilterclickonresetbutton @TBE1
+  @336735 @ValidateAnnouncemenPMuserseeretesttablebuttonunderhamburgericononSystemEmailsectioshouldnotabletoResetthetablewhenuserapplytheadvancefilterclickonresetbutton
   Scenario: Validate Announcement PM user see retest table button under hamburger icon on System Email section & should not able to Reset the table when user apply the advance filter & click on reset button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -8382,7 +8382,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I wait for "3" seconds
     Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
 
-  @336736 @ValidateAnnouncementPMuserusershouldabletoseeallSystemEmailsaresortedbydefaultbyCreatedDatewithmostrecentontopforInternalorganization @Sprint-13-US-341529-332637 @SystemEmail @TBE
+  @336736 @ValidateAnnouncementPMuserusershouldabletoseeallSystemEmailsaresortedbydefaultbyCreatedDatewithmostrecentontopforInternalorganization @Sprint-13-US-341529-332637 @SystemEmail
   Scenario: Validate Announcement PM user user should able to see all System Emails are sorted by default by Created Date with most recent on top for Internal organization
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
