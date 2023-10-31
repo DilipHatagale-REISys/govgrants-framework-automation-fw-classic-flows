@@ -91,7 +91,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Back To Strategic Plan" in the page details
     And I click on "Activate" in the page details
 
-  @PublishAnn-Application @workTemp
+  @PublishAnn-Application
   Scenario: Validate Publish Announcement Submit Application Submit
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -233,7 +233,7 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Start" icon for "Record Id" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
     When I click on "Accept" in the page details
 
-  @subawardactivateFlow @workTemp
+  @subawardactivateFlow
   Scenario: Activate the subaward
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -339,7 +339,8 @@ Feature: Validate all scenarios of every modules flow
 
   @reimbursementPaymentRequest @workTemp
   Scenario: rimbursement payment request
-    And I activated standalone subaward "Automation Runtime award" with properties "NO_ADVANCE_PERMISSION"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "NO_ADVANCE_PERMISSION" of type "Competitive"
+    #And I activated standalone subaward "Automation Runtime award" with properties "NO_ADVANCE_PERMISSION"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -395,7 +396,8 @@ Feature: Validate all scenarios of every modules flow
 
   @AdvancePaymentRequest @workTemp
   Scenario: Advance Payment Request
-    And I activated standalone subaward "Automation Runtime award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
+    #And I activated standalone subaward "Automation Runtime award" with properties "default"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -454,7 +456,10 @@ Feature: Validate all scenarios of every modules flow
 
   @progressReportWorkflow @workTemp
   Scenario: progress report
-    Given I activated standalone subaward "Automation Runtime award" with properties "default"
+#    Given I activated standalone subaward "Automation Runtime award" with properties "default"
+#    Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
+#    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
+    Given I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     Given I am on "SUBPORTAL" portal
@@ -505,8 +510,10 @@ Feature: Validate all scenarios of every modules flow
 
   @SiteVisitFlow @workTemp
   Scenario: Sitevisit Flow
-    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
-    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
+#    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
+#    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -600,8 +607,10 @@ Feature: Validate all scenarios of every modules flow
 
   @DeskReviewFlow @workTemp
   Scenario: Desk Review Flow
-    Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
-    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
+#    Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
+#    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
+    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -843,7 +852,9 @@ Feature: Validate all scenarios of every modules flow
 
   @ApplicationReviewtoapprovedFDMWorkFlow @workTemp
   Scenario Outline: Application Review WorkFlow
-    Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
+#    Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
+#    When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -1047,7 +1058,8 @@ Feature: Validate all scenarios of every modules flow
 
   @GrantorSideAmendmentRequestWorkflow @workTemp
   Scenario:
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+#    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1111,7 +1123,8 @@ Feature: Validate all scenarios of every modules flow
 
   @SubrecipientSideAmendmentRequestWorkflow @workTemp
   Scenario:
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+#    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default-Automation PO user" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
