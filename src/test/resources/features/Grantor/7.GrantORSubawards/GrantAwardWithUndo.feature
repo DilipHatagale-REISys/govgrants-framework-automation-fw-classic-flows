@@ -4013,62 +4013,21 @@ Feature: Validate all scenarios of grants and award with undo
     And I click on "View" icon for "Record id" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
     And I click on "Publish" in the page details
     Then I softly see status in Progress-bar is "Published" and is "green"
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Opportunities" tab
-    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:reviewsTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---applicationReview:-:reviewsTableId---"
-    And I navigate to "Financials" sub tab
-    When I click on "Qualify" in the page details
-    When I click on "Create Application" in the page details
-    And I click modal button "Save and Continue"
-    When I navigate to "Budget" sub tab
-    When I enter "Edition" values from "Application_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Budget" sub tab
-    When I expand nested table containing column value "BP01"
-    When I click on "Add Line Item Details" icon for "Construction" inside flex table with id "---applicationReview:-:budgetTableId---"
-    When I enter the following values into flex table with id "---applicationReview:-:addLineItemsModalTableId---" by clicking "New" :
-      | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
-      | Construction | The narrative | 500          | 50         | 50             |
-    When I close "Add Line Items" modal by clicking the top right x button
-    When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    And I enter value "Checked" into field "IsKeyContact__c"
-    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    When I navigate to "Proposal" sub tab
-    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                  | Target |
-      | Automation Permanent KPI | 10     |
-    When I navigate to "Forms and Files" sub tab
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    And I get the "EGMS ID"
-    When I click on "Submit Application" in the page details
-    Then I see field "Status" as "Submitted to Grantor"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
-    When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "Initiate Review Process" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime Announcement}"
-    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties "default"
-    When I login to "As a Grantor" app as "PM" user
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside table
-    And I save the field labeled "EGMS ID" as "GrantEGMSID"
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---" without waiting for record
+    And I click on "Create Subaward" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I pause execution for "5" seconds
+    And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
+    When I click on "Save" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "Grant ID" as "GrantEGMSID"
     And I save the field labeled "EGMS ID" as "AwardEGMSID"
     And I navigate to "Budget" sub tab
     And I save the field labeled "Project Period Start Date" as "ProjectPeriodStartDate"
@@ -4113,17 +4072,17 @@ Feature: Validate all scenarios of grants and award with undo
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---" without waiting for record
+    And I perform quick search for "{SavedValue:AwardEGMSID}" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---" without waiting for record
     And I click on "Accept" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---subAwardFromFDM:-:grantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside table
+    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---subAwardFromFDM:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---" without waiting for record
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
@@ -4148,4 +4107,3 @@ Feature: Validate all scenarios of grants and award with undo
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I can see top right button "Undo" in page detail
-
