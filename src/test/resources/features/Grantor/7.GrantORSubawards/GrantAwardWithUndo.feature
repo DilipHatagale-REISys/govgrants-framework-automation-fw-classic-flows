@@ -3117,7 +3117,7 @@ Feature: Validate all scenarios of grants and award with undo
     Then I softly see field "Status" as "Approved"
     Then I can see top right button "Undo" in page detail
 
-  @287622 @ValidateAwardapprovalhistorytableshouldupdatedcorrectlyafterclickonundobutton @Undo @TBE
+  @287622 @ValidateAwardapprovalhistorytableshouldupdatedcorrectlyafterclickonundobutton @Undo
   Scenario: Validate Award approval history table should updated correctly after click on undo button
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
