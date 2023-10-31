@@ -7583,6 +7583,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Notification: Announcement {SavedValue:AnnEGMSID} has been Peer Reviewed |
     When I close "System Email" modal by clicking the top right x button
     #336723
+    And I wait for "5" seconds
     When I click on top right parallel lines bar for "System Emails"
     And I select "Download as PDF" from parallel lines dropdown of "System Emails"
     And I download the file
@@ -8131,8 +8132,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I navigate to "Collab" sub tab
     When I click on advance filter "#advfRecordSystemEmailHistory" of table id "---announcement:-:systemEmailsTableId---"
     When I enter advance filter values inside id "advfRecordSystemEmailHistory"
-      | Created Date | contains | {Date:dd/MM/yyyy hh:mm a::d-1}} |
-    Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
+      | Subject | contains | Notification: Announcement {SavedValue:AnnEGMSID} awaiting Peer Review |
+    Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} awaiting Peer Review" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
     And I refresh the page
     #336724
     Then I softly see "Created Date" in flex table header "---announcement:-:systemEmailsTableId---"
@@ -8373,13 +8374,13 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} awaiting peer review" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
     When I click on advance filter "#advfRecordSystemEmailHistory" of table id "---announcement:-:systemEmailsTableId---"
     When I enter advance filter values inside id "advfRecordSystemEmailHistory"
-      | From Address | contains | exe.automation@yopmail.com |
+      | From Address | contains | pm.automation@yopmail.com |
     And I wait for "3" seconds
-    Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
+    Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
     And I click on parallel menu button in flex table title "System Emails"
     And I select "Reset Table" from parallel lines dropdown of "System Emails"
     And I wait for "3" seconds
-    Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
+    Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
 
   @336736 @ValidateAnnouncementPMuserusershouldabletoseeallSystemEmailsaresortedbydefaultbyCreatedDatewithmostrecentontopforInternalorganization @Sprint-13-US-341529-332637 @SystemEmail @TBE
   Scenario: Validate Announcement PM user user should able to see all System Emails are sorted by default by Created Date with most recent on top for Internal organization
@@ -8439,7 +8440,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I save the value from row "2" for column name "Subject" as "oldSubject" from flex table "---announcement:-:systemEmailsTableId---"
     Then I softly see that the saved value "{SavedValue:oldSubject}" and "Notification: Announcement {SavedValue:AnnEGMSID} awaiting peer review" are equal
 
-  @336737 @ValidateAnnouncementPMusershouldnotabletoseeemailforTaskReassignmentinSystemEmailssectioninmessagestabwhenAnnownerassigntheirtasktootheruser @Sprint-13-US-341529-332637 @SystemEmail @TBE1
+  @336737 @ValidateAnnouncementPMusershouldnotabletoseeemailforTaskReassignmentinSystemEmailssectioninmessagestabwhenAnnownerassigntheirtasktootheruser @Sprint-13-US-341529-332637 @SystemEmail
   Scenario: Validate Announcement PM user should not able to see email for Task Reassignment in System Emails section in messages tab when Ann owner assign their task to other user
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -8522,7 +8523,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
 
-  @336738 @ValidateAnnouncementEXEusershouldnotabletoseeemailforOwnershipTransferinSystemEmailssectioninmessagestabwhenAnnownertransfertheirownershiptootheruser @Sprint-13-US-341529-332637 @SystemEmail @TBE
+  @336738 @ValidateAnnouncementEXEusershouldnotabletoseeemailforOwnershipTransferinSystemEmailssectioninmessagestabwhenAnnownertransfertheirownershiptootheruser @Sprint-13-US-341529-332637 @SystemEmail
   Scenario: Validate Announcement EXE user should not able to see email for Ownership Transfer in System Emails section in messages tab when Ann owner transfer their ownership to other user
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
