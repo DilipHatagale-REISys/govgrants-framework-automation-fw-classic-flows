@@ -7928,7 +7928,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
 
-  @336718 @336729 @ValidateAnnouncementPMusershouldnotabletoseeemailtoInvitedApplicantsofPublishedAnnouncementinSystemEmailssectioninmessagestabwhenPublishtheAnn @Sprint-13-US-341529-332637 @SystemEmail @TBE
+  @336718 @336729 @ValidateAnnouncementPMusershouldnotabletoseeemailtoInvitedApplicantsofPublishedAnnouncementinSystemEmailssectioninmessagestabwhenPublishtheAnn @Sprint-13-US-341529-332637 @SystemEmail
   Scenario: Validate Announcement PM user should not able to see email to Notify Invited Applicants of Published Announcement in System Emails section in messages tab when Publish the Ann
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -8036,8 +8036,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I close "Send Email" modal by clicking the top right x button
     Then I softly see value "" for title "Attention To" inside table "---announcement:-:collabMessages---"
     Then I see the following rows under the following headers in table with id "---announcement:-:collabMessages---" :
-      | Subject         | From Address              | CC Address | To Address                | Attention To | Email Subject   |
-      | Automation Test | pm.automation@yopmail.com |            | pm.automation@yopmail.com |              | Automation Test |
+      | Subject         | From Address               | CC Address | To Address                | Attention To | Email Subject   | Preview | Actions      |
+      | Automation Test | exe.automation@yopmail.com |            | pm.automation@yopmail.com |              | Automation Test |         | View & Reply |
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---program:-:systemEmailsTableId---"
 
@@ -8131,7 +8131,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I navigate to "Collab" sub tab
     When I click on advance filter "#advfRecordSystemEmailHistory" of table id "---announcement:-:systemEmailsTableId---"
     When I enter advance filter values inside id "advfRecordSystemEmailHistory"
-      | Created Date | Equals to | {Date:MM/dd/yyyy::d-1} |
+      | Created Date | contains | {Date:MM/dd/yyyy::d-1} |
     Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
     And I refresh the page
     #336724
@@ -8372,7 +8372,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see value "Notification: Announcement {SavedValue:AnnEGMSID} awaiting Peer Review" for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
     When I click on advance filter "#advfRecordSystemEmailHistory" of table id "---announcement:-:systemEmailsTableId---"
     When I enter advance filter values inside id "advfRecordSystemEmailHistory"
-      | From Address | Equals to | exe.automation@yopmail.com |
+      | From Address | contains | exe.automation@yopmail.com |
     Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
     And I click on parallel menu button in flex table title "System Emails"
     And I select "Reset Table" from parallel lines dropdown of "System Emails"
@@ -8560,6 +8560,3 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I navigate to "Collab" sub tab
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
-
-  @336739 @ValidateAnnouncementFOusershouldabletoseeemailforInitiateUndotoalapproversinSystemEmailssectioninmessagestabwhenlasstepapproverclickonUndobutton @Sprint-13-US-341529-332637 @SystemEmail
-  Scenario: Validate Announcement FO user should able to see email for Initiate Undo & notify to all approvers in System Emails section in messages tab when last step approver click on Undo button
