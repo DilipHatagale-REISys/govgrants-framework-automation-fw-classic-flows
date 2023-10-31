@@ -2368,12 +2368,12 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I navigate to "Forms and Files" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Add" :
       | Title         | Description      |
-      | Notes Record1 | Automation Notes1  |
+      | Notes Record1 | Automation Notes1|
     Then I softly see value "Notes Record1" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     Then I softly see value "Automation SPI3" for title "Created By" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
-    When I edit the following rows inline in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Created By       | Title         | Description      |
       |Automation SPI3  | Notes Record | Automation Notes  |
     Then I softly see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
@@ -2388,7 +2388,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     And I save the field labeled "EGMS ID" as "SubawardId"
     When I navigate to "Actuals" sub tab
-    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record
+    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
     And I navigate to "Forms and Files" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Add" :
       | Title         | Description        |
@@ -2397,7 +2397,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     Then I softly see value "Automation SPA" for title "Created By" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
-    When I edit the following rows inline in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Created By     | Title         | Description      |
       |Automation SPA | Notes Record  | Automation Notes|
     Then I softly see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"

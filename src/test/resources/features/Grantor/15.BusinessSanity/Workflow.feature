@@ -1,7 +1,7 @@
 @workflow @regression
 Feature: Validate all scenarios of every modules flow
 
-  @programFlow @ValidateFullProgramFlow @workTemp
+  @programFlow @ValidateFullProgramFlow
   Scenario: Validate Full Program Flow
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -191,7 +191,7 @@ Feature: Validate all scenarios of every modules flow
     And I get the "EGMS ID"
     When I click on "Submit Application" in the page details
 
-  @pre-applicatiomFlow @workTemp
+  @pre-applicatiomFlow
   Scenario: Validate Pre-Application flow
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -692,7 +692,7 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
 
-  @CloseoutWorkFlow @workTemp
+  @CloseoutWorkFlow
   Scenario: Closeout WorkFlow
     And I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
