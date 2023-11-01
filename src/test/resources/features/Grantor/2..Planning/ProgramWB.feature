@@ -7917,7 +7917,7 @@ Feature: Validate all scenarios for program
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---program:-:systemEmailsTableId---"
 
-  @330620 @330624 @ValidateEXEusershouldseevaluepopulatesinSubjectFromAddressToAddressAttentiontoEmailsubjectcolumnsonMessagessectionundercollabtabofInternalProgram @Sprint-11-US-326332 @SystemEmail @TBE
+  @330620 @330624 @ValidateEXEusershouldseevaluepopulatesinSubjectFromAddressToAddressAttentiontoEmailsubjectcolumnsonMessagessectionundercollabtabofInternalProgram @Sprint-11-US-326332 @SystemEmail
   Scenario: Validate EXE user should see value populates in " Subject, From Address, To Address, Attention to, Email subject" columns on Messages section under collab tab of Internal Program
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -7989,7 +7989,7 @@ Feature: Validate all scenarios for program
     And I refresh the page
     #330598
     And I navigate to "Collab" sub tab
-    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    Then I softly see top right button "Send Email" inside flex table "---program:-:programCollabMessagesTableId---"
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -7997,7 +7997,7 @@ Feature: Validate all scenarios for program
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
     And I navigate to "Collab" sub tab
-    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    Then I softly see top right button "Send Email" inside flex table "---program:-:programCollabMessagesTableId---"
     #330629
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -8026,7 +8026,7 @@ Feature: Validate all scenarios for program
     Then I softly see field "Status" as "Submitted for Approval"
     #330598
     And I navigate to "Collab" sub tab
-    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    Then I softly see top right button "Send Email" inside flex table "---program:-:programCollabMessagesTableId---"
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -8035,7 +8035,7 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
     Then I softly see field "Status" as "Submitted for Approval"
     And I navigate to "Collab" sub tab
-    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    Then I softly see top right button "Send Email" inside flex table "---program:-:programCollabMessagesTableId---"
     #330629
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -8070,7 +8070,7 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
     Then I softly see field "Status" as "Approved"
     And I navigate to "Collab" sub tab
-    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    Then I softly see top right button "Send Email" inside flex table "---program:-:programCollabMessagesTableId---"
     #330629
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -8099,12 +8099,12 @@ Feature: Validate all scenarios for program
     And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     #330598
     And I navigate to "Collab" sub tab
-    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    Then I softly see top right button "Send Email" inside flex table "---program:-:programCollabMessagesTableId---"
     And I click on "Activate" in the page details
     Then I softly see field "Status" as "Active"
     #330598
     And I navigate to "Collab" sub tab
-    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    Then I softly see top right button "Send Email" inside flex table "---program:-:programCollabMessagesTableId---"
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -8113,7 +8113,7 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
     Then I softly see field "Status" as "Active"
     And I navigate to "Collab" sub tab
-    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    Then I softly see top right button "Send Email" inside flex table "---program:-:programCollabMessagesTableId---"
     #330629
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     And I navigate to "Planning" tab
