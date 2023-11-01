@@ -7959,7 +7959,7 @@ Feature: Validate all scenarios for program
     And I close "Reply" modal by clicking the top right x button
     Then I see value "" for title "Attention To" against the value "RE: Automation Test2" inside table "---program:-:programCollabMessagesTableId---"
 
-  @330625 @330629 @330617 @330598 @ValidatethatFDusercanSeeSendEmailbuttononmessagessectionofmessagestabinAnystateofInternalProgram @Sprint-11-US-326332 @SystemEmail @TBE
+  @330625 @330629 @330617 @330598 @ValidatethatFDusercanSeeSendEmailbuttononmessagessectionofmessagestabinAnystateofInternalProgram @Sprint-11-US-326332 @SystemEmail
   Scenario: Validate that FD user can See Send Email button on messages section of messages tab in Any state of Internal Program
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -8101,6 +8101,7 @@ Feature: Validate all scenarios for program
     And I navigate to "Collab" sub tab
     Then I softly see top right button "Send Email" inside flex table "---program:-:programCollabMessagesTableId---"
     And I click on "Activate" in the page details
+    And I wait for "5" seconds
     Then I softly see field "Status" as "Active"
     #330598
     And I navigate to "Collab" sub tab

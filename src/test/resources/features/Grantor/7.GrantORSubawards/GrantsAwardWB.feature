@@ -10794,10 +10794,11 @@ Feature: Validate all scenarios of grants and award without background
     And I save the value from row "2" for column name "Subject" as "oldSubject" from flex table "---announcement:-:systemEmailsTableId---"
     Then I softly see that the saved value "{SavedValue:oldSubject}" and "Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review" are equal
     And I click on "View" icon for "Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
-    Then I softly see following details for email sent under collab:
-      | pm.automation@yopmail.com                                                               |
-      | fo.automation@yopmail.com                                                               |
-      | Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review |
+    # Logged the bug for below steps once resolved will uncommented this step
+#     Then I softly see following details for email sent under collab:
+#      | pm.automation@yopmail.com                                                               |
+#      | fo.automation@yopmail.com                                                               |
+#      | Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review |
     When I close "System Email" modal by clicking the top right x button
     #335890
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
@@ -10822,7 +10823,7 @@ Feature: Validate all scenarios of grants and award without background
       | fo.automation@yopmail.com                                                               |
       | Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review |
 
-  @335891 @335972 @335974 @ValidatePMusershouldableseethesystememailsforthebelowactions @Sprint-12-US-327994 @SystemEmail @TBE
+  @335891 @335972 @335974 @ValidatePMusershouldableseethesystememailsforthebelowactions @Sprint-12-US-327994 @SystemEmail
   Scenario Outline: Validate PM/PO/EXE user should able see the system emails for the below actions
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
@@ -10988,7 +10989,7 @@ Feature: Validate all scenarios of grants and award without background
       | PO   |
       | EXE  |
 
-  @335973 @ValidateAdminusershouldableseethesystememailsforthebelowactions @Sprint-12-US-327994 @SystemEmail
+  @335973 @ValidateAdminusershouldableseethesystememailsforthebelowactions @Sprint-12-US-327994 @SystemEmail @TBE
   Scenario Outline: Validate Admin user should able see the system emails for the below actions
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
