@@ -1660,7 +1660,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     When I navigate to "Actuals" sub tab
     And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record
     And I navigate to "Forms and Files" sub tab
-    When I edit the following rows inline in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Created By     | Title         | Description      |
       |Automation PM  | Notes Record | Automation Notes|
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
@@ -1679,7 +1679,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     When I navigate to "Actuals" sub tab
     And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record
     And I navigate to "Forms and Files" sub tab
-    When I edit the following rows inline in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Created By     | Title         | Description      |
       |Automation FO  | Notes Record | Automation Notes|
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
@@ -1698,7 +1698,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     When I navigate to "Actuals" sub tab
     And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record
     And I navigate to "Forms and Files" sub tab
-    When I edit the following rows inline in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Created By     | Title         | Description      |
       |Automation PO  | Notes Record | Automation Notes|
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
