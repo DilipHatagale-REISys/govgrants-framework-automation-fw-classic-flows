@@ -510,8 +510,6 @@ Feature: Validate all scenarios of every modules flow
 
   @SiteVisitFlow @workTemp
   Scenario: Sitevisit Flow
-#    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
-#    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -596,9 +594,9 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click toggle button to select "Site Visit Reports - All"
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside table
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
 

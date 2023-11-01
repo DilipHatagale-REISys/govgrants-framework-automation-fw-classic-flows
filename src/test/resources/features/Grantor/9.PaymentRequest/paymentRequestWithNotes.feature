@@ -2474,10 +2474,10 @@ Feature: Validate all scenarios in Payment Request With Notes
       | Notes Record1 | Automation Notes1|
     When I enter the following values into flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Add" :
       | Title         | Description      |
-      | Notes Record1 | Automation Notes2|
+      | Notes Record2 | Automation Notes2|
     When I enter the following values into flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Add" :
       | Title         | Description      |
-      | Notes Record1 | Automation Notes2|
+      | Notes Record3 | Automation Notes3|
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
