@@ -2419,6 +2419,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PayreqId"
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
@@ -2460,6 +2461,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PayreqId"
     And I get the "EGMS ID"
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
@@ -2577,6 +2579,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PayreqId"
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
@@ -2667,6 +2670,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PayreqId"
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
@@ -2748,6 +2752,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PayreqId"
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
@@ -2819,6 +2824,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PayreqId"
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
@@ -2932,6 +2938,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PayreqId"
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
