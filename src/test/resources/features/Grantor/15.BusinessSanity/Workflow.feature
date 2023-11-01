@@ -594,9 +594,8 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    When I click on "Start" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside table
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
 
@@ -1298,7 +1297,7 @@ Feature: Validate all scenarios of every modules flow
     And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
     And I pause execution for "300" seconds
     And I refresh the page
-    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}" with subject "Sandbox: Notification: You have been Invited to Register in theEnterprise Grants Management System (EGMS)"
+    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}" with subject "Notification: You have been Invited to Register in the EnterpriseGrants Management System (EGMS)"
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     And I enter "Edition" values from "PotentialReviewersContact_Field_Values.xlsx"
