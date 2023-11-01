@@ -2446,7 +2446,7 @@ Feature: Validate all scenarios in Payment Request With Notes
 
   @236336 @VerifySPISPAusershouldnotabletoAddnotesnotesbutcaneditdeleteownnotesonreimbursementpaymentrequestisinSubmittedtoGrantorSubmittedforApprovalApprovedstates @sprint-14-US-225425 @hitesh @Notes
   Scenario:Verify SPI/SPA user should not able to 'Add' notes notes but can edit/delete own notes on reimbursement payment request is in Submitted to Grantor/Submitted for Approval/Approved states
-    Given I activated standalone subaward "Automation Runtime Award" with properties "SUBRECIPIENT_ORG_IND_USER-Automation PM user" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "NO_ADVANCE_PERMISSION-Automation PM user" of type "Competitive"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
