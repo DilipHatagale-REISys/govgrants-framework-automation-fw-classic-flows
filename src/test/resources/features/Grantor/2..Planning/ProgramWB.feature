@@ -7916,3 +7916,221 @@ Feature: Validate all scenarios for program
     And I navigate to "Collab" sub tab
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---program:-:systemEmailsTableId---"
+
+  @330620 @330624 @ValidateEXEusershouldseevaluepopulatesinSubjectFromAddressToAddressAttentiontoEmailsubjectcolumnsonMessagessectionundercollabtabofInternalProgram @Sprint-11-US-326332 @SystemEmail @TBE
+  Scenario: Validate EXE user should see value populates in " Subject, From Address, To Address, Attention to, Email subject" columns on Messages section under collab tab of Internal Program
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    Then I softly see field "Status" as "Created"
+    And I navigate to "Collab" sub tab
+    And I click on top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    And I send the email under collab tab with following details:
+      | To                        | Subject         | Body                       |
+      | fo.automation@yopmail.com | Automation Test | Automation Test Email Body |
+    Then I softly see the following messages in the page details contains:
+      | Email Sent Successfully. |
+    And I close "Send Email" modal by clicking the top right x button
+    Then I softly see value "" for title "Attention To" inside table "---program:-:programCollabMessagesTableId---"
+    Then I see the following rows under the following headers in table with id "---program:-:programCollabMessagesTableId---" :
+      | Subject         | From Address               | CC Address | To Address                | Attention To | Email Subject   |
+      | Automation Test | exe.automation@yopmail.com |            | fo.automation@yopmail.com |              | Automation Test |
+    #330624
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    And I navigate to "Collab" sub tab
+    And I click on "Reply" icon for "Automation Test" inside flex table with id "---program:-:programCollabMessagesTableId---" without waiting for record
+    And I send the email under collab tab with following details:
+      | To                         | Subject              | Body                                |
+      | exe.automation@yopmail.com | RE: Automation Test2 | Automation Re-Test Email Body Again |
+    Then I softly see the following messages in the page details contains:
+      | Email Sent Successfully. |
+    And I close "Reply" modal by clicking the top right x button
+    Then I see value "" for title "Attention To" against the value "RE: Automation Test2" inside table "---program:-:programCollabMessagesTableId---"
+
+  @330625 @330629 @330617 @330598 @ValidatethatFDusercanSeeSendEmailbuttononmessagessectionofmessagestabinAnystateofInternalProgram @Sprint-11-US-326332 @SystemEmail @TBE
+  Scenario: Validate that FD user can See Send Email button on messages section of messages tab in Any state of Internal Program
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" by showing entries "All" in flex table with id "---program:-:associateContactsTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" by showing entries "All" in flex table with id "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" by showing entries "All" in flex table with id "---program:-:associateObjectivesTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 1  |
+    And I refresh the page
+    #330598
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    #330629
+    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    And I navigate to "Collab" sub tab
+    Then I cannot see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    #330617
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    And I click on "Submit For Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    #330598
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    #330629
+    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I navigate to "Collab" sub tab
+    Then I cannot see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    #330617
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    Then I softly see field "Status" as "Submitted for Approval"
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    Then I softly see field "Status" as "Approved"
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    #330629
+    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    Then I softly see field "Status" as "Approved"
+    And I navigate to "Collab" sub tab
+    Then I cannot see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    #330617
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    Then I softly see field "Status" as "Approved"
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    Then I softly see value "Activate Internal Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:pendingTaskTableId---"
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    #330598
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    And I click on "Activate" in the page details
+    Then I softly see field "Status" as "Active"
+    #330598
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    Then I softly see field "Status" as "Active"
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    #330629
+    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    Then I softly see field "Status" as "Active"
+    And I navigate to "Collab" sub tab
+    Then I cannot see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    #330617
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
+    Then I softly see field "Status" as "Active"
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"

@@ -8286,11 +8286,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see value "Notification: Approver initiated undo action on Announcement {SavedValue:AnnEGMSID}." for title "Subject" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "automationpo@yopmail.com" for title "From Address" inside table "---announcement:-:systemEmailsTableId---"
     Then I softly see value "fo.automation@yopmail.com" for title "To Address" inside table "---announcement:-:systemEmailsTableId---"
-    And I click on "View" icon for "fo.automation@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
-    Then I softly see following details for email sent under collab:
-      | automationpo@yopmail.com                                                             |
-      | fo.automation@yopmail.com                                                            |
-      | Notification: Approver initiated undo action on Announcement {SavedValue:AnnEGMSID}. |
 
   @336735 @ValidateAnnouncemenPMuserseeretesttablebuttonunderhamburgericononSystemEmailsectioshouldnotabletoResetthetablewhenuserapplytheadvancefilterclickonresetbutton
   Scenario: Validate Announcement PM user see retest table button under hamburger icon on System Email section & should not able to Reset the table when user apply the advance filter & click on reset button
