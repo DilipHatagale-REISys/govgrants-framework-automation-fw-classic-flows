@@ -7952,8 +7952,8 @@ Feature: Validate all scenarios for program
     And I navigate to "Collab" sub tab
     And I click on "Reply" icon for "Automation Test" inside flex table with id "---program:-:programCollabMessagesTableId---" without waiting for record
     And I send the email under collab tab with following details:
-      | To                         | Subject              | Body                                |
-      | exe.automation@yopmail.com | RE: Automation Test2 | Automation Re-Test Email Body Again |
+      | To                        | Subject              | Body                                |
+      | fo.automation@yopmail.com | RE: Automation Test2 | Automation Re-Test Email Body Again |
     Then I softly see the following messages in the page details contains:
       | Email Sent Successfully. |
     And I close "Reply" modal by clicking the top right x button
@@ -8015,7 +8015,7 @@ Feature: Validate all scenarios for program
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
     And I navigate to "Collab" sub tab
-    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    Then I softly see top right button "Send Email" inside flex table "---program:-:programCollabMessagesTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -8055,7 +8055,7 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
     Then I softly see field "Status" as "Submitted for Approval"
     And I navigate to "Collab" sub tab
-    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    Then I softly see top right button "Send Email" inside flex table "---program:-:programCollabMessagesTableId---"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -8090,7 +8090,7 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
     Then I softly see field "Status" as "Approved"
     And I navigate to "Collab" sub tab
-    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    Then I softly see top right button "Send Email" inside flex table "---program:-:programCollabMessagesTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -8125,7 +8125,7 @@ Feature: Validate all scenarios for program
     And I navigate to "Collab" sub tab
     Then I cannot see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
     #330617
-    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     When I click toggle button to select "Internal Programs - All"
@@ -8133,4 +8133,4 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---"
     Then I softly see field "Status" as "Active"
     And I navigate to "Collab" sub tab
-    Then I can see top right button "Send Email" in flex table with id "---program:-:programCollabMessagesTableId---"
+    Then I softly see top right button "Send Email" inside flex table "---program:-:programCollabMessagesTableId---"

@@ -10622,3 +10622,179 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
     And I navigate to "Budget" sub tab
     Then I softly do not see value "Automation Permanent Focus Area2" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+
+  @335744 @335751 @335860 @335886 @ValidatePMusershouldabletoseethecolumnsinsystememailsectionTestthefunctionalityforawardmodule @Sprint-12-US-327994 @SystemEmail @TBE
+  Scenario: Validate PM user should able to see the columns in system email section Test the functionality for award module
+    Given I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I get the "EGMS ID"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Subaward Title" as "Automation Runtime Direct Award"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
+      | Reviewer Name | Role            | Description            | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Automation Description | 5        | No                   |
+    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
+    Then I softly see field "Status" as "Submitted for Review"
+    And I wait for "220" seconds
+    And I refresh the page
+    And I navigate to "Collab" sub tab
+    Then I softly see "Created Date" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "From Address" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "To Address" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "Subject" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review" for title "Subject" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "fo.automation@yopmail.com" for title "To Address" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    And I click on "View" icon for "pm.automation@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
+    Then I softly see following details for email sent under collab:
+      | pm.automation@yopmail.com                                                               |
+      | fo.automation@yopmail.com                                                               |
+      | Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review |
+    When I close "System Email" modal by clicking the top right x button
+    #335751
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Collab" sub tab
+    Then I softly see "Created Date" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "From Address" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "To Address" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "Subject" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review" for title "Subject" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "fo.automation@yopmail.com" for title "To Address" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    And I click on "View" icon for "pm.automation@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
+    Then I softly see following details for email sent under collab:
+      | pm.automation@yopmail.com                                                               |
+      | fo.automation@yopmail.com                                                               |
+      | Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review |
+    When I close "System Email" modal by clicking the top right x button
+    #335860
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Collab" sub tab
+    Then I softly see "Created Date" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "From Address" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "To Address" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "Subject" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review" for title "Subject" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "fo.automation@yopmail.com" for title "To Address" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    And I click on "View" icon for "pm.automation@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
+    Then I softly see following details for email sent under collab:
+      | pm.automation@yopmail.com                                                               |
+      | fo.automation@yopmail.com                                                               |
+      | Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review |
+    When I close "System Email" modal by clicking the top right x button
+    #335886
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Collab" sub tab
+    Then I softly see "Created Date" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "From Address" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "To Address" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "Subject" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see "Actions" in flex table header "---subAwardStandAlone:-:systemEmailsTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review" for title "Subject" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "pm.automation@yopmail.com" for title "From Address" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "fo.automation@yopmail.com" for title "To Address" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    And I click on "View" icon for "pm.automation@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
+    Then I softly see following details for email sent under collab:
+      | pm.automation@yopmail.com                                                               |
+      | fo.automation@yopmail.com                                                               |
+      | Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review |
+
+  @335887 @ValidateFOusershouldabletoseethecolumnsinsystememailsectionTestthefunctionalityforAwardmodule @Sprint-12-US-327994 @SystemEmail @TBE
+  Scenario: Validate FO user should able to see the columns in system email section & Test the functionality for Award module
+    Given I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I get the "EGMS ID"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Subaward Title" as "Automation Runtime Direct Award"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
+      | Reviewer Name | Role            | Description            | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Automation Description | 5        | No                   |
+    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
+    Then I softly see field "Status" as "Submitted for Review"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Responsibilities" sub tab
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
+    And I enter a review as "Passed"
+    When I click modal button "Save"
+    And I pause execution for "5" seconds
+    And I click on submit review
+    And I wait for "220" seconds
+    And I refresh the page
+    And I navigate to "Collab" sub tab
+    Then I softly see quick search inside table id "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "Notification: Award {SavedValue:Automation Runtime Direct Award} has been Peer Reviewed" for title "Subject" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly see value "Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review" for title "Subject" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
+    And I save the value from row "1" for column name "Subject" as "newSubject" from flex table "---announcement:-:systemEmailsTableId---"
+    Then I softly see that the saved value "{SavedValue:newSubject}" and "Notification: Award {SavedValue:Automation Runtime Direct Award} has been Peer Reviewed" are equal
+    And I save the value from row "2" for column name "Subject" as "oldSubject" from flex table "---announcement:-:systemEmailsTableId---"
+    Then I softly see that the saved value "{SavedValue:oldSubject}" and "Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review" are equal
+    And I click on "View" icon for "Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
+    Then I softly see following details for email sent under collab:
+      | pm.automation@yopmail.com                                                               |
+      | fo.automation@yopmail.com                                                               |
+      | Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review |
