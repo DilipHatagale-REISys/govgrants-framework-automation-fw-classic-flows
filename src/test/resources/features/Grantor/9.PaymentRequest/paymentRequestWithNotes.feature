@@ -2642,7 +2642,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
     And I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
     When I edit the following rows inline in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Edit" :
@@ -2724,7 +2724,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
     And I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
     When I edit the following rows inline in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Edit" :
@@ -2795,7 +2795,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
     Then I softly see field "Status" as "Rejected"
     And I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
@@ -2851,7 +2851,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
     And I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
@@ -2884,7 +2884,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
     Then I softly see field "Status" as "Submitted for Approval"
     And I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
@@ -2909,7 +2909,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Approved" and is "green"
     And I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
@@ -2974,8 +2974,8 @@ Feature: Validate all scenarios in Payment Request With Notes
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Reject" in the approval decision
     Then I softly see field "Status" as "Rejected"
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
@@ -2985,7 +2985,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Approved" and is "green"
     And I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
@@ -3011,6 +3011,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click on "Edit" in the page details
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PayreqId"
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement |
@@ -3071,7 +3072,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
     And I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :

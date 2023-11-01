@@ -1011,20 +1011,22 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Funding Decision Memo" in the page details
     Then I softly see field "Status" as "Created"
     And I get the "EGMS ID"
-    When I click on "Edit" in the page details
+    And I click on "Edit" in the page details
     When I enter values into fields
       | Value                       | Field                 |
       | AuGr                        | GrantCode__c          |
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
+    Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title                                | Recommended Budget | Recommend for Funding | Comments    |
       | {SavedValue:Automation Runtime FDM Announcement} | 500                | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---subAwardFromFDM:-:fdmApproverTableId---" by clicking "New" :
-      | Name                     | FDM    |
-      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
+      | Name                      | FDM    |
+      | {SavedValue:EXE Username} | Step 1 |
     And I click on "Submit for Approval" in the page details
+    Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     And I pause execution for "3" seconds
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
@@ -1315,7 +1317,7 @@ Feature: Validate all scenarios of every modules flow
     And I select "My Profile" from user dropdown
     Then I see the header is "{SavedValue:Automation Runtime Contact}" in the page details
 
-  @end-to-end-flow-paymentrequest-progressreport-closeout @workTemp
+  @end-to-end-flow-paymentrequest-progressreport-closeout
   Scenario: end-to-end-flow-paymentrequest-progressreport-closeout
     Given I activated standalone subaward "Automation Runtime award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
