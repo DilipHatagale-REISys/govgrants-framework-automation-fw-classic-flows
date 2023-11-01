@@ -2925,7 +2925,7 @@ Feature: Validate all scenarios in Payment Request With Notes
   Scenario:Verify IND user should not able to 'Add' notes notes but can edit/delete own notes on ad-hoc reimbursement payment request is in  Rejected state
     Given I activated standalone subaward "Automation Runtime Award" with properties "SUBRECIPIENT_ORG_IND_USER-Automation PM user" of type "Competitive"
     And I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI3" user
+    When I login to "Grants Portal" app as "IND" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
@@ -3044,7 +3044,7 @@ Feature: Validate all scenarios in Payment Request With Notes
       | Name                      | Closeout |
       | {SavedValue:EXE Username} | Step 1   |
     And I click on "Send To Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
     When I navigate to "Closeout" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
