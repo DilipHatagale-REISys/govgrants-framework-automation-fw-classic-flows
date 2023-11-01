@@ -394,7 +394,7 @@ Feature: Validate all scenarios of every modules flow
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
 
-  @AdvancePaymentRequest @workTemp
+  @AdvancePaymentRequest
   Scenario: Advance Payment Request
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     #And I activated standalone subaward "Automation Runtime award" with properties "default"
@@ -598,11 +598,11 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     And I click toggle button to select "Site Visit Reports - All"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside table
+    And I click on "Start" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside table
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
 
-  @DeskReviewFlow @workTemp
+  @DeskReviewFlow
   Scenario: Desk Review Flow
 #    Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
 #    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -1115,7 +1115,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
 
-  @SubrecipientSideAmendmentRequestWorkflow @workTemp
+  @SubrecipientSideAmendmentRequestWorkflow
   Scenario:
 #    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
     And I activated standalone subaward "Automation Runtime Award" with properties "default-Automation PO user" of type "Competitive"
