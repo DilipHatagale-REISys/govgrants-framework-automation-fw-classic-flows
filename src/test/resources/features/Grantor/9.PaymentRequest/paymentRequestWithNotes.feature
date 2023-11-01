@@ -2915,7 +2915,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
     When I edit the following rows inline in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Edit" :
       |Title          | Title          | Description       |
-      |Notes Record1  | Notes Record   | Automation Notes  |
+      |Notes Record3  | Notes Record   | Automation Notes  |
     Then I softly see value "Notes Record" for title "Title" inside table "---paymentRequest:-:advancePaymentNotesTableId---"
     Then I softly see value "Automation Notes" for title "Description" inside table "---paymentRequest:-:advancePaymentNotesTableId---"
     And I click on "Delete" icon for "Notes Record" inside flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" without waiting for record
