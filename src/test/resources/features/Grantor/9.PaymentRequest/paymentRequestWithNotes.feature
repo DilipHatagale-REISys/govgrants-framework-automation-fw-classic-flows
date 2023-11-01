@@ -2923,7 +2923,7 @@ Feature: Validate all scenarios in Payment Request With Notes
 
   @236342 @VerifyINDusershouldnotabletoAddnotesnotesbutcaneditdeleteownnotesonadhocreimbursementpaymentrequestisinRejectedstate @sprint-14-US-225425 @hitesh @Notes
   Scenario:Verify IND user should not able to 'Add' notes notes but can edit/delete own notes on ad-hoc reimbursement payment request is in  Rejected state
-    Given I activated standalone subaward "Automation Runtime Award" with properties "SUBRECIPIENT_ORG_IND_USER" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "SUBRECIPIENT_ORG_IND_USER-Automation PM user" of type "Competitive"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -2999,7 +2999,7 @@ Feature: Validate all scenarios in Payment Request With Notes
 
   @236344 @VerifyINDusershouldnotabletoAddnotesnotesbutcaneditdeleteownnotesonschedulereimbursementpaymentrequestisinForceClosedstates @sprint-14-US-225425 @hitesh @Notes
   Scenario:Verify IND user should not able to 'Add' notes notes but can edit/delete own notes on schedule reimbursement payment request is in Force Closed states
-    Given I activated standalone subaward "Automation Runtime Award" with properties "SUBRECIPIENT_ORG_IND_USER" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "SUBRECIPIENT_ORG_IND_USER-Automation PM user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "{SavedValue:Automation Runtime award}" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
