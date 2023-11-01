@@ -307,7 +307,7 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click on "Delete" icon for "Notes Record" inside flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" without waiting for record
     Then I softly do not see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
 
-  @236254 @VerifyPMEXEAdminusershouldnotabletoAddnotesnotesonad-hocreimbursementpaymentrequestisinApprovedstate @sprint-14-US-225425 @hitesh @Notes
+  @236254 @VerifyPMEXEAdminusershouldnotabletoAddnotesnotesonadhocreimbursementpaymentrequestisinApprovedstate @sprint-14-US-225425 @hitesh @Notes
   Scenario:Verify PM/EXE/Admin user should not able to 'Add' notes notes on ad-hoc reimbursement payment request is in 'Approved ' state
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -2404,22 +2404,3 @@ Feature: Validate all scenarios in Payment Request With Notes
     Then I softly see value "Automation Notes" for title "Description" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
     And I click on "Delete" icon for "Notes Record" inside flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" without waiting for record
     Then I softly do not see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
-
-  @236237 @VerifyPMPOEXEADMINFDsameOrgusershouldbeabletoAddnotesbutEditDeletetheirownnotesonadhocreimbursementpaymentrequestisinSubmittograntorstate @sprint-14-US-225425 @hitesh @Notes
-  Scenario:Verify PM/PO/EXE/ADMIN/FD same Org user should be able to 'Add' notes but 'Edit/Delete' their own notes on ad-hoc reimbursement payment request is in 'Submit to grantor' state
-    Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
-    And I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI3" user
-    And I navigate to "Grants" tab
-    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Subawards  - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
-    And I save the field labeled "EGMS ID" as "SubawardId"
-    When I navigate to "Actuals" sub tab
-    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Runtime Payment Request" into field "Title__c"
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I get the "EGMS ID"

@@ -338,6 +338,7 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Activate" in the page details
 
   @reimbursementPaymentRequest
+  Scenario: reimbursement Payment Request
     Given I activated standalone subaward "Automation Runtime Award" with properties "NO_ADVANCE_PERMISSION" of type "Competitive"
     #And I activated standalone subaward "Automation Runtime award" with properties "NO_ADVANCE_PERMISSION"
     And I am on "SUBPORTAL" portal
