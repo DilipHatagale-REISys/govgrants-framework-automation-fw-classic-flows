@@ -1528,4 +1528,4 @@ Feature: Validate all scenarios of every modules flow
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:CloseoutTableId---" panel
     And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
     #TBC:completed status not updated due to bug change after bug reslved
-    Then I softly see field "Status" as "Approved"
+    Then I softly see field "Status" as "Completed"
