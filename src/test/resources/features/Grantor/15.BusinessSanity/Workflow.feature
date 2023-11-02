@@ -1,7 +1,7 @@
 @workflow @regression
 Feature: Validate all scenarios of every modules flow
 
-  @programFlow @ValidateFullProgramFlow @workTemp
+  @programFlow @ValidateFullProgramFlow
   Scenario: Validate Full Program Flow
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -91,7 +91,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Back To Strategic Plan" in the page details
     And I click on "Activate" in the page details
 
-  @PublishAnn-Application @workTemp
+  @PublishAnn-Application
   Scenario: Validate Publish Announcement Submit Application Submit
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -191,7 +191,7 @@ Feature: Validate all scenarios of every modules flow
     And I get the "EGMS ID"
     When I click on "Submit Application" in the page details
 
-  @pre-applicatiomFlow @workTemp
+  @pre-applicatiomFlow
   Scenario: Validate Pre-Application flow
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -233,7 +233,7 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Start" icon for "Record Id" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
     When I click on "Accept" in the page details
 
-  @subawardactivateFlow @workTemp
+  @subawardactivateFlow
   Scenario: Activate the subaward
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -337,9 +337,10 @@ Feature: Validate all scenarios of every modules flow
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Activate" in the page details
 
-  @reimbursementPaymentRequest @workTemp
-  Scenario: rimbursement payment request
-    And I activated standalone subaward "Automation Runtime award" with properties "NO_ADVANCE_PERMISSION"
+  @reimbursementPaymentRequest
+  Scenario: reimbursement Payment Request
+    Given I activated standalone subaward "Automation Runtime Award" with properties "NO_ADVANCE_PERMISSION" of type "Competitive"
+    #And I activated standalone subaward "Automation Runtime award" with properties "NO_ADVANCE_PERMISSION"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -393,9 +394,10 @@ Feature: Validate all scenarios of every modules flow
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
 
-  @AdvancePaymentRequest @workTemp
+  @AdvancePaymentRequest
   Scenario: Advance Payment Request
-    And I activated standalone subaward "Automation Runtime award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
+    #And I activated standalone subaward "Automation Runtime award" with properties "default"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -418,7 +420,7 @@ Feature: Validate all scenarios of every modules flow
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -452,9 +454,12 @@ Feature: Validate all scenarios of every modules flow
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
 
-  @progressReportWorkflow @workTemp
+  @progressReportWorkflow
   Scenario: progress report
-    Given I activated standalone subaward "Automation Runtime award" with properties "default"
+#    Given I activated standalone subaward "Automation Runtime award" with properties "default"
+#    Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
+#    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
+    Given I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     Given I am on "SUBPORTAL" portal
@@ -505,8 +510,8 @@ Feature: Validate all scenarios of every modules flow
 
   @SiteVisitFlow @workTemp
   Scenario: Sitevisit Flow
-    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
-    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -578,30 +583,28 @@ Feature: Validate all scenarios of every modules flow
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click toggle button to select "Site Visit Reports - All"
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside table
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
 
-  @DeskReviewFlow @workTemp
+  @DeskReviewFlow
   Scenario: Desk Review Flow
-    Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
-    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
+#    Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
+#    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
+    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -672,17 +675,14 @@ Feature: Validate all scenarios of every modules flow
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
-    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -692,7 +692,7 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
 
-  @CloseoutWorkFlow @workTemp
+  @CloseoutWorkFlow
   Scenario: Closeout WorkFlow
     And I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
@@ -843,7 +843,9 @@ Feature: Validate all scenarios of every modules flow
 
   @ApplicationReviewtoapprovedFDMWorkFlow @workTemp
   Scenario Outline: Application Review WorkFlow
-    Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
+#    Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
+#    When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -1008,20 +1010,22 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Funding Decision Memo" in the page details
     Then I softly see field "Status" as "Created"
     And I get the "EGMS ID"
-    When I click on "Edit" in the page details
+    And I click on "Edit" in the page details
     When I enter values into fields
       | Value                       | Field                 |
       | AuGr                        | GrantCode__c          |
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
+    Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title                                | Recommended Budget | Recommend for Funding | Comments    |
       | {SavedValue:Automation Runtime FDM Announcement} | 500                | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---subAwardFromFDM:-:fdmApproverTableId---" by clicking "New" :
-      | Name                     | FDM    |
-      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
+      | Name                      | FDM    |
+      | {SavedValue:EXE Username} | Step 1 |
     And I click on "Submit for Approval" in the page details
+    Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     And I pause execution for "3" seconds
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
@@ -1045,9 +1049,10 @@ Feature: Validate all scenarios of every modules flow
     When I perform quick search for "{SavedValue:EGMSID}" in "---home:-:termsAndConditionsTableId---" panel
     Then I softly see value "Active" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---home:-:termsAndConditionsTableId---"
 
-  @GrantorSideAmendmentRequestWorkflow @workTemp
+  @GrantorSideAmendmentRequestWorkflow
   Scenario:
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+#    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1109,9 +1114,10 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
 
-  @SubrecipientSideAmendmentRequestWorkflow @workTemp
+  @SubrecipientSideAmendmentRequestWorkflow
   Scenario:
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+#    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default-Automation PO user" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -1291,7 +1297,7 @@ Feature: Validate all scenarios of every modules flow
     And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
     And I pause execution for "300" seconds
     And I refresh the page
-    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}" with subject "Sandbox: Notification: You have been Invited to Register in theEnterprise Grants Management System (EGMS)"
+    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}" with subject "Notification: You have been Invited to Register in the EnterpriseGrants Management System (EGMS)"
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     And I enter "Edition" values from "PotentialReviewersContact_Field_Values.xlsx"
@@ -1310,7 +1316,7 @@ Feature: Validate all scenarios of every modules flow
     And I select "My Profile" from user dropdown
     Then I see the header is "{SavedValue:Automation Runtime Contact}" in the page details
 
-  @end-to-end-flow-paymentrequest-progressreport-closeout @workTemp
+  @end-to-end-flow-paymentrequest-progressreport-closeout
   Scenario: end-to-end-flow-paymentrequest-progressreport-closeout
     Given I activated standalone subaward "Automation Runtime award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -1336,7 +1342,7 @@ Feature: Validate all scenarios of every modules flow
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
-    When I navigate to "Files" sub tab
+    And I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -1523,4 +1529,4 @@ Feature: Validate all scenarios of every modules flow
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:CloseoutTableId---" panel
     And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
     #TBC:completed status not updated due to bug change after bug reslved
-    Then I softly see field "Status" as "Approved"
+    Then I softly see field "Status" as "Completed"

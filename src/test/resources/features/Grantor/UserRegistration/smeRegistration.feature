@@ -8,6 +8,8 @@ Feature: Validate all scenarios for SME Registration
     When I navigate to "{grantor_sidebar:smeReviewer}" content inside "{grantor_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "---grantor_tableId:-:PotentialReviewerContactTableId---"
     And I enter "smeReviewerRegistration" values from "Registration_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldEmail"
     And I click modal button "Save"
     And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
@@ -16,7 +18,7 @@ Feature: Validate all scenarios for SME Registration
     And I click modal button "Send"
     And I refresh the page
     And I pause execution for "180" seconds
-    And I navigate to yopmail portal for "smereviewer@yopmail.com"
+    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}"
     #34840 #monu
     Then I see the header is "Registration" in the page details
     Then I see the sub-header is "Legal Disclaimer 1 of 2" in the page details
@@ -39,6 +41,8 @@ Feature: Validate all scenarios for SME Registration
     When I navigate to "{grantor_sidebar:smeReviewer}" content inside "{grantor_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "---grantor_tableId:-:PotentialReviewerContactTableId---"
     And I enter "smeReviewerRegistration" values from "Registration_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldEmail"
     And I click modal button "Save"
     And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
@@ -47,7 +51,7 @@ Feature: Validate all scenarios for SME Registration
     And I click modal button "Send"
     And I refresh the page
     And I pause execution for "180" seconds
-    And I navigate to yopmail portal for "smereviewer@yopmail.com"
+    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}"
     Then I see the header is "Registration" in the page details
     Then I see the sub-header is "Legal Disclaimer 1 of 2" in the page details
     When I click on "Agree" in the page details
@@ -67,6 +71,8 @@ Feature: Validate all scenarios for SME Registration
     When I navigate to "{grantor_sidebar:smeReviewer}" content inside "{grantor_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "---grantor_tableId:-:PotentialReviewerContactTableId---"
     And I enter "smeReviewerRegistration" values from "Registration_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldEmail"
     And I click modal button "Save"
     And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
@@ -127,15 +133,15 @@ Feature: Validate all scenarios for SME Registration
   Scenario: Validate user is able to see all expected contacts
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
-    When I navigate to "{grantor_sidebar:InternalLink}" content inside "{grantor_sidebar:ContactSubheaderName}" subheader on left panel
-    When I perform quick search for "{grantee_testData:InternalContacts}" in "{grantor_tableId:InternalContactsTableId}" panel
-    Then I softly see value "{grantee_testData:InternalContacts}" for title "Full Name" inside table "{grantor_tableId:InternalContactsTableId}"
-    When I navigate to "{grantor_sidebar:SubrecipientsLink}" content inside "{grantor_sidebar:ContactSubheaderName}" subheader on left panel
-    When I perform quick search for "{grantee_testData:SMEContact}" in "{grantor_tableId:InternalContactsTableId}" panel
-    Then I softly see value "{grantee_testData:SMEContact}" for title "Full Name" inside table "{grantor_tableId:InternalContactsTableId}"
-    When I navigate to "{grantor_sidebar:SMEReviewersLink}" content inside "{grantor_sidebar:ContactSubheaderName}" subheader on left panel
-    When I perform quick search for "{grantee_testData:SMEReviewerContact}" in "{grantor_tableId:PotentialReviewerContactTableId}" panel
-    Then I softly see value "{grantee_testData:SMEReviewerContact}" for title "Full Name" inside table "{grantor_tableId:PotentialReviewerContactTableId}"
+    When I navigate to "Internal" content inside "Contacts" subheader on left panel
+    When I perform quick search for "Automation PM" in "{grantor_tableId:InternalContactsTableId}" panel
+    Then I softly see value "Automation PM" for title "Full Name" inside table "{grantor_tableId:InternalContactsTableId}"
+    When I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
+    When I perform quick search for "Automation SPI3" in "{grantor_tableId:InternalContactsTableId}" panel
+    Then I softly see value "Automation SPI3" for title "Full Name" inside table "{grantor_tableId:InternalContactsTableId}"
+    When I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    When I perform quick search for "SME1 USER" in "{grantor_tableId:PotentialReviewerContactTableId}" panel
+    Then I softly see value "SME1 USER" for title "Full Name" inside table "{grantor_tableId:PotentialReviewerContactTableId}"
 
   @33837 @VerifySystemDisplayAllRelatedTasks @monu
   Scenario: Validate user is able to see all expected contacts
