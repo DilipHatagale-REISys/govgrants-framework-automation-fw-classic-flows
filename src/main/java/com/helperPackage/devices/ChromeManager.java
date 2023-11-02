@@ -47,7 +47,7 @@ public final class ChromeManager implements qrYoTsOWwA {
     @Override
     public void setupController() {
 //        System.setProperty("webdriver.chrome.driver","C:\\Users\\DELL\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver",".\\src\\test\\resources\\ChromeDrivers\\chromedriver_for_browserVersion118.exe");
+        System.setProperty("webdriver.chrome.driver",".\\src\\test\\resources\\ChromeDrivers\\chromedriver_for_browserVersion119.exe");
 
 
 
