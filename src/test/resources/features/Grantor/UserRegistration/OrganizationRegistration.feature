@@ -84,11 +84,12 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456789" into "Social Security Number (SSN)" on old form
-    When I enter value as "IndividualRegistration@yopmail.com" into "Email" on old form
+    And I generate the random EmailID and save as "uniqueEmailID"
+    When I enter value as "{SavedValue:uniqueEmailID}" into "Email" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     #82790
-    Then I softly see field "Primary Email" as "individualregistration@yopmail.com"
+    Then I softly see field "Primary Email" as "{SavedValue:uniqueEmailID}"
     And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see "Mr." text enter in field "fieldPrimaryRepPrefix__c"
@@ -188,7 +189,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456789" into "Social Security Number (SSN)" on old form
-    When I enter value as "IndividualRegistration@yopmail.com" into "Email" on old form
+    And I generate the random EmailID and save as "uniqueEmailID"
+    When I enter value as "{SavedValue:uniqueEmailID}" into "Email" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     Then I see the header is "Registration" in the page details
@@ -291,7 +293,8 @@ Feature: Validate all registration related scenarios
     When I click on "Save" in the page details
     And I save the contact name as "Automation Runtime Organization"
     And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
-    And I enter value "AutomationInternal@yopmail.com" into field "fieldPrimaryRepEmail__c"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldPrimaryRepEmail__c"
     When I click on "Save" in the page details
     When I click on "Submit" in the page details
     And I am on "INTERNAL" portal
@@ -312,10 +315,11 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456789" into "Social Security Number (SSN)" on old form
-    When I enter value as "IndividualRegistration@yopmail.com" into "Email" on old form
+    And I generate the random EmailID and save as "uniqueEmailID"
+    When I enter value as "{SavedValue:uniqueEmailID}" into "Email" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
-    Then I softly see field "Primary Email" as "individualregistration@yopmail.com"
+    Then I softly see field "Primary Email" as "{SavedValue:uniqueEmailID}"
     And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
     And I enter "CreationWithOnlyPaymentDetail" values from "UserRegistration_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -442,10 +446,11 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456789" into "Social Security Number (SSN)" on old form
-    When I enter value as "IndividualRegistration@yopmail.com" into "Email" on old form
+    And I generate the random EmailID and save as "uniqueEmailID"
+    When I enter value as "{SavedValue:uniqueEmailID}" into "Email" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
-    Then I softly see field "Primary Email" as "individualregistration@yopmail.com"
+    Then I softly see field "Primary Email" as ""{SavedValue:uniqueEmailID}"
     And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Submit" in the page details
