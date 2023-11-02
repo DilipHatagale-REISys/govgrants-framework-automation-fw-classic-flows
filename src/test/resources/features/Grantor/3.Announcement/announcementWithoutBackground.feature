@@ -8530,7 +8530,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
     And I navigate to "Collab" sub tab
-    Then I softly see "Attention To" in flex table header "---amendment:-:projectAreasTableId---"
+    Then I softly see "Attention To" in flex table header "---announcement:-:collabMessages---"
     And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
     And I send the email under collab tab with following details:
       | To                         | Subject         | Body                       |
@@ -8549,7 +8549,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
     When I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
     And I navigate to "Collab" sub tab
-    Then I softly see "Attention To" in flex table header "---amendment:-:projectAreasTableId---"
+    Then I softly see "Attention To" in flex table header "---announcement:-:collabMessages---"
     And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
     And I send the email under collab tab with following details:
       | To                         | Subject             | Body                           |
@@ -8566,12 +8566,13 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
   Scenario: Validate Announcement FO user should able to see "Attention To" Column under messages section in messages tab
     And I published "Competitive" type announcement having name "Automation Runtime Competitive Announcement" and properties "default"
     When I login to "As a Grantor" app as "FO" user
+    And I navigate to "Announcements" tab
     And I click toggle button to select "All Announcements"
     When I perform quick search for "{SavedValue:Automation Runtime Competitive Announcement}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
     Then I see status in Progress-bar is "Published" and is "green"
     And I navigate to "Collab" sub tab
-    Then I softly see "Attention To" in flex table header "---amendment:-:projectAreasTableId---"
+    Then I softly see "Attention To" in flex table header "---announcement:-:collabMessages---"
     And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
     And I send the email under collab tab with following details:
       | To                          | Subject              | Body                            |
@@ -8591,7 +8592,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
     Then I see status in Progress-bar is "Published" and is "green"
     And I navigate to "Collab" sub tab
-    Then I softly see "Attention To" in flex table header "---amendment:-:projectAreasTableId---"
+    Then I softly see "Attention To" in flex table header "---announcement:-:collabMessages---"
     And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
     And I send the email under collab tab with following details:
       | To                         | Subject             | Body                           |
@@ -8620,7 +8621,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
-    Then I softly see "Attention To" in flex table header "---amendment:-:projectAreasTableId---"
+    And I navigate to "Collab" sub tab
+    Then I softly see "Attention To" in flex table header "---announcement:-:collabMessages---"
     And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
     And I send the email under collab tab with following details:
       | To                         | Subject             | Body                           |
@@ -8652,7 +8654,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
     And I navigate to "Collab" sub tab
-    Then I softly see "Attention To" in flex table header "---amendment:-:projectAreasTableId---"
+    Then I softly see "Attention To" in flex table header "---announcement:-:collabMessages---"
     And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
     And I send the email under collab tab with following details:
       | To                         | Subject         | Body                       |
