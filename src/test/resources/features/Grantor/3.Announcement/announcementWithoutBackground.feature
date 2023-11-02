@@ -8272,7 +8272,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "View" icon for "pm.automation@yopmail.com" inside flex table with id "---announcement:-:systemEmailsTableId---" without waiting for record
     Then I softly see following details for email sent under collab:
       | automationpo@yopmail.com                                                             |
-      | pm.automation@yopmail.com                                                          |
+      | pm.automation@yopmail.com                                                            |
       | Notification: Approver initiated undo action on Announcement {SavedValue:AnnEGMSID}. |
     When I close "System Email" modal by clicking the top right x button
     #336739
@@ -8510,3 +8510,157 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I navigate to "Collab" sub tab
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---announcement:-:systemEmailsTableId---"
+
+  @329980 @329981 @ValidateforAnnouncementPMusershouldabletoseeAttentionToColumnundermessagessectioninmessagestab @Sprint-11-US-326384 @SystemEmail @TBE1
+  Scenario: Validate for Announcement PM user should able to see Attention To Column under messages section in messages tab
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Formula Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
+    And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "CreationFormula_ByApp_focusNo" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I navigate to "Overview" sub tab
+    And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
+    When I navigate to "Overview" sub tab
+    When I enter value "Individuals" into field "fieldEligibleApplicantTypes__c"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    And I navigate to "Collab" sub tab
+    Then I softly see "Attention To" in flex table header "---amendment:-:projectAreasTableId---"
+    And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
+    And I send the email under collab tab with following details:
+      | To                         | Subject         | Body                       |
+      | exe.automation@yopmail.com | Automation Test | Automation Test Email Body |
+    Then I softly see the following messages in the page details contains:
+      | Email Sent Successfully. |
+    And I close "Send Email" modal by clicking the top right x button
+    Then I softly see value "" for title "Attention To" inside table "---announcement:-:collabMessages---"
+    Then I see the following rows under the following headers in table with id "---announcement:-:collabMessages---" :
+      | Subject         | From Address              | CC Address | To Address                 | Attention To | Email Subject   | Preview | Actions      |
+      | Automation Test | pm.automation@yopmail.com |            | exe.automation@yopmail.com |              | Automation Test |         | View & Reply |
+    #329981
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    And I click toggle button to select "All Announcements"
+    When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    When I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
+    And I navigate to "Collab" sub tab
+    Then I softly see "Attention To" in flex table header "---amendment:-:projectAreasTableId---"
+    And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
+    And I send the email under collab tab with following details:
+      | To                         | Subject             | Body                           |
+      | pm1.automation@yopmail.com | Automation Test PM1 | Automation Test PM1 Email Body |
+    Then I softly see the following messages in the page details contains:
+      | Email Sent Successfully. |
+    And I close "Send Email" modal by clicking the top right x button
+    Then I softly see value "" for title "Attention To" inside table "---announcement:-:collabMessages---"
+    Then I see the following rows under the following headers in table with id "---announcement:-:collabMessages---" :
+      | Subject             | From Address             | CC Address | To Address                 | Attention To | Email Subject       | Preview | Actions      |
+      | Automation Test PM1 | automationpo@yopmail.com |            | pm1.automation@yopmail.com |              | Automation Test PM1 |         | View & Reply |
+
+  @329982 @329983 @ValidateAnnouncementFOusershouldabletoseeAttentionToColumnundermessagessectioninmessagestab @Sprint-11-US-326384 @SystemEmail @TBE1
+  Scenario: Validate Announcement FO user should able to see "Attention To" Column under messages section in messages tab
+    And I published "Competitive" type announcement having name "Automation Runtime Competitive Announcement" and properties "default"
+    When I login to "As a Grantor" app as "FO" user
+    And I click toggle button to select "All Announcements"
+    When I perform quick search for "{SavedValue:Automation Runtime Competitive Announcement}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
+    Then I see status in Progress-bar is "Published" and is "green"
+    And I navigate to "Collab" sub tab
+    Then I softly see "Attention To" in flex table header "---amendment:-:projectAreasTableId---"
+    And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
+    And I send the email under collab tab with following details:
+      | To                          | Subject              | Body                            |
+      | exe1.automation@yopmail.com | Automation Test EXE1 | Automation Test EXE1 Email Body |
+    Then I softly see the following messages in the page details contains:
+      | Email Sent Successfully. |
+    And I close "Send Email" modal by clicking the top right x button
+    Then I softly see value "" for title "Attention To" inside table "---announcement:-:collabMessages---"
+    Then I see the following rows under the following headers in table with id "---announcement:-:collabMessages---" :
+      | Subject              | From Address              | CC Address | To Address                  | Attention To | Email Subject        | Preview | Actions      |
+      | Automation Test EXE1 | fo.automation@yopmail.com |            | exe1.automation@yopmail.com |              | Automation Test EXE1 |         | View & Reply |
+    #329983
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    And I click toggle button to select "All Announcements"
+    When I perform quick search for "{SavedValue:Automation Runtime Competitive Announcement}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
+    Then I see status in Progress-bar is "Published" and is "green"
+    And I navigate to "Collab" sub tab
+    Then I softly see "Attention To" in flex table header "---amendment:-:projectAreasTableId---"
+    And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
+    And I send the email under collab tab with following details:
+      | To                         | Subject             | Body                           |
+      | fo1.automation@yopmail.com | Automation Test FO1 | Automation Test FO1 Email Body |
+    Then I softly see the following messages in the page details contains:
+      | Email Sent Successfully. |
+    And I close "Send Email" modal by clicking the top right x button
+    Then I softly see value "" for title "Attention To" inside table "---announcement:-:collabMessages---"
+    Then I see the following rows under the following headers in table with id "---announcement:-:collabMessages---" :
+      | Subject             | From Address             | CC Address | To Address                 | Attention To | Email Subject       | Preview | Actions      |
+      | Automation Test FO1 | automationfd@yopmail.com |            | fo1.automation@yopmail.com |              | Automation Test FO1 |         | View & Reply |
+
+  @329984 @ValidateforAnnouncementAdminusershouldabletoseeAttentionToColumnundermessagessectioninmessagestab @Sprint-11-US-326384 @SystemEmail @TBE1
+  Scenario: Validate for Announcement Admin user should able to see "Attention To" Column under messages section in messages tab
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Formula Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
+    And I enter "FormulaAnn_AdminUser" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation_Formula_ByApplicant" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I navigate to "Overview" sub tab
+    And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    Then I softly see "Attention To" in flex table header "---amendment:-:projectAreasTableId---"
+    And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
+    And I send the email under collab tab with following details:
+      | To                         | Subject             | Body                           |
+      | fo1.automation@yopmail.com | Automation Test FO1 | Automation Test FO1 Email Body |
+    Then I softly see the following messages in the page details contains:
+      | Email Sent Successfully. |
+    And I close "Send Email" modal by clicking the top right x button
+    Then I softly see value "" for title "Attention To" inside table "---announcement:-:collabMessages---"
+    Then I see the following rows under the following headers in table with id "---announcement:-:collabMessages---" :
+      | Subject             | From Address                    | CC Address | To Address                 | Attention To | Email Subject       | Preview | Actions      |
+      | Automation Test FO1 | govgrantsautomation@yopmail.com |            | fo1.automation@yopmail.com |              | Automation Test FO1 |         | View & Reply |
+
+  @329986 @ValidateforAnnouncementEXEusershouldabletoseeAttentionToColumnundermessagessectioninmessagestab @Sprint-11-US-326384 @SystemEmail @TBE1
+  Scenario: Validate for Announcement EXE user should able to see "Attention To" Column under messages section in messages tab
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Formula Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
+    And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "CreationFormula_ByApp_focusNo" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I navigate to "Overview" sub tab
+    And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
+    When I navigate to "Overview" sub tab
+    When I enter value "Individuals" into field "fieldEligibleApplicantTypes__c"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    And I navigate to "Collab" sub tab
+    Then I softly see "Attention To" in flex table header "---amendment:-:projectAreasTableId---"
+    And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
+    And I send the email under collab tab with following details:
+      | To                         | Subject         | Body                       |
+      | pm.automation@yopmail.com | Automation Test | Automation Test Email Body |
+    Then I softly see the following messages in the page details contains:
+      | Email Sent Successfully. |
+    And I close "Send Email" modal by clicking the top right x button
+    Then I softly see value "" for title "Attention To" inside table "---announcement:-:collabMessages---"
+    Then I see the following rows under the following headers in table with id "---announcement:-:collabMessages---" :
+      | Subject         | From Address              | CC Address | To Address                 | Attention To | Email Subject   | Preview | Actions      |
+      | Automation Test | exe.automation@yopmail.com |            | pm.automation@yopmail.com |              | Automation Test |         | View & Reply |

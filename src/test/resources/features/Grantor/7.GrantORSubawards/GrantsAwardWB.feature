@@ -11511,7 +11511,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click "Yes" on modal confirmation box
     And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:grantTargetOwnerTableId---" panel
-    Then I see value "{SavedValue:GrantEGMSID}" for title "Grant ID" inside table "---subAwardStandAlone:-:grantTargetOwnerTableId---"
+    Then I softly see value "{SavedValue:GrantEGMSID}" for title "Grant ID" inside table "---subAwardStandAlone:-:grantTargetOwnerTableId---"
     And I pause execution for "2" seconds
     And I close the tab
     When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
