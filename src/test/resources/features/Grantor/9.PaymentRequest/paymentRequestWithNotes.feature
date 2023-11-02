@@ -2947,7 +2947,7 @@ Feature: Validate all scenarios in Payment Request With Notes
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |  20                       | 100        | 100            |
     When I close "Add Line Items" modal by clicking the top right x button
     And I navigate to "Forms and Files" sub tab
-    When I enter the following values into flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Add" :
+    When I enter the following values into flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Add" :
       | Title         | Description      |
       | Notes Record1 | Automation Notes1|
     And I click on "Submit to Grantor" in the page details
@@ -3132,8 +3132,8 @@ Feature: Validate all scenarios in Payment Request With Notes
       | {SavedValue:fundingAccount} | 20                            |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                     | Reimbursement |
-      | {SavedValue:EXE Username}| Step 1        |
+      | Name                      | Advance |
+      | {SavedValue:EXE Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
