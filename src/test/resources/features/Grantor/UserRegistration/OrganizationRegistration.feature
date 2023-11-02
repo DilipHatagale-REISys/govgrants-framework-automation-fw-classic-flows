@@ -7,7 +7,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Files" sub tab
@@ -23,7 +24,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
@@ -43,7 +45,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
@@ -63,7 +66,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
@@ -119,7 +123,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
@@ -136,7 +141,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
@@ -153,7 +159,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
@@ -205,7 +212,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
@@ -220,7 +228,7 @@ Feature: Validate all registration related scenarios
     Then I see "(918) 908-9089" text enter in field "fieldOrgnizationPhoneNumber__c"
     Then I see "www.google.com" text enter in field "fieldWebsite__c"
     Then I see "Vintage Plaza" text enter in field "fieldOrganizationStreetAddress__c"
-    Then I see "Prince George’s" text enter in field "fieldCounty__c"
+    Then I see "Prince George" text enter in field "fieldCounty__c"
     Then I see "Sterling" text enter in field "fieldOrganizationCityAddress__c"
     Then I see "VA" text enter in field "fieldStateDropdownList__c"
     Then I see "USA" text enter in field "fieldOrganizationsCountry__c"
@@ -234,11 +242,12 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
-    Then I softly see field "Data Universal Number System (DUNS) #" as "987654321"
+    Then I softly see field "Unique Entity Identifier (UEI)" as "{SavedValue:UEI}"
     Then I softly see field "Employer Identification Number (EIN)" as "123456789"
 
   @81952 @verifyRecipientPortalDetailsUnderContactUS @monu @wip
@@ -257,7 +266,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
@@ -271,7 +281,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
@@ -326,7 +337,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321245" into "Unique Entity Identifier (UEI)" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
@@ -397,7 +409,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
@@ -459,7 +472,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
@@ -510,7 +524,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
@@ -575,7 +590,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
@@ -611,7 +627,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
@@ -662,7 +679,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321245" into "Unique Entity Identifier (UEI)" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
@@ -689,7 +707,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321245" into "Unique Entity Identifier (UEI)" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
@@ -780,7 +799,8 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "736518924561" into "Unique Entity Identifier (UEI)" on old form
+   And I generate the random UEI and save as "UEI"
+   When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
