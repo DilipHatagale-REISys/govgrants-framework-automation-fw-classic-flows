@@ -12,10 +12,11 @@ Feature: Validate all registration related scenarios
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Files" sub tab
-    And I upload attachment "AttachmentTesting.pdf" of type "Parent/Child Legal Documents"
+    And I upload attachment "Attachment.pdf" of type "Parent/Child Legal Documents" from computer
+    #And I upload attachment "AttachmentTesting.pdf" of type "Parent/Child Legal Documents"
     And I pause execution for "3" seconds
     And I refresh the page
-    When I click on "Download" icon for "AttachmentTesting.pdf" inside table
+    When I click on "Download" icon for "Attachment.pdf" inside table
     Then I softly see new tab is opened
 
   @82051 @verifyEnteredValueOfPaymentAddressSection-Organization @monu
@@ -113,14 +114,16 @@ Feature: Validate all registration related scenarios
     When I enter value as "{SavedValue:uniqueEmailID}" into "Email" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
-    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    And I enter value "No" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
     Then I softly see fields "fieldPaymentAddressLine1__c" is not visible
     Then I softly see fields "fieldPaymentAddressCity__c" is not visible
     Then I softly see fields "fieldPaymentAddressState__c" is not visible
     Then I softly see fields "fieldPaymentAddressZipCode__c" is not visible
 
-  @82024 @verifyFilledDetailsPopulatedAtAuthorizedDetailsSection-Organization @monu @tempUser
+  @82024 @verifyFilledDetailsPopulatedAtAuthorizedDetailsSection-Organization @monu
   Scenario:Verify user should be able to see filled details at organization address id getting populated at Authorized section
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -324,6 +327,7 @@ Feature: Validate all registration related scenarios
     When I click on "Save and Continue" in the page details
     Then I softly see field "Primary Email" as "{SavedValue:uniqueEmailID}"
     And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    When I click on "Save" in the page details
     And I enter "CreationWithOnlyPaymentDetail" values from "UserRegistration_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see "No" text enter in field "fieldSameAsOrganizationAddress__c"
@@ -424,7 +428,6 @@ Feature: Validate all registration related scenarios
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
     And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
-    And I save the contact name as "Automation Runtime Organization"
     And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
     And I generate the random EmailID and save as "uniqueEmailID"
     And I enter value "{SavedValue:uniqueEmailID}" into field "fieldPrimaryRepEmail__c"
@@ -490,7 +493,6 @@ Feature: Validate all registration related scenarios
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
     And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
-    And I save the contact name as "Automation Runtime Organization"
     And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
     And I generate the random EmailID and save as "uniqueEmailID"
     And I enter value "{SavedValue:uniqueEmailID}" into field "fieldPrimaryRepEmail__c"
@@ -608,7 +610,6 @@ Feature: Validate all registration related scenarios
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
     And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
-    And I save the contact name as "Automation Runtime Organization"
     And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
     And I generate the random EmailID and save as "uniqueEmailID"
     And I enter value "{SavedValue:uniqueEmailID}" into field "fieldPrimaryRepEmail__c"
@@ -646,7 +647,6 @@ Feature: Validate all registration related scenarios
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
     And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
-    And I save the contact name as "Automation Runtime Organization"
     And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
     And I generate the random EmailID and save as "uniqueEmailID"
     And I enter value "{SavedValue:uniqueEmailID}" into field "fieldPrimaryRepEmail__c"
