@@ -2989,14 +2989,14 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Approved" and is "green"
     And I navigate to "Forms and Files" sub tab
-    Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
-    When I edit the following rows inline in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" by clicking "Edit" :
+    Then I cannot see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" by clicking "Edit" :
       |Title          | Title          | Description       |
       |Notes Record1  | Notes Record   | Automation Notes  |
-    Then I softly see value "Notes Record" for title "Title" inside table "---paymentRequest:-:advancePaymentNotesTableId---"
-    Then I softly see value "Automation Notes" for title "Description" inside table "---paymentRequest:-:advancePaymentNotesTableId---"
-    And I click on "Delete" icon for "Notes Record" inside flex table with id "---paymentRequest:-:advancePaymentNotesTableId---" without waiting for record
-    Then I softly do not see value "Notes Record" for title "Title" inside table "---paymentRequest:-:advancePaymentNotesTableId---"
+    Then I softly see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    Then I softly see value "Automation Notes" for title "Description" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    And I click on "Delete" icon for "Notes Record" inside flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---" without waiting for record
+    Then I softly do not see value "Notes Record" for title "Title" inside table "---paymentRequest:-:reimbursePaymentsNotesTableId---"
 
   @236344 @VerifyINDusershouldnotabletoAddnotesnotesbutcaneditdeleteownnotesonschedulereimbursementpaymentrequestisinForceClosedstates @sprint-14-US-225425 @hitesh @Notes
   Scenario:Verify IND user should not able to 'Add' notes notes but can edit/delete own notes on schedule reimbursement payment request is in Force Closed states
@@ -3127,9 +3127,9 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I navigate to "Actuals" sub tab
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record
     And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
-      | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 20                    |
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountsAdvTableId---" by clicking "Edit" :
+      | Funding Account             | Advance Requested This Action |
+      | {SavedValue:fundingAccount} | 20                            |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
       | Name                     | Reimbursement |
