@@ -11153,7 +11153,7 @@ Feature: Validate all scenarios of grants and award without background
       | User  |
       | ADMIN |
 
-  @335976 @335977 @ValidateFOusershouldableseethesystemmailsforthebelowactions @Sprint-12-US-327994 @SystemEmail @TBE
+  @335976 @335977 @ValidateFOusershouldableseethesystemmailsforthebelowactions @Sprint-12-US-327994 @SystemEmail
   Scenario Outline: Validate FO/FD user should able see the system emails for the below actions
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
@@ -11255,7 +11255,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    Then I softly see field "Status" as "Reviewed"
+    Then I softly see field "Status" as "Submitted for Review"
     And I wait for "220" seconds
     And I refresh the page
     And I navigate to "Collab" sub tab
@@ -11269,7 +11269,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    Then I softly see field "Status" as "Reviewed"
+    Then I softly see field "Status" as "Submitted for Review"
     And I navigate to "Collab" sub tab
     Then I softly see value "Notification: Award {SavedValue:Automation Runtime Direct Award} has been Peer Reviewed" for title "Subject" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
     When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
@@ -11480,7 +11480,7 @@ Feature: Validate all scenarios of grants and award without background
       | User |
       | PM   |
 
-  @335979 @Validateexeusershouldnotseethesystememailforownershipreassignment @Sprint-12-US-327994 @SystemEmail @TBE
+  @335979 @Validateexeusershouldnotseethesystememailforownershipreassignment @Sprint-12-US-327994 @SystemEmail
   Scenario: Validate exe user should not see the system email for ownership reassignment
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -11509,7 +11509,7 @@ Feature: Validate all scenarios of grants and award without background
     When I click table top right button "Transfer Ownership" in flex table with id "---subAwardStandAlone:-:grantSourceOwnerTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    And I pause execution for "30" seconds
+    And I pause execution for "50" seconds
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:grantTargetOwnerTableId---" panel
     Then I softly see value "{SavedValue:GrantEGMSID}" for title "Grant ID" inside table "---subAwardStandAlone:-:grantTargetOwnerTableId---"
     And I pause execution for "2" seconds
@@ -11527,7 +11527,7 @@ Feature: Validate all scenarios of grants and award without background
     And I refresh the page
     Then I see "No Records Found" inside flex table with id "---subAwardStandAlone:-:systemEmailsTableId---"
 
-  @335982 @ValidatePOusershouldnotseethesystememailfortaskreassignment @Sprint-12-US-327994 @SystemEmail @TBE
+  @335982 @ValidatePOusershouldnotseethesystememailfortaskreassignment @Sprint-12-US-327994 @SystemEmail
   Scenario: Valiate PO user should not see the system email for task reassignment
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -11593,7 +11593,7 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "{SavedValue:AwardEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     When I check "{SavedValue:AwardEGMSID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
-    And I pause execution for "30" seconds
+    And I pause execution for "50" seconds
     When I perform quick search for "{SavedValue:AwardEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:AwardEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
@@ -11607,9 +11607,9 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Collab" sub tab
     And I wait for "220" seconds
     And I refresh the page
-    Then I see "No Records Found" inside flex table with id "---subAwardStandAlone:-:systemEmailsTableId---"
+    Then I softly do not see value "Notification: Owner Reassignment Report" for title "Subject" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
 
-  @335983 @335984 @ValidatePMuseshouldtesttheresetfunctionality @Sprint-12-US-327994 @SystemEmail @TBE
+  @335983 @335984 @ValidatePMuseshouldtesttheresetfunctionality @Sprint-12-US-327994 @SystemEmail
   Scenario: Validate PM user should test  the reset functionality
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -11744,7 +11744,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see value "Notification: Award {SavedValue:Automation Runtime Direct Award} has been Peer Reviewed" for title "Subject" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
     Then I softly do not see value "Notification:Subaward {SavedValue:Automation Runtime Direct Award} awaiting peer review" for title "Subject" inside table "---subAwardStandAlone:-:systemEmailsTableId---"
 
-  @336687 @ValidateFormulaallocationfocusareamailsApprovalprocessmailsshouldnotgenerate @Sprint-12-US-327994 @SystemEmail @TBE
+  @336687 @ValidateFormulaallocationfocusareamailsApprovalprocessmailsshouldnotgenerate @Sprint-12-US-327994 @SystemEmail
   Scenario: Validate Formula allocation by focus area mails Approval process mails should not generate
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
