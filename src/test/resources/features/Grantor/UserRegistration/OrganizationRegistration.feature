@@ -78,7 +78,7 @@ Feature: Validate all registration related scenarios
     Then I softly see fields "fieldPaymentAddressState__c" is not visible
     Then I softly see fields "fieldPaymentAddressZipCode__c" is not visible
 
-  @82787 @82790 @verifyPrimaryRepresentativeDetails-Individual @monu @tempUser
+  @82787 @82790 @verifyPrimaryRepresentativeDetails-Individual @monu
   Scenario:Verify user is able to see filled details on Primary Representative detail page while individuals registration
     Given I begin "Individual" registration
     When I click on "Agree" in the page details
@@ -280,7 +280,7 @@ Feature: Validate all registration related scenarios
     And I enter value "No" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
 
-  @82028 @verifyOrganizationDetailPageDuringApproval-Organization @monu @tempUser
+  @82028 @verifyOrganizationDetailPageDuringApproval-Organization @monu
   Scenario:Verify if user can see organization detail page while approval
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
