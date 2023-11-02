@@ -580,11 +580,6 @@ Feature: Validate scenarios in Progress Report Notes
     Then I softly see value "Automation Notes3" for title "Description" inside table "---progressreport:-:progressNotesTableId---"
     And I click on "Delete" icon for "Notes Record3" inside flex table with id "---progressreport:-:progressNotesTableId---" without waiting for record
     Then I softly do not see value "Notes Record3" for title "Title" inside table "---progressreport:-:progressNotesTableId---"
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
@@ -648,17 +643,10 @@ Feature: Validate scenarios in Progress Report Notes
     Then I softly see value "Notes Record1" for title "Title" inside table "---progressreport:-:progressNotesTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---progressReport:-:approversTableId---" by clicking "New" :
-      | Name                      | Progress Report |
+      | Name                        | Progress Report |
       | {SavedValue:ADMIN Username} | Step 1          |
     When I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
-    When I click toggle button to select "Progress Reports - All"
-    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
-    And I click on "View" icon for "{SavedValue:progID}" inside flex table with id "---progressreport:-:internalProgressReportFlexTableId---" without waiting for record
-    And I "Reject" in the approval decision
     Then I softly see field "Status" as "Rejected"
     When I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---progressreport:-:progressNotesTableId---"
