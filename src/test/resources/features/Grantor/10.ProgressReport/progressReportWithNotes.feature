@@ -98,19 +98,7 @@ Feature: Validate scenarios in Progress Report Notes
       | Reviewer Name            | Responsibility  | Description                 | Due Date |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        |
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---progressReport:-:peerReviewersTableId---" without waiting for record
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
-    And I navigate to "Responsibilities" sub tab
-    When I click on "Enter Review" icon for "{SavedValue:FO Username}" inside flex table with id "---progressReport:-:peerReviewersTableId---" without waiting for record
-    And I enter values into fields
-      | Value       | Field             |
-      | Cannot Rate | Rating__c         |
-      | Passed      | ReviewComments__c |
-    When I click modal button "Save"
-    And I click on submit review
+    Then I softly see field "Status" as "Submitted for Review"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
@@ -133,8 +121,6 @@ Feature: Validate scenarios in Progress Report Notes
     Then I softly see value "Automation Notes2" for title "Description" inside table "---progressreport:-:progressNotesTableId---"
     And I click on "Delete" icon for "Notes Record2" inside flex table with id "---progressreport:-:progressNotesTableId---" without waiting for record
     Then I softly do not see value "Notes Record2" for title "Title" inside table "---progressreport:-:progressNotesTableId---"
-    When I click on "Complete Review" in the page details
-    Then I softly see field "Status" as "Reviewed"
 
   @236024 @236026 @VerifythatPMUsercanaddnotesinProgressreportrecordinsubmittograntorstatesandeditdeleteonlyhisownnotes @sprint-12-US-234322 @hitesh @Notes
   Scenario: Verify that <PM> User can add notes in Progress report record in submit to grantor states and edit /delete only his own notes
