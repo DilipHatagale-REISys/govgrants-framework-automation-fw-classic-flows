@@ -93,12 +93,6 @@ Feature: Validate scenarios in Progress Report Notes
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
-    Then I softly see field "Status" as "Submitted to Grantor"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Responsibilities" sub tab
     And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
       | Reviewer Name            | Responsibility  | Description                 | Due Date |
@@ -142,7 +136,7 @@ Feature: Validate scenarios in Progress Report Notes
     When I click on "Complete Review" in the page details
     Then I softly see field "Status" as "Reviewed"
 
-  @236024 @VerifythatPMUsercanaddnotesinProgressreportrecordinsubmittograntorstatesandeditdeleteonlyhisownnotes @sprint-8-US-206259 @Notes
+  @236024 @236026 @VerifythatPMUsercanaddnotesinProgressreportrecordinsubmittograntorstatesandeditdeleteonlyhisownnotes @sprint-8-US-206259 @Notes
   Scenario: Verify that <PM> User can add notes in Progress report record in submit to grantor states and edit /delete only his own notes
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation EXE user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -173,12 +167,6 @@ Feature: Validate scenarios in Progress Report Notes
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    Then I softly see field "Status" as "Submitted to Grantor"
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     Then I softly see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -221,8 +209,39 @@ Feature: Validate scenarios in Progress Report Notes
     Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---progressreport:-:progressNotesTableId---"
     When I edit the following rows inline in flex table with id "---progressreport:-:progressNotesTableId---" by clicking "Edit" :
       |Created By     | Title         | Description      |
-      |Automation EXE  | Notes Record2 | Automation Notes2|
+      |Automation EXE  | Notes Record2| Automation Notes2|
     Then I softly see value "Notes Record2" for title "Title" inside table "---progressreport:-:progressNotesTableId---"
     Then I softly see value "Automation Notes2" for title "Description" inside table "---progressreport:-:progressNotesTableId---"
     And I click on "Delete" icon for "Notes Record2" inside flex table with id "---progressreport:-:progressNotesTableId---" without waiting for record
     Then I softly do not see value "Notes Record2" for title "Title" inside table "---progressreport:-:progressNotesTableId---"
+    When I enter the following values into flex table with id "---progressreport:-:progressNotesTableId---" by clicking "Add" :
+      | Title         | Description      |
+      | Notes Record | Automation Notes  |
+    Then I softly see value "Notes Record" for title "Title" inside table "---progressreport:-:progressNotesTableId---"
+    Then I softly see value "Automation EXE" for title "Created By" inside table "---progressreport:-:progressNotesTableId---"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Progress Reports - All"
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
+    And I click on "View" icon for "{SavedValue:progID}" inside flex table with id "---progressreport:-:internalProgressReportFlexTableId---" without waiting for record
+    When I navigate to "Forms and Files" sub tab
+    #236026
+    Then I can see top right button "Add" in flex table with id "---progressreport:-:progressNotesTableId---"
+    When I enter the following values into flex table with id "---progressreport:-:progressNotesTableId---" by clicking "Add" :
+      | Title         | Description      |
+      | Notes Record3 | Automation Notes3|
+    Then I softly see value "Notes Record3" for title "Title" inside table "---progressreport:-:progressNotesTableId---"
+    Then I softly see value "Automation FO" for title "Created By" inside table "---progressreport:-:progressNotesTableId---"
+    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---progressreport:-:progressNotesTableId---"
+    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" inside table "---progressreport:-:progressNotesTableId---"
+    When I edit the following rows inline in flex table with id "---progressreport:-:progressNotesTableId---" by clicking "Edit" :
+      |Created By     | Title         | Description      |
+      |Automation FO  | Notes Record4 | Automation Notes4|
+    Then I softly see value "Notes Record4" for title "Title" inside table "---progressreport:-:progressNotesTableId---"
+    Then I softly see value "Automation Notes4" for title "Description" inside table "---progressreport:-:progressNotesTableId---"
+    And I click on "Delete" icon for "Notes Record4" inside flex table with id "---progressreport:-:progressNotesTableId---" without waiting for record
+    Then I softly do not see value "Notes Record4" for title "Title" inside table "---progressreport:-:progressNotesTableId---"
+    Then I cannot see row level action button "Edit" against "Notes Record" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
+    Then I cannot see row level action button "Delete" against "Notes Record" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
+
