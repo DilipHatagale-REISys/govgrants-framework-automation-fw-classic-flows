@@ -3131,7 +3131,7 @@ Feature: Validate all scenarios in Payment Request With Notes
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 20                            |
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
       | Name                      | Advance |
       | {SavedValue:EXE Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
