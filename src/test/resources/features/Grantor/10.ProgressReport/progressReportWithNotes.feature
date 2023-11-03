@@ -1310,7 +1310,11 @@ Feature: Validate scenarios in Progress Report Notes
     And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:progressReportFlexTableId---" panel
     When I click on "View" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:progressReportFlexTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
-    Then I cannot see top right button "Add" in flex table with id "---progressreport:-:progressNotesTableId---"
+    Then I can see top right button "Add" in flex table with id "---progressreport:-:progressNotesTableId---"
+    When I enter the following values into flex table with id "---progressreport:-:progressNotesTableId---" by clicking "Add" :
+      | Title         | Description      |
+      | Notes Record1 | Automation Notes1|
+    Then I softly see value "Notes Record1" for title "Title" inside table "---progressreport:-:progressNotesTableId---"
     When I edit the following rows inline in flex table with id "---progressreport:-:progressNotesTableId---" by clicking "Edit" :
       |Title          | Title          | Description     |
       |Notes Record1  | Notes Record2 | Automation Notes2|
