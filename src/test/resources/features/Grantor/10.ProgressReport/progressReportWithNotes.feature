@@ -1258,7 +1258,7 @@ Feature: Validate scenarios in Progress Report Notes
 
   @238029 @VerifythatSPAUsercannotaddnotesinProgressreportrecordinSubmittedforapprovalstatesandeditdeleteonlyhisownnotes @sprint-12-US-234322 @hitesh @Notes 
   Scenario:VerifythatSPAUsercannotaddnotesinProgressreportrecordinSubmittedforapprovalstatesandeditdeleteonlyhisownnotes
-    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation PM user" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation ADMIN user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
     And I am on "SUBPORTAL" portal
