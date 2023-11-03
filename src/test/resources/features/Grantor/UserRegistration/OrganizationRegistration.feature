@@ -114,7 +114,7 @@ Feature: Validate all registration related scenarios
     When I enter value as "{SavedValue:uniqueEmailID}" into "Email" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
-    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
     And I enter value "No" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
     Then I softly see fields "fieldPaymentAddressLine1__c" is not visible
@@ -140,7 +140,7 @@ Feature: Validate all registration related scenarios
     Then I see "Sterling" text enter in field "fieldPrimaryRepCity__c"
     Then I see "20171" text enter in field "fieldPrimaryRepZipCode__c"
 
-  @82025 @verifyFilledDetailsAtAuthorizedRepresentativePage-Organization @monu @tempUser
+  @82025 @verifyFilledDetailsAtAuthorizedRepresentativePage-Organization @monu
   Scenario:Verify user should be navigated to captch page after filling all details at authorised representative detail
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
