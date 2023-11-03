@@ -114,7 +114,6 @@ Feature: Validate all registration related scenarios
     When I enter value as "{SavedValue:uniqueEmailID}" into "Email" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
-    And I navigate to "Organization Profile" sub tab
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
     And I enter value "No" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
@@ -146,7 +145,8 @@ Feature: Validate all registration related scenarios
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
-    When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
+    And I generate the random EIN and save as "EIN"
+    When I enter value as "{SavedValue:EIN}" into "Employer Identification Number (EIN)" on old form
     And I generate the random UEI and save as "UEI"
     When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I enter value as "1234" into "Vendor ID" on old form
@@ -414,7 +414,7 @@ Feature: Validate all registration related scenarios
     Then I softly see value "automation.manager@yopmail.com" for title "Email" inside table "---home:-:userContactsTableId---"
     Then I softly see value "(704) 777-7869" for title "Phone" inside table "---home:-:userContactsTableId---"
 
-  @85792 @validateSAUserforUserRegistration-Organization @meenakshi @tempUser
+  @85792 @validateSAUserforUserRegistration-Organization @meenakshi
   Scenario:To verify SA allow to modify newly created contact in contact table  for Additional user registration process
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
