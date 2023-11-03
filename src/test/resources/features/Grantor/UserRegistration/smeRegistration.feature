@@ -11,7 +11,6 @@ Feature: Validate all scenarios for SME Registration
     And I generate the random EmailID and save as "uniqueEmailID"
     And I enter value "{SavedValue:uniqueEmailID}" into field "fieldEmail"
     And I click modal button "Save"
-    And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---grantor_tableId:-:PotentialReviewerContactTableId---" panel
     When I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---grantor_tableId:-:PotentialReviewerContactTableId---"
@@ -44,7 +43,6 @@ Feature: Validate all scenarios for SME Registration
     And I generate the random EmailID and save as "uniqueEmailID"
     And I enter value "{SavedValue:uniqueEmailID}" into field "fieldEmail"
     And I click modal button "Save"
-    And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---grantor_tableId:-:PotentialReviewerContactTableId---" panel
     When I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---grantor_tableId:-:PotentialReviewerContactTableId---"
@@ -64,7 +62,7 @@ Feature: Validate all scenarios for SME Registration
       | Confirmation Message                                                                                                                                                                |
       | Your registration request for access to the EGMS has been completed.  You will be sent an email from salesforce.com (technology platform provider) with your Username and Password. |
 
-  @34834 @34836 @34831 @VerifyCreatedSMEUserDetails-SMEReviewerRegistration @smoke @monu
+  @34834 @34836 @34831 @VerifyCreatedSMEUserDetails-SMEReviewerRegistration @smoke @monu @tempUser
   Scenario: Validate created SME user details on modal after clicking on view row level action
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -74,7 +72,6 @@ Feature: Validate all scenarios for SME Registration
     And I generate the random EmailID and save as "uniqueEmailID"
     And I enter value "{SavedValue:uniqueEmailID}" into field "fieldEmail"
     And I click modal button "Save"
-    And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---grantor_tableId:-:PotentialReviewerContactTableId---" panel
     Then I softly see "Full Name" in flex table header "---grantor_tableId:-:PotentialReviewerContactTableId---"
@@ -111,7 +108,6 @@ Feature: Validate all scenarios for SME Registration
     And I click on top right button "New" in flex table with id "---grantor_tableId:-:PotentialReviewerContactTableId---"
     And I enter "smeReviewerRegistration" values from "Registration_Field_Values.xlsx"
     And I click modal button "Save"
-    And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---grantor_tableId:-:PotentialReviewerContactTableId---" panel
     When I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---grantor_tableId:-:PotentialReviewerContactTableId---"
@@ -143,19 +139,19 @@ Feature: Validate all scenarios for SME Registration
     When I perform quick search for "SME1 USER" in "{grantor_tableId:PotentialReviewerContactTableId}" panel
     Then I softly see value "SME1 USER" for title "Full Name" inside table "{grantor_tableId:PotentialReviewerContactTableId}"
 
-  @33837 @VerifySystemDisplayAllRelatedTasks @monu
+  @33837 @VerifySystemDisplayAllRelatedTasks @monu @tempUser
   Scenario: Validate user is able to see all expected contacts
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
-    When I navigate to "{grantor_sidebar:PendingTaskLink}" content inside "{grantor_sidebar:MyTasksLinkName}" subheader on left panel
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     Then I softly can see page block "Pending Tasks (Assigned To Me)"
     Then I softly can see page block "Pending Tasks (Assigned By Me)"
-    Then I softly see "In Progress" value in flex table id "---grantor_tableId:-:PendingTaskAssignedToMeTableId---"
-    Then I softly see "Not Started" value in flex table id "---grantor_tableId:-:PendingTaskAssignedToMeTableId---"
-    When I navigate to "{grantor_sidebar:CompletedTaskLink}" content inside "{grantor_sidebar:MyTasksLinkName}" subheader on left panel
+    Then I softly see value "In Progress" for title "Status" inside table "---grantor_tableId:-:PendingTaskAssignedToMeTableId---"
+    Then I softly see value "Not Started" for title "Status" inside table "---grantor_tableId:-:PendingTaskAssignedToMeTableId---"
+    When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     Then I softly can see page block "Completed Tasks (Assigned To Me)"
     Then I softly can see page block "Completed Tasks (Assigned By Me)"
-    Then I softly see "Completed" value in flex table id "---grantor_tableId:-:CompletedTaskAssignedToMeTableId---"
+    Then I softly see value "Completed" for title "Status" inside table "---grantor_tableId:-:CompletedTaskAssignedToMeTableId---"
 
   @94345 @validatingEmailNotificationForSMEReviewer @meenakshi
   Scenario: To verify Email notification should be received to SME contact after sending invitation by internal  user
@@ -165,7 +161,6 @@ Feature: Validate all scenarios for SME Registration
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I save the contact name as "Automation Runtime Contact"
     And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
     And I wait for "2" seconds
@@ -187,7 +182,6 @@ Feature: Validate all scenarios for SME Registration
     And I click on top right button "New" in flex table with id "---grantor_tableId:-:PotentialReviewerContactTableId---"
     And I enter "smeReviewerRegistration" values from "Registration_Field_Values.xlsx"
     And I click modal button "Save"
-    And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---grantor_tableId:-:PotentialReviewerContactTableId---" panel
     When I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---grantor_tableId:-:PotentialReviewerContactTableId---"
