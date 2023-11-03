@@ -862,6 +862,7 @@ public class GrantorPayloads {
         JsonObject jsonObject1 = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre1 = new JsonArray();
         jsonObject1.addProperty("Allocationlevel", "By Applicant and Focus Area");
+        jsonObject1.addProperty("RiskAssessment_Required", "No");
         pre1.add(jsonObject1);
         json.add("Announcement", pre1);
         return json;
