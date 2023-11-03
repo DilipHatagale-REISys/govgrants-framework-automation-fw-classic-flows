@@ -116,7 +116,6 @@ Feature: Validate all registration related scenarios
     When I click on "Save and Continue" in the page details
     And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
     And I enter value "No" into field "fieldSameAsOrganizationAddress__c"
-    When I click on "Save" in the page details
     Then I softly see fields "fieldPaymentAddressLine1__c" is not visible
     Then I softly see fields "fieldPaymentAddressCity__c" is not visible
     Then I softly see fields "fieldPaymentAddressState__c" is not visible
