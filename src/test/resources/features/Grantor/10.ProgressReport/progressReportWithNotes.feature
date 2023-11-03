@@ -1053,6 +1053,7 @@ Feature: Validate scenarios in Progress Report Notes
     And I click toggle button to select "Progress Reports - All"
     And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:progressReportFlexTableId---" panel
     When I click on "View" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:progressReportFlexTableId---" without waiting for record
+    When I navigate to "Forms and Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---progressreport:-:progressNotesTableId---"
     When I edit the following rows inline in flex table with id "---progressreport:-:progressNotesTableId---" by clicking "Edit" :
       |Title          | Title          | Description     |
