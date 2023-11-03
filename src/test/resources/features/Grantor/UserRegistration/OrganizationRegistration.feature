@@ -156,6 +156,8 @@ Feature: Validate all registration related scenarios
     And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
     And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldPrimaryRepEmail__c"
     When I click on "Save" in the page details
     Then I see the ReCaptcha input box
 
