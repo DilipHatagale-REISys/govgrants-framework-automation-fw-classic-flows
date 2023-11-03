@@ -3268,12 +3268,8 @@ Feature: Validate all scenarios in Payment Request With Notes
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "SARAH PM" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:grantorGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:grantorAwardTableId---" without waiting for record
-    When I navigate to "Actuals" sub tab
-    Then I softly do not see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:grantorPaymentRequestTableId---"
+    And I navigate to "Monitoring" tab
+    And I navigate to "Reimbursements" content inside "Payments" subheader on left panel
+    And I click toggle button to select "Reimbursements - All"
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
+    Then I softly do not see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:paymentrequestReimbursementTableId---"
