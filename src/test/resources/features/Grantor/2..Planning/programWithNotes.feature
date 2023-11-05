@@ -1,5 +1,5 @@
 @program @grantor-regression @grantor-parallel-regression @planning @regression
-Feature: Validate all scenarios for program with notes
+Feature: Validate all scenarios for program with add file
 
   @222077 @VerifyPMusershouldabletoaddfilewhenInternalProgramisinCreatedStatusprovidedifuserhavingthemaineditaccess @sprint-10-US-199430 @Notes
   Scenario: Verify PM user should able to add file when Internal Program is in Created Status provided if user having the main edit access
