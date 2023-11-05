@@ -62,7 +62,7 @@ Feature: Validate all scenarios for SME Registration
       | Confirmation Message                                                                                                                                                                |
       | Your registration request for access to the EGMS has been completed.  You will be sent an email from salesforce.com (technology platform provider) with your Username and Password. |
 
-  @34834 @34836 @34831 @VerifyCreatedSMEUserDetails-SMEReviewerRegistration @smoke @monu @tempUser
+  @34834 @34836 @34831 @VerifyCreatedSMEUserDetails-SMEReviewerRegistration @smoke @monu 
   Scenario: Validate created SME user details on modal after clicking on view row level action
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -139,7 +139,7 @@ Feature: Validate all scenarios for SME Registration
     When I perform quick search for "SME1 USER" in "{grantor_tableId:PotentialReviewerContactTableId}" panel
     Then I softly see value "SME1 USER" for title "Full Name" inside table "{grantor_tableId:PotentialReviewerContactTableId}"
 
-  @33837 @VerifySystemDisplayAllRelatedTasks @monu @tempUser
+  @33837 @VerifySystemDisplayAllRelatedTasks @monu 
   Scenario: Validate user is able to see all expected contacts
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab

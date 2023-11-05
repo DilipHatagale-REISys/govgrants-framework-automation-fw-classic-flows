@@ -1335,5 +1335,3 @@ Feature: Validate scenarios in Progress Report Notes
     Then I softly do not see value "Notes Record2" for title "Title" inside table "---progressreport:-:progressNotesTableId---"
 
 
-
-
