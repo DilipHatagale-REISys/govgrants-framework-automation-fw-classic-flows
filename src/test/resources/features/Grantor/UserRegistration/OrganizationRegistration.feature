@@ -12,10 +12,12 @@ Feature: Validate all registration related scenarios
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Files" sub tab
-    And I upload attachment "AttachmentTesting.pdf" of type "Parent/Child Legal Documents"
+    And I click on top right button "Add" in flex table with id "---grantor_tableId:-:userOrganizarionUploadTableId---"
+    And I choose the file "AttachmentTesting.pdf" for upload of type "Parent/Child Legal Documents"
+    When I close "UserRegistrationAttachment" modal by clicking the top right x button
     And I pause execution for "3" seconds
     And I refresh the page
-    When I click on "Download" icon for "Attachment.pdf" inside table
+    When I click on "Download" icon for "AttachmentTesting.pdf" inside table
     Then I softly see new tab is opened
 
   @82051 @verifyEnteredValueOfPaymentAddressSection-Organization @monu
@@ -113,7 +115,7 @@ Feature: Validate all registration related scenarios
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
-    And I enter value "No" into field "fieldSameAsOrganizationAddress__c"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
     Then I softly see fields "fieldPaymentAddressLine1__c" is not visible
     Then I softly see fields "fieldPaymentAddressCity__c" is not visible
     Then I softly see fields "fieldPaymentAddressState__c" is not visible
@@ -213,7 +215,7 @@ Feature: Validate all registration related scenarios
     Then I see the text containing "Registration"
     Then I see the sub-header is "Step 1 of 2" in the page details
 
-  @33827 @verifySavedDetailsOfOrganizationProfileSubTab-Organization @monu @tempUser
+ @33827 @verifySavedDetailsOfOrganizationProfileSubTab-Organization @monu @tempUser
   Scenario:Verify user should be able to see filled details at organization sub tab after redirecting back to organization profile tab while clicking on back button
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -230,7 +232,7 @@ Feature: Validate all registration related scenarios
     Then I see the header is "Create External Registration" in the page details
 #    Then I see the sub-header is "Step 3 of 3" in the page details
     When I click on "Back" in the page details
-    Then I see "No" text enter in field "fieldSameAsOrganizationAddress__c"
+    Then I see "Yes" text enter in field "fieldSameAsOrganizationAddress__c"
     Then I see "For-profit organizations" text enter in field "fieldOrganizationTypeSInglePicklist__c"
     Then I see "(918) 908-9089" text enter in field "fieldOrgnizationPhoneNumber__c"
     Then I see "www.google.com" text enter in field "fieldWebsite__c"
@@ -327,18 +329,18 @@ Feature: Validate all registration related scenarios
     Then I softly see field "Primary Email" as "{SavedValue:uniqueEmailID}"
     And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
     And I enter "CreationWithOnlyPaymentDetail" values from "UserRegistration_Field_Values.xlsx"
-    When I click on "Save" in the page details
     Then I see "No" text enter in field "fieldSameAsOrganizationAddress__c"
     Then I see "1000 Defense Pentagon" text enter in field "fieldPaymentAddressLine1__c"
     Then I see "Washington" text enter in field "fieldPaymentAddressCity__c"
-    Then I see "DC" text enter in field "fieldPaymentAddressState__c"
+    Then I see "IL" text enter in field "fieldPaymentAddressState__c"
     Then I see "20301" text enter in field "fieldPaymentAddressZipCode__c"
     Then I see "(918) 908-9089" text enter in field "fieldPaymentAddressVendorLocation__c"
     Then I see "1234" text enter in field "fieldPaymentAddressZipCode4__c"
+    When I click on "Save" in the page details
     When I click on "Submit" in the page details
     Then I see the following messages in the page details contains:
-      | Confirmation Message                                                                                                                                                                |
-      | Your registration request for access to the EGMS has been completed.  You will be sent an email from salesforce.com (technology platform provider) with your Username and Password. |
+      | Your registration request for access to EGMS has been completed and sent for government approval.Once approved, you will be sent another email from salesforce.com (technology platform provider) with your Username and Password shortly to log into the system.                                                                                                                                                                |
+      | For your records, your registration number is |
 
   @84611 @83374 @83527 @84612 @83373 @84613 @validateSAUserforUserRegistration-Organization @meenakshi @tempUser
   Scenario:To verify SA allow to modify newly created contact in contact table  for Additional user registration process
