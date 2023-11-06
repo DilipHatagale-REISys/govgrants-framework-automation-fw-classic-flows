@@ -32,6 +32,30 @@ Feature: Validate all scenarios for program with add file
     Then I softly see value "Other Artifacts" for title "Classification" inside table "---program:-:GrantorInternalProgramFilesTableId---"
     And I click on "Delete" icon for "Other Artifacts" inside flex table with id "---program:-:GrantorInternalProgramFilesTableId---" without waiting for record
     Then I softly do not see value "Program Artifacts" for title "Title" inside table "---program:-:GrantorInternalProgramFilesTableId---"
+
+  @222255 @VerifyifEXEuserisnotOwneroffilethenusercannotEditDeletefile @sprint-10-US-199430 @Notes
+  Scenario: Verify if <EXE> user is not Owner of file then user can not Edit/Delete file
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    Then I can see top right button "Edit" in page detail
+    And I navigate to "Files" sub tab
+    And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---program:-:addFilesIframeId---"
+    And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
+    Then I softly see "Program Artifacts" has been added in "Program Files" flex table
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -39,7 +63,6 @@ Feature: Validate all scenarios for program with add file
     When I perform quick search for "Record Id" in "---program:-:programsTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---program:-:programsTableId---" without waiting for record
     And I navigate to "Files" sub tab
-    #222255
     Then  I cannot see top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
     Then I cannot see row level action button "Edit" against "Program Artifacts" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
     Then I cannot see row level action button "Delete" against "Program Artifacts" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
