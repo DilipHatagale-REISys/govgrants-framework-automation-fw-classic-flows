@@ -1,7 +1,7 @@
 @program @grantor-regression @grantor-parallel-regression @planning @regression
 Feature: Validate all scenarios for program with add file
 
-  @222077 @222255 @222087 @VerifyPMusershouldabletoaddfilewhenInternalProgramisinCreatedStatusprovidedifuserhavingthemaineditaccess @sprint-10-US-199430 @Notes
+  @222077 @222087 @VerifyPMusershouldabletoaddfilewhenInternalProgramisinCreatedStatusprovidedifuserhavingthemaineditaccess @sprint-10-US-199430 @Notes
   Scenario: Verify PM user should able to add file when Internal Program is in Created Status provided if user having the main edit access
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
