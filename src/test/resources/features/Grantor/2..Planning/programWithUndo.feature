@@ -1,5 +1,5 @@
-@program @grantor-regression @grantor-parallel-regression @planning @regression @hitesh23
-Feature: Validate all scenarios for program
+@program @grantor-regression @grantor-parallel-regression @planning @regression
+Feature: Validate all scenarios for program with undo
 
   @279282 @Verifyusershouldnotseeundobuttonincreatedsentforreviewreviewedstateofprogram @sprint-25-US-295138 @hitesh @Undo
   Scenario: Verify user should not see undo button in created, sent for review, reviewed state of program
