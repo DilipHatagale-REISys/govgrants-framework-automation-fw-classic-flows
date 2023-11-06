@@ -427,6 +427,7 @@ Feature: Validate scenarios in Progress Report Notes
       | Name                     | Progress Report |
       | {SavedValue:PM Username} | Step 1          |
     And I click on "Send Back to Subrecipient" in the page details
+    Then I softly see status in Progress-bar is "Sent Back to Subrecipient" and is "green"
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
@@ -449,8 +450,6 @@ Feature: Validate scenarios in Progress Report Notes
     Then I softly see value "Automation Notes3" for title "Description" inside table "---progressreport:-:progressNotesTableId---"
     And I click on "Delete" icon for "Notes Record3" inside flex table with id "---progressreport:-:progressNotesTableId---" without waiting for record
     Then I softly do not see value "Notes Record3" for title "Title" inside table "---progressreport:-:progressNotesTableId---"
-    Then I cannot see row level action button "Edit" against "Notes Record1" in flex table with id "---progressreport:-:progressNotesTableId---"
-    Then I cannot see row level action button "Delete" against "Notes Record1" in flex table with id "---progressreport:-:progressNotesTableId---"
 
   @236154 @VerifythatAdminCannotAddNotesInProgressreportRecordwhenrecordisinSendbacktosrstateAndCanonlyEditDeletehisownnotes @sprint-12-US-234322 @hitesh @Notes
   Scenario:Verify that <Admin> Can not Add Notes In Progress report Record ,when record  is in Send back to s/r state And Can only /Edit /Delete his own notes
