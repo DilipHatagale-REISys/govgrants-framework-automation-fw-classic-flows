@@ -63,7 +63,7 @@ Feature: Validate all scenarios for program with add file
     When I perform quick search for "Record Id" in "---program:-:programsTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---program:-:programsTableId---" without waiting for record
     And I navigate to "Files" sub tab
-    Then  I cannot see top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    Then  I can see top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
     Then I cannot see row level action button "Edit" against "Program Artifacts" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
     Then I cannot see row level action button "Delete" against "Program Artifacts" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
 
@@ -679,8 +679,8 @@ Feature: Validate all scenarios for program with add file
     When I click "Associate" after selection of "Automation Permanent KPI" by showing entries "All" in flex table with id "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:peerReviewTableId---" by clicking "New" :
-      | Reviewer Name  | Responsibility  | Description                 | Due Date | Allow Record Editing |
-      | Automation EXE | Fiscal Reviewer | Automation Test Description | 10       | NO                   |
+      | Reviewer Name  | Responsibility  | Description                 | Due Date |
+      | Automation EXE | Fiscal Reviewer | Automation Test Description | 10       |
     And I click on "Send for Review" icon for "{SavedValue:EXE Username}" inside table
     Then I softly see status in Progress-bar is "Submitted for Review" and is "green"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
