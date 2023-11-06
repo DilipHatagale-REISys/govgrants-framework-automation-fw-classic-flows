@@ -1,7 +1,7 @@
 @preAplicationNotes @grantor-regression @grantor-parallel-regression @app @regression
 Feature: Pre-Application scenarios without background
 
-  @225095 @225099 @ValidatePMPOEXEFOAdminsenotabletoEditDeletenoteswhichisaddedbySPIUserwhichisinnegotiationinitiatedstate @Sprint-11-US-224418 @Notes @TBE
+  @225095 @225099 @ValidatePMPOEXEFOAdminsenotabletoEditDeletenoteswhichisaddedbySPIUserwhichisinnegotiationinitiatedstate @Sprint-11-US-224418 @Notes
   Scenario: Validate PM PO EXE FO Admin user is not able to Edit Delete notes which is added by SPI User which is in negotiation initiated state
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -135,7 +135,7 @@ Feature: Pre-Application scenarios without background
     Then I softly cannot see row level action button "Edit" against "Notes Record Of PM User" in flex table with id "---preApplication:-:grantorPreApplicationNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record Of PM User" in flex table with id "---preApplication:-:grantorPreApplicationNotesTableId---"
 
-  @225101 @ValidatePMPOEXEADMINusershouldbeabletoAdnotesbuEditDeletetheirownnotesonpreapplicationisinSubmittograntorstate @Sprint-11-US-224418 @Notes @TBE
+  @225101 @ValidatePMPOEXEADMINusershouldbeabletoAdnotesbuEditDeletetheirownnotesonpreapplicationisinSubmittograntorstate @Sprint-11-US-224418 @Notes
   Scenario: Validate PM PO EXE ADMIN user should be able to 'Add' notes but 'Edit/Delete' their own notes on pre-application is in 'Submit to grantor' state
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -277,7 +277,7 @@ Feature: Pre-Application scenarios without background
     Then I softly can see row level action button "Edit" against "Notes Record Of ADMIN User" in flex table with id "---preApplication:-:grantorPreApplicationNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record Of ADMIN User" in flex table with id "---preApplication:-:grantorPreApplicationNotesTableId---"
 
-  @225107 @225109 @ValidatePMPOEXEADMINusercannotAddnotesbutEditDeletetheirownnotesonpreapplicationsinRejectedstate @Sprint-11-US-224418 @Notes @TBE
+  @225107 @225109 @ValidatePMPOEXEADMINusercannotAddnotesbutEditDeletetheirownnotesonpreapplicationsinRejectedstate @Sprint-11-US-224418 @Notes
   Scenario Outline: Validate PM PO EXE ADMIN user can not 'Add' notes but 'Edit/Delete' their own notes on pre-application is in 'Rejected' state
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES-<filter>"
     When I am on "SUBPORTAL" portal
@@ -456,14 +456,15 @@ Feature: Pre-Application scenarios without background
     When I navigate to "Forms and Files" sub tab
     Then I softly do not see top right button "Add" inside flex table "---preApplication:-:grantorPreApplicationNotesTableId---"
     Then I softly see value "Notes Record Of Grantor User" for title "Title" inside table "---preApplication:-:grantorPreApplicationNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record Of Grantor User" in flex table with id "---preApplication:-:grantorPreApplicationNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record Of Grantor User" in flex table with id "---preApplication:-:grantorPreApplicationNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record Of Grantor User" in flex table with id "---preApplication:-:grantorPreApplicationNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record Of Grantor User" in flex table with id "---preApplication:-:grantorPreApplicationNotesTableId---"
     #226079
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:phasePendingTasksTableId---"
+    And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Pre-Applications - All"
+    And I perform quick search for "{SavedValue:preAppId}" in "---preApplication:-:preApplicationsGrantorTableId---" panel
+    When I click on "View" icon for "{SavedValue:preAppId}" inside flex table with id "---preApplication:-:preApplicationsGrantorTableId---"
     Then I softly see field "Status" as "Negotiation In Progress"
     When I navigate to "Forms and Files" sub tab
     Then I softly do not see top right button "Add" inside flex table "---preApplication:-:grantorPreApplicationNotesTableId---"
@@ -475,7 +476,7 @@ Feature: Pre-Application scenarios without background
       | PM   | Automation PM user  |
       | EXE  | Automation EXE user |
 
-  @226077 @ValidateFDusercanAddnotesbutEditDeletetheirownnotesonpreapplicationisinAcceptedstate @Sprint-11-US-224418 @Notes @TBE
+  @226077 @ValidateFDusercanAddnotesbutEditDeletetheirownnotesonpreapplicationisinAcceptedstate @Sprint-11-US-224418 @Notes
   Scenario: Validate FD user can Add notes but Edit Delete their own notes on pre-application is in 'Accepted' state
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -551,7 +552,7 @@ Feature: Pre-Application scenarios without background
     Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---preApplication:-:grantorPreApplicationNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---preApplication:-:grantorPreApplicationNotesTableId---"
 
-  @225104 @226081 @226082 @ValidatePMPOEXEADMINusercannotAddnotesbutEditDeletetheirownnotesonpreapplicationisinRejectedstate @Sprint-11-US-224418 @Notes @TBE
+  @225104 @226081 @226082 @ValidatePMPOEXEADMINusercannotAddnotesbutEditDeletetheirownnotesonpreapplicationisinRejectedstate @Sprint-11-US-224418 @Notes
   Scenario: Validate PM PO EXE ADMIN user can not 'Add' notes but Edit Delete their own notes on pre-application is in Rejected state
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -727,7 +728,7 @@ Feature: Pre-Application scenarios without background
     When I click toggle button to select "Pre-Applications - All"
     And I perform quick search for "{SavedValue:preAppId}" in "---preApplication:-:preApplicationsGrantorTableId---" panel
     When I click on "View" icon for "{SavedValue:preAppId}" inside flex table with id "---preApplication:-:preApplicationsGrantorTableId---"
-    Then I see field "Status" as "Submitted to Grantor"
+    Then I softly see field "Status" as "Negotiation Initiated"
     When I navigate to "Forms and Files" sub tab
     Then I softly do not see top right button "Add" inside flex table "---preApplication:-:grantorPreApplicationNotesTableId---"
     Then I softly see value "Notes Record Of FD User" for title "Title" inside table "---preApplication:-:grantorPreApplicationNotesTableId---"
