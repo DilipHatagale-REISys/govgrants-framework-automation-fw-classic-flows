@@ -522,7 +522,7 @@ Feature: Validate all scenarios for program with add file
     And I click on "Delete" icon for "Other Artifacts" inside flex table with id "---program:-:GrantorInternalProgramFilesTableId---" without waiting for record
     Then I softly do not see value "Attachment.pdf" for title "Title" inside table "---program:-:GrantorInternalProgramFilesTableId---"
 
-  @222092 @Verifyifpeerreviewersubmitsthereviewafterthatwetakeawaytheeditaccesssoreviewerwillnotbeabletoeditdeletefileafterthat @sprint-25-US-295138 @hitesh @Undo
+  @222092 @222093 @222096 @Verifyifpeerreviewersubmitsthereviewafterthatwetakeawaytheeditaccesssoreviewerwillnotbeabletoeditdeletefileafterthat @sprint-25-US-295138 @hitesh @Undo
   Scenario: Verify if peer reviewer submits the review after that we take away the edit access so reviewer will not be able to edit/delete file after that
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -561,21 +561,54 @@ Feature: Validate all scenarios for program with add file
       | Automation PM | Fiscal Reviewer | Automation Test Description  | 10       | Yes                  |
     And I click on "Send for Review" icon for "{SavedValue:PM Username}" inside table
     Then I softly see status in Progress-bar is "Submitted for Review" and is "green"
+    And I navigate to "Files" sub tab
+    #222096
+    Then I softly can see row level action button "Download" against "Attachment.pdf" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---program:-:homePendingTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---program:-:homePendingTableId---"
+    And I navigate to "Files" sub tab
+    #222096
+    Then I softly can see row level action button "Download" against "Attachment.pdf" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
     And I navigate to "Responsibilities" sub tab
-    When I click on "Enter Review" icon for "{SavedValue:EXE Username}" inside flex table with id "---program:-:peerReviewTableId---" without waiting for record
+    When I click on "Enter Review" icon for "{SavedValue:PM Username}" inside flex table with id "---program:-:peerReviewTableId---" without waiting for record
     And I enter values into fields
       | Value       | Field             |
       | Cannot Rate | Rating__c         |
       | Passed      | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
+    #222092
     Then I cannot see top right button "Edit" in page detail
     And I navigate to "Files" sub tab
+    Then  I cannot see top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    Then I cannot see row level action button "Edit" against "Program Artifacts" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    Then I cannot see row level action button "Delete" against "Program Artifacts" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "Record Id" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:EXE Username} | Step 1  |
+    And I pause execution for "5" seconds
+    And I click on "Complete Review" in the page details
+    Then I softly see status in Progress-bar is "Reviewed" and is "green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "Record Id" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Reviewed" and is "green"
+    Then I cannot see top right button "Edit" in page detail
+    And I navigate to "Files" sub tab
+    #222093
     Then  I cannot see top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
     Then I cannot see row level action button "Edit" against "Program Artifacts" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
     Then I cannot see row level action button "Delete" against "Program Artifacts" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
