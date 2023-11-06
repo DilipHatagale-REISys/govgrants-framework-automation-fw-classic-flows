@@ -26,7 +26,8 @@ Feature: Validate all scenarios in Payment Request With add file
     And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:reimbursementAddFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
-    Then I softly see "{SavedValue:Attachment.pdf}" has been added in "Reimbursement Files" flex table
+    When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
+    Then I softly see "{SavedValue:AttachedFile}" has been added in "Reimbursement Files" flex table
 
   @193834 @VerifySPAusercanaddfileonadhocreimbursementPRifuserhaseditaccessontopeditbuttonforPRincreatedstate @sprint-14-US-225425 @hitesh @Notes
   Scenario:Verify SPA user can add file on ad-hoc reimbursement PR if user has edit access on top edit button for PR in created state
@@ -53,7 +54,8 @@ Feature: Validate all scenarios in Payment Request With add file
     And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:reimbursementAddFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
-    Then I softly see "{SavedValue:Attachment.pdf}" has been added in "Reimbursement Files" flex table
+    When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
+    Then I softly see "{SavedValue:AttachedFile}" has been added in "Reimbursement Files" flex table
 
   @193842 @VerifyINDusercanaddfileonschedulereimbursementPRifuserhaseditaccessontopeditbuttonforPRincreatedstate @sprint-14-US-225425 @hitesh @Notes
   Scenario:Verify IND user can add file on schedule reimbursement PR if user has edit access on top edit button for PR in created state
@@ -82,4 +84,7 @@ Feature: Validate all scenarios in Payment Request With add file
     And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:reimbursementAddFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
-    Then I softly see "{SavedValue:Attachment.pdf}" has been added in "Reimbursement Files" flex table
+    When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
+    Then I softly see "{SavedValue:AttachedFile}" has been added in "Reimbursement Files" flex table
+
+
