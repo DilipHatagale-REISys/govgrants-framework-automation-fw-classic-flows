@@ -25,13 +25,13 @@ Feature: Validate all scenarios for program with add file
     And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
     Then I softly see "Program Artifacts" has been added in "Program Files" flex table
     #222087
-    And I click on "Edit" icon for "Attachment.pdf" inside flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    And I click on "Edit" icon for "Program Artifacts" inside flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
     And I switch to iframe with id "---program:-:addFilesIframeId---"
     And I select Classification as "Other Artifacts" at upload file modal
     When I click modal button "Save"
     Then I softly see value "Other Artifacts" for title "Classification" inside table "---program:-:GrantorInternalProgramFilesTableId---"
     And I click on "Delete" icon for "Other Artifacts" inside flex table with id "---program:-:GrantorInternalProgramFilesTableId---" without waiting for record
-    Then I softly do not see value "Attachment.pdf" for title "Title" inside table "---program:-:GrantorInternalProgramFilesTableId---"
+    Then I softly do not see value "Program Artifacts" for title "Title" inside table "---program:-:GrantorInternalProgramFilesTableId---"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -571,7 +571,7 @@ Feature: Validate all scenarios for program with add file
     Then I softly see status in Progress-bar is "Submitted for Review" and is "green"
     And I navigate to "Files" sub tab
     #222096
-    Then I softly can see row level action button "Download" against "Attachment.pdf" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    Then I softly can see row level action button "Download" against "Program Artifacts" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -579,7 +579,7 @@ Feature: Validate all scenarios for program with add file
     When I click on "Start" icon for "Record Id" inside flex table with id "---program:-:homePendingTableId---"
     And I navigate to "Files" sub tab
     #222096
-    Then I softly can see row level action button "Download" against "Attachment.pdf" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    Then I softly can see row level action button "Download" against "Program Artifacts" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
     And I navigate to "Responsibilities" sub tab
     When I click on "Enter Review" icon for "{SavedValue:PM Username}" inside flex table with id "---program:-:peerReviewTableId---" without waiting for record
     And I enter values into fields
