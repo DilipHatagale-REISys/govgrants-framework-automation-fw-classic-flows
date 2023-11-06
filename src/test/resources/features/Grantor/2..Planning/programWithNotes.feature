@@ -226,7 +226,7 @@ Feature: Validate all scenarios for program with add file
     And I upload attachment "Attachment.pdf" of type "Other Artifacts" from computer
     Then I softly see "Other Artifacts" has been added in "Program Files" flex table
 
-  @222081 @VVerifyifpeerreviewercanaddfilewhenthepeerreviewrecordisinsentforreviewinprogressstatusprovidedallowrecordeditingisyes @sprint-25-US-295138 @hitesh @Undo
+  @222081 @223555 @VVerifyifpeerreviewercanaddfilewhenthepeerreviewrecordisinsentforreviewinprogressstatusprovidedallowrecordeditingisyes @sprint-25-US-295138 @hitesh @Undo
   Scenario: Verify if peer reviewer can add file when the peer review record is in sent for review/ in progress status provided  allow record editing is yes
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -258,6 +258,23 @@ Feature: Validate all scenarios for program with add file
       | Automation EXE | Fiscal Reviewer | Automation Test Description | 10       | Yes                  |
     And I click on "Send for Review" icon for "{SavedValue:EXE Username}" inside table
     Then I softly see status in Progress-bar is "Submitted for Review" and is "green"
+    Then I can see top right button "Edit" in page detail
+    And I navigate to "Files" sub tab
+    And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---program:-:addFilesIframeId---"
+    And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
+    Then I softly see "Program Artifacts" has been added in "Program Files" flex table
+    And I click on "Edit" icon for "Program Artifacts" inside flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    And I switch to iframe with id "---program:-:addFilesIframeId---"
+    And I select Classification as "Other Artifacts" at upload file modal
+    When I click modal button "Save"
+    Then I softly see value "Other Artifacts" for title "Classification" inside table "---program:-:GrantorInternalProgramFilesTableId---"
+    And I click on "Delete" icon for "Other Artifacts" inside flex table with id "---program:-:GrantorInternalProgramFilesTableId---" without waiting for record
+    Then I softly do not see value "Attachment.pdf" for title "Title" inside table "---program:-:GrantorInternalProgramFilesTableId---"
+
+
+
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -359,7 +376,7 @@ Feature: Validate all scenarios for program with add file
     When I perform quick search for "Record Id" in "---program:-:homePendingTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---program:-:homePendingTableId---"
     And I navigate to "Responsibilities" sub tab
-    When I click on "Enter Review" icon for "{SavedValue:EXE Username}" inside flex table with id "---program:-:peerReviewTableId---" without waiting for record
+    When I click on "Enter Review" icon for "{SavedValue:FO Username}" inside flex table with id "---program:-:peerReviewTableId---" without waiting for record
     And I enter values into fields
       | Value       | Field             |
       | Cannot Rate | Rating__c         |
