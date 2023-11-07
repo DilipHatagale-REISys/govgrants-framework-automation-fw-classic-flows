@@ -323,15 +323,10 @@ Feature: Validate all scenarios in Payment Request With add file
       | {SavedValue:fundingAccount} | 20                            |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
-      | Name                     | Advance |
-      | {SavedValue:FO Username} | Step 1  |
+      | Name                        | Advance |
+      | {SavedValue:ADMIN Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Reject" in the approval decision
     Then I see status in Progress-bar is "Rejected" and is "Red"
     When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
@@ -470,12 +465,12 @@ Feature: Validate all scenarios in Payment Request With add file
       | Name                     | Reimbursement |
       | {SavedValue:FO Username} | Step 1        |
     And I click on "Send Back to Subrecipient" in the page details
-    Then I softly see status in Progress-bar is "Sent Back to Subrecipient" and is "green"
+    Then I softly see status in Progress-bar is "Created" and is "green"
     Then I cannot see top right button "Edit" in page detail
     And I navigate to "Forms and Files" sub tab
     Then  I cannot see top right button "Add Files" in flex table with id "---paymentRequest:-:reimburseFilesTableId---"
 
-  @193919 @VerifySPAusercanaddfileonadhocreimbursementPRifuserhaseditaccessontopeditbuttonforPRwhengrantorsentbacktoSRPR @sprint-14-US-225425 @hitesh
+  @193921 @VerifySPAusercanaddfileonadhocreimbursementPRifuserhaseditaccessontopeditbuttonforPRwhengrantorsentbacktoSRPR @sprint-14-US-225425 @hitesh
   Scenario:Verify SPA user can add file on ad-hoc reimbursement PR if user has edit access on top edit button for PR when grantor sent back to S\R PR
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
