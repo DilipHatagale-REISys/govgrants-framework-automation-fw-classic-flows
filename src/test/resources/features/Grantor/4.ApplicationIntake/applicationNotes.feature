@@ -398,7 +398,7 @@ Feature: Application Intake scenarios without background
     Then I softly cannot see row level action button "Delete" against "Notes Record Of EXE User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
     Then I softly cannot see row level action button "Edit" against "Notes Record Of PM User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record Of PM User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -537,7 +537,7 @@ Feature: Application Intake scenarios without background
     Then I softly cannot see row level action button "Delete" against "Notes Record Of EXE User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
     Then I softly cannot see row level action button "Edit" against "Notes Record Of PM User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record Of PM User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -724,6 +724,7 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "Initiate Review Process" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I wait for "5" seconds
+    And I refresh the page
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -841,7 +842,7 @@ Feature: Application Intake scenarios without background
     Then I softly cannot see row level action button "Delete" against "Notes Record Of EXE User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
     Then I softly cannot see row level action button "Edit" against "Notes Record Of PM User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record Of PM User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -925,8 +926,8 @@ Feature: Application Intake scenarios without background
     Then I softly can see row level action button "Edit" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Edit" :
-      | Title                         | Description      |
-      | Notes Record Of SPI Test User | Automation Notes |
+      | Created By      | Title                         | Description      |
+      | Automation SPI3 | Notes Record Of SPI Test User | Automation Notes |
     Then I softly see value "Notes Record Of SPI Test User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     When I enter the following values into flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Add" :
       | Title                     | Description      |
@@ -971,8 +972,8 @@ Feature: Application Intake scenarios without background
     Then I softly can see row level action button "Edit" against "Notes Record Of SPA User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record Of SPA User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Edit" :
-      | Title                         | Description      |
-      | Notes Record Of SPA Test User | Automation Notes |
+      | Created By     | Title                         | Description      |
+      | Automation SPA | Notes Record Of SPA Test User | Automation Notes |
     Then I softly see value "Notes Record Of SPA Test User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     When I enter the following values into flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Add" :
       | Title                     | Description      |
@@ -1014,8 +1015,8 @@ Feature: Application Intake scenarios without background
     Then I softly can see row level action button "Edit" against "Notes Record Of SPA User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record Of SPA User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Edit" :
-      | Title                         | Description      |
-      | Notes Record Of SPA Test User | Automation Notes |
+      | Created By     | Title                         | Description      |
+      | Automation SPA | Notes Record Of SPA Test User | Automation Notes |
     Then I softly see value "Notes Record Of SPA Test User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     When I enter the following values into flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Add" :
       | Title                     | Description      |
@@ -1094,8 +1095,8 @@ Feature: Application Intake scenarios without background
     Then I softly can see row level action button "Edit" against "Notes Record Of SPA User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record Of SPA User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Edit" :
-      | Title                         | Description      |
-      | Notes Record Of SPA Test User | Automation Notes |
+      | Created By     | Title                         | Description      |
+      | Automation SPA | Notes Record Of SPA Test User | Automation Notes |
     Then I softly see value "Notes Record Of SPA Test User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     And I click on "Delete" icon for "Notes Record Of SPA Test User" inside table
     And I wait for "4" seconds
@@ -1181,14 +1182,217 @@ Feature: Application Intake scenarios without background
     Then I softly do not see top right button "Add" inside flex table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly see value "Notes Record Of SPI User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly see value "Automation SPI3" for title "Created By" against the value "Notes Record Of SPA User" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
-    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
-    Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" against the value "Notes Record Of SPA User" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly can see row level action button "Edit" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Edit" :
-      | Title                         | Description      |
-      | Notes Record Of SPI Test User | Automation Notes |
+      | Created By      | Title                         | Description      |
+      | Automation SPI3 | Notes Record Of SPI Test User | Automation Notes |
     Then I softly see value "Notes Record Of SPI Test Use" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     And I click on "Delete" icon for "Notes Record Of SPI Test Use" inside table
     And I wait for "4" seconds
     Then I softly do not see value "Notes Record Of SPI Test Use" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+
+  @218741 @218753 @220550 @220551 @ValidateSPIusercantaddnotesbuteditdeletehisnotesonhisapplicationinReviewedStatus @Sprint-09-US-204865 @Notes @TBE
+  Scenario: Validate SPI user cant add notes but edit/delete his notes on his application in Reviewed Status
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Intake" and properties "default"
+    When I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match |
+      | Construction  | 1000   | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I navigate to "Proposal" sub tab
+    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
+    And I navigate to "Forms and Files" sub tab
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Add" :
+      | Title                    | Description      |
+      | Notes Record Of SPI User | Automation Notes |
+    And I get the "EGMS ID"
+    When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside table
+    And I navigate to "Forms and Files" sub tab
+    When I enter the following values into flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Add" :
+      | Title                    | Description      |
+      | Notes Record Of SPA User | Automation Notes |
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside table
+    When I click on "Submit Application" in the page details
+    #220551
+    When I navigate to "Forms and Files" sub tab
+    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I softly do not see top right button "Add" inside flex table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    Then I softly see value "Notes Record Of SPI User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Edit" :
+      | Created By      | Title                         | Description      |
+      | Automation SPI3 | Notes Record Of SPI Test User | Automation Notes |
+    Then I softly see value "Notes Record Of SPI Test User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    And I click on "Delete" icon for "Notes Record Of SPI Test User" inside table
+    And I wait for "4" seconds
+    Then I softly do not see value "Notes Record Of SPI Test User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    #220550
+    And I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside table
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I navigate to "Forms and Files" sub tab
+    Then I softly do not see top right button "Add" inside flex table "---applicationIntake:-:applicationNotesTableId---"
+    Then I softly see value "Notes Record Of SPA User" for title "Title" inside table "---applicationIntake:-:applicationNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record Of SPA User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record Of SPA User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I created approved FDM on application "{SavedValue:Automation Runtime Announcement Application Intake}"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside table
+    Then I softly see field "Status" as "Reviewed"
+    Then I softly do not see top right button "Add" inside flex table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    Then I softly see value "Notes Record Of SPI User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    Then I softly see value "Automation SPI3" for title "Created By" against the value "Notes Record Of SPA User" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Edit" :
+      | Created By      | Title                         | Description      |
+      | Automation SPI3 | Notes Record Of SPI Test User | Automation Notes |
+    Then I softly see value "Notes Record Of SPI Test User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    And I click on "Delete" icon for "Notes Record Of SPI Test User" inside table
+    And I wait for "4" seconds
+    Then I softly do not see value "Notes Record Of SPI Test User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    #218753
+    When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside table
+    Then I softly see field "Status" as "Reviewed"
+    Then I softly do not see top right button "Add" inside flex table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    Then I softly see value "Notes Record Of SPA User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    Then I softly see value "Automation SPA" for title "Created By" against the value "Notes Record Of SPA User" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record Of SPA User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record Of SPA User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Edit" :
+      | Created By      | Title                         | Description      |
+      | Automation SPA | Notes Record Of SPA Test User | Automation Notes |
+    Then I softly see value "Notes Record Of SPA Test User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    And I click on "Delete" icon for "Notes Record Of SPA Test User" inside table
+    And I wait for "4" seconds
+    Then I softly do not see value "Notes Record Of SPA Test User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+
+  @220577 @ValidateinternalusercannotseeaddbuttonandcanteditdeletenotedaddedbySRuser @Sprint-09-US-204865 @Notes @TBE
+  Scenario: Validate internal user can not see add button and can't edit delete noted added by S R user
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Intake" and properties "default"
+    When I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match |
+      | Construction  | 1000   | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I navigate to "Proposal" sub tab
+    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
+    And I navigate to "Forms and Files" sub tab
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Add" :
+      | Title                    | Description      |
+      | Notes Record Of SPI User | Automation Notes |
+    And I get the "EGMS ID"
+    When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside table
+    And I navigate to "Forms and Files" sub tab
+    When I enter the following values into flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Add" :
+      | Title                    | Description      |
+      | Notes Record Of SPA User | Automation Notes |
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside table
+    When I click on "Submit Application" in the page details
+    And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside table
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I navigate to "Forms and Files" sub tab
+    Then I softly do not see top right button "Add" inside flex table "---applicationIntake:-:applicationNotesTableId---"
+    Then I softly see value "Notes Record Of SPA User" for title "Title" inside table "---applicationIntake:-:applicationNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record Of SPA User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record Of SPA User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
