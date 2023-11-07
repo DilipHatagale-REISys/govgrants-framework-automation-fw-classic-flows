@@ -1011,7 +1011,7 @@ Feature: Application Intake scenarios without background
     And I wait for "4" seconds
     Then I softly do not see value "Notes Record Of SPA1 User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
 
-  @218768 @ValidateSPIusercantadnotesuteditdeletehisnotesonhisapplicationinConvertedtoAwardStatus @Sprint-09-US-204865 @Notes @TBE
+  @218768 @ValidateSPIusercantadnotesuteditdeletehisnotesonhisapplicationinConvertedtoAwardStatus @Sprint-09-US-204865 @Notes
   Scenario: Validate SPI user cant add notes but edit delete his notes on his application in Converted to Award Status
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Intake" and properties "default"
     When I am on "SUBPORTAL" portal
@@ -1182,7 +1182,7 @@ Feature: Application Intake scenarios without background
     And I wait for "4" seconds
     Then I softly do not see value " Notes Record Of SPI Test User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
 
-  @218741 @218753 @220550 @220551 @ValidateSPIusercantaddnotesbuteditdeletehisnotesonhisapplicationinReviewedStatus @Sprint-09-US-204865 @Notes @TBE
+  @218741 @218753 @220550 @220551 @ValidateSPIusercantaddnotesbuteditdeletehisnotesonhisapplicationinReviewedStatus @Sprint-09-US-204865 @Notes
   Scenario: Validate SPI user cant add notes but edit/delete his notes on his application in Reviewed Status
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Intake" and properties "default"
     When I am on "SUBPORTAL" portal
@@ -1286,8 +1286,8 @@ Feature: Application Intake scenarios without background
     Then I softly do not see top right button "Add" inside flex table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly see value "Notes Record Of SPI User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly see value "Automation SPI3" for title "Created By" against the value "Notes Record Of SPI User" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
-    Then I softly cannot see row level action button "Edit" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
-    Then I softly cannot see row level action button "Delete" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    Then I softly can see row level action button "Edit" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---" by clicking "Edit" :
       | Created By      | Title                         | Description      |
       | Automation SPI3 | Notes Record Of SPI Test User | Automation Notes |
