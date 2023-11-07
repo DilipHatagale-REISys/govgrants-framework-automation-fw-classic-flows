@@ -129,7 +129,7 @@ Feature: Validate all scenarios in Payment Request With add file
     And I navigate to "Forms and Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:reimburseFilesTableId---"
     And I pause execution for "5" seconds
-    And I switch to iframe with id "---paymentRequest:-:reimburseFilesTableId---"
+    And I switch to iframe with id "---paymentRequest:-:reimbursementAddFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---paymentRequest:-:reimburseFilesTableId---"
     Then I softly see "{SavedValue:AttachedFile}" has been added in "Reimbursement Files" flex table
