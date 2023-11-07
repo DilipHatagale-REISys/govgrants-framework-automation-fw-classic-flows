@@ -13477,10 +13477,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see status in Progress-bar is "Approved" and is "Green"
     And I click on "Publish" in the page details
     Then I softly see status in Progress-bar is "Published" and is "green"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime Announcement}"
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties "default"
     And I activate award from FDM having application name "{SavedValue:Automation Runtime Announcement}"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -15500,10 +15502,12 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     Then I softly see field "Status" as "Approved"
     And I click on "Publish" in the page details
     Then I softly see status in Progress-bar is "Published" and is "green"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement}" on announcement "{SavedValue:Automation Runtime Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime Announcement}"
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime Announcement}" and properties "Automation PO user"
     And I activate award from FDM having application name "{SavedValue:Automation Runtime Announcement}"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
