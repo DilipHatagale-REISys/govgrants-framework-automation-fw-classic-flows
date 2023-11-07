@@ -104,6 +104,7 @@ Feature: Validate all scenarios in Payment Request With add file
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PayreqId"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
@@ -164,8 +165,8 @@ Feature: Validate all scenarios in Payment Request With add file
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -201,12 +202,15 @@ Feature: Validate all scenarios in Payment Request With add file
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "PayreqId"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 20                            |
+    And I get the "EGMS ID"
+    And I navigate to "Forms and Files" sub tab
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
