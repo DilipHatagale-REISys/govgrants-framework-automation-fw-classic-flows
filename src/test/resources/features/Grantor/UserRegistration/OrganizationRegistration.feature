@@ -342,7 +342,7 @@ Feature: Validate all registration related scenarios
       | Your registration request for access to EGMS has been completed and sent for government approval.Once approved, you will be sent another email from salesforce.com (technology platform provider) with your Username and Password shortly to log into the system.                                                                                                                                                                |
       | For your records, your registration number is |
 
-  @84611 @83374 @83527 @84612 @83373 @84613 @validateSAUserforUserRegistration-Organization @meenakshi @tempUser
+  @84611 @83374 @83527 @84612 @83373 @84613 @validateSAUserforUserRegistration-Organization @meenakshi @CaptchaIssueOnYopmail
   Scenario:To verify SA allow to modify newly created contact in contact table  for Additional user registration process
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -479,7 +479,7 @@ Feature: Validate all registration related scenarios
       Sandbox: Your EGMS Registration has Been Approved
       """
 
-  @83539 @validatingRegistrationLegalDisclaimer1of2 @monu @tempUser
+  @83539 @validatingRegistrationLegalDisclaimer1of2 @monu @CaptchaIssueOnYopmail
   Scenario:To verify after sending Invitation for created contact , user is able to see Registration Legal Disclaimer 1 of 2 page on click of click here link
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -530,7 +530,7 @@ Feature: Validate all registration related scenarios
     Then I see the header is "Registration" in the page details
     Then I see the sub-header is "Legal Disclaimer 1 of 2" in the page details
 
-  @83531 @validatingEditingOfContact @monu @tempUser
+  @83531 @validatingEditingOfContact @monu @CaptchaIssueOnYopmail
   Scenario:To verify user is able to edit phone number of newly created contact
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -596,7 +596,7 @@ Feature: Validate all registration related scenarios
     Then I softly see "Address Information" page block displayed
     Then I softly see "System Information" page block displayed
 
-  @84614 @validateRolesDropdownValues-Organization @monu @tempUser
+  @84614 @validateRolesDropdownValues-Organization @monu @CaptchaIssueOnYopmail
   Scenario:To verify while creating new contacts for Activated users, roles picklist having all expected values
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -633,7 +633,7 @@ Feature: Validate all registration related scenarios
     Then I see only the following ordered options in dropdown field "fieldUserRole__c" :
       | --None-- | Non-User | Secondary | Primary |
 
-  @85781 @validatePlaceOfPerformanceFieldsWRTOrganizationFields-Organization @monu @tempUser
+  @85781 @validatePlaceOfPerformanceFieldsWRTOrganizationFields-Organization @monu @CaptchaIssueOnYopmail
   Scenario:Verify place of performance fields while creating organization user is getting populated to created application by same user
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -805,7 +805,7 @@ Feature: Validate all registration related scenarios
     When I perform quick search for "{SavedValue:UserFullName}" in "---program:-:adminTaskReassignmentTableId---" panel
     Then I softly do not see value "Review Individual User Registration" for title "Task Type" inside table "---program:-:adminTaskReassignmentTableId---"
 
-  @222975 @223047 @ValidateAdminusershouldnotabletoseethereassigntaskofParent/ChildrelationshipApprovalfromAlltasksAsaAdmin @sprint-12-US-226646 @vaibhav @reassignment @tempUser
+  @222975 @223047 @ValidateAdminusershouldnotabletoseethereassigntaskofParent/ChildrelationshipApprovalfromAlltasksAsaAdmin @sprint-12-US-226646 @vaibhav @reassignment @CaptchaIssueOnYopmail
   Scenario: Validate Admin user should not able to see the reassign task of Parent/Child relationship Approval from All tasks As a Admin
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
