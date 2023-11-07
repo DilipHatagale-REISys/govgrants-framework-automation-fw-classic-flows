@@ -136,7 +136,7 @@ Feature: Validate all scenarios in Payment Request With add file
 
   @193868 @VerifyEXEusercannotseetopleveleditbuttonandabletoaddfileonAdvancePRinsubmittograntorstate @sprint-14-US-225425 @hitesh 
   Scenario:Verify EXE user can not see top level edit button and able to add file on Advance PR in submit to grantor state
-    Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PM user" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation EXE user" of type "Competitive"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -161,7 +161,7 @@ Feature: Validate all scenarios in Payment Request With add file
     And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
