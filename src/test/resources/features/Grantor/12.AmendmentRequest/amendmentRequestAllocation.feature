@@ -15450,7 +15450,26 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
 
   @258596 @ValidateCompPOusercanseecorrectamountdisplayinPreEncumbranceAppropriationAmountEncumbranceSpentTotalObligationandAvailableBalanceunderfundingaccount @sprint-19-US-250551 @vaibhav @Allocation
   Scenario: Validate Comp PO user can see correct $ amount display in Pre-Encumbrance, Appropriation Amount, Encumbrance, Spent, Total Obligation and Available Balance under funding account
-    When I login to "As a Grantor" app as "PO" user
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "Start Date" as "SDATE"
+    And I save the field labeled "End Date" as "EDATE"
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I enter value "{SavedValue:SDATE}" into field "fieldStartDate__c"
+    When I enter value "{SavedValue:EDATE}" into field "fieldEndDate__c"
+    And I click on "Save" in the page details
+    When I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "green"
+    And I save the field labeled "Title" as "Automation Permanent Funding Account3"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
@@ -15462,6 +15481,7 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
     And I save the field labeled "Announcement Name" as "Automation Runtime Announcement"
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
@@ -15572,11 +15592,11 @@ Feature: Validate all scenarios in the Amendment Request Allocation Feature
     When I navigate to "Budget" sub tab
     And I click in table hyperlink containing value "{SavedValue:FundingAccount2}"
     Then I see the header is "Funding Account" in the page details
-    Then I softly see field "Pre-Encumbrance" as "$4,000.00"
-    Then I softly see field "Encumbrance" as "$11,000.00"
+    Then I softly see field "fieldPreEncumbranceAmount__c" as "$3,000.00"
+    Then I softly see field "fieldActualEncumbrance__c" as "$2,000.00"
     Then I softly see field "Spent" as "$0.00"
-    Then I softly see field "Total Obligation" as "$15,000.00"
-    Then I softly see field "Available Balance" as "$985,000.00"
+    Then I softly see field "Total Obligation" as "$5,000.00"
+    Then I softly see field "Available Balance" as "$995,000.00"
     Then I softly see field "Appropriation Amount" as "$1,000,000.00"
 
   @248483 @ValidateDirectAnnEXEusershouldnotseeFocusAreawithZeroObligationunderbudgetsummarybyfocusareasectiononGrantunderbudgettabisinClosedStatewhenselectAllocationTypeisNA&FocusAreaisYES @sprint-21-US-263183 @vaibhav @Allocation
