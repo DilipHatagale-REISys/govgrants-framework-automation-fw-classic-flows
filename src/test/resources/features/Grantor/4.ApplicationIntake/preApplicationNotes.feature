@@ -371,7 +371,7 @@ Feature: Pre-Application scenarios without background
       | PO    | Automation PO user    |
       | ADMIN | Automation ADMIN user |
 
-  @225130 @226079 @ValidatePMPOEXEADMINusercannotAddnotesbutEditDeletetheirownnotewhenpreappisNegotiationInProgressstate @TBE
+  @225130 @226079 @ValidatePMPOEXEADMINusercannotAddnotesbutEditDeletetheirownnotewhenpreappisNegotiationInProgressstate
   Scenario Outline: Validate PM PO EXE ADMIN user can not 'Add' notes but 'Edit/Delete' their own notes when pre-app is 'Negotiation In Progress' state
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES-<filter>"
     When I am on "SUBPORTAL" portal
@@ -648,7 +648,7 @@ Feature: Pre-Application scenarios without background
     Then I softly cannot see row level action button "Edit" against "Notes Record" in flex table with id "---preApplication:-:grantorPreApplicationNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record" in flex table with id "---preApplication:-:grantorPreApplicationNotesTableId---"
 
-  @226083 @226084 @ValidateFDusercannotAddnotesbutEditDeletetheirownnotesonpreapplicationisinNegotiationInitiatedstate @Sprint-11-US-224418 @Notes @TBE
+  @226083 @226084 @ValidateFDusercannotAddnotesbutEditDeletetheirownnotesonpreapplicationisinNegotiationInitiatedstate @Sprint-11-US-224418 @Notes
   Scenario: Validate FD user cannot Add notes but Edit Delete their own notes on pre-application is in Negotiation Initiated state
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
