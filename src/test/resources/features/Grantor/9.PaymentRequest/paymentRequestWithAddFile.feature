@@ -665,7 +665,7 @@ Feature: Validate all scenarios in Payment Request with add file
     And I navigate to "Forms and Files" sub tab
     Then  I cannot see top right button "Add Files" in flex table with id "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
 
-  @193868 @VerifySPIusercandownloadthefileinpaidstateofAdvancePR @sprint-14-US-225425 @addFiles @hitesh
+  @193968 @VerifySPIusercandownloadthefileinpaidstateofAdvancePR @sprint-14-US-225425 @addFiles @hitesh
   Scenario:Verify SPI user can download the file in paid state of Advance PR
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation EXE user" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -740,7 +740,7 @@ Feature: Validate all scenarios in Payment Request with add file
     When I click on "Download" icon for "{SavedValue:AttachedFile}" inside flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---" without waiting for record
     Then I softly verify that the file "{SavedValue:AttachedFile}" is downloaded
 
-  @193863 @193986 @VerifyPMusercannotseetopleveleditbuttonandshouldabletoaddfileonadhocreimbursementPRwhenusersendtoownerwhileapproval @sprint-14-US-225425 @addFiles @hitesh
+  @193977 @193986 @VerifyPMusercannotseetopleveleditbuttonandshouldabletoaddfileonadhocreimbursementPRwhenusersendtoownerwhileapproval @sprint-14-US-225425 @addFiles @hitesh
   Scenario:Verify PM user can not see top level edit button and should able to add file on ad-hoc reimbursement PR when user send to owner while approval
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -797,6 +797,7 @@ Feature: Validate all scenarios in Payment Request with add file
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
+    And I click toggle button to select "Reimbursements - All"
     And I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     When I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     Then I cannot see top right button "Edit" in page detail
@@ -810,6 +811,7 @@ Feature: Validate all scenarios in Payment Request with add file
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
+    And I click toggle button to select "Reimbursements - All"
     And I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     When I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     #193986
