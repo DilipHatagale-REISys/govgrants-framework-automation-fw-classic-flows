@@ -4108,7 +4108,7 @@ Feature: Validate all scenarios of grants and award with undo
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I can see top right button "Undo" in page detail
 
-  @286395 @Verifythesnapshotisgeneratedinsnapshothistorysectionwhenlastapproverclickundoaction @sprint-5-US-295145 @hitesh @Undo
+  @299541 @Verifythesnapshotisgeneratedinsnapshothistorysectionwhenlastapproverclickundoaction @sprint-5-US-295145 @hitesh @Undo
   Scenario: Verify the snapshot is generated in snapshot history section when last approver click undo action
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
