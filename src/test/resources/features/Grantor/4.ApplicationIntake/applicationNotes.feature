@@ -1591,6 +1591,7 @@ Feature: Application Intake scenarios without background
     And I wait for "4" seconds
     Then I softly do not see value "Notes Record Of SPI3 User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     #218865
+    And I navigate to "Negotiations" sub tab
     And I enter values into fields
       | Value                              | Field                |
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
