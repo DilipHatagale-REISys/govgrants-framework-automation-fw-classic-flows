@@ -667,7 +667,7 @@ Feature: Validate all scenarios in Payment Request with add file
 
   @193968 @VerifySPIusercandownloadthefileinpaidstateofAdvancePR @sprint-14-US-225425 @addFiles @hitesh
   Scenario:Verify SPI user can download the file in paid state of Advance PR
-    Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation EXE user" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PM user" of type "Competitive"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
