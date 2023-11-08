@@ -1029,6 +1029,7 @@ Feature: Application Intake scenarios without background
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "Initiate Review Process" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I refresh the page
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
@@ -1627,7 +1628,7 @@ Feature: Application Intake scenarios without background
     And I wait for "4" seconds
     Then I softly do not see value "Notes Record Of SPI User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
 
-  @218864 @ValidateSPAusercantaddnotesbuteditdeletehisnotesonapplicationcreatedbySPIuserwhenitsstatusisnegotiationinitiated @Sprint-09-US-204865 @Notes @TBE
+  @218864 @ValidateSPAusercantaddnotesbuteditdeletehisnotesonapplicationcreatedbySPIuserwhenitsstatusisnegotiationinitiated @Sprint-09-US-204865 @Notes
   Scenario: Validate SPA user cant add notes but edit delete his notes on application created by SPI user when its status is negotiation initiated
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Intake" and properties "default"
     When I am on "SUBPORTAL" portal
