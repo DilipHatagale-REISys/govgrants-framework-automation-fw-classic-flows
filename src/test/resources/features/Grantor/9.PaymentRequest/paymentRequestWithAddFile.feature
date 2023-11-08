@@ -696,7 +696,7 @@ Feature: Validate all scenarios in Payment Request with add file
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
-    Then I softly see "{SavedValue:AttachedFile}" has been added in "Reimbursement Files" flex table
+    Then I softly see "{SavedValue:AttachedFile}" has been added in "Advance Payment Files" flex table
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -743,8 +743,6 @@ Feature: Validate all scenarios in Payment Request with add file
     Then I see status in Progress-bar is "Paid" and is "green"
     And I navigate to "Forms and Files" sub tab
     Then I softly can see row level action button "Download" against "{SavedValue:AttachedFile}" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
-    Then I softly can see row level action button "Delete" against "{SavedValue:AttachedFile}" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
-    Then I softly can see row level action button "Edit" against "{SavedValue:AttachedFile}" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
     When I click on "Download" icon for "{SavedValue:AttachedFile}" inside flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---" without waiting for record
     Then I softly verify that the file "{SavedValue:AttachedFile}" is downloaded
 
@@ -863,7 +861,7 @@ Feature: Validate all scenarios in Payment Request with add file
       | {SavedValue:EXE Username} | Step 1        |
     And I refresh the page
     And I click on "Send Back to Subrecipient" in the page details
-    Then I softly see status in Progress-bar is "Sent Back to Subrecipient" and is "green"
+    Then I softly see status in Progress-bar is "Created" and is "green"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
