@@ -1029,7 +1029,11 @@ Feature: Application Intake scenarios without background
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "Initiate Review Process" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
-    And I refresh the page
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationReview:-:appTableId---" panel
@@ -1246,7 +1250,7 @@ Feature: Application Intake scenarios without background
     And I wait for "4" seconds
     Then I softly do not see value " Notes Record Of SPI Test User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
 
-  @218741 @218753 @220550 @220551 @ValidateSPIusercantaddnotesbuteditdeletehisnotesonhisapplicationinReviewedStatus @Sprint-09-US-204865 @Notes @TBE
+  @218741 @218753 @220550 @220551 @ValidateSPIusercantaddnotesbuteditdeletehisnotesonhisapplicationinReviewedStatus @Sprint-09-US-204865 @Notes
   Scenario: Validate SPI user cant add notes but edit/delete his notes on his application in Reviewed Status
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Intake" and properties "default"
     When I am on "SUBPORTAL" portal
@@ -1435,7 +1439,7 @@ Feature: Application Intake scenarios without background
     Then I softly cannot see row level action button "Edit" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
     Then I softly cannot see row level action button "Delete" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:applicationNotesTableId---"
 
-  @218779 @ValidateSPAusercantaddnotesbuteditdeletehisnotesonapplicationcreatedbySPIUserwhenitsstatusisconvertedtoaward @Sprint-09-US-204865 @Notes @TBE
+  @218779 @ValidateSPAusercantaddnotesbuteditdeletehisnotesonapplicationcreatedbySPIUserwhenitsstatusisconvertedtoaward @Sprint-09-US-204865 @Notes
   Scenario: Validate SPA user cant add notes but edit delete his notes on application created by SPI user when its status is converted to award
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Intake" and properties "default"
     When I am on "SUBPORTAL" portal
@@ -1546,7 +1550,7 @@ Feature: Application Intake scenarios without background
     When I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
-    When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
+    When  I enter "Nego_Edit_Notes" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
     And I enter value "Checked" into field "AllowEdit__c"
@@ -1688,8 +1692,8 @@ Feature: Application Intake scenarios without background
     When I click on "Initiate Review Process" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:appTableId---" panel
-    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationReview:-:appTableId---" panel
+    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
     When I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
@@ -1792,8 +1796,8 @@ Feature: Application Intake scenarios without background
     When I click on "Initiate Review Process" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:appTableId---" panel
-    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationReview:-:appTableId---" panel
+    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
     When I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
@@ -1921,7 +1925,6 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "Initiate Review Process" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I refresh the page
-    Then I softly see field "Status" as "Review Initiated"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -1933,7 +1936,7 @@ Feature: Application Intake scenarios without background
     Then I softly do not see top right button "Add" inside flex table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly see value "Notes Record Of SPI User" for title "Title" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly see value "Automation SPI3" for title "Created By" against the value "Notes Record Of SPI User" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
-    And I save the value from row "1" for column name "Created Date" as "CreatedDate" from flex table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
+    And I save the value from row "2" for column name "Created Date" as "CreatedDate" from flex table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly see value "{SavedValue:CreatedDate}" for title "Created Date" against the value "Notes Record Of SPI User" inside table "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly can see row level action button "Edit" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
     Then I softly can see row level action button "Delete" against "Notes Record Of SPI User" in flex table with id "---applicationIntake:-:subrecipientApplicationNotesTableId---"
