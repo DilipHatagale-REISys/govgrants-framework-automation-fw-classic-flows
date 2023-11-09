@@ -4194,7 +4194,3 @@ Feature: Validate all scenarios of grants and award with undo
       | Detail                       | Page Number |
       | {SavedValue:AwardEGMSID}     | 1           |
       | {SavedValue:GrantEGMSID}     | 1           |
-
-  @221133 @CompAnnVerifyPOusercanseethevalidationwhenthebudgetedAmountisnotequaltotheRecommendedBudgetwhenusertriedtoconverttoawardonFDMlayout @sprint-13-US-224612 @komal @Allocation
-  Scenario: Verify Ann PO user can see the validation when the budgeted Amount is not equal to the Recommended Budget when user tried to convert to award on FDM layout
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-Automation PM user"
