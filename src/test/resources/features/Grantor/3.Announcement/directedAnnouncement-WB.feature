@@ -2582,3 +2582,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     Then I see the following headers in table with id "---announcement:-:directedInvitedApplicatsTableId---" :
       | EGMS ID | Applicants  | Application EGMS ID | Application Status |Last Updated By | Last Updated |
+
+  @111111
+  Scenario: Negotiation Workflow
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
