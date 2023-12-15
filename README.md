@@ -2,6 +2,8 @@
 -Funding Source-
 ->Automation Permanent Funding Account
 ->Automation Permanent Funding Account1
+->Automation Permanent Funding Account2
+->Automation Permanent Funding Account3
 
 -Focus Area- 
 ->Automation Permanent Focus Area -- In Active state
@@ -9,8 +11,8 @@
 
 -Strategic Plan-
 ->Automation Permanent Strategic Plan   -- In Active state
-Automation Permanent Strategic Goal -> Automation Permanent Objective
-Automation Permanent Strategic Goal2 -> Automation Permanent Objective2
+->Automation Permanent Strategic Goal -> Automation Permanent Objective
+->Automation Permanent Strategic Goal2 -> Automation Permanent Objective2
 
 -KPI-
 ->Automation Permanent KPI
