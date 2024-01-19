@@ -118,7 +118,7 @@ public class UsersAndURL implements UsersController {
                 password = "Salesforce@2032";
                 break;
             case "SPA":
-                password = "Salesforce@2031";
+                password = "Salesforce9090";
                 break;
             default:
                 password = "Salesforce@2032";
@@ -139,7 +139,7 @@ public class UsersAndURL implements UsersController {
                 password = "Salesforce2030";
                 break;
             default:
-                password = "Salesforce2028";
+                password = "Salesforce2030";
         }
         return password;
     }

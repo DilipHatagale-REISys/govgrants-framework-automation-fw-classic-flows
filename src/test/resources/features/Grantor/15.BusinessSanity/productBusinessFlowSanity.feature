@@ -2,7 +2,7 @@
 Feature: Validate sanity testing of Complete Business Flow
 
 
-  @UserPasswordCheck @Product @Debug
+  @UserPasswordCheck @Product
   Scenario: UserPasswordCheck
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab

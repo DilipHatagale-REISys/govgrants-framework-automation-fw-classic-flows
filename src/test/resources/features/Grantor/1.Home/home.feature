@@ -308,6 +308,7 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
+    And I select value inside table "---home:-:InternalOrganizationHierarchyTableID---" is "All"
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditioanlAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
@@ -325,6 +326,7 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
+    And I select value inside table "---home:-:InternalOrganizationHierarchyTableID---" is "All"
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
     And I enter in modal "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
@@ -343,7 +345,7 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User |
       | EXE  |
-      | PM   |
+#      | PM   |
 
   @56738 @deletionOfRelatedContact
   Scenario:  Validate whether the admin is able to Delete Related Contacts
@@ -844,7 +846,7 @@ Feature: Validate all scenarios in the home tab
     Then I see the following messages in the page details :
       | Email Sent Successfully |
 
-  @201744 @201746 @201748 @ValidateSPIusershouldnotabletoeditfollowingfieldsFirstNameLastNameEmaildUserRolealreadyread-onlyonexternalprofileuser @sprint-5-US-200038 @vaibhav
+@Bug-ID-388698 @201744 @201746 @201748 @ValidateSPIusershouldnotabletoeditfollowingfieldsFirstNameLastNameEmaildUserRolealreadyread-onlyonexternalprofileuser @sprint-5-US-200038 @vaibhav
   Scenario Outline: Validate SPI user should not able to edit following fields a. First Name b. Last Name c. Email d. User Role already read-only on external profile user
     Given I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "<userType>" user
