@@ -302,7 +302,7 @@ Feature: Validate all scenarios for program with undo
     Then I softly see field "Status" as "Submitted for Approval"
     #279415
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "180" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -1559,7 +1559,7 @@ Feature: Validate all scenarios for program with undo
     Then I softly see "Submitted for Approval" on page "1" of "govgrants" pdf file
     Then I softly see "Test Automation Organization" on page "1" of "govgrants" pdf file
 
-  @279332 @VerifyPOuserasstep2approvercanabletoclickonundobuttonandcanseeapprovaldecisionsectionwithfouroptionForwardsenttoownerapprovedandreject @sprint-25-US-295138 @hitesh @Undo
+   @279332 @VerifyPOuserasstep2approvercanabletoclickonundobuttonandcanseeapprovaldecisionsectionwithfouroptionForwardsenttoownerapprovedandreject @sprint-25-US-295138 @hitesh @Undo
   Scenario: Verify PO user as step 2 approver can able to click on undo button and can see approval decision section with four option Forward, sent to owner, approved and reject
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab

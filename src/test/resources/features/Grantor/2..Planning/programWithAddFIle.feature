@@ -268,7 +268,7 @@ Feature: Validate all scenarios for program with add file
     And I upload attachment "Attachment.pdf" of type "Other Artifacts" from computer
     Then I softly see "Other Artifacts" has been added in "Program Files" flex table
 
-  @222081 @223555 @VVerifyifpeerreviewercanaddfilewhenthepeerreviewrecordisinsentforreviewinprogressstatusprovidedallowrecordeditingisyes @sprint-25-US-295138 @hitesh @addFiles
+   @222081 @223555 @VVerifyifpeerreviewercanaddfilewhenthepeerreviewrecordisinsentforreviewinprogressstatusprovidedallowrecordeditingisyes @sprint-25-US-295138 @hitesh @addFiles
   Scenario: Verify if peer reviewer can add file when the peer review record is in sent for review/ in progress status provided  allow record editing is yes
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
