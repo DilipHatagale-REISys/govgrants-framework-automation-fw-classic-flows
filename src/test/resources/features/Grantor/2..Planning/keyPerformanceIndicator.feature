@@ -95,8 +95,9 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
-    And I click toggle button to select "Key Performance Indicators (KPI) - Draft" in "---keyperformanceindicator:-:kpiTableId---"
-    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - All"
+#    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    And I select value inside table "---keyperformanceindicator:-:kpiTableId---" is "All"
     Then I cannot see row level action button "Edit" against "{SavedValue:Automation Runtime KPI}" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
 
   @52622 @userFODeleteKPI
@@ -113,8 +114,9 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
-    And I click toggle button to select "Key Performance Indicators (KPI) - Draft" in "---keyperformanceindicator:-:kpiTableId---"
-    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - All"
+#    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    And I select value inside table "---keyperformanceindicator:-:kpiTableId---" is "All"
     Then I cannot see row level action button "Delete" against "{SavedValue:Automation Runtime KPI}" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
 
   @52623 @deactivateKPI
@@ -151,8 +153,9 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
-    And I click toggle button to select "Key Performance Indicators (KPI) -Active"
-    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - All"
+#    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    And I select value inside table "---keyperformanceindicator:-:kpiTableId---" is "All"
     And I click on "View" icon for "{SavedValue:Automation Runtime KPI}" inside table
     Then I cannot see top right button "Deactivate" in page detail
     Examples:
@@ -174,8 +177,9 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     And I click on "Deactivate" in the page details
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
-    And I click toggle button to select "Key Performance Indicators (KPI) - Inactive"
-    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - All"
+    And I select value inside table "---keyperformanceindicator:-:kpiTableId---" is "All"
+#    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime KPI}" inside table
     Then I see status in Progress-bar is "Inactive" and is "Green"
 
@@ -225,8 +229,9 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     Then I softly see that "{SavedValue:KPINAME}" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
-    And I click toggle button to select "Key Performance Indicators (KPI) -Active"
-    When I perform quick search for "{SavedValue:KPINAME}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - All"
+#    When I perform quick search for "{SavedValue:KPINAME}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    And I select value inside table "---keyperformanceindicator:-:kpiTableId---" is "All"
     And I click on "View" icon for "{SavedValue:KPINAME}" inside table
     When I navigate to "Related Log" sub tab
     Then I softly see value "Execution Objective" for title "Title" inside table "---keyperformanceindicator:-:ObjectiveTableId---"

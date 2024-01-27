@@ -1471,13 +1471,13 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I download the file
     Then I see "Field History" on page "1" of "govgrants" pdf file
 
-  @139848 @Verify2StepApprovalAtApproverSection_CompetitiveAnnouncement-RnRFunctionality @monu
+  @139848 @Verify2StepApprovalAtApproverSection_CompetitiveAnnouncement-RnRFunctionality @monu @Debug
   Scenario: verify that user can add two step approver on announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
-   When I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Associate" after selection of "{SavedValue:fundingAccount}" by showing entries "All" in flex table with id "---announcement:-:fundingAccTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page

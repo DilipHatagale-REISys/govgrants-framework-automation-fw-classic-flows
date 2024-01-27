@@ -24,7 +24,7 @@ Feature: Validate all scenarios for program
       | Program flextable Header  | Program                                          |
       | Internal Programs - Draft | {SavedValue:Automation Runtime Internal Program} |
 
-  @105872 @VerifyDeletionOfCreatedProgram @monu
+  @105872 @VerifyDeletionOfCreatedProgram @monu @Bug-Id-389787
   Scenario Outline: Verifying if the owner of program is ablr to delete created program
     When I navigate to "Planning" tab
     And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -5135,6 +5135,8 @@ Feature: Validate all scenarios for program
     And I pause execution for "5" seconds
     And I logout
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I wait for "180" seconds
+    And I refresh the page
     And I see the mail subject is as follows :
       """
       Sandbox: Notification: Request to Approve {SavedValue:ProgramEGMSID}
