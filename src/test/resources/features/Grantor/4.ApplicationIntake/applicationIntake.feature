@@ -1,4 +1,4 @@
-@applicationIntake @grantor-regression @grantor-parallel-regression @app @regression @ApplicationExecution-reg
+@applicationIntake @grantor-regression @grantor-parallel-regression @app @regression @ApplicationExecution-reg @ApplicationClassic
 Feature: Validate all scenarios in the Application Intake
 
   Background: Qualify Announcement and Create Application
