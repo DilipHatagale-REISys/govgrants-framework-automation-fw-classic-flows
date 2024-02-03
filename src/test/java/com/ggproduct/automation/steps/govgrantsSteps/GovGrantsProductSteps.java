@@ -90,6 +90,15 @@ public final class GovGrantsProductSteps {
         );
     }
 
+    @Description("To Choose a file to upload for  and the attachment type")
+    @When("^I choose the file \"([^\"]*)\" for upload of type \"([^\"]*)\"$")
+    public void uploadTheFile(String fileName, String attachmentType) {
+        ggProductObjects.uploadTheFile(
+                fileName,
+                attachmentType
+        );
+    }
+
     @Description("To assert if the Page Block fields is displayed in view mode")
     @Then("^I (see|softly see) that \"([^\"]*)\" rendered in view mode only$")
     public void assertPageBlockDetailElementsDisplayedInViewMode(String usage, String fieldApiName) {

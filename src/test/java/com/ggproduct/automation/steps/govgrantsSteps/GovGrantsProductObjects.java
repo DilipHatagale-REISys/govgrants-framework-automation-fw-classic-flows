@@ -89,6 +89,20 @@ public final class GovGrantsProductObjects {
         }
     }
 
+    public void uploadTheFile(String fileName, String attachmentType) {
+        String defaultFilePath = System.getProperty("user.dir") + "/src/main/resources/";
+
+            I.amPerforming().dropDownSelection().from(attachmentClassificationPath).selectByValue(attachmentType);
+            I.amPerforming().textInput().in(attachmentDescriptionPath, defaultLongText);
+            I.amPerforming().waitFor().makeThreadSleep(1000);
+            I.amPerforming().textInput().in(attachmentFilePath, defaultFilePath + fileName);
+        try {
+            govgrants.perform().modal().clickModalContentSpecificButton("Save");
+        } catch (Exception ee) {
+            I.amPerforming().click().on(By.xpath("//*[@id='addAtt']//input[@value='Save' or @type='submit']"));
+        }
+    }
+
     /**
      * Asserts if a column value is present inside the given flextable
      *
