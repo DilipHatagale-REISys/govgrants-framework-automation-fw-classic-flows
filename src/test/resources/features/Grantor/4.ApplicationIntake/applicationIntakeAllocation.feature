@@ -2713,7 +2713,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario Outline: Verify SPI/SPA user can edit "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login to "Grants Portal" app as "<User>" user
+    And I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2731,8 +2731,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Overview" sub tab
     When I save the field containing "Program Income Allowed?" as "Yes"
     And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
-      | Name       | Project Role             | Is Key Contact |
-      | <UserName> | Project Director/Manager | Checked        |
+      | Name                       | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
@@ -2768,9 +2768,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Examples:
-      | User | UserName                   |
-      | SPI3 | {SavedValue:SPI3 Username} |
-      | SPA  | {SavedValue:SPA Username}  |
+      | User |
+      | SPI3 |
+      | SPA  |
 
   @222695 @VerifyBudgetsummarybyfocusareasectionshouldbehiddenonpreappiffocusareasetasNoonAnnbutstilltheoptionBudgetsummarybyfocusareaonpreappnegotiation @sprint-10-US-221062 @komal @Allocation
   Scenario: Verify 'Budget summary by focus area' section should be hidden on pre-app if focus area set as 'No' on Ann but still the option 'Budget summary by focus area' on pre-app negotiation
@@ -3866,8 +3866,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter "Edition" values from "Application_Field_Values.xlsx"
     And I navigate to "Overview" sub tab
     And I enter values into fields
-      | Value                       | Field                        |
-      | 500                         | fieldGranteeProgramincome__c |
+      | Value | Field                        |
+      | 500   | fieldGranteeProgramincome__c |
     When I click on "Save" in the page details
     Then I softly see field "Estimated Program Income For Project Period" as "$500.00"
 

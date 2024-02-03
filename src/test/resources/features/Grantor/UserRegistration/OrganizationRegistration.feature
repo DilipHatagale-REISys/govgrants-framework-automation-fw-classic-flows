@@ -1,7 +1,7 @@
 @organizationRegistrationPage @userRegistration @parallel-regression @regression @grantor-regression @regression
 Feature: Validate all registration related scenarios
 
-  @81962 @verifyDownloadOptionOpensInNewWindow-Organization @monu @tempUser
+  @81962 @verifyDownloadOptionOpensInNewWindow-Organization @monu
   Scenario:Verify if user clicks on download option inside Attachment section new tab getting opened
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -12,12 +12,11 @@ Feature: Validate all registration related scenarios
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Files" sub tab
-    And I click on top right button "Add" in flex table with id "---grantor_tableId:-:userOrganizarionUploadTableId---"
-    And I choose the file "AttachmentTesting.pdf" for upload of type "Parent/Child Legal Documents"
-    When I close "UserRegistrationAttachment" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Parent/Child Legal Documents" from computer
+    #And I upload attachment "AttachmentTesting.pdf" of type "Parent/Child Legal Documents"
     And I pause execution for "3" seconds
     And I refresh the page
-    When I click on "Download" icon for "AttachmentTesting.pdf" inside table
+    When I click on "Download" icon for "Attachment.pdf" inside table
     Then I softly see new tab is opened
 
   @82051 @verifyEnteredValueOfPaymentAddressSection-Organization @monu
@@ -41,7 +40,7 @@ Feature: Validate all registration related scenarios
     Then I see "(918) 908-9089" text enter in field "fieldPaymentAddressVendorLocation__c"
     Then I see "1234" text enter in field "fieldPaymentAddressZipCode4__c"
 
-  @82052 @verifyErrorMessageForPaymentAddressSectionFields-Organization @monu @tempUser
+  @82052 @verifyErrorMessageForPaymentAddressSectionFields-Organization @monu
   Scenario:Verify user is able to see error message after filling all details except Payment address section
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -103,7 +102,7 @@ Feature: Validate all registration related scenarios
     Then I see "20301" text enter in field "fieldPrimaryRepZipCode__c"
     Then I see "USA" text enter in field "fieldPrimaryRepCountry__c"
 
-  @82797 @verifyVisibilityOfFieldsAtPaymentAddressSection-Individual @monu @tempUser
+  @82797 @verifyVisibilityOfFieldsAtPaymentAddressSection-Individual @monu
   Scenario:Verify user is not able to see any fields after selection of Same as organization fields to yes inside payment details page block
     Given I begin "Individual" registration
     When I click on "Agree" in the page details
@@ -115,7 +114,7 @@ Feature: Validate all registration related scenarios
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
     And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
-    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    And I enter value "No" into field "fieldSameAsOrganizationAddress__c"
     Then I softly see fields "fieldPaymentAddressLine1__c" is not visible
     Then I softly see fields "fieldPaymentAddressCity__c" is not visible
     Then I softly see fields "fieldPaymentAddressState__c" is not visible
@@ -139,7 +138,7 @@ Feature: Validate all registration related scenarios
     Then I see "Sterling" text enter in field "fieldPrimaryRepCity__c"
     Then I see "20171" text enter in field "fieldPrimaryRepZipCode__c"
 
-  @82025 @verifyFilledDetailsAtAuthorizedRepresentativePage-Organization @monu @tempUser
+  @82025 @verifyFilledDetailsAtAuthorizedRepresentativePage-Organization @monu
   Scenario:Verify user should be navigated to captch page after filling all details at authorised representative detail
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -189,7 +188,7 @@ Feature: Validate all registration related scenarios
        {regconfirmationmailbody:mailbody}
       """
 
-  @82784 @VerifyRegistrationPages2of2-Individual @monu @tempUser
+  @82784 @VerifyRegistrationPages2of2-Individual @monu
   Scenario:Verify user should be navigated to Registration step 2 of 2 after clicking on save button on registration step 1 of 2 page
     Given I begin "Individual" registration
     When I click on "Agree" in the page details
@@ -203,7 +202,7 @@ Feature: Validate all registration related scenarios
     Then I see the header is "Create External Registration" in the page details
     Then I see the sub-header is "Step 2 of 2" in the page details
 
-  @82780 @VerifyRegistrationStep1of2-Individual @monu @tempUser
+  @82780 @VerifyRegistrationStep1of2-Individual @monu
   Scenario:Verify user should be navigated to Registration step 1 of 2 after clicking on Agree button on registration
     Given I begin "Individual" registration
     Then I see the header is "Registration" in the page details
@@ -215,7 +214,7 @@ Feature: Validate all registration related scenarios
     Then I see the text containing "Registration"
     Then I see the sub-header is "Step 1 of 2" in the page details
 
- @33827 @verifySavedDetailsOfOrganizationProfileSubTab-Organization @monu @tempUser
+  @33827 @verifySavedDetailsOfOrganizationProfileSubTab-Organization @monu
   Scenario:Verify user should be able to see filled details at organization sub tab after redirecting back to organization profile tab while clicking on back button
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -245,7 +244,7 @@ Feature: Validate all registration related scenarios
     Then I see "(918) 908-9089" text enter in field "fieldPaymentAddressVendorLocation__c"
     Then I see "Yes" text enter in field "fieldSameAsOrganizationAddress__c"
 
-  @81954 @verifyEINNumberAndDUNSNumberAtOrganizationProfileSubTab-Organization @monu @tempUser
+  @81954 @verifyEINNumberAndDUNSNumberAtOrganizationProfileSubTab-Organization @monu
   Scenario:Verify user should be able to see filled details of EIN Number and DUNS Number at organization sub tab
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -315,7 +314,7 @@ Feature: Validate all registration related scenarios
     Then I softly can see "Collab" sub tab at view detail page
     Then I softly can see "Files" sub tab at view detail page
 
-  @82796 @83035 @verifyConfirmationMessage-Individual @meenakshi @tempUser
+  @82796 @83035 @verifyConfirmationMessage-Individual @meenakshi
   Scenario:To validate Confirmation Message, after clicking Submit button on Catcha page of Individual registration process
     Given I begin "Individual" registration
     When I click on "Agree" in the page details
@@ -328,6 +327,7 @@ Feature: Validate all registration related scenarios
     When I click on "Save and Continue" in the page details
     Then I softly see field "Primary Email" as "{SavedValue:uniqueEmailID}"
     And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    When I click on "Save" in the page details
     And I enter "CreationWithOnlyPaymentDetail" values from "UserRegistration_Field_Values.xlsx"
     Then I see "No" text enter in field "fieldSameAsOrganizationAddress__c"
     Then I see "1000 Defense Pentagon" text enter in field "fieldPaymentAddressLine1__c"
@@ -342,7 +342,7 @@ Feature: Validate all registration related scenarios
       | Your registration request for access to EGMS has been completed and sent for government approval.Once approved, you will be sent another email from salesforce.com (technology platform provider) with your Username and Password shortly to log into the system.                                                                                                                                                                |
       | For your records, your registration number is |
 
-  @84611 @83374 @83527 @84612 @83373 @84613 @validateSAUserforUserRegistration-Organization @meenakshi @CaptchaIssueOnYopmail
+  @84611 @83374 @83527 @84612 @83373 @84613 @validateSAUserforUserRegistration-Organization @meenakshi
   Scenario:To verify SA allow to modify newly created contact in contact table  for Additional user registration process
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -479,7 +479,7 @@ Feature: Validate all registration related scenarios
       Sandbox: Your EGMS Registration has Been Approved
       """
 
-  @83539 @validatingRegistrationLegalDisclaimer1of2 @monu @CaptchaIssueOnYopmail
+  @83539 @validatingRegistrationLegalDisclaimer1of2 @monu
   Scenario:To verify after sending Invitation for created contact , user is able to see Registration Legal Disclaimer 1 of 2 page on click of click here link
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
