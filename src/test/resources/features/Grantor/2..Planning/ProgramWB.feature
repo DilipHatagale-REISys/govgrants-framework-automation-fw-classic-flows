@@ -2585,7 +2585,7 @@ Feature: Validate all scenarios for program
     Then I softly see field "Status" as "Active"
     Then I can see top right button "Amend Program" in page detail
 
-  @199393 @ValidatereassignedtaskownerPOuserisabletoactivatetheexternalprogramwhentransferstaskofthetasktypeActivateNGOProgramtoanotheruserhavingprofileasPO @sprint-4 @vaibhav @reassignment
+   @199393 @ValidatereassignedtaskownerPOuserisabletoactivatetheexternalprogramwhentransferstaskofthetasktypeActivateNGOProgramtoanotheruserhavingprofileasPO @sprint-4 @vaibhav @reassignment
   Scenario: Validate reassigned task owner PO user is able to activate the external program when transfers task of the task type Activate NGO Program to another user having profile as PO
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Planning" tab

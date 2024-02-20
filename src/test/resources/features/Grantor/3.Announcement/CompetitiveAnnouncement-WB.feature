@@ -609,7 +609,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
-   When I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Associate" after selection of "{SavedValue:fundingAccount}" by showing entries "All" in flex table with id "---announcement:-:fundingAccTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
@@ -710,7 +710,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            |
       | {SavedValue:Automation Runtime Announcement} |
 
-  @219357 @234667 @CompetativeAnnVerifyasEXEuserIcanseeRecommendedBudgetfieldisvisiblewhenAppstatusisnegotiationinitiated @sprint-13-US-224612 @komal @Allocation 
+  @219357 @234667 @CompetativeAnnVerifyasEXEuserIcanseeRecommendedBudgetfieldisvisiblewhenAppstatusisnegotiationinitiated @sprint-13-US-224612 @komal @Allocation
   Scenario Outline:Competative Ann as EXE user I can see "Recommended Budget" field is visible when App status is negotiation initiated
   | Comp Ann>>Verify EXE when negotiation is initiated during FDM or from app layout then user should not get validation on UI on send to subrecipient button when the budgeted Amount is equal to the Recommended Budget |
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-Automation EXE user"
@@ -739,7 +739,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | EXE  |
 
-  @227564 @CompAnnVerifyEXEusercaninlineedittheRecommendedBudgetfieldunderRecommendedApplicationsectionbeforeFDMapproval @sprint-13-US-224612 @komal @Allocation 
+  @227564 @CompAnnVerifyEXEusercaninlineedittheRecommendedBudgetfieldunderRecommendedApplicationsectionbeforeFDMapproval @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Comp Ann EXE user can inline edit the Recommended Budget field under Recommended Application section before FDM approval
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "NEGOTIATION_NO-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -926,7 +926,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PO   |
 
-  @227723 @CompAnnVerifyAdminwhennegotiationisinitiatedduringFDMorfromapplayoutthenusershouldgetvalidationonUIonsendtosubrecipientbuttonwhenthebudgetedAmountisnotequaltotheRecommendedBudget @sprint-13-US-224612 @komal @Allocation 
+  @227723 @CompAnnVerifyAdminwhennegotiationisinitiatedduringFDMorfromapplayoutthenusershouldgetvalidationonUIonsendtosubrecipientbuttonwhenthebudgetedAmountisnotequaltotheRecommendedBudget @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Comp Ann Admin when negotiation is initiated during FDM or from app layout then user should get validation on UI on send to subrecipient button when the budgeted Amount is not equal to the Recommended Budget
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-Automation ADMIN user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -1338,7 +1338,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Complete Negotiation" in the page details
     And I click on "Create Subaward" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
-
     Examples:
       | Announcement Name                            | Application2                     | User |
       | {SavedValue:Automation Runtime Announcement} | Automation Runtime Application_2 | EXE  |

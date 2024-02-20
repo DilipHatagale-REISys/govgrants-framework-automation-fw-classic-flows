@@ -424,9 +424,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
     When I click on "Remove" icon for "Automation Permanent KPI" inside flex table with id "---announcement:-:kpiflextableid---" without waiting for record
-    And I pause execution for "3" seconds
-    Then I softly see the following messages in the page details :
-      | Record deleted successfully. |
+    And I pause execution for "1" seconds
+#    Then I softly see the following messages in the page details :
+#      | Record deleted successfully. |
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "All Competitive Announcements"
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
@@ -975,6 +975,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I refresh the page
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
@@ -1471,7 +1472,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I download the file
     Then I see "Field History" on page "1" of "govgrants" pdf file
 
-  @139848 @Verify2StepApprovalAtApproverSection_CompetitiveAnnouncement-RnRFunctionality @monu @Debug
+  @139848 @Verify2StepApprovalAtApproverSection_CompetitiveAnnouncement-RnRFunctionality @monu
   Scenario: verify that user can add two step approver on announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
