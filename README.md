@@ -2,6 +2,8 @@
 -Funding Source-
 ->Automation Permanent Funding Account
 ->Automation Permanent Funding Account1
+->Automation Permanent Funding Account2
+->Automation Permanent Funding Account3
 
 -Focus Area- 
 ->Automation Permanent Focus Area -- In Active state
@@ -9,8 +11,8 @@
 
 -Strategic Plan-
 ->Automation Permanent Strategic Plan   -- In Active state
-Automation Permanent Strategic Goal -> Automation Permanent Objective
-Automation Permanent Strategic Goal2 -> Automation Permanent Objective2
+->Automation Permanent Strategic Goal -> Automation Permanent Objective
+->Automation Permanent Strategic Goal2 -> Automation Permanent Objective2
 
 -KPI-
 ->Automation Permanent KPI
@@ -88,3 +90,4 @@ Migration Disclaimer
 3)Added @Allocation tag for Allocation Related test cases
 4)Added @Undo tag for undo related test cases
 5)Added @ErrorMessageTimeout tag for few test cases for error messages disappear in fraction of seconds in application review scenarios.
+6)Added @CaptchaIssueOnYopmail tag for User registration scenarios where yopmail getting display captcha

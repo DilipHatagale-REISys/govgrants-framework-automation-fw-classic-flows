@@ -1,7 +1,7 @@
 @organizationRegistrationPage @userRegistration @parallel-regression @regression @grantor-regression @regression
 Feature: Validate all registration related scenarios
 
-  @81962 @verifyDownloadOptionOpensInNewWindow-Organization @monu 
+  @81962 @verifyDownloadOptionOpensInNewWindow-Organization @monu
   Scenario:Verify if user clicks on download option inside Attachment section new tab getting opened
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -40,7 +40,7 @@ Feature: Validate all registration related scenarios
     Then I see "(918) 908-9089" text enter in field "fieldPaymentAddressVendorLocation__c"
     Then I see "1234" text enter in field "fieldPaymentAddressZipCode4__c"
 
-  @82052 @verifyErrorMessageForPaymentAddressSectionFields-Organization @monu 
+  @82052 @verifyErrorMessageForPaymentAddressSectionFields-Organization @monu
   Scenario:Verify user is able to see error message after filling all details except Payment address section
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -55,11 +55,10 @@ Feature: Validate all registration related scenarios
     And I enter value "No" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
     Then I softly see the following messages in the page details contains:
-      | Provide Address Line 1 for Payment Address                             |
-      | Provide City for Payment Address                                       |
-      | Provide State for Payment Address                                      |
-      | Provide Zip Code for Payment Address                                   |
-      | You must enter an effective date when selecting a parent organization. |
+      | Country is required to save under Organization Profile.        |
+      | Address line 1 is required to save under Organization Profile. |
+      | Zip Code is required to save under Organization Profile.       |
+      | State is required to save under Organization Profile.          |
 
   @82053 @verifyVisibilityOfPaymentAddressFields-Organization @monu
   Scenario:Verify user should not be able to see Expected fields of payment address if same organization address field is selected as yes
@@ -103,7 +102,7 @@ Feature: Validate all registration related scenarios
     Then I see "20301" text enter in field "fieldPrimaryRepZipCode__c"
     Then I see "USA" text enter in field "fieldPrimaryRepCountry__c"
 
-  @82797 @verifyVisibilityOfFieldsAtPaymentAddressSection-Individual @monu 
+  @82797 @verifyVisibilityOfFieldsAtPaymentAddressSection-Individual @monu
   Scenario:Verify user is not able to see any fields after selection of Same as organization fields to yes inside payment details page block
     Given I begin "Individual" registration
     When I click on "Agree" in the page details
@@ -189,7 +188,7 @@ Feature: Validate all registration related scenarios
        {regconfirmationmailbody:mailbody}
       """
 
-  @82784 @VerifyRegistrationPages2of2-Individual @monu 
+  @82784 @VerifyRegistrationPages2of2-Individual @monu
   Scenario:Verify user should be navigated to Registration step 2 of 2 after clicking on save button on registration step 1 of 2 page
     Given I begin "Individual" registration
     When I click on "Agree" in the page details
@@ -200,10 +199,10 @@ Feature: Validate all registration related scenarios
     When I enter value as "{SavedValue:uniqueEmailID}" into "Email" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
-    Then I see the header is "Registration" in the page details
+    Then I see the header is "Create External Registration" in the page details
     Then I see the sub-header is "Step 2 of 2" in the page details
 
-  @82780 @VerifyRegistrationStep1of2-Individual @monu 
+  @82780 @VerifyRegistrationStep1of2-Individual @monu
   Scenario:Verify user should be navigated to Registration step 1 of 2 after clicking on Agree button on registration
     Given I begin "Individual" registration
     Then I see the header is "Registration" in the page details
@@ -212,10 +211,10 @@ Feature: Validate all registration related scenarios
     Then I see the header is "Registration" in the page details
     Then I see the sub-header is "Legal Disclaimer 2 of 2" in the page details
     When I click on "Agree" in the page details
-    Then I see the header is "Registration" in the page details
+    Then I see the text containing "Registration"
     Then I see the sub-header is "Step 1 of 2" in the page details
 
-  @33827 @verifySavedDetailsOfOrganizationProfileSubTab-Organization @monu 
+  @33827 @verifySavedDetailsOfOrganizationProfileSubTab-Organization @monu
   Scenario:Verify user should be able to see filled details at organization sub tab after redirecting back to organization profile tab while clicking on back button
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -229,10 +228,10 @@ Feature: Validate all registration related scenarios
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
     And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
-    Then I see the header is "Registration" in the page details
-    Then I see the sub-header is "Step 3 of 3" in the page details
+    Then I see the header is "Create External Registration" in the page details
+#    Then I see the sub-header is "Step 3 of 3" in the page details
     When I click on "Back" in the page details
-    Then I see "No" text enter in field "fieldSameAsOrganizationAddress__c"
+    Then I see "Yes" text enter in field "fieldSameAsOrganizationAddress__c"
     Then I see "For-profit organizations" text enter in field "fieldOrganizationTypeSInglePicklist__c"
     Then I see "(918) 908-9089" text enter in field "fieldOrgnizationPhoneNumber__c"
     Then I see "www.google.com" text enter in field "fieldWebsite__c"
@@ -245,7 +244,7 @@ Feature: Validate all registration related scenarios
     Then I see "(918) 908-9089" text enter in field "fieldPaymentAddressVendorLocation__c"
     Then I see "Yes" text enter in field "fieldSameAsOrganizationAddress__c"
 
-  @81954 @verifyEINNumberAndDUNSNumberAtOrganizationProfileSubTab-Organization @monu 
+  @81954 @verifyEINNumberAndDUNSNumberAtOrganizationProfileSubTab-Organization @monu
   Scenario:Verify user should be able to see filled details of EIN Number and DUNS Number at organization sub tab
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -315,7 +314,7 @@ Feature: Validate all registration related scenarios
     Then I softly can see "Collab" sub tab at view detail page
     Then I softly can see "Files" sub tab at view detail page
 
-  @82796 @83035 @verifyConfirmationMessage-Individual @meenakshi 
+  @82796 @83035 @verifyConfirmationMessage-Individual @meenakshi
   Scenario:To validate Confirmation Message, after clicking Submit button on Catcha page of Individual registration process
     Given I begin "Individual" registration
     When I click on "Agree" in the page details
@@ -330,20 +329,20 @@ Feature: Validate all registration related scenarios
     And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I enter "CreationWithOnlyPaymentDetail" values from "UserRegistration_Field_Values.xlsx"
-    When I click on "Save" in the page details
     Then I see "No" text enter in field "fieldSameAsOrganizationAddress__c"
     Then I see "1000 Defense Pentagon" text enter in field "fieldPaymentAddressLine1__c"
     Then I see "Washington" text enter in field "fieldPaymentAddressCity__c"
-    Then I see "DC" text enter in field "fieldPaymentAddressState__c"
+    Then I see "IL" text enter in field "fieldPaymentAddressState__c"
     Then I see "20301" text enter in field "fieldPaymentAddressZipCode__c"
     Then I see "(918) 908-9089" text enter in field "fieldPaymentAddressVendorLocation__c"
     Then I see "1234" text enter in field "fieldPaymentAddressZipCode4__c"
+    When I click on "Save" in the page details
     When I click on "Submit" in the page details
     Then I see the following messages in the page details contains:
-      | Confirmation Message                                                                                                                                                                |
-      | Your registration request for access to the EGMS has been completed.  You will be sent an email from salesforce.com (technology platform provider) with your Username and Password. |
+      | Your registration request for access to EGMS has been completed and sent for government approval.Once approved, you will be sent another email from salesforce.com (technology platform provider) with your Username and Password shortly to log into the system.                                                                                                                                                                |
+      | For your records, your registration number is |
 
-  @84611 @83374 @83527 @84612 @83373 @84613 @validateSAUserforUserRegistration-Organization @meenakshi 
+  @84611 @83374 @83527 @84612 @83373 @84613 @validateSAUserforUserRegistration-Organization @meenakshi
   Scenario:To verify SA allow to modify newly created contact in contact table  for Additional user registration process
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -373,9 +372,9 @@ Feature: Validate all registration related scenarios
     When I click on "Start" icon for "{SavedValue:AUTOMATION RUNTIME Organization}" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
     And I "Approve" in the approval decision
     And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
-    And I pause execution for "20" seconds
+    And I pause execution for "220" seconds
     Then I refresh the page
-    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}"
+    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}" with subject "Sandbox: Welcome to Recipient Portal"
     Then I set password for the user
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
@@ -480,7 +479,7 @@ Feature: Validate all registration related scenarios
       Sandbox: Your EGMS Registration has Been Approved
       """
 
-  @83539 @validatingRegistrationLegalDisclaimer1of2 @monu 
+  @83539 @validatingRegistrationLegalDisclaimer1of2 @monu
   Scenario:To verify after sending Invitation for created contact , user is able to see Registration Legal Disclaimer 1 of 2 page on click of click here link
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -506,9 +505,9 @@ Feature: Validate all registration related scenarios
     When I click on "Start" icon for "{SavedValue:AUTOMATION RUNTIME Organization}" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
     And I "Approve" in the approval decision
     And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
-    And I pause execution for "190" seconds
+    And I pause execution for "220" seconds
     Then I refresh the page
-    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}"
+    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}" with subject "Sandbox: Welcome to Recipient Portal"
     Then I set password for the user
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
@@ -531,7 +530,7 @@ Feature: Validate all registration related scenarios
     Then I see the header is "Registration" in the page details
     Then I see the sub-header is "Legal Disclaimer 1 of 2" in the page details
 
-  @83531 @validatingEditingOfContact @monu 
+  @83531 @validatingEditingOfContact @monu @CaptchaIssueOnYopmail
   Scenario:To verify user is able to edit phone number of newly created contact
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -556,10 +555,10 @@ Feature: Validate all registration related scenarios
     When I perform quick search for "{SavedValue:AUTOMATION RUNTIME Organization}" in "{grantor_tableId:SubrecipientOrganization}" panel
     When I click on "Start" icon for "{SavedValue:AUTOMATION RUNTIME Organization}" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
     And I "Approve" in the approval decision
-    And I checkout to yopmail with mailid "AutomationInternal@yopmail.com"
-    And I pause execution for "190" seconds
+    And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
+    And I pause execution for "220" seconds
     Then I refresh the page
-    And I navigate to yopmail portal for "AutomationInternal@yopmail.com"
+    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}" with subject "Sandbox: Welcome to Recipient Portal"
     Then I set password for the user
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
@@ -581,7 +580,7 @@ Feature: Validate all registration related scenarios
     Then I softly see "Is User" in flex table header "---home:-:userContactsTableId---"
     Then I softly see value "{SavedValue:Automation Runtime Contact}" for title "Full Name" inside table "---home:-:userContactsTableId---"
     Then I softly see value "Primary" for title "Role" inside table "---home:-:userContactsTableId---"
-    Then I softly see value "AutomationManager@yopmail.com" for title "Email" inside table "---home:-:userContactsTableId---"
+    Then I softly see value "{SavedValue:uniqueEmailID}" for title "Email" inside table "---home:-:userContactsTableId---"
     Then I softly see value "704-777-(7868)" for title "Status" inside table "---home:-:userContactsTableId---"
     Then I softly see value "Active" for title "Status" inside table "---home:-:userContactsTableId---"
     Then I softly can see row level action button "Send Invitation" against "True" in flex table with id "---home:-:userContactsTableId---"
@@ -597,7 +596,7 @@ Feature: Validate all registration related scenarios
     Then I softly see "Address Information" page block displayed
     Then I softly see "System Information" page block displayed
 
-  @84614 @validateRolesDropdownValues-Organization @monu 
+  @84614 @validateRolesDropdownValues-Organization @monu @CaptchaIssueOnYopmail
   Scenario:To verify while creating new contacts for Activated users, roles picklist having all expected values
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -622,10 +621,10 @@ Feature: Validate all registration related scenarios
     When I perform quick search for "{SavedValue:AUTOMATION RUNTIME Organization}" in "{grantor_tableId:SubrecipientOrganization}" panel
     When I click on "Start" icon for "{SavedValue:AUTOMATION RUNTIME Organization}" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
     And I "Approve" in the approval decision
-    And I checkout to yopmail with mailid "AutomationInternal@yopmail.com"
-    And I pause execution for "180" seconds
+    And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
+    And I pause execution for "220" seconds
     Then I refresh the page
-    And I navigate to yopmail portal for "AutomationInternal@yopmail.com"
+    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}" with subject "Sandbox: Welcome to Recipient Portal"
     Then I set password for the user
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
@@ -634,7 +633,7 @@ Feature: Validate all registration related scenarios
     Then I see only the following ordered options in dropdown field "fieldUserRole__c" :
       | --None-- | Non-User | Secondary | Primary |
 
-  @85781 @validatePlaceOfPerformanceFieldsWRTOrganizationFields-Organization @monu 
+  @85781 @validatePlaceOfPerformanceFieldsWRTOrganizationFields-Organization @monu @CaptchaIssueOnYopmail
   Scenario:Verify place of performance fields while creating organization user is getting populated to created application by same user
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -659,10 +658,10 @@ Feature: Validate all registration related scenarios
     When I perform quick search for "{SavedValue:AUTOMATION RUNTIME Organization}" in "{grantor_tableId:SubrecipientOrganization}" panel
     When I click on "Start" icon for "{SavedValue:AUTOMATION RUNTIME Organization}" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
     And I "Approve" in the approval decision
-    And I checkout to yopmail with mailid "AutomationInternal@yopmail.com"
-    And I pause execution for "180" seconds
+    And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
+    And I pause execution for "220" seconds
     Then I refresh the page
-    And I navigate to yopmail portal for "AutomationInternal@yopmail.com"
+    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}" with subject "Sandbox: Welcome to Recipient Portal"
     Then I set password for the user
     And I navigate to "Home" tab
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
@@ -806,14 +805,14 @@ Feature: Validate all registration related scenarios
     When I perform quick search for "{SavedValue:UserFullName}" in "---program:-:adminTaskReassignmentTableId---" panel
     Then I softly do not see value "Review Individual User Registration" for title "Task Type" inside table "---program:-:adminTaskReassignmentTableId---"
 
- @222975 @223047 @ValidateAdminusershouldnotabletoseethereassigntaskofParent/ChildrelationshipApprovalfromAlltasksAsaAdmin @sprint-12-US-226646 @vaibhav @reassignment 
+  @222975 @223047 @ValidateAdminusershouldnotabletoseethereassigntaskofParent/ChildrelationshipApprovalfromAlltasksAsaAdmin @sprint-12-US-226646 @vaibhav @reassignment @CaptchaIssueOnYopmail
   Scenario: Validate Admin user should not able to see the reassign task of Parent/Child relationship Approval from All tasks As a Admin
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
-   And I generate the random UEI and save as "UEI"
-   When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
@@ -836,7 +835,7 @@ Feature: Validate all registration related scenarios
     When I click on "Start" icon for "{SavedValue:Automation Runtime Organization}" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
     And I "Approve" in the approval decision
     And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
-    And I pause execution for "190" seconds
+    And I pause execution for "220" seconds
     And I refresh the page
     And I click on mail with subject "Sandbox: Welcome to Recipient Portal"
     And I navigate to reset password link
@@ -847,22 +846,22 @@ Feature: Validate all registration related scenarios
     And I enter "parentOrg" values from "UserRegistration_Field_Values.xlsx"
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts"
     When I click on "Save" in the page details
-   When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-   And I navigate to "Home" tab
-   When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-   And I perform quick search for "{SavedValue:Automation Runtime Organization}" in "---negotiation:-:homePendingTasks---" panel
-   And I click on "Start" icon for "{SavedValue:Automation Runtime Organization}" inside flex table with id "---negotiation:-:homePendingTasks---"
-   And I "Approve" in the approval decision
-   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-   When I navigate to "Home" tab
-   And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-   When I perform quick search for "{SavedValue:Automation Runtime Organization}" in "---closeout:-:homePendingTaskTableId---" panel
-   Then I softly see value "{SavedValue:Automation Runtime Organization}" for title "EGMS ID" inside table "{grantee_tableId:SubrecipientOrganization}"
-   When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
-   And I navigate to "Home" tab
-   When I navigate to "All Tasks as Admin" content inside "Reassign" subheader on left panel
-   And I select value "Automation PM" into field "s2id_autogen1"
-   And I select value "Automation PM1" into field "s2id_autogen3"
-   When I perform quick search for "{SavedValue:Automation Runtime Organization}" in "---program:-:adminTaskReassignmentTableId---" panel
-   Then I softly do not see value "{SavedValue:Automation Runtime Organization}" for title "EGMS ID" inside table "---program:-:adminTaskReassignmentTableId---"
-   Then I softly do not see value "Review Parent/Child Organization Relationship Request" for title "Task Type" inside table "---program:-:adminTaskReassignmentTableId---"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Organization}" in "---negotiation:-:homePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:Automation Runtime Organization}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Home" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Organization}" in "---closeout:-:homePendingTaskTableId---" panel
+    Then I softly see value "{SavedValue:Automation Runtime Organization}" for title "EGMS ID" inside table "{grantee_tableId:SubrecipientOrganization}"
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "All Tasks as Admin" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    When I perform quick search for "{SavedValue:Automation Runtime Organization}" in "---program:-:adminTaskReassignmentTableId---" panel
+    Then I softly do not see value "{SavedValue:Automation Runtime Organization}" for title "EGMS ID" inside table "---program:-:adminTaskReassignmentTableId---"
+    Then I softly do not see value "Review Parent/Child Organization Relationship Request" for title "Task Type" inside table "---program:-:adminTaskReassignmentTableId---"

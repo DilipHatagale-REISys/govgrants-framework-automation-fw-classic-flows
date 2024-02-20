@@ -508,7 +508,7 @@ Feature: Validate all scenarios of every modules flow
     And I click toggle button to select "Progress Reports - Approved"
     Then I see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:internalProgressReportFlexTableId---"
 
-  @SiteVisitFlow 
+  @SiteVisitFlow
   Scenario: Sitevisit Flow
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -841,7 +841,7 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Negotiation Request Status" as "Complete" in "Negotiation Request Details" pageblock
 
-  @ApplicationReviewtoapprovedFDMWorkFlow 
+  @ApplicationReviewtoapprovedFDMWorkFlow
   Scenario Outline: Application Review WorkFlow
 #    Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
 #    When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -1243,7 +1243,7 @@ Feature: Validate all scenarios of every modules flow
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     Then I see the header is "Subrecipient Organization" in the page details
 
-  @IndividualUserRegistrationFlow 
+  @IndividualUserRegistrationFlow
   Scenario:Verify Individual User Registration Process
     Given I begin "Individual" registration
     When I click on "Agree" in the page details
@@ -1277,7 +1277,7 @@ Feature: Validate all scenarios of every modules flow
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     Then I see the header is "Individual Subrecipient" in the page details
 
-  @SMEreviewerFlow 
+  @SMEreviewerFlow
   Scenario:
     Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Home" tab
