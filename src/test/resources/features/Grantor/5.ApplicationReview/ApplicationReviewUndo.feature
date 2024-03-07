@@ -1610,7 +1610,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @280659 @ValidatePreScreenReviewStepCompetitiveAnnFAYesanotherreviewerontheapplicationrecordcannotseerowlevelundobuttonforthecompletedreviewandonthereviewdetailpageonreviewstepwhenreviewresponsesharedisyes
+  @280659 @Sprint-26-US-282727 @vaibhav @Undo
   Scenario Outline: Validate Pre-Screen Review Step Competitive Ann FA Yes another reviewer on the application record cannot see row-level undo button for the completed review and on the review detail page on review step when review response shared is yes
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -1695,7 +1695,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @280711 @ValidateFDMCompetitiveAnnFAYesreviewerhassubmittedreviewformafterundothenScoresundertheRecommendedandNonrecommendedApplicationsectionwillalsogetupdateintheFDMmodule @Sprint-26-US-282727 @vaibhav @Undo
+  @280711  @Sprint-26-US-282727 @vaibhav @Undo
   Scenario Outline: Validate FDM Competitive Ann FA Yes after reviewer has submitted review form after undo, then Scores under the Recommended and Non-recommended Application section will also get updated in the FDM  module
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -1867,7 +1867,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @279410 @279704 @ValidateaftercompletingnegotiationfrommanagementreviewstepPMusercanagainstartapplicationreviewfromPrescreenreviewstepandcanassigntheapplicationforreviewtothereviewers @Sprint-25-US-227292 @vaibhav @Undo
+  @279410 @279704  @Sprint-25-US-227292 @vaibhav @Undo
   Scenario Outline:Validate after completing negotiation from management review step, PM user can again start application review from Prescreen review step and can assign the application for review to the reviewers
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -1950,9 +1950,10 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "Record Id" in "---announcement:-:competitiveTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveTableId---" without waiting for record
     Then I softly can see top right button "Publish" in page detail
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
@@ -2154,6 +2155,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AppEGMSID}" in "---applicationReview:-:pendingTaskTableId---" panel
+    And I refresh the page
     Then I softly see value "{SavedValue:AppEGMSID}" for title "EGMS ID" inside table "---applicationReview:-:pendingTaskTableId---"
     And I click on "Start" icon for "{SavedValue:AppEGMSID}" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
     When I complete filling in the Review form with recommendation "Recommended" in review step
@@ -2442,7 +2444,7 @@ Feature: Validate all scenarios in the Application Review with Undo Feature
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @279692 @Validateaftercompletingnegotiationusershouldnotbeabletopromoteapplicationtonextstepifminimumreviewrequirementisnotcompletedonthereviewstep @Sprint-25-US-227292 @vaibhav @Undo @ErrorMessageTimeout
+  @279692  @Sprint-25-US-227292 @vaibhav @Undo @ErrorMessageTimeout
   Scenario Outline: Validate after completing negotiation user should not be able to promote application to next step if minimum review requirement is not completed on the review step
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
