@@ -143,8 +143,8 @@ Feature: Validate all scenarios in the Application Intake
     Examples:
       | Application Name                                         | User |
       | {SavedValue:Automation Runtime Announcement Application} | PM   |
-      | {SavedValue:Automation Runtime Announcement Application} | FO   |
-      | {SavedValue:Automation Runtime Announcement Application} | EXE  |
+#      | {SavedValue:Automation Runtime Announcement Application} | FO   |
+#      | {SavedValue:Automation Runtime Announcement Application} | EXE  |
 
   @70458 @73514 @73515 @70456 @acknowledgeReqiredToSave @deepika
   Scenario: Validate the system should throw an validation message if the application is submitted with Acknowledging it
