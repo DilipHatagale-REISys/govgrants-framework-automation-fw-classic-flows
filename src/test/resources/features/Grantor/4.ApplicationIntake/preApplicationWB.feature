@@ -2065,11 +2065,7 @@ Feature: Pre-Application scenarios without background
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
-    And I enter "Automation Test" values from "fieldQuestion1__c"
-    And I enter "Automation Test" values from "fieldQuestion3__c"
-    And I enter "9" values from "fieldsbirEmpNumber__c"
-    And I enter "5" values from "fieldSubmittedOnForm__c"
-    And I enter "Automation Test" values from "fieldAppplicationSubmitted__c"
+    And I enter "Form_EditNewValidate" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Validate" in the page details
     Then I softly see the following messages in the page details :

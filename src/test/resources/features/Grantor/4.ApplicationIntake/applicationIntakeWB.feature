@@ -801,7 +801,7 @@ Feature: Application Intake scenarios without background
   Scenario: Validate whether User will be able to attach any document if the supporting document details mentioned in the Announcement
   Validate if suppoting document is not uploaded by user while submitting the application then the system should throw an error message on screen
   Validate user will be able to view and add additional focus areas while creating an application only when the published announcemnt has additional focus areas
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "default"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PROGRAM_FOR_PREAPP_SUPP_DOC_YES"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
@@ -1167,7 +1167,7 @@ Feature: Application Intake scenarios without background
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---applicationIntake:-:applicationContactsTableId---"
-    When I click "Add" after selection of "Automation SPA" by showing entries "All" in flex table with id "---applicationIntake:-:applicationContactsTableId---"
+    When I click "Add" after selection of "Automation SPA" by showing entries "All" in flex table with id "---applicationIntake:-:associateNewContactsTableId---"
     And I refresh the page
     Then I see that "<Contact>" has been added in flextable with Id "---applicationIntake:-:applicationContactsTableId---"
     Given I am on "SUBPORTAL" portal

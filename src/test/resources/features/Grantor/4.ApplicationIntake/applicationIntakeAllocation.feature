@@ -2724,7 +2724,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
     When I click modal button "Save and Continue"
-    And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "PreAppEgmsId"
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
