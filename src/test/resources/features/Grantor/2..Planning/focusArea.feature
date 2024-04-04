@@ -73,7 +73,7 @@ Feature: Validate all scenarios in Focus Area
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Planning" tab
     And I navigate to "Focus Areas" content inside "Setup" subheader on left panel
-    And I click toggle button to select "Focus Area - Draft" in "---focusarea:-:focusAreaTableId---"
+    And I click toggle button to select "Focus Areas - Draft" in "---focusarea:-:focusAreaTableId---"
     When I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "---focusarea:-:focusAreaTableId---" panel
     Then I cannot see row level action button "Edit" against "{SavedValue:Automation Runtime Focus Area}" in flex table with id "---focusarea:-:focusAreaTableId---"
 
@@ -89,7 +89,7 @@ Feature: Validate all scenarios in Focus Area
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Planning" tab
     And I navigate to "Focus Areas" content inside "Setup" subheader on left panel
-    And I click toggle button to select "Focus Area - Draft" in "---focusarea:-:focusAreaTableId---"
+    And I click toggle button to select "Focus Areas - Draft" in "---focusarea:-:focusAreaTableId---"
     When I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "---focusarea:-:focusAreaTableId---" panel
     Then I cannot see row level action button "Delete" against "{SavedValue:Automation Runtime Focus Area}" in flex table with id "---focusarea:-:focusAreaTableId---"
 
@@ -121,7 +121,7 @@ Feature: Validate all scenarios in Focus Area
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Planning" tab
     And I navigate to "Focus Areas" content inside "Setup" subheader on left panel
-    And I click toggle button to select "Focus Area - Active" in "---focusarea:-:focusAreaTableId---"
+    And I click toggle button to select "Focus Areas - Active" in "---focusarea:-:focusAreaTableId---"
     When I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "---focusarea:-:focusAreaTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Focus Area}" inside table
     Then I cannot see top right button "Deactivate" in page detail

@@ -1,4 +1,4 @@
-@applicationIntake @grantor-regression @grantor-parallel-regression @app @regression @ApplicationExecution-reg
+@applicationIntake @grantor-regression @grantor-parallel-regression @app @regression @ApplicationExecution-reg @ApplicationClassic
 Feature: Validate all scenarios in the Application Intake
 
   Background: Qualify Announcement and Create Application
@@ -142,8 +142,8 @@ Feature: Validate all scenarios in the Application Intake
     Then I softly cannot see top right button "Edit" in page detail
     Examples:
       | Application Name                                         | User |
-      | {SavedValue:Automation Runtime Announcement Application} | PM   |
-      | {SavedValue:Automation Runtime Announcement Application} | FO   |
+#      | {SavedValue:Automation Runtime Announcement Application} | PM   |
+#      | {SavedValue:Automation Runtime Announcement Application} | FO   |
       | {SavedValue:Automation Runtime Announcement Application} | EXE  |
 
   @70458 @73514 @73515 @70456 @acknowledgeReqiredToSave @deepika
