@@ -118,13 +118,12 @@ public final class MainPage {
                 /* Ignore Exception */
             }
         }
-
-        if (EnvironmentFactory.getProjectName().contains("GovGrants Framework"))
-            try {
-                clickAdminNavBar("GovGrants Launcher Tab");
-            } catch (Exception e) {
-                // to handle any other URL where there is not Govgrants launcher
-            }
+//        if (EnvironmentFactory.getProjectName().contains("GovGrants Framework"))
+        try {
+            clickAdminNavBar("GovGrants Launcher Tab");
+        } catch (Exception e) {
+            // to handle any other URL where there is not Govgrants launcher
+        }
     }
 
     /**

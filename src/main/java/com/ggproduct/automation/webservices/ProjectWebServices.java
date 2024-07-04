@@ -152,7 +152,8 @@ public class ProjectWebServices {
         String defaultEndPointGetToken = "";
 
         if (EnvironmentFactory.getEnvironmentName().contains("QA"))
-            defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9EMJF5MdlzDpWtwqe6mmNu6pKIqddD1EHYQ5aFtdFg2byvYHIDmBSe9K0zEIIoEPMZOboCG7TDTSb3DQK&client_secret=E85D4B829EBD78A51880E666A9B43E933F42BE7F39155C7281D7D595A7F684C3&username=govgrantsautomation@yopmail.com.qaorg&password=Salesforce2023";
+//            defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9EMJF5MdlzDpWtwqe6mmNu6pKIqddD1EHYQ5aFtdFg2byvYHIDmBSe9K0zEIIoEPMZOboCG7TDTSb3DQK&client_secret=E85D4B829EBD78A51880E666A9B43E933F42BE7F39155C7281D7D595A7F684C3&username=govgrantsautomation@yopmail.com.qaorg&password=Salesforce2023";
+            defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_secret=C534061B026C5FBFF856CD31DBB1E722CD7D4D976F6154CA431A976E0C592927&client_id=3MVG9Iu66FKeHhIPe91yESdsJL200IDKuBwsrDV7WewsJy9p2d.Zhgw2ikOH2mpGFHDtoTBZ3c..nrgqTXz7R&username=automationadmin@ggp.test8.atm.fwautomat&password=FWTest@2July";
         else if (EnvironmentFactory.getEnvironmentName().contains("AUTO")) {
             if (EnvironmentFactory.getEnvironmentName().contains("GRANTEE")) {
                 defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG92DxHaawSd0luAabE5ir8xlXoKuHsm5noVyqnHFUOo829AX1MfWuFpJhCDn0__e7EWt_DixBbuY2yy1.H&client_secret=BAAC6A7374660FC52DFAF43304D80F6E4EF17DA8C3F9503F6E3380EEEEF20784&username=autoadmingrantee@yopmail.com&password=Salesforce2028";
@@ -161,7 +162,11 @@ public class ProjectWebServices {
             }
         } else if (EnvironmentFactory.getEnvironmentName().contains("TEST8"))
             defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG90D5vR7Utjboc8b3nxgWl_TIAtGV_TgV2OQsaOZNGnhetFSjnMGSvL67KfRN99.Z0ne32YZHHlzdyCb_a&client_secret=F1F4C218C1E6AB1ECA2DD46CDCFB204D66FCEFA2DB939003C5C4B207DAF0A736&username=govgrantsautomation@yopmail.com&password=Salesforce@2032";
-
+        else if (EnvironmentFactory.getEnvironmentName().contains("PATCH")) {
+            defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_secret=FED687A3A0BBA7AF7E537EB8D3EBE92281D7609031F0751FFCB10DD3E52DDF64&client_id=3MVG98im9TK34CUW45zaL1fTHaLLiykIdoQeUHbf1cm3OspjgGVFjNgpZvV5hcdc2ccKT1TS4snyshQJb9Nmy&username=automationadminpatch@yopmail.com.atm.frwpatch&password=Patch@08june";
+        } else if (EnvironmentFactory.getEnvironmentName().contains("QAFramework")) {
+            defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_secret=C534061B026C5FBFF856CD31DBB1E722CD7D4D976F6154CA431A976E0C592927&client_id=3MVG9Iu66FKeHhIPe91yESdsJL200IDKuBwsrDV7WewsJy9p2d.Zhgw2ikOH2mpGFHDtoTBZ3c..nrgqTXz7R&username=automationadmin@ggp.test8.atm.fwautomat&password=FWTest@2July";
+        }
         System.out.println(defaultEndPointGetToken);
         return defaultEndPointGetToken;
     }

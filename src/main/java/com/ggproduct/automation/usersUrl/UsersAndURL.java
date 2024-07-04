@@ -27,7 +27,7 @@ public class UsersAndURL implements UsersController {
         I.amPerforming().propertiesFileOperationsTo().saveValue("FD1 Username", "Automation FD1");
         I.amPerforming().propertiesFileOperationsTo().saveValue("AUDITOR Username", "Automation AUDITOR");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPI Username", "Automation SPI");
-        I.amPerforming().propertiesFileOperationsTo().saveValue("SPI3 Username", "Automation SPI3");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("SPI3 Username", "Automation SPI");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPA Username", "Automation SPA");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPI4 Username", "Automation SPI4");
         I.amPerforming().propertiesFileOperationsTo().saveValue("IND Username", "Automation IND");
@@ -63,6 +63,8 @@ public class UsersAndURL implements UsersController {
             userName = getQAEnvironmentUser(setUpUserLevel(userLevel));
         } else if ((EnvironmentFactory.getEnvironmentName() != null) && (EnvironmentFactory.getEnvironmentName().contains("TEST8"))) {
             userName = getTest8EnvironmentUser(setUpUserLevel(userLevel));
+        } else if ((EnvironmentFactory.getEnvironmentName() != null) && (EnvironmentFactory.getEnvironmentName().contains("PATCH"))) {
+            userName = getPATCHEnvironmentUser(setUpUserLevel(userLevel));
         } else {
             userName = getAUTOEnvironmentUser(setUpUserLevel(userLevel));
         }
@@ -76,24 +78,42 @@ public class UsersAndURL implements UsersController {
             password = getQAEnvironmentPassword(setUpUserLevel(userLevel));
         } else if (EnvironmentFactory.getEnvironmentName().contains("TEST8")) {
             password = getTest8EnvironmentPassword(setUpUserLevel(userLevel));
+        } else if (EnvironmentFactory.getEnvironmentName().contains("PATCH")) {
+            password = getPATCHEnvironmentPassword(setUpUserLevel(userLevel));
         } else
             password = getAUTOEnvironmentPassword(setUpUserLevel(userLevel));
         return password;
     }
 
-    private String getQAEnvironmentPassword(String userLevel) {
-        String password;
-        switch (userLevel.toUpperCase()) {
-            case "SARAH PM":
-                password = "Salesforce@2025";
-                break;
-            case "SPI3":
-                password = "Salesforce2025";
-                break;
-            default:
-                password = "Salesforce2023";
+//    private String getQAEnvironmentPassword(String userLevel) {
+//        String password;
+//        switch (userLevel.toUpperCase()) {
+//            case "SARAH PM":
+//                password = "Salesforce@2025";
+//                break;
+//            case "SPI3":
+//                password = "Salesforce2025";
+//                break;
+//            default:
+//                password = "Salesforce2023";
+//        }
+//        return password;
+//    }
+
+    private String getQAEnvironmentPassword(String userType) {
+        Map<String, String> password = new HashMap<>();
+        password.put("ADMIN", "FWTest@2July");
+        password.put("EXE", "FWTest@2July");
+        password.put("PM", "FWTest@2July");
+        password.put("dynamicUser", "FWTest@2July");
+        password.put("FO", "FWTest@2July");
+        password.put("SPI3", "FWTest@2July");
+        password.put("PM1", "FWTest@2July");
+        if (userType.toUpperCase() != null) {
+            return password.get(userType.toUpperCase());
+        } else {
+            return password.get("ADMIN");
         }
-        return password;
     }
 
     private String getTest8EnvironmentPassword(String userLevel) {
@@ -147,32 +167,53 @@ public class UsersAndURL implements UsersController {
         return password;
     }
 
+    private String getPATCHEnvironmentPassword(String userType) {
+        Map<String, String> password = new HashMap<>();
+        password.put("PO", "PatchPO@08june");
+        password.put("FD", "PatchFD@08june");
+        password.put("PM", "Patch@08june");
+        password.put("EXE", "Patch@08june");
+        password.put("EXE1", "Patch@08june");
+        password.put("FO", "Patch@08june");
+        password.put("ADMIN", "Patch@08june");
+        password.put("SPI3", "Patch@08june");
+        password.put("dynamicUser", "Patch@08june");
+        password.put("PM1", "Patch@08june");
+        if (userType.toUpperCase() != null) {
+            return password.get(userType.toUpperCase());
+        } else {
+            return password.get("Admin");
+        }
+    }
+
+    private String getPATCHEnvironmentUser(String userLevel) {
+        Map<String, String> username = new HashMap<>();
+        username.put("PO", "test8.automationpo@yopmail.com.frwpatch");
+        username.put("FD", "test8.automationfd@yopmail.com.frwpatch");
+        username.put("PM", "donald_pm@ggp.test7.atm.frwpatch");
+        username.put("EXE", "test@gmaildemo.com.atm.frwpatch");
+        username.put("EXE1", "test8.exe1.automation@yopmail.com.frwpatch");
+        username.put("FO", "auto.fm@auto.com.atm.frwpatch");
+        username.put("ADMIN", "automationadminpatch@yopmail.com.atm.frwpatch");
+        username.put("SPI3", "jameshanknew@yopmail.com");
+        username.put("dynamicUser", "donald_pm@ggp.test7.atm.frwpatch");
+        username.put("PM1", "test8.pm1.automation@yopmail.com.frwpatch");
+        if (userLevel.toUpperCase() != null) {
+            return username.get(userLevel.toUpperCase());
+        } else {
+            return username.get("ADMIN");
+        }
+    }
+
     private String getQAEnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
-        username.put("ADMIN", "govgrantsautomation@yopmail.com.qaorg");
-        username.put("ADMIN1", "admin1@yopmail.com.qaorg");
-        username.put("EXE", "test@gmaildemo.com.qaorg");
-        username.put("PM", "pm.automation@yopmail.com.qaorg");
-        username.put("FO", "auto.fm@auto.com.atm.qaorg");
-        username.put("PO", "automationpo@yopmail.com.qaorg");
-        username.put("FD", "automationfd@yopmail.com.qaorg");
-        username.put("PM1", "pm1.automation@yopmail.com.qaorg");
-        username.put("EXE1", "exe1.automation@yopmail.com.qaorg");
-        username.put("PO1", "automationpo1@yopmail.com.qaorg");
-        username.put("FO1", "fo1.automation@yopmail.com.qaorg");
-        username.put("FD1", "automationfd1@yopmail.com.qaorg");
-        username.put("SPI3", "automationspi3@yopmail.com");
-        username.put("SPA", "spaautomation@yopmail.com");
-        username.put("SA", "automationspi212@yopmail.com");
-        username.put("AUDITOR", "automationauditor@yopmail.com.qaorg");
-        username.put("SARAH PM", "sarah.pm@ggp.test8.qaorg");
-
-        username.put("SIMON PM", "simon_pm@ggp.test7");
-        username.put("SARAH PO", "sarah_pm@ggp.test7.automation");
-        username.put("ALEX FO", "alex_fo@ggp.test7");
-        username.put("CATHY PM", "cathy_pm@ggp.test7");
-        username.put("OSCAR PM", "oscar_pm@ggp.test7");
-        username.put("Bill PM", "bill_pm@ggp.test7");
+        username.put("ADMIN", "automationadmin@ggp.test8.atm.fwautomat");
+        username.put("EXE", "automationexe@ggp.test8.fwautomat");
+        username.put("PM", "automationpm@ggp.test8.atm.fwautomat");
+        username.put("dynamicUser", "automationpm@ggp.test8.atm.fwautomat");
+        username.put("FO", "automationfo@ggp.test8.atm.fwautomat");
+        username.put("SPI3", "automationspi@yopmail.com.fwautomat");
+        username.put("PM1", "frameworkpm1@ggp.test8.atm.fwautomat");
 
         if (userLevel.toUpperCase() != null) {
             return username.get(userLevel.toUpperCase());
@@ -180,6 +221,40 @@ public class UsersAndURL implements UsersController {
             return username.get("ADMIN");
         }
     }
+
+//    private String getQAEnvironmentUser(String userLevel) {
+//        Map<String, String> username = new HashMap<>();
+//        username.put("ADMIN", "govgrantsautomation@yopmail.com.qaorg");
+//        username.put("ADMIN1", "admin1@yopmail.com.qaorg");
+//        username.put("EXE", "test@gmaildemo.com.qaorg");
+//        username.put("PM", "pm.automation@yopmail.com.qaorg");
+//        username.put("FO", "auto.fm@auto.com.atm.qaorg");
+//        username.put("PO", "automationpo@yopmail.com.qaorg");
+//        username.put("FD", "automationfd@yopmail.com.qaorg");
+//        username.put("PM1", "pm1.automation@yopmail.com.qaorg");
+//        username.put("EXE1", "exe1.automation@yopmail.com.qaorg");
+//        username.put("PO1", "automationpo1@yopmail.com.qaorg");
+//        username.put("FO1", "fo1.automation@yopmail.com.qaorg");
+//        username.put("FD1", "automationfd1@yopmail.com.qaorg");
+//        username.put("SPI3", "automationspi3@yopmail.com");
+//        username.put("SPA", "spaautomation@yopmail.com");
+//        username.put("SA", "automationspi212@yopmail.com");
+//        username.put("AUDITOR", "automationauditor@yopmail.com.qaorg");
+//        username.put("SARAH PM", "sarah.pm@ggp.test8.qaorg");
+//
+//        username.put("SIMON PM", "simon_pm@ggp.test7");
+//        username.put("SARAH PO", "sarah_pm@ggp.test7.automation");
+//        username.put("ALEX FO", "alex_fo@ggp.test7");
+//        username.put("CATHY PM", "cathy_pm@ggp.test7");
+//        username.put("OSCAR PM", "oscar_pm@ggp.test7");
+//        username.put("Bill PM", "bill_pm@ggp.test7");
+//
+//        if (userLevel.toUpperCase() != null) {
+//            return username.get(userLevel.toUpperCase());
+//        } else {
+//            return username.get("ADMIN");
+//        }
+//    }
 
     private String getAUTOEnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
