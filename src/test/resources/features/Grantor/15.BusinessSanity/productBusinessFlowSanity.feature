@@ -1,7 +1,6 @@
 @productBusinessFlowSanity @product @grantor-regression @regression
 Feature: Validate sanity testing of Complete Business Flow
 
-
   @UserPasswordCheck @Product
   Scenario: UserPasswordCheck
     When I login to "As a Grantor" app as "PO" user
