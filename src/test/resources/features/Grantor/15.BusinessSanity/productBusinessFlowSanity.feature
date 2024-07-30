@@ -136,7 +136,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I wait for "5" seconds
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @65077 @publishingCompetitiveAnnouncementCA
+  @65077 @publishingCompetitiveAnnouncementCA @Neeta
   Scenario: Validate the activation of Competitive Announcement
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -369,7 +369,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 
-  @72342 @publishingDirectedAnnouncement
+  @72342 @publishingDirectedAnnouncement @Neeta
   Scenario: Validate the activation of Directed Announcement and the status changes to published and is green
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -609,7 +609,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Publish" in the page details
     Then I softly see status in Progress-bar is "Published" and is "green"
 
-  @72343 @publishingFormulaAnnouncementByApplicantFocusArea
+  @72343 @publishingFormulaAnnouncementByApplicantFocusArea @Neeta
   Scenario: Validate the activation of Formula By Applicant Focus Area Announcement and the status changes to published and is green
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -854,7 +854,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Publish" in the page details
     Then I softly see field "Status" as "Published"
 
-  @72343 @publishingFormulaAnnouncementByApplicant
+  @72343 @publishingFormulaAnnouncementByApplicant @Neeta
   Scenario: Validate the activation of Formula By Applicant Announcement and the status changes to published and is green
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Announcements" tab
