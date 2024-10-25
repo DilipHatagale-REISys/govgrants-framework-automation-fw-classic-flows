@@ -162,10 +162,10 @@ public class ProjectWebServices {
             }
         } else if (EnvironmentFactory.getEnvironmentName().contains("TEST8"))
             defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG90D5vR7Utjboc8b3nxgWl_TIAtGV_TgV2OQsaOZNGnhetFSjnMGSvL67KfRN99.Z0ne32YZHHlzdyCb_a&client_secret=F1F4C218C1E6AB1ECA2DD46CDCFB204D66FCEFA2DB939003C5C4B207DAF0A736&username=govgrantsautomation@yopmail.com&password=Salesforce@2032";
-        else if (EnvironmentFactory.getEnvironmentName().contains("PATCH")) {
-            defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_secret=FED687A3A0BBA7AF7E537EB8D3EBE92281D7609031F0751FFCB10DD3E52DDF64&client_id=3MVG98im9TK34CUW45zaL1fTHaLLiykIdoQeUHbf1cm3OspjgGVFjNgpZvV5hcdc2ccKT1TS4snyshQJb9Nmy&username=automationadminpatch@yopmail.com.atm.frwpatch&password=Patch@08june";
-        } else if (EnvironmentFactory.getEnvironmentName().contains("QAFramework")) {
-            defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_secret=C534061B026C5FBFF856CD31DBB1E722CD7D4D976F6154CA431A976E0C592927&client_id=3MVG9Iu66FKeHhIPe91yESdsJL200IDKuBwsrDV7WewsJy9p2d.Zhgw2ikOH2mpGFHDtoTBZ3c..nrgqTXz7R&username=automationadmin@ggp.test8.atm.fwautomat&password=FWTest@2July";
+        else if (EnvironmentFactory.getEnvironmentName().contains("FWPATCH")) {
+            defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_secret=FED687A3A0BBA7AF7E537EB8D3EBE92281D7609031F0751FFCB10DD3E52DDF64&client_id=3MVG98im9TK34CUW45zaL1fTHaLLiykIdoQeUHbf1cm3OspjgGVFjNgpZvV5hcdc2ccKT1TS4snyshQJb9Nmy&username=automationadminpatch@yopmail.com.atm.frwpatch&password=Patch@02oct";
+        } else if (EnvironmentFactory.getEnvironmentName().contains("FWCLASSIC")) {
+            defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_secret=C534061B026C5FBFF856CD31DBB1E722CD7D4D976F6154CA431A976E0C592927&client_id=3MVG9Iu66FKeHhIPe91yESdsJL200IDKuBwsrDV7WewsJy9p2d.Zhgw2ikOH2mpGFHDtoTBZ3c..nrgqTXz7R&username=automationadmin@ggp.test8.atm.fwautomat&password=FWTest@02oct";
         }
         System.out.println(defaultEndPointGetToken);
         return defaultEndPointGetToken;

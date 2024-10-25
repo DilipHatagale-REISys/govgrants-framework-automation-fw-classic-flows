@@ -27,7 +27,7 @@ public class UsersAndURL implements UsersController {
         I.amPerforming().propertiesFileOperationsTo().saveValue("FD1 Username", "Automation FD1");
         I.amPerforming().propertiesFileOperationsTo().saveValue("AUDITOR Username", "Automation AUDITOR");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPI Username", "Automation SPI");
-        I.amPerforming().propertiesFileOperationsTo().saveValue("SPI3 Username", "Automation SPI");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("SPI3 Username", "James Hank");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPA Username", "Automation SPA");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPI4 Username", "Automation SPI4");
         I.amPerforming().propertiesFileOperationsTo().saveValue("IND Username", "Automation IND");
@@ -59,11 +59,11 @@ public class UsersAndURL implements UsersController {
     @Override
     public String getUserName(String userLevel) {
         String userName = null;
-        if ((EnvironmentFactory.getEnvironmentName() != null) && (EnvironmentFactory.getEnvironmentName().contains("QA"))) {
+        if ((EnvironmentFactory.getEnvironmentName() != null) && (EnvironmentFactory.getEnvironmentName().contains("FWCLASSIC"))) {
             userName = getQAEnvironmentUser(setUpUserLevel(userLevel));
         } else if ((EnvironmentFactory.getEnvironmentName() != null) && (EnvironmentFactory.getEnvironmentName().contains("TEST8"))) {
             userName = getTest8EnvironmentUser(setUpUserLevel(userLevel));
-        } else if ((EnvironmentFactory.getEnvironmentName() != null) && (EnvironmentFactory.getEnvironmentName().contains("PATCH"))) {
+        } else if ((EnvironmentFactory.getEnvironmentName() != null) && (EnvironmentFactory.getEnvironmentName().contains("FWPATCH"))) {
             userName = getPATCHEnvironmentUser(setUpUserLevel(userLevel));
         } else {
             userName = getAUTOEnvironmentUser(setUpUserLevel(userLevel));
@@ -74,11 +74,11 @@ public class UsersAndURL implements UsersController {
     @Override
     public String getPassword(String userLevel) {
         String password = null;
-        if (EnvironmentFactory.getEnvironmentName().contains("QA")) {
+        if (EnvironmentFactory.getEnvironmentName().contains("FWCLASSIC")) {
             password = getQAEnvironmentPassword(setUpUserLevel(userLevel));
         } else if (EnvironmentFactory.getEnvironmentName().contains("TEST8")) {
             password = getTest8EnvironmentPassword(setUpUserLevel(userLevel));
-        } else if (EnvironmentFactory.getEnvironmentName().contains("PATCH")) {
+        } else if (EnvironmentFactory.getEnvironmentName().contains("FWPATCH")) {
             password = getPATCHEnvironmentPassword(setUpUserLevel(userLevel));
         } else
             password = getAUTOEnvironmentPassword(setUpUserLevel(userLevel));
@@ -102,13 +102,13 @@ public class UsersAndURL implements UsersController {
 
     private String getQAEnvironmentPassword(String userType) {
         Map<String, String> password = new HashMap<>();
-        password.put("ADMIN", "FWTest@2July");
-        password.put("EXE", "FWTest@2July");
-        password.put("PM", "FWTest@2July");
-        password.put("dynamicUser", "FWTest@2July");
-        password.put("FO", "FWTest@2July");
-        password.put("SPI3", "FWTest@2July");
-        password.put("PM1", "FWTest@2July");
+        password.put("ADMIN", "FWTest@02oct");
+        password.put("EXE", "FWTest@02oct");
+        password.put("PM", "FWTest@02oct");
+        password.put("dynamicUser", "FWTest@02oct");
+        password.put("FO", "FWTest@02oct");
+        password.put("SPI3", "FwLwc@02oct");
+        password.put("PM1", "FWTest@02oct");
         if (userType.toUpperCase() != null) {
             return password.get(userType.toUpperCase());
         } else {
@@ -169,16 +169,16 @@ public class UsersAndURL implements UsersController {
 
     private String getPATCHEnvironmentPassword(String userType) {
         Map<String, String> password = new HashMap<>();
-        password.put("PO", "PatchPO@08june");
-        password.put("FD", "PatchFD@08june");
-        password.put("PM", "Patch@08june");
-        password.put("EXE", "Patch@08june");
-        password.put("EXE1", "Patch@08june");
-        password.put("FO", "Patch@08june");
-        password.put("ADMIN", "Patch@08june");
-        password.put("SPI3", "Patch@08june");
-        password.put("dynamicUser", "Patch@08june");
-        password.put("PM1", "Patch@08june");
+        password.put("PO", "Patch@02oct");
+        password.put("FD", "Patch@02oct");
+        password.put("PM", "Patch@02octo");
+        password.put("EXE", "Patch@02oct");
+        password.put("EXE1", "Patch@02oct");
+        password.put("FO", "Patch@02oct");
+        password.put("ADMIN", "Patch@02oct");
+        password.put("SPI3", "Patch@02oct");
+        password.put("dynamicUser", "Patch@02oct");
+        password.put("PM1", "Patch@02oct");
         if (userType.toUpperCase() != null) {
             return password.get(userType.toUpperCase());
         } else {
@@ -195,7 +195,7 @@ public class UsersAndURL implements UsersController {
         username.put("EXE1", "test8.exe1.automation@yopmail.com.frwpatch");
         username.put("FO", "auto.fm@auto.com.atm.frwpatch");
         username.put("ADMIN", "automationadminpatch@yopmail.com.atm.frwpatch");
-        username.put("SPI3", "jameshanknew@yopmail.com");
+        username.put("SPI3", "aspi4@grants.gov");
         username.put("dynamicUser", "donald_pm@ggp.test7.atm.frwpatch");
         username.put("PM1", "test8.pm1.automation@yopmail.com.frwpatch");
         if (userLevel.toUpperCase() != null) {

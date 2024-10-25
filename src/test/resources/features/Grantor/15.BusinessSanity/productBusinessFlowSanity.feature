@@ -136,6 +136,61 @@ Feature: Validate sanity testing of Complete Business Flow
     And I wait for "5" seconds
     Then I see status in Progress-bar is "Active" and is "Green"
 
+  @StrategicPlanCreation @ProdSan1
+  Scenario: Creation of Strategic plan
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Strategic Plans" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Strategic Plans - Draft"
+    And I click on top right button "New" in flex table with id "---strategicplan:-:StrategicPlansTableId---"
+    And I enter in modal "StrategicPlanCreation" values from "StrategicPlan_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter value "Automation Test Description" into field "StrategyDescription__c"
+    And I click on "Save" in the page details
+    And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
+    When I enter in modal value "Automation Strategic Goal" into field "StrategyTitle__c"
+    When I click modal button "Save and Continue"
+    When I enter value "Automation Test Description" into field "StrategyDescription__c"
+    And I click on "Save" in the page details
+    When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
+    When I enter in modal value "Automation Strategic Objective" into field "StrategyTitle__c"
+    When I click modal button "Save and Continue"
+    When I enter value "Automation Test Description" into field "StrategyDescription__c"
+    And I click on "Save" in the page details
+    When I navigate to "Related Log" sub tab
+    And I click on top right button "Associate" in flex table with id "---strategicplan:-:ObjectivesKPITableId---"
+    When I click "Add" after selection of "Automation Permanent KPI" in the table "---strategicplan:-:ListOfActiveKPITableId---"
+    Then I see that "Automation Permanent KPI" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
+    Then I softly see field "Status" as "Draft"
+    And I click on "Back To Strategic Goal" in the page details
+    Then I softly see field "Status" as "Draft"
+    When I click on "Back To Strategic Plan" in the page details
+    Then I see status in Progress-bar is "Created" and is "Green"
+
+  @SubrecipientContactCreation @ProdSan2
+  Scenario: Subrecipient Contact Creation
+    Given I login to "As a Grantor" app as "PM" user
+    When I navigate to "Home" tab
+    And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
+    And I pause execution for "3" seconds
+    When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
+    And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "Email"
+    When I click modal button "Save"
+    And I close "Create Subrecipient Contact" modal by clicking the top right x button
+    And I save the contact name as "Automation Runtime Contact"
+    And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Contact} Contact" in "---home:-:subrecipientContactTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Contact} Contact" inside flex table with id "---home:-:subrecipientContactTableId---" without waiting for record
+    Then I softly see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    And I click on "Edit" in the page details
+    And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I close "View Subrecipient Contact" modal by clicking the top right x button
+    And I wait for "2" seconds
+    Then I softly see value "New" for title "Status" inside table "---home:-:subrecipientContactTableId---"
+
   @65077 @publishingCompetitiveAnnouncementCA @Neeta
   Scenario: Validate the activation of Competitive Announcement
     When I login to "As a Grantor" app as "EXE" user
@@ -179,14 +234,15 @@ Feature: Validate sanity testing of Complete Business Flow
       | Name                     | Announcement |
       | {SavedValue:FO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
-      | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
-      | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
+      | Name                    | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | {SavedValue:PM Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
     And I pause execution for "3" seconds
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I refresh the page
     When I perform quick search for "Record id" in "---announcement:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record id" inside table
     When I navigate to "Responsibilities" tab
@@ -436,7 +492,7 @@ Feature: Validate sanity testing of Complete Business Flow
       | Value  | Field             |
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
-    When I click modal button "Save"
+    When I click modal button "Submit Review"
    # When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1209,7 +1265,7 @@ Feature: Validate sanity testing of Complete Business Flow
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
-    And I delete the record "{SavedValue:Automation Runtime FDM Announcement}" from the object "FDM"
+#    And I delete the record "{SavedValue:Automation Runtime FDM Announcement}" from the object "FDM"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
@@ -2318,8 +2374,8 @@ Feature: Validate sanity testing of Complete Business Flow
 
   @72359 @completeCloseout
   Scenario: Validate the Closeout is submitted for approval and the status changes to Submitted for Approval
-    And I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation PO user" of type "Competitive"
-    When I login to "As a Grantor" app as "PO" user
+    And I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation PM user" of type "Competitive"
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -2350,7 +2406,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I click on "Acknowledge" in the page details
-    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Closeout" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
@@ -2364,14 +2420,9 @@ Feature: Validate sanity testing of Complete Business Flow
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     And I click toggle button to select "Closeouts - All"
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:CloseoutTableId---" panel
     And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
     Then I softly see field "Status" as "Completed"
-
-
-    And I initiated an application review for application "{SavedValue:Automation Runtime Competitive Announcement}" on announcement "{SavedValue:Automation Runtime Competitive Announcement}" with properties "default"
-    And I created approved FDM on application "{SavedValue:Automation Runtime Competitive Announcement}"
-    And I delete the record "{SavedValue:Automation Runtime Competitive Announcement}" from the object "FDM"
