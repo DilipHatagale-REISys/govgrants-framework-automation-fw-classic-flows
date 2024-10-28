@@ -23,7 +23,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I navigate to "Grants" tab
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
 
-  @72335 @activationOfFocusArea
+  @72335 @activationOfFocusArea @wip
   Scenario: Validate the activation of Focus Area by User - Admin/EXE/PM and the status is Active
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
@@ -39,7 +39,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @72340 @activateKPI
+  @72340 @activateKPI @wip
   Scenario: Validate the activation of KPI and the status changes to Active
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -52,7 +52,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @72337 @activationOFFundingSource
+  @72337 @activationOFFundingSource @wip
   Scenario: Validate the activation of Funding Source HappyPath and the status is Active
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -136,7 +136,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I wait for "5" seconds
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @StrategicPlanCreation @ProdSan1
+  @StrategicPlanCreation @ProdSan1 @wip
   Scenario: Creation of Strategic plan
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -173,7 +173,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
     And I pause execution for "3" seconds
-    When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
+    When I click on top right button "New" in flex table with id "---home:-:subrecipientcontactTableId---"
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     And I generate the random EmailID and save as "uniqueEmailID"
     And I enter value "{SavedValue:uniqueEmailID}" into field "Email"
@@ -1260,7 +1260,7 @@ Feature: Validate sanity testing of Complete Business Flow
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @72347 @negotiationComplete
+  @72347 @negotiationComplete @wip
   Scenario: Validate once the Negotiation Request is completed then the record owner can view the record under Completed Negotiations
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -2372,7 +2372,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:GrantsSubAwardsTableId---" without waiting for record
     Then I see status in Progress-bar is "Amended" and is "Green"
 
-  @72359 @completeCloseout
+  @72359 @completeCloseout @wip
   Scenario: Validate the Closeout is submitted for approval and the status changes to Submitted for Approval
     And I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation PM user" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user

@@ -268,7 +268,7 @@ public final class FlexTable implements FlexTableComponent {
     }
 
     public void expand(String uniqueColumnValue) {
-        boolean statusElement = I.amPerforming().getElementReference().of(By.xpath(".//td//*[text()='\"+uniqueColumnValue+\"']//ancestor::tr[1]//i[contains(@class,'fa-plus')")).getAttribute("class").contains("plus");
+        boolean statusElement = I.amPerforming().getElementReference().of(By.xpath(".//td//*[text()='"+uniqueColumnValue+"']//ancestor::tr[1]//i[contains(@class,'fa-plus')")).getAttribute("class").contains("plus");
         try {
             if (statusElement) {
                 WebElement expandElement = I.amPerforming().getElementReference().of((By.xpath(".//td//*[text()='" + uniqueColumnValue + "']//ancestor::tr[1]//lightning-icon[contains(@class, 'chevron')]")));
