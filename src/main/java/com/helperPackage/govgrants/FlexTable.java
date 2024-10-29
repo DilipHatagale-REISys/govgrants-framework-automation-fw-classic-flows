@@ -259,7 +259,7 @@ public final class FlexTable implements FlexTableComponent {
         boolean statusElement = I.amPerforming().getElementReference().of(By.xpath(".//td//*[text()='"+uniqueColumnValue+"']//ancestor::tr[1]//i[contains(@class,'fa-minus')]")).getAttribute("class").contains("minus");
         try {
             if (statusElement) {
-                WebElement collapseElement =  I.amPerforming().getElementReference().of((By.xpath(".//td//*[text()='"+uniqueColumnValue+"']//ancestor::tr[1]//i[contains(@class,'fa-minus')")));
+                WebElement collapseElement =  I.amPerforming().getElementReference().of((By.xpath(".//td//*[text()='"+uniqueColumnValue+"']//ancestor::tr[1]//i[contains(@class,'fa-minus')]")));
                 I.amPerforming().click().withJavaScript(collapseElement);
             }
         } catch (Exception ee) {
@@ -268,10 +268,10 @@ public final class FlexTable implements FlexTableComponent {
     }
 
     public void expand(String uniqueColumnValue) {
-        boolean statusElement = I.amPerforming().getElementReference().of(By.xpath(".//td//*[text()='"+uniqueColumnValue+"']//ancestor::tr[1]//i[contains(@class,'fa-plus')")).getAttribute("class").contains("plus");
+        boolean statusElement = I.amPerforming().getElementReference().of(By.xpath(".//td//*[text()='"+uniqueColumnValue+"']//ancestor::tr[1]//i[contains(@class,'fa-plus')]")).getAttribute("class").contains("plus");
         try {
             if (statusElement) {
-                WebElement expandElement = I.amPerforming().getElementReference().of((By.xpath(".//td//*[text()='" + uniqueColumnValue + "']//ancestor::tr[1]//lightning-icon[contains(@class, 'chevron')]")));
+                WebElement expandElement = I.amPerforming().getElementReference().of((By.xpath(".//td//*[text()='"+uniqueColumnValue+"']//ancestor::tr[1]//i[contains(@class,'fa-plus')]")));
                 I.amPerforming().click().withJavaScript(expandElement);
             }
         } catch (Exception ee) {

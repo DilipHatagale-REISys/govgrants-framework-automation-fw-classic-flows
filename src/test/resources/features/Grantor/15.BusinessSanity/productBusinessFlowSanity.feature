@@ -23,7 +23,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I navigate to "Grants" tab
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
 
-  @72335 @activationOfFocusArea @wip
+  @72335 @activationOfFocusArea
   Scenario: Validate the activation of Focus Area by User - Admin/EXE/PM and the status is Active
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
@@ -39,7 +39,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @72340 @activateKPI @wip
+  @72340 @activateKPI
   Scenario: Validate the activation of KPI and the status changes to Active
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -52,7 +52,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @72337 @activationOFFundingSource @wip
+  @72337 @activationOFFundingSource
   Scenario: Validate the activation of Funding Source HappyPath and the status is Active
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -136,7 +136,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I wait for "5" seconds
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @StrategicPlanCreation @ProdSan1 @wip
+  @StrategicPlanCreation @ProdSan1
   Scenario: Creation of Strategic plan
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -178,9 +178,10 @@ Feature: Validate sanity testing of Complete Business Flow
     And I generate the random EmailID and save as "uniqueEmailID"
     And I enter value "{SavedValue:uniqueEmailID}" into field "Email"
     When I click modal button "Save"
-    And I close "Create Subrecipient Contact" modal by clicking the top right x button
+#    And I close "Create Subrecipient Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
+    And I wait for "3" seconds
     And I perform quick search for "{SavedValue:Automation Runtime Contact} Contact" in "---home:-:subrecipientContactTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Contact} Contact" inside flex table with id "---home:-:subrecipientContactTableId---" without waiting for record
     Then I softly see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
@@ -236,7 +237,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                    | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:PM Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
-    And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
+    And I click on "Send for Review" icon for "{SavedValue:PM Username}" inside table
     And I get the "EGMS ID"
     And I pause execution for "3" seconds
     And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -246,7 +247,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I perform quick search for "Record id" in "---announcement:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record id" inside table
     When I navigate to "Responsibilities" tab
-    When I click on "Enter Review" icon for "{SavedValue:FO Username}" inside flex table with id "---announcement:-:reviewersTableId---" without waiting for record
+    When I click on "Enter Review" icon for "{SavedValue:PM Username}" inside flex table with id "---announcement:-:reviewersTableId---" without waiting for record
     And I enter values into fields
       | Value  | Field             |
       | Passed | Rating__c         |
@@ -476,9 +477,6 @@ Feature: Validate sanity testing of Complete Business Flow
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
-    When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
-      | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
-      | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -492,7 +490,8 @@ Feature: Validate sanity testing of Complete Business Flow
       | Value  | Field             |
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
-    When I click modal button "Submit Review"
+    When I click modal button "Save"
+    And I click on submit review
    # When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -636,6 +635,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I pause execution for "7" seconds
     And I navigate to "Setup" sub tab
     And I click on "Submit For Approval" in the page details
+    And I refresh the page
     And I pause execution for "3" seconds
     Then I softly see field "Status" as "Submitted for Approval"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -728,6 +728,7 @@ Feature: Validate sanity testing of Complete Business Flow
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
   #  When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
