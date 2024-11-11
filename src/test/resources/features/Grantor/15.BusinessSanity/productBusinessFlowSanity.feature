@@ -426,7 +426,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 
-  @72342 @publishingDirectedAnnouncement @N
+  @72342 @publishingDirectedAnnouncement @Neeta1
   Scenario: Validate the activation of Directed Announcement and the status changes to published and is green
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -665,7 +665,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Publish" in the page details
     Then I softly see status in Progress-bar is "Published" and is "green"
 
-  @72343 @publishingFormulaAnnouncementByApplicantFocusArea @Neeta
+  @72343_1 @publishingFormulaAnnouncementByApplicantFocusArea @Neeta1
   Scenario: Validate the activation of Formula By Applicant Focus Area Announcement and the status changes to published and is green
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -911,9 +911,9 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Publish" in the page details
     Then I softly see field "Status" as "Published"
 
-  @72343 @publishingFormulaAnnouncementByApplicant @Neeta
+  @72343 @publishingFormulaAnnouncementByApplicant @Neeta1
   Scenario: Validate the activation of Formula By Applicant Announcement and the status changes to published and is green
-    When I login to "As a Grantor" app as "ADMIN" user
+    When I login to "As a Grantor" app as "ADMIN1" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Formula Announcements"
@@ -943,8 +943,8 @@ Feature: Validate sanity testing of Complete Business Flow
     When I click "Associate" after selection of "Automation ADMIN1" by showing entries "All" in flex table with id "---announcement:-:annoucementContactTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name              | Announcement |
-      | Automation ADMIN1 | Step 1       |
+      | Name             | Announcement |
+      | Automation ADMIN | Step 1       |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -964,7 +964,7 @@ Feature: Validate sanity testing of Complete Business Flow
       | BP01               | 50         | 150      |
     And I click on "Submit For Approval" in the page details
 #    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
-    When I re-login to "As a Grantor" app as "ADMIN1" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:pendingTaskTableId---" panel
@@ -980,7 +980,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Publish" in the page details
     Then I softly see field "Status" as "Published"
 
-  @72344 @preApplicationSubmittedToGrantor
+  @72344 @preApplicationSubmittedToGrantor @Neeta1
   Scenario: Validate once the Grantor accepts the submitted pre-application then the changes status to Accepted
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
