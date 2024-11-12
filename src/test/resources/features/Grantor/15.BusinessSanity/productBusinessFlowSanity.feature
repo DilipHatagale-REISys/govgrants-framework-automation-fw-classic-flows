@@ -1325,8 +1325,8 @@ Feature: Validate sanity testing of Complete Business Flow
       | {SavedValue:fundingAccount} | 1000        |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
-      | Name                       | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
+      | Name            | Project Role             | Is Key Personnel |
+      | Automation SPI3 | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I navigate to "Terms" sub tab
     When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
