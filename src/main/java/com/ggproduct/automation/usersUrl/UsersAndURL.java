@@ -103,7 +103,11 @@ public class UsersAndURL implements UsersController {
     private String getQAEnvironmentPassword(String userType) {
         Map<String, String> password = new HashMap<>();
         password.put("ADMIN", "FWTest@02oct");
+        password.put("PO", "FWTest@02oct");
+        password.put("FD", "FWTest@02oct");
+        password.put("ADMIN1", "FWTest@02oct");
         password.put("EXE", "FWTest@02oct");
+        password.put("EXE1", "Automatiom!321");
         password.put("PM", "FWTest@02oct");
         password.put("dynamicUser", "FWTest@02oct");
         password.put("FO", "FWTest@02oct");
@@ -115,6 +119,7 @@ public class UsersAndURL implements UsersController {
             return password.get("ADMIN");
         }
     }
+
 
     private String getTest8EnvironmentPassword(String userLevel) {
         String password;
@@ -209,12 +214,16 @@ public class UsersAndURL implements UsersController {
 
     private String getQAEnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
-        username.put("ADMIN", "automationadmin@ggp.test8.atm.fwautomat");
-        username.put("EXE", "automationexe@ggp.test8.fwautomat");
+        username.put("PO", "test8.automationpo@yopmail.com.fwautomat");
+        username.put("FD", "test8.automationfd@yopmail.com.fwautomat");
         username.put("PM", "automationpm@ggp.test8.atm.fwautomat");
-        username.put("dynamicUser", "automationpm@ggp.test8.atm.fwautomat");
+        username.put("EXE", "automationexe@ggp.test8.fwautomat");
+        username.put("EXE1", "austinspmframework@yopmail.com.fwautomat");
         username.put("FO", "automationfo@ggp.test8.atm.fwautomat");
+        username.put("ADMIN", "automationadmin@ggp.test8.atm.fwautomat");
+        username.put("ADMIN1", "shambhavi.kulkarni@ggp.test8.fwautomat");
         username.put("SPI3", "automationspi@yopmail.com.fwautomat");
+        username.put("dynamicUser", "automationpm@ggp.test8.atm.fwautomat");
         username.put("PM1", "frameworkpm1@ggp.test8.atm.fwautomat");
 
         if (userLevel.toUpperCase() != null) {
@@ -223,7 +232,6 @@ public class UsersAndURL implements UsersController {
             return username.get("ADMIN");
         }
     }
-
 //    private String getQAEnvironmentUser(String userLevel) {
 //        Map<String, String> username = new HashMap<>();
 //        username.put("ADMIN", "govgrantsautomation@yopmail.com.qaorg");
