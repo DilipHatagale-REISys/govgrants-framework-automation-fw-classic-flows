@@ -27,7 +27,7 @@ public class UsersAndURL implements UsersController {
         I.amPerforming().propertiesFileOperationsTo().saveValue("FD1 Username", "Automation FD1");
         I.amPerforming().propertiesFileOperationsTo().saveValue("AUDITOR Username", "Automation AUDITOR");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPI Username", "Automation SPI");
-        I.amPerforming().propertiesFileOperationsTo().saveValue("SPI3 Username", "James Hank");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("SPI3 Username", "Automation SPI3");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPA Username", "Automation SPA");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPI4 Username", "Automation SPI4");
         I.amPerforming().propertiesFileOperationsTo().saveValue("IND Username", "Automation IND");
@@ -114,7 +114,7 @@ public class UsersAndURL implements UsersController {
         password.put("dynamicUser", "FWTest@02oct");
         password.put("FO", "Test8@05dec");
         password.put("FO1","Test8@05dec");
-        password.put("SPI3", "FwLwc@02oct");
+        password.put("SPI3", "Test8@05dec");
         password.put("PM1", "Test8@05dec");
         if (userType.toUpperCase() != null) {
             return password.get(userType.toUpperCase());
@@ -228,6 +228,8 @@ public class UsersAndURL implements UsersController {
         username.put("EXE1", "test8.exe1.automation@yopmail.com");
         username.put("FO", "auto.fm@auto.com.atm.fwautomat");
         username.put("FO1", "fo1.automation@yopmail.com.fwautomat");
+        username.put("SPI3", "rreispi3@grants.gov");
+
 
         if (userLevel.toUpperCase() != null) {
             return username.get(userLevel.toUpperCase());
