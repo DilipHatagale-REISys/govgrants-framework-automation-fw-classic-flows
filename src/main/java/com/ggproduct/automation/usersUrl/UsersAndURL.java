@@ -115,6 +115,7 @@ public class UsersAndURL implements UsersController {
         password.put("FO", "Test8@05dec");
         password.put("FO1","Test8@05dec");
         password.put("SPI3", "Test8@05dec");
+        password.put("SPA", "Test8@05dec");
         password.put("PM1", "Test8@05dec");
         if (userType.toUpperCase() != null) {
             return password.get(userType.toUpperCase());
@@ -217,7 +218,7 @@ public class UsersAndURL implements UsersController {
 
     private String getQAEnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
-        username.put("ADMIN", "govgrantsautomation@yopmail.com.fwautomat");
+        username.put("ADMIN", "govgrantsautomation5@yopmail.com.fwautomat");
         username.put("ADMIN1","admin1@yopmail.com.fwautomat");
         username.put("PM", "donald_pm@ggp.test8.atm.fwautomat");
         username.put("PM1", "pm1.automation@yopmail.com.fwautomat");
@@ -230,6 +231,7 @@ public class UsersAndURL implements UsersController {
         username.put("FO", "auto.fm@auto.com.atm.fwautomat");
         username.put("FO1", "fo1.automation@yopmail.com.fwautomat");
         username.put("SPI3", "rreispi3@grants.gov");
+        username.put("SPA", "tepippiddapro-4055@yopmail.com");
 
 
         if (userLevel.toUpperCase() != null) {
