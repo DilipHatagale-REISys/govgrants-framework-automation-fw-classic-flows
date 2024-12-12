@@ -461,6 +461,7 @@ Feature: Validate all scenarios of every modules flow
 #    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     Given I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
+    And I wait for "10" seconds
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
@@ -1018,8 +1019,8 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime FDM Announcement} | 500                | Yes                   | Recommended |
+      | Application Title                                | Recommended Budget | Total Commitment Amount | Recommend for Funding | Comments    |
+      | {SavedValue:Automation Runtime FDM Announcement} | 500                | 500                     | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
       | Name                      | FDM    |
