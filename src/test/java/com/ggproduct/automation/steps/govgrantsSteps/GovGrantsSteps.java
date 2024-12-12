@@ -414,7 +414,7 @@ public final class GovGrantsSteps {
 
     @When("^I collapse nested table containing column value \"([^\"]*)\"$")
     public void collapseNestedTable(String uniqueColumnValue) {
-        govgrants.perform().flexTable().expand(uniqueColumnValue);
+        govgrants.perform().flexTable().collapse(uniqueColumnValue);
     }
 
     @When("^I expand nested table containing column value \"([^\"]*)\" inside nested table containing \"([^\"]*)\"$")

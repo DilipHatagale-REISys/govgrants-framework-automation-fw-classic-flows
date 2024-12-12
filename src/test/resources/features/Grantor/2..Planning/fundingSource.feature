@@ -290,7 +290,7 @@ Feature: Validate all scenarios in Funding Source
     And I upload attachment without random number "Attachment.pdf" of type "Other" from computer
     Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
     Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
-    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFAilesTableId---"
     Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
     And I navigate to "Overview" sub tab
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
@@ -303,6 +303,7 @@ Feature: Validate all scenarios in Funding Source
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
     And I save the field labeled "Funding Source" as "FUNDINGSOURCE"
+    And I halt execution
     And I save the field labeled "EGMS ID" as "FundingAccId"
     And I click "{SavedValue:FUNDINGSOURCE}" lookup link
     When I navigate to "Files" sub tab
