@@ -303,7 +303,6 @@ Feature: Validate all scenarios in Funding Source
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
     And I save the field labeled "Funding Source" as "FUNDINGSOURCE"
-    And I halt execution
     And I save the field labeled "EGMS ID" as "FundingAccId"
     And I click "{SavedValue:FUNDINGSOURCE}" lookup link
     When I navigate to "Files" sub tab
