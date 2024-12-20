@@ -1,4 +1,4 @@
-@directedAnnouncementsWB @grantor-regression @grantor-parallel-regression @announcement @regression @annoucementTemp
+@directedAnnouncementsWB @grantor-regression @grantor-parallel-regression @announcement1 @regression @annoucementTemp
 Feature: Validate all scenarios in the directed Announcement tab
 
   @219074 @219166 @AdminUserVerifiesInfoTextForDirectedAnnouncement @sprint-9-US-208408 @komal @Allocation
