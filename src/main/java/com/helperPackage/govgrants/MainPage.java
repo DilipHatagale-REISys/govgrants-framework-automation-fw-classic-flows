@@ -500,7 +500,7 @@ public final class MainPage {
 
     public By getLoginDropDownItems(String loginMenuItem) {
         return By
-                .xpath("//div/ul/li[contains(@class,'dropdown userDropdown')]/ul/li/a[@title='" + loginMenuItem + "']");
+                .xpath("//div//ul/li[contains(@class,'dropdown userDropdown')]/ul/li/a[@title='" + loginMenuItem + "']");
     }
 
     /**
