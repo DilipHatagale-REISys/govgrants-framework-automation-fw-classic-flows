@@ -2686,7 +2686,6 @@ Feature: Validate all scenarios in Payment Request
       | {SavedValue:FO Username} | Step 2  |
     Then I see the following messages in the page details contains:
       | You cannot specify the same user for multiple steps for Advance |
-
     Examples:
       | Award Name                            |
       | {SavedValue:Automation Runtime Award} |
