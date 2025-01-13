@@ -394,7 +394,7 @@ Feature: Validate all scenarios of every modules flow
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
 
-  @AdvancePaymentRequest
+  @AdvancePaymentRequest @Rerun
   Scenario: Advance Payment Request
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     #And I activated standalone subaward "Automation Runtime award" with properties "default"
@@ -454,7 +454,7 @@ Feature: Validate all scenarios of every modules flow
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
 
-  @progressReportWorkflow
+  @progressReportWorkflow @Rerun
   Scenario: progress report
 #    Given I activated standalone subaward "Automation Runtime award" with properties "default"
 #    Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
@@ -509,7 +509,7 @@ Feature: Validate all scenarios of every modules flow
     And I click toggle button to select "Progress Reports - Approved"
     Then I see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:internalProgressReportFlexTableId---"
 
-  @SiteVisitFlow
+  @SiteVisitFlow @Rerun
   Scenario: Sitevisit Flow
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -749,7 +749,7 @@ Feature: Validate all scenarios of every modules flow
     And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
     Then I softly see field "Status" as "Completed"
 
-  @AwardLevelRiskAssesment
+  @AwardLevelRiskAssesment @Rerun
   Scenario: Award Level Risk Assessment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -843,7 +843,7 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Negotiation Request Status" as "Complete" in "Negotiation Request Details" pageblock
 
-  @ApplicationReviewtoapprovedFDMWorkFlow
+  @ApplicationReviewtoapprovedFDMWorkFlow @Rerun
   Scenario Outline: Application Review WorkFlow
 #    Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
 #    When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -1051,7 +1051,7 @@ Feature: Validate all scenarios of every modules flow
     When I perform quick search for "{SavedValue:EGMSID}" in "---home:-:termsAndConditionsTableId---" panel
     Then I softly see value "Active" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---home:-:termsAndConditionsTableId---"
 
-  @GrantorSideAmendmentRequestWorkflow
+  @GrantorSideAmendmentRequestWorkflow @Rerun
   Scenario:
 #    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
@@ -1118,7 +1118,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
 
-  @SubrecipientSideAmendmentRequestWorkflow
+  @SubrecipientSideAmendmentRequestWorkflow @Rerun
   Scenario:
 #    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
     And I activated standalone subaward "Automation Runtime Award" with properties "default-Automation PO user" of type "Competitive"
@@ -1175,7 +1175,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
 
-  @SubrecipientOrganizationRegistrationFlow
+  @SubrecipientOrganizationRegistrationFlow @Rerun
   Scenario: Verify Subrecipient Organization Registration Process
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -1280,7 +1280,7 @@ Feature: Validate all scenarios of every modules flow
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     Then I see the header is "Individual Subrecipient" in the page details
 
-  @SMEreviewerFlow
+  @SMEreviewerFlow @Rerun
   Scenario:
     Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Home" tab
@@ -1319,7 +1319,7 @@ Feature: Validate all scenarios of every modules flow
     And I select "My Profile" from user dropdown
     Then I see the header is "{SavedValue:Automation Runtime Contact}" in the page details
 
-  @end-to-end-flow-paymentrequest-progressreport-closeout
+  @end-to-end-flow-paymentrequest-progressreport-closeout @Rerun
   Scenario: end-to-end-flow-paymentrequest-progressreport-closeout
     Given I activated standalone subaward "Automation Runtime award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
