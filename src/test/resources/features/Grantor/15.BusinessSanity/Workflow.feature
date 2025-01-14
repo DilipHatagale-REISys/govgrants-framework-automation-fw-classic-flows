@@ -394,7 +394,7 @@ Feature: Validate all scenarios of every modules flow
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
 
-  @AdvancePaymentRequest @Rerun
+  @AdvancePaymentRequest @Rerun1
   Scenario: Advance Payment Request
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     #And I activated standalone subaward "Automation Runtime award" with properties "default"
@@ -509,7 +509,7 @@ Feature: Validate all scenarios of every modules flow
     And I click toggle button to select "Progress Reports - Approved"
     Then I see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:internalProgressReportFlexTableId---"
 
-  @SiteVisitFlow @Rerun
+  @SiteVisitFlow @Rerun1
   Scenario: Sitevisit Flow
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -597,7 +597,8 @@ Feature: Validate all scenarios of every modules flow
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
 
@@ -749,7 +750,7 @@ Feature: Validate all scenarios of every modules flow
     And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
     Then I softly see field "Status" as "Completed"
 
-  @AwardLevelRiskAssesment @Rerun
+  @AwardLevelRiskAssesment
   Scenario: Award Level Risk Assessment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -843,7 +844,7 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Negotiation Request Status" as "Complete" in "Negotiation Request Details" pageblock
 
-  @ApplicationReviewtoapprovedFDMWorkFlow @Rerun
+  @ApplicationReviewtoapprovedFDMWorkFlow @Rerun1
   Scenario Outline: Application Review WorkFlow
 #    Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
 #    When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -1024,11 +1025,12 @@ Feature: Validate all scenarios of every modules flow
       | {SavedValue:Automation Runtime FDM Announcement} | 500                | 500                     | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
-      | Name                      | FDM    |
-      | {SavedValue:EXE Username} | Step 1 |
+      | Name                    | FDM    |
+      | {SavedValue:PM Username} | Step 1 |
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     And I pause execution for "3" seconds
+
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
     When I navigate to "Funding Decision Memo" sub tab
@@ -1070,7 +1072,7 @@ Feature: Validate all scenarios of every modules flow
     And I click modal button "Save and Continue"
     And I wait for "5" seconds
     When I click on "Save" in the page details
-    And I wait for "2" seconds
+    And I wait for "15" seconds
     And I save the field labeled "EGMS ID" as "budgetPC&ScopeId"
     And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Amendment Award}"
     When I click on "Edit" in the page details
@@ -1136,6 +1138,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "budgetPChangeId"
     And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
+    And I wait for "9" seconds
     When I click on "Edit" in the page details
     And I enter "SubRecipientBPC_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
@@ -1175,7 +1178,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
 
-  @SubrecipientOrganizationRegistrationFlow @Rerun
+  @SubrecipientOrganizationRegistrationFlow @Rerun1
   Scenario: Verify Subrecipient Organization Registration Process
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -1319,7 +1322,7 @@ Feature: Validate all scenarios of every modules flow
     And I select "My Profile" from user dropdown
     Then I see the header is "{SavedValue:Automation Runtime Contact}" in the page details
 
-  @end-to-end-flow-paymentrequest-progressreport-closeout @Rerun
+  @end-to-end-flow-paymentrequest-progressreport-closeout @Rerun1
   Scenario: end-to-end-flow-paymentrequest-progressreport-closeout
     Given I activated standalone subaward "Automation Runtime award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
