@@ -179,7 +179,7 @@ Feature: Validate all scenarios of every modules flow
     When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                  | Target |
       | Automation Permanent KPI | 10     |
-    And I navigate to "Forms and Files" sub tab
+    And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
     When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -394,7 +394,7 @@ Feature: Validate all scenarios of every modules flow
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
 
-  @AdvancePaymentRequest
+  @AdvancePaymentRequest @Rerun1
   Scenario: Advance Payment Request
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     #And I activated standalone subaward "Automation Runtime award" with properties "default"
@@ -454,13 +454,14 @@ Feature: Validate all scenarios of every modules flow
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
 
-  @progressReportWorkflow
+  @progressReportWorkflow @Rerun
   Scenario: progress report
 #    Given I activated standalone subaward "Automation Runtime award" with properties "default"
 #    Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
 #    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     Given I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
+    And I wait for "10" seconds
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
@@ -508,7 +509,7 @@ Feature: Validate all scenarios of every modules flow
     And I click toggle button to select "Progress Reports - Approved"
     Then I see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:internalProgressReportFlexTableId---"
 
-  @SiteVisitFlow
+  @SiteVisitFlow @Rerun1
   Scenario: Sitevisit Flow
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
@@ -527,6 +528,7 @@ Feature: Validate all scenarios of every modules flow
     When I click modal button "Save and Continue"
     And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I wait for "5" seconds
     And I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "New" :
@@ -595,7 +597,8 @@ Feature: Validate all scenarios of every modules flow
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
 
@@ -841,7 +844,7 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Negotiation Request Status" as "Complete" in "Negotiation Request Details" pageblock
 
-  @ApplicationReviewtoapprovedFDMWorkFlow
+  @ApplicationReviewtoapprovedFDMWorkFlow @Rerun1
   Scenario Outline: Application Review WorkFlow
 #    Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
 #    When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -1018,15 +1021,16 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime FDM Announcement} | 500                | Yes                   | Recommended |
+      | Application Title                                | Recommended Budget | Total Commitment Amount | Recommend for Funding | Comments    |
+      | {SavedValue:Automation Runtime FDM Announcement} | 500                | 500                     | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
-      | Name                      | FDM    |
-      | {SavedValue:EXE Username} | Step 1 |
+      | Name                    | FDM    |
+      | {SavedValue:PM Username} | Step 1 |
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     And I pause execution for "3" seconds
+
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
     When I navigate to "Funding Decision Memo" sub tab
@@ -1049,7 +1053,7 @@ Feature: Validate all scenarios of every modules flow
     When I perform quick search for "{SavedValue:EGMSID}" in "---home:-:termsAndConditionsTableId---" panel
     Then I softly see value "Active" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---home:-:termsAndConditionsTableId---"
 
-  @GrantorSideAmendmentRequestWorkflow
+  @GrantorSideAmendmentRequestWorkflow @Rerun
   Scenario:
 #    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
@@ -1066,7 +1070,9 @@ Feature: Validate all scenarios of every modules flow
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "Scope&BudgetPeriod_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
+    And I wait for "5" seconds
     When I click on "Save" in the page details
+    And I wait for "15" seconds
     And I save the field labeled "EGMS ID" as "budgetPC&ScopeId"
     And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Amendment Award}"
     When I click on "Edit" in the page details
@@ -1114,7 +1120,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
 
-  @SubrecipientSideAmendmentRequestWorkflow
+  @SubrecipientSideAmendmentRequestWorkflow @Rerun
   Scenario:
 #    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
     And I activated standalone subaward "Automation Runtime Award" with properties "default-Automation PO user" of type "Competitive"
@@ -1132,12 +1138,13 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "budgetPChangeId"
     And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
+    And I wait for "9" seconds
     When I click on "Edit" in the page details
     And I enter "SubRecipientBPC_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
     And I click on "Save" in the page details
     And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
-    Then I see status in Progress-bar is "Created" and is "Green"
+    Then I softly see status in Progress-bar is "Created" and is "Green"
     And I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
@@ -1171,7 +1178,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
 
-  @SubrecipientOrganizationRegistrationFlow
+  @SubrecipientOrganizationRegistrationFlow @Rerun1
   Scenario: Verify Subrecipient Organization Registration Process
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -1185,7 +1192,6 @@ Feature: Validate all scenarios of every modules flow
     And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
     #    TODO: Extra Save step to be removed after bug-237206
-    And I click on "Save" in the page details
     And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
     And I generate the random EmailID and save as "uniqueEmailID"
     And I enter value "{SavedValue:uniqueEmailID}" into field "fieldPrimaryRepEmail__c"
@@ -1277,7 +1283,7 @@ Feature: Validate all scenarios of every modules flow
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     Then I see the header is "Individual Subrecipient" in the page details
 
-  @SMEreviewerFlow
+  @SMEreviewerFlow @Rerun
   Scenario:
     Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Home" tab
@@ -1316,7 +1322,7 @@ Feature: Validate all scenarios of every modules flow
     And I select "My Profile" from user dropdown
     Then I see the header is "{SavedValue:Automation Runtime Contact}" in the page details
 
-  @end-to-end-flow-paymentrequest-progressreport-closeout
+  @end-to-end-flow-paymentrequest-progressreport-closeout @Rerun1
   Scenario: end-to-end-flow-paymentrequest-progressreport-closeout
     Given I activated standalone subaward "Automation Runtime award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -1438,7 +1444,7 @@ Feature: Validate all scenarios of every modules flow
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
-    When I navigate to "Forms and Files" sub tab
+    When I navigate to "Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
@@ -1450,7 +1456,7 @@ Feature: Validate all scenarios of every modules flow
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
       | Title                    | Reported Date | Actual |
       | Automation Permanent KPI | 7             | 7      |
-    When I navigate to "Forms and Files" sub tab
+    When I navigate to "Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details

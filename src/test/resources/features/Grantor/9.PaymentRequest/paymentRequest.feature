@@ -15,7 +15,7 @@ Feature: Validate all scenarios in Payment Request
   @38840 @creationOfAdhocReimbursementPaymentRequest @smoke  
   Scenario: To create an Adhoc Reimbursement Payment Request
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Reimbursement Reque110502st" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I navigate to "Financials" sub tab
@@ -2686,7 +2686,6 @@ Feature: Validate all scenarios in Payment Request
       | {SavedValue:FO Username} | Step 2  |
     Then I see the following messages in the page details contains:
       | You cannot specify the same user for multiple steps for Advance |
-
     Examples:
       | Award Name                            |
       | {SavedValue:Automation Runtime Award} |

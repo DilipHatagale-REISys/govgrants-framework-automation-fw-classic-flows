@@ -23,7 +23,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I navigate to "Grants" tab
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
 
-  @72335 @activationOfFocusArea
+  @72335 @activationOfFocusArea @debug
   Scenario: Validate the activation of Focus Area by User - Admin/EXE/PM and the status is Active
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
@@ -105,7 +105,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
       | Description                 | Required | Applies To  | Status |
       | Automation test description | Optional | Application | Active |
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
+    When I click on "Upload Template" icon for "Application" inside flex table with id "---program:-:checklistTableId---" without waiting for record
     And I upload attachment without random number "Attachment.pdf" of type "Others" from computer
     And I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
@@ -182,15 +182,16 @@ Feature: Validate sanity testing of Complete Business Flow
     And I save the contact name as "Automation Runtime Contact"
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
     And I wait for "3" seconds
-    And I perform quick search for "{SavedValue:Automation Runtime Contact} Contact" in "---home:-:subrecipientContactTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Contact} Contact" inside flex table with id "---home:-:subrecipientContactTableId---" without waiting for record
+    And I perform quick search for "{SavedValue:Automation Runtime Contact} Contact" in "---home:-:subrecipientcontactTableId---" panel
+    And I wait for "2" seconds
+    When I click on "View" icon for "{SavedValue:Automation Runtime Contact} Contact" inside flex table with id "---home:-:subrecipientcontactTableId---" without waiting for record
     Then I softly see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
     And I click on "Edit" in the page details
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
     And I close "View Subrecipient Contact" modal by clicking the top right x button
     And I wait for "2" seconds
-    Then I softly see value "New" for title "Status" inside table "---home:-:subrecipientContactTableId---"
+    Then I softly see value "New" for title "Status" inside table "---home:-:subrecipientcontactTableId---"
 
   @65077 @publishingCompetitiveAnnouncementCA @Nov
   Scenario: Validate the activation of Competitive Announcement
@@ -1040,7 +1041,7 @@ Feature: Validate sanity testing of Complete Business Flow
       | Category Name | Budget | Cash Match | Non-Cash Match |
       | Construction  | 1000   | 100        | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
@@ -1080,7 +1081,7 @@ Feature: Validate sanity testing of Complete Business Flow
       | Category Name | Budget | Cash Match | Non-Cash Match |
       | Construction  | 1000   | 100        | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab

@@ -35,7 +35,7 @@ public final class MainPage {
             loginDropDown = By.xpath("//div[contains(@class,'navTopHeader')]//li[@class='dropdown userDropdown']//a[@class='dropdown-toggle']"),
             egmsHeader = By.xpath("//span[contains(@class, 'navbarBrandText')]"),
             topRightDropDown = By.cssSelector("div>ul>li.dropdown.appDropdown>a"),
-            navProfile_CurrentApp = By.cssSelector("div#myNavbarProfile>ul>li>a>span"),
+            navProfile_CurrentApp = By.cssSelector("div#myNavbarProfile>span>ul>li>a>span,div#myNavbarProfile>ul>li>a>span"),
             loginButton = By.xpath("//*[@type='submit' and not(contains(@value, 'Register')) and not(contains(@value, 'Cancel'))] | //div[@class='loginBtnWrap']//button"),
             userName = By.xpath("//input[@name='username' or @id='username' or @name='userName' or @type='email' or @placeholder='Username' or contains(@name,'username')]"),
             password = By.xpath("//input[@type='password' or @placeholder='Password']"),
@@ -254,7 +254,7 @@ public final class MainPage {
      */
     public WebElement getAppDropDownItem(String dropDownItem) {
         By appDropDown = By
-                .xpath("//div/ul/li[contains(@class,'dropdown appDropdown')]/ul/li/a[@title='" + dropDownItem + "']");
+                .xpath("//div/span/ul/li[contains(@class,'dropdown appDropdown')]/ul/li/a[@title='" + dropDownItem + "']");
 
         return I.amPerforming().getElementReference().of(appDropDown);
     }
@@ -500,7 +500,7 @@ public final class MainPage {
 
     public By getLoginDropDownItems(String loginMenuItem) {
         return By
-                .xpath("//div/ul/li[contains(@class,'dropdown userDropdown')]/ul/li/a[@title='" + loginMenuItem + "']");
+                .xpath("//div//ul/li[contains(@class,'dropdown userDropdown')]/ul/li/a[@title='" + loginMenuItem + "']");
     }
 
     /**

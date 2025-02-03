@@ -290,7 +290,7 @@ Feature: Validate all scenarios in Funding Source
     And I upload attachment without random number "Attachment.pdf" of type "Other" from computer
     Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
     Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
-    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFAilesTableId---"
     Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
     And I navigate to "Overview" sub tab
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
