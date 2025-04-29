@@ -23,9 +23,9 @@ package com.helperPackage.misclib;
 import com.helperPackage.objects.InstanceRecording;
 import com.helperPackage.controller.DeviceBucket;
 import org.apache.commons.io.FileUtils;
-import org.monte.media.Format;
-import org.monte.media.math.Rational;
-import org.monte.screenrecorder.ScreenRecorder;
+//import org.monte.media.Format;
+//import org.monte.media.math.Rational;
+//import org.monte.screenrecorder.ScreenRecorder;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -43,14 +43,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
-import static org.monte.media.AudioFormatKeys.EncodingKey;
-import static org.monte.media.AudioFormatKeys.FrameRateKey;
-import static org.monte.media.AudioFormatKeys.KeyFrameIntervalKey;
-import static org.monte.media.AudioFormatKeys.MIME_QUICKTIME;
-import static org.monte.media.AudioFormatKeys.MediaTypeKey;
-import static org.monte.media.AudioFormatKeys.MimeTypeKey;
-import static org.monte.media.VideoFormatKeys.MediaType;
-import static org.monte.media.VideoFormatKeys.*;
+//import static org.monte.media.AudioFormatKeys.EncodingKey;
+//import static org.monte.media.AudioFormatKeys.FrameRateKey;
+//import static org.monte.media.AudioFormatKeys.KeyFrameIntervalKey;
+//import static org.monte.media.AudioFormatKeys.MIME_QUICKTIME;
+//import static org.monte.media.AudioFormatKeys.MediaTypeKey;
+//import static org.monte.media.AudioFormatKeys.MimeTypeKey;
+//import static org.monte.media.VideoFormatKeys.MediaType;
+//import static org.monte.media.VideoFormatKeys.*;
 
 /**
  * @author nauman.shahid
@@ -61,7 +61,7 @@ public final class ScreenCapture {
     private WebDriver driver;
     static Calendar calendar = Calendar.getInstance();
     static SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
-    static ScreenRecorder screenRecorder;
+    //    static ScreenRecorder screenRecorder;
     static Random random = new Random();
 
     public ScreenCapture() {
@@ -143,7 +143,7 @@ public final class ScreenCapture {
     public File getlementScreenShot(WebElement element) {
         return element.getScreenshotAs(OutputType.FILE);
     }
-    
+
     /**
      * used to record video
      *
@@ -152,8 +152,8 @@ public final class ScreenCapture {
      * @author nauman.shahid
      */
     public static void startRecordVideo() throws IOException, AWTException {
-        createRecordingInstance();
-        screenRecorder.start();
+//        createRecordingInstance();
+//        screenRecorder.start();
     }
 
     /**
@@ -163,7 +163,7 @@ public final class ScreenCapture {
      * @author nauman.shahid
      */
     public static void stopRecordVideo() throws IOException {
-        screenRecorder.stop();
+//        screenRecorder.stop();
     }
 
     public BufferedImage captureFullScreenShot() {
@@ -176,17 +176,17 @@ public final class ScreenCapture {
         return gc;
     }
 
-    private static void createRecordingInstance() throws IOException, AWTException {
-        String timeStamp = formater.format(calendar.getTime()) + "_" + random.nextInt(10000) + random.nextInt(10);
-        screenRecorder = new ScreenRecorder(setUpRecordVideo(), null,
-                new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_QUICKTIME),
-                new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_QUICKTIME_JPEG,
-                        CompressorNameKey, ENCODING_QUICKTIME_JPEG, DepthKey, 24, FrameRateKey, Rational.valueOf(15),
-                        QualityKey, 0.5f, KeyFrameIntervalKey, 15 * 60),
-                new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, "black", FrameRateKey,
-                        Rational.valueOf(30)),
-                null, new File(System.getProperty("user.dir") + "/target/Automation-Report/test_videos/blaze-bdd-test" + timeStamp
-                + ".avi"));
-    }
+//    private static void createRecordingInstance() throws IOException, AWTException {
+//        String timeStamp = formater.format(calendar.getTime()) + "_" + random.nextInt(10000) + random.nextInt(10);
+//        screenRecorder = new ScreenRecorder(setUpRecordVideo(), null,
+//                new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_QUICKTIME),
+//                new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_QUICKTIME_JPEG,
+//                        CompressorNameKey, ENCODING_QUICKTIME_JPEG, DepthKey, 24, FrameRateKey, Rational.valueOf(15),
+//                        QualityKey, 0.5f, KeyFrameIntervalKey, 15 * 60),
+//                new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, "black", FrameRateKey,
+//                        Rational.valueOf(30)),
+//                null, new File(System.getProperty("user.dir") + "/target/Automation-Report/test_videos/blaze-bdd-test" + timeStamp
+//                + ".avi"));
+//    }
 
 }

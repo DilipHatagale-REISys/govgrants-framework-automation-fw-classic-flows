@@ -68,7 +68,7 @@ public final class TestSetupController {
         ScenarioController.setScenario(scenario);
 
         if ("true".equalsIgnoreCase(System.getProperty("recordVideo"))) {
-            ScreenCapture.startRecordVideo();
+//            ScreenCapture.startRecordVideo();
         }
         if ("true".equalsIgnoreCase(System.getProperty("docker"))) {
             DockerController.startDocker();
@@ -188,7 +188,18 @@ public final class TestSetupController {
 
         device.getDriver().manage().deleteAllCookies();
         device.getDriver().quit();
+        Runtime rt = Runtime.getRuntime();
+        Process pr = rt.exec("taskkill /F /IM chromedriver_for_browserVersion135.exe /T");
+        System.out.println("Command Executed:+ " + pr);
+        Process pr1 = rt.exec("taskkill /F /IM “chrome.exe” /T");
+        System.out.println("Command Executed:+ " + pr1);
+        if (pr.isAlive()) {
+            pr.destroyForcibly().destroy();
+        } else if (pr1.isAlive()) {
+            pr1.destroyForcibly().destroy();
+        }
         device.stopServiceProvider();
+
     }
 
     /**
