@@ -51,7 +51,8 @@ Feature: Validate all scenarios of every modules flow
     Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
-    And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
+    And I click on top right button "New" in flex table with id "---focusarea:-:FocusAreaTableId---"
+    And I pause execution for "3" seconds
     When I enter value "Automation Runtime Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -594,7 +595,7 @@ Feature: Validate all scenarios of every modules flow
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---sitevisits:-:manageSiteVisitTableId---" panel
@@ -1071,6 +1072,7 @@ Feature: Validate all scenarios of every modules flow
     When I enter "Scope&BudgetPeriod_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I wait for "5" seconds
+    And I enter value "CA" into field "Country__c"
     When I click on "Save" in the page details
     And I wait for "15" seconds
     And I save the field labeled "EGMS ID" as "budgetPC&ScopeId"
