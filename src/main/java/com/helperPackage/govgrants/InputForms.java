@@ -129,15 +129,15 @@ public final class InputForms {
         govgrants.perform().mainPage().waitForNavigationLogoToDisappear();
         By fieldWrapperLocator;
         if (isModal) {
-            fieldWrapperLocator = By.xpath("//div[@id='modaltemp']//div[@id='field" + fieldApiName + "' or @id='" + fieldApiName + "'] | //span[contains(@id,'" + fieldApiName + "')]|//div[@id='modaltemp']//div[@id='" + fieldApiName + "'] | //field[@field-name='" + fieldApiName + "']");
+            fieldWrapperLocator = By.xpath("//div[@id='modaltemp']//div[@id='field" + fieldApiName + "' or @id='" + fieldApiName + "'] | //span[contains(@id,'" + fieldApiName + "')]|//div[@id='modaltemp']//div[@id='" + fieldApiName + "'] | //field[@field-name='" + fieldApiName + "'] | //div[@class='panel-body collapse in']//div[@id='" + fieldApiName + "']//span//input[@class='508Input ']");
         } else {
-            fieldWrapperLocator = By.xpath("//*[(local-name()='div' or local-name()='span') and @id='field" + fieldApiName + "' or @id='" + fieldApiName + "'] | //field[@field-name='" + fieldApiName + "']");
-           int size=  I.amPerforming().getElementReference().forListOfElements().of(fieldWrapperLocator).size();
-            if (size > 2){
-                fieldWrapperLocator=By.xpath("//*[(local-name()='div' or local-name()='span') and @id='" + fieldApiName + "'] | //field[@field-name='" + fieldApiName + "']");
-                size=  I.amPerforming().getElementReference().forListOfElements().of(fieldWrapperLocator).size();
+            fieldWrapperLocator = By.xpath("//*[(local-name()='div' or local-name()='span') and @id='field" + fieldApiName + "' or @id='" + fieldApiName + "'] | //field[@field-name='" + fieldApiName + "'] | //div[@class='panel-body collapse in']//div[@id='" + fieldApiName + "']//span//input[@class='508Input ']");
+            int size = I.amPerforming().getElementReference().forListOfElements().of(fieldWrapperLocator).size();
+            if (size > 2) {
+                fieldWrapperLocator = By.xpath("//*[(local-name()='div' or local-name()='span') and @id='" + fieldApiName + "'] | //field[@field-name='" + fieldApiName + "']");
+                size = I.amPerforming().getElementReference().forListOfElements().of(fieldWrapperLocator).size();
                 if (size > 1) {
-                    fieldWrapperLocator=By.xpath("//*[(local-name()='div' or local-name()='span') and @id='" + fieldApiName + "']//label[contains(string(),'Description')]/.. | //field[@field-name='" + fieldApiName + "']");
+                    fieldWrapperLocator = By.xpath("//*[(local-name()='div' or local-name()='span') and @id='" + fieldApiName + "']//label[contains(string(),'Description')]/.. | //field[@field-name='" + fieldApiName + "']");
                 }
 
             }
@@ -378,7 +378,7 @@ public final class InputForms {
                 handleRichTextInput(fieldWrapper, fieldValue);
                 break;
             } else if (I.amPerforming().getElementReference().forListOfElements().ofNested(fieldWrapper,
-                    By.xpath(".//input[@type='text'] | .//textarea[not(@warningchar)]"))
+                            By.xpath(".//input[@type='text'] | .//textarea[not(@warningchar)]"))
                     .size() > 0) {
                 /*if (I.amPerforming().getElementReference().forListOfElements().ofNested(fieldWrapper, By.xpath(".//*[contains(@class, 'datetimepicker')]")).size() > 0) {
                     handleDatePickerInput(fieldWrapper, fieldValue);
@@ -423,7 +423,7 @@ public final class InputForms {
      */
     private void handleClearingFormDataInputs(WebElement fieldWrapper) {
         if (I.amPerforming().getElementReference().forListOfElements().ofNested(fieldWrapper
-                , By.xpath(".//input[@type='text'] | .//textarea[contains(@class, '508Input')]"))
+                        , By.xpath(".//input[@type='text'] | .//textarea[contains(@class, '508Input')]"))
                 .size() > 0) {
             handleClearingTextInput(fieldWrapper);
 
