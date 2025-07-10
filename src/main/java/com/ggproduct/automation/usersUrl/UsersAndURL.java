@@ -102,21 +102,21 @@ public class UsersAndURL implements UsersController {
 
     private String getQAEnvironmentPassword(String userType) {
         Map<String, String> password = new HashMap<>();
-        password.put("ADMIN", "Test8@10dec");
-        password.put("PO", "Test8@05dec");
-        password.put("FD", "Test8@05dec");
-        password.put("FD1","Test8@05dec");
-        password.put("ADMIN1", "Test8@05dec");
-        password.put("EXE", "exe@05dec");
-        password.put("PO1","Test8@05dec");
-        password.put("EXE1", "Test8@05dec");
-        password.put("PM", "Test8@05dec");
-        password.put("dynamicUser", "FWTest@02oct");
-        password.put("FO", "Test8@05dec");
-        password.put("FO1","Test8@05dec");
-        password.put("SPI3", "Test8@05dec");
-        password.put("SPA", "Test8@05dec");
-        password.put("PM1", "Test8@05dec");
+        password.put("ADMIN", "Test8@10mar");
+        password.put("PO", "Test8@10mar");
+        password.put("FD", "Test8@10mar");
+        password.put("FD1","Test8@10mar");
+        password.put("ADMIN1", "Test8@10mar");
+        password.put("EXE", "Exe@10mar");
+        password.put("PO1","Test8@10mar");
+        password.put("EXE1", "Exe@10mar");
+        password.put("PM", "Test8@10mar");
+        password.put("dynamicUser", "Test8@10mar");
+        password.put("FO", "Test8@10mar");
+        password.put("FO1","Test8@10mar");
+        password.put("SPI3", "Test8@10mar");
+        password.put("SPA", "Test8@10mar");
+        password.put("PM1", "Test8@10mar");
         if (userType.toUpperCase() != null) {
             return password.get(userType.toUpperCase());
         } else {
