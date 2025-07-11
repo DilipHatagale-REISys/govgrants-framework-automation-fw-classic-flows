@@ -51,7 +51,7 @@ Feature: Validate all scenarios of every modules flow
     Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
-    And I click on top right button "New" in flex table with id "---focusarea:-:FocusAreaTableId---"
+    And I click on top right button "New" in flex table with id "---focusarea:-:FocusArea---"
     And I pause execution for "3" seconds
     When I enter value "Automation Runtime Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
