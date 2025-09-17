@@ -102,7 +102,7 @@ public class UsersAndURL implements UsersController {
 
     private String getQAEnvironmentPassword(String userType) {
         Map<String, String> password = new HashMap<>();
-        password.put("ADMIN", "Test8@10Jun");
+        password.put("ADMIN", "Test8@08Sep");
         password.put("PO", "Test8@10July");
         password.put("FD", "Test8@10July");
         password.put("FD1","Test8@10July");
@@ -178,7 +178,7 @@ public class UsersAndURL implements UsersController {
 
     private String getPATCHEnvironmentPassword(String userType) {
         Map<String, String> password = new HashMap<>();
-        password.put("PO", "Patch@02oct");
+        password.put("PO", "Patch@15Sept");
         password.put("FD", "Patch@02oct");
         password.put("PM", "Patch@02octo");
         password.put("EXE", "Patch@02oct");
@@ -186,7 +186,7 @@ public class UsersAndURL implements UsersController {
         password.put("FO", "Patch@02oct");
         password.put("ADMIN", "Patch@02oct");
         password.put("ADMIN1", "Patch@02oct");
-        password.put("SPI3", "Patch@02oct");
+        password.put("SPI3", "Patch@16Sept");
         password.put("dynamicUser", "Patch@02oct");
         password.put("PM1", "Patch@02oct");
         if (userType.toUpperCase() != null) {

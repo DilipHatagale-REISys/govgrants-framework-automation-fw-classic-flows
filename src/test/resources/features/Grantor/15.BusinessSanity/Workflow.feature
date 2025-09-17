@@ -264,8 +264,8 @@ Feature: Validate all scenarios of every modules flow
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account             | Encumbrance |
-      | {SavedValue:fundingAccount} | 1000        |
+      | Funding Account               | Encumbrance |
+      | {SavedValue:fundingAccount12} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Award Amount | Cash Match | Non-Cash Match |
       | Construction    | 1000         | 100        | 100            |
@@ -457,7 +457,7 @@ Feature: Validate all scenarios of every modules flow
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
 
-  @progressReportWorkflow 
+  @progressReportWorkflow
   Scenario: progress report
 #    Given I activated standalone subaward "Automation Runtime award" with properties "default"
 #    Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
@@ -540,7 +540,7 @@ Feature: Validate all scenarios of every modules flow
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
-    When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "Automation EXE" in the table "---sitevisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
@@ -1028,7 +1028,7 @@ Feature: Validate all scenarios of every modules flow
       | {SavedValue:Automation Runtime FDM Announcement} | 500                | 500                     | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
-      | Name                    | FDM    |
+      | Name                     | FDM    |
       | {SavedValue:PM Username} | Step 1 |
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
