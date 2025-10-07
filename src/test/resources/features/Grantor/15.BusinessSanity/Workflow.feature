@@ -1,4 +1,4 @@
-@workflow @regression
+@workflow @regression @wip
 Feature: Validate all scenarios of every modules flow
 
   @programFlow @ValidateFullProgramFlow
@@ -597,7 +597,7 @@ Feature: Validate all scenarios of every modules flow
       | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---sitevisits:-:manageSiteVisitTableId---" panel
