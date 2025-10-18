@@ -427,7 +427,6 @@ Feature: Validate all scenarios of every modules flow
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
     When I navigate to "Forms and Files" sub tab
-    And I halt execution
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
@@ -605,7 +604,6 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     And I click toggle button to select "Site Visit Reports - All"
-    And I halt execution
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     And I click on "Accept And Close" in the page details
@@ -793,7 +791,6 @@ Feature: Validate all scenarios of every modules flow
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    And I halt execution
     Then I softly see that "EGMS ID" is in "Active" status
 
   @OrganizationalRiskAssessment @rerun
