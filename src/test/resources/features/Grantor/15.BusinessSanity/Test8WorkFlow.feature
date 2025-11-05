@@ -51,7 +51,7 @@ Feature: Validate all scenarios of every modules flow
     Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
-    And I click on top right button "New" in flex table with id "GrantorServiceAreasgrid"
+    And I click on top right button "New" in flex table with id "GrantorServiceAreas"
     And I pause execution for "3" seconds
     When I enter value "Automation Runtime Focus Area" into field "fieldTitle__c"
     When I click modal button "Save and Continue"
@@ -1204,6 +1204,7 @@ Feature: Validate all scenarios of every modules flow
     And I generate the random EmailID and save as "uniqueEmailID"
     And I enter value "{SavedValue:uniqueEmailID}" into field "fieldPrimaryRepEmail__c"
     When I click on "Save" in the page details
+    And I pause execution for "45" seconds
     When I click on "Submit" in the page details
     And I pause execution for "5" seconds
     Then I see the following messages in the page details contains:
@@ -1271,8 +1272,9 @@ Feature: Validate all scenarios of every modules flow
     And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
     And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
+    And I pause execution for "40" seconds
     When I click on "Submit" in the page details
-    And I pause execution for "5" seconds
+    And I pause execution for "45" seconds
     Then I see the following messages in the page details contains:
       | Your registration request for access to EGMS has been completed and sent for government approval.Once approved, you will be sent another email from salesforce.com (technology platform provider) with your Username and Password shortly to log into the system. |
     And I am on "INTERNAL" portal
@@ -1330,7 +1332,7 @@ Feature: Validate all scenarios of every modules flow
     And I select "My Profile" from user dropdown
     Then I see the header is "{SavedValue:Automation Runtime Contact}" in the page details
 
-  @end-to-end-flow-paymentrequest-progressreport-closeout @vrush
+  @end-to-end-flow-paymentrequest-progressreport-closeout @vrush @progressreport-closeout
   Scenario: end-to-end-flow-paymentrequest-progressreport-closeout
     Given I activated standalone subaward "Automation Runtime award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -1494,6 +1496,7 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Monitoring" tab
     When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     And I click toggle button to select "Progress Reports - Approved"
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     Then I softly see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:internalProgressReportFlexTableId---"
     #Closeout
     And I pause execution for "10" seconds

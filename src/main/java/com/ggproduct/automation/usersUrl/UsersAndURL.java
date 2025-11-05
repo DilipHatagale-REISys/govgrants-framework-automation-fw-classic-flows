@@ -114,7 +114,7 @@ public class UsersAndURL implements UsersController {
         password.put("dynamicUser", "Test8@08Oct");
         password.put("FO", "Test8@08Oct");
         password.put("FO1","Test8@10July");
-        password.put("SPI3", "Test8@04aug");
+        password.put("SPI3", "Test8@08Sep");
         password.put("SPA", "Test8@04aug");
         password.put("PM1", "Test8@08Oct");
         if (userType.toUpperCase() != null) {
