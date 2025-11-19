@@ -1129,7 +1129,7 @@ Feature: Validate all scenarios of every modules flow
     Then I softly see field "Status" as "Activated"
 
   @SubrecipientSideAmendmentRequestWorkflow @rerun
-  Scenario:
+  Scenario: SubrecipientSideAmendmentRequestWorkflow
 #    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
     And I activated standalone subaward "Automation Runtime Award" with properties "default-Automation PO user" of type "Competitive"
     When I am on "SUBPORTAL" portal
@@ -1146,7 +1146,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "budgetPChangeId"
     And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
-    And I wait for "9" seconds
+    And I wait for "10" seconds
     When I click on "Edit" in the page details
     And I enter "SubRecipientBPC_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
