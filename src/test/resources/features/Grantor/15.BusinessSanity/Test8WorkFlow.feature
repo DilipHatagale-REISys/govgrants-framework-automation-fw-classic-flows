@@ -513,6 +513,7 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Monitoring" tab
     When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     And I click toggle button to select "Progress Reports - Approved"
+    And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     Then I see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:internalProgressReportFlexTableId---"
 
   @SiteVisitFlow @rerun
@@ -1552,3 +1553,20 @@ Feature: Validate all scenarios of every modules flow
     And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
     #TBC:completed status not updated due to bug change after bug reslved
     Then I softly see field "Status" as "Completed"
+
+  @checkpassword
+  Scenario: in this scenario we are test all password are working
+    When I login to "As a Grantor" app as "ADMIN" user
+    When I navigate to "Planning" tab
+#    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+#    When I navigate to "Planning" tab
+#    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+#    When I navigate to "Planning" tab
+#    When I re-login to "As a Grantor" app as "DYNAMICUSER" user on "INTERNAL" portal
+#    When I navigate to "Planning" tab
+#    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+#    When I navigate to "Grants" tab
+#    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+#    When I navigate to "Planning" tab
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+#    When I re-login to "Grants Portal" app as "SA" user on "SUBPORTAL" portal
