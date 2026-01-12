@@ -102,21 +102,21 @@ public class UsersAndURL implements UsersController {
 
     private String getQAEnvironmentPassword(String userType) {
         Map<String, String> password = new HashMap<>();
-        password.put("ADMIN", "Test8@08Sep");
-        password.put("PO", "Test8@17oct");
-        password.put("FD", "Test8@08Oct");
-        password.put("FD1","Test8@10July");
-        password.put("ADMIN1", "Test8@10July");
-        password.put("EXE", "Pass@08Oct");
-        password.put("PO1","Test8@08Oct");
-        password.put("EXE1", "EXE@10July");
-        password.put("PM", "Test8@08Oct");
-        password.put("dynamicUser", "Test8@08Oct");
-        password.put("FO", "Test8@08Oct");
-        password.put("FO1","Test8@10July");
-        password.put("SPI3", "Test8@08Sep");
-        password.put("SPA", "Test8@04aug");
-        password.put("PM1", "Test8@08Oct");
+        password.put("ADMIN", "Jupiter@2026");
+        password.put("PO", "Jupiter@2026");
+        password.put("FD", "Jupiter@2026");
+        password.put("FD1","Jupiter@2026");
+        password.put("ADMIN1", "Jupiter@2026");
+        password.put("EXE", "Jupiter@2026");
+        password.put("PO1","Jupiter@2026");
+        password.put("EXE1", "Jupiter@2026");
+        password.put("PM", "Jupiter@2026");
+        password.put("dynamicUser", "Jupiter@2026");
+        password.put("FO", "Jupiter@2026");
+        password.put("FO1","Jupiter@2026");
+        password.put("SPI3", "Jupiter@2026");
+        password.put("SPA", "Jupiter@2026");
+        password.put("PM1", "Jupiter@2026");
         if (userType.toUpperCase() != null) {
             return password.get(userType.toUpperCase());
         } else {
