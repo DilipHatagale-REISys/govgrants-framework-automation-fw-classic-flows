@@ -1313,7 +1313,7 @@ Feature: Validate all scenarios of every modules flow
     And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
     And I click "Send" button in modal
-    When I click alert button "Ok"
+    #When I click alert button "Ok"
     Then I see the following messages in the page details :
       | Email Sent Successfully |
     And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
