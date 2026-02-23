@@ -429,7 +429,7 @@ Feature: Validate all scenarios of every modules flow
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
     When I navigate to "Forms and Files" sub tab
-    When I click on "Attach" icon for "Optional" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
@@ -1365,7 +1365,7 @@ Feature: Validate all scenarios of every modules flow
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
     And I navigate to "Forms and Files" sub tab
-    When I click on "Attach" icon for "Optional" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
