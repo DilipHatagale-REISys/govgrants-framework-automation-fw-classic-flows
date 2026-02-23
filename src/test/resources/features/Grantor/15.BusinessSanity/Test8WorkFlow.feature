@@ -1468,7 +1468,9 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
+    And I pause execution for "3" seconds
     When I get the "EGMS ID"
+    And I pause execution for "3" seconds
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1516,7 +1518,8 @@ Feature: Validate all scenarios of every modules flow
     When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
-    And I get the "EGMS ID"
+    And I pause execution for "3" seconds
+    #And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "closeoutID"
     When I click on "Save" in the page details
     And I click on "Edit" in the page details
