@@ -1032,7 +1032,6 @@ Feature: Validate all scenarios of every modules flow
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
-    And I halt execution
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title                                | Recommended Budget | Total Commitment Amount | Recommend for Funding | Comments    |
       | {SavedValue:Automation Runtime FDM Announcement} | 500                | 500                     | Yes                   | Recommended |
@@ -1492,7 +1491,6 @@ Feature: Validate all scenarios of every modules flow
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
-    And I halt execution
     When I enter the following values into flex table with id "---progressReport:-:approversTableId---" by clicking "New" :
       | Name                      | Progress Report |
       | {SavedValue:EXE Username} | Step 1          |
