@@ -486,7 +486,8 @@ Feature: Validate all scenarios in Closeout
       | Reviewer Name | Responsibility   | Description                 | Due Date |
       | Automation PM | Program Reviewer | Automation Test Description | 10       |
     When I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
+    And I pause execution for "4" seconds
+    When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add Files" :
       | Description                 | Required  | Status |
       | Automation test description | Mandatory | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record

@@ -1,4 +1,4 @@
-@workflow @regression @wip
+@workflow @regression
 Feature: Validate all scenarios of every modules flow
 
   @programFlow @ValidateFullProgramFlow

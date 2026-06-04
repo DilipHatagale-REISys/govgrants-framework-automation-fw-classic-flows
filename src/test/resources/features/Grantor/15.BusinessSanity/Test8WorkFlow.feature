@@ -1,4 +1,4 @@
-@workflowtest8 @regression
+@workflowtest8 @regression @wip
 Feature: Validate all scenarios of every modules flow
 
   @programFlow @ValidateFullProgramFlow
@@ -83,8 +83,10 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Edit" in the page details
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
+    And I pause execution for "4" seconds
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
     When I enter in modal value "Automation Strategic Objective" into field "StrategyTitle__c"
+    And I pause execution for "4" seconds
     When I click modal button "Save and Continue"
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details

@@ -177,16 +177,16 @@ public class UsersAndURL implements UsersController {
 
     private String getPATCHEnvironmentPassword(String userType) {
         Map<String, String> password = new HashMap<>();
-        password.put("PO", "Patch@15Sept");
-        password.put("FD", "Patch@02oct");
+        password.put("PO", "Support@3033");
+        password.put("FD", "Support@3033");
         password.put("PM", "Patch@02octo");
         password.put("EXE", "Patch@02oct");
         password.put("EXE1", "Patch@02oct");
         password.put("FO", "Patch@02oct");
         password.put("ADMIN", "Patch@02oct");
         password.put("ADMIN1", "Patch@02oct");
-        password.put("SPI3", "Patch@16Sept");
-        password.put("dynamicUser", "Patch@02oct");
+        password.put("SPI3", "Support@3032");
+        password.put("dynamicUser", "Patch@02octo");
         password.put("PM1", "Patch@02oct");
         if (userType.toUpperCase() != null) {
             return password.get(userType.toUpperCase());
