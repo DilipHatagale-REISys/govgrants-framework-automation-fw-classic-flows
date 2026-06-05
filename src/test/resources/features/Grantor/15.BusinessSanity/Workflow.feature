@@ -600,8 +600,8 @@ Feature: Validate all scenarios of every modules flow
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
 
@@ -838,6 +838,7 @@ Feature: Validate all scenarios of every modules flow
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
     When I click on "Submit to Grantor" in the page details
+    And I pause execution for "3" seconds
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1326,7 +1327,7 @@ Feature: Validate all scenarios of every modules flow
     And I select "My Profile" from user dropdown
     Then I see the header is "{SavedValue:Automation Runtime Contact}" in the page details
 
-  @end-to-end-flow-paymentrequest-progressreport-closeout @vrush
+  @end-to-end-flow-paymentrequest-progressreport-closeout @vrush @progressreport-closeout
   Scenario: end-to-end-flow-paymentrequest-progressreport-closeout
     Given I activated standalone subaward "Automation Runtime award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -1443,24 +1444,31 @@ Feature: Validate all scenarios of every modules flow
     Then I softly see field "Status" as "Paid"
     #Progress Report
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I pause execution for "10" seconds
+    Given I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
+    Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
+    And I wait for "20" seconds
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
+    And I pause execution for "3" seconds
     When I get the "EGMS ID"
+    And I pause execution for "3" seconds
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
+    And I pause execution for "6" seconds
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
       | Title                    | Reported Date | Actual |
       | Automation Permanent KPI | 7             | 7      |
-    When I navigate to "Files" sub tab
+    When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1486,8 +1494,10 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Monitoring" tab
     When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     And I click toggle button to select "Progress Reports - Approved"
-    Then I see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:internalProgressReportFlexTableId---"
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
+    Then I softly see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:internalProgressReportFlexTableId---"
     #Closeout
+    And I pause execution for "10" seconds
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1498,7 +1508,8 @@ Feature: Validate all scenarios of every modules flow
     When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
-    And I get the "EGMS ID"
+    And I pause execution for "3" seconds
+    #And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "closeoutID"
     When I click on "Save" in the page details
     And I click on "Edit" in the page details
