@@ -1556,7 +1556,7 @@ Feature: Validate all scenarios of every modules flow
 
 
   @viewSubmitedApplication
-  Scenario:Validate Viewing the application submitted by sub-recipient as Internal user
+  Scenario Outline:Validate Viewing the application submitted by sub-recipient as Internal user
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
