@@ -105,15 +105,15 @@ public class UsersAndURL implements UsersController {
         password.put("ADMIN", "Support@3033");
         password.put("PO", "Support@3033");
         password.put("FD", "Support@3033");
-        password.put("FD1","Support@3033");
+        password.put("FD1", "Support@3033");
         password.put("ADMIN1", "Support@3033");
         password.put("EXE", "Support@3033");
-        password.put("PO1","Support@3033");
+        password.put("PO1", "Support@3033");
         password.put("EXE1", "Support@3033");
         password.put("PM", "Support@3033");
         password.put("dynamicUser", "Support@3033");
         password.put("FO", "Support@3033");
-        password.put("FO1","Support@3033");
+        password.put("FO1", "Support@3033");
         password.put("SPI3", "Support@3033");
         password.put("SPA", "Support@3034");
         password.put("PM1", "Support@3033");
@@ -218,7 +218,7 @@ public class UsersAndURL implements UsersController {
     private String getQAEnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
         username.put("ADMIN", "govgrantsautomation5@yopmail.com.fwautomat");
-        username.put("ADMIN1","admin1@yopmail.com.fwautomat");
+        username.put("ADMIN1", "admin1@yopmail.com.fwautomat");
         username.put("PM", "donald_pm@ggp.test8.atm.fwautomat");
         username.put("PM1", "pm1.automation@yopmail.com.fwautomat");
         username.put("PO", "test8.automationpo@yopmail.com.fwautomat");
@@ -239,7 +239,16 @@ public class UsersAndURL implements UsersController {
             return username.get("ADMIN");
         }
     }
-//    private String getQAEnvironmentUser(String userLevel) {
+
+    public static String resolveSalesforceUsername(String userType) {
+
+        UsersAndURL usersAndURL = new UsersAndURL();
+
+        return usersAndURL.getUserName(userType);
+
+    }
+
+    //    private String getQAEnvironmentUser(String userLevel) {
 //        Map<String, String> username = new HashMap<>();
 //        username.put("ADMIN", "govgrantsautomation@yopmail.com.qaorg");
 //        username.put("ADMIN1", "admin1@yopmail.com.qaorg");

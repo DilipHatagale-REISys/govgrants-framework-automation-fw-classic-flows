@@ -1564,3 +1564,85 @@ Feature: Validate all scenarios of every modules flow
     And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
     #TBC:completed status not updated due to bug change after bug reslved
     Then I softly see field "Status" as "Completed"
+
+  @viewSubmitedApplication
+  Scenario Outline:Validate Viewing the application submitted by sub-recipient as Internal user
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    And I pause execution for "3" seconds
+    And I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 1000   | 100        | 100            | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I navigate to "Proposal" sub tab
+    When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
+    And I navigate to "Forms and Files" sub tab
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
+    Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Given I click on "Back" in the page details
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
+    Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Given I click on "Back" in the page details
+    And I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---applicationReview:-:flexGridAppContactTableId---" by clicking "Edit" :
+      | Name                       | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
+    When I click on "Submit Application" in the page details
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - Submitted"
+    When I perform quick search for "<Application Name>" in "---applicationIntake:-:recipientApplications---" panel
+    Then I softly see "<Application Name>" inside flex table with id "---applicationIntake:-:recipientApplications---"
+    Given I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    When I click on "View" icon for "<Application Name>" inside table
+    Then I softly see status in Progress-bar is "Submitted" and is "Green"
+    Then I softly cannot see top right button "Edit" in page detail
+    Examples:
+      | Application Name                                         | User |
+      | {SavedValue:Automation Runtime Announcement Application} | PM   |
+
+  @checkpassword
+  Scenario: in this scenario we are test all password are working
+    When I login to "As a Grantor" app as "Admin" user
+    When I navigate to "Planning" tab
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+#    When I navigate to "Planning" tab
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+#    When I navigate to "Planning" tab
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+#    When I navigate to "Planning" tab
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+#    When I navigate to "Planning" tab
+    When I re-login to "As a Grantor" app as "FO1" user on "INTERNAL" portal
+#    When I navigate to "Planning" tab
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+#    When I navigate to "Planning" tab
+    When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
+#    When I navigate to "Planning" tab
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+#    When I navigate to "Grants" tab
+    When I re-login to "Grants Portal" app as "SA" user on "SUBPORTAL" portal
+    When I navigate to "Home" tab
+

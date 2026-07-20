@@ -794,7 +794,7 @@ Feature: Validate all scenarios of every modules flow
     Given I delete the record "Automation Permanent Organization for Risk Assessment" from the object "ORGANIZATION RISKASSESSMENT"
     When I create a risk assessment record for organization "Automation Permanent Organization for Risk Assessment"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SA" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Automation Permanent Organization for Risk Assessment" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
@@ -1571,10 +1571,11 @@ Feature: Validate all scenarios of every modules flow
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-    Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 1000   | 100        | 100            | 100            |
+    When I expand nested table containing column value "BP01"
+    And I select value inside table "---applicationReview:-:budgetTableId---" is "All"
+    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match |
+      | Construction  | 1000   | 100        | 100            |
     When I navigate to "Overview" sub tab
     When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
@@ -1583,7 +1584,7 @@ Feature: Validate all scenarios of every modules flow
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                  | Target |
       | Automation Permanent KPI | 10     |
-    And I navigate to "Forms and Files" sub tab
+    And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details

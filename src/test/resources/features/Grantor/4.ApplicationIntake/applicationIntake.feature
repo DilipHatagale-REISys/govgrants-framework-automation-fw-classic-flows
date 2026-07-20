@@ -96,7 +96,7 @@ Feature: Validate all scenarios in the Application Intake
    Then I softly see value "100.00%" for title "Percentage" against the value "Program Application Form" inside table "---applicationIntake:-:allFormsTableId---"
    Then I softly see value "100.00%" for title "Percentage" against the value "Standard Assurances Form" inside table "---applicationIntake:-:allFormsTableId---"
 
-  @34346 @73602 @34334 @70459 @viewSubmitedApplication @smoke @deepika
+  @34346 @73602 @34334 @70459 @viewSubmitedApplication @smoke @deepika @wip
   Scenario Outline: Validate Viewing the application submitted by sub-recipient as Internal user | Validate whether user can view the edit button once application has been submitted to Grantor
   Verify whether PM, FO,EXE internal user is able to view Submitted Application | Verify when SPI (Record owner of Application) submit the Application to Grantor then it is displayed in the list of Submitted Applications
     When I click on "Edit" in the page details
