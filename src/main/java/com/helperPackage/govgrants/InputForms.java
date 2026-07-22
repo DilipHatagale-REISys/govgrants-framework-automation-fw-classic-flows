@@ -201,6 +201,22 @@ public final class InputForms {
         handleClearingFormDataInputs(fieldWrapper);
     }
 
+    private void handleRichTextAreaInput(WebElement fieldWrapper, String fieldValue) {
+        String field = fieldWrapper.toString().split("//")[1].split("\'")[1];
+        if(field.contains("modal__container")){
+            String field1 = fieldWrapper.toString().split("//")[2].split("\'")[1];
+            By inputBox = By.xpath("//div[@data-field_api_name='" + field1 + "']//input[@type='text'] | //div[@data-field_api_name='" + field1 + "']//div[contains(@class,'text-area')] | //div[@data-field_api_name='" + field1 + "']//div[contains(@class,'textarea')]//textarea");
+            I.amPerforming().click().withJavaScript(inputBox);
+            I.amPerforming().textInput().toClear(inputBox);
+            I.amPerforming().textInput().in(inputBox, fieldValue);
+        } else {
+            By inputBox = By.xpath("//div[@data-field_api_name='" + field + "']//input[@type='text'] | //div[@data-field_api_name='" + field + "']//div[contains(@class,'text-area')] | //div[@data-field_api_name='" + field + "']//div[contains(@class,'textarea')]//textarea");
+            I.amPerforming().click().withJavaScript(inputBox);
+            I.amPerforming().textInput().toClear(inputBox);
+            I.amPerforming().textInput().in(inputBox, fieldValue);
+        }
+    }
+
     /**
      * Handles filling up of any review form Handles Text area, Score, Percent,
      * Date, Dollar value Note: All are text fields but expects to enter values in
@@ -410,6 +426,9 @@ public final class InputForms {
             } else if (I.amPerforming().getElementReference().forListOfElements().ofNested(fieldWrapper, By.xpath(".//textarea[not(@warningchar)]")).size() > 0) {
                 handleTextInput(fieldWrapper, fieldValue);
                 break;
+            }else if (I.amPerforming().getElementReference().forListOfElements().ofNested(fieldWrapper, By.xpath(".//textarea[not(@warningchar)]")).size() > 0) {
+                handleRichTextInput(fieldWrapper, fieldValue);
+                break;
             }
             I.amPerforming().waitFor().makeThreadSleep(1000);
             counter++;
@@ -467,16 +486,18 @@ public final class InputForms {
         By inputBoxSelector = By.xpath("//html//body[@contenteditable='true']");
         I.amPerforming().waitFor().makeThreadSleep(1000);
         I.amPerforming().switchTo().frame(I.amPerforming().getElementReference().ofNested(fieldWrapper, (By.xpath(".//iframe"))));
+        I.amPerforming().waitFor().makeThreadSleep(1000);
         try {
             if (!isClear) {
                 I.amPerforming().textInput().toClear(I.amPerforming().getElementReference().ofNested(fieldWrapper, inputBoxSelector));
+                I.amPerforming().waitFor().makeThreadSleep(1000);
             }
         } catch (Exception e) {
         }
+        I.amPerforming().click().on(inputBoxSelector);
         I.amPerforming().textInput().in(inputBoxSelector, value);
         I.amPerforming().switchTo().parentFrame();
     }
-
     /**
      * @param fieldWrapper
      * @author john.phillips
@@ -1003,7 +1024,7 @@ public final class InputForms {
         if (isModal) {
             fieldWrapperLocator = I.amPerforming().getElementReference().of(By.xpath("//div[@id='modaltemp']//div[@id='field" + fieldApi + "' or @id='" + fieldApi + "'] | //span[contains(@id,'" + fieldApi + "')]|//div[@id='modaltemp']//div[@id='" + fieldApi + "'] | //field[@field-name='" + fieldApi + "']"));
         } else {
-            fieldWrapperLocator = I.amPerforming().getElementReference().of(By.xpath("//*[(local-name()='div' or local-name()='span') and @id='field" + fieldApi + "' or @id='" + fieldApi + "'] | //field[@field-name='" + fieldApi + "']"));
+            fieldWrapperLocator = I.amPerforming().getElementReference().of(By.xpath("//*[(local-name()='div' or local-name()='span') and @id='" + fieldApi + "' or @id='" + fieldApi + "']//input[@class='508Input '] | //*[(local-name()='div' or local-name()='span') and @id='field" + fieldApi + "' or @id='" + fieldApi + "'] | //field[@field-name='" + fieldApi + "']"));
         }
         for (int j = 0; j < actualCount; j++) {
             StringBuilder value = new StringBuilder();

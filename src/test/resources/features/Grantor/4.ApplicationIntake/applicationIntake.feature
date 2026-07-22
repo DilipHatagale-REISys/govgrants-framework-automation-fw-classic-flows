@@ -18,7 +18,6 @@ Feature: Validate all scenarios in the Application Intake
   @34044 @70332 @applicationCreation
   Scenario: Validate creation of an Application | Validate once application is in created status, the user can view the Submit Application Button in page details
     Then I softly see status in Progress-bar is "Created" and is "green"
-    And I halt execution
     Then I softly can see top right button "Submit Application" in page detail
 
   @34045 @applicationEdition

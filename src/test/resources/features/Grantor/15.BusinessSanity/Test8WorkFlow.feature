@@ -1,7 +1,7 @@
 @workflowtest8 @regression
 Feature: Validate all scenarios of every modules flow
 
-  @programFlow @ValidateFullProgramFlow
+  @debug @programFlow @ValidateFullProgramFlow
   Scenario: Validate Full Program Flow
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
@@ -12,7 +12,10 @@ Feature: Validate all scenarios of every modules flow
     And I click modal button "Save and Continue"
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I pause execution for "3" seconds
     When I enter "Edition" values from "Program_Field_Values.xlsx"
+    #And I enter value "Test Data" into field "Objectives__c"
+    And I pause execution for "3" seconds
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
     When I navigate to "Overview" sub tab

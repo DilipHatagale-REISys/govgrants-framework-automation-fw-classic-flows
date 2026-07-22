@@ -54,7 +54,7 @@ public final class SalesforceJWTConfiguration {
             Properties p = new Properties();
             if (EnvironmentFactory.getEnvironmentName().startsWith("FWCLASSIC-GRANTOR")) {
                 p.load(ProjectWebServices.class.getResourceAsStream("/properties/QAEnvData.properties"));
-            } else if (EnvironmentFactory.getEnvironmentName().startsWith("UAT")) {
+            } else if (EnvironmentFactory.getEnvironmentName().startsWith("FWPATCH-GRANTOR")) {
                 p.load(ProjectWebServices.class.getResourceAsStream("/properties/QAEnvData.properties"));
             } else if (EnvironmentFactory.getEnvironmentName().startsWith("FULLCOPY")) {
                 p.load(ProjectWebServices.class.getResourceAsStream("/properties/QAEnvData.properties"));

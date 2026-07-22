@@ -23,7 +23,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I navigate to "Grants" tab
     When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
 
-  @72335 @activationOfFocusArea @debug
+  @72335 @activationOfFocusArea
   Scenario: Validate the activation of Focus Area by User - Admin/EXE/PM and the status is Active
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
