@@ -175,6 +175,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I expand nested table containing column value "BP01"
+    And I pause execution for "3" seconds
     And I select value inside table "---applicationReview:-:budgetTableId---" is "All"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
@@ -1037,6 +1038,7 @@ Feature: Validate all scenarios of every modules flow
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
+    And I pause execution for "5" seconds
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title                                | Recommended Budget | Total Commitment Amount | Recommend for Funding | Comments    |
       | {SavedValue:Automation Runtime FDM Announcement} | 500                | 500                     | Yes                   | Recommended |
@@ -1047,7 +1049,6 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     And I pause execution for "3" seconds
-
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
     When I navigate to "Funding Decision Memo" sub tab
@@ -1318,11 +1319,11 @@ Feature: Validate all scenarios of every modules flow
     And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
     And I click "Send" button in modal
-    #When I click alert button "Ok"
-    Then I see the following messages in the page details :
-      | Email Sent Successfully |
+    When I click alert button "Ok"
+    #Then I see the following messages in the page details :
+    #  | Email Sent Successfully |
     And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
-    And I pause execution for "300" seconds
+    And I pause execution for "190" seconds
     And I refresh the page
     And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}" with subject "Notification: You have been Invited to Register in the EnterpriseGrants Management System (EGMS)"
     When I click on "Agree" in the page details
@@ -1585,6 +1586,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
+    And I pause execution for "3" seconds
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
@@ -1596,7 +1598,7 @@ Feature: Validate all scenarios of every modules flow
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                  | Target |
       | Automation Permanent KPI | 10     |
-    And I navigate to "Forms and Files" sub tab
+    And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
