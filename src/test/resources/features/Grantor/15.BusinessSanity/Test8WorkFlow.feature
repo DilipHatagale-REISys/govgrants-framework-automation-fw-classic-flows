@@ -3,11 +3,12 @@ Feature: Validate all scenarios of every modules flow
 
   @debug @programFlow @ValidateFullProgramFlow
   Scenario: Validate Full Program Flow
-    When I login to "As a Grantor" app as "PM" user
+    When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Internal Programs - Draft"
     And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    And I halt execution
     When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I get the "EGMS ID"
@@ -104,6 +105,7 @@ Feature: Validate all scenarios of every modules flow
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I halt execution
     And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
     When I enter "Creation Second Negotiation" values from "Announcement_Field_Values.xlsx"
@@ -1632,20 +1634,20 @@ Feature: Validate all scenarios of every modules flow
   Scenario: in this scenario we are test all password are working
     When I login to "As a Grantor" app as "Admin" user
     When I navigate to "Planning" tab
- #   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-#    When I navigate to "Planning" tab
- #   When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
-#    When I navigate to "Planning" tab
-  #  When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-#    When I navigate to "Planning" tab
- #   When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-#    When I navigate to "Planning" tab
-  #  When I re-login to "As a Grantor" app as "FO1" user on "INTERNAL" portal
-#    When I navigate to "Planning" tab
-#    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
-#    When I navigate to "Planning" tab
- #   When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
-#    When I navigate to "Planning" tab
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
+    When I re-login to "As a Grantor" app as "FO1" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
+    When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
 #    When I navigate to "Grants" tab
     When I re-login to "Grants Portal" app as "SA" user on "SUBPORTAL" portal
