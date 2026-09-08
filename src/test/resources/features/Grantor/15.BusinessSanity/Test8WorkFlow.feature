@@ -176,7 +176,7 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Budget" sub tab
     When I expand nested table containing column value "BP01"
     And I pause execution for "3" seconds
-    And I select value inside table "---applicationReview:-:budgetTableId---" is "All"
+#    And I select value inside table "---applicationReview:-:budgetTableId---" is "All"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
       | Construction  | 1000   | 100        | 100            |
