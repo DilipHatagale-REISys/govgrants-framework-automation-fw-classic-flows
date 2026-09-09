@@ -374,6 +374,7 @@ Feature: Validate all scenarios of every modules flow
     And I save the field labeled "EGMS ID" as "PayreqId"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    And I wait for "10" seconds
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement |
       | Extra Salary | The narrative | 30         | 1        | Feet        |
@@ -1143,7 +1144,7 @@ Feature: Validate all scenarios of every modules flow
   @SubrecipientSideAmendmentRequestWorkflow @rerun
   Scenario: SubrecipientSideAmendmentRequestWorkflow
 #    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
-    And I activated standalone subaward "Automation Runtime Award" with properties "default-Automation PO user" of type "Competitive"
+#    And I activated standalone subaward "Automation Runtime Award" with properties "default-Automation PO user" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
