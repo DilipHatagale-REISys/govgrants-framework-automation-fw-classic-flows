@@ -3,7 +3,7 @@ Feature: Validate all scenarios of every modules flow
 
   @debug @programFlow @ValidateFullProgramFlow
   Scenario: Validate Full Program Flow
-    When I login to "As a Grantor" app as "ADMIN" user
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Internal Programs - Draft"
@@ -472,9 +472,9 @@ Feature: Validate all scenarios of every modules flow
 
   @progressReportWorkflow
   Scenario: progress report
-#    Given I activated standalone subaward "Automation Runtime award" with properties "default"
-#    Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
-#    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
+    Given I activated standalone subaward "Automation Runtime award" with properties "default"
+    Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     Given I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
     And I wait for "10" seconds
@@ -1144,7 +1144,7 @@ Feature: Validate all scenarios of every modules flow
   @SubrecipientSideAmendmentRequestWorkflow @rerun
   Scenario: SubrecipientSideAmendmentRequestWorkflow
 #    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
-#    And I activated standalone subaward "Automation Runtime Award" with properties "default-Automation PO user" of type "Competitive"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default-Automation PO user" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
